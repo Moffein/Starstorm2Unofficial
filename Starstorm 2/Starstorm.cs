@@ -29,7 +29,8 @@ namespace Starstorm2
         "SoundAPI",
         "CommandHelper",
         "DamageAPI",
-        "RecalculateStatsAPI"
+        "RecalculateStatsAPI",
+        "ContentAddition"
     })]
 
     public class Starstorm : BaseUnityPlugin

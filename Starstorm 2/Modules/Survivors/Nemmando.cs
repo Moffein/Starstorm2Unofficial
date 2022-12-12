@@ -171,8 +171,18 @@ namespace Starstorm2.Modules.Survivors
 
         internal override void InitializeUnlockables()
         {
-            masterySkinUnlockableDef = Modules.Unlockables.AddUnlockable<Cores.Unlockables.Achievements.NemmandoMasteryAchievement>(true);
-            grandMasterySkinUnlockableDef = Modules.Unlockables.AddUnlockable<Cores.Unlockables.Achievements.NemmandoGrandMasteryAchievement>(true);
+            masterySkinUnlockableDef = ScriptableObject.CreateInstance<UnlockableDef>();
+            masterySkinUnlockableDef.cachedName = "Skins.SS2UNemmando.Mastery";
+            masterySkinUnlockableDef.nameToken = "ACHIEVEMENT_SS2UNEMMANDOCLEARGAMEMONSOON_NAME";
+            masterySkinUnlockableDef.achievementIcon = Assets.mainAssetBundle.LoadAsset<Sprite>("texNemmandoSkinMaster");
+            ContentAddition.AddUnlockableDef(masterySkinUnlockableDef);
+
+            grandMasterySkinUnlockableDef = ScriptableObject.CreateInstance<UnlockableDef>();
+            grandMasterySkinUnlockableDef.cachedName = "Skins.SS2UNemmando.GrandMastery";
+            grandMasterySkinUnlockableDef.nameToken = "ACHIEVEMENT_SS2UNEMMANDOCLEARGAMETYPHOON_NAME";
+            grandMasterySkinUnlockableDef.achievementIcon = Assets.mainAssetBundle.LoadAsset<Sprite>("texNemmandoSkinGrandMaster");
+            ContentAddition.AddUnlockableDef(grandMasterySkinUnlockableDef);
+
             singleTapUnlockableDef = Modules.Unlockables.AddUnlockable<Cores.Unlockables.Achievements.NemmandoSingleTapAchievement>(true);
             decisiveStrikeUnlockableDef = Modules.Unlockables.AddUnlockable<Cores.Unlockables.Achievements.NemmandoDecisiveStrikeAchievement>(true);
         }
@@ -478,13 +488,11 @@ namespace Starstorm2.Modules.Survivors
             LanguageAPI.Add("NEMMANDO_UNLOCKUNLOCKABLE_UNLOCKABLE_NAME", "???");
 
             // todo: make a base class for mastery achievements and simply inherit from it for each character 
-            LanguageAPI.Add("NEMMANDO_MASTERYUNLOCKABLE_ACHIEVEMENT_NAME", "Nemesis Commando: Mastery");
-            LanguageAPI.Add("NEMMANDO_MASTERYUNLOCKABLE_ACHIEVEMENT_DESC", "As Nemesis Commando, beat the game or obliterate on Monsoon or harder.");
-            LanguageAPI.Add("NEMMANDO_MASTERYUNLOCKABLE_UNLOCKABLE_NAME", "Nemesis Commando: Mastery");
+            LanguageAPI.Add("ACHIEVEMENT_SS2UNEMMANDOCLEARGAMEMONSOON_NAME", "Nemesis Commando: Mastery");
+            LanguageAPI.Add("ACHIEVEMENT_SS2UNEMMANDOCLEARGAMEMONSOON_DESCRIPTION", "As Nemesis Commando, beat the game or obliterate on Monsoon or harder.");
 
-            LanguageAPI.Add("NEMMANDO_GRANDMASTERYUNLOCKABLE_ACHIEVEMENT_NAME", "Nemesis Commando: Grand Mastery");
-            LanguageAPI.Add("NEMMANDO_GRANDMASTERYUNLOCKABLE_ACHIEVEMENT_DESC", "As Nemesis Commando, beat the game or obliterate on Typhoon.");
-            LanguageAPI.Add("NEMMANDO_GRANDMASTERYUNLOCKABLE_UNLOCKABLE_NAME", "Nemesis Commando: Grand Mastery");
+            LanguageAPI.Add("ACHIEVEMENT_SS2UNEMMANDOCLEARGAMETYPHOON_NAME", "Nemesis Commando: Grand Mastery");
+            LanguageAPI.Add("ACHIEVEMENT_SS2UNEMMANDOCLEARGAMETYPHOON_DESCRIPTION", "As Nemesis Commando, beat the game or obliterate on Typhoon.");
 
             LanguageAPI.Add("NEMMANDO_SINGLETAPUNLOCKABLE_ACHIEVEMENT_NAME", "Nemesis Commando: Nemesis Nemesis");
             LanguageAPI.Add("NEMMANDO_SINGLETAPUNLOCKABLE_ACHIEVEMENT_DESC", "As Nemesis Commando, defeat Commando's vestige.");

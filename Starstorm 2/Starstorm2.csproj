@@ -193,6 +193,8 @@
     <Compile Include="Cores\States\Wayfarer\MeleeSlam.cs" />
     <Compile Include="Cores\TyphoonCore.cs" />
     <Compile Include="Cores\Unlockables\Achievements\ExecutionerAchievements.cs" />
+    <Compile Include="Cores\Unlockables\Achievements\Nemmando\NemmandoGrandMasteryAchievement.cs" />
+    <Compile Include="Cores\Unlockables\Achievements\Nemmando\NemmandoMasteryAchievement.cs" />
     <Compile Include="Cores\Unlockables\Achievements\VanillaSurvivorAchievements.cs" />
     <Compile Include="Cores\Unlockables\Achievements\NemmandoAchievements.cs" />
     <Compile Include="Cores\Unlockables\VanillaSurvivorUnlockables.cs" />
