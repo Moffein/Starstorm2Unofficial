@@ -93,7 +93,6 @@ namespace Starstorm2
         private void Initialize()
         {
             Modules.Assets.Initialize();
-            Modules.ItemDisplays.PopulateDisplays();
             Modules.CameraParams.Initialize();
             Modules.States.Initialize();
             Modules.Buffs.Initialize();
@@ -107,7 +106,10 @@ namespace Starstorm2
             buffCore = new BuffCore();
             dotCore = new DoTCore();
             damageTypeCore = new DamageTypeCore();
-            //itemDisplayCore = new ItemDisplayCore();
+
+            //Modules.ItemDisplays.PopulateDisplays();
+            itemDisplayCore = new ItemDisplayCore();
+
             skinsCore = new SkinsCore();
 
             //if (EnableNemmando.Value) Cores.Unlockables.NemmandoUnlockables.RegisterUnlockables();
