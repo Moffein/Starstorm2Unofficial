@@ -3,6 +3,7 @@ using Starstorm2.Components;
 using Starstorm2.Cores;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Networking;
 
 namespace EntityStates.Executioner
 {
@@ -12,7 +13,9 @@ namespace EntityStates.Executioner
         public static float speedMultiplier = 4.0f;
         public static float debuffRadius = 20f;
         public static float debuffDuration = 2.0f;
+        public static float debuffCheckInterval = 0.1f;
 
+        private float debuffCheckStopwatch;
         private Vector3 initialDirection;
         private float initialSpeed;
         private float duration;
@@ -24,6 +27,7 @@ namespace EntityStates.Executioner
         public override void OnEnter()
         {
             base.OnEnter();
+            debuffCheckStopwatch = 0f;
             initialSpeed = base.moveSpeedStat;
             if (base.inputBank)
             {
@@ -58,16 +62,16 @@ namespace EntityStates.Executioner
                 BlastAttack blast = new BlastAttack()
                 {
                     baseDamage = 0,
-                    damageType = DamageType.Stun1s,
+                    damageType = DamageType.Stun1s | DamageType.NonLethal | DamageType.Silent | DamageType.BypassBlock,
                     radius = debuffRadius,
                     falloffModel = BlastAttack.FalloffModel.None,
-                    baseForce = 600f,
+                    baseForce = 0f,
                     teamIndex = TeamComponent.GetObjectTeam(base.gameObject),
                     attacker = base.gameObject,
                     inflictor = base.gameObject,
                     position = orig,
                     attackerFiltering = AttackerFiltering.NeverHitSelf,
-                    procCoefficient = 0f
+                    procCoefficient = 1f
                 };
                 blast.Fire();
             }
@@ -104,7 +108,8 @@ namespace EntityStates.Executioner
                 HealthComponent hp = h.healthComponent;
                 if (hp)
                 {
-                    DamageInfo damage = new DamageInfo
+                    //This ends up insta executing anything below the execute threshold.
+                    /*DamageInfo damage = new DamageInfo
                     {
                         attacker = base.gameObject,
                         inflictor = base.gameObject,
@@ -118,7 +123,7 @@ namespace EntityStates.Executioner
                         damageColorIndex = DamageColorIndex.Default,
                         damageType = DamageType.Stun1s | DamageType.NonLethal | DamageType.Silent | DamageType.BypassBlock
                     };
-                    hp.TakeDamage(damage);
+                    hp.TakeDamage(damage);*/
 
                     CharacterBody body = hp.body;
                     if (body && body != base.characterBody)
@@ -149,7 +154,15 @@ namespace EntityStates.Executioner
                 }
             }
 
-            CreateFearAoe();
+            if (NetworkServer.active)
+            {
+                debuffCheckStopwatch += Time.fixedDeltaTime;
+                if (debuffCheckStopwatch >= ExecutionerDash.debuffCheckInterval)
+                {
+                    debuffCheckStopwatch -= ExecutionerDash.debuffCheckInterval;
+                    CreateFearAoe();
+                }
+            }
 
             if (base.fixedAge >= this.duration)
             {

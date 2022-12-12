@@ -14,7 +14,7 @@ namespace Starstorm2.Cores.States.Nucleator
         public override void OnEnter()
         {
             base.OnEnter();
-            if (NetworkServer.active) base.characterBody.AddTimedBuff(Modules.Buffs.nucleatorSpecialBuff, buffDuration);
+            if (NetworkServer.active) base.characterBody.AddTimedBuff(Starstorm2.Cores.BuffCore.nucleatorSpecialBuff, buffDuration);
             this.animator = base.GetModelAnimator();
 
             if (this.animator) this.animator.SetLayerWeight(this.animator.GetLayerIndex("Body, Additive"), 1f);

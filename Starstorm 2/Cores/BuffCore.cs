@@ -12,24 +12,19 @@ namespace Starstorm2.Cores
 {
     public class BuffCore
     {
-        static internal BuffDef detritiveBuff;
-        static internal BuffDef greaterBannerBuff;
-        static internal BuffDef strangeCanPoisonBuff;
-        static internal BuffDef sigilBuff;
-        static internal BuffDef greenChocBuff;
-        static internal BuffDef watchMetronomeBuff;
-        static internal BuffDef fearDebuff;
-        static internal BuffDef gougeBuff;
-        static internal BuffDef awarenessBuff;
+        public static BuffDef detritiveBuff;
+        public static BuffDef greaterBannerBuff;
+        public static BuffDef strangeCanPoisonBuff;
+        public static BuffDef sigilBuff;
+        public static BuffDef greenChocBuff;
+        public static BuffDef watchMetronomeBuff;
+        public static BuffDef fearDebuff;
+        public static BuffDef gougeBuff;
+        public static BuffDef awarenessBuff;
 
-        //protected internal BuffIndex detritiveIndex;
-        //protected internal BuffIndex greaterBannerIndex;
-        //protected internal BuffIndex strangeCanPoisonIndex;
-        //protected internal BuffIndex sigilIndex;
-        //protected internal BuffIndex greenChocIndex;
-        //protected internal BuffIndex watchMetronomeIndex;
-        //protected internal BuffIndex gougeIndex;
-        //protected internal BuffIndex awarenessIndex;
+        public static BuffDef exeSuperchargedBuff;
+        public static BuffDef exeAssistBuff;
+        public static BuffDef nucleatorSpecialBuff;
 
         private GameObject greenChocPrefab;
         private GameObject greenChocEffect;
@@ -46,6 +41,9 @@ namespace Starstorm2.Cores
         protected void RegisterBuffs()
         {
             //LogCore.LogInfo("Initializing Core: " + base.ToString());
+            exeAssistBuff = AddNewBuff("ExecutionerAssistBuff", LegacyResourcesAPI.Load<Sprite>("Textures/BuffIcons/texBuffPowerIcon"), Color.white, false, false);
+            exeSuperchargedBuff = AddNewBuff("ExecutionerSuperchargedBuff", LegacyResourcesAPI.Load<Sprite>("Textures/BuffIcons/texBuffNullifiedIcon"), new Color(72 / 255, 1, 1), false, false);
+            nucleatorSpecialBuff = AddNewBuff("NucleatorSpecialBuff", LegacyResourcesAPI.Load<Sprite>("Textures/BuffIcons/texBuffOverheat"), Color.green, false, false);
 
             detritiveBuff = ScriptableObject.CreateInstance<BuffDef>();
             detritiveBuff.buffColor = Color.white;
@@ -184,6 +182,22 @@ namespace Starstorm2.Cores
             {
                 Object.Destroy(greenChocEffect);
             }
+        }
+
+        // simple helper method
+        internal static BuffDef AddNewBuff(string buffName, Sprite buffIcon, Color buffColor, bool canStack, bool isDebuff)
+        {
+            BuffDef buffDef = ScriptableObject.CreateInstance<BuffDef>();
+            buffDef.name = buffName;
+            buffDef.buffColor = buffColor;
+            buffDef.canStack = canStack;
+            buffDef.isDebuff = isDebuff;
+            buffDef.eliteDef = null;
+            buffDef.iconSprite = buffIcon;
+
+            buffDefs.Add(buffDef);
+
+            return buffDef;
         }
     }
 }

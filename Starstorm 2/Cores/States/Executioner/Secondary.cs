@@ -149,7 +149,7 @@ namespace EntityStates.Executioner
                 };
                 bullet.Fire();
 
-                if (!base.characterBody.HasBuff(Starstorm2.Modules.Buffs.exeSuperchargedBuff)) skill.DeductStock(1);
+                if (!base.characterBody.HasBuff(Starstorm2.Cores.BuffCore.exeSuperchargedBuff)) skill.DeductStock(1);
             }
         }
 

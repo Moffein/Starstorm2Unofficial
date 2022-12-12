@@ -105,7 +105,7 @@ namespace Starstorm2.Cores.States.Nucleator
                                 procCoefficient = 1f,
                                 damageType = DamageType.Generic | DamageType.Stun1s,
                                 damageColorIndex = DamageColorIndex.Default
-                                //dotIndex = this.characterBody.HasBuff(Modules.Buffs.nucleatorSpecialBuff) ? NucleatorCore.radiationDotIndex : DotController.DotIndex.None
+                                //dotIndex = this.characterBody.HasBuff(Starstorm2.Cores.BuffCore.nucleatorSpecialBuff) ? NucleatorCore.radiationDotIndex : DotController.DotIndex.None
                             });
                         } 
                     }

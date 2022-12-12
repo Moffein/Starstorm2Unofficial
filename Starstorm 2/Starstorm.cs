@@ -117,7 +117,6 @@ namespace Starstorm2
             Modules.Assets.Initialize();
             Modules.CameraParams.Initialize();
             Modules.States.Initialize();
-            Modules.Buffs.Initialize();
             Modules.Config.Initialize();
             Modules.Projectiles.Initialize();
             Modules.Music.Initialize();

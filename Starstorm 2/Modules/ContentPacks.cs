@@ -21,7 +21,6 @@ namespace Starstorm2.Modules
         {
             this.contentPack.identifier = this.identifier;
             contentPack.bodyPrefabs.Add(Prefabs.bodyPrefabs.ToArray());
-            contentPack.buffDefs.Add(Buffs.buffDefs.ToArray());
             contentPack.buffDefs.Add(Cores.BuffCore.buffDefs.ToArray());
             contentPack.effectDefs.Add(Assets.effectDefs.ToArray());
             contentPack.entityStateTypes.Add(States.entityStates.ToArray());

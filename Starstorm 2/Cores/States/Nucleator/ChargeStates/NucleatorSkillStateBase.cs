@@ -101,7 +101,7 @@ namespace Starstorm2.Cores.States.Nucleator
         private float TakeDamage()
         {
             var damage = CalculateDamageInstance();
-            if (!this.characterBody.HasBuff(Modules.Buffs.nucleatorSpecialBuff))
+            if (!this.characterBody.HasBuff(Starstorm2.Cores.BuffCore.nucleatorSpecialBuff))
             {
                 this.characterBody.healthComponent.TakeDamage(
                     new DamageInfo()

@@ -29,13 +29,13 @@ namespace Starstorm2.Cores.Unlockables
             commandoGrandMastery.cachedName = "Skins.SS2UCommando.GrandMastery";
             commandoGrandMastery.nameToken = "ACHIEVEMENT_SS2UCOMMANDOCLEARGAMETYPHOON_NAME";
             commandoGrandMastery.achievementIcon = Assets.mainAssetBundle.LoadAsset<Sprite>("texCommandoSkinGrandMaster");
-            ContentAddition.AddUnlockableDef(commandoGrandMastery);
+            Modules.Unlockables.unlockableDefs.Add(commandoGrandMastery);
 
             toolbotGrandMastery = ScriptableObject.CreateInstance<UnlockableDef>();
             toolbotGrandMastery.cachedName = "Skins.SS2UToolbot.GrandMastery";
             toolbotGrandMastery.nameToken = "ACHIEVEMENT_SS2UTOOLBOTCLEARGAMETYPHOON_NAME";
             toolbotGrandMastery.achievementIcon = Assets.mainAssetBundle.LoadAsset<Sprite>("texToolbotSkinGrandMaster");
-            ContentAddition.AddUnlockableDef(toolbotGrandMastery);
+            Modules.Unlockables.unlockableDefs.Add(toolbotGrandMastery);
 
             //acridGrandMastery = Modules.Unlockables.AddUnlockable<Achievements.CrocoGrandMasteryAchievement>(true);//Assets.mainAssetBundle.LoadAsset<Sprite>("texAcridSkinGrandMaster");
         }

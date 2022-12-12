@@ -176,13 +176,13 @@ namespace Starstorm2.Modules.Survivors
             masterySkinUnlockableDef.cachedName = "Skins.SS2UNemmando.Mastery";
             masterySkinUnlockableDef.nameToken = "ACHIEVEMENT_SS2UNEMMANDOCLEARGAMEMONSOON_NAME";
             masterySkinUnlockableDef.achievementIcon = Assets.mainAssetBundle.LoadAsset<Sprite>("texNemmandoSkinMaster");
-            ContentAddition.AddUnlockableDef(masterySkinUnlockableDef);
+            Unlockables.unlockableDefs.Add(masterySkinUnlockableDef);
 
             grandMasterySkinUnlockableDef = ScriptableObject.CreateInstance<UnlockableDef>();
             grandMasterySkinUnlockableDef.cachedName = "Skins.SS2UNemmando.GrandMastery";
             grandMasterySkinUnlockableDef.nameToken = "ACHIEVEMENT_SS2UNEMMANDOCLEARGAMETYPHOON_NAME";
             grandMasterySkinUnlockableDef.achievementIcon = Assets.mainAssetBundle.LoadAsset<Sprite>("texNemmandoSkinGrandMaster");
-            ContentAddition.AddUnlockableDef(grandMasterySkinUnlockableDef);
+            Unlockables.unlockableDefs.Add(grandMasterySkinUnlockableDef);
 
             //Assets.mainAssetBundle.LoadAsset<Sprite>("texNemmandoIconUnlock");
             //Assets.mainAssetBundle.LoadAsset<Sprite>("texSingleTapUnlockIcon");

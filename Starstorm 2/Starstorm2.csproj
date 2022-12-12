@@ -203,7 +203,6 @@
     <Compile Include="Cores\VoidCore.cs" />
     <Compile Include="FUCKACCESSMODIFIERS.cs" />
     <Compile Include="Modules\Assets.cs" />
-    <Compile Include="Modules\Buffs.cs" />
     <Compile Include="Modules\CameraParams.cs" />
     <Compile Include="Modules\Config.cs" />
     <Compile Include="Modules\ContentPacks.cs" />

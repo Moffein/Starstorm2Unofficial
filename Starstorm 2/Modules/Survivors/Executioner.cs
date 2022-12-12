@@ -124,19 +124,19 @@ namespace Starstorm2.Modules.Survivors
             masterySkinUnlockableDef.cachedName = "Skins.SS2UExecutioner.Mastery";
             masterySkinUnlockableDef.nameToken = "ACHIEVEMENT_SS2UEXECUTIONERCLEARGAMEMONSOON_NAME";
             masterySkinUnlockableDef.achievementIcon = Assets.mainAssetBundle.LoadAsset<Sprite>("texExecutionerSkinMaster");
-            ContentAddition.AddUnlockableDef(masterySkinUnlockableDef);
+            Unlockables.unlockableDefs.Add(masterySkinUnlockableDef);
 
             grandMasterySkinUnlockableDef = ScriptableObject.CreateInstance<UnlockableDef>();
             grandMasterySkinUnlockableDef.cachedName = "Skins.SS2UExecutioner.GrandMastery";
             grandMasterySkinUnlockableDef.nameToken = "ACHIEVEMENT_SS2UEXECUTIONERCLEARGAMETYPHOON_NAME";
             grandMasterySkinUnlockableDef.achievementIcon = Assets.mainAssetBundle.LoadAsset<Sprite>("texExecutionerSkinGrandMaster");
-            ContentAddition.AddUnlockableDef(grandMasterySkinUnlockableDef);
+            Unlockables.unlockableDefs.Add(grandMasterySkinUnlockableDef);
 
             wastelanderSkinUnlockableDef = ScriptableObject.CreateInstance<UnlockableDef>();
             wastelanderSkinUnlockableDef.cachedName = "Skins.SS2UExecutioner.Wastelander";
             wastelanderSkinUnlockableDef.nameToken = "ACHIEVEMENT_SS2UEXECUTIONERWASTELANDER_NAME";
             wastelanderSkinUnlockableDef.achievementIcon = Assets.mainAssetBundle.LoadAsset<Sprite>("texExecutionerWastelander");
-            ContentAddition.AddUnlockableDef(wastelanderSkinUnlockableDef);
+            Unlockables.unlockableDefs.Add(wastelanderSkinUnlockableDef);
         }
 
         internal override void InitializeSkills()
@@ -201,7 +201,7 @@ namespace Starstorm2.Modules.Survivors
                 stockToConsume = 1,
                 keywordTokens = new string[]
                 {
-                    "KEYWORD_STUNNING", "KEYWORD_FEAR"
+                    "KEYWORD_FEAR"
                 }
             });
 
@@ -273,12 +273,12 @@ namespace Starstorm2.Modules.Survivors
             LanguageAPI.Add("EXECUTIONER_IONGUN_NAME", "Ion Burst");
             LanguageAPI.Add("EXECUTIONER_IONGUN_DESCRIPTION", $"Unload a barrage of up to 10 bullets that do <style=cIsDamage>{dmg}% damage</style> each. <style=cIsUtility>Restocks bullets for every enemy you kill, depending on strength.</style>.");
 
-            LanguageAPI.Add("KEYWORD_FEAR", "<style=cKeywordName>Fear</style><style=cSub>Causes afflicted enemies to stop attacking and flee. Enemies afflicted with fear take 50% more damage.</style>");
+            LanguageAPI.Add("KEYWORD_FEAR", "<style=cKeywordName>Fear</style><style=cSub>Feared enemies are <style=cIsHealth>instantly killed</style> if below <style=cIsHealth>15%</style> health.</style>");
 
             float dur = ExecutionerDash.debuffDuration;
 
             LanguageAPI.Add("EXECUTIONER_DASH_NAME", "Crowd Dispersion");
-            LanguageAPI.Add("EXECUTIONER_DASH_DESCRIPTION", $"Boost forward and <style=cIsUtility>Fear</style> all nearby enemies for {dur} seconds.");
+            LanguageAPI.Add("EXECUTIONER_DASH_DESCRIPTION", $"Boost forward and <style=cIsUtility>Fear</style> all nearby enemies for <style=cIsUtility>{dur}</style> seconds.");
 
             dmg = ExecutionerAxeSlam.baseDamageCoefficient * 100f;
 
@@ -322,7 +322,7 @@ namespace Starstorm2.Modules.Survivors
                     {
                         if (attackerBody.bodyIndex == Executioner.bodyIndex)
                         {
-                            //self.body.AddTimedBuff(Modules.Buffs.exeAssistBuff, 5f);
+                            //self.body.AddTimedBuff(Starstorm2.Cores.BuffCoreexeAssistBuff, 5f);
                             Components.ExecutionerKillComponent killComponent = self.GetComponent<Components.ExecutionerKillComponent>();
                             if (!killComponent)
                             {
@@ -767,7 +767,53 @@ namespace Starstorm2.Modules.Survivors
 
         private void SetupFearExecute()
         {
-            //TODO
+            On.RoR2.HealthComponent.GetHealthBarValues += FearExecuteHealthbar;
+
+            //Prone to breaking when the game updates
+            IL.RoR2.HealthComponent.TakeDamage += (il) =>
+            {
+                bool error = true;
+                ILCursor c = new ILCursor(il);
+                if (c.TryGotoNext(MoveType.After,
+                    x => x.MatchStloc(53)   //num17 = float.NegativeInfinity, stloc53 = Execute Fraction, first instance it is used
+                    ))
+                {
+                    if (c.TryGotoNext(MoveType.After,
+                    x => x.MatchLdloc(8)   //flag 5, this is checked before final Execute damage calculations.
+                    ))
+                    {
+                        c.Emit(OpCodes.Ldarg_0);//self
+                        c.Emit(OpCodes.Ldloc, 53);//execute fraction
+                        c.EmitDelegate <Func<HealthComponent, float, float>>((self, executeFraction) =>
+                        {
+                            if (self.body.HasBuff(BuffCore.fearDebuff))
+                            {
+                                if (executeFraction < 0f) executeFraction = 0f;
+                                executeFraction += 0.15f;
+                            }
+                            return executeFraction;
+                        });
+                        c.Emit(OpCodes.Stloc, 53);
+
+                        error = false;
+                    }
+                }
+
+                if (error)
+                {
+                    UnityEngine.Debug.LogError("Starstorm 2 Unofficial: Fear Execute IL Hook failed.");
+                }
+            };
+        }
+
+        private HealthComponent.HealthBarValues FearExecuteHealthbar(On.RoR2.HealthComponent.orig_GetHealthBarValues orig, HealthComponent self)
+        {
+            var hbv = orig(self);
+            if (!self.body.bodyFlags.HasFlag(CharacterBody.BodyFlags.ImmuneToExecutes) && self.body.HasBuff(BuffCore.fearDebuff))
+            {
+                hbv.cullFraction += 0.15f;//(self.body && self.body.isChampion) ? 0.15f : 0.3f; //might stack too crazy if it's 30% like Freeze
+            }
+            return hbv;
         }
     }
 }

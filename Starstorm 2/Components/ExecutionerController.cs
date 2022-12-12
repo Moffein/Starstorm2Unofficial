@@ -130,7 +130,7 @@ namespace Starstorm2.Components
 
             if (this.bodyMat)
             {
-                if (this.characterBody.HasBuff(Modules.Buffs.exeSuperchargedBuff))
+                if (this.characterBody.HasBuff(Starstorm2.Cores.BuffCore.exeSuperchargedBuff))
                 {
                     this.bodyMat.SetFloat("_EmPower", this.maxEmission);
                 }
@@ -161,7 +161,7 @@ namespace Starstorm2.Components
             // supercharge effect loop
             if (this.characterBody)
             {
-                bool charged = this.characterBody.HasBuff(Modules.Buffs.exeSuperchargedBuff);
+                bool charged = this.characterBody.HasBuff(Starstorm2.Cores.BuffCore.exeSuperchargedBuff);
                 if (this.isSuperCharged && !charged && this.superchargeEffectLoop) this.superchargeEffectLoop.Stop();
                 if (!this.isSuperCharged && charged && this.superchargeEffectLoop)
                 {

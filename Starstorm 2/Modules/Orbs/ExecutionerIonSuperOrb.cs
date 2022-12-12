@@ -34,7 +34,7 @@ namespace Starstorm2.Modules.Orbs
         {
             if (this.body && NetworkServer.active)
             {
-                this.body.AddBuff(Modules.Buffs.exeSuperchargedBuff);
+                this.body.AddBuff(Starstorm2.Cores.BuffCore.exeSuperchargedBuff);
                 EffectManager.SimpleSoundEffect(Modules.Assets.exeSuperchargeSoundDef.index, this.body.transform.position, true);
             }
         }
