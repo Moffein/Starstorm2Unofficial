@@ -30,8 +30,6 @@ namespace Starstorm2.Cores.States.Nemmando.ScepterBarrage
             this.chargeEffect = this.childLocator.FindChild("GunChargeEffect").gameObject;
 
             if (this.chargeEffect) this.chargeEffect.SetActive(true);
-
-            if (base.cameraTargetParams) base.cameraTargetParams.aimMode = CameraTargetParams.AimType.Aura;
         }
 
         public override void FixedUpdate()

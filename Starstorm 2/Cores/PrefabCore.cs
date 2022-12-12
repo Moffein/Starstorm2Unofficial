@@ -80,14 +80,14 @@ namespace Starstorm2.Cores
                 bodyNameToken = "CYBORG_NAME",
                 characterPortrait = Modules.Assets.mainAssetBundle.LoadAsset<Texture2D>("cyborgicon"),
                 bodyColor = new Color32(138, 183, 168, 255),
-                crosshair = Resources.Load<GameObject>("Prefabs/Crosshair/StandardCrosshair"),
+                crosshair = LegacyResourcesAPI.Load<GameObject>("Prefabs/Crosshair/StandardCrosshair"),
                 damage = 12f,
                 healthGrowth = 33f,
                 healthRegen = 1.5f,
                 jumpCount = 1,
                 maxHealth = 110f,
                 subtitleNameToken = "CYBORG_SUBTITLE",
-                podPrefab = Resources.Load<GameObject>("Prefabs/NetworkedObjects/SurvivorPod")
+                podPrefab = LegacyResourcesAPI.Load<GameObject>("Prefabs/NetworkedObjects/SurvivorPod")
             });
 
             SetupCharacterModel(cyborgPrefab, new CustomRendererInfo[]
@@ -118,7 +118,7 @@ namespace Starstorm2.Cores
                 bodyNameToken = "CHIRR_NAME",
                 characterPortrait = Modules.Assets.mainAssetBundle.LoadAsset<Texture2D>("ChirrIcon"),
                 bodyColor = new Color32(129, 167, 98, 255),
-                crosshair = Resources.Load<GameObject>("Prefabs/Crosshair/StandardCrosshair"),
+                crosshair = LegacyResourcesAPI.Load<GameObject>("Prefabs/Crosshair/StandardCrosshair"),
                 damage = 12f,
                 healthGrowth = 33f,
                 healthRegen = 1.5f,
@@ -126,7 +126,7 @@ namespace Starstorm2.Cores
                 jumpPower = 22.5f,
                 maxHealth = 110f,
                 subtitleNameToken = "CHIRR_SUBTITLE",
-                podPrefab = Resources.Load<GameObject>("Prefabs/NetworkedObjects/SurvivorPod")
+                podPrefab = LegacyResourcesAPI.Load<GameObject>("Prefabs/NetworkedObjects/SurvivorPod")
             });
 
             SetupCharacterModel(chirrPrefab, new CustomRendererInfo[]
@@ -163,14 +163,14 @@ namespace Starstorm2.Cores
                 bodyNameToken = "PYRO_NAME",
                 characterPortrait = AssetsCore.mainAssetBundle.LoadAsset<Texture2D>("texExecutionerIcon"),
                 bodyColor = new Color32(215, 131, 38, 255),
-                crosshair = Resources.Load<GameObject>("Prefabs/Crosshair/StandardCrosshair"),
+                crosshair = LegacyResourcesAPI.Load<GameObject>("Prefabs/Crosshair/StandardCrosshair"),
                 damage = 12f,
                 healthGrowth = 33f,
                 healthRegen = 1.5f,
                 jumpCount = 1,
                 maxHealth = 110f,
                 subtitleNameToken = "PYRO_SUBTITLE",
-                podPrefab = Resources.Load<GameObject>("Prefabs/NetworkedObjects/SurvivorPod")
+                podPrefab = LegacyResourcesAPI.Load<GameObject>("Prefabs/NetworkedObjects/SurvivorPod")
             });
 
             SetupCharacterModel(pyroPrefab, new CustomRendererInfo[]
@@ -196,7 +196,7 @@ namespace Starstorm2.Cores
                 bodyName = "SpooderBody",
                 bodyNameToken = "SPOODER_NAME",
                 characterPortrait = Modules.Assets.mainAssetBundle.LoadAsset<Texture2D>("texNemmandoIcon"),
-                crosshair = Resources.Load<GameObject>("Prefabs/Crosshair/SimpleDotCrosshair"),
+                crosshair = LegacyResourcesAPI.Load<GameObject>("Prefabs/Crosshair/SimpleDotCrosshair"),
                 damage = 12f,
                 healthGrowth = 33f,
                 healthRegen = 1f,
@@ -218,7 +218,7 @@ namespace Starstorm2.Cores
 
         public static GameObject CreateDisplayPrefab(string modelName, GameObject prefab)
         {
-            GameObject newPrefab = PrefabAPI.InstantiateClone(Resources.Load<GameObject>("Prefabs/CharacterBodies/CommandoBody"), modelName + "Prefab");
+            GameObject newPrefab = PrefabAPI.InstantiateClone(LegacyResourcesAPI.Load<GameObject>("Prefabs/CharacterBodies/CommandoBody"), modelName + "Prefab");
 
             GameObject model = CreateModel(newPrefab, modelName);
             Transform modelBaseTransform = SetupModel(newPrefab, model.transform);
@@ -230,7 +230,7 @@ namespace Starstorm2.Cores
 
         public static GameObject CreatePrefab(string bodyName, string modelName, BodyInfo bodyInfo)
         {
-            GameObject newPrefab = PrefabAPI.InstantiateClone(Resources.Load<GameObject>("Prefabs/CharacterBodies/CommandoBody"), bodyName);
+            GameObject newPrefab = PrefabAPI.InstantiateClone(LegacyResourcesAPI.Load<GameObject>("Prefabs/CharacterBodies/CommandoBody"), bodyName);
 
             GameObject model = CreateModel(newPrefab, modelName);
             Transform modelBaseTransform = SetupModel(newPrefab, model.transform);
@@ -242,7 +242,7 @@ namespace Starstorm2.Cores
             bodyComponent.baseNameToken = bodyInfo.bodyNameToken;
             bodyComponent.subtitleNameToken = bodyInfo.subtitleNameToken;
             bodyComponent.portraitIcon = bodyInfo.characterPortrait;
-            bodyComponent.crosshairPrefab = bodyInfo.crosshair;
+            bodyComponent._defaultCrosshairPrefab = bodyInfo.crosshair;
             bodyComponent.bodyColor = bodyInfo.bodyColor;
 
             bodyComponent.bodyFlags = CharacterBody.BodyFlags.ImmuneToExecutes;
@@ -388,11 +388,11 @@ namespace Starstorm2.Cores
         private static void SetupCameraTargetParams(GameObject prefab)
         {
             CameraTargetParams cameraTargetParams = prefab.GetComponent<CameraTargetParams>();
-            cameraTargetParams.cameraParams = Resources.Load<GameObject>("Prefabs/CharacterBodies/MercBody").GetComponent<CameraTargetParams>().cameraParams;
+            cameraTargetParams.cameraParams = LegacyResourcesAPI.Load<GameObject>("Prefabs/CharacterBodies/MercBody").GetComponent<CameraTargetParams>().cameraParams;
             cameraTargetParams.cameraPivotTransform = prefab.transform.Find("ModelBase").Find("CameraPivot");
-            cameraTargetParams.aimMode = CameraTargetParams.AimType.Standard;
+            //cameraTargetParams.aimMode = CameraTargetParams.AimType.Standard;
             cameraTargetParams.recoil = Vector2.zero;
-            cameraTargetParams.idealLocalCameraPos = Vector3.zero;
+            //cameraTargetParams.idealLocalCameraPos = Vector3.zero;
             cameraTargetParams.dontRaycastToPivot = false;
         }
 
@@ -446,7 +446,7 @@ namespace Starstorm2.Cores
             footstepHandler.baseFootstepString = "Play_player_footstep";
             footstepHandler.sprintFootstepOverrideString = "";
             footstepHandler.enableFootstepDust = true;
-            footstepHandler.footstepDustPrefab = Resources.Load<GameObject>("Prefabs/GenericFootstepDust");
+            footstepHandler.footstepDustPrefab = LegacyResourcesAPI.Load<GameObject>("Prefabs/GenericFootstepDust");
         }
 
         private static void SetupRagdoll(GameObject model)
@@ -455,7 +455,7 @@ namespace Starstorm2.Cores
 
             if (!ragdollController) return;
 
-            if (ragdollMaterial == null) ragdollMaterial = Resources.Load<GameObject>("Prefabs/CharacterBodies/CommandoBody").GetComponentInChildren<RagdollController>().bones[1].GetComponent<Collider>().material;
+            if (ragdollMaterial == null) ragdollMaterial = LegacyResourcesAPI.Load<GameObject>("Prefabs/CharacterBodies/CommandoBody").GetComponentInChildren<RagdollController>().bones[1].GetComponent<Collider>().material;
 
             foreach (Transform i in ragdollController.bones)
             {

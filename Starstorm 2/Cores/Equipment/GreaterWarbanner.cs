@@ -26,7 +26,7 @@ namespace Starstorm2.Cores.Equipment
 
         private static GameObject CreateWarbanner() {
 
-            GameObject bannerObj = Resources.Load<GameObject>("Prefabs/NetworkedObjects/WarbannerWard").InstantiateClone("GreaterWarbannerWard", true);
+            GameObject bannerObj = LegacyResourcesAPI.Load<GameObject>("Prefabs/NetworkedObjects/WarbannerWard").InstantiateClone("GreaterWarbannerWard", true);
             bannerObj.GetComponent<BuffWard>().buffDef = BuffCore.greaterBannerBuff;
 
             Transform sphereIndicator = bannerObj.transform.Find("Indicator/IndicatorSphere");

@@ -38,7 +38,7 @@ namespace Starstorm2.Cores.Items
          * 
          * Not sure what to do with Malice for now. Will wait on remodel.
         {
-            displayPrefab = Resources.Load<GameObject>(PickupModelPath);
+            displayPrefab = LegacyResourcesAPI.Load<GameObject>(PickupModelPath);
             var disp = displayPrefab.AddComponent<ItemDisplay>();
             disp.rendererInfos = Utils.SetupRendererInfos(displayPrefab);
 

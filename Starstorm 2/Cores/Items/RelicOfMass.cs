@@ -34,8 +34,8 @@ namespace Starstorm2.Cores.Items
 
         /*public override ItemDisplayRuleDict CreateDisplayRules()
         {
-            var trackerObject = Resources.Load<GameObject>("RelicOfMassFollowerObject");
-            displayPrefab = Resources.Load<GameObject>(PickupModelPath);
+            var trackerObject = LegacyResourcesAPI.Load<GameObject>("RelicOfMassFollowerObject");
+            displayPrefab = LegacyResourcesAPI.Load<GameObject>(PickupModelPath);
             var itemFollower = trackerObject.AddComponent<ItemFollower>();
             itemFollower.itemDisplay = trackerObject.AddComponent<ItemDisplay>();
             itemFollower.itemDisplay.rendererInfos = Utils.SetupRendererInfos(trackerObject);

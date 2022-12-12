@@ -105,7 +105,7 @@ public static class Utils
     #region Misc
     internal static GameObject LoadCrosshair(string crosshairName)
     {
-        return Resources.Load<GameObject>("Prefabs/Crosshair/" + crosshairName + "Crosshair");
+        return LegacyResourcesAPI.Load<GameObject>("Prefabs/Crosshair/" + crosshairName + "Crosshair");
     }
 
     public static IEnumerator BroadcastChat(string token)

@@ -28,7 +28,7 @@ namespace Starstorm2.Cores.States.Nemmando.ChargeBarrage
         private Transform modelTransform;
         private float duration;
         private float durationBetweenShots;
-        private GameObject muzzleFlashEffect = Resources.Load<GameObject>("Prefabs/Effects/ImpactEffects/FusionCellExplosion");
+        private GameObject muzzleFlashEffect = LegacyResourcesAPI.Load<GameObject>("Prefabs/Effects/ImpactEffects/FusionCellExplosion");
 
         public override void OnEnter()
         {

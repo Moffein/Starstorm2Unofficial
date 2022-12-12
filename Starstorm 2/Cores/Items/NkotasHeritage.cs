@@ -34,7 +34,7 @@ namespace Starstorm2.Cores.Items
 
         public override ItemDisplayRuleDict CreateDisplayRules()
         {
-            displayPrefab = Resources.Load<GameObject>(PickupModelPath);
+            displayPrefab = LegacyResourcesAPI.Load<GameObject>(PickupModelPath);
             var disp = displayPrefab.AddComponent<ItemDisplay>();
             disp.rendererInfos = Utils.SetupRendererInfos(displayPrefab);
 
@@ -192,7 +192,7 @@ namespace Starstorm2.Cores.Items
                             if (itemOnLevelUpCount > 0)
                             {
                                 ItemCore.DropShipCall(characterBody.transform, itemOnLevelUpCount, TeamManager.instance.GetTeamLevel(teamIndex));
-                                EffectManager.SpawnEffect(Resources.Load<GameObject>("prefabs/effects/impacteffects/PodGroundImpact"), new EffectData
+                                EffectManager.SpawnEffect(LegacyResourcesAPI.Load<GameObject>("prefabs/effects/impacteffects/PodGroundImpact"), new EffectData
                                 {
                                     origin = characterBody.transform.position,
                                     scale = 15

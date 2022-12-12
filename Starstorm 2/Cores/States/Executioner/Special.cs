@@ -18,6 +18,16 @@ namespace EntityStates.Executioner
         private Animator animator;
         private ExecutionerController exeController;
 
+        private CameraTargetParams.CameraParamsOverrideHandle camOverrideHandle;
+        public static CharacterCameraParamsData slamCameraParams = new CharacterCameraParamsData
+        {
+            maxPitch = 70f,
+            minPitch = -70f,
+            pivotVerticalOffset = 1f, //how far up should the camera go?
+            idealLocalCameraPos = new Vector3(0f, 0f, -17.5f),
+            wallCushion = 0.1f
+        };
+
         public override void OnEnter()
         {
             base.OnEnter();
@@ -38,7 +48,12 @@ namespace EntityStates.Executioner
                 base.characterMotor.velocity *= 0.5f;
             }
 
-            if (base.cameraTargetParams) base.cameraTargetParams.aimMode = CameraTargetParams.AimType.Aura;
+            CameraTargetParams.CameraParamsOverrideRequest request = new CameraTargetParams.CameraParamsOverrideRequest
+            {
+                cameraParamsData = slamCameraParams,
+                priority = 0f
+            };
+            camOverrideHandle = cameraTargetParams.AddParamsOverride(request, 0.15f);
 
             Transform modelTransform = base.GetModelTransform();
             if (modelTransform)
@@ -48,13 +63,18 @@ namespace EntityStates.Executioner
                 temporaryOverlay.animateShaderAlpha = true;
                 temporaryOverlay.alphaCurve = AnimationCurve.EaseInOut(0f, 1f, 1f, 0f);
                 temporaryOverlay.destroyComponentOnEnd = true;
-                temporaryOverlay.originalMaterial = Resources.Load<Material>("Materials/matHuntressFlashBright");
+                temporaryOverlay.originalMaterial = LegacyResourcesAPI.Load<Material>("Materials/matHuntressFlashBright");
                 temporaryOverlay.AddToCharacerModel(modelTransform.GetComponent<CharacterModel>());
             }
         }
 
         public override void OnExit()
         {
+            if (cameraTargetParams)
+            {
+                cameraTargetParams.RemoveParamsOverride(camOverrideHandle, .4f);
+            }
+
             base.OnExit();
         }
 
@@ -93,13 +113,23 @@ namespace EntityStates.Executioner
         public static float slamRadius = 14f;
         public static float rechargePerKill = 1.0f;
 
-        private GameObject slamEffect = Resources.Load<GameObject>("Prefabs/Effects/ImpactEffects/VagrantCannonExplosion");
+        private GameObject slamEffect = LegacyResourcesAPI.Load<GameObject>("Prefabs/Effects/ImpactEffects/VagrantCannonExplosion");
         private EffectData slamEffectData;
         private Animator animator;
         private SphereSearch search;
         private List<HurtBox> hits;
         private List<HealthComponent> hitTargets;
         private bool crit;
+
+        private CameraTargetParams.CameraParamsOverrideHandle camOverrideHandle;
+        public static CharacterCameraParamsData slamCameraParams = new CharacterCameraParamsData
+        {
+            maxPitch = 70f,
+            minPitch = -70f,
+            pivotVerticalOffset = 1f, //how far up should the camera go?
+            idealLocalCameraPos = new Vector3(0f, 0f, -17.5f),
+            wallCushion = 0.1f
+        };
 
         public override void OnEnter()
         {
@@ -124,6 +154,13 @@ namespace EntityStates.Executioner
                 base.characterMotor.velocity.z = 0f;
                 this.crit = RollCrit();
             }
+
+            CameraTargetParams.CameraParamsOverrideRequest request = new CameraTargetParams.CameraParamsOverrideRequest
+            {
+                cameraParamsData = slamCameraParams,
+                priority = 0f
+            };
+            camOverrideHandle = cameraTargetParams.AddParamsOverride(request, 0.15f);
         }
 
         public override void FixedUpdate()
@@ -233,7 +270,7 @@ namespace EntityStates.Executioner
                     baseDamage = (base.characterBody.damage * damage),
                     damageColorIndex = DamageColorIndex.Default,
                     falloffModel = BlastAttack.FalloffModel.None,
-                    attackerFiltering = AttackerFiltering.NeverHit,
+                    attackerFiltering = AttackerFiltering.NeverHitSelf,
                     damageType = DamageType.BypassOneShotProtection
                 };
                 blast.Fire();
@@ -263,9 +300,12 @@ namespace EntityStates.Executioner
                 base.characterBody.RemoveBuff(RoR2Content.Buffs.ArmorBoost);
             }
 
-            base.OnExit();
+            if (cameraTargetParams)
+            {
+                cameraTargetParams.RemoveParamsOverride(camOverrideHandle, .4f);
+            }
 
-            if (base.cameraTargetParams) base.cameraTargetParams.aimMode = CameraTargetParams.AimType.Standard;
+            base.OnExit();
         }
 
         public override InterruptPriority GetMinimumInterruptPriority()

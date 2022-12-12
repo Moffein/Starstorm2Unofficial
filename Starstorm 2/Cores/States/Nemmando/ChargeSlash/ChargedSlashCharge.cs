@@ -23,6 +23,17 @@ namespace Starstorm2.Cores.States.Nemmando
         private GameObject chargeEffectInstance;
         private Transform areaIndicator;
 
+        public CameraTargetParams.CameraParamsOverrideHandle camOverrideHandle;
+        private CharacterCameraParamsData decisiveCameraParams = new CharacterCameraParamsData
+        {
+            maxPitch = 70f,
+            minPitch = -70f,
+            pivotVerticalOffset = 1f, //how far up should the camera go?
+            idealLocalCameraPos = zoomCameraPosition,
+            wallCushion = 0.1f
+        };
+        public static Vector3 zoomCameraPosition = new Vector3(0f, 0f, -5.3f); // how far back should the camera go?
+
         public override void OnEnter()
         {
             base.OnEnter();
@@ -52,7 +63,15 @@ namespace Starstorm2.Cores.States.Nemmando
             this.chargePlayID = Util.PlayAttackSpeedSound("NemmandoDecisiveStrikeCharge", base.gameObject, this.attackSpeedStat);
             base.PlayAnimation("FullBody, Override", "DecisiveStrikeCharge", "DecisiveStrike.playbackRate", this.chargeDuration);
 
-            if (base.cameraTargetParams) base.cameraTargetParams.aimMode = CameraTargetParams.AimType.OverTheShoulder;
+            if (cameraTargetParams)
+            {
+                CameraTargetParams.CameraParamsOverrideRequest request = new CameraTargetParams.CameraParamsOverrideRequest
+                {
+                    cameraParamsData = decisiveCameraParams,
+                    priority = 0f
+                };
+                camOverrideHandle = cameraTargetParams.AddParamsOverride(request, chargeDuration);
+            }
 
             this.swordMat = base.GetModelTransform().GetComponent<CharacterModel>().baseRendererInfos[1].defaultMaterial;
 
@@ -80,8 +99,6 @@ namespace Starstorm2.Cores.States.Nemmando
             if (charge >= 0.6f && !this.zoomin)
             {
                 this.zoomin = true;
-                if (base.cameraTargetParams) base.cameraTargetParams.aimMode = CameraTargetParams.AimType.Aura;
-                //if (this.nemmandoController) this.nemmandoController.CoverScreen();
             }
 
             if (charge >= 1f && !this.finishedCharge)
@@ -90,8 +107,6 @@ namespace Starstorm2.Cores.States.Nemmando
 
                 AkSoundEngine.StopPlayingID(this.chargePlayID);
                 Util.PlaySound("NemmandoDecisiveStrikeReady", base.gameObject);
-
-                if (base.cameraTargetParams) base.cameraTargetParams.aimMode = CameraTargetParams.AimType.Aura;
             }
 
             bool keyDown = base.IsKeyDownAuthority();
@@ -101,6 +116,7 @@ namespace Starstorm2.Cores.States.Nemmando
             {
                 ChargedSlashEntry nextState = new ChargedSlashEntry();
                 nextState.charge = charge;
+                nextState.camOverrideHandle = this.camOverrideHandle;
                 this.outer.SetNextState(nextState);
             }
         }
@@ -122,8 +138,6 @@ namespace Starstorm2.Cores.States.Nemmando
             base.PlayAnimation("Gesture, Override", "BufferEmpty");
 
             AkSoundEngine.StopPlayingID(this.chargePlayID);
-
-            if (base.cameraTargetParams) base.cameraTargetParams.aimMode = CameraTargetParams.AimType.Aura;
         }
 
         public override InterruptPriority GetMinimumInterruptPriority()

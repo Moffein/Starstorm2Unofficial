@@ -35,7 +35,7 @@ namespace Starstorm2.Cores
 
         internal static void CreatePrefab()
         {
-            wayfarerPrefab = PrefabAPI.InstantiateClone(Resources.Load<GameObject>("prefabs/CharacterBodies/GreaterWispBody"), "WayfarerBody", true);
+            wayfarerPrefab = PrefabAPI.InstantiateClone(LegacyResourcesAPI.Load<GameObject>("prefabs/CharacterBodies/GreaterWispBody"), "WayfarerBody", true);
             wayfarerPrefab.GetComponent<NetworkIdentity>().localPlayerAuthority = true;
 
             UnityEngine.Object.Destroy(wayfarerPrefab.transform.Find("Model Base").gameObject);
@@ -81,7 +81,7 @@ namespace Starstorm2.Cores
             //reward.expReward
 
             CameraTargetParams camera = wayfarerPrefab.AddOrGetComponent<CameraTargetParams>();
-            camera.cameraParams = Resources.Load<GameObject>("Prefabs/CharacterBodies/TitanBody").GetComponent<CameraTargetParams>().cameraParams;
+            camera.cameraParams = LegacyResourcesAPI.Load<GameObject>("Prefabs/CharacterBodies/TitanBody").GetComponent<CameraTargetParams>().cameraParams;
 
             ModelLocator modelLocator = wayfarerPrefab.GetComponent<ModelLocator>();
             modelLocator.modelTransform = transform;
@@ -213,7 +213,7 @@ namespace Starstorm2.Cores
             hurtBoxGroup.hurtBoxes = hurtboxes.ToArray();
             hurtBoxGroup.mainHurtBox = hurtcolliders[0].GetComponent<HurtBox>();
 
-            wayfarerBuffWardPrefab = Resources.Load<GameObject>("Prefabs/NetworkedObjects/AffixHauntedWard").InstantiateClone("WayfarerBuffWard", true);
+            wayfarerBuffWardPrefab = LegacyResourcesAPI.Load<GameObject>("Prefabs/NetworkedObjects/AffixHauntedWard").InstantiateClone("WayfarerBuffWard", true);
             NetworkedBodyAttachment a = wayfarerBuffWardPrefab.AddOrGetComponent<NetworkedBodyAttachment>();
             a.shouldParentToAttachedBody = true;
             BuffWard ward = wayfarerBuffWardPrefab.GetComponent<BuffWard>();
@@ -251,7 +251,7 @@ namespace Starstorm2.Cores
 
         internal static void CreateAI()
         {
-            masterPrefab = PrefabAPI.InstantiateClone(Resources.Load<GameObject>("prefabs/CharacterMasters/AncientWispMaster"), "WayfarerMaster", true);
+            masterPrefab = PrefabAPI.InstantiateClone(LegacyResourcesAPI.Load<GameObject>("prefabs/CharacterMasters/AncientWispMaster"), "WayfarerMaster", true);
             CharacterMaster master = masterPrefab.AddOrGetComponent<CharacterMaster>();
             master.bodyPrefab = wayfarerPrefab;
 
@@ -330,7 +330,7 @@ namespace Starstorm2.Cores
             def.rechargeStock = 1;
             def.requiredStock = 1;
             def.stockToConsume = 1;
-            //def.icon = Resources.Load<Sprite>("notanicon");
+            //def.icon = LegacyResourcesAPI.Load<Sprite>("notanicon");
 
             Modules.Skills.skillDefs.Add(def);
 
@@ -442,10 +442,10 @@ namespace Starstorm2.Cores
 
             DirectorCardHolder wfHolder = new DirectorCardHolder();
             wfHolder.Card = wfDirCard;
-            wfHolder.InteractableCategory = InteractableCategory.None;
+            wfHolder.InteractableCategory = default;
             wfHolder.MonsterCategory = MonsterCategory.Champions;
 
-            MonsterActions += delegate (List<DirectorCardHolder> list, StageInfo stage)
+            /*MonsterActions += delegate (List<DirectorCardHolder> list, StageInfo stage)
             {
                 var currStg = stage.stage;
                 bool canSpawn = (currStg == DirectorAPI.Stage.RallypointDelta || currStg == DirectorAPI.Stage.ScorchedAcres
@@ -455,7 +455,7 @@ namespace Starstorm2.Cores
                 bool canSpawnLoop = Run.instance.loopClearCount > 1 && (currStg == DirectorAPI.Stage.DistantRoost);
                 if ((canSpawn || canSpawnLoop) && !list.Contains(wfHolder))
                     list.Add(wfHolder);
-            };
+            };*/
         }
     }
 }

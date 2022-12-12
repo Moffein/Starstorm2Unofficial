@@ -31,6 +31,7 @@ namespace Starstorm2.Cores.States.Nemmando
         private Material swordMat;
         private NemmandoController nemmandoController;
         private float minimumEmission;
+        public CameraTargetParams.CameraParamsOverrideHandle camOverrideHandle;
 
         public override void OnEnter()
         {
@@ -50,7 +51,7 @@ namespace Starstorm2.Cores.States.Nemmando
             this.blastAttack = new BlastAttack()
             {
                 attacker = base.gameObject,
-                attackerFiltering = AttackerFiltering.NeverHit,
+                attackerFiltering = AttackerFiltering.NeverHitSelf,
                 baseDamage = this.damageCoefficient * this.damageStat,
                 baseForce = -500f,
                 bonusForce = Vector3.zero,
@@ -140,10 +141,13 @@ namespace Starstorm2.Cores.States.Nemmando
 
         public override void OnExit()
         {
-            base.OnExit();
-            if (base.cameraTargetParams) base.cameraTargetParams.aimMode = CameraTargetParams.AimType.Standard;
+            if (cameraTargetParams)
+            {
+                cameraTargetParams.RemoveParamsOverride(camOverrideHandle, duration / 1.5f);
+            }
             this.swordMat.SetFloat("_EmPower", this.minimumEmission);
             //if (this.nemmandoController) this.nemmandoController.UncoverScreen();
+            base.OnExit();
         }
     }
 }

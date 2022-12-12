@@ -46,7 +46,7 @@ namespace EntityStates.Executioner
                     attacker = base.gameObject,
                     inflictor = base.gameObject,
                     position = orig,
-                    attackerFiltering = AttackerFiltering.NeverHit,
+                    attackerFiltering = AttackerFiltering.NeverHitSelf,
                     procCoefficient = 0f
                 };
                 blast.Fire();
@@ -65,7 +65,7 @@ namespace EntityStates.Executioner
                 temporaryOverlay.animateShaderAlpha = true;
                 temporaryOverlay.alphaCurve = AnimationCurve.EaseInOut(0f, 1f, 1f, 0f);
                 temporaryOverlay.destroyComponentOnEnd = true;
-                temporaryOverlay.originalMaterial = Resources.Load<Material>("Materials/matHuntressFlashBright");
+                temporaryOverlay.originalMaterial = LegacyResourcesAPI.Load<Material>("Materials/matHuntressFlashBright");
                 temporaryOverlay.AddToCharacerModel(modelTransform.GetComponent<CharacterModel>());
             }
         }

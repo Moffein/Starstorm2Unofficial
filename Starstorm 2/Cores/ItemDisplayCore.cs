@@ -186,7 +186,7 @@ namespace Starstorm2.Cores
 
         public static void AddItemDisplayRule(string bodyName, string itemName, GameObject displayPrefab, string childName, Vector3 position, Vector3 rotation, Vector3 scale)
         {
-            GameObject bodyPrefab = Resources.Load<GameObject>("Prefabs/CharacterBodies/" + bodyName + "Body");
+            GameObject bodyPrefab = LegacyResourcesAPI.Load<GameObject>("Prefabs/CharacterBodies/" + bodyName + "Body");
             if (!bodyPrefab) { LogCore.logger.LogError("Body name is invalid: " + bodyName); return; }
 
             ModelLocator modelLocator = bodyPrefab.GetComponent<ModelLocator>();
@@ -211,7 +211,7 @@ namespace Starstorm2.Cores
 
         public static void AddEquipmentDisplayRule(string bodyName, string itemName, GameObject displayPrefab, string childName, Vector3 position, Vector3 rotation, Vector3 scale)
         {
-            GameObject bodyPrefab = Resources.Load<GameObject>("Prefabs/CharacterBodies/" + bodyName + "Body");
+            GameObject bodyPrefab = LegacyResourcesAPI.Load<GameObject>("Prefabs/CharacterBodies/" + bodyName + "Body");
             if (!bodyPrefab) { LogCore.logger.LogError("Body name is invalid: " + bodyName); return; }
 
             ModelLocator modelLocator = bodyPrefab.GetComponent<ModelLocator>();
@@ -240,7 +240,7 @@ namespace Starstorm2.Cores
 
         private static void PopulateDisplays()
         {
-            ItemDisplayRuleSet itemDisplayRuleSet = Resources.Load<GameObject>("Prefabs/CharacterBodies/CommandoBody").GetComponent<ModelLocator>().modelTransform.GetComponent<CharacterModel>().itemDisplayRuleSet;
+            ItemDisplayRuleSet itemDisplayRuleSet = LegacyResourcesAPI.Load<GameObject>("Prefabs/CharacterBodies/CommandoBody").GetComponent<ModelLocator>().modelTransform.GetComponent<CharacterModel>().itemDisplayRuleSet;
 
             ItemDisplayRuleSet.KeyAssetRuleGroup[] item = itemDisplayRuleSet.keyAssetRuleGroups;
             ItemDisplayRuleSet.KeyAssetRuleGroup[] equip = itemDisplayRuleSet.keyAssetRuleGroups;
@@ -290,74 +290,6 @@ namespace Starstorm2.Cores
                     }
                 }
             }
-        }
-
-        [MethodImpl(MethodImplOptions.NoInlining | MethodImplOptions.NoOptimization)]
-        public static GameObject LoadAetheriumDisplay(string name)
-        {
-            switch (name)
-            {
-                case "AccursedPotion":
-                    return Aetherium.Items.AccursedPotion.ItemBodyModelPrefab;
-                case "AlienMagnet":
-                    return Aetherium.Items.AlienMagnet.ItemFollowerPrefab;
-                case "BlasterSword":
-                    return Aetherium.Items.BlasterSword.ItemBodyModelPrefab;
-                case "BloodSoakedShield":
-                    return Aetherium.Items.BloodSoakedShield.ItemBodyModelPrefab;
-                case "FeatheredPlume":
-                    return Aetherium.Items.FeatheredPlume.ItemBodyModelPrefab;
-                case "InspiringDrone":
-                    return Aetherium.Items.InspiringDrone.ItemFollowerPrefab;
-                case "SharkTeeth":
-                    return Aetherium.Items.SharkTeeth.ItemBodyModelPrefab;
-                case "ShieldingCore":
-                    return Aetherium.Items.ShieldingCore.ItemBodyModelPrefab;
-                case "UnstableDesign":
-                    return Aetherium.Items.UnstableDesign.ItemBodyModelPrefab;
-                case "VoidHeart":
-                    return Aetherium.Items.Voidheart.ItemBodyModelPrefab;
-                case "WeightedAnklet":
-                    return Aetherium.Items.WeightedAnklet.ItemBodyModelPrefab;
-                case "WitchesRing":
-                    return Aetherium.Items.WitchesRing.ItemBodyModelPrefab;
-                case "JarOfReshaping":
-                    return Aetherium.Equipment.JarOfReshaping.ItemBodyModelPrefab;
-            }
-            return null;
-        }
-
-        [MethodImpl(MethodImplOptions.NoInlining | MethodImplOptions.NoOptimization)]
-        public static GameObject LoadSupplyDropDisplay(string name)
-        {
-            switch (name)
-            {
-                case "BloodBook":
-                    return SupplyDrop.Items.BloodBook.ItemBodyModelPrefab;
-                case "ElectroPlankton":
-                    return SupplyDrop.Items.ElectroPlankton.ItemBodyModelPrefab;
-                case "HardenedBoneFragments":
-                    return SupplyDrop.Items.HardenedBoneFragments.ItemBodyModelPrefab;
-                case "QSGen":
-                    return SupplyDrop.Items.QSGen.ItemBodyModelPrefab;
-                case "PlagueHat":
-                    return SupplyDrop.Items.PlagueHat.ItemBodyModelPrefab;
-                case "PlagueMask":
-                    return SupplyDrop.Items.PlagueMask.ItemBodyModelPrefab;
-                case "SalvagedWires":
-                    return SupplyDrop.Items.SalvagedWires.ItemBodyModelPrefab;
-                case "ShellPlating":
-                    return SupplyDrop.Items.ShellPlating.ItemBodyModelPrefab;
-                case "UnassumingTie":
-                    return SupplyDrop.Items.UnassumingTie.ItemBodyModelPrefab;
-            }
-            return null;
-        }
-
-        [MethodImpl(MethodImplOptions.NoInlining | MethodImplOptions.NoOptimization)]
-        public static GameObject LoadScepterDisplay()
-        {
-            return AncientScepter.AncientScepterItem.displayPrefab;
         }
 
         [MethodImpl(MethodImplOptions.NoInlining | MethodImplOptions.NoOptimization)]

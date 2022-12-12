@@ -28,7 +28,7 @@ namespace Starstorm2.Cores
 
         public static void CreateDoppelganger()
         {
-            doppelganger = PrefabAPI.InstantiateClone(Resources.Load<GameObject>("Prefabs/CharacterMasters/CommandoMonsterMaster"), "PyroMonsterMaster", true);
+            doppelganger = PrefabAPI.InstantiateClone(LegacyResourcesAPI.Load<GameObject>("Prefabs/CharacterMasters/CommandoMonsterMaster"), "PyroMonsterMaster", true);
             doppelganger.GetComponent<CharacterMaster>().bodyPrefab = pyroPrefab;
 
             Modules.Prefabs.masterPrefabs.Add(doppelganger);

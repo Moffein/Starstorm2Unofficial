@@ -32,7 +32,7 @@ namespace Starstorm2.Cores.Items
 
         public override ItemDisplayRuleDict CreateDisplayRules()
         {
-            displayPrefab = Resources.Load<GameObject>(PickupModelPath);
+            displayPrefab = LegacyResourcesAPI.Load<GameObject>(PickupModelPath);
             var disp = displayPrefab.AddComponent<ItemDisplay>();
             disp.rendererInfos = Utils.SetupRendererInfos(displayPrefab);
 
@@ -183,7 +183,7 @@ namespace Starstorm2.Cores.Items
                 {
                     if (damageInfo.crit)
                     {
-                        GameObject erraticGadgetEffectPrefab = Resources.Load<GameObject>("prefabs/effects/tracers/TracerCaptainDefenseMatrix");
+                        GameObject erraticGadgetEffectPrefab = LegacyResourcesAPI.Load<GameObject>("prefabs/effects/tracers/TracerCaptainDefenseMatrix");
                         if (erraticGadgetEffectPrefab)
                         {
                             EffectData effectData = new EffectData

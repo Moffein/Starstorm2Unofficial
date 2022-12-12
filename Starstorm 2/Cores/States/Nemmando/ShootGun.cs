@@ -12,7 +12,7 @@ namespace Starstorm2.Cores.States.Nemmando
         public static float force = 400f;
         public static float recoil = 1.5f;
         public static float range = 256f;
-        public static GameObject tracerEffectPrefab = Resources.Load<GameObject>("Prefabs/Effects/Tracers/TracerGoldGat");
+        public static GameObject tracerEffectPrefab = LegacyResourcesAPI.Load<GameObject>("Prefabs/Effects/Tracers/TracerGoldGat");
 
         private float duration;
         private float fireTime;

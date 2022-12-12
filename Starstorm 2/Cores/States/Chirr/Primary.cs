@@ -24,9 +24,9 @@ namespace EntityStates.Chirr
         public static float damageCoefficient = 0.9f;
         public float baseDuration = 0.6f;
         public float recoil = 1f;
-        public static GameObject tracerEffectPrefab = Resources.Load<GameObject>("Prefabs/Effects/Tracers/TracerHuntressSnipe");
-        public GameObject effectPrefab = Resources.Load<GameObject>("prefabs/effects/impacteffects/HitsparkCommandoShotgun");
-        public GameObject critEffectPrefab = Resources.Load<GameObject>("prefabs/effects/impacteffects/critspark");
+        public static GameObject tracerEffectPrefab = LegacyResourcesAPI.Load<GameObject>("Prefabs/Effects/Tracers/TracerHuntressSnipe");
+        public GameObject effectPrefab = LegacyResourcesAPI.Load<GameObject>("prefabs/effects/impacteffects/HitsparkCommandoShotgun");
+        public GameObject critEffectPrefab = LegacyResourcesAPI.Load<GameObject>("prefabs/effects/impacteffects/critspark");
 
         private float duration;
         private float fireDuration;

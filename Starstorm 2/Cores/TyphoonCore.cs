@@ -10,7 +10,7 @@ using UnityEngine;
 
 namespace Starstorm2.Cores
 {
-    [R2APISubmoduleDependency((nameof(DifficultyAPI)), (nameof(ResourcesAPI)))]
+    [R2APISubmoduleDependency((nameof(DifficultyAPI)))]
     public class TyphoonCore
     {
         public static DifficultyIndex diffIdxTyphoon;

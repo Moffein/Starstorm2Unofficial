@@ -27,7 +27,7 @@ namespace Starstorm2.Cores
 
             //do/did we use this for anything?
             /*
-            var prefab = Resources.Load<GameObject>("Prefabs/PickupModels/PickupMystery");
+            var prefab = LegacyResourcesAPI.Load<GameObject>("Prefabs/PickupModels/PickupMystery");
             var rule = new ItemDisplayRule
             {
                 ruleType = ItemDisplayRuleType.ParentedPrefab,

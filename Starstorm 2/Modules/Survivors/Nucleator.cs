@@ -45,7 +45,7 @@ namespace Starstorm2.Modules.Survivors
             jumpCount = 1,
             maxHealth = 400f,
             subtitleNameToken = "NUCLEATOR_SUBTITLE",
-            podPrefab = Resources.Load<GameObject>("Prefabs/NetworkedObjects/SurvivorPod"),
+            podPrefab = LegacyResourcesAPI.Load<GameObject>("Prefabs/NetworkedObjects/SurvivorPod"),
             cameraParams = Modules.CameraParams.NewCameraParams("ccpNucleator", new Vector3(0f, 2.8f, -12.2f))
         };
 
@@ -117,7 +117,7 @@ namespace Starstorm2.Modules.Survivors
 
         private void CreatePrimaryProjectile()
         {
-            primaryProjectile = PrefabAPI.InstantiateClone(Resources.Load<GameObject>("prefabs/projectiles/DaggerProjectile"), "NucleatorProjectile");
+            primaryProjectile = PrefabAPI.InstantiateClone(LegacyResourcesAPI.Load<GameObject>("prefabs/projectiles/DaggerProjectile"), "NucleatorProjectile");
 
             UnityEngine.Object.Destroy(primaryProjectile.GetComponent<ProjectileSingleTargetImpact>());
             UnityEngine.Object.Destroy(primaryProjectile.GetComponent<AwakeEvent>());
@@ -125,7 +125,7 @@ namespace Starstorm2.Modules.Survivors
             UnityEngine.Object.Destroy(primaryProjectile.GetComponent<AwakeEvent>());
             primaryProjectile.AddComponent<NucleatorProjectile>();
 
-            primaryProjectile.GetComponent<ProjectileController>().ghostPrefab = Resources.Load<GameObject>("prefabs/projectileghosts/BeetleQueenSpitGhost");
+            primaryProjectile.GetComponent<ProjectileController>().ghostPrefab = LegacyResourcesAPI.Load<GameObject>("prefabs/projectileghosts/BeetleQueenSpitGhost");
 
             var impact = primaryProjectile.AddComponent<ProjectileImpactExplosion>();
             impact.blastAttackerFiltering = RoR2.AttackerFiltering.Default;
@@ -139,7 +139,7 @@ namespace Starstorm2.Modules.Survivors
             impact.destroyOnWorld = true;
             impact.falloffModel = RoR2.BlastAttack.FalloffModel.None;
             impact.fireChildren = false;
-            impact.impactEffect = Resources.Load<GameObject>("prefabs/effects/impacteffects/BeetleAcidImpact");
+            impact.impactEffect = LegacyResourcesAPI.Load<GameObject>("prefabs/effects/impacteffects/BeetleAcidImpact");
             impact.lifetime = 10;
             impact.lifetimeAfterImpact = 0;
             impact.lifetimeRandomOffset = 0;
@@ -2043,27 +2043,6 @@ localScale = new Vector3(0.9379F, 0.9379F, 0.9379F),
 
                 itemDisplayRules.Add(new ItemDisplayRuleSet.KeyAssetRuleGroup
                 {
-                    keyAsset = RoR2Content.Items.CooldownOnCrit,
-                    displayRuleGroup = new DisplayRuleGroup
-                    {
-                        rules = new ItemDisplayRule[]
-                        {
-                        new ItemDisplayRule
-                        {
-                            ruleType = ItemDisplayRuleType.ParentedPrefab,
-                            followerPrefab = ItemDisplays.LoadDisplay("DisplaySkull"),
-childName = "Head",
-localPos = new Vector3(-0.0433F, 0.6357F, 0.7063F),
-localAngles = new Vector3(298.951F, 179.877F, 180.073F),
-localScale = new Vector3(0.911F, 0.911F, 0.911F),
-                            limbMask = LimbFlags.None
-                        }
-                        }
-                    }
-                });
-
-                itemDisplayRules.Add(new ItemDisplayRuleSet.KeyAssetRuleGroup
-                {
                     keyAsset = RoR2Content.Items.Phasing,
                     displayRuleGroup = new DisplayRuleGroup
                     {
@@ -2423,27 +2402,6 @@ childName = "Root",
 localPos = new Vector3(3.0207F, 4.4731F, 4.8772F),
 localAngles = new Vector3(0F, 0F, 0F),
 localScale = new Vector3(0.1F, 0.1F, 0.1F),
-                            limbMask = LimbFlags.None
-                        }
-                        }
-                    }
-                });
-
-                itemDisplayRules.Add(new ItemDisplayRuleSet.KeyAssetRuleGroup
-                {
-                    keyAsset = RoR2Content.Items.Incubator,
-                    displayRuleGroup = new DisplayRuleGroup
-                    {
-                        rules = new ItemDisplayRule[]
-                        {
-                        new ItemDisplayRule
-                        {
-                            ruleType = ItemDisplayRuleType.ParentedPrefab,
-                            followerPrefab = ItemDisplays.LoadDisplay("DisplayAncestralIncubator"),
-childName = "Chest",
-localPos = new Vector3(0F, 0.3453F, 0F),
-localAngles = new Vector3(353.0521F, 317.2421F, 69.6292F),
-localScale = new Vector3(0.0528F, 0.0528F, 0.0528F),
                             limbMask = LimbFlags.None
                         }
                         }
@@ -3103,54 +3061,8 @@ localScale = new Vector3(0.1233F, 0.1233F, 0.1233F),
             }
             #endregion
 
-            SetModdedItemDisplays();
-
             itemDisplayRuleSet.keyAssetRuleGroups = instance.itemDisplayRules.ToArray();
             itemDisplayRuleSet.GenerateRuntimeValues();
-        }
-
-        private static void SetModdedItemDisplays()
-        {
-            #region Aetherium
-            if (ItemDisplayCore.aetheriumInstalled)
-            {
-                RegisterAetheriumDisplays();
-            }
-            #endregion
-            #region SupplyDrop
-            if (ItemDisplayCore.supplyDropInstalled)
-            {
-                /*itemRules.Add(ItemDisplayCore.CreateGenericDisplayRule("SUPPDRPElectroPlankton", ItemDisplayCore.LoadSupplyDropDisplay("ElectroPlankton"), "Chest", new Vector3(0, 0, -0.003f), new Vector3(0, 0, 90), new Vector3(0.001f, 0.001f, 0.001f)));
-                itemRules.Add(ItemDisplayCore.CreateGenericDisplayRule("SUPPDRPHardenedBoneFragments", ItemDisplayCore.LoadSupplyDropDisplay("HardenedBoneFragments"), "Chest", new Vector3(-0.002f, 0.0035f, 0), new Vector3(0, 270, 0), new Vector3(0.015f, 0.015f, 0.015f)));
-                itemRules.Add(ItemDisplayCore.CreateGenericDisplayRule("SUPPDRPQSGen", ItemDisplayCore.LoadSupplyDropDisplay("QSGen"), "ElbowL", new Vector3(0, 0.002f, 0), new Vector3(0, 0, 270), new Vector3(0.001f, 0.001f, 0.001f)));
-                itemRules.Add(ItemDisplayCore.CreateGenericDisplayRule("SUPPDRPSalvagedWires", ItemDisplayCore.LoadSupplyDropDisplay("SalvagedWires"), "ThighR", new Vector3(-0.0025f, 0.002f, 0.0015f), new Vector3(90, 90, 0), new Vector3(0.006f, 0.006f, 0.006f)));
-                itemRules.Add(ItemDisplayCore.CreateGenericDisplayRule("SUPPDRPShellPlating", ItemDisplayCore.LoadSupplyDropDisplay("ShellPlating"), "Pelvis", new Vector3(0, 0, -0.0032f), new Vector3(0, 180, 180), new Vector3(0.0025f, 0.0025f, 0.0025f)));
-                itemRules.Add(ItemDisplayCore.CreateGenericDisplayRule("SUPPDRPPlagueHat", ItemDisplayCore.LoadSupplyDropDisplay("PlagueHat"), "Head", new Vector3(0, 0.004f, 0f), new Vector3(0, 180, 0), new Vector3(0.0025f, 0.0025f, 0.0025f)));
-                itemRules.Add(ItemDisplayCore.CreateGenericDisplayRule("SUPPDRPPlagueMask", ItemDisplayCore.LoadSupplyDropDisplay("PlagueMask"), "Head", new Vector3(0, 0.0025f, 0.003f), new Vector3(0, 180, 0), new Vector3(0.0025f, 0.0025f, 0.0025f)));
-
-                itemRules.Add(ItemDisplayCore.CreateFollowerDisplayRule("SUPPDRPBloodBook", ItemDisplayCore.LoadSupplyDropDisplay("BloodBook"), new Vector3(-0.015f, 0.02f, 0.008f), new Vector3(0, 0, 0), new Vector3(0.08f, 0.08f, 0.08f)));*/
-            }
-            #endregion
-        }
-
-        [MethodImpl(MethodImplOptions.NoInlining | MethodImplOptions.NoOptimization)]
-        private static void RegisterAetheriumDisplays()
-        {
-            instance.itemDisplayRules.Add(ItemDisplayCore.CreateGenericDisplayRule(Aetherium.Items.AccursedPotion.instance.ItemDef, ItemDisplayCore.LoadAetheriumDisplay("AccursedPotion"), "ThighL", new Vector3(-0.002f, 0, 0), new Vector3(0, 0, 180), new Vector3(0.01f, 0.01f, 0.01f)));
-            instance.itemDisplayRules.Add(ItemDisplayCore.CreateGenericDisplayRule(Aetherium.Items.Voidheart.instance.ItemDef, ItemDisplayCore.LoadAetheriumDisplay("VoidHeart"), "Chest", new Vector3(0, 0.002f, 0), new Vector3(0, 0, 0), new Vector3(0.001f, 0.001f, 0.001f)));
-            instance.itemDisplayRules.Add(ItemDisplayCore.CreateGenericDisplayRule(Aetherium.Items.SharkTeeth.instance.ItemDef, ItemDisplayCore.LoadAetheriumDisplay("SharkTeeth"), "CalfL", new Vector3(-0.001f, 0.003f, 0), new Vector3(0, 0, 335), new Vector3(0.005f, 0.005f, 0.005f)));
-            instance.itemDisplayRules.Add(ItemDisplayCore.CreateGenericDisplayRule(Aetherium.Items.BloodSoakedShield.instance.ItemDef, ItemDisplayCore.LoadAetheriumDisplay("BloodSoakedShield"), "ElbowL", new Vector3(0.0012f, 0.002f, 0), new Vector3(0, 90, 0), new Vector3(0.003f, 0.003f, 0.003f)));
-            instance.itemDisplayRules.Add(ItemDisplayCore.CreateGenericDisplayRule(Aetherium.Items.FeatheredPlume.instance.ItemDef, ItemDisplayCore.LoadAetheriumDisplay("FeatheredPlume"), "Head", new Vector3(0, 0.002f, 0), new Vector3(335, 0, 0), new Vector3(0.005f, 0.005f, 0.005f)));
-            instance.itemDisplayRules.Add(ItemDisplayCore.CreateGenericDisplayRule(Aetherium.Items.ShieldingCore.instance.ItemDef, ItemDisplayCore.LoadAetheriumDisplay("ShieldingCore"), "Chest", new Vector3(0, 0.002f, -0.003f), new Vector3(0, 180, 0), new Vector3(0.002f, 0.002f, 0.002f)));
-            instance.itemDisplayRules.Add(ItemDisplayCore.CreateGenericDisplayRule(Aetherium.Items.UnstableDesign.instance.ItemDef, ItemDisplayCore.LoadAetheriumDisplay("UnstableDesign"), "Chest", new Vector3(0, 0, -0.0025f), new Vector3(0, 45, 0), new Vector3(0.01f, 0.01f, 0.01f)));
-            instance.itemDisplayRules.Add(ItemDisplayCore.CreateGenericDisplayRule(Aetherium.Items.WeightedAnklet.instance.ItemDef, ItemDisplayCore.LoadAetheriumDisplay("WeightedAnklet"), "CalfR", new Vector3(0, 0.001f, 0), new Vector3(0, 0, 0), new Vector3(0.003f, 0.003f, 0.003f)));
-            instance.itemDisplayRules.Add(ItemDisplayCore.CreateGenericDisplayRule(Aetherium.Items.BlasterSword.instance.ItemDef, ItemDisplayCore.LoadAetheriumDisplay("BlasterSword"), "Gun", new Vector3(-0.005f, 0.004f), new Vector3(0, 0, 240), new Vector3(0.001f, 0.001f, 0.001f)));
-            instance.itemDisplayRules.Add(ItemDisplayCore.CreateGenericDisplayRule(Aetherium.Items.WitchesRing.instance.ItemDef, ItemDisplayCore.LoadAetheriumDisplay("WitchesRing"), "Sword", new Vector3(0, 0, 0), new Vector3(0, 180, 0), new Vector3(0.0015f, 0.0015f, 0.0015f)));
-
-            instance.itemDisplayRules.Add(ItemDisplayCore.CreateFollowerDisplayRule(Aetherium.Items.AlienMagnet.instance.ItemDef, ItemDisplayCore.LoadAetheriumDisplay("AlienMagnet"), new Vector3(0.015f, 0.016f, -0.014f), new Vector3(0, 0, 0), new Vector3(0.0015f, 0.0015f, 0.0015f)));
-            instance.itemDisplayRules.Add(ItemDisplayCore.CreateFollowerDisplayRule(Aetherium.Items.InspiringDrone.instance.ItemDef, ItemDisplayCore.LoadAetheriumDisplay("InspiringDrone"), new Vector3(-0.014f, 0.014f, 0), new Vector3(0, 0, 0), new Vector3(0.0015f, 0.0015f, 0.0015f)));
-
-            instance.itemDisplayRules.Add(ItemDisplayCore.CreateFollowerDisplayRule(Aetherium.Equipment.JarOfReshaping.instance.EquipmentDef, ItemDisplayCore.LoadAetheriumDisplay("JarOfReshaping"), new Vector3(0.01f, 0.02f, 0), new Vector3(270, 0, 0), new Vector3(0.001f, 0.001f, 0.001f)));
         }
 
         private static CharacterModel.RendererInfo[] SkinRendererInfos(CharacterModel.RendererInfo[] defaultRenderers, Material[] materials)

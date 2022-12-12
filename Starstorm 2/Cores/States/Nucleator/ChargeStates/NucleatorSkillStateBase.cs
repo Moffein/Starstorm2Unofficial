@@ -35,8 +35,8 @@ namespace Starstorm2.Cores.States.Nucleator
             this.maxChargeTime = NucleatorSkillStateBase.baseMaxChargeTime / this.attackSpeedStat;
             this.playerHealth = this.characterBody.healthComponent.combinedHealth;
             this.playerHealthFinal = playerHealth - playerHealth * maxOverchargePlayerDamageDealt;
-            this.defaultCrosshair = this.characterBody.crosshairPrefab;
-            this.characterBody.crosshairPrefab = Modules.Survivors.Nucleator.chargeCrosshair;
+            this.defaultCrosshair = this.characterBody._defaultCrosshairPrefab;
+            this.characterBody._defaultCrosshairPrefab = Modules.Survivors.Nucleator.chargeCrosshair;
 
             if(!isCrosshairInitialized)
             {
@@ -71,7 +71,7 @@ namespace Starstorm2.Cores.States.Nucleator
                 this.chargeupVfxGameObject = null;
             }
 
-            this.characterBody.crosshairPrefab = this.defaultCrosshair;
+            this.characterBody._defaultCrosshairPrefab = this.defaultCrosshair;
             base.OnExit();
         }
         public override void FixedUpdate()

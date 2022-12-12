@@ -25,11 +25,32 @@ namespace Starstorm2.Cores.States.Nemmando
         private ChildLocator childLocator;
         private ParticleSystem dashEffect;
 
+        public CameraTargetParams.CameraParamsOverrideHandle camOverrideHandle;
+        private CharacterCameraParamsData decisiveCameraParams = new CharacterCameraParamsData
+        {
+            maxPitch = 70f,
+            minPitch = -70f,
+            pivotVerticalOffset = 2f, //how far up should the camera go?
+            idealLocalCameraPos = zoomCameraPosition,
+            wallCushion = 0.1f
+        };
+        public static Vector3 zoomCameraPosition = new Vector3(0f, 0f, -14f); // how far back should the camera go?
+
         public override void OnEnter()
         {
             base.OnEnter();
             base.characterBody.isSprinting = true;
-            if (base.cameraTargetParams) base.cameraTargetParams.aimMode = CameraTargetParams.AimType.Aura;
+
+            if (cameraTargetParams)
+            {
+                cameraTargetParams.RemoveParamsOverride(camOverrideHandle, .25f);
+                CameraTargetParams.CameraParamsOverrideRequest request = new CameraTargetParams.CameraParamsOverrideRequest
+                {
+                    cameraParamsData = decisiveCameraParams,
+                    priority = 0f
+                };
+                camOverrideHandle = cameraTargetParams.AddParamsOverride(request, duration);
+            }
 
             this.duration = Util.Remap(this.charge, 0f, 1f, ChargedSlashEntry.minDuration, ChargedSlashEntry.maxDuration);
             this.speedCoefficient = Util.Remap(this.charge, 0f, 1f, ChargedSlashEntry.initialMinSpeedCoefficient, ChargedSlashEntry.initialMaxSpeedCoefficient);
@@ -67,7 +88,7 @@ namespace Starstorm2.Cores.States.Nemmando
                 temporaryOverlay.animateShaderAlpha = true;
                 temporaryOverlay.alphaCurve = AnimationCurve.EaseInOut(0f, 1f, 1f, 0f);
                 temporaryOverlay.destroyComponentOnEnd = true;
-                temporaryOverlay.originalMaterial = Resources.Load<Material>("Materials/matDoppelganger");
+                temporaryOverlay.originalMaterial = LegacyResourcesAPI.Load<Material>("Materials/matDoppelganger");
                 temporaryOverlay.AddToCharacerModel(modelTransform.GetComponent<CharacterModel>());
             }
         }
@@ -97,6 +118,7 @@ namespace Starstorm2.Cores.States.Nemmando
             {
                 ChargedSlashAttack nextState = new ChargedSlashAttack();
                 nextState.charge = charge;
+                nextState.camOverrideHandle = camOverrideHandle;
                 this.outer.SetNextState(nextState);
                 return;
             }

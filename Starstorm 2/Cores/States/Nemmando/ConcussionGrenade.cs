@@ -13,7 +13,7 @@ namespace Starstorm2.Cores.States.Nemmando
         private float explosionRadius = 10f;
         private Vector3 initialPosition;
         private EffectData concussionEffect;
-        private GameObject concussionEffectPrefab = Resources.Load<GameObject>("prefabs/effects/omnieffect/OmniExplosionVFX");
+        private GameObject concussionEffectPrefab = LegacyResourcesAPI.Load<GameObject>("prefabs/effects/omnieffect/OmniExplosionVFX");
 
         public override void OnEnter()
         {

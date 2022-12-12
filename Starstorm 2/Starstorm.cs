@@ -11,9 +11,6 @@ using UnityEngine;
 namespace Starstorm2
 {
     [BepInDependency("com.bepis.r2api", BepInDependency.DependencyFlags.HardDependency)]
-    //[BepInDependency("com.jarlyk.eso", BepInDependency.DependencyFlags.HardDependency)]
-    [BepInDependency("com.KomradeSpectre.Aetherium", BepInDependency.DependencyFlags.SoftDependency)]
-    [BepInDependency("com.K1454.SupplyDrop", BepInDependency.DependencyFlags.SoftDependency)]
     [BepInDependency("com.niwith.DropInMultiplayer", BepInDependency.DependencyFlags.SoftDependency)]
     [BepInDependency("com.DestroyedClone.AncientScepter", BepInDependency.DependencyFlags.SoftDependency)]
     [NetworkCompatibility(CompatibilityLevel.EveryoneMustHaveMod, VersionStrictness.EveryoneNeedSameModVersion)]
@@ -31,9 +28,9 @@ namespace Starstorm2
 
     public class Starstorm : BaseUnityPlugin
     {
-        internal const string guid = "com.TeamMoonstorm.Starstorm2";
-        internal const string modName = "Starstorm 2";
-        internal const string version = "0.3.23";
+        internal const string guid = "com.ChirrLover.Starstorm2Unofficial";
+        internal const string modName = "Starstorm 2 Unofficial";
+        internal const string version = "0.4.0";
 
         public static Starstorm instance;
 
@@ -50,7 +47,6 @@ namespace Starstorm2
         EventsCore eventsCore;
         DamageTypeCore damageTypeCore;
         public static VoidCore voidCore;
-        EliteCore eliteCore;
         ItemDisplayCore itemDisplayCore;
         SkinsCore skinsCore;
 

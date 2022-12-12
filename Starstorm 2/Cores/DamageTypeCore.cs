@@ -85,9 +85,10 @@ namespace Starstorm2.Cores
             }
         }
 
-        private void DotController_AddDot(On.RoR2.DotController.orig_AddDot orig, DotController self, GameObject attackerObject, float duration, DotController.DotIndex dotIndex, float damageMultiplier)
+        private void DotController_AddDot(On.RoR2.DotController.orig_AddDot orig, DotController self, GameObject attackerObject,
+            float duration, DotController.DotIndex dotIndex, float damageMultiplier, uint? maxStacksFromAttacker, float? totalDamage, DotController.DotIndex? preUpgradeDotIndex)
         {
-            orig(self, attackerObject, duration, dotIndex, damageMultiplier);
+            orig(self, attackerObject, duration, dotIndex, damageMultiplier, maxStacksFromAttacker, totalDamage, preUpgradeDotIndex);
             if (dotIndex == DoTCore.gougeIndex)
             {
                 int i = 0;

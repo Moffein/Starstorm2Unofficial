@@ -30,7 +30,7 @@ namespace Starstorm2.Cores.States.Nucleator
             effectData.origin = aimRay.origin + 2 * aimRay.direction;
             effectData.scale = 8;
 
-            EffectManager.SpawnEffect(Resources.Load<GameObject>("Prefabs/Effects/ImpactEffects/FusionCellExplosion"), effectData, false);
+            EffectManager.SpawnEffect(LegacyResourcesAPI.Load<GameObject>("Prefabs/Effects/ImpactEffects/FusionCellExplosion"), effectData, false);
         }
 
         public override void OnExit()

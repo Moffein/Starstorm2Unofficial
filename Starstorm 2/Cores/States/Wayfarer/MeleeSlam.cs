@@ -16,7 +16,7 @@ namespace Starstorm2.Cores.States.Wayfarer
         public static float damageCoefficient = 4.0f;
         public static float force = 10.0f;
         public static float radius = 15.0f;
-        public static GameObject explosionPrefab = Resources.Load<GameObject>("prefabs/effects/omnieffect/OmniExplosionVFX");
+        public static GameObject explosionPrefab = LegacyResourcesAPI.Load<GameObject>("prefabs/effects/omnieffect/OmniExplosionVFX");
 
         private Animator animator;
         private float duration;

@@ -20,7 +20,7 @@ namespace Starstorm2.Modules
         internal static List<EffectDef> effectDefs = new List<EffectDef>();
 
         // cache these and use to create our own materials
-        internal static Shader hotpoo = Resources.Load<Shader>("Shaders/Deferred/HGStandard");
+        internal static Shader hotpoo = LegacyResourcesAPI.Load<Shader>("Shaders/Deferred/HGStandard");
         internal static Material commandoMat;
         private static string[] assetNames = new string[0];
 
@@ -111,16 +111,16 @@ namespace Starstorm2.Modules
         internal static void PopulateAssets()
         {
             #region Materials
-            matBlueLightningLong = UnityEngine.Object.Instantiate(Resources.Load<GameObject>("Prefabs/Effects/OrbEffects/LightningStrikeOrbEffect").transform.Find("Ring").GetComponent<ParticleSystemRenderer>().material);
-            matJellyfishLightningLarge = UnityEngine.Object.Instantiate(Resources.Load<GameObject>("Prefabs/Effects/ImpactEffects/VagrantCannonExplosion").transform.Find("Lightning, Radial").GetComponent<ParticleSystemRenderer>().material);
-            matMageMatrixDirectionalLightning = UnityEngine.Object.Instantiate(Resources.Load<GameObject>("Prefabs/Effects/OmniEffect/OmniImpactVFXLightningMage").transform.Find("Matrix, Directional").GetComponent<ParticleSystemRenderer>().material);
-            //matMoonbatteryCrippleRadius = UnityEngine.Object.Instantiate(Resources.Load<GameObject>("Prefabs/NetworkedObjects/MoonBatteryCrippleWard").transform.Find("Indicator").Find("RadiusScaler").Find("ClearAreaIndicator").GetComponent<MeshRenderer>().material);
-            matClaySwing = UnityEngine.Object.Instantiate(Resources.Load<GameObject>("prefabs/effects/ImpSwipeEffect").GetComponentInChildren<ParticleSystemRenderer>().material);
-            matDistortion = UnityEngine.Object.Instantiate(Resources.Load<GameObject>("Prefabs/Effects/ImpactEffects/LoaderGroundSlam").transform.Find("Sphere, Distortion").GetComponent<ParticleSystemRenderer>().material);
-            matMercSwipe = UnityEngine.Object.Instantiate(Resources.Load<GameObject>("Prefabs/Projectiles/EvisProjectile").GetComponent<ProjectileController>().ghostPrefab.transform.Find("Base").GetComponent<ParticleSystemRenderer>().material);
-            matMercSwipeRed = UnityEngine.Object.Instantiate(Resources.Load<GameObject>("Prefabs/Projectiles/EvisProjectile").GetComponent<ProjectileController>().ghostPrefab.transform.Find("Base").GetComponent<ParticleSystemRenderer>().material);
+            matBlueLightningLong = UnityEngine.Object.Instantiate(LegacyResourcesAPI.Load<GameObject>("Prefabs/Effects/OrbEffects/LightningStrikeOrbEffect").transform.Find("Ring").GetComponent<ParticleSystemRenderer>().material);
+            matJellyfishLightningLarge = UnityEngine.Object.Instantiate(LegacyResourcesAPI.Load<GameObject>("Prefabs/Effects/ImpactEffects/VagrantCannonExplosion").transform.Find("Lightning, Radial").GetComponent<ParticleSystemRenderer>().material);
+            matMageMatrixDirectionalLightning = UnityEngine.Object.Instantiate(LegacyResourcesAPI.Load<GameObject>("Prefabs/Effects/OmniEffect/OmniImpactVFXLightningMage").transform.Find("Matrix, Directional").GetComponent<ParticleSystemRenderer>().material);
+            //matMoonbatteryCrippleRadius = UnityEngine.Object.Instantiate(LegacyResourcesAPI.Load<GameObject>("Prefabs/NetworkedObjects/MoonBatteryCrippleWard").transform.Find("Indicator").Find("RadiusScaler").Find("ClearAreaIndicator").GetComponent<MeshRenderer>().material);
+            matClaySwing = UnityEngine.Object.Instantiate(LegacyResourcesAPI.Load<GameObject>("prefabs/effects/ImpSwipeEffect").GetComponentInChildren<ParticleSystemRenderer>().material);
+            matDistortion = UnityEngine.Object.Instantiate(LegacyResourcesAPI.Load<GameObject>("Prefabs/Effects/ImpactEffects/LoaderGroundSlam").transform.Find("Sphere, Distortion").GetComponent<ParticleSystemRenderer>().material);
+            matMercSwipe = UnityEngine.Object.Instantiate(LegacyResourcesAPI.Load<GameObject>("Prefabs/Projectiles/EvisProjectile").GetComponent<ProjectileController>().ghostPrefab.transform.Find("Base").GetComponent<ParticleSystemRenderer>().material);
+            matMercSwipeRed = UnityEngine.Object.Instantiate(LegacyResourcesAPI.Load<GameObject>("Prefabs/Projectiles/EvisProjectile").GetComponent<ProjectileController>().ghostPrefab.transform.Find("Base").GetComponent<ParticleSystemRenderer>().material);
             matMercSwipeRed.SetColor("_TintColor", Color.red);
-            matLunarGolem = UnityEngine.Object.Instantiate(Resources.Load<GameObject>("Prefabs/CharacterBodies/LunarGolemBody").GetComponentInChildren<CharacterModel>().baseRendererInfos[0].defaultMaterial);
+            matLunarGolem = UnityEngine.Object.Instantiate(LegacyResourcesAPI.Load<GameObject>("Prefabs/CharacterBodies/LunarGolemBody").GetComponentInChildren<CharacterModel>().baseRendererInfos[0].defaultMaterial);
             #endregion
 
             needlerPrefab = CreateItemDisplay("DisplayNeedler", "matNeedler", Color.white, 3f);
@@ -135,7 +135,7 @@ namespace Starstorm2.Modules
             //LoadNemmandoEffects();
 
             #region JetBoots
-            jetBootsFX = PrefabAPI.InstantiateClone(Resources.Load<GameObject>("Prefabs/Effects/OmniEffect/OmniExplosionVFXCommandoGrenade"), "JetBootsEffect");
+            jetBootsFX = PrefabAPI.InstantiateClone(LegacyResourcesAPI.Load<GameObject>("Prefabs/Effects/OmniEffect/OmniExplosionVFXCommandoGrenade"), "JetBootsEffect");
 
             RemoveEffect(jetBootsFX.transform.Find("ScaledHitsparks 1"));
             RemoveEffect(jetBootsFX.transform.Find("UnscaledHitsparks 1"));
@@ -150,7 +150,7 @@ namespace Starstorm2.Modules
             #endregion
 
             #region JetBoots(Light)
-            lightJetBootsFX = PrefabAPI.InstantiateClone(Resources.Load<GameObject>("Prefabs/Effects/OmniEffect/OmniExplosionVFXCommandoGrenade"), "JetBootsLightEffect");
+            lightJetBootsFX = PrefabAPI.InstantiateClone(LegacyResourcesAPI.Load<GameObject>("Prefabs/Effects/OmniEffect/OmniExplosionVFXCommandoGrenade"), "JetBootsLightEffect");
 
             RemoveEffect(lightJetBootsFX.transform.Find("ScaledHitsparks 1"));
             RemoveEffect(lightJetBootsFX.transform.Find("UnscaledHitsparks 1"));
@@ -182,7 +182,7 @@ namespace Starstorm2.Modules
             exeChargeMaxSoundDef = CreateNetworkSoundEventDef("ExecutionerMaxCharge");
             exeSuperchargeSoundDef = CreateNetworkSoundEventDef("ExecutionerSupercharge");
 
-            exeGunTracer = Resources.Load<GameObject>("Prefabs/Effects/Tracers/TracerCommandoDefault").InstantiateClone("TracerExecutionerDefault", true);
+            exeGunTracer = LegacyResourcesAPI.Load<GameObject>("Prefabs/Effects/Tracers/TracerCommandoDefault").InstantiateClone("TracerExecutionerDefault", true);
 
             if (!exeGunTracer.GetComponent<EffectComponent>()) exeGunTracer.AddComponent<EffectComponent>();
             if (!exeGunTracer.GetComponent<VFXAttributes>()) exeGunTracer.AddComponent<VFXAttributes>();
@@ -202,7 +202,7 @@ namespace Starstorm2.Modules
 
             AddEffect(exeGunTracer);
 
-            exeIonBurstTracer = Resources.Load<GameObject>("Prefabs/Effects/Tracers/TracerCommandoShotgun").InstantiateClone("TracerExecutionerIonBurst", true);
+            exeIonBurstTracer = LegacyResourcesAPI.Load<GameObject>("Prefabs/Effects/Tracers/TracerCommandoShotgun").InstantiateClone("TracerExecutionerIonBurst", true);
 
             if (!exeIonBurstTracer.GetComponent<EffectComponent>()) exeIonBurstTracer.AddComponent<EffectComponent>();
             if (!exeIonBurstTracer.GetComponent<VFXAttributes>()) exeIonBurstTracer.AddComponent<VFXAttributes>();
@@ -222,11 +222,11 @@ namespace Starstorm2.Modules
 
             AddEffect(exeIonBurstTracer);
 
-            exeIonOrb = PrefabAPI.InstantiateClone(Resources.Load<GameObject>("Prefabs/Effects/OrbEffects/InfusionOrbEffect"), "ExecutionerIonOrbEffect", true);
+            exeIonOrb = PrefabAPI.InstantiateClone(LegacyResourcesAPI.Load<GameObject>("Prefabs/Effects/OrbEffects/InfusionOrbEffect"), "ExecutionerIonOrbEffect", true);
             if (!exeIonOrb.GetComponent<NetworkIdentity>()) exeIonOrb.AddComponent<NetworkIdentity>();
             Starstorm.DestroyImmediate(exeIonOrb.GetComponent<AkEvent>());
 
-            //Material titanPredictionEffect = Resources.Load<GameObject>("Prefabs/Projectiles/TitanPreFistProjectile").transform.Find("TeamAreaIndicator, GroundOnly").GetComponent<TeamAreaIndicator>().teamMaterialPairs[0].sharedMaterial;
+            //Material titanPredictionEffect = LegacyResourcesAPI.Load<GameObject>("Prefabs/Projectiles/TitanPreFistProjectile").transform.Find("TeamAreaIndicator, GroundOnly").GetComponent<TeamAreaIndicator>().teamMaterialPairs[0].sharedMaterial;
             //Material globMat = new EntityStates.TitanMonster.FireMegaLaser().laserPrefab.transform.Find("End").Find("EndEffect").Find("Particles").Find("Glob").GetComponent<ParticleSystemRenderer>().material;
 
             exeIonOrb.transform.Find("TrailParent").Find("Trail").GetComponent<TrailRenderer>().widthMultiplier = 0.5f;
@@ -238,7 +238,7 @@ namespace Starstorm2.Modules
 
             AddEffect(exeIonOrb);
 
-            exeIonSuperOrb = PrefabAPI.InstantiateClone(Resources.Load<GameObject>("Prefabs/Effects/OrbEffects/InfusionOrbEffect"), "ExecutionerIonSuperOrbEffect", true);
+            exeIonSuperOrb = PrefabAPI.InstantiateClone(LegacyResourcesAPI.Load<GameObject>("Prefabs/Effects/OrbEffects/InfusionOrbEffect"), "ExecutionerIonSuperOrbEffect", true);
             if (!exeIonSuperOrb.GetComponent<NetworkIdentity>()) exeIonSuperOrb.AddComponent<NetworkIdentity>();
             Starstorm.DestroyImmediate(exeIonSuperOrb.GetComponent<AkEvent>());
 
@@ -287,7 +287,7 @@ namespace Starstorm2.Modules
             nemChargedSlashStartFX.transform.Find("Round").GetComponent<ParticleSystemRenderer>().material = matDistortion;
             nemChargedSlashStartFXBlue.transform.Find("Round").GetComponent<ParticleSystemRenderer>().material = matDistortion;
 
-            nemDashEffect = PrefabAPI.InstantiateClone(Resources.Load<GameObject>("Prefabs/Effects/OrbEffects/InfusionOrbEffect"), "NemmandoDashOrbEffect", true);
+            nemDashEffect = PrefabAPI.InstantiateClone(LegacyResourcesAPI.Load<GameObject>("Prefabs/Effects/OrbEffects/InfusionOrbEffect"), "NemmandoDashOrbEffect", true);
             if (!nemDashEffect.GetComponent<NetworkIdentity>()) nemDashEffect.AddComponent<NetworkIdentity>();
             Starstorm.DestroyImmediate(nemDashEffect.GetComponent<AkEvent>());
             Starstorm.DestroyImmediate(nemDashEffect.transform.Find("TrailParent").gameObject);
@@ -324,9 +324,9 @@ namespace Starstorm2.Modules
 
         private static GameObject CreateTracer(string originalTracerName, string newTracerName)
         {
-            if (Resources.Load<GameObject>("Prefabs/Effects/Tracers/" + originalTracerName) == null) return null;
+            if (LegacyResourcesAPI.Load<GameObject>("Prefabs/Effects/Tracers/" + originalTracerName) == null) return null;
 
-            GameObject newTracer = PrefabAPI.InstantiateClone(Resources.Load<GameObject>("Prefabs/Effects/Tracers/" + originalTracerName), newTracerName, true);
+            GameObject newTracer = PrefabAPI.InstantiateClone(LegacyResourcesAPI.Load<GameObject>("Prefabs/Effects/Tracers/" + originalTracerName), newTracerName, true);
 
             if (!newTracer.GetComponent<EffectComponent>()) newTracer.AddComponent<EffectComponent>();
             if (!newTracer.GetComponent<VFXAttributes>()) newTracer.AddComponent<VFXAttributes>();
@@ -405,8 +405,8 @@ namespace Starstorm2.Modules
 
         internal static GameObject LoadCrosshair(string crosshairName)
         {
-            if (Resources.Load<GameObject>("Prefabs/Crosshair/" + crosshairName + "Crosshair") == null) return Resources.Load<GameObject>("Prefabs/Crosshair/StandardCrosshair");
-            return Resources.Load<GameObject>("Prefabs/Crosshair/" + crosshairName + "Crosshair");
+            if (LegacyResourcesAPI.Load<GameObject>("Prefabs/Crosshair/" + crosshairName + "Crosshair") == null) return LegacyResourcesAPI.Load<GameObject>("Prefabs/Crosshair/StandardCrosshair");
+            return LegacyResourcesAPI.Load<GameObject>("Prefabs/Crosshair/" + crosshairName + "Crosshair");
         }
 
         private static GameObject LoadEffect(string resourceName)
@@ -485,7 +485,7 @@ namespace Starstorm2.Modules
 
         public static Material CreateMaterial(string materialName, float emission, Color emissionColor, float normalStrength)
         {
-            if (!commandoMat) commandoMat = Resources.Load<GameObject>("Prefabs/CharacterBodies/CommandoBody").GetComponentInChildren<CharacterModel>().baseRendererInfos[0].defaultMaterial;
+            if (!commandoMat) commandoMat = LegacyResourcesAPI.Load<GameObject>("Prefabs/CharacterBodies/CommandoBody").GetComponentInChildren<CharacterModel>().baseRendererInfos[0].defaultMaterial;
 
             Material mat = UnityEngine.Object.Instantiate<Material>(commandoMat);
             Material tempMat = Assets.mainAssetBundle.LoadAsset<Material>(materialName);

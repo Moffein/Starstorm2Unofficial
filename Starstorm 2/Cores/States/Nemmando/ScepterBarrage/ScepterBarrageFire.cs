@@ -32,7 +32,7 @@ namespace Starstorm2.Cores.States.Nemmando.ScepterBarrage
         private Transform modelTransform;
         private float duration;
         private float durationBetweenShots;
-        private GameObject muzzleFlashEffect = Resources.Load<GameObject>("Prefabs/Effects/ImpactEffects/FusionCellExplosion");
+        private GameObject muzzleFlashEffect = LegacyResourcesAPI.Load<GameObject>("Prefabs/Effects/ImpactEffects/FusionCellExplosion");
 
         public override void OnEnter()
         {
@@ -152,8 +152,6 @@ namespace Starstorm2.Cores.States.Nemmando.ScepterBarrage
         public override void OnExit()
         {
             base.OnExit();
-
-            if (base.cameraTargetParams) base.cameraTargetParams.aimMode = CameraTargetParams.AimType.Standard;
         }
 
         public override void FixedUpdate()

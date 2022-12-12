@@ -34,7 +34,7 @@ namespace Starstorm2.Cores.Items
 
         public override ItemDisplayRuleDict CreateDisplayRules()
         {
-            displayPrefab = Resources.Load<GameObject>(PickupModelPath);
+            displayPrefab = LegacyResourcesAPI.Load<GameObject>(PickupModelPath);
             var disp = displayPrefab.AddComponent<ItemDisplay>();
             disp.rendererInfos = Utils.SetupRendererInfos(displayPrefab);
 
@@ -212,7 +212,7 @@ localScale = new Vector3(0.0013F, 0.0013F, 0.0013F)
                     {
                         var droneSummon = new MasterSummon();
                         droneSummon.position = victimBody.corePosition;
-                        droneSummon.masterPrefab = Resources.Load<GameObject>("Prefabs/CharacterMasters/DroneBackupMaster");
+                        droneSummon.masterPrefab = LegacyResourcesAPI.Load<GameObject>("Prefabs/CharacterMasters/DroneBackupMaster");
                         droneSummon.summonerBodyObject = attackerBody.gameObject;
                         var droneMaster = droneSummon.Perform();
                         if (droneMaster)

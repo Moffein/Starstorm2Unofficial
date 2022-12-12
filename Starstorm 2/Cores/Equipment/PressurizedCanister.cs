@@ -39,8 +39,8 @@ namespace Starstorm2.Cores.Equipment
         private const float duration = 1.0f;
         private const float thrustForce = 110f;
         private float timer;
-        private static GameObject thrustStartEffect = Resources.Load<GameObject>("prefabs/effects/SmokescreenEffect");
-        private static GameObject thrustEffect = Resources.Load<GameObject>("prefabs/effects/impacteffects/CharacterLandImpact");
+        private static GameObject thrustStartEffect = LegacyResourcesAPI.Load<GameObject>("prefabs/effects/SmokescreenEffect");
+        private static GameObject thrustEffect = LegacyResourcesAPI.Load<GameObject>("prefabs/effects/impacteffects/CharacterLandImpact");
 
         private void Awake()
         {

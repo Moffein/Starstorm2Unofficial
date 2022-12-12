@@ -51,10 +51,10 @@ namespace Starstorm2.Cores
 
         private void RegisterProjectiles()
         {
-            bfgProjectile = PrefabAPI.InstantiateClone(Resources.Load<GameObject>("Prefabs/Projectiles/FMJ"), "Prefabs/Projectiles/CyborgbfgProjectile", true, "C:\\Users\\test\\Documents\\ror2mods\\ExampleSurvivor\\ExampleSurvivor\\ExampleSurvivor\\ExampleSurvivor.cs", "RegisterCharacter", 155);
+            bfgProjectile = PrefabAPI.InstantiateClone(LegacyResourcesAPI.Load<GameObject>("Prefabs/Projectiles/FMJ"), "Prefabs/Projectiles/CyborgbfgProjectile", true);
             bfgProjectile.GetComponent<ProjectileController>().procCoefficient = 1f;
             //bfgProjectile.GetComponent<ProjectileController>().catalogIndex = 53;
-            bfgProjectile.GetComponent<ProjectileController>().ghostPrefab = Resources.Load<GameObject>("Prefabs/ProjectileGhosts/BeamSphereGhost");
+            bfgProjectile.GetComponent<ProjectileController>().ghostPrefab = LegacyResourcesAPI.Load<GameObject>("Prefabs/ProjectileGhosts/BeamSphereGhost");
             bfgProjectile.GetComponent<ProjectileDamage>().damage = 1f;
             bfgProjectile.GetComponent<ProjectileDamage>().damageType = DamageType.Generic;
             bfgProjectile.GetComponent<ProjectileDamage>().damageColorIndex = DamageColorIndex.Default;
@@ -73,7 +73,7 @@ namespace Starstorm2.Cores
             bfgProjectile.GetComponent<RadialForce>().forceMagnitude = -1500;
             bfgProjectile.GetComponent<RadialForce>().forceCoefficientAtEdge = 0.5f;
             bfgProjectile.AddComponent<ProjectileImpactExplosion>();
-            bfgProjectile.GetComponent<ProjectileImpactExplosion>().impactEffect = Resources.Load<GameObject>("Prefabs/Effects/BeamSphereExplosion");
+            bfgProjectile.GetComponent<ProjectileImpactExplosion>().impactEffect = LegacyResourcesAPI.Load<GameObject>("Prefabs/Effects/BeamSphereExplosion");
             bfgProjectile.GetComponent<ProjectileImpactExplosion>().destroyOnEnemy = true;
             bfgProjectile.GetComponent<ProjectileImpactExplosion>().destroyOnWorld = true;
             bfgProjectile.GetComponent<ProjectileImpactExplosion>().timerAfterImpact = false;
@@ -89,7 +89,7 @@ namespace Starstorm2.Cores
 
             //bfgProjectile.GetComponent<ProjectileProximityBeamController>().enabled = false;
 
-            cyborgPylon = PrefabAPI.InstantiateClone(Resources.Load<GameObject>("Prefabs/Projectiles/EngiGrenadeProjectile"), "Prefabs/Projectiles/CyborgTPPylon", true, "C:\\Users\\test\\Documents\\ror2mods\\ExampleSurvivor\\ExampleSurvivor\\ExampleSurvivor\\ExampleSurvivor.cs", "RegisterCharacter", 156);
+            cyborgPylon = PrefabAPI.InstantiateClone(LegacyResourcesAPI.Load<GameObject>("Prefabs/Projectiles/EngiGrenadeProjectile"), "Prefabs/Projectiles/CyborgTPPylon", true);
 
             GameObject ghost = Modules.Assets.mainAssetBundle.LoadAsset<GameObject>("cyborgTeleGhost2");
             ghost.AddComponent<ProjectileGhostController>();
@@ -276,7 +276,7 @@ namespace Starstorm2.Cores
 
         public static void CreateDoppelganger()
         {
-            doppelganger = PrefabAPI.InstantiateClone(Resources.Load<GameObject>("Prefabs/CharacterMasters/CommandoMonsterMaster"), "CyborgMonsterMaster", true);
+            doppelganger = PrefabAPI.InstantiateClone(LegacyResourcesAPI.Load<GameObject>("Prefabs/CharacterMasters/CommandoMonsterMaster"), "CyborgMonsterMaster", true);
             doppelganger.GetComponent<CharacterMaster>().bodyPrefab = cybPrefab;
 
             Modules.Prefabs.masterPrefabs.Add(doppelganger);

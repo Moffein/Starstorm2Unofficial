@@ -92,8 +92,8 @@ namespace Starstorm2.Modules
             skinList.Add(new SkinEffectData
             {
                 skinNameToken = "NEMMANDO_COMMANDO_SKIN_NAME",
-                impactEffect = Resources.Load<GameObject>("Prefabs/Effects/OmniEffect/OmniImpactVFXSlashMerc"),
-                impactSoundDef = Resources.Load<NetworkSoundEventDef>("NetworkSoundEventDefs/nseMercSwordImpact"),
+                impactEffect = LegacyResourcesAPI.Load<GameObject>("Prefabs/Effects/OmniEffect/OmniImpactVFXSlashMerc"),
+                impactSoundDef = LegacyResourcesAPI.Load<NetworkSoundEventDef>("NetworkSoundEventDefs/nseMercSwordImpact"),
                 defaultSwordEmission = 1f,
                 chargeEffectString = "SwordChargeEffectBlue",
                 chargeAttackEffect = Assets.nemChargedSlashStartFXBlue,
@@ -106,7 +106,7 @@ namespace Starstorm2.Modules
             skinList.Add(new SkinEffectData
             {
                 skinNameToken = "NEMMANDO_VERGIL_SKIN_NAME",
-                impactEffect = Resources.Load<GameObject>("Prefabs/Effects/OmniEffect/OmniImpactVFXSlashMerc"),
+                impactEffect = LegacyResourcesAPI.Load<GameObject>("Prefabs/Effects/OmniEffect/OmniImpactVFXSlashMerc"),
                 impactSoundDef = Assets.nemImpactSoundDef,
                 defaultSwordEmission = 5f,
                 chargeEffectString = "SwordChargeEffectBlue",

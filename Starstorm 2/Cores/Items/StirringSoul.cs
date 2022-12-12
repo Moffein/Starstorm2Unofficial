@@ -44,7 +44,7 @@ namespace Starstorm2.Cores.Items
 
         public override ItemDisplayRuleDict CreateDisplayRules()
         {
-            displayPrefab = Resources.Load<GameObject>(PickupModelPath);
+            displayPrefab = LegacyResourcesAPI.Load<GameObject>(PickupModelPath);
             var disp = displayPrefab.AddComponent<ItemDisplay>();
             disp.rendererInfos = Utils.SetupRendererInfos(displayPrefab);
 
@@ -216,7 +216,7 @@ localScale = new Vector3(0.001F, 0.001F, 0.001F)
 
         private void SetUpSoulPickup()
         {
-            MonsterSoulPickup = PrefabAPI.InstantiateClone(Resources.Load<GameObject>("Prefabs/NetworkedObjects/HealPack"), "MonsterSoul", true);
+            MonsterSoulPickup = PrefabAPI.InstantiateClone(LegacyResourcesAPI.Load<GameObject>("Prefabs/NetworkedObjects/HealPack"), "MonsterSoul", true);
             MonsterSoulPickup.transform.localScale = Vector3.one * 2.5f;
             MonsterSoulPickup.GetComponent<Rigidbody>().drag = 15f; //default is 2
             MonsterSoulPickup.GetComponent<DestroyOnTimer>().duration = 20;

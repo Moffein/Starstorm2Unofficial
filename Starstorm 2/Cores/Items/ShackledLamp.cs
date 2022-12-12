@@ -26,7 +26,7 @@ namespace Starstorm2.Cores.Items
         public override string PickupIconPath => "LampItem";
         public override string PickupModelPath => "";
 
-        private GameObject chainPrefab = Resources.Load<GameObject>("prefabs/projectiles/GravekeeperHookProjectile");
+        private GameObject chainPrefab = LegacyResourcesAPI.Load<GameObject>("prefabs/projectiles/GravekeeperHookProjectile");
         private static float chainDamageCoefficient = 3.0f;
         private static float chainDamageCoefficientStack = 1.0f;
         private static float chainForce = 10.0f;
@@ -43,7 +43,7 @@ namespace Starstorm2.Cores.Items
          * Commented out because it made my game piss and moan and cry.
          * 
         {
-            displayPrefab = Resources.Load<GameObject>(PickupModelPath);
+            displayPrefab = LegacyResourcesAPI.Load<GameObject>(PickupModelPath);
             var disp = displayPrefab.AddComponent<ItemDisplay>();
             disp.rendererInfos = Utils.SetupRendererInfos(displayPrefab);
 

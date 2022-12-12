@@ -14,7 +14,7 @@ namespace Starstorm2.Cores.States.Nucleator
 
         public float charge;
 
-        private GameObject resource = Resources.Load<GameObject>("prefabs/effects/impacteffects/Hitspark");
+        private GameObject resource = LegacyResourcesAPI.Load<GameObject>("prefabs/effects/impacteffects/Hitspark");
         private float duration;
         private float currentDuration;
         private float speedCoef;
@@ -68,7 +68,7 @@ namespace Starstorm2.Cores.States.Nucleator
             base.PlayAnimation("FullBody, Override", "UtilityRelease", "Utility.playbackRate", this.duration);
 
             Util.PlaySound(EntityStates.Croco.Leap.landingSound.eventName, base.gameObject);
-            EffectManager.SpawnEffect(Resources.Load<GameObject>("CrocoLeapExplosion"), new EffectData
+            EffectManager.SpawnEffect(LegacyResourcesAPI.Load<GameObject>("CrocoLeapExplosion"), new EffectData
             {
                 origin = base.characterBody.footPosition,
                 scale = 10f

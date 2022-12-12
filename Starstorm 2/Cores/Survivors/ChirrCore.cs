@@ -86,12 +86,12 @@ LanguageAPI.Add("CHIRR_OUTRO_FLAVOR", "..and so she left, carrying new life in h
 
         private void RegisterProjectiles()
         {
-            chirrDart = PrefabAPI.InstantiateClone(Resources.Load<GameObject>("prefabs/projectiles/SyringeProjectile"), "Prefabs/Projectiles/ChirrDart", true, "C:\\Users\\test\\Documents\\ror2mods\\ExampleSurvivor\\ExampleSurvivor\\ExampleSurvivor\\ExampleSurvivor.cs", "RegisterCharacter", 155);
+            chirrDart = PrefabAPI.InstantiateClone(LegacyResourcesAPI.Load<GameObject>("prefabs/projectiles/SyringeProjectile"), "Prefabs/Projectiles/ChirrDart", true);
 
-            //chirrHeal = PrefabAPI.InstantiateClone(Resources.Load<GameObject>("prefabs/effects/TPHealNovaEffect.prefab"), "Prefabs/Projectiles/ChirrHeal", true, "C:\\Users\\test\\Documents\\ror2mods\\ExampleSurvivor\\ExampleSurvivor\\ExampleSurvivor\\ExampleSurvivor.cs", "RegisterCharacter", 156);
+            //chirrHeal = PrefabAPI.InstantiateClone(LegacyResourcesAPI.Load<GameObject>("prefabs/effects/TPHealNovaEffect.prefab"), "Prefabs/Projectiles/ChirrHeal", true);
             /*bfgProjectile.GetComponent<ProjectileController>().procCoefficient = 1f;
             //bfgProjectile.GetComponent<ProjectileController>().catalogIndex = 53;
-            bfgProjectile.GetComponent<ProjectileController>().ghostPrefab = Resources.Load<GameObject>("Prefabs/ProjectileGhosts/BeamSphereGhost");
+            bfgProjectile.GetComponent<ProjectileController>().ghostPrefab = LegacyResourcesAPI.Load<GameObject>("Prefabs/ProjectileGhosts/BeamSphereGhost");
             bfgProjectile.GetComponent<ProjectileDamage>().damage = 1f;
             bfgProjectile.GetComponent<ProjectileDamage>().damageType = DamageType.Generic;
             bfgProjectile.GetComponent<ProjectileDamage>().damageColorIndex = DamageColorIndex.Default;
@@ -110,7 +110,7 @@ LanguageAPI.Add("CHIRR_OUTRO_FLAVOR", "..and so she left, carrying new life in h
             bfgProjectile.GetComponent<RadialForce>().forceMagnitude = -1500;
             bfgProjectile.GetComponent<RadialForce>().forceCoefficientAtEdge = 0.5f;
             bfgProjectile.AddComponent<ProjectileImpactExplosion>();
-            bfgProjectile.GetComponent<ProjectileImpactExplosion>().impactEffect = Resources.Load<GameObject>("Prefabs/Effects/BeamSphereExplosion");
+            bfgProjectile.GetComponent<ProjectileImpactExplosion>().impactEffect = LegacyResourcesAPI.Load<GameObject>("Prefabs/Effects/BeamSphereExplosion");
             bfgProjectile.GetComponent<ProjectileImpactExplosion>().destroyOnEnemy = true;
             bfgProjectile.GetComponent<ProjectileImpactExplosion>().destroyOnWorld = true;
             bfgProjectile.GetComponent<ProjectileImpactExplosion>().timerAfterImpact = false;
@@ -126,7 +126,7 @@ LanguageAPI.Add("CHIRR_OUTRO_FLAVOR", "..and so she left, carrying new life in h
 
             //bfgProjectile.GetComponent<ProjectileProximityBeamController>().enabled = false;
 
-            chirrPylon = PrefabAPI.InstantiateClone(Resources.Load<GameObject>("Prefabs/Projectiles/EngiGrenadeProjectile"), "Prefabs/Projectiles/ChirrTPPylon", true, "C:\\Users\\test\\Documents\\ror2mods\\ExampleSurvivor\\ExampleSurvivor\\ExampleSurvivor\\ExampleSurvivor.cs", "RegisterCharacter", 156);
+            chirrPylon = PrefabAPI.InstantiateClone(LegacyResourcesAPI.Load<GameObject>("Prefabs/Projectiles/EngiGrenadeProjectile"), "Prefabs/Projectiles/ChirrTPPylon", true);
 
             GameObject ghost = AssetsCore.mainAssetBundle.LoadAsset<GameObject>("chirrTeleGhost2");
             ghost.AddComponent<ProjectileGhostController>();
@@ -146,7 +146,7 @@ LanguageAPI.Add("CHIRR_OUTRO_FLAVOR", "..and so she left, carrying new life in h
             if (bfgProjectile) PrefabAPI.RegisterNetworkPrefab(bfgProjectile);*/
             if (chirrDart) PrefabAPI.RegisterNetworkPrefab(chirrDart);
 
-            chirrTargetIndicator = PrefabAPI.InstantiateClone(Resources.Load<GameObject>("Prefabs/WoodSpriteIndicator"), "ChirrTargetIndicator", true);
+            chirrTargetIndicator = PrefabAPI.InstantiateClone(LegacyResourcesAPI.Load<GameObject>("Prefabs/WoodSpriteIndicator"), "ChirrTargetIndicator", true);
             chirrTargetIndicator.AddComponent<NetworkIdentity>();
             chirrTargetIndicator.GetComponentInChildren<UnityEngine.SpriteRenderer>().sprite = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("texChirrTargetCrosshair");
             chirrTargetIndicator.transform.localScale = new Vector3(.04f,.04f,.04f);
@@ -154,7 +154,7 @@ LanguageAPI.Add("CHIRR_OUTRO_FLAVOR", "..and so she left, carrying new life in h
             chirrTargetIndicator.GetComponentInChildren<Rewired.ComponentControls.Effects.RotateAroundAxis>().enabled = false;
             chirrTargetIndicator.GetComponentInChildren<TextMeshPro>().enabled = false;
 
-            chirrBefriendIndicator = PrefabAPI.InstantiateClone(Resources.Load<GameObject>("Prefabs/WoodSpriteIndicator"), "ChirrTargetIndicator", true);
+            chirrBefriendIndicator = PrefabAPI.InstantiateClone(LegacyResourcesAPI.Load<GameObject>("Prefabs/WoodSpriteIndicator"), "ChirrTargetIndicator", true);
             chirrBefriendIndicator.GetComponentInChildren<UnityEngine.SpriteRenderer>().sprite = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("texChirrBefriendCrosshair");
             chirrBefriendIndicator.GetComponentInChildren<UnityEngine.SpriteRenderer>().transform.rotation = Quaternion.Euler(0, 0, 0);
             chirrBefriendIndicator.GetComponentInChildren<Rewired.ComponentControls.Effects.RotateAroundAxis>().enabled = false;
@@ -365,7 +365,7 @@ LanguageAPI.Add("CHIRR_OUTRO_FLAVOR", "..and so she left, carrying new life in h
 
         public static void CreateDoppelganger()
         {
-            doppelganger = PrefabAPI.InstantiateClone(Resources.Load<GameObject>("Prefabs/CharacterMasters/CommandoMonsterMaster"), "ChirrMonsterMaster", true);
+            doppelganger = PrefabAPI.InstantiateClone(LegacyResourcesAPI.Load<GameObject>("Prefabs/CharacterMasters/CommandoMonsterMaster"), "ChirrMonsterMaster", true);
             doppelganger.GetComponent<CharacterMaster>().bodyPrefab = chirrPrefab;
 
             Modules.Prefabs.masterPrefabs.Add(doppelganger);

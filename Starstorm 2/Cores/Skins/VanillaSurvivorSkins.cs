@@ -115,18 +115,18 @@ namespace Starstorm2.Cores.Skins
             {
                 new SkinDef.ProjectileGhostReplacement
                 {
-                    projectilePrefab = Resources.Load<GameObject>("Prefabs/Projectiles/CryoCanisterProjectile"),
-                    projectileGhostReplacementPrefab = Resources.Load<GameObject>("Prefabs/ProjectileGhosts/LunarWispTrackingBombGhost")
+                    projectilePrefab = LegacyResourcesAPI.Load<GameObject>("Prefabs/Projectiles/CryoCanisterProjectile"),
+                    projectileGhostReplacementPrefab = LegacyResourcesAPI.Load<GameObject>("Prefabs/ProjectileGhosts/LunarWispTrackingBombGhost")
                 },
                 new SkinDef.ProjectileGhostReplacement
                 {
-                    projectilePrefab = Resources.Load<GameObject>("Prefabs/Projectiles/CryoCanisterBombletsProjectile"),
-                    projectileGhostReplacementPrefab = Resources.Load<GameObject>("Prefabs/ProjectileGhosts/LunarGolemTwinShotProjectileGhost")
+                    projectilePrefab = LegacyResourcesAPI.Load<GameObject>("Prefabs/Projectiles/CryoCanisterBombletsProjectile"),
+                    projectileGhostReplacementPrefab = LegacyResourcesAPI.Load<GameObject>("Prefabs/ProjectileGhosts/LunarGolemTwinShotProjectileGhost")
                 },
                 new SkinDef.ProjectileGhostReplacement
                 {
-                    projectilePrefab = Resources.Load<GameObject>("Prefabs/Projectiles/ToolbotGrenadeLauncherProjectile"),
-                    projectileGhostReplacementPrefab = Resources.Load<GameObject>("Prefabs/ProjectileGhosts/LunarExploderShardGhost")
+                    projectilePrefab = LegacyResourcesAPI.Load<GameObject>("Prefabs/Projectiles/ToolbotGrenadeLauncherProjectile"),
+                    projectileGhostReplacementPrefab = LegacyResourcesAPI.Load<GameObject>("Prefabs/ProjectileGhosts/LunarExploderShardGhost")
                 }
             };
 
@@ -218,7 +218,7 @@ namespace Starstorm2.Cores.Skins
             if (self.GetModelTransform().GetComponentInChildren<ModelSkinController>().skins[self.characterBody.skinIndex].nameToken == "TOOLBOT_GRANDMASTERY_SKIN_NAME")
             {
                 isLunar = true;
-                self.tracerEffectPrefab = Resources.Load<GameObject>("Prefabs/Effects/Tracers/TracerHuntressSnipe");
+                self.tracerEffectPrefab = LegacyResourcesAPI.Load<GameObject>("Prefabs/Effects/Tracers/TracerHuntressSnipe");
             }
 
             orig(self, aimRay);
@@ -237,7 +237,7 @@ namespace Starstorm2.Cores.Skins
             if (self.GetModelTransform().GetComponentInChildren<ModelSkinController>().skins[self.characterBody.skinIndex].nameToken == "TOOLBOT_GRANDMASTERY_SKIN_NAME")
             {
                 isLunar = true;
-                EntityStates.Toolbot.BaseNailgunState.tracerEffectPrefab = Resources.Load<GameObject>("Prefabs/Effects/Tracers/TracerLunarWispMinigun");
+                EntityStates.Toolbot.BaseNailgunState.tracerEffectPrefab = LegacyResourcesAPI.Load<GameObject>("Prefabs/Effects/Tracers/TracerLunarWispMinigun");
             }
 
             orig(self, aimRay, bulletCount, spreadPitchScale, spreadYawScale);

@@ -130,7 +130,7 @@ namespace Starstorm2.Cores
             On.RoR2.TeleporterInteraction.ChargingState.OnEnter += ChargingState_OnEnter;
 
             //add cards to director under void mode
-            DirectorAPI.MonsterActions += delegate (List<DirectorAPI.DirectorCardHolder> list, DirectorAPI.StageInfo stage)
+            /*DirectorAPI.MonsterActions += delegate (List<DirectorAPI.DirectorCardHolder> list, DirectorAPI.StageInfo stage)
             {
                 if (voidCleared)
                 {
@@ -141,20 +141,11 @@ namespace Starstorm2.Cores
                         {
                             //scale credit cost to match what the boss director for this stage will get - prevents multiple nemesis spawns unless shrine of the mountain is used
                             nemCard.directorCreditCost = ((int)(600f * Mathf.Pow(Run.instance.compensatedDifficultyCoefficient, 0.5f)));
-                            /*
-                            int weight = 0;
-                            foreach (DirectorAPI.DirectorCardHolder c in list)
-                            {
-                                if (c.MonsterCategory == DirectorAPI.MonsterCategory.Champions)
-                                    weight += c.Card.selectionWeight;
-                            }
-                            holder.Card.selectionWeight = weight * 5;
-                            */
                             list.Add(holder);
                         }
                     }
                 }
-            };
+            };*/
         }
 
         private void ChargingState_OnEnter(On.RoR2.TeleporterInteraction.ChargingState.orig_OnEnter orig, EntityStates.BaseState self)
@@ -222,7 +213,6 @@ namespace Starstorm2.Cores
             t2.Remove(PickupCatalog.FindPickupIndex(RoR2Content.Items.Missile.itemIndex));
             t2.Remove(PickupCatalog.FindPickupIndex(RoR2Content.Items.SlowOnHit.itemIndex));
             t2.Remove(PickupCatalog.FindPickupIndex(RoR2Content.Items.HealOnCrit.itemIndex));
-            t2.Remove(PickupCatalog.FindPickupIndex(RoR2Content.Items.CritHeal.itemIndex));
             t2.Remove(PickupCatalog.FindPickupIndex(RoR2Content.Items.FireRing.itemIndex));
             t2.Remove(PickupCatalog.FindPickupIndex(RoR2Content.Items.IceRing.itemIndex));
             t2.Remove(PickupCatalog.FindPickupIndex(RoR2Content.Items.Seed.itemIndex));
@@ -297,7 +287,7 @@ namespace Starstorm2.Cores
             invObj.transform.SetParent(hudRoot.Find("MainContainer").Find("MainUIArea").Find("UpperRightCluster").Find("TimerRoot").Find("RightInfoBar"));
             var canvas = invObj.AddComponent<CanvasRenderer>();
             var img = invObj.AddComponent<Image>();
-            img.sprite = Resources.Load<Sprite>("textures/itemicons/texBearIcon");
+            img.sprite = LegacyResourcesAPI.Load<Sprite>("textures/itemicons/texBearIcon");
             /*
             var tr = invObj.AddComponent<RectTransform>();
             tr.anchorMin = Vector2.zero;

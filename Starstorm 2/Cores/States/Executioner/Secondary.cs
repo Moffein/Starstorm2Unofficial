@@ -19,7 +19,7 @@ namespace EntityStates.Executioner
         public static float recoil = 2f;
         public static float aimSnapAngle = 7.5f;
         public static float range = 200f; //copied from default range
-        public static GameObject muzzlePrefab = Resources.Load<GameObject>("Prefabs/Effects/MuzzleFlashes/MuzzleflashHuntressFlurry");
+        public static GameObject muzzlePrefab = LegacyResourcesAPI.Load<GameObject>("Prefabs/Effects/MuzzleFlashes/MuzzleflashHuntressFlurry");
         public static GameObject tracerPrefab;
         public static GameObject hitPrefab = Commando.CommandoWeapon.FireBarrage.hitEffectPrefab;
 

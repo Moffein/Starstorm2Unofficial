@@ -1,5 +1,6 @@
 ﻿using EntityStates;
 using RoR2;
+using RoR2.UI;
 using System;
 using UnityEngine;
 using UnityEngine.Networking;
@@ -13,13 +14,15 @@ namespace Starstorm2.Cores.States.Nemmando
         public static float maxEmission;
         public static float minEmission;
 
+        public static GameObject crosshairOverridePrefab = LegacyResourcesAPI.Load<GameObject>("Prefabs/Crosshair/MageCrosshair");
+
         private Material swordMat;
         private float chargeDuration;
         private ChildLocator childLocator;
         private Animator animator;
         private Transform modelBaseTransform;
         private ParticleSystem swordVFX;
-        private GameObject defaultCrosshair;
+        private CrosshairUtils.OverrideRequest crosshairOverrideRequest;
         private uint chargePlayID;
         private float maximumEmission;
         private float minimumEmission;
@@ -31,12 +34,14 @@ namespace Starstorm2.Cores.States.Nemmando
             this.childLocator = base.GetModelChildLocator();
             this.modelBaseTransform = base.GetModelBaseTransform();
             this.animator = base.GetModelAnimator();
-            this.defaultCrosshair = base.characterBody.crosshairPrefab;
 
             this.minimumEmission = this.effectComponent.defaultSwordEmission;
             this.maximumEmission = 50f + this.minimumEmission;
 
-            base.characterBody.crosshairPrefab = Resources.Load<GameObject>("Prefabs/Crosshair/MageCrosshair");
+            if (ChargeSwordBeam.crosshairOverridePrefab)
+            {
+                this.crosshairOverrideRequest = CrosshairUtils.RequestOverrideForBody(base.characterBody, crosshairOverridePrefab, CrosshairUtils.OverridePriority.PrioritySkill);
+            }
 
             this.swordVFX = FindModelChild("SwordLightning").GetComponent<ParticleSystem>();
             this.swordVFX.Play();
@@ -81,11 +86,13 @@ namespace Starstorm2.Cores.States.Nemmando
 
         public override void OnExit()
         {
-            base.OnExit();
-
-            base.characterBody.crosshairPrefab = this.defaultCrosshair;
+            if (this.crosshairOverrideRequest != null)
+            {
+                this.crosshairOverrideRequest.Dispose();
+            }
             AkSoundEngine.StopPlayingID(this.chargePlayID);
             this.swordVFX.Stop();
+            base.OnExit();
         }
 
         public override InterruptPriority GetMinimumInterruptPriority()

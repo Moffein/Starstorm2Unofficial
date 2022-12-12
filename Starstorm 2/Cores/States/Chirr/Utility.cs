@@ -56,7 +56,7 @@ namespace EntityStates.Chirr
         {
             if (!this.hasFired)
             {
-                GameObject ptr = UnityEngine.Object.Instantiate<GameObject>(Resources.Load<GameObject>("prefabs/effects/TPHealNovaEffect"), base.transform);
+                GameObject ptr = UnityEngine.Object.Instantiate<GameObject>(LegacyResourcesAPI.Load<GameObject>("prefabs/effects/TPHealNovaEffect"), base.transform);
                 //ptr.GetComponent<TeamFilter>().teamIndex = teamIndex;
                 NetworkServer.Spawn(ptr);
                 hasFired = true;

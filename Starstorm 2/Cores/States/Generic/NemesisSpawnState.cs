@@ -64,7 +64,7 @@ namespace Starstorm2.Cores.States.Generic
                 if (!this.initCamera)
                 {
                     this.initCamera = true;
-                    this.cameraController.SetPitchYawFromLookVector(-base.characterDirection.forward);
+                    //this.cameraController.SetPitchYawFromLookVector(-base.characterDirection.forward);
                 }
             }
 

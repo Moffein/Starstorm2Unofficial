@@ -12,10 +12,10 @@ namespace Starstorm2.Modules
 
         internal static void Initialize()
         {
-            swordBeam = PrefabAPI.InstantiateClone(Resources.Load<GameObject>("Prefabs/Projectiles/FMJ"), "NemmandoSwordBeam", true);
+            swordBeam = PrefabAPI.InstantiateClone(LegacyResourcesAPI.Load<GameObject>("Prefabs/Projectiles/FMJ"), "NemmandoSwordBeam", true);
             swordBeam.transform.localScale = new Vector3(4.5f, 2.5f, 2.5f);
 
-            GameObject swordBeamGhost = PrefabAPI.InstantiateClone(Resources.Load<GameObject>("Prefabs/Projectiles/EvisProjectile").GetComponent<ProjectileController>().ghostPrefab, "NemmandoSwordBeamGhost", false);
+            GameObject swordBeamGhost = PrefabAPI.InstantiateClone(LegacyResourcesAPI.Load<GameObject>("Prefabs/Projectiles/EvisProjectile").GetComponent<ProjectileController>().ghostPrefab, "NemmandoSwordBeamGhost", false);
             foreach (ParticleSystemRenderer i in swordBeamGhost.GetComponentsInChildren<ParticleSystemRenderer>())
             {
                 if (i)
@@ -40,7 +40,7 @@ namespace Starstorm2.Modules
 
             Modules.Prefabs.projectilePrefabs.Add(swordBeam);
 
-            laserTracer = Resources.Load<GameObject>("Prefabs/Effects/Tracers/TracerCommandoShotgun").InstantiateClone("NemmandoLaserTracer", true);
+            laserTracer = LegacyResourcesAPI.Load<GameObject>("Prefabs/Effects/Tracers/TracerCommandoShotgun").InstantiateClone("NemmandoLaserTracer", true);
 
             foreach (LineRenderer i in laserTracer.GetComponentsInChildren<LineRenderer>())
             {

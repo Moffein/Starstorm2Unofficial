@@ -31,6 +31,7 @@ namespace Starstorm2.Cores.States.Nemmando
         private float minimumEmission;
         private bool isCrit;
         private bool hidden;
+        public CameraTargetParams.CameraParamsOverrideHandle camOverrideHandle;
 
         private List<HurtBox> targetList;
 
@@ -173,20 +174,11 @@ namespace Starstorm2.Cores.States.Nemmando
                 base.PlayAnimation("FullBody, Override", "ScepterSpecial", "DecisiveStrike.playbackRate", 1f);
             }
 
-            if (base.fixedAge >= 0.4f * this.duration && base.fixedAge <= this.duration)
-            {
-                CameraTargetParams ctp = base.cameraTargetParams;
-                ctp.idealLocalCameraPos = new Vector3(0f, -1.4f, -6f);
-            }
-
             if (base.fixedAge >= this.duration && this.hitsFired < this.hitCount && this.hitStopwatch <= 0f)
             {
                 if (this.nemmandoController) this.nemmandoController.UncoverScreen();
 
                 if (this.hitsFired == 0) base.PlayAnimation("FullBody, Override", "ScepterSpecialEnd", "DecisiveStrike.playbackRate", 1.4f);
-
-                CameraTargetParams ctp = base.cameraTargetParams;
-                ctp.idealLocalCameraPos = new Vector3(0f, 1.8f, -16f);
 
                 this.FireAttack();
             }
@@ -200,14 +192,17 @@ namespace Starstorm2.Cores.States.Nemmando
 
         public override void OnExit()
         {
-            base.OnExit();
+            if (cameraTargetParams)
+            {
+                cameraTargetParams.RemoveParamsOverride(camOverrideHandle, duration / 1.5f);
+            }
 
-            if (base.cameraTargetParams) base.cameraTargetParams.aimMode = CameraTargetParams.AimType.Standard;
             if (this.swordMat) this.swordMat.SetFloat("_EmPower", this.minimumEmission);
             if (this.nemmandoController) this.nemmandoController.UncoverScreen();
             if (NetworkServer.active) base.characterBody.RemoveBuff(RoR2Content.Buffs.HiddenInvincibility);
 
             base.characterBody.hideCrosshair = false;
+            base.OnExit();
         }
     }
 }

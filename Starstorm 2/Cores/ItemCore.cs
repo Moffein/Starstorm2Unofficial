@@ -50,16 +50,17 @@ namespace Starstorm2.Cores
                     dropInInvalidItems.Add(item.itemDef.itemIndex);
                 itemDefs.Add(item.itemDef);
             }
-            if (dropInMultiplayerInstalled)
-                AddDropInBlacklist(dropInInvalidItems);
+            /*if (dropInMultiplayerInstalled)
+                AddDropInBlacklist(dropInInvalidItems);*/
         }
 
         //Shared item functions
 
-        public void AddDropInBlacklist(List<ItemIndex> items)
+        //broken
+        /*public void AddDropInBlacklist(List<ItemIndex> items)
         {
             DropInMultiplayer.DropInMultiplayer.AddInvalidItems(items);
-        }
+        }*/
 
         public static void DropShipCall(Transform transform, int itemCount, uint teamLevel = 1)
         {

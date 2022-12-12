@@ -59,7 +59,7 @@ namespace Starstorm2.Cores
             greaterBannerBuff = ScriptableObject.CreateInstance<BuffDef>();
             //buffIndex = BuffIndex.Count,
             greaterBannerBuff.canStack = false;
-            greaterBannerBuff.iconSprite = Resources.Load<Sprite>("textures/bufficons/texBuffWarbannerIcon");
+            greaterBannerBuff.iconSprite = LegacyResourcesAPI.Load<Sprite>("textures/bufficons/texBuffWarbannerIcon");
             greaterBannerBuff.name = "GreaterWarbanner";
             greaterBannerBuff.buffColor = new Color(0.8392157f, 0.4882353f, 0.22745098f);
             buffDefs.Add(greaterBannerBuff);
@@ -129,7 +129,7 @@ namespace Starstorm2.Cores
         private void RegisterEffects()
         {
             //TODO: register in content pack?
-            greenChocPrefab = PrefabAPI.InstantiateClone(Resources.Load<GameObject>("Prefabs/Effects/WarCryEffect"), "GreenChocEffect", true);
+            greenChocPrefab = PrefabAPI.InstantiateClone(LegacyResourcesAPI.Load<GameObject>("Prefabs/Effects/WarCryEffect"), "GreenChocEffect", true);
             greenChocPrefab.AddComponent<NetworkIdentity>();
             var particles = greenChocPrefab.GetComponentInChildren<ParticleSystem>();
             if (particles)

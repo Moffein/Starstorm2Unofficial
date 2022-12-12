@@ -18,11 +18,11 @@ namespace Starstorm2.Modules
         internal static void Initialize()
         {
             // ill finish this later
-            //fearDebuff = AddNewBuff("ExecutionerFearDebuff", Resources.Load<Sprite>("Textures/BuffIcons/texBuffGenericShield"), Color.white, false, true);
-            //gougeDebuff = AddNewBuff("GougeDebuff", Resources.Load<Sprite>("Textures/BuffIcons/texBuffGenericShield"), Color.white, true, true);
-            exeAssistBuff = AddNewBuff("ExecutionerAssistBuff", Resources.Load<Sprite>("Textures/BuffIcons/texBuffPowerIcon"), Color.white, false, false);
-            exeSuperchargedBuff = AddNewBuff("ExecutionerSuperchargedBuff", Resources.Load<Sprite>("Textures/BuffIcons/texBuffNullifiedIcon"), new Color(72 / 255, 1, 1), false, false);
-            nucleatorSpecialBuff = AddNewBuff("NucleatorSpecialBuff", Resources.Load<Sprite>("Textures/BuffIcons/texBuffOverheat"), Color.green, false, false);
+            //fearDebuff = AddNewBuff("ExecutionerFearDebuff", LegacyResourcesAPI.Load<Sprite>("Textures/BuffIcons/texBuffGenericShield"), Color.white, false, true);
+            //gougeDebuff = AddNewBuff("GougeDebuff", LegacyResourcesAPI.Load<Sprite>("Textures/BuffIcons/texBuffGenericShield"), Color.white, true, true);
+            exeAssistBuff = AddNewBuff("ExecutionerAssistBuff", LegacyResourcesAPI.Load<Sprite>("Textures/BuffIcons/texBuffPowerIcon"), Color.white, false, false);
+            exeSuperchargedBuff = AddNewBuff("ExecutionerSuperchargedBuff", LegacyResourcesAPI.Load<Sprite>("Textures/BuffIcons/texBuffNullifiedIcon"), new Color(72 / 255, 1, 1), false, false);
+            nucleatorSpecialBuff = AddNewBuff("NucleatorSpecialBuff", LegacyResourcesAPI.Load<Sprite>("Textures/BuffIcons/texBuffOverheat"), Color.green, false, false);
         }
 
         // simple helper method

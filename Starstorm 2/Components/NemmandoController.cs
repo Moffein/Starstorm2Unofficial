@@ -7,6 +7,8 @@ namespace Starstorm2.Components
 {
     public class NemmandoController : MonoBehaviour
     {
+        public static GameObject gunCrosshairOverridePrefab = Utils.LoadCrosshair("SimpleDot");
+
         public bool chargingDecisiveStrike = false;
         public bool rolling = false;
         private bool gunHolstered;
@@ -49,7 +51,7 @@ namespace Starstorm2.Components
                     this.gun = this.childLocator.FindChild("Gun");
                     this.gun.parent = this.childLocator.FindChild("Pelvis");
 
-                    this.characterBody.crosshairPrefab = Utils.LoadCrosshair("SimpleDot");
+                    //this.characterBody._defaultCrosshairPrefab = Utils.LoadCrosshair("SimpleDot");
                 }
             }
         }
