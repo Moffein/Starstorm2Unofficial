@@ -154,8 +154,8 @@ namespace Starstorm2.Cores
             //gougeIndex = RegisterDot(0.5f, 0.33f, DamageColorIndex.Bleed, BuffCore.gougeBuff);
 
             detritive = DotAPI.RegisterDotDef(1, 0.5f, DamageColorIndex.Item, BuffCore.detritiveBuff);
-            strangeCanPoison = DotAPI.RegisterDotDef(.5f, 0.5f, DamageColorIndex.Item, BuffCore.strangeCanPoisonBuff);
-            gougeIndex = DotAPI.RegisterDotDef(0.5f, 0.33f, DamageColorIndex.Bleed, BuffCore.gougeBuff);
+            strangeCanPoison = DotAPI.RegisterDotDef(0.5f, 0.5f, DamageColorIndex.Item, BuffCore.strangeCanPoisonBuff);
+            gougeIndex = DotAPI.RegisterDotDef(0.25f, 0.25f, DamageColorIndex.Bleed, BuffCore.gougeBuff);//0.5f, 0.33f
         }
 
         //private DotIndex RegisterDot(float interval, float damageCoefficient, DamageColorIndex colorIndex, BuffDef associatedBuff)

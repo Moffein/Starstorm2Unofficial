@@ -30,7 +30,7 @@ namespace Starstorm2.Cores.States.Nemmando
 			base.PlayCrossfade("UpperBody, Override", "BufferEmpty", 0.05f);
 
             //don't add buffs unless you're the server ty
-            if (NetworkServer.active) base.characterBody.AddTimedBuff(RoR2Content.Buffs.ArmorBoost, 1.5f * this.duration);
+            if (NetworkServer.active) base.characterBody.AddTimedBuff(RoR2Content.Buffs.SmallArmorBoost, 1.5f * this.duration);
 
 			if (base.isAuthority && base.inputBank && base.characterDirection)
 			{

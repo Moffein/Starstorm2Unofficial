@@ -1,5 +1,6 @@
 ﻿using System;
 using EntityStates;
+using R2API;
 using RoR2;
 using RoR2.Skills;
 using Starstorm2.Components;
@@ -69,7 +70,7 @@ namespace Starstorm2.Cores.States.Nemmando
             bool isCrit = base.RollCrit();
 
 			this.overlapAttack = new OverlapAttack();
-            this.overlapAttack.damageType = DamageType.BlightOnHit;
+			this.overlapAttack.AddModdedDamageType(DamageTypeCore.ModdedDamageTypes.GougeOnHit);
 			this.overlapAttack.attacker = base.gameObject;
 			this.overlapAttack.inflictor = base.gameObject;
 			this.overlapAttack.teamIndex = base.GetTeam();

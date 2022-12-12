@@ -231,7 +231,7 @@ namespace Starstorm2.Modules.Survivors
                 rechargeStock = 1,
                 requiredStock = 1,
                 stockToConsume = 1,
-                keywordTokens = new string[] { "KEYWORD_GOUGE", "KEYWORD_AGILE" }
+                keywordTokens = new string[] { "KEYWORD_GOUGE" }
             });
             secondaryConc = gashSkillDef;
 
@@ -257,7 +257,7 @@ namespace Starstorm2.Modules.Survivors
                 rechargeStock = 6,
                 requiredStock = 1,
                 stockToConsume = 1,
-                keywordTokens = new string[] { "KEYWORD_AGILE" }
+                keywordTokens = new string[] {}
             });
 
             Modules.Skills.AddSecondarySkill(bodyPrefab, gashSkillDef);
@@ -274,7 +274,7 @@ namespace Starstorm2.Modules.Survivors
                 activationState = new SerializableEntityStateType(typeof(Cores.States.Nemmando.DodgeState)),
                 activationStateMachineName = "Body",
                 baseMaxStock = 1,
-                baseRechargeInterval = 5f,
+                baseRechargeInterval = 4f,
                 beginSkillCooldownOnSkillEnd = false,
                 canceledFromSprinting = false,
                 forceSprintDuringState = true,
@@ -438,36 +438,36 @@ namespace Starstorm2.Modules.Survivors
             LanguageAPI.Add("KEYWORD_GOUGE", $"<style=cKeywordName>Gouge</style><style=cSub>Applies {gougeDamage} over time, capable of critical hits.");
 
             LanguageAPI.Add("NEMMANDO_PRIMARY_BLADE_NAME", "Blade of Cessation");
-            LanguageAPI.Add("NEMMANDO_PRIMARY_BLADE_DESCRIPTION", $@"<style=cIsUtility>Agile.</style> Slice enemies for {bladeDamage}, applying <style=cIsUtility>Gouge</style> for {gougeDamage}.");
+            LanguageAPI.Add("NEMMANDO_PRIMARY_BLADE_DESCRIPTION", $@"<style=cIsHealth>Gouging</style>. <style=cIsUtility>Agile.</style> Slice enemies for {bladeDamage}.");
 
             LanguageAPI.Add("NEMMANDO_SECONDARY_CONCUSSION_NAME", "Distant Gash");
 
             string chargeDamage = $"<style=cIsDamage>{Cores.States.Nemmando.FireSwordBeam.minDamageCoeffficient * 100}%-{Cores.States.Nemmando.FireSwordBeam.maxDamageCoefficient * 100}% damage</style>";
-            LanguageAPI.Add("NEMMANDO_SECONDARY_CONCUSSION_DESCRIPTION", $"Hold to charge a piercing sword beam for {chargeDamage}. Applies <style=cIsUtility>Gouge</style>");
+            LanguageAPI.Add("NEMMANDO_SECONDARY_CONCUSSION_DESCRIPTION", $"<style=cIsHealth>Gouging</style>. Charge a piercing sword beam for {chargeDamage}.");
 
             LanguageAPI.Add("NEMMANDO_SECONDARY_SHOOT_NAME", "Single Tap");
 
             chargeDamage = $"<style=cIsDamage>{Cores.States.Nemmando.ShootGun.damageCoefficient * 100}% damage</style>";
-            LanguageAPI.Add("NEMMANDO_SECONDARY_SHOOT_DESCRIPTION", $"<style=cIsUtility>Agile.</style> Fire your gun for {chargeDamage}.");
+            LanguageAPI.Add("NEMMANDO_SECONDARY_SHOOT_DESCRIPTION", $"Fire your gun for {chargeDamage}.");
 
             LanguageAPI.Add("NEMMANDO_UTILITY_DODGE_NAME", "Tactical Roll");
-            LanguageAPI.Add("NEMMANDO_UTILITY_DODGE_DESCRIPTION", "<style=cIsUtility>Roll</style> a short distance, gaining <style=cIsUtility>200 armor</style>.");
+            LanguageAPI.Add("NEMMANDO_UTILITY_DODGE_DESCRIPTION", "<style=cIsUtility>Roll</style> a short distance and gain <style=cIsUtility>100 armor</style>.");
 
             LanguageAPI.Add("NEMMANDO_SPECIAL_SUBMISSION_NAME", "Submission");
-            LanguageAPI.Add("NEMMANDO_SPECIAL_SUBMISSION_DESCRIPTION", $"<style=cIsUtility>Charge up</style>, then fire a barrage of up to <style=cIsDamage>6 shotgun blasts</style> for <style=cIsDamage>8x{Cores.States.Nemmando.ChargeBarrage.ChargeBarrageFire.damageCoefficient * 100}% damage</style> each. The number of shots increases with attack speed.");
+            LanguageAPI.Add("NEMMANDO_SPECIAL_SUBMISSION_DESCRIPTION", $"Charge up a barrage of <style=cIsDamage>5 shotgun blasts</style> that deal <style=cIsDamage>4x{Cores.States.Nemmando.ChargeBarrage.ChargeBarrageFire.damageCoefficient * 100}% damage</style> each. The number of shots increases with attack speed.");
 
             LanguageAPI.Add("NEMMANDO_SPECIAL_EPIC_NAME", "Decisive Strike");
             string chargedSlashDamage = $"<style=cIsDamage>{Cores.States.Nemmando.ChargedSlashAttack.maxHits}x{Cores.States.Nemmando.ChargedSlashAttack.maxDamageCoefficient * 100}% damage</style>";
-            LanguageAPI.Add("NEMMANDO_SPECIAL_EPIC_DESCRIPTION", $"<style=cIsUtility>Charge up</style>, then <style=cIsUtility>dash forward</style> and unleash a devastating barrage of <style=cIsDamage>slashes</style> that deals up to {chargedSlashDamage}.");
+            LanguageAPI.Add("NEMMANDO_SPECIAL_EPIC_DESCRIPTION", $"<style=cIsHealth>Gouging</style>. Charge up a devastating barrage of <style=cIsDamage>slashes</style> that deals up to {chargedSlashDamage}.");
 
-            string desc = $"<style=cIsUtility>Charge up</style>, then fire a barrage of up to <style=cIsDamage>6 shotgun blasts</style> for <style=cIsDamage>8x{Cores.States.Nemmando.ChargeBarrage.ChargeBarrageFire.damageCoefficient * 100}% damage</style> each. The number of shots increases with attack speed.";
+            string desc = $"Charge up a barrage of <style=cIsDamage>5 shotgun blasts</style> that deal <style=cIsDamage>4x{Cores.States.Nemmando.ChargeBarrage.ChargeBarrageFire.damageCoefficient * 100}% damage</style> each. The number of shots increases with attack speed.";
             desc += Helpers.ScepterDescription($"Fire lasers for {100f * Cores.States.Nemmando.ScepterBarrage.ScepterBarrageFire.laserDamageCoefficient}% damage.");
 
             LanguageAPI.Add("NEMMANDO_SPECIAL_SCEPSUBMISSION_NAME", "Subjunction");
             LanguageAPI.Add("NEMMANDO_SPECIAL_SCEPSUBMISSION_DESCRIPTION", desc);
 
             chargedSlashDamage = $"<style=cIsDamage>{Cores.States.Nemmando.ChargedSlashAttack.maxHits}x{Cores.States.Nemmando.ChargedSlashAttack.maxDamageCoefficient * 100}% damage</style>";
-            desc = $"<style=cIsUtility>Charge up</style>, then <style=cIsUtility>dash forward</style> and unleash a devastating barrage of <style=cIsDamage>slashes</style> that deals up to {chargedSlashDamage}.";
+            desc = $"<style=cIsHealth>Gouging</style>. Charge up a devastating barrage of <style=cIsDamage>slashes</style> that deals up to {chargedSlashDamage}.";
             desc += Helpers.ScepterDescription("Briefly disappear and then unleash all your strikes at once. Hit count increases the more attack speed you have.");
 
             LanguageAPI.Add("NEMMANDO_SPECIAL_SCEPEPIC_NAME", "Judgement Cut End");

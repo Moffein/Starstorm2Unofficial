@@ -142,46 +142,24 @@ namespace Starstorm2.Cores
 
         private void Hook()
         {
-            On.RoR2.CharacterBody.RecalculateStats += CharacterBody_RecalculateStats;
             On.RoR2.CharacterBody.OnClientBuffsChanged += CharacterBody_OnClientBuffsChanged;
+            RecalculateStatsAPI.GetStatCoefficients += RecalculateStatsAPI_GetStatCoefficients;
         }
 
-        private void CharacterBody_RecalculateStats(On.RoR2.CharacterBody.orig_RecalculateStats orig, CharacterBody self)
+        private void RecalculateStatsAPI_GetStatCoefficients(CharacterBody sender, RecalculateStatsAPI.StatHookEventArgs args)
         {
-            orig(self);
-            if (self)
+            if (sender.HasBuff(greaterBannerBuff))
             {
-                var attackSpeed = self.attackSpeed;
-                var armor = self.armor;
-                var moveSpeed = self.moveSpeed;
-                var regen = self.regen;
-                var crit = self.crit;
+                args.cooldownMultAdd *= 0.5f;
+                args.critAdd += 20f;
+                args.regenMultAdd += 0.5f;
+            }
 
-
-                if (self.HasBuff(greaterBannerBuff))
-                {
-                    self.crit += 20f;
-                    self.regen += self.baseRegen * 0.5f;
-                    var skillLocator = self.skillLocator;
-                    if (skillLocator)
-                    {
-                        //pssst kid, wanna buff greater warbanner?
-                        //just turn to the 0.5f into a 0!
-                        var reduction = .5f;
-                        if (skillLocator.primary)
-                            skillLocator.primary.cooldownScale = reduction;
-                        if (skillLocator.secondary)
-                            skillLocator.secondary.cooldownScale = reduction;
-                        if (skillLocator.utility)
-                            skillLocator.utility.cooldownScale = reduction;
-                        if (skillLocator.special)
-                            skillLocator.special.cooldownScale = reduction;
-                    }
-                }
-
-                var chocStack = self.GetBuffCount(greenChocBuff);
-                self.crit += 20f * chocStack;
-                self.damage += chocStack * (self.baseDamage + self.levelDamage * (self.level - 1)) * 0.5f;
+            int chocStack = sender.GetBuffCount(greenChocBuff);
+            if (chocStack > 0)
+            {
+                args.critAdd += 20f * chocStack;
+                args.damageMultAdd += 0.5f * chocStack;
             }
         }
 

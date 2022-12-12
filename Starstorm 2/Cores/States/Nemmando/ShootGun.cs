@@ -8,10 +8,10 @@ namespace Starstorm2.Cores.States.Nemmando
     {
         public static float damageCoefficient = 2.1f;
         public static float procCoefficient = 1f;
-        public static float baseDuration = 0.5f;
+        public static float baseDuration = 0.3f;
         public static float force = 400f;
         public static float recoil = 1.5f;
-        public static float range = 256f;
+        public static float range = 200f;
         public static GameObject tracerEffectPrefab = LegacyResourcesAPI.Load<GameObject>("Prefabs/Effects/Tracers/TracerGoldGat");
 
         private float duration;

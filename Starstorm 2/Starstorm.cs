@@ -23,7 +23,9 @@ namespace Starstorm2
         "DirectorAPI",
         "NetworkingAPI",
         "SoundAPI",
-        "CommandHelper"
+        "CommandHelper",
+        "DamageAPI",
+        "RecalculateStatsAPI"
     })]
 
     public class Starstorm : BaseUnityPlugin
@@ -92,6 +94,9 @@ namespace Starstorm2
 
         private void Initialize()
         {
+            //MAKE SURE DAMAGETYPES INITIALIZE FIRST
+            damageTypeCore = new DamageTypeCore();
+
             Modules.Assets.Initialize();
             Modules.CameraParams.Initialize();
             Modules.States.Initialize();
@@ -105,7 +110,6 @@ namespace Starstorm2
             prefabCore = new PrefabCore();
             buffCore = new BuffCore();
             dotCore = new DoTCore();
-            damageTypeCore = new DamageTypeCore();
 
             //Modules.ItemDisplays.PopulateDisplays();
             itemDisplayCore = new ItemDisplayCore();

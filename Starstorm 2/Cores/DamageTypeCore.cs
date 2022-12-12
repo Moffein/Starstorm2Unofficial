@@ -1,123 +1,84 @@
-﻿using RoR2;
+﻿using R2API;
+using RoR2;
 using System;
 using UnityEngine;
+using UnityEngine.Networking;
 
 namespace Starstorm2.Cores
 {
-    class DamageTypeCore
+    public class DamageTypeCore
     {
         private UInt32 currentMax = 0u;
 
         public static DamageTypeCore instance;
 
-        //public static DamageType gougeOnHit;
+        public static class ModdedDamageTypes
+        {
+            public static DamageAPI.ModdedDamageType GougeOnHit;
+        }
 
-        public static float gougeDamageCoefficient = 1.2f;
+        //public static DamageType
+        //OnHit;
+
+        public static float gougeDamageCoefficient = 2f;
 
         public DamageTypeCore()
         {
             instance = this;
-            //LogCore.LogInfo("Initializing Core: " + base.ToString());
 
-            //maxPossible = 0b_1ul << 32;
-
-            var damageValues = Enum.GetValues(typeof(DamageType)) as UInt32[];
-            for (int i = 0; i < damageValues.Length; i++)
-            {
-                var value = damageValues[i];
-                if (value > currentMax)
-                {
-                    currentMax = value;
-                }
-            }
-            AddDamageTypes();
+            ModdedDamageTypes.GougeOnHit = DamageAPI.ReserveDamageType();
 
             On.RoR2.HealthComponent.TakeDamage += HealthComponent_TakeDamage;
-            On.RoR2.DotController.AddDot += DotController_AddDot;
+            On.RoR2.GlobalEventManager.OnHitEnemy += GlobalEventManager_OnHitEnemy;
+        }
+
+        private void GlobalEventManager_OnHitEnemy(On.RoR2.GlobalEventManager.orig_OnHitEnemy orig, GlobalEventManager self, DamageInfo damageInfo, GameObject victim)
+        {
+            orig(self, damageInfo, victim);
+            if (NetworkServer.active && !damageInfo.rejected)
+            {
+                if (damageInfo.HasModdedDamageType(ModdedDamageTypes.GougeOnHit))
+                {
+                    //Supposed to have a 0.25 mult for enemy Nemmando.
+                    var dotInfo = new InflictDotInfo()
+                    {
+                        attackerObject = damageInfo.attacker,
+                        victimObject = victim,
+                        dotIndex = DoTCore.gougeIndex,
+                        duration = 2,
+                        damageMultiplier = DamageTypeCore.gougeDamageCoefficient
+                    };
+                    DotController.InflictDot(ref dotInfo);
+                }
+            }
         }
 
         private void HealthComponent_TakeDamage(On.RoR2.HealthComponent.orig_TakeDamage orig, HealthComponent self, DamageInfo damageInfo)
         {
-            bool gouging = false;
-            float gougeDamage = 0f;
-            // this is a fucking ugly block of code jesus
-            if (damageInfo.damageType.HasFlag(DamageType.BlightOnHit) && self && self.body && damageInfo.attacker &&
-    (damageInfo.attacker.name == "NemmandoBody(Clone)" || damageInfo.attacker.name == "NemmandoMonsterBody(Clone)"))
+            bool triggerGougeProc = false;
+            if (damageInfo.dotIndex == DoTCore.gougeIndex && damageInfo.procCoefficient == 0f)
             {
-                gouging = true;
-                damageInfo.damageType &= ~DamageType.BlightOnHit;
-
-                CharacterBody attacker = damageInfo.attacker.GetComponent<CharacterBody>();
-                gougeDamage = (damageInfo.crit ? 2f : 1f) * gougeDamageCoefficient;
-                /*if (attacker && attacker.HasBuff(BuffCore.awarenessBuff))
+                if (damageInfo.attacker)
                 {
-                    damageCoef *= 2f;
-                    attacker.RemoveBuff(BuffCore.awarenessBuff);
-                }*/
+                    CharacterBody attackerBody = damageInfo.attacker.GetComponent<CharacterBody>();
+                    if (attackerBody)
+                    {
+                        damageInfo.crit = Util.CheckRoll(attackerBody.crit, attackerBody.master);
+                    }
+                }
+                damageInfo.procCoefficient = 0.5f;
+                triggerGougeProc = true;
             }
 
             orig(self, damageInfo);
 
-            if (gouging && !damageInfo.rejected)
+            if (NetworkServer.active && !damageInfo.rejected)
             {
-                if (damageInfo.attacker)
+                if (triggerGougeProc)
                 {
-                    TeamComponent attackerTeam = damageInfo.attacker.GetComponent<TeamComponent>();
-                    if (attackerTeam)
-                    {
-                        if (attackerTeam.teamIndex.HasFlag(TeamIndex.Monster))
-                        {
-                            gougeDamage *= 0.25f;
-                        }
-                    }
-                }
-
-                var dotInfo = new InflictDotInfo()
-                {
-                    attackerObject = damageInfo.attacker,
-                    victimObject = self.gameObject,
-                    dotIndex = DoTCore.gougeIndex,
-                    duration = 3,
-                    damageMultiplier = gougeDamage
-                };
-
-                DotController.InflictDot(ref dotInfo);
-            }
-        }
-
-        private void DotController_AddDot(On.RoR2.DotController.orig_AddDot orig, DotController self, GameObject attackerObject,
-            float duration, DotController.DotIndex dotIndex, float damageMultiplier, uint? maxStacksFromAttacker, float? totalDamage, DotController.DotIndex? preUpgradeDotIndex)
-        {
-            orig(self, attackerObject, duration, dotIndex, damageMultiplier, maxStacksFromAttacker, totalDamage, preUpgradeDotIndex);
-            if (dotIndex == DoTCore.gougeIndex)
-            {
-                int i = 0;
-                int count = self.dotStackList.Count;
-                while (i < count)
-                {
-                    if (self.dotStackList[i].dotIndex == DoTCore.gougeIndex)
-                    {
-                        self.dotStackList[i].timer = Mathf.Max(self.dotStackList[i].timer, duration);
-                    }
-                    i++;
+                    GlobalEventManager.instance.OnHitEnemy(damageInfo, self.gameObject);
                 }
             }
         }
-
-        protected void AddDamageTypes()
-        {
-            //gougeOnHit = AddDamageType();
-            //LogCore.LogInfo(gougeOnHit);
-        }
-
-        /*
-        // :^]]
-        protected DamageType AddDamageType()
-        {
-            currentMax *= 2;
-            var damageType = (DamageType)currentMax;
-            return damageType;
-        }
-        */
     }
 }

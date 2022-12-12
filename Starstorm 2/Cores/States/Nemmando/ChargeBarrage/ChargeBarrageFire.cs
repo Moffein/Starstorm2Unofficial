@@ -1,6 +1,7 @@
 ﻿using EntityStates;
 using RoR2;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
 
 namespace Starstorm2.Cores.States.Nemmando.ChargeBarrage
 {
@@ -8,18 +9,21 @@ namespace Starstorm2.Cores.States.Nemmando.ChargeBarrage
     {
         public float charge;
 
-        public static float damageCoefficient = 0.6f;
+        public static float damageCoefficient = 1.2f;   //was 0.6
         public static float procCoefficient = 0.5f;
-        public static uint bulletCountPerShot = 8;
+        public static uint bulletCountPerShot = 4;  //was 8
         public static float range = 128f;
-        public static float maxSpread = 30f;
+        public static float maxSpread = 8f; //was 30
         public static int minBulletCount = 2;
-        public static int maxBulletCount = 6;
+        public static int maxBulletCount = 5;   //was 6
 
         public static float baseDuration = 0.8f;
         public static float minTimeBetweenShots = 0.2f;
         public static float maxTimeBetweenShots = 0.075f;
         public static float recoil = 3f;
+
+        public static float force = 200f;
+        public static float bulletRadius = 2f;
 
         private int totalBulletsFired;
         private int bulletCount;
@@ -28,7 +32,9 @@ namespace Starstorm2.Cores.States.Nemmando.ChargeBarrage
         private Transform modelTransform;
         private float duration;
         private float durationBetweenShots;
-        private GameObject muzzleFlashEffect = LegacyResourcesAPI.Load<GameObject>("Prefabs/Effects/ImpactEffects/FusionCellExplosion");
+
+        public static GameObject muzzleFlashEffect = LegacyResourcesAPI.Load<GameObject>("Prefabs/Effects/ImpactEffects/FusionCellExplosion");
+        public static GameObject impactEffectPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Commando/HitsparkCommando.prefab").WaitForCompletion();
 
         public override void OnEnter()
         {
@@ -76,12 +82,12 @@ namespace Starstorm2.Cores.States.Nemmando.ChargeBarrage
                     maxSpread = ChargeBarrageFire.maxSpread,
                     bulletCount = ChargeBarrageFire.bulletCountPerShot,
                     damage = ChargeBarrageFire.damageCoefficient * this.damageStat,
-                    force = 0.5f * EntityStates.Commando.CommandoWeapon.FireBarrage.force,
+                    force = ChargeBarrageFire.force,
                     tracerEffectPrefab = Modules.Projectiles.laserTracer,
                     muzzleName = muzzleName,
-                    hitEffectPrefab = EntityStates.Commando.CommandoWeapon.FireBarrage.hitEffectPrefab,
+                    hitEffectPrefab = ChargeBarrageFire.impactEffectPrefab,
                     isCrit = base.RollCrit(),
-                    radius = EntityStates.Commando.CommandoWeapon.FireBarrage.bulletRadius,
+                    radius = ChargeBarrageFire.bulletRadius,
                     smartCollision = true,
                     damageType = DamageType.Generic,
                     spreadPitchScale = 0.5f,

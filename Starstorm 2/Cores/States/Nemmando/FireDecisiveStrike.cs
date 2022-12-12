@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Security.Policy;
 using EntityStates;
+using R2API;
 using RoR2;
 using RoR2.Skills;
 using UnityEngine;
@@ -37,7 +38,7 @@ namespace Starstorm2.Cores.States.Nemmando
 			this.damageCoefficient = Mathf.Lerp(this.minDamageCoef, this.maxDamageCoef, this.charge);
 			base.OnEnter();
 			base.characterDirection.forward = base.GetAimRay().direction;
-			this.durationBeforeInterruptable = BladeOfCessation.baseDurationBeforeInterruptable / this.attackSpeedStat;
+			this.durationBeforeInterruptable = FireDecisiveStrike.baseDurationBeforeInterruptable / this.attackSpeedStat;
             this.procCoefficient = 1.0f;
 
 
@@ -67,7 +68,7 @@ namespace Starstorm2.Cores.States.Nemmando
 		public override void AuthorityModifyOverlapAttack(OverlapAttack overlapAttack)
 		{
 			base.AuthorityModifyOverlapAttack(overlapAttack);
-			overlapAttack.damageType = DamageType.BlightOnHit | DamageType.Generic;
+			overlapAttack.AddModdedDamageType(DamageTypeCore.ModdedDamageTypes.GougeOnHit);
 		}
 
 		public override void PlayAnimation()

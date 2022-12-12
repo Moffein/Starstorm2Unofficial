@@ -19,12 +19,12 @@ namespace Starstorm2.Cores.States.Nemmando.ChargeBarrage
         public override void OnEnter()
         {
             base.OnEnter();
+            base.StartAimMode(3f);
             this.chargeDuration = ChargeBarrageCharge.baseChargeDuration;// / this.attackSpeedStat;
             this.childLocator = base.GetModelChildLocator();
             this.modelBaseTransform = base.GetModelBaseTransform();
             this.animator = base.GetModelAnimator();
             this.hasFinishedCharging = false;
-
             this.chargePlayID = Util.PlaySound("NemmandoSubmissionCharge", base.gameObject);
 
             this.chargeEffect = this.childLocator.FindChild("GunChargeEffect").gameObject;

@@ -1,4 +1,5 @@
 ﻿using EntityStates;
+using R2API;
 using RoR2;
 using Starstorm2.Components;
 using UnityEngine;
@@ -12,8 +13,8 @@ namespace Starstorm2.Cores.States.Nemmando
         public static float baseDuration = 0.6f;
         public static int maxHits = 6;
         public static int minHits = 1;
-        public static float maxDamageCoefficient = 3.8f;
-        public static float minDamageCoefficient = 2.5f;
+        public static float maxDamageCoefficient = 3f;
+        public static float minDamageCoefficient = 3f;
         public static float maxRadius = 20f;
         public static float minRadius = 8f;
         public static float maxEmission = 150f;
@@ -57,7 +58,6 @@ namespace Starstorm2.Cores.States.Nemmando
                 bonusForce = Vector3.zero,
                 crit = base.RollCrit(),
                 damageColorIndex = DamageColorIndex.Default,
-                damageType = DamageType.BlightOnHit,
                 falloffModel = BlastAttack.FalloffModel.None,
                 inflictor = this.gameObject,
                 losType = BlastAttack.LoSType.None,
@@ -67,6 +67,7 @@ namespace Starstorm2.Cores.States.Nemmando
                 radius = this.radius,
                 teamIndex = base.GetTeam()
             };
+            this.blastAttack.AddModdedDamageType(DamageTypeCore.ModdedDamageTypes.GougeOnHit);
 
             this.attackEffect = new EffectData()
             {

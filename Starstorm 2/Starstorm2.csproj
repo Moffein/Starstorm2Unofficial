@@ -177,7 +177,6 @@
     <Compile Include="Cores\States\Nemmando\DodgeState.cs" />
     <Compile Include="Cores\States\Nemmando\NemmandoMain.cs" />
     <Compile Include="Cores\States\Nemmando\ConcussionGrenade.cs" />
-    <Compile Include="Cores\States\Nemmando\BladeOfCessation.cs" />
     <Compile Include="Cores\States\Nucleator\ChargeController.cs" />
     <Compile Include="Cores\States\Nucleator\NucleatorProjectile.cs" />
     <Compile Include="Cores\States\Nucleator\ApplyRadionuclideSurge.cs" />

@@ -34,7 +34,10 @@ namespace Starstorm2.Modules
             }
 
             swordBeam.GetComponent<ProjectileController>().ghostPrefab = swordBeamGhost;
-            swordBeam.GetComponent<ProjectileDamage>().damageType = DamageType.BlightOnHit;
+            swordBeam.GetComponent<ProjectileDamage>().damageType = DamageType.Generic;
+
+            DamageAPI.ModdedDamageTypeHolderComponent moddedDamage = swordBeam.AddComponent<DamageAPI.ModdedDamageTypeHolderComponent>();
+            moddedDamage.Add(Cores.DamageTypeCore.ModdedDamageTypes.GougeOnHit);
 
             Starstorm.Destroy(swordBeam.transform.Find("SweetSpotBehavior").gameObject);
 
