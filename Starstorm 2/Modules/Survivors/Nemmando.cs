@@ -15,6 +15,12 @@ namespace Starstorm2.Modules.Survivors
 {
     internal class Nemmando : SurvivorBase
     {
+        public static BodyIndex bodyIndex;
+
+        //Used by NemmandoController. Todo: organize and rename
+        public static SkillDef secondaryConc;
+        public static SkillDef specialEpic;
+
         internal override string bodyName { get; set; } = "Nemmando";
 
         internal override GameObject bodyPrefab { get; set; }
@@ -89,10 +95,14 @@ namespace Starstorm2.Modules.Survivors
         internal static SkillDef scepterDecisiveStrikeSkillDef;
         internal static SkillDef scepterSubmissionSkillDef;
 
+        private void SetBodyIndex()
+        {
+            bodyIndex = BodyCatalog.FindBodyIndex("NemmandoBody");
+        }
         internal override void InitializeCharacter()
         {
             base.InitializeCharacter();
-
+            RoR2.RoR2Application.onLoad += SetBodyIndex;
             if (characterEnabled.Value)
             {
                 Modules.Assets.LoadNemmandoEffects();
@@ -223,6 +233,7 @@ namespace Starstorm2.Modules.Survivors
                 stockToConsume = 1,
                 keywordTokens = new string[] { "KEYWORD_GOUGE", "KEYWORD_AGILE" }
             });
+            secondaryConc = gashSkillDef;
 
             SkillDef gunSkillDef = Modules.Skills.CreateSkillDef(new SkillDefInfo
             {
@@ -330,6 +341,7 @@ namespace Starstorm2.Modules.Survivors
                 stockToConsume = 1,
                 keywordTokens = new string[] { "KEYWORD_GOUGE" }
             });
+            specialEpic = decisiveStrikeSkillDef;
 
             Modules.Skills.AddSpecialSkill(bodyPrefab, submissionSkillDef);
             Modules.Skills.AddSpecialSkill(bodyPrefab, decisiveStrikeSkillDef, decisiveStrikeUnlockableDef);
@@ -495,7 +507,7 @@ namespace Starstorm2.Modules.Survivors
         {
             orig(self);
 
-            if (self.characterBody.baseNameToken == "NEMMANDO_NAME")
+            if (self.characterBody.bodyIndex == Nemmando.bodyIndex)
             {
                 self.PlayAnimation("Gesture, Override", "CastRuin");
                 self.StartAimMode(self.duration + 0.5f);
@@ -511,7 +523,7 @@ namespace Starstorm2.Modules.Survivors
                 CharacterBody body = other.GetComponent<CharacterBody>();
                 if (body)
                 {
-                    if (body.baseNameToken == "NEMMANDO_NAME")
+                    if (body.bodyIndex == Nemmando.bodyIndex)
                     {
                         var teamComponent = body.teamComponent;
                         if (teamComponent)
@@ -535,7 +547,7 @@ namespace Starstorm2.Modules.Survivors
 
             if (damageType == DamageType.VoidDeath)
             {
-                if (self.body.baseNameToken == "NEMMANDO_NAME")
+                if (self.body.bodyIndex == Nemmando.bodyIndex)
                 {
                     if (self.body.teamComponent.teamIndex != TeamIndex.Player)
                     {

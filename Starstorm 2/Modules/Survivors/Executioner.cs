@@ -21,6 +21,8 @@ namespace Starstorm2.Modules.Survivors
 {
     internal class Executioner : SurvivorBase
     {
+        public static BodyIndex bodyIndex;
+
         internal override string bodyName { get; set; } = "Executioner";
 
         internal override GameObject bodyPrefab { get; set; }
@@ -79,9 +81,16 @@ namespace Starstorm2.Modules.Survivors
         private static UnlockableDef grandMasterySkinUnlockableDef;
         private static UnlockableDef wastelanderSkinUnlockableDef;
 
+        private void SetBodyIndex()
+        {
+            bodyIndex = BodyCatalog.FindBodyIndex("ExecutionerBody");
+        }
+
         internal override void InitializeCharacter()
         {
             base.InitializeCharacter();
+
+            RoR2.RoR2Application.onLoad += SetBodyIndex;
 
             if (characterEnabled.Value)
             {
@@ -346,7 +355,7 @@ namespace Starstorm2.Modules.Survivors
                     CharacterBody attackerBody = damageInfo.attacker.GetComponent<CharacterBody>();
                     if (attackerBody)
                     {
-                        if (attackerBody.baseNameToken == "EXECUTIONER_NAME")
+                        if (attackerBody.bodyIndex == Executioner.bodyIndex)
                         {
                             //self.body.AddTimedBuff(Modules.Buffs.exeAssistBuff, 5f);
                             Components.ExecutionerKillComponent killComponent = self.GetComponent<Components.ExecutionerKillComponent>();
@@ -367,7 +376,7 @@ namespace Starstorm2.Modules.Survivors
 
             if (self.hasBody)
             {
-                if (self.GetBody().baseNameToken == "EXECUTIONER_NAME")
+                if (self.GetBody().bodyIndex == Executioner.bodyIndex)
                 {
                     var execComponent = self.GetBody().GetComponent<Components.ExecutionerController>();
                     if (execComponent)
@@ -752,7 +761,7 @@ namespace Starstorm2.Modules.Survivors
                 }
                 else
                 {
-                    if (damageReport.attackerBody && damageReport.attackerBody.baseNameToken == "EXECUTIONER_NAME")
+                    if (damageReport.attackerBody && damageReport.attackerBody.bodyIndex == Executioner.bodyIndex)
                     {
                         int orbCount = GetIonCountFromBody(victimBody);
                         if (damageReport.damageInfo.damageType.HasFlag(DamageType.BypassOneShotProtection)) orbCount *= 2;
