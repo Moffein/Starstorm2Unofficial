@@ -101,7 +101,7 @@ namespace Starstorm2.Components
             return false;
         }
 
-        public static float graceDuration = 0.5f;
+        public static float graceDuration = 3f;
         private List<ExecutionerTimer> hitList = new List<ExecutionerTimer>();
         List<ExecutionerTimer> del = new List<ExecutionerTimer>();
         public class ExecutionerTimer

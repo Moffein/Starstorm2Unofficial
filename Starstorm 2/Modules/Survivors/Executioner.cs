@@ -729,7 +729,7 @@ namespace Starstorm2.Modules.Survivors
                     if (damageReport.attackerBody && damageReport.attackerBody.bodyIndex == Executioner.bodyIndex)
                     {
                         int orbCount = GetIonCountFromBody(victimBody);
-                        if (damageReport.damageInfo.damageType.HasFlag(DamageType.BypassOneShotProtection)) orbCount *= 2;
+                        //if (damageReport.damageInfo.damageType.HasFlag(DamageType.BypassOneShotProtection)) orbCount *= 2;    //Was used to make exe axe give double charges on kill. Unnecessary.
 
                         for (int i = 0; i < orbCount; i++)
                         {
@@ -739,7 +739,8 @@ namespace Starstorm2.Modules.Survivors
                             OrbManager.instance.AddOrb(ionOrb);
                         }
 
-                        if (orbCount >= 50 && orbCount < 110)
+                        //These aren't used anymore because the hardcoded Ion Burst value list was ridiculous.
+                        /*if (orbCount >= 50 && orbCount < 110)
                         {
                             Modules.Orbs.ExecutionerIonTempSuperOrb tempSuperIonOrb = new Modules.Orbs.ExecutionerIonTempSuperOrb();
                             tempSuperIonOrb.origin = victimBody.corePosition;
@@ -753,7 +754,7 @@ namespace Starstorm2.Modules.Survivors
                             superIonOrb.origin = victimBody.corePosition;
                             superIonOrb.target = Util.FindBodyMainHurtBox(damageReport.attackerBody);
                             OrbManager.instance.AddOrb(superIonOrb);
-                        }
+                        }*/
                     }
                 }
             }
