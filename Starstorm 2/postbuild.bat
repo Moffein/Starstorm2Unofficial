@@ -9,7 +9,7 @@ if %username% == Erikbir set pluginpath=C:\Users\Erikbir\AppData\Roaming\r2modma
 
 rem weaver patch for mp compatibility
 cd Weaver\
-Unity.UNetWeaver.exe "..\libs\UnityEngine.CoreModule.dll" "..\libs\UnityEngine.Networking.dll" "..\Starstorm2Release" "..\bin\Debug\Starstorm2.dll" "..\libs"
+Unity.UNetWeaver.exe "..\libs\UnityEngine.CoreModule.dll" "..\libs\com.unity.multiplayer-hlapi.Runtime.dll" "..\Starstorm2Release" "..\bin\Debug\Starstorm2.dll" "..\libs"
 
 rem package the mod
 mkdir ..\Starstorm2Release\
