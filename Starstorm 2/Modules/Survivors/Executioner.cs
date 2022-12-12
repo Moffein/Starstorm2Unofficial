@@ -34,15 +34,15 @@ namespace Starstorm2.Modules.Survivors
 
         internal override StarstormBodyInfo bodyInfo { get; set; } = new StarstormBodyInfo
         {
-            armor = 5f,
+            armor = 0f,
             bodyName = "ExecutionerBody",
             bodyNameToken = "EXECUTIONER_NAME",
             bodyColor = new Color(0.69f, 0.44f, 0.49f),
             characterPortrait = Modules.Assets.LoadCharacterIcon("Executioner"),
             crosshair = Modules.Assets.LoadCrosshair("Standard"),
-            damage = 14f,
+            damage = 12f,
             healthGrowth = 33f,
-            healthRegen = 1.5f,
+            healthRegen = 1f,
             jumpCount = 1,
             maxHealth = 110f,
             subtitleNameToken = "EXECUTIONER_SUBTITLE",
