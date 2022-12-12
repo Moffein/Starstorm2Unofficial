@@ -13,6 +13,7 @@ namespace EntityStates.Executioner
     public class ExecutionerAxe : BaseSkillState
     {
         public static float baseDuration = 0.85f;
+        public static float velocityMultiplier = 0.6f;
 
         private float duration;
         private Animator animator;
@@ -42,7 +43,6 @@ namespace EntityStates.Executioner
 
             if (base.isAuthority)
             {
-                base.characterBody.AddBuff(RoR2Content.Buffs.ArmorBoost);
                 base.characterMotor.Motor.ForceUnground();
                 base.characterMotor.jumpCount = base.characterBody.maxJumpCount;
                 base.characterMotor.velocity *= 0.5f;
@@ -83,7 +83,7 @@ namespace EntityStates.Executioner
             base.FixedUpdate();
 
             float moveSpeed = Mathf.Clamp(0f, 11f, 0.5f * this.moveSpeedStat);
-            base.characterMotor.rootMotion += Vector3.up * (moveSpeed * Mage.FlyUpState.speedCoefficientCurve.Evaluate(base.fixedAge / this.duration) * Time.fixedDeltaTime);
+            base.characterMotor.rootMotion += velocityMultiplier * Vector3.up * (moveSpeed * Mage.FlyUpState.speedCoefficientCurve.Evaluate(base.fixedAge / this.duration) * Time.fixedDeltaTime);
             base.characterMotor.velocity.y = 0f;
 
             base.characterMotor.moveDirection *= 2f;
@@ -103,8 +103,7 @@ namespace EntityStates.Executioner
     public class ExecutionerAxeSlam : BaseSkillState
     {
         public static float dropDamageCoefficient = 1.0f;
-        public static float baseDamageCoefficient = 11f;
-        public static float empoweredDamageCoefficient = 22f;
+        public static float baseDamageCoefficient = 8f;
         public static float procCoefficient = 1.0f;
         //shorter value if axe slam should be finite
         //public static float baseDuration = 0.4f;
@@ -254,10 +253,7 @@ namespace EntityStates.Executioner
                     }
                 }
                 int hitcount = hitTargets.Count;
-                float damage = ExecutionerAxeSlam.empoweredDamageCoefficient;
-                if (hitcount < 1) hitcount = 1;
-
-                if (hitcount > 1) damage = ExecutionerAxeSlam.baseDamageCoefficient;
+                float damage = ExecutionerAxeSlam.baseDamageCoefficient;
 
                 BlastAttack blast = new BlastAttack()
                 {
@@ -271,7 +267,7 @@ namespace EntityStates.Executioner
                     damageColorIndex = DamageColorIndex.Default,
                     falloffModel = BlastAttack.FalloffModel.None,
                     attackerFiltering = AttackerFiltering.NeverHitSelf,
-                    damageType = DamageType.BypassOneShotProtection
+                    damageType = DamageType.BonusToLowHealth
                 };
                 blast.Fire();
 
@@ -297,7 +293,6 @@ namespace EntityStates.Executioner
                 }
 
                 base.characterMotor.velocity.y = 0f;
-                base.characterBody.RemoveBuff(RoR2Content.Buffs.ArmorBoost);
             }
 
             if (cameraTargetParams)

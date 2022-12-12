@@ -186,7 +186,7 @@ namespace Starstorm2.Modules.Survivors
                 activationState = new EntityStates.SerializableEntityStateType(typeof(EntityStates.Executioner.ExecutionerDash)),
                 activationStateMachineName = "Weapon",
                 baseMaxStock = 1,
-                baseRechargeInterval = 7f,
+                baseRechargeInterval = 5f,
                 beginSkillCooldownOnSkillEnd = true,
                 canceledFromSprinting = false,
                 forceSprintDuringState = true,
@@ -201,7 +201,7 @@ namespace Starstorm2.Modules.Survivors
                 stockToConsume = 1,
                 keywordTokens = new string[]
                 {
-                    "KEYWORD_FEAR"
+                    "KEYWORD_STUNNING", "KEYWORD_FEAR"
                 }
             });
 
@@ -230,7 +230,8 @@ namespace Starstorm2.Modules.Survivors
                 cancelSprintingOnActivation = false,
                 rechargeStock = 1,
                 requiredStock = 1,
-                stockToConsume = 1
+                stockToConsume = 1,
+                keywordTokens = new string[] { "KEYWORD_SLAYER" }
             });
 
             Modules.Skills.AddSpecialSkills(bodyPrefab, executionSkillDef);
@@ -277,13 +278,12 @@ namespace Starstorm2.Modules.Survivors
             float dur = ExecutionerDash.debuffDuration;
 
             LanguageAPI.Add("EXECUTIONER_DASH_NAME", "Crowd Dispersion");
-            LanguageAPI.Add("EXECUTIONER_DASH_DESCRIPTION", $"Boost forward and <style=cIsUtility>fear</style> all nearby enemies for {dur} seconds.");
+            LanguageAPI.Add("EXECUTIONER_DASH_DESCRIPTION", $"Boost forward and <style=cIsUtility>Fear</style> all nearby enemies for {dur} seconds.");
 
             dmg = ExecutionerAxeSlam.baseDamageCoefficient * 100f;
-            float dmg2 = ExecutionerAxeSlam.empoweredDamageCoefficient * 100f;
 
             LanguageAPI.Add("EXECUTIONER_AXE_NAME", "Execution");
-            LanguageAPI.Add("EXECUTIONER_AXE_DESCRIPTION", $"Launch into the air and slam downward with your ion axe for <style=cIsDamage>{dmg}% damage</style>. Successful kills <style=cIsUtility>double the gained Ion Burst charges.</style>. Damage increased to <style=cIsDamage>{dmg2}%</style> if no more than one enemy was hit.");
+            LanguageAPI.Add("EXECUTIONER_AXE_DESCRIPTION", $"<style=cIsDamage>Slayer</style>. <style=cIsUtility>Launch into the air</style>, then slam downward with your ion axe for <style=cIsDamage>{dmg}% damage</style>.");
 
             LanguageAPI.Add("EXECUTIONER_UNLOCKUNLOCKABLE_ACHIEVEMENT_NAME", "Overkill");
             LanguageAPI.Add("EXECUTIONER_UNLOCKUNLOCKABLE_ACHIEVEMENT_DESC", "Defeat an enemy by dealing 1000% of its max health in damage. <color=#c11>Host only</color>");
@@ -302,57 +302,11 @@ namespace Starstorm2.Modules.Survivors
 
         internal override void Hook()
         {
-            IL.EntityStates.AI.Walker.Combat.UpdateAI += (il) =>
-            {
-                ILCursor curs = new ILCursor(il);
-                //go to where movement type is checked (applying movement vector)
-                curs.GotoNext(x => x.MatchCall<Vector3>("Cross"));
-                curs.Index += 2;
-                curs.Emit(OpCodes.Ldarg_0);
-                curs.Emit(OpCodes.Ldfld, typeof(EntityState).GetFieldCached("outer"));
-                curs.Emit(OpCodes.Ldloc_1);
-                curs.EmitDelegate<Func<EntityStateMachine, AISkillDriver.MovementType, AISkillDriver.MovementType>>((ESM, MoveType) =>
-                {
-                    if (ESM.GetComponent<CharacterMaster>().GetBody().HasBuff(BuffCore.fearDebuff))
-                    {
-                        return AISkillDriver.MovementType.FleeMoveTarget;
-                    }
-                    else
-                        return MoveType;
-                });
-                curs.Emit(OpCodes.Stloc_1);
-            };
-
-            IL.EntityStates.AI.Walker.Combat.GenerateBodyInputs += (il) =>
-            {
-                ILCursor curs = new ILCursor(il);
-                curs.GotoNext(x => x.MatchLdfld<Combat>("currentSkillMeetsActivationConditions"));
-                curs.Index += 1;
-                curs.Emit(OpCodes.Ldarg_0);
-                curs.Emit(OpCodes.Ldfld, typeof(EntityState).GetFieldCached("outer"));
-                curs.EmitDelegate<Func<bool, EntityStateMachine, bool>>((cond, ESM) =>
-                {
-                    if (ESM.GetComponent<CharacterMaster>().GetBody())
-                        if (ESM.GetComponent<CharacterMaster>().GetBody().HasBuff(BuffCore.fearDebuff))
-                            return false;
-                    return cond;
-                });
-            };
-
-            On.RoR2.HealthComponent.TakeDamage += (orig, self, damageInfo) =>
-            {
-                if (self.body.HasBuff(BuffCore.fearDebuff))
-                {
-                    damageInfo.damage *= 1.5f;
-                }
-                orig(self, damageInfo);
-            };
-
             On.RoR2.CharacterMaster.OnInventoryChanged += CharacterMaster_OnInventoryChanged;
             GlobalEventManager.onCharacterDeathGlobal += GlobalEventManager_onCharacterDeathGlobal;
             On.RoR2.HealthComponent.TakeDamage += HealthComponent_TakeDamage;
+            SetupFearExecute();
         }
-
         private void HealthComponent_TakeDamage(On.RoR2.HealthComponent.orig_TakeDamage orig, HealthComponent self, DamageInfo damageInfo)
         {
             bool wasAlive = self.alive;
@@ -809,6 +763,11 @@ namespace Starstorm2.Modules.Survivors
         {
             if (body.isChampion) return 10;
             return 1;
+        }
+
+        private void SetupFearExecute()
+        {
+            //TODO
         }
     }
 }

@@ -8,11 +8,13 @@ namespace EntityStates.Executioner
 {
     public class ExecutionerDash : BaseSkillState
     {
-        public static float baseDuration = 0.9f;
-        public static float speedMultiplier = 2.0f;
+        public static float baseDuration = 0.5f;
+        public static float speedMultiplier = 4.0f;
         public static float debuffRadius = 20f;
-        public static float debuffDuration = 3.0f;
+        public static float debuffDuration = 2.0f;
 
+        private Vector3 initialDirection;
+        private float initialSpeed;
         private float duration;
         private SphereSearch fearSearch;
         private List<HurtBox> hits;
@@ -22,6 +24,24 @@ namespace EntityStates.Executioner
         public override void OnEnter()
         {
             base.OnEnter();
+            initialSpeed = base.moveSpeedStat;
+            if (base.inputBank)
+            {
+                initialDirection = base.inputBank.moveVector;
+            }
+            else
+            {
+                initialDirection = base.GetAimRay().direction;
+            }
+            initialDirection.y = 0f;
+
+            if (base.characterMotor)
+            {
+                if (base.characterMotor.velocity.y < 0f)
+                {
+                    base.characterMotor.velocity.y = 0f;
+                }
+            }
             this.exeController = base.GetComponent<ExecutionerController>();
             this.animator = base.GetModelAnimator();
 
@@ -82,10 +102,29 @@ namespace EntityStates.Executioner
             foreach (HurtBox h in hits)
             {
                 HealthComponent hp = h.healthComponent;
-                CharacterBody body = hp?.body;
-                if (body && body != base.characterBody && body.baseNameToken != "BROTHER_BODY_NAME")
+                if (hp)
                 {
-                    body.AddTimedBuff(BuffCore.fearDebuff, debuffDuration);
+                    DamageInfo damage = new DamageInfo
+                    {
+                        attacker = base.gameObject,
+                        inflictor = base.gameObject,
+                        damage = 0f,
+                        procCoefficient = 1f,
+                        crit = false,
+                        force = Vector3.zero,
+                        position = h.transform.position,
+                        procChainMask = default,
+                        canRejectForce = true,
+                        damageColorIndex = DamageColorIndex.Default,
+                        damageType = DamageType.Stun1s | DamageType.NonLethal | DamageType.Silent | DamageType.BypassBlock
+                    };
+                    hp.TakeDamage(damage);
+
+                    CharacterBody body = hp.body;
+                    if (body && body != base.characterBody)
+                    {
+                        body.AddTimedBuff(BuffCore.fearDebuff, debuffDuration);
+                    }
                 }
             }
         }
@@ -101,9 +140,13 @@ namespace EntityStates.Executioner
 
             base.characterBody.isSprinting = true;
 
-            if (base.characterDirection && base.characterMotor)
+            if (base.characterMotor)
             {
-                base.characterMotor.rootMotion += (base.characterDirection.forward * base.characterBody.moveSpeed * speedMultiplier) * Time.fixedDeltaTime;
+                base.characterMotor.rootMotion += (initialDirection * initialSpeed * speedMultiplier) * Time.fixedDeltaTime;
+                if (base.characterMotor.velocity.y < 0f)
+                {
+                    base.characterMotor.velocity.y = 0f;
+                }
             }
 
             CreateFearAoe();
