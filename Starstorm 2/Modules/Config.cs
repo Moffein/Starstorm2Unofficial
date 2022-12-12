@@ -1,5 +1,7 @@
 ﻿using BepInEx.Configuration;
+using RiskOfOptions;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 
 namespace Starstorm2.Modules
@@ -48,7 +50,7 @@ namespace Starstorm2.Modules
                             "Enabled",
                             false,
                             "Enables Starstorm 2's lesser serious features, featuring content ranging from skins that slightly clash with lore to high quality shitposts - here be dragons!.");
-            EnableItems =
+            /*EnableItems =
                 Starstorm.instance.Config.Bind("Starstorm 2 :: Items",
                             "Enabled",
                             true,
@@ -63,33 +65,25 @@ namespace Starstorm2.Modules
                             "Pressurized Canister No Jump Control",
                             false,
                             "Set to true to disable jump control on Pressurized Canister - activating the equipment will apply constant upward force regardless of whether you hold the jump button. This may lead to Funny and Memorable (tm) moments, especially if you like picking up Gestures of the Drowned.");
-            EnableTyphoon =
-                Starstorm.instance.Config.Bind("Starstorm 2 :: Typhoon",
-                            "Enabled",
-                            true,
-                            "Enables Starstorm 2's Typhoon difficulty. Set to false to prevent Typhoon from appearing in difficulty selection.");
-            /*
-            EnableEthereal =
-                            Config.Bind("Starstorm 2 :: Ethereal Teleporters",
-                            "Enabled",
-                            true,
-                            "Enables Starstorm 2's difficulty-altering ethereal teleporters. Set to false to disable ethereal teleporters");
-            */
+            
             EnableVoid =
                 Starstorm.instance.Config.Bind("Starstorm 2 :: Void Fields changes",
                             "Enabled",
                             true,
                             "Enables gameplay changes related to the Void Fields hidden realm. Set to false to make Void Fields behave as it does in vanilla RoR2. Note that some unlocks will be unavailable if this is disabled.");
-            EnableElites =
-                Starstorm.instance.Config.Bind("Starstorm 2 :: Elites",
+             */
+            EnableTyphoon =
+                Starstorm.instance.Config.Bind("Starstorm 2 :: Typhoon",
                             "Enabled",
                             true,
-                            "Enables Starstorm 2's elite types. Set to false to disable these.");
+                            "Enables Starstorm 2's Typhoon difficulty. Set to false to prevent Typhoon from appearing in difficulty selection.");
+
             TyphoonIncreaseSpawnCap =
                 Starstorm.instance.Config.Bind("Starstorm 2 :: Typhoon",
                             "Increase Spawn Limit",
                             true,
                             "Increases the enemy spawn limit when Typhoon difficulty is selected. May cause bugs or performance issues. Disable to use the default spawn limit.");
+
             EnableEvents =
                 Starstorm.instance.Config.Bind("Starstorm 2 :: Events",
                             "Enabled",
@@ -126,8 +120,12 @@ namespace Starstorm2.Modules
 
             TauntKeybind = Starstorm.instance.Config.Bind("Starstorm 2 :: Keybinds", "Taunt Emote", KeyCode.Alpha2, "Keybind used for the Taunt emote.");
             tauntKeybind = TauntKeybind.Value;// cache it for performance
-        }
 
+            if (BepInEx.Bootstrap.Chainloader.PluginInfos.ContainsKey("com.rune580.riskofoptions"))
+            {
+                RiskOfOptionsCompat();
+            }
+        }
         // this helper automatically makes config entries for enabling/disabling survivors
         internal static ConfigEntry<bool> CharacterEnableConfig(string characterName)
         {
@@ -137,6 +135,25 @@ namespace Starstorm2.Modules
         internal static ConfigEntry<bool> CharacterEnableConfig(string characterName, string fullName)
         {
             return Starstorm.instance.Config.Bind<bool>(new ConfigDefinition("Starstorm 2 :: " + characterName, "Enabled"), true, new ConfigDescription("Enables Starstorm 2's " + fullName + " survivor. Set to false to disable Starstorm 2's " + fullName + " survivor."));
+        }
+
+        [MethodImpl(MethodImplOptions.NoInlining | MethodImplOptions.NoOptimization)]
+        private static void RiskOfOptionsCompat()
+        {
+            //NEED TO CONVERT EMOTES TO USE KEYBOARDSHORTCUT AND GETKEYPRESSED
+        }
+
+        //Taken from https://github.com/ToastedOven/CustomEmotesAPI/blob/main/CustomEmotesAPI/CustomEmotesAPI/CustomEmotesAPI.cs
+        public static bool GetKeyPressed(ConfigEntry<KeyboardShortcut> entry)
+        {
+            foreach (var item in entry.Value.Modifiers)
+            {
+                if (!Input.GetKey(item))
+                {
+                    return false;
+                }
+            }
+            return Input.GetKeyDown(entry.Value.MainKey);
         }
     }
 }

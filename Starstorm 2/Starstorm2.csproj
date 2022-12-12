@@ -328,6 +328,9 @@
     <Reference Include="Rewired_CSharp">
       <HintPath>libs\Rewired_CSharp.dll</HintPath>
     </Reference>
+    <Reference Include="RiskOfOptions">
+      <HintPath>libs\SoftDependencies\RiskOfOptions.dll</HintPath>
+    </Reference>
     <Reference Include="RoR2">
       <HintPath>libs\RoR2.dll</HintPath>
     </Reference>
