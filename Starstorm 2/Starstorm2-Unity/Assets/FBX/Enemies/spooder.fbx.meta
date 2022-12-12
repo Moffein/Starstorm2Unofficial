@@ -1,0 +1,159 @@
+fileFormatVersion: 2
+guid: d3cb646f60b94d242a89e9170924b154
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: Antenna
+    100002: Armature
+    100004: BLeg1.L
+    100006: BLeg1.R
+    100008: BLeg2.L
+    100010: BLeg2.R
+    100012: BLegIK.L
+    100014: BLegIK.R
+    100016: BLegKNee.L
+    100018: BLegKNee.R
+    100020: Body
+    100022: Cylinder.002
+    100024: FLeg1.L
+    100026: FLeg1.R
+    100028: FLeg2.L
+    100030: FLeg2.R
+    100032: FLegIK.L
+    100034: FLegIK.R
+    100036: FLegKNEE.L
+    100038: FLegKnee.R
+    100040: Gun
+    100042: Plane
+    100044: Root
+    100046: //RootNode
+    400000: Antenna
+    400002: Armature
+    400004: BLeg1.L
+    400006: BLeg1.R
+    400008: BLeg2.L
+    400010: BLeg2.R
+    400012: BLegIK.L
+    400014: BLegIK.R
+    400016: BLegKNee.L
+    400018: BLegKNee.R
+    400020: Body
+    400022: Cylinder.002
+    400024: FLeg1.L
+    400026: FLeg1.R
+    400028: FLeg2.L
+    400030: FLeg2.R
+    400032: FLegIK.L
+    400034: FLegIK.R
+    400036: FLegKNEE.L
+    400038: FLegKnee.R
+    400040: Gun
+    400042: Plane
+    400044: Root
+    400046: //RootNode
+    2100000: Material.001
+    2100002: Material.002
+    2100004: No Name
+    2300000: Plane
+    3300000: Plane
+    4300000: Cylinder.002
+    4300002: Plane
+    7400000: Armature|Ascending
+    7400002: Armature|Attack
+    7400004: Armature|Death
+    7400006: Armature|Default
+    7400008: Armature|Descening
+    7400010: Armature|Jump
+    7400012: Armature|WalkBWD
+    7400014: Armature|WalkFWD
+    7400016: Armature|WalkLFT
+    7400018: Armature|WalkRHT
+    9500000: //RootNode
+    13700000: Cylinder.002
+    2186277476908879412: ImportLogs
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 0
+    importLights: 0
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 0
+    previousCalculatedGlobalScale: 0.01
+    hasPreviousCalculatedGlobalScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

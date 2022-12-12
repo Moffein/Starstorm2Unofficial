@@ -1,0 +1,631 @@
+fileFormatVersion: 2
+guid: 841643dffa9f15e4cb1e77430fd3fc71
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: Armature
+    100002: Armature.001
+    100004: base
+    100006: base 1
+    100008: calf.l
+    100010: calf.l 1
+    100012: calf.r
+    100014: calf.r 1
+    100016: Camera
+    100018: chest
+    100020: chest 1
+    100022: CommandoMesh
+    100024: //RootNode
+    100026: ElbowIK.l
+    100028: ElbowIK.r
+    100030: finger1.1.l
+    100032: finger1.1.l 1
+    100034: finger1.1.r
+    100036: finger1.1.r 1
+    100038: finger1.2.l
+    100040: finger1.2.l 1
+    100042: finger1.2.r
+    100044: finger1.2.r 1
+    100046: finger1.3.l
+    100048: finger1.3.l 1
+    100050: finger1.3.r
+    100052: finger1.3.r 1
+    100054: finger1IKBender.l
+    100056: finger1IKBender.l 1
+    100058: finger1IKBender.r
+    100060: finger1IKBender.r 1
+    100062: finger1IKTarget.l
+    100064: finger1IKTarget.l 1
+    100066: finger1IKTarget.r
+    100068: finger1IKTarget.r 1
+    100070: finger2.1.l
+    100072: finger2.1.l 1
+    100074: finger2.1.r
+    100076: finger2.1.r 1
+    100078: finger2.2.l
+    100080: finger2.2.l 1
+    100082: finger2.2.r
+    100084: finger2.2.r 1
+    100086: finger2.3.l
+    100088: finger2.3.l 1
+    100090: finger2.3.r
+    100092: finger2.3.r 1
+    100094: finger2IKBender.l
+    100096: finger2IKBender.l 1
+    100098: finger2IKBender.r
+    100100: finger2IKBender.r 1
+    100102: finger2IKTarget.l
+    100104: finger2IKTarget.l 1
+    100106: finger2IKTarget.r
+    100108: finger2IKTarget.r 1
+    100110: finger3.1.l
+    100112: finger3.1.l 1
+    100114: finger3.1.r
+    100116: finger3.1.r 1
+    100118: finger3.2.l
+    100120: finger3.2.l 1
+    100122: finger3.2.r
+    100124: finger3.2.r 1
+    100126: finger3.3.l
+    100128: finger3.3.l 1
+    100130: finger3.3.r
+    100132: finger3.3.r 1
+    100134: finger3IKBender.l
+    100136: finger3IKBender.l 1
+    100138: finger3IKBender.r
+    100140: finger3IKBender.r 1
+    100142: finger3IKTarget.l
+    100144: finger3IKTarget.l 1
+    100146: finger3IKTarget.r
+    100148: finger3IKTarget.r 1
+    100150: finger4.1.l
+    100152: finger4.1.l 1
+    100154: finger4.1.r
+    100156: finger4.1.r 1
+    100158: finger4.2.l
+    100160: finger4.2.l 1
+    100162: finger4.2.r
+    100164: finger4.2.r 1
+    100166: finger4.3.l
+    100168: finger4.3.l 1
+    100170: finger4.3.r
+    100172: finger4.3.r 1
+    100174: finger4IKBender.l
+    100176: finger4IKBender.l 1
+    100178: finger4IKBender.r
+    100180: finger4IKBender.r 1
+    100182: finger4IKTarget.l
+    100184: finger4IKTarget.l 1
+    100186: finger4IKTarget.r
+    100188: finger4IKTarget.r 1
+    100190: foot.l
+    100192: foot.l 1
+    100194: foot.r
+    100196: foot.r 1
+    100198: FootIK.l
+    100200: FootIK.r
+    100202: gun.l
+    100204: gun.r
+    100206: gun.r 1
+    100208: GunMesh.001
+    100210: hand.l
+    100212: hand.l 1
+    100214: hand.r
+    100216: hand.r 1
+    100218: HandIK.l
+    100220: HandIK.r
+    100222: head
+    100224: head 1
+    100226: IKArmPole.l
+    100228: IKArmPole.r
+    100230: IKArmTarget.l
+    100232: IKArmTarget.r
+    100234: IKLegPole.l
+    100236: IKLegPole.r
+    100238: IKLegTarget.l
+    100240: IKLegTarget.r
+    100242: KneeIK.l
+    100244: KneeIK.r
+    100246: lower_arm.l
+    100248: lower_arm.l 1
+    100250: lower_arm.r
+    100252: lower_arm.r 1
+    100254: MercSwordMesh
+    100256: pelvis
+    100258: pelvis 1
+    100260: ROOT
+    100262: ROOT 1
+    100264: stomach
+    100266: stomach 1
+    100268: Sword
+    100270: SwordSMEAR1
+    100272: SwordSMEAR2
+    100274: SwordSMEAR3
+    100276: SwordSMEAR4
+    100278: SwordSMEAR5
+    100280: SwordSMEAR6
+    100282: thigh.l
+    100284: thigh.l 1
+    100286: thigh.r
+    100288: thigh.r 1
+    100290: thumb.1.l
+    100292: thumb.1.l 1
+    100294: thumb.1.r
+    100296: thumb.1.r 1
+    100298: thumb.2.l
+    100300: thumb.2.l 1
+    100302: thumb.2.r
+    100304: thumb.2.r 1
+    100306: thumbIKBender.l
+    100308: thumbIKBender.l 1
+    100310: thumbIKBender.r
+    100312: thumbIKBender.r 1
+    100314: thumbIKTarget.l
+    100316: thumbIKTarget.l 1
+    100318: thumbIKTarget.r
+    100320: thumbIKTarget.r 1
+    100322: thumbIKTarget.r_end
+    100324: toe.l
+    100326: toe.l 1
+    100328: toe.r
+    100330: toe.r 1
+    100332: upper_arm.l
+    100334: upper_arm.l 1
+    100336: upper_arm.r
+    100338: upper_arm.r 1
+    100340: ElbowIK.l_end
+    100342: ElbowIK.r_end
+    100344: finger1.3.l_end
+    100346: finger1.3.l_end 1
+    100348: finger1.3.r_end
+    100350: finger1.3.r_end 1
+    100352: finger1IKTarget.l_end
+    100354: finger1IKTarget.l_end 1
+    100356: finger1IKTarget.r_end
+    100358: finger1IKTarget.r_end 1
+    100360: finger2.3.l_end
+    100362: finger2.3.l_end 1
+    100364: finger2.3.r_end
+    100366: finger2.3.r_end 1
+    100368: finger2IKTarget.l_end
+    100370: finger2IKTarget.l_end 1
+    100372: finger2IKTarget.r_end
+    100374: finger2IKTarget.r_end 1
+    100376: finger3.3.l_end
+    100378: finger3.3.l_end 1
+    100380: finger3.3.r_end
+    100382: finger3.3.r_end 1
+    100384: finger3IKTarget.l_end
+    100386: finger3IKTarget.l_end 1
+    100388: finger3IKTarget.r_end
+    100390: finger3IKTarget.r_end 1
+    100392: finger4.3.l_end
+    100394: finger4.3.l_end 1
+    100396: finger4.3.r_end
+    100398: finger4.3.r_end 1
+    100400: finger4IKTarget.l_end
+    100402: finger4IKTarget.l_end 1
+    100404: finger4IKTarget.r_end
+    100406: finger4IKTarget.r_end 1
+    100408: FootIK.l_end
+    100410: FootIK.r_end
+    100412: gun.l_end
+    100414: gun.r_end
+    100416: gun.r_end 1
+    100418: HandIK.l_end
+    100420: HandIK.r_end
+    100422: head_end
+    100424: head_end 1
+    100426: IKArmPole.l_end
+    100428: IKArmPole.r_end
+    100430: IKLegPole.l_end
+    100432: IKLegPole.r_end
+    100434: KneeIK.l_end
+    100436: KneeIK.r_end
+    100438: SwordSMEAR6_end
+    100440: thumb.2.l_end
+    100442: thumb.2.l_end 1
+    100444: thumb.2.r_end
+    100446: thumb.2.r_end 1
+    100448: thumbIKTarget.l_end
+    100450: thumbIKTarget.l_end 1
+    100452: thumbIKTarget.r_end 1
+    100454: thumbIKTarget.r_end_end
+    100456: toe.l_end
+    100458: toe.l_end 1
+    100460: toe.r_end
+    100462: toe.r_end 1
+    100464: Armature.002
+    100466: Circle
+    100468: GunMesh
+    100470: Sun
+    100472: Sword_end
+    400000: Armature
+    400002: Armature.001
+    400004: base
+    400006: base 1
+    400008: calf.l
+    400010: calf.l 1
+    400012: calf.r
+    400014: calf.r 1
+    400016: Camera
+    400018: chest
+    400020: chest 1
+    400022: CommandoMesh
+    400024: //RootNode
+    400026: ElbowIK.l
+    400028: ElbowIK.r
+    400030: finger1.1.l
+    400032: finger1.1.l 1
+    400034: finger1.1.r
+    400036: finger1.1.r 1
+    400038: finger1.2.l
+    400040: finger1.2.l 1
+    400042: finger1.2.r
+    400044: finger1.2.r 1
+    400046: finger1.3.l
+    400048: finger1.3.l 1
+    400050: finger1.3.r
+    400052: finger1.3.r 1
+    400054: finger1IKBender.l
+    400056: finger1IKBender.l 1
+    400058: finger1IKBender.r
+    400060: finger1IKBender.r 1
+    400062: finger1IKTarget.l
+    400064: finger1IKTarget.l 1
+    400066: finger1IKTarget.r
+    400068: finger1IKTarget.r 1
+    400070: finger2.1.l
+    400072: finger2.1.l 1
+    400074: finger2.1.r
+    400076: finger2.1.r 1
+    400078: finger2.2.l
+    400080: finger2.2.l 1
+    400082: finger2.2.r
+    400084: finger2.2.r 1
+    400086: finger2.3.l
+    400088: finger2.3.l 1
+    400090: finger2.3.r
+    400092: finger2.3.r 1
+    400094: finger2IKBender.l
+    400096: finger2IKBender.l 1
+    400098: finger2IKBender.r
+    400100: finger2IKBender.r 1
+    400102: finger2IKTarget.l
+    400104: finger2IKTarget.l 1
+    400106: finger2IKTarget.r
+    400108: finger2IKTarget.r 1
+    400110: finger3.1.l
+    400112: finger3.1.l 1
+    400114: finger3.1.r
+    400116: finger3.1.r 1
+    400118: finger3.2.l
+    400120: finger3.2.l 1
+    400122: finger3.2.r
+    400124: finger3.2.r 1
+    400126: finger3.3.l
+    400128: finger3.3.l 1
+    400130: finger3.3.r
+    400132: finger3.3.r 1
+    400134: finger3IKBender.l
+    400136: finger3IKBender.l 1
+    400138: finger3IKBender.r
+    400140: finger3IKBender.r 1
+    400142: finger3IKTarget.l
+    400144: finger3IKTarget.l 1
+    400146: finger3IKTarget.r
+    400148: finger3IKTarget.r 1
+    400150: finger4.1.l
+    400152: finger4.1.l 1
+    400154: finger4.1.r
+    400156: finger4.1.r 1
+    400158: finger4.2.l
+    400160: finger4.2.l 1
+    400162: finger4.2.r
+    400164: finger4.2.r 1
+    400166: finger4.3.l
+    400168: finger4.3.l 1
+    400170: finger4.3.r
+    400172: finger4.3.r 1
+    400174: finger4IKBender.l
+    400176: finger4IKBender.l 1
+    400178: finger4IKBender.r
+    400180: finger4IKBender.r 1
+    400182: finger4IKTarget.l
+    400184: finger4IKTarget.l 1
+    400186: finger4IKTarget.r
+    400188: finger4IKTarget.r 1
+    400190: foot.l
+    400192: foot.l 1
+    400194: foot.r
+    400196: foot.r 1
+    400198: FootIK.l
+    400200: FootIK.r
+    400202: gun.l
+    400204: gun.r
+    400206: gun.r 1
+    400208: GunMesh.001
+    400210: hand.l
+    400212: hand.l 1
+    400214: hand.r
+    400216: hand.r 1
+    400218: HandIK.l
+    400220: HandIK.r
+    400222: head
+    400224: head 1
+    400226: IKArmPole.l
+    400228: IKArmPole.r
+    400230: IKArmTarget.l
+    400232: IKArmTarget.r
+    400234: IKLegPole.l
+    400236: IKLegPole.r
+    400238: IKLegTarget.l
+    400240: IKLegTarget.r
+    400242: KneeIK.l
+    400244: KneeIK.r
+    400246: lower_arm.l
+    400248: lower_arm.l 1
+    400250: lower_arm.r
+    400252: lower_arm.r 1
+    400254: MercSwordMesh
+    400256: pelvis
+    400258: pelvis 1
+    400260: ROOT
+    400262: ROOT 1
+    400264: stomach
+    400266: stomach 1
+    400268: Sword
+    400270: SwordSMEAR1
+    400272: SwordSMEAR2
+    400274: SwordSMEAR3
+    400276: SwordSMEAR4
+    400278: SwordSMEAR5
+    400280: SwordSMEAR6
+    400282: thigh.l
+    400284: thigh.l 1
+    400286: thigh.r
+    400288: thigh.r 1
+    400290: thumb.1.l
+    400292: thumb.1.l 1
+    400294: thumb.1.r
+    400296: thumb.1.r 1
+    400298: thumb.2.l
+    400300: thumb.2.l 1
+    400302: thumb.2.r
+    400304: thumb.2.r 1
+    400306: thumbIKBender.l
+    400308: thumbIKBender.l 1
+    400310: thumbIKBender.r
+    400312: thumbIKBender.r 1
+    400314: thumbIKTarget.l
+    400316: thumbIKTarget.l 1
+    400318: thumbIKTarget.r
+    400320: thumbIKTarget.r 1
+    400322: thumbIKTarget.r_end
+    400324: toe.l
+    400326: toe.l 1
+    400328: toe.r
+    400330: toe.r 1
+    400332: upper_arm.l
+    400334: upper_arm.l 1
+    400336: upper_arm.r
+    400338: upper_arm.r 1
+    400340: ElbowIK.l_end
+    400342: ElbowIK.r_end
+    400344: finger1.3.l_end
+    400346: finger1.3.l_end 1
+    400348: finger1.3.r_end
+    400350: finger1.3.r_end 1
+    400352: finger1IKTarget.l_end
+    400354: finger1IKTarget.l_end 1
+    400356: finger1IKTarget.r_end
+    400358: finger1IKTarget.r_end 1
+    400360: finger2.3.l_end
+    400362: finger2.3.l_end 1
+    400364: finger2.3.r_end
+    400366: finger2.3.r_end 1
+    400368: finger2IKTarget.l_end
+    400370: finger2IKTarget.l_end 1
+    400372: finger2IKTarget.r_end
+    400374: finger2IKTarget.r_end 1
+    400376: finger3.3.l_end
+    400378: finger3.3.l_end 1
+    400380: finger3.3.r_end
+    400382: finger3.3.r_end 1
+    400384: finger3IKTarget.l_end
+    400386: finger3IKTarget.l_end 1
+    400388: finger3IKTarget.r_end
+    400390: finger3IKTarget.r_end 1
+    400392: finger4.3.l_end
+    400394: finger4.3.l_end 1
+    400396: finger4.3.r_end
+    400398: finger4.3.r_end 1
+    400400: finger4IKTarget.l_end
+    400402: finger4IKTarget.l_end 1
+    400404: finger4IKTarget.r_end
+    400406: finger4IKTarget.r_end 1
+    400408: FootIK.l_end
+    400410: FootIK.r_end
+    400412: gun.l_end
+    400414: gun.r_end
+    400416: gun.r_end 1
+    400418: HandIK.l_end
+    400420: HandIK.r_end
+    400422: head_end
+    400424: head_end 1
+    400426: IKArmPole.l_end
+    400428: IKArmPole.r_end
+    400430: IKLegPole.l_end
+    400432: IKLegPole.r_end
+    400434: KneeIK.l_end
+    400436: KneeIK.r_end
+    400438: SwordSMEAR6_end
+    400440: thumb.2.l_end
+    400442: thumb.2.l_end 1
+    400444: thumb.2.r_end
+    400446: thumb.2.r_end 1
+    400448: thumbIKTarget.l_end
+    400450: thumbIKTarget.l_end 1
+    400452: thumbIKTarget.r_end 1
+    400454: thumbIKTarget.r_end_end
+    400456: toe.l_end
+    400458: toe.l_end 1
+    400460: toe.r_end
+    400462: toe.r_end 1
+    400464: Armature.002
+    400466: Circle
+    400468: GunMesh
+    400470: Sun
+    400472: Sword_end
+    2000000: Camera
+    2100000: Material.001
+    2100002: matCommandoDualies
+    2100004: matMercSword
+    2100006: (null)
+    2100008: Material
+    2300000: GunMesh.001
+    2300002: Circle
+    2300004: GunMesh
+    3300000: GunMesh.001
+    3300002: Circle
+    3300004: GunMesh
+    4300000: GunMesh.001
+    4300002: CommandoMesh
+    4300004: MercSwordMesh
+    4300006: GunMesh
+    4300008: Circle
+    7400000: SprintLFT
+    7400002: SprintRHT
+    7400004: Ascending
+    7400006: CharIdle
+    7400008: CharSelect
+    7400010: Descending
+    7400012: Hitstun
+    7400014: Idle
+    7400016: Jumping
+    7400018: Landing
+    7400020: Primary1
+    7400022: Primary2
+    7400024: Primary3
+    7400026: Secondary1
+    7400028: Secondary2
+    7400030: Secondary3(Strong)
+    7400032: Secondary3(weak)
+    7400034: Spawn
+    7400036: Special1
+    7400038: Special2Down
+    7400040: Special2FWD
+    7400042: Special2LFT
+    7400044: Special2RHT
+    7400046: Special2UP
+    7400048: Sprint
+    7400050: Utility
+    7400052: WalkBWD
+    7400054: WalkFWD
+    7400056: WalkLFT
+    7400058: WalkRHT
+    7400060: Armature|ArmatureAction
+    7400062: Armature|ArmatureAction.001
+    7400064: Armature|Idle
+    7400066: Armature|MercSwordMeshAction.001
+    7400068: Armature|SprintAlt
+    7400070: Armature|Taunt
+    7400072: GunMesh|ArmatureAction
+    7400074: GunMesh|ArmatureAction.001
+    7400076: GunMesh|Idle
+    7400078: GunMesh|MercSwordMeshAction.001
+    7400080: Circle|ArmatureAction
+    7400082: Circle|ArmatureAction.001
+    7400084: Circle|Idle
+    7400086: Circle|MercSwordMeshAction.001
+    9500000: //RootNode
+    10800000: Sun
+    13700000: CommandoMesh
+    13700002: MercSwordMesh
+    2186277476908879412: ImportLogs
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    previousCalculatedGlobalScale: 0.01
+    hasPreviousCalculatedGlobalScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

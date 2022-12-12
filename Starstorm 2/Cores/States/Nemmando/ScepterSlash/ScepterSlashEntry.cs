@@ -1,0 +1,153 @@
+﻿using EntityStates;
+using RoR2;
+using UnityEngine;
+using UnityEngine.Networking;
+
+namespace Starstorm2.Cores.States.Nemmando
+{
+    public class ScepterSlashEntry : BaseSkillState
+    {
+        public float charge;
+        public static float maxRecoil = 5f;
+        public static float minRecoil = 0.4f;
+        public static float initialMaxSpeedCoefficient = 35f;
+        public static float initialMinSpeedCoefficient = 2f;
+        public static float minDuration = 0.2f;
+        public static float maxDuration = 0.1f;
+
+        private float speedCoefficient;
+        private float recoil;
+        private float duration;
+
+        private float dashSpeed;
+        private Vector3 forwardDirection;
+        private Vector3 previousPosition;
+        private ChildLocator childLocator;
+        private ParticleSystem dashEffect;
+
+        public override void OnEnter()
+        {
+            base.OnEnter();
+            base.characterBody.isSprinting = true;
+            if (base.cameraTargetParams) base.cameraTargetParams.aimMode = CameraTargetParams.AimType.Aura;
+
+            this.duration = Util.Remap(this.charge, 0f, 1f, ScepterSlashEntry.minDuration, ScepterSlashEntry.maxDuration);
+            this.speedCoefficient = Util.Remap(this.charge, 0f, 1f, ScepterSlashEntry.initialMinSpeedCoefficient, ScepterSlashEntry.initialMaxSpeedCoefficient);
+            this.recoil = Util.Remap(this.charge, 0f, 1f, ScepterSlashEntry.minRecoil, ScepterSlashEntry.maxRecoil);
+
+            this.childLocator = base.GetModelChildLocator();
+
+            this.forwardDirection = base.GetAimRay().direction;
+
+            this.RecalculateSpeed();
+
+            if (base.characterMotor && base.characterDirection)
+            {
+                base.characterMotor.velocity.y *= 0.1f;
+                base.characterMotor.velocity = this.forwardDirection * this.dashSpeed;
+            }
+
+            base.PlayAnimation("FullBody, Override", "DecisiveStrikeDash");
+
+            base.characterBody.bodyFlags |= CharacterBody.BodyFlags.IgnoreFallDamage;
+
+            Vector3 b = base.characterMotor ? base.characterMotor.velocity : Vector3.zero;
+            this.previousPosition = base.transform.position - b;
+
+            this.dashEffect = this.childLocator.FindChild("DashEffect").GetComponent<ParticleSystem>();
+            if (this.dashEffect) this.dashEffect.Play();
+
+            Transform modelTransform = base.GetModelTransform();
+            if (modelTransform)
+            {
+                TemporaryOverlay temporaryOverlay = modelTransform.gameObject.AddComponent<TemporaryOverlay>();
+                temporaryOverlay.duration = 1.5f * this.duration;
+                temporaryOverlay.animateShaderAlpha = true;
+                temporaryOverlay.alphaCurve = AnimationCurve.EaseInOut(0f, 1f, 1f, 0f);
+                temporaryOverlay.destroyComponentOnEnd = true;
+                temporaryOverlay.originalMaterial = Resources.Load<Material>("Materials/matDoppelganger");
+                temporaryOverlay.AddToCharacerModel(modelTransform.GetComponent<CharacterModel>());
+            }
+        }
+
+        private void RecalculateSpeed()
+        {
+            this.dashSpeed = (4 + 0.25f * this.moveSpeedStat) * this.speedCoefficient;
+        }
+
+        public override void OnExit()
+        {
+            if (base.characterMotor) base.characterMotor.disableAirControlUntilCollision = false;
+
+            base.characterMotor.velocity = Vector3.zero;
+
+            base.characterBody.bodyFlags &= ~CharacterBody.BodyFlags.IgnoreFallDamage;
+
+            base.OnExit();
+        }
+
+        public override void FixedUpdate()
+        {
+            base.FixedUpdate();
+            base.characterBody.isSprinting = true;
+
+            if (base.fixedAge >= this.duration && base.isAuthority)
+            {
+                if (this.charge >= 1f)
+                {
+                    ScepterSlashAttack nextState = new ScepterSlashAttack();
+                    nextState.charge = charge;
+                    this.outer.SetNextState(nextState);
+                    return;
+                }
+                else
+                {
+                    ChargedSlashAttack nextState = new ChargedSlashAttack();
+                    nextState.charge = charge;
+                    this.outer.SetNextState(nextState);
+                    return;
+                }
+            }
+
+            this.RecalculateSpeed();
+
+            if (base.isAuthority)
+            {
+                Vector3 normalized = (base.transform.position - this.previousPosition).normalized;
+
+                if (base.characterDirection)
+                {
+                    if (normalized != Vector3.zero)
+                    {
+                        Vector3 vector = normalized * this.dashSpeed;
+                        float d = Mathf.Max(Vector3.Dot(vector, this.forwardDirection), 0f);
+                        vector = this.forwardDirection * d;
+                        vector.y = base.characterMotor.velocity.y;
+                        base.characterMotor.velocity = vector;
+                    }
+
+                    base.characterDirection.forward = this.forwardDirection;
+                }
+
+                this.previousPosition = base.transform.position;
+            }
+        }
+
+        public override void OnSerialize(NetworkWriter writer)
+        {
+            base.OnSerialize(writer);
+            writer.Write(this.forwardDirection);
+        }
+
+        public override void OnDeserialize(NetworkReader reader)
+        {
+            base.OnDeserialize(reader);
+            forwardDirection = reader.ReadVector3();
+        }
+
+        public override InterruptPriority GetMinimumInterruptPriority()
+        {
+            return InterruptPriority.Frozen;
+        }
+    }
+}

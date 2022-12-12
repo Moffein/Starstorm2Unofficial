@@ -1,0 +1,281 @@
+fileFormatVersion: 2
+guid: a4e83035297dfa447a9b326654f483b6
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: Armature
+    100002: Base
+    100004: Camera
+    100006: Cylinder.002
+    100008: elbow.L
+    100010: elbow.R
+    100012: Empty
+    100014: Empty.001
+    100016: Foot.L
+    100018: Foot.R
+    100020: Forearm.L
+    100022: Forearm.R
+    100024: gunHoseBase
+    100026: gunHoseBone1
+    100028: Hand.L
+    100030: Hand.L.001
+    100032: Hand.R
+    100034: Hand.R.001
+    100036: Head
+    100038: hoseBase
+    100040: hoseBone1
+    100042: hoseBone10
+    100044: hoseBone11
+    100046: hoseBone2
+    100048: hoseBone3
+    100050: hoseBone4
+    100052: hoseBone5
+    100054: hoseBone6
+    100056: hoseBone7
+    100058: hoseBone8
+    100060: hoseBone9
+    100062: hoseElbow
+    100064: hoseIK
+    100066: hoseRootElbow
+    100068: hoseRootIK
+    100070: Ik-Leg.L
+    100072: Ik.Hand.L
+    100074: Ik.Hand.R
+    100076: Ik.Leg.R
+    100078: Index tip.L
+    100080: Index tip.R
+    100082: Index.L
+    100084: Index.R
+    100086: Knee.L
+    100088: Knee.R
+    100090: Leg.L
+    100092: Leg.R
+    100094: Middle tip.L
+    100096: Middle tip.R
+    100098: Middle.L
+    100100: Middle.R
+    100102: Neck
+    100104: Pinky tip.L
+    100106: Pinky tip.R
+    100108: Pinky.L
+    100110: Pinky.R
+    100112: Plane
+    100114: Pyro
+    100116: //RootNode
+    100118: Ring tip.L
+    100120: Ring tip.R
+    100122: Ring.L
+    100124: Ring.R
+    100126: spine base
+    100128: spine mid
+    100130: spine top
+    100132: Sun
+    100134: Sun.001
+    100136: Sun.002
+    100138: Thigh.L
+    100140: Thigh.R
+    100142: Thumb tip.L
+    100144: Thumb tip.R
+    100146: Thumb.L
+    100148: Thumb.R
+    100150: Toe.L
+    100152: Toe.R
+    100154: Upperarm.L
+    100156: Upperarm.R
+    400000: Armature
+    400002: Base
+    400004: Camera
+    400006: Cylinder.002
+    400008: elbow.L
+    400010: elbow.R
+    400012: Empty
+    400014: Empty.001
+    400016: Foot.L
+    400018: Foot.R
+    400020: Forearm.L
+    400022: Forearm.R
+    400024: gunHoseBase
+    400026: gunHoseBone1
+    400028: Hand.L
+    400030: Hand.L.001
+    400032: Hand.R
+    400034: Hand.R.001
+    400036: Head
+    400038: hoseBase
+    400040: hoseBone1
+    400042: hoseBone10
+    400044: hoseBone11
+    400046: hoseBone2
+    400048: hoseBone3
+    400050: hoseBone4
+    400052: hoseBone5
+    400054: hoseBone6
+    400056: hoseBone7
+    400058: hoseBone8
+    400060: hoseBone9
+    400062: hoseElbow
+    400064: hoseIK
+    400066: hoseRootElbow
+    400068: hoseRootIK
+    400070: Ik-Leg.L
+    400072: Ik.Hand.L
+    400074: Ik.Hand.R
+    400076: Ik.Leg.R
+    400078: Index tip.L
+    400080: Index tip.R
+    400082: Index.L
+    400084: Index.R
+    400086: Knee.L
+    400088: Knee.R
+    400090: Leg.L
+    400092: Leg.R
+    400094: Middle tip.L
+    400096: Middle tip.R
+    400098: Middle.L
+    400100: Middle.R
+    400102: Neck
+    400104: Pinky tip.L
+    400106: Pinky tip.R
+    400108: Pinky.L
+    400110: Pinky.R
+    400112: Plane
+    400114: Pyro
+    400116: //RootNode
+    400118: Ring tip.L
+    400120: Ring tip.R
+    400122: Ring.L
+    400124: Ring.R
+    400126: spine base
+    400128: spine mid
+    400130: spine top
+    400132: Sun
+    400134: Sun.001
+    400136: Sun.002
+    400138: Thigh.L
+    400140: Thigh.R
+    400142: Thumb tip.L
+    400144: Thumb tip.R
+    400146: Thumb.L
+    400148: Thumb.R
+    400150: Toe.L
+    400152: Toe.R
+    400154: Upperarm.L
+    400156: Upperarm.R
+    2000000: Camera
+    2100000: main
+    2100002: gun1.002
+    2100004: No Name
+    2300000: Cylinder.002
+    2300002: Plane
+    3300000: Cylinder.002
+    3300002: Plane
+    4300000: Pyro
+    4300002: Plane
+    4300004: Cylinder.002
+    7400000: Idle
+    7400002: Armature|Ascending
+    7400004: Armature|CharIdle
+    7400006: Armature|CharSelect
+    7400008: Armature|Default
+    7400010: Armature|Descending
+    7400012: Armature|Firing1
+    7400014: Armature|Firing2
+    7400016: Armature|HItstun
+    7400018: Armature|Idle
+    7400020: Armature|Jumping
+    7400022: Armature|Sprint
+    7400024: Armature|WalkBWD
+    7400026: Armature|WalkFWD
+    7400028: Armature|WalkLFT
+    7400030: Armature|WalkRHT
+    9500000: //RootNode
+    10800000: Sun
+    10800002: Sun.001
+    10800004: Sun.002
+    13700000: Pyro
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    previousCalculatedGlobalScale: 1
+    hasPreviousCalculatedGlobalScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

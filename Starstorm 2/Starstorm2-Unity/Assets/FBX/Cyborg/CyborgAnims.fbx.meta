@@ -1,0 +1,174 @@
+fileFormatVersion: 2
+guid: e931799b27e53f84ebe5a5d031b7b7e6
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: Armature
+    100002: Camera
+    100004: Chest
+    100006: Collar.L
+    100008: Collar.R
+    100010: //RootNode
+    100012: head
+    100014: head_end
+    100016: Legs.001
+    100018: Light
+    100020: Lowerarm.L
+    100022: Lowerarm.L_end
+    100024: Lowerarm.R
+    100026: Lowerarm.R_end
+    100028: lowerleg.L
+    100030: lowerleg.L_end
+    100032: lowerleg.R
+    100034: lowerleg.R_end
+    100036: Upperarm.L
+    100038: Upperarm.R
+    100040: Upperleg.L
+    100042: Upperleg.R
+    100044: Waist
+    400000: Armature
+    400002: Camera
+    400004: Chest
+    400006: Collar.L
+    400008: Collar.R
+    400010: //RootNode
+    400012: head
+    400014: head_end
+    400016: Legs.001
+    400018: Light
+    400020: Lowerarm.L
+    400022: Lowerarm.L_end
+    400024: Lowerarm.R
+    400026: Lowerarm.R_end
+    400028: lowerleg.L
+    400030: lowerleg.L_end
+    400032: lowerleg.R
+    400034: lowerleg.R_end
+    400036: Upperarm.L
+    400038: Upperarm.R
+    400040: Upperleg.L
+    400042: Upperleg.R
+    400044: Waist
+    2000000: Camera
+    2100000: lambert1.001
+    4300000: Legs.001
+    7400000: Armature|ascend
+    7400002: Armature|CharSelect
+    7400004: Armature|CharSelectIdle
+    7400006: Armature|CyborgDEAD
+    7400008: Armature|CyborgDEAD-Alive
+    7400010: Armature|default
+    7400012: Armature|Fall
+    7400014: Armature|Hitstun
+    7400016: Armature|Idle
+    7400018: Armature|Idle-Primary
+    7400020: Armature|jump
+    7400022: Armature|jump.001
+    7400024: Armature|Landing
+    7400026: Armature|LegsAction.001
+    7400028: Armature|PitchYAW
+    7400030: Armature|Primary1
+    7400032: Armature|Primary2
+    7400034: Armature|RestIdle
+    7400036: Armature|Secondary
+    7400038: Armature|Special11
+    7400040: Armature|Special12
+    7400042: Armature|Special2
+    7400044: Armature|SprintFWD
+    7400046: Armature|Utility
+    7400048: Armature|Walk-Idle
+    7400050: Armature|WalkBWD
+    7400052: Armature|WalkFWD
+    7400054: Armature|WalkLFT
+    7400056: Armature|WalkRHT
+    7400058: Legs.001|jump.001
+    7400060: Legs.001|LegsAction.001
+    9500000: //RootNode
+    10800000: Light
+    13700000: Legs.001
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 0
+    previousCalculatedGlobalScale: 0.01
+    hasPreviousCalculatedGlobalScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

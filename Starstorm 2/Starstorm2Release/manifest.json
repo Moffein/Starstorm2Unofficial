@@ -1,0 +1,10 @@
+{
+    "name": "Starstorm2",
+    "version_number": "0.3.23",
+    "website_url": "https://discord.gg/bDum87S",
+    "description": "A port of the RoR1 mod Starstorm, featuring new survivors, items, gameplay elements, and more.",
+    "dependencies": [
+        "bbepis-BepInExPack-5.4.9",
+        "tristanmcpherson-R2API-3.0.30"
+    ]
+}

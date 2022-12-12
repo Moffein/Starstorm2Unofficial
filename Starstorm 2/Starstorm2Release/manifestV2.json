@@ -1,0 +1,24 @@
+{
+    "ManifestVersion": 2,
+    "AuthorName": "Team Moonstorm",
+    "Name": "TeamMoonstorm-Starstorm2",
+    "DisplayName": "Starstorm 2",
+    "Version": "0.3.23",
+    "Licence": "",
+    "WebsiteURL": "https://discord.gg/bDum87S",
+    "Description": "",
+    "GameVersion": "N/A",
+    "Dependencies": [
+        "bbepis-BepInExPack-5.4.9",
+        "tristanmcpherson-R2API-3.0.30"
+    ],
+    "OptionalDependencies": [],
+    "Incompatibilities": [],
+    "NetworkMode": "both",
+    "PackageType": "mod",
+    "InstallMode": "managed",
+    "Loaders": [
+        "bepinex"
+    ],
+    "ExtraData": {}
+}

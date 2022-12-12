@@ -1,0 +1,153 @@
+fileFormatVersion: 2
+guid: 7207f1f90f4ec1649b1c63fe6d07c976
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: Area
+    100002: Area.001
+    100004: Area.002
+    100006: Area.003
+    100008: Camera
+    100010: Empty
+    100012: Plane
+    100014: Sphere.003
+    100016: //RootNode
+    100018: Sphere.001
+    100020: Sphere temp
+    100022: Soul Particle
+    100024: Soul Original
+    100026: Sphere temp.001
+    400000: Area
+    400002: Area.001
+    400004: Area.002
+    400006: Area.003
+    400008: Camera
+    400010: Empty
+    400012: Plane
+    400014: Sphere.003
+    400016: //RootNode
+    400018: Sphere.001
+    400020: Sphere temp
+    400022: Soul Particle
+    400024: Soul Original
+    400026: Sphere temp.001
+    2000000: Camera
+    2100000: No Name
+    2100002: Material.002
+    2100004: toon_Glass_2
+    2100006: toon_1
+    2100008: Material.003
+    2100010: Material
+    2100012: outline
+    2300000: Plane
+    2300002: Sphere.003
+    2300004: Sphere.001
+    2300006: Sphere temp
+    2300008: Soul Particle
+    2300010: Soul Original
+    2300012: Sphere temp.001
+    3300000: Plane
+    3300002: Sphere.003
+    3300004: Sphere.001
+    3300006: Sphere temp
+    3300008: Soul Particle
+    3300010: Soul Original
+    3300012: Sphere temp.001
+    4300000: Plane
+    4300002: Sphere.003
+    4300004: Sphere.001
+    4300006: Sphere temp
+    4300008: Soul Particle
+    4300010: Soul Original
+    4300012: Sphere temp.001
+    10800000: Area
+    10800002: Area.001
+    10800004: Area.002
+    10800006: Area.003
+    2186277476908879412: ImportLogs
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    previousCalculatedGlobalScale: 1
+    hasPreviousCalculatedGlobalScale: 0
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

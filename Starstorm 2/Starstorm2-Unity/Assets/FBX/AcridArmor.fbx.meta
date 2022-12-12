@@ -1,0 +1,509 @@
+fileFormatVersion: 2
+guid: df45065d29aabbb468dad9d29a53d80e
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: //RootNode
+    100002: ballToToe.l
+    100004: ballToToe.r
+    100006: base
+    100008: Billboard, Directional
+    100010: Billboard, Dots
+    100012: Billboard, Splash
+    100014: calf.l
+    100016: calf.r
+    100018: CHAIN
+    100020: CHAIN.001
+    100022: CHAIN.002
+    100024: CHAIN.002_end
+    100026: CHAIN.003
+    100028: CHAIN.004
+    100030: CHAIN.005
+    100032: CHAIN.005_end
+    100034: chain.3.l_end
+    100036: chain.3.r_end
+    100038: chest
+    100040: Chunks, Billboards
+    100042: Chunks, Quads
+    100044: Chunks, Solid
+    100046: clavicle.l
+    100048: clavicle.r
+    100050: CrocoArmature
+    100052: CrocoDisplay
+    100054: CrocoLeapExplosion
+    100056: CrocoMesh
+    100058: Empty
+    100060: Empty.001
+    100062: eyelid.1.l
+    100064: eyelid.1.l_end
+    100066: eyelid.1.l_end 1
+    100068: eyelid.1.r
+    100070: eyelid.1.r_end
+    100072: eyelid.1.r_end 1
+    100074: eyelid.2.l
+    100076: eyelid.2.l_end
+    100078: eyelid.2.l_end 1
+    100080: eyelid.2.r
+    100082: eyelid.2.r_end
+    100084: eyelid.2.r_end 1
+    100086: finger1.1.l
+    100088: finger1.1.r
+    100090: finger1.2.l
+    100092: finger1.2.r
+    100094: finger1.3.l
+    100096: finger1.3.l_end
+    100098: finger1.3.l_end 1
+    100100: finger1.3.r
+    100102: finger1.3.r_end
+    100104: finger1.3.r_end 1
+    100106: finger2.1.l
+    100108: finger2.1.r
+    100110: finger2.2.l
+    100112: finger2.2.r
+    100114: finger2.3.l
+    100116: finger2.3.l_end
+    100118: finger2.3.l_end 1
+    100120: finger2.3.r
+    100122: finger2.3.r_end
+    100124: finger2.3.r_end 1
+    100126: finger3.1.l
+    100128: finger3.1.r
+    100130: finger3.2.l
+    100132: finger3.2.r
+    100134: finger3.3.l
+    100136: finger3.3.l_end
+    100138: finger3.3.l_end 1
+    100140: finger3.3.r
+    100142: finger3.3.r_end
+    100144: finger3.3.r_end 1
+    100146: foot.l
+    100148: foot.r
+    100150: Gas
+    100152: Goo
+    100154: hand.l
+    100156: hand.r
+    100158: head
+    100160: HeelControl.l
+    100162: HeelControl.r
+    100164: heelToBall.l
+    100166: heelToBall.r
+    100168: hip
+    100170: IKFootPole.l
+    100172: IKFootPole.l_end
+    100174: IKFootPole.l_end 1
+    100176: IKFootPole.r
+    100178: IKFootPole.r_end
+    100180: IKFootPole.r_end 1
+    100182: IKFootTarget.l
+    100184: IKFootTarget.l_end
+    100186: IKFootTarget.l_end 1
+    100188: IKFootTarget.r
+    100190: IKFootTarget.r_end
+    100192: IKFootTarget.r_end 1
+    100194: IKHandPole.l
+    100196: IKHandPole.l_end
+    100198: IKHandPole.l_end 1
+    100200: IKHandPole.r
+    100202: IKHandPole.r_end
+    100204: IKHandPole.r_end 1
+    100206: IKHandTarget.l
+    100208: IKHandTarget.r
+    100210: IKNeckPole
+    100212: IKNeckPole_end
+    100214: IKNeckPole_end 1
+    100216: IKNeckTarget
+    100218: jaw
+    100220: LoopFX
+    100222: lower_arm.l
+    100224: lower_arm.r
+    100226: mdlCroco
+    100228: MouthMuzzle
+    100230: neck.1
+    100232: neck.2
+    100234: neck.3
+    100236: Point Light
+    100238: Point light
+    100240: ROOT
+    100242: Spawn
+    100244: SpawnFX
+    100246: Spine.Chest.1
+    100248: Spine.Chest.1_end
+    100250: Spine.Chest.1_end 1
+    100252: Spine.Chest.2
+    100254: Spine.Chest.2_end
+    100256: Spine.Chest.2_end 1
+    100258: Spine.Chest.3
+    100260: Spine.Chest.3_end
+    100262: Spine.Chest.3_end 1
+    100264: Spine.Stomach.1
+    100266: Spine.Stomach.1_end
+    100268: Spine.Stomach.1_end 1
+    100270: Spine.Stomach.2
+    100272: Spine.Stomach.2_end
+    100274: Spine.Stomach.2_end 1
+    100276: Spittle
+    100278: stomach
+    100280: Sun
+    100282: Sun.001
+    100284: tail1
+    100286: tail2
+    100288: tail3
+    100290: tail3_end
+    100292: tail3_end 1
+    100294: thigh.l
+    100296: thigh.r
+    100298: thumb.1.l
+    100300: thumb.1.r
+    100302: thumb.2.l
+    100304: thumb.2.l_end
+    100306: thumb.2.l_end 1
+    100308: thumb.2.r
+    100310: thumb.2.r_end
+    100312: thumb.2.r_end 1
+    100314: thumbtoe.l
+    100316: thumbtoe.l_end
+    100318: thumbtoe.l_end 1
+    100320: thumbtoe.r
+    100322: thumbtoe.r_end
+    100324: thumbtoe.r_end 1
+    100326: toe1.l
+    100328: toe1.l_end
+    100330: toe1.l_end 1
+    100332: toe1.r
+    100334: toe1.r_end
+    100336: toe1.r_end 1
+    100338: toe2.l
+    100340: toe2.l_end
+    100342: toe2.l_end 1
+    100344: toe2.r
+    100346: toe2.r_end
+    100348: toe2.r_end 1
+    100350: toe3.l
+    100352: toe3.l_end
+    100354: toe3.l_end 1
+    100356: toe3.r
+    100358: toe3.r_end
+    100360: toe3.r_end 1
+    100362: ToeControl.l
+    100364: ToeControl.r
+    100366: tongue.1
+    100368: tongue.2
+    100370: tongue.3
+    100372: tongue.4
+    100374: tongue.4_end
+    100376: tongue.4_end 1
+    100378: upper_arm.l
+    100380: upper_arm.r
+    400000: //RootNode
+    400002: ballToToe.l
+    400004: ballToToe.r
+    400006: base
+    400008: Billboard, Directional
+    400010: Billboard, Dots
+    400012: Billboard, Splash
+    400014: calf.l
+    400016: calf.r
+    400018: CHAIN
+    400020: CHAIN.001
+    400022: CHAIN.002
+    400024: CHAIN.002_end
+    400026: CHAIN.003
+    400028: CHAIN.004
+    400030: CHAIN.005
+    400032: CHAIN.005_end
+    400034: chain.3.l_end
+    400036: chain.3.r_end
+    400038: chest
+    400040: Chunks, Billboards
+    400042: Chunks, Quads
+    400044: Chunks, Solid
+    400046: clavicle.l
+    400048: clavicle.r
+    400050: CrocoArmature
+    400052: CrocoDisplay
+    400054: CrocoLeapExplosion
+    400056: CrocoMesh
+    400058: Empty
+    400060: Empty.001
+    400062: eyelid.1.l
+    400064: eyelid.1.l_end
+    400066: eyelid.1.l_end 1
+    400068: eyelid.1.r
+    400070: eyelid.1.r_end
+    400072: eyelid.1.r_end 1
+    400074: eyelid.2.l
+    400076: eyelid.2.l_end
+    400078: eyelid.2.l_end 1
+    400080: eyelid.2.r
+    400082: eyelid.2.r_end
+    400084: eyelid.2.r_end 1
+    400086: finger1.1.l
+    400088: finger1.1.r
+    400090: finger1.2.l
+    400092: finger1.2.r
+    400094: finger1.3.l
+    400096: finger1.3.l_end
+    400098: finger1.3.l_end 1
+    400100: finger1.3.r
+    400102: finger1.3.r_end
+    400104: finger1.3.r_end 1
+    400106: finger2.1.l
+    400108: finger2.1.r
+    400110: finger2.2.l
+    400112: finger2.2.r
+    400114: finger2.3.l
+    400116: finger2.3.l_end
+    400118: finger2.3.l_end 1
+    400120: finger2.3.r
+    400122: finger2.3.r_end
+    400124: finger2.3.r_end 1
+    400126: finger3.1.l
+    400128: finger3.1.r
+    400130: finger3.2.l
+    400132: finger3.2.r
+    400134: finger3.3.l
+    400136: finger3.3.l_end
+    400138: finger3.3.l_end 1
+    400140: finger3.3.r
+    400142: finger3.3.r_end
+    400144: finger3.3.r_end 1
+    400146: foot.l
+    400148: foot.r
+    400150: Gas
+    400152: Goo
+    400154: hand.l
+    400156: hand.r
+    400158: head
+    400160: HeelControl.l
+    400162: HeelControl.r
+    400164: heelToBall.l
+    400166: heelToBall.r
+    400168: hip
+    400170: IKFootPole.l
+    400172: IKFootPole.l_end
+    400174: IKFootPole.l_end 1
+    400176: IKFootPole.r
+    400178: IKFootPole.r_end
+    400180: IKFootPole.r_end 1
+    400182: IKFootTarget.l
+    400184: IKFootTarget.l_end
+    400186: IKFootTarget.l_end 1
+    400188: IKFootTarget.r
+    400190: IKFootTarget.r_end
+    400192: IKFootTarget.r_end 1
+    400194: IKHandPole.l
+    400196: IKHandPole.l_end
+    400198: IKHandPole.l_end 1
+    400200: IKHandPole.r
+    400202: IKHandPole.r_end
+    400204: IKHandPole.r_end 1
+    400206: IKHandTarget.l
+    400208: IKHandTarget.r
+    400210: IKNeckPole
+    400212: IKNeckPole_end
+    400214: IKNeckPole_end 1
+    400216: IKNeckTarget
+    400218: jaw
+    400220: LoopFX
+    400222: lower_arm.l
+    400224: lower_arm.r
+    400226: mdlCroco
+    400228: MouthMuzzle
+    400230: neck.1
+    400232: neck.2
+    400234: neck.3
+    400236: Point Light
+    400238: Point light
+    400240: ROOT
+    400242: Spawn
+    400244: SpawnFX
+    400246: Spine.Chest.1
+    400248: Spine.Chest.1_end
+    400250: Spine.Chest.1_end 1
+    400252: Spine.Chest.2
+    400254: Spine.Chest.2_end
+    400256: Spine.Chest.2_end 1
+    400258: Spine.Chest.3
+    400260: Spine.Chest.3_end
+    400262: Spine.Chest.3_end 1
+    400264: Spine.Stomach.1
+    400266: Spine.Stomach.1_end
+    400268: Spine.Stomach.1_end 1
+    400270: Spine.Stomach.2
+    400272: Spine.Stomach.2_end
+    400274: Spine.Stomach.2_end 1
+    400276: Spittle
+    400278: stomach
+    400280: Sun
+    400282: Sun.001
+    400284: tail1
+    400286: tail2
+    400288: tail3
+    400290: tail3_end
+    400292: tail3_end 1
+    400294: thigh.l
+    400296: thigh.r
+    400298: thumb.1.l
+    400300: thumb.1.r
+    400302: thumb.2.l
+    400304: thumb.2.l_end
+    400306: thumb.2.l_end 1
+    400308: thumb.2.r
+    400310: thumb.2.r_end
+    400312: thumb.2.r_end 1
+    400314: thumbtoe.l
+    400316: thumbtoe.l_end
+    400318: thumbtoe.l_end 1
+    400320: thumbtoe.r
+    400322: thumbtoe.r_end
+    400324: thumbtoe.r_end 1
+    400326: toe1.l
+    400328: toe1.l_end
+    400330: toe1.l_end 1
+    400332: toe1.r
+    400334: toe1.r_end
+    400336: toe1.r_end 1
+    400338: toe2.l
+    400340: toe2.l_end
+    400342: toe2.l_end 1
+    400344: toe2.r
+    400346: toe2.r_end
+    400348: toe2.r_end 1
+    400350: toe3.l
+    400352: toe3.l_end
+    400354: toe3.l_end 1
+    400356: toe3.r
+    400358: toe3.r_end
+    400360: toe3.r_end 1
+    400362: ToeControl.l
+    400364: ToeControl.r
+    400366: tongue.1
+    400368: tongue.2
+    400370: tongue.3
+    400372: tongue.4
+    400374: tongue.4_end
+    400376: tongue.4_end 1
+    400378: upper_arm.l
+    400380: upper_arm.r
+    2100000: Material
+    4300000: CrocoMesh
+    7400000: mdlCroco|mdlCroco|CrocoArmature|aimPitch|Base Layer
+    7400002: mdlCroco|mdlCroco|CrocoArmature|aimYaw|Base Layer
+    7400004: mdlCroco|mdlCroco|CrocoArmature|AirLoopDown|Base Layer
+    7400006: mdlCroco|mdlCroco|CrocoArmature|AirLoopUp|Base Layer
+    7400008: mdlCroco|mdlCroco|CrocoArmature|Bite, Additive|Base Layer
+    7400010: mdlCroco|mdlCroco|CrocoArmature|Bite, Override|Base Layer
+    7400012: mdlCroco|mdlCroco|CrocoArmature|FireSpit|Base Layer
+    7400014: mdlCroco|mdlCroco|CrocoArmature|Idle, Additive Loop|Base Layer
+    7400016: mdlCroco|mdlCroco|CrocoArmature|Idle, Single|Base Layer
+    7400018: mdlCroco|mdlCroco|CrocoArmature|Jump|Base Layer
+    7400020: mdlCroco|mdlCroco|CrocoArmature|Leap, AdditiveLoop|Base Layer
+    7400022: mdlCroco|mdlCroco|CrocoArmature|Leap2|Base Layer
+    7400024: mdlCroco|mdlCroco|CrocoArmature|lightImpact2|Base Layer
+    7400026: mdlCroco|mdlCroco|CrocoArmature|PoseIntro|Base Layer
+    7400028: mdlCroco|mdlCroco|CrocoArmature|Slash1, Additive|Base Layer
+    7400030: mdlCroco|mdlCroco|CrocoArmature|Slash1, Override|Base Layer
+    7400032: mdlCroco|mdlCroco|CrocoArmature|Slash2, Additive|Base Layer
+    7400034: mdlCroco|mdlCroco|CrocoArmature|Slash2, Override|Base Layer
+    7400036: mdlCroco|mdlCroco|CrocoArmature|Slash3, Additive|Base Layer
+    7400038: mdlCroco|mdlCroco|CrocoArmature|Slash3, Override|Base Layer
+    7400040: mdlCroco|mdlCroco|CrocoArmature|SleepingLoop|Base Layer
+    7400042: mdlCroco|mdlCroco|CrocoArmature|SleepingToIdle|Base Layer
+    7400044: mdlCroco|mdlCroco|CrocoArmature|SprintForward|Base Layer
+    7400046: mdlCroco|mdlCroco|CrocoArmature|UpperSlashRight, Fullbody|Base Layer
+    7400048: mdlCroco|mdlCroco|CrocoArmature|WalkBackwardAggressive|Base Layer
+    7400050: mdlCroco|mdlCroco|CrocoArmature|WalkForwardAggressive|Base Layer
+    7400052: mdlCroco|mdlCroco|CrocoArmature|WalkLeftAggressive|Base Layer
+    7400054: mdlCroco|mdlCroco|CrocoArmature|WalkRightAggressive|Base Layer
+    7400056: mdlCroco|mdlCroco|CrocoArmature|WalkToIdle|Base Layer
+    9500000: //RootNode
+    10800000: Sun
+    10800002: Sun.001
+    13700000: CrocoMesh
+    2186277476908879412: ImportLogs
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 99.99
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 0
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    previousCalculatedGlobalScale: 0.01
+    hasPreviousCalculatedGlobalScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
