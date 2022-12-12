@@ -271,14 +271,14 @@ namespace Starstorm2.Modules.Survivors
             dmg = ExecutionerIonGun.damageCoefficient * 100f;
 
             LanguageAPI.Add("EXECUTIONER_IONGUN_NAME", "Ion Burst");
-            LanguageAPI.Add("EXECUTIONER_IONGUN_DESCRIPTION", $"Unload a barrage of up to 10 bullets that do <style=cIsDamage>{dmg}% damage</style> each. <style=cIsUtility>Restocks bullets for every enemy you kill, depending on strength.</style>.");
+            LanguageAPI.Add("EXECUTIONER_IONGUN_DESCRIPTION", $"Unload a barrage of ionized bullets that deal <style=cIsDamage>{dmg}% damage</style> each. Every slain enemy <style=cIsUtility>adds a bullet</style>.");
 
             LanguageAPI.Add("KEYWORD_FEAR", "<style=cKeywordName>Fear</style><style=cSub>Feared enemies are <style=cIsHealth>instantly killed</style> if below <style=cIsHealth>15%</style> health.</style>");
 
             float dur = ExecutionerDash.debuffDuration;
 
             LanguageAPI.Add("EXECUTIONER_DASH_NAME", "Crowd Dispersion");
-            LanguageAPI.Add("EXECUTIONER_DASH_DESCRIPTION", $"Boost forward and <style=cIsUtility>Fear</style> all nearby enemies for <style=cIsUtility>{dur}</style> seconds.");
+            LanguageAPI.Add("EXECUTIONER_DASH_DESCRIPTION", $"<style=cIsUtility>Dash forward</style> and <style=cIsUtility>Fear</style> all nearby enemies for <style=cIsUtility>{dur}</style> seconds.");
 
             dmg = ExecutionerAxeSlam.baseDamageCoefficient * 100f;
 

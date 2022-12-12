@@ -56,24 +56,9 @@ namespace EntityStates.Executioner
             if (this.exeController) this.exeController.PlayDashEffect();
 
             //create dash aoe
-            if (base.isAuthority)
+            if (NetworkServer.active)
             {
-                Vector3 orig = base.characterBody.corePosition;
-                BlastAttack blast = new BlastAttack()
-                {
-                    baseDamage = 0,
-                    damageType = DamageType.Stun1s | DamageType.NonLethal | DamageType.Silent | DamageType.BypassBlock,
-                    radius = debuffRadius,
-                    falloffModel = BlastAttack.FalloffModel.None,
-                    baseForce = 0f,
-                    teamIndex = TeamComponent.GetObjectTeam(base.gameObject),
-                    attacker = base.gameObject,
-                    inflictor = base.gameObject,
-                    position = orig,
-                    attackerFiltering = AttackerFiltering.NeverHitSelf,
-                    procCoefficient = 1f
-                };
-                blast.Fire();
+                CreateFearAoe();
             }
 
             hits = new List<HurtBox>();
@@ -124,6 +109,11 @@ namespace EntityStates.Executioner
                         damageType = DamageType.Stun1s | DamageType.NonLethal | DamageType.Silent | DamageType.BypassBlock
                     };
                     hp.TakeDamage(damage);*/
+                    SetStateOnHurt ssoh = hp.GetComponent<SetStateOnHurt>();
+                    if (ssoh)
+                    {
+                        ssoh.SetStun(-1f);
+                    }
 
                     CharacterBody body = hp.body;
                     if (body && body != base.characterBody)
