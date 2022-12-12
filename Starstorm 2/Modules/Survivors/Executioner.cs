@@ -120,9 +120,23 @@ namespace Starstorm2.Modules.Survivors
 
         internal override void InitializeUnlockables()
         {
-            masterySkinUnlockableDef = Modules.Unlockables.AddUnlockable<Cores.Unlockables.Achievements.ExecutionerMasteryAchievement>(true);
-            grandMasterySkinUnlockableDef = Modules.Unlockables.AddUnlockable<Cores.Unlockables.Achievements.ExecutionerGrandMasteryAchievement>(true);
-            wastelanderSkinUnlockableDef = Modules.Unlockables.AddUnlockable<Cores.Unlockables.Achievements.WastelanderAchievement>(true);
+            masterySkinUnlockableDef = ScriptableObject.CreateInstance<UnlockableDef>();
+            masterySkinUnlockableDef.cachedName = "Skins.SS2UExecutioner.Mastery";
+            masterySkinUnlockableDef.nameToken = "ACHIEVEMENT_SS2UEXECUTIONERCLEARGAMEMONSOON_NAME";
+            masterySkinUnlockableDef.achievementIcon = Assets.mainAssetBundle.LoadAsset<Sprite>("texExecutionerSkinMaster");
+            ContentAddition.AddUnlockableDef(masterySkinUnlockableDef);
+
+            grandMasterySkinUnlockableDef = ScriptableObject.CreateInstance<UnlockableDef>();
+            grandMasterySkinUnlockableDef.cachedName = "Skins.SS2UExecutioner.GrandMastery";
+            grandMasterySkinUnlockableDef.nameToken = "ACHIEVEMENT_SS2UEXECUTIONERCLEARGAMETYPHOON_NAME";
+            grandMasterySkinUnlockableDef.achievementIcon = Assets.mainAssetBundle.LoadAsset<Sprite>("texExecutionerSkinGrandMaster");
+            ContentAddition.AddUnlockableDef(grandMasterySkinUnlockableDef);
+
+            wastelanderSkinUnlockableDef = ScriptableObject.CreateInstance<UnlockableDef>();
+            wastelanderSkinUnlockableDef.cachedName = "Skins.SS2UExecutioner.Wastelander";
+            wastelanderSkinUnlockableDef.nameToken = "ACHIEVEMENT_SS2UEXECUTIONERWASTELANDER_NAME";
+            wastelanderSkinUnlockableDef.achievementIcon = Assets.mainAssetBundle.LoadAsset<Sprite>("texExecutionerWastelander");
+            ContentAddition.AddUnlockableDef(wastelanderSkinUnlockableDef);
         }
 
         internal override void InitializeSkills()
@@ -276,17 +290,14 @@ namespace Starstorm2.Modules.Survivors
             LanguageAPI.Add("EXECUTIONER_UNLOCKUNLOCKABLE_UNLOCKABLE_NAME", "Overkill");
 
             // todo: make a base class for mastery achievements and simply inherit from it for each character 
-            LanguageAPI.Add("EXECUTIONER_MASTERYUNLOCKABLE_ACHIEVEMENT_NAME", "Executioner: Mastery");
-            LanguageAPI.Add("EXECUTIONER_MASTERYUNLOCKABLE_ACHIEVEMENT_DESC", "As Executioner, beat the game or obliterate on Monsoon or harder.");
-            LanguageAPI.Add("EXECUTIONER_MASTERYUNLOCKABLE_UNLOCKABLE_NAME", "Executioner: Mastery");
+            LanguageAPI.Add("ACHIEVEMENT_SS2UEXECUTIONERCLEARGAMEMONSOON_NAME", "Executioner: Mastery");
+            LanguageAPI.Add("ACHIEVEMENT_SS2UEXECUTIONERCLEARGAMEMONSOON_DESCRIPTION", "As Executioner, beat the game or obliterate on Monsoon.");
 
-            LanguageAPI.Add("EXECUTIONER_GRANDMASTERYUNLOCKABLE_ACHIEVEMENT_NAME", "Executioner: Grand Mastery");
-            LanguageAPI.Add("EXECUTIONER_GRANDMASTERYUNLOCKABLE_ACHIEVEMENT_DESC", "As Executioner, beat the game or obliterate on Typhoon.");
-            LanguageAPI.Add("EXECUTIONER_GRANDMASTERYUNLOCKABLE_UNLOCKABLE_NAME", "Executioner: Grand Mastery");
+            LanguageAPI.Add("ACHIEVEMENT_SS2UEXECUTIONERCLEARGAMETYPHOON_NAME", "Executioner: Grand Mastery");
+            LanguageAPI.Add("ACHIEVEMENT_SS2UEXECUTIONERCLEARGAMETYPHOON_DESCRIPTION", "As Executioner, beat the game or obliterate on Typhoon.");
 
-            LanguageAPI.Add("EXECUTIONER_WASTELANDERUNLOCKABLE_ACHIEVEMENT_NAME", "Executioner: Crack the Vault");
-            LanguageAPI.Add("EXECUTIONER_WASTELANDERUNLOCKABLE_ACHIEVEMENT_DESC", "As Executioner, open the ancient gate on Abandoned Aqueduct.");
-            LanguageAPI.Add("EXECUTIONER_WASTELANDERUNLOCKABLE_UNLOCKABLE_NAME", "Executioner: Crack the Vault");
+            LanguageAPI.Add("ACHIEVEMENT_SS2UEXECUTIONERWASTELANDER_NAME", "Executioner: Crack the Vault");
+            LanguageAPI.Add("ACHIEVEMENT_SS2UEXECUTIONERWASTELANDER_DESCRIPTION", "As Executioner, open the ancient gate on Abandoned Aqueduct.");
         }
 
         internal override void Hook()

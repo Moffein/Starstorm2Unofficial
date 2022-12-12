@@ -192,7 +192,9 @@
     <Compile Include="Cores\States\Wayfarer\FireChains.cs" />
     <Compile Include="Cores\States\Wayfarer\MeleeSlam.cs" />
     <Compile Include="Cores\TyphoonCore.cs" />
-    <Compile Include="Cores\Unlockables\Achievements\ExecutionerAchievements.cs" />
+    <Compile Include="Cores\Unlockables\Achievements\Executioner\ExecutionerGrandMasteryAchievement.cs" />
+    <Compile Include="Cores\Unlockables\Achievements\Executioner\ExecutionerMasteryAchievement.cs" />
+    <Compile Include="Cores\Unlockables\Achievements\Executioner\ExecutionerWastelanderAchievement.cs" />
     <Compile Include="Cores\Unlockables\Achievements\Nemmando\NemmandoGrandMasteryAchievement.cs" />
     <Compile Include="Cores\Unlockables\Achievements\Nemmando\NemmandoMasteryAchievement.cs" />
     <Compile Include="Cores\Unlockables\Achievements\Vanilla\VanillaGrandMasteryAchievements.cs" />
