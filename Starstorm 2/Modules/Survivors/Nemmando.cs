@@ -17,10 +17,6 @@ namespace Starstorm2.Modules.Survivors
     {
         public static BodyIndex bodyIndex;
 
-        //Used by NemmandoController. Todo: organize and rename
-        public static SkillDef secondaryConc;
-        public static SkillDef specialEpic;
-
         internal override string bodyName { get; set; } = "Nemmando";
 
         internal override GameObject bodyPrefab { get; set; }
@@ -87,6 +83,7 @@ namespace Starstorm2.Modules.Survivors
         internal override UnlockableDef characterUnlockableDef { get; set; }// = Modules.Unlockables.AddUnlockable<Cores.Unlockables.Achievements.NemmandoUnlockAchievement>(true);
         private static UnlockableDef masterySkinUnlockableDef;
         private static UnlockableDef grandMasterySkinUnlockableDef;
+
         private static UnlockableDef singleTapUnlockableDef;
         private static UnlockableDef decisiveStrikeUnlockableDef;
 
@@ -94,6 +91,10 @@ namespace Starstorm2.Modules.Survivors
         internal static SkillDef decisiveStrikeSkillDef;
         internal static SkillDef scepterDecisiveStrikeSkillDef;
         internal static SkillDef scepterSubmissionSkillDef;
+
+        //Used by NemmandoController. Todo: organize and rename
+        public static SkillDef secondaryConc;
+        public static SkillDef specialEpic;
 
         private void SetBodyIndex()
         {
@@ -183,8 +184,9 @@ namespace Starstorm2.Modules.Survivors
             grandMasterySkinUnlockableDef.achievementIcon = Assets.mainAssetBundle.LoadAsset<Sprite>("texNemmandoSkinGrandMaster");
             ContentAddition.AddUnlockableDef(grandMasterySkinUnlockableDef);
 
-            singleTapUnlockableDef = Modules.Unlockables.AddUnlockable<Cores.Unlockables.Achievements.NemmandoSingleTapAchievement>(true);
-            decisiveStrikeUnlockableDef = Modules.Unlockables.AddUnlockable<Cores.Unlockables.Achievements.NemmandoDecisiveStrikeAchievement>(true);
+            //Assets.mainAssetBundle.LoadAsset<Sprite>("texNemmandoIconUnlock");
+            //Assets.mainAssetBundle.LoadAsset<Sprite>("texSingleTapUnlockIcon");
+            //Assets.mainAssetBundle.LoadAsset<Sprite>("texDecisiveStrike");
         }
 
         internal override void InitializeDoppelganger()
