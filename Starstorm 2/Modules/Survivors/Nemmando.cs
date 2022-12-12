@@ -84,8 +84,8 @@ namespace Starstorm2.Modules.Survivors
         private static UnlockableDef masterySkinUnlockableDef;
         private static UnlockableDef grandMasterySkinUnlockableDef;
 
-        private static UnlockableDef singleTapUnlockableDef;
-        private static UnlockableDef decisiveStrikeUnlockableDef;
+        private static UnlockableDef singleTapUnlockableDef;    //todo: reimplement
+        private static UnlockableDef decisiveStrikeUnlockableDef;   //todo: reimplement
 
         // ugh
         internal static SkillDef decisiveStrikeSkillDef;

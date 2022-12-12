@@ -1,0 +1,28 @@
+﻿using RoR2;
+using RoR2.Achievements;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Starstorm2.Cores.Unlockables.Achievements.Vanilla
+{
+	[RegisterAchievement("SS2UCommandoClearGameTyphoon", "Skins.SS2UCommando.GrandMastery", null, null)]
+	public class CommandoGrandMasteryAchievement : BaseGrandMasteryAchievement
+	{
+		public override BodyIndex LookUpRequiredBodyIndex()
+		{
+			return BodyCatalog.FindBodyIndex("CommandoBody");
+		}
+	}
+
+	[RegisterAchievement("SS2UToolbotClearGameTyphoon", "Skins.SS2UToolbot.GrandMastery", null, null)]
+	public class ToolbotGrandMasteryAchievement : BaseGrandMasteryAchievement
+	{
+		public override BodyIndex LookUpRequiredBodyIndex()
+		{
+			return BodyCatalog.FindBodyIndex("ToolbotBody");
+		}
+	}
+}

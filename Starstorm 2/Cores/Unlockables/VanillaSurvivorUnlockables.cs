@@ -1,5 +1,7 @@
 ﻿using R2API;
 using RoR2;
+using Starstorm2.Modules;
+using UnityEngine;
 
 namespace Starstorm2.Cores.Unlockables
 {
@@ -13,21 +15,29 @@ namespace Starstorm2.Cores.Unlockables
         {
             // todo: make a base class for mastery achievements and simply inherit from it for each character 
 
-            LanguageAPI.Add("COMMANDO_GRANDMASTERYUNLOCKABLE_ACHIEVEMENT_NAME", "Commando: Grand Mastery");
-            LanguageAPI.Add("COMMANDO_GRANDMASTERYUNLOCKABLE_ACHIEVEMENT_DESC", "As Commando, beat the game or obliterate on Typhoon.");
-            LanguageAPI.Add("COMMANDO_GRANDMASTERYUNLOCKABLE_UNLOCKABLE_NAME", "Commando: Grand Mastery");
+            LanguageAPI.Add("ACHIEVEMENT_SS2UCOMMANDOCLEARGAMETYPHOON_NAME", "Commando: Grand Mastery");
+            LanguageAPI.Add("ACHIEVEMENT_SS2UCOMMANDOCLEARGAMETYPHOON_DESCRIPTION", "As Commando, beat the game or obliterate on Typhoon.");
 
-            LanguageAPI.Add("TOOLBOT_GRANDMASTERYUNLOCKABLE_ACHIEVEMENT_NAME", "MUL-T: Grand Mastery");
-            LanguageAPI.Add("TOOLBOT_GRANDMASTERYUNLOCKABLE_ACHIEVEMENT_DESC", "As MUL-T, beat the game or obliterate on Typhoon.");
-            LanguageAPI.Add("TOOLBOT_GRANDMASTERYUNLOCKABLE_UNLOCKABLE_NAME", "MUL-T: Grand Mastery");
+            LanguageAPI.Add("ACHIEVEMENT_SS2UTOOLBOTCLEARGAMETYPHOON_NAME", "MUL-T: Grand Mastery");
+            LanguageAPI.Add("ACHIEVEMENT_SS2UTOOLBOTCLEARGAMETYPHOON_DESCRIPTION", "As MUL-T, beat the game or obliterate on Typhoon.");
 
             //LanguageAPI.Add("CROCO_GRANDMASTERYUNLOCKABLE_ACHIEVEMENT_NAME", "Acrid: Grand Mastery");
             //LanguageAPI.Add("CROCO_GRANDMASTERYUNLOCKABLE_ACHIEVEMENT_DESC", "As Acrid, beat the game or obliterate on Typhoon.");
             //LanguageAPI.Add("CROCO_GRANDMASTERYUNLOCKABLE_UNLOCKABLE_NAME", "Acrid: Grand Mastery");
 
-            commandoGrandMastery = Modules.Unlockables.AddUnlockable<Achievements.CommandoGrandMasteryAchievement>(true);
-            toolbotGrandMastery = Modules.Unlockables.AddUnlockable<Achievements.ToolbotGrandMasteryAchievement>(true);
-            //acridGrandMastery = Modules.Unlockables.AddUnlockable<Achievements.CrocoGrandMasteryAchievement>(true);
+            commandoGrandMastery = ScriptableObject.CreateInstance<UnlockableDef>();
+            commandoGrandMastery.cachedName = "Skins.SS2UCommando.GrandMastery";
+            commandoGrandMastery.nameToken = "ACHIEVEMENT_SS2UCOMMANDOCLEARGAMETYPHOON_NAME";
+            commandoGrandMastery.achievementIcon = Assets.mainAssetBundle.LoadAsset<Sprite>("texCommandoSkinGrandMaster");
+            ContentAddition.AddUnlockableDef(commandoGrandMastery);
+
+            toolbotGrandMastery = ScriptableObject.CreateInstance<UnlockableDef>();
+            toolbotGrandMastery.cachedName = "Skins.SS2UToolbot.GrandMastery";
+            toolbotGrandMastery.nameToken = "ACHIEVEMENT_SS2UTOOLBOTCLEARGAMETYPHOON_NAME";
+            toolbotGrandMastery.achievementIcon = Assets.mainAssetBundle.LoadAsset<Sprite>("texToolbotSkinGrandMaster");
+            ContentAddition.AddUnlockableDef(toolbotGrandMastery);
+
+            //acridGrandMastery = Modules.Unlockables.AddUnlockable<Achievements.CrocoGrandMasteryAchievement>(true);//Assets.mainAssetBundle.LoadAsset<Sprite>("texAcridSkinGrandMaster");
         }
     }
 }

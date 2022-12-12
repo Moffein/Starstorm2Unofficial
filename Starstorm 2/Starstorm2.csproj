@@ -195,7 +195,8 @@
     <Compile Include="Cores\Unlockables\Achievements\ExecutionerAchievements.cs" />
     <Compile Include="Cores\Unlockables\Achievements\Nemmando\NemmandoGrandMasteryAchievement.cs" />
     <Compile Include="Cores\Unlockables\Achievements\Nemmando\NemmandoMasteryAchievement.cs" />
-    <Compile Include="Cores\Unlockables\Achievements\VanillaSurvivorAchievements.cs" />
+    <Compile Include="Cores\Unlockables\Achievements\Vanilla\VanillaGrandMasteryAchievements.cs" />
+    <Compile Include="Cores\Unlockables\BaseGrandMasteryAchievement.cs" />
     <Compile Include="Cores\Unlockables\VanillaSurvivorUnlockables.cs" />
     <Compile Include="Cores\VoidCore.cs" />
     <Compile Include="FUCKACCESSMODIFIERS.cs" />
