@@ -107,7 +107,7 @@ namespace Starstorm2
             buffCore = new BuffCore();
             dotCore = new DoTCore();
             damageTypeCore = new DamageTypeCore();
-            itemDisplayCore = new ItemDisplayCore();
+            //itemDisplayCore = new ItemDisplayCore();
             skinsCore = new SkinsCore();
 
             //if (EnableNemmando.Value) Cores.Unlockables.NemmandoUnlockables.RegisterUnlockables();
@@ -118,7 +118,7 @@ namespace Starstorm2
             Modules.Effects.Initialize();
 
             //equipment must be loaded before items so hottest sauce interacts correctly with ss2 equips
-            if (Modules.Config.EnableEquipment.Value)
+            if (false)//(Modules.Config.EnableEquipment.Value)
             {
                 equipmentCore = new EquipmentCore();
                 AddEquipmentIfEnabled(new CloakingHeadband(), EquipmentCore.instance.equipment);
@@ -127,7 +127,7 @@ namespace Starstorm2
                 EquipmentCore.instance.InitEquipment();
             }
             //enemyCore = new EnemyCore();
-            if (Modules.Config.EnableItems.Value)
+            if (false)//(Modules.Config.EnableItems.Value)
             {
                 itemCore = new ItemCore();
                 AddItemIfEnabled(new DormantFungus(), ItemCore.instance.items);
@@ -152,20 +152,10 @@ namespace Starstorm2
                 //AddItemIfEnabled(new BabyToys(), ItemCore.instance.items);
                 ItemCore.instance.InitItems();
             }
-            if (Modules.Config.EnableElites.Value)
-            {
-                //eliteCore = new EliteCore();
-            }
             if (Modules.Config.EnableTyphoon.Value)
             {
                 typhoonCore = new TyphoonCore();
             }
-            /*
-            if (EnableEthereal.Value)
-            {
-                etherealCore = new EtherealCore();
-            }
-            */
             if (Modules.Config.EnableVoid.Value)
             {
                 voidCore = new VoidCore();
