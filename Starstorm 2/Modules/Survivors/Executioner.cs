@@ -273,7 +273,7 @@ namespace Starstorm2.Modules.Survivors
             LanguageAPI.Add("EXECUTIONER_IONGUN_NAME", "Ion Burst");
             LanguageAPI.Add("EXECUTIONER_IONGUN_DESCRIPTION", $"Unload a barrage of ionized bullets that deal <style=cIsDamage>{dmg}% damage</style> each. Every slain enemy <style=cIsUtility>adds a bullet</style>.");
 
-            LanguageAPI.Add("KEYWORD_FEAR", "<style=cKeywordName>Fear</style><style=cSub>Feared enemies are <style=cIsHealth>instantly killed</style> if below <style=cIsHealth>15%</style> health.</style>");
+            LanguageAPI.Add("KEYWORD_FEAR", "<style=cKeywordName>Fear</style><style=cSub>Reduce movement speed by <style=cIsUtility>50%</style>. Feared enemies are <style=cIsHealth>instantly killed</style> if below <style=cIsHealth>15%</style> health.</style>");
 
             float dur = ExecutionerDash.debuffDuration;
 

@@ -159,6 +159,11 @@ namespace Starstorm2.Cores
                 args.critAdd += 20f * chocStack;
                 args.damageMultAdd += 0.5f * chocStack;
             }
+
+            if (sender.HasBuff(BuffCore.fearDebuff))
+            {
+                args.moveSpeedReductionMultAdd += 0.5f;
+            }
         }
 
         private void CharacterBody_OnClientBuffsChanged(On.RoR2.CharacterBody.orig_OnClientBuffsChanged orig, CharacterBody self)
