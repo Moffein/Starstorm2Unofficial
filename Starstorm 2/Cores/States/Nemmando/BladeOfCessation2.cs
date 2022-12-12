@@ -200,7 +200,7 @@ namespace Starstorm2.Cores.States.Nemmando
                     {
 						if (base.characterMotor && !base.characterMotor.isGrounded)
                         {
-							base.SmallHop(base.characterMotor, BladeOfCessation2.hitHopVelocity);
+							base.SmallHop(base.characterMotor, BladeOfCessation2.hitHopVelocity / Mathf.Sqrt(this.attackSpeedStat));
 						}
 
 						this.hasHopped = true;
