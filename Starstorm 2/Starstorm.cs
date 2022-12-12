@@ -156,7 +156,7 @@ namespace Starstorm2
             {
                 typhoonCore = new TyphoonCore();
             }
-            if (Modules.Config.EnableVoid.Value)
+            if (false)//(Modules.Config.EnableVoid.Value)
             {
                 voidCore = new VoidCore();
             }
