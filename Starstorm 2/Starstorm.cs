@@ -124,16 +124,16 @@ namespace Starstorm2
             Modules.Effects.Initialize();
 
             //equipment must be loaded before items so hottest sauce interacts correctly with ss2 equips
-            if (false)//(Modules.Config.EnableEquipment.Value)
+            /*if (Modules.Config.EnableEquipment.Value)
             {
                 equipmentCore = new EquipmentCore();
                 AddEquipmentIfEnabled(new CloakingHeadband(), EquipmentCore.instance.equipment);
                 AddEquipmentIfEnabled(new GreaterWarbanner(), EquipmentCore.instance.equipment);
                 AddEquipmentIfEnabled(new PressurizedCanister(), EquipmentCore.instance.equipment);
                 EquipmentCore.instance.InitEquipment();
-            }
+            }*/
             //enemyCore = new EnemyCore();
-            if (false)//(Modules.Config.EnableItems.Value)
+            /*if (Modules.Config.EnableItems.Value)
             {
                 itemCore = new ItemCore();
                 AddItemIfEnabled(new DormantFungus(), ItemCore.instance.items);
@@ -157,15 +157,15 @@ namespace Starstorm2
                 AddItemIfEnabled(new StirringSoul(), ItemCore.instance.items);
                 //AddItemIfEnabled(new BabyToys(), ItemCore.instance.items);
                 ItemCore.instance.InitItems();
-            }
+            }*/
             if (Modules.Config.EnableTyphoon.Value)
             {
                 typhoonCore = new TyphoonCore();
             }
-            if (false)//(Modules.Config.EnableVoid.Value)
+            /*if (Modules.Config.EnableVoid.Value)
             {
                 voidCore = new VoidCore();
-            }
+            }*/
             if (Modules.Config.EnableEvents.Value)
             {
                 eventsCore = new EventsCore();

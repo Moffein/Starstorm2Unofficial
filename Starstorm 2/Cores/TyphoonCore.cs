@@ -33,7 +33,7 @@ namespace Starstorm2.Cores
             string descToken = "DIFFICULTY_TYPHOON_DESCRIPTION";
 
             if (Modules.Config.TyphoonIncreaseSpawnCap.Value)
-                difDesc += "\n>Monster spawn limit: <style=cIsHealth>+100%</style></style>";
+                difDesc += "\n>Monster spawn limit: <style=cIsHealth>+50%</style></style>";
 
 
 
@@ -63,7 +63,8 @@ namespace Starstorm2.Cores
                 }
                 if (Modules.Config.TyphoonIncreaseSpawnCap.Value)
                 {
-                    TeamCatalog.GetTeamDef(TeamIndex.Monster).softCharacterLimit *= 2;
+                    TeamDef monsterTeam = TeamCatalog.GetTeamDef(TeamIndex.Monster);
+                    monsterTeam.softCharacterLimit = Mathf.FloorToInt(monsterTeam.softCharacterLimit * 1.5f);   //was 2
                 }
             }
         }
