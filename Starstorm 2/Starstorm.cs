@@ -1,16 +1,19 @@
 ﻿using BepInEx;
 using BepInEx.Configuration;
 using R2API.Utils;
+using RoR2;
 using Starstorm2.Cores;
 using Starstorm2.Cores.Equipment;
 using Starstorm2.Cores.Items;
 using System;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 
 namespace Starstorm2
 {
     [BepInDependency("com.bepis.r2api", BepInDependency.DependencyFlags.HardDependency)]
+    [BepInDependency("HIFU.Inferno", BepInDependency.DependencyFlags.SoftDependency)]
     [BepInDependency("com.rune580.riskofoptions", BepInDependency.DependencyFlags.SoftDependency)]
     [BepInDependency("com.niwith.DropInMultiplayer", BepInDependency.DependencyFlags.SoftDependency)]
     [BepInDependency("com.DestroyedClone.AncientScepter", BepInDependency.DependencyFlags.SoftDependency)]
@@ -37,7 +40,9 @@ namespace Starstorm2
 
         public static Starstorm instance;
 
-        public static bool scrollableLobbyInstalled; // putting this here because lazy, move it if you want
+        public static bool scrollableLobbyInstalled = false; // putting this here because lazy, move it if you want
+        public static bool infernoPluginLoaded = false;
+        public static bool riskOfOptionsLoaded = false;
 
         LogCore logCore;
         PrefabCore prefabCore;
@@ -95,6 +100,9 @@ namespace Starstorm2
 
         private void Initialize()
         {
+            infernoPluginLoaded = BepInEx.Bootstrap.Chainloader.PluginInfos.ContainsKey("HIFU.Inferno");
+            riskOfOptionsLoaded = BepInEx.Bootstrap.Chainloader.PluginInfos.ContainsKey("com.rune580.riskofoptions");
+
             //MAKE SURE DAMAGETYPES INITIALIZE FIRST
             damageTypeCore = new DamageTypeCore();
 
@@ -189,6 +197,18 @@ namespace Starstorm2
             {
                 list.Add(eqp);
             }
+        }
+
+        public static DifficultyDef GetInfernoDef()
+        {
+            if (infernoPluginLoaded) return GetInfernoDefInternal();
+            return null;
+        }
+
+        [MethodImpl(MethodImplOptions.NoInlining | MethodImplOptions.NoOptimization)]
+        private static DifficultyDef GetInfernoDefInternal()
+        {
+            return Inferno.Main.InfernoDiffDef;
         }
     }
 }

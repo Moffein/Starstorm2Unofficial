@@ -121,7 +121,7 @@ namespace Starstorm2.Modules
             TauntKeybind = Starstorm.instance.Config.Bind("Starstorm 2 :: Keybinds", "Taunt Emote", KeyCode.Alpha2, "Keybind used for the Taunt emote.");
             tauntKeybind = TauntKeybind.Value;// cache it for performance
 
-            if (BepInEx.Bootstrap.Chainloader.PluginInfos.ContainsKey("com.rune580.riskofoptions"))
+            if (Starstorm.riskOfOptionsLoaded)
             {
                 RiskOfOptionsCompat();
             }

@@ -286,6 +286,9 @@
     <Reference Include="HGUnityUtils">
       <HintPath>libs\HGUnityUtils.dll</HintPath>
     </Reference>
+    <Reference Include="Inferno">
+      <HintPath>libs\SoftDependencies\Inferno.dll</HintPath>
+    </Reference>
     <Reference Include="KinematicCharacterController">
       <HintPath>libs\KinematicCharacterController.dll</HintPath>
     </Reference>
