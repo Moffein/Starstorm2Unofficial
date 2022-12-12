@@ -15,6 +15,7 @@ namespace Starstorm2.Cores
         public static class ModdedDamageTypes
         {
             public static DamageAPI.ModdedDamageType GougeOnHit;
+            public static DamageAPI.ModdedDamageType ExtendFear;
         }
 
         //public static DamageType
@@ -27,6 +28,7 @@ namespace Starstorm2.Cores
             instance = this;
 
             ModdedDamageTypes.GougeOnHit = DamageAPI.ReserveDamageType();
+            ModdedDamageTypes.ExtendFear = DamageAPI.ReserveDamageType();
 
             On.RoR2.HealthComponent.TakeDamage += HealthComponent_TakeDamage;
             On.RoR2.GlobalEventManager.OnHitEnemy += GlobalEventManager_OnHitEnemy;
@@ -49,6 +51,19 @@ namespace Starstorm2.Cores
                         damageMultiplier = DamageTypeCore.gougeDamageCoefficient
                     };
                     DotController.InflictDot(ref dotInfo);
+                }
+
+                if (damageInfo.HasModdedDamageType(ModdedDamageTypes.ExtendFear))
+                {
+                    CharacterBody victimBody;
+                    if (victim)
+                    {
+                        victimBody = victim.GetComponent<CharacterBody>();
+                        if (victimBody && victimBody.HasBuff(BuffCore.fearDebuff))
+                        {
+                            victimBody.AddTimedBuff(BuffCore.fearDebuff, EntityStates.Executioner.ExecutionerDash.debuffDuration);
+                        }
+                    }
                 }
             }
         }

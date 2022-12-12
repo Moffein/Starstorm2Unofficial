@@ -15,6 +15,7 @@ using System;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
 using UnityEngine.Networking;
 
 namespace Starstorm2.Modules.Survivors
@@ -22,6 +23,8 @@ namespace Starstorm2.Modules.Survivors
     internal class Executioner : SurvivorBase
     {
         public static BodyIndex bodyIndex;
+
+        private static GameObject fearKillEffect = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Bandit2/Bandit2KillEffect.prefab").WaitForCompletion();
 
         internal override string bodyName { get; set; } = "Executioner";
 
@@ -144,8 +147,9 @@ namespace Starstorm2.Modules.Survivors
             Modules.Skills.CreateSkillFamilies(bodyPrefab);
 
             #region Primary
-            Modules.Skills.AddPrimarySkill(bodyPrefab, Modules.Skills.CreatePrimarySkillDef(new EntityStates.SerializableEntityStateType(typeof(EntityStates.Executioner.ExecutionerPistol)), "Weapon", "EXECUTIONER_PISTOL_NAME", "EXECUTIONER_PISTOL_DESCRIPTION", Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("texExecutionerPrimary"), false));
-            if (Modules.Config.ss_test.Value) Modules.Skills.AddPrimarySkill(bodyPrefab, Modules.Skills.CreatePrimarySkillDef(new EntityStates.SerializableEntityStateType(typeof(EntityStates.Executioner.ExecutionerTaser)), "Weapon", "EXECUTIONER_TASER_NAME", "EXECUTIONER_TASER_DESCRIPTION", Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("texExecutionerPrimary"), false));
+            //Modules.Skills.AddPrimarySkill(bodyPrefab, Modules.Skills.CreatePrimarySkillDef(new EntityStates.SerializableEntityStateType(typeof(EntityStates.Executioner.ExecutionerPistol)), "Weapon", "EXECUTIONER_PISTOL_NAME", "EXECUTIONER_PISTOL_DESCRIPTION", Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("texExecutionerPrimary"), false));
+            Modules.Skills.AddPrimarySkill(bodyPrefab, Modules.Skills.CreatePrimarySkillDef(new EntityStates.SerializableEntityStateType(typeof(EntityStates.Executioner.ExecutionerBurstPistol)), "Weapon", "EXECUTIONER_PISTOL_NAME", "EXECUTIONER_PISTOL_DESCRIPTION", Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("texExecutionerPrimary"), false));
+            //if (Modules.Config.ss_test.Value) Modules.Skills.AddPrimarySkill(bodyPrefab, Modules.Skills.CreatePrimarySkillDef(new EntityStates.SerializableEntityStateType(typeof(EntityStates.Executioner.ExecutionerTaser)), "Weapon", "EXECUTIONER_TASER_NAME", "EXECUTIONER_TASER_DESCRIPTION", Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("texExecutionerPrimary"), false));
             #endregion
 
             #region Secondary
@@ -258,10 +262,13 @@ namespace Starstorm2.Modules.Survivors
             LanguageAPI.Add("EXECUTIONER_KNIGHT_SKIN_NAME", "Gladiator");
             LanguageAPI.Add("EXECUTIONER_WASTELANDER_SKIN_NAME", "Wastelander");
 
-            float dmg = ExecutionerPistol.damageCoefficient * 100f;
+            //float dmg = ExecutionerPistol.damageCoefficient * 100f;
+            float dmg = ExecutionerBurstPistol.damageCoefficient * 100f;
+            int shotCount = ExecutionerBurstPistol.baseShotCount;
 
             LanguageAPI.Add("EXECUTIONER_PISTOL_NAME", "Service Pistol");
-            LanguageAPI.Add("EXECUTIONER_PISTOL_DESCRIPTION", $"Fire your pistol for <style=cIsDamage>{dmg}% damage</style>.");
+            LanguageAPI.Add("EXECUTIONER_PISTOL_DESCRIPTION", $"Fire your pistol for <style=cIsDamage>{shotCount}x{dmg}% damage</style>.");
+            //LanguageAPI.Add("EXECUTIONER_PISTOL_DESCRIPTION", $"Fire your pistol for <style=cIsDamage>{dmg}% damage</style>.");
 
             dmg = ExecutionerTaser.damageCoefficient * 100f;
 
@@ -271,25 +278,22 @@ namespace Starstorm2.Modules.Survivors
             dmg = ExecutionerIonGun.damageCoefficient * 100f;
 
             LanguageAPI.Add("EXECUTIONER_IONGUN_NAME", "Ion Burst");
-            LanguageAPI.Add("EXECUTIONER_IONGUN_DESCRIPTION", $"Unload a barrage of ionized bullets that deal <style=cIsDamage>{dmg}% damage</style> each. Every slain enemy <style=cIsUtility>adds a bullet</style>.");
+            LanguageAPI.Add("EXECUTIONER_IONGUN_DESCRIPTION", $"Unload a barrage of ionized bullets for <style=cIsDamage>{dmg}% damage</style> each. Every slain enemy <style=cIsUtility>adds a bullet</style>.");
 
             LanguageAPI.Add("KEYWORD_FEAR", "<style=cKeywordName>Fear</style><style=cSub>Reduce movement speed by <style=cIsUtility>50%</style>. Feared enemies are <style=cIsHealth>instantly killed</style> if below <style=cIsHealth>15%</style> health.</style>");
 
-            float dur = ExecutionerDash.debuffDuration;
-
             LanguageAPI.Add("EXECUTIONER_DASH_NAME", "Crowd Dispersion");
-            LanguageAPI.Add("EXECUTIONER_DASH_DESCRIPTION", $"<style=cIsUtility>Dash forward</style> and <style=cIsUtility>Fear</style> all nearby enemies for <style=cIsUtility>{dur}</style> seconds.");
+            LanguageAPI.Add("EXECUTIONER_DASH_DESCRIPTION", $"<style=cIsUtility>Dash forward</style> and <style=cIsUtility>fear</style> nearby enemies.");
 
             dmg = ExecutionerAxeSlam.baseDamageCoefficient * 100f;
 
             LanguageAPI.Add("EXECUTIONER_AXE_NAME", "Execution");
-            LanguageAPI.Add("EXECUTIONER_AXE_DESCRIPTION", $"<style=cIsDamage>Slayer</style>. <style=cIsUtility>Launch into the air</style>, then slam downward with your ion axe for <style=cIsDamage>{dmg}% damage</style>.");
+            LanguageAPI.Add("EXECUTIONER_AXE_DESCRIPTION", $"<style=cIsDamage>Slayer</style>. <style=cIsUtility>Launch into the air</style>, then slam downwards with your ion axe for <style=cIsDamage>{dmg}% damage</style>.");
 
             LanguageAPI.Add("EXECUTIONER_UNLOCKUNLOCKABLE_ACHIEVEMENT_NAME", "Overkill");
             LanguageAPI.Add("EXECUTIONER_UNLOCKUNLOCKABLE_ACHIEVEMENT_DESC", "Defeat an enemy by dealing 1000% of its max health in damage. <color=#c11>Host only</color>");
             LanguageAPI.Add("EXECUTIONER_UNLOCKUNLOCKABLE_UNLOCKABLE_NAME", "Overkill");
 
-            // todo: make a base class for mastery achievements and simply inherit from it for each character 
             LanguageAPI.Add("ACHIEVEMENT_SS2UEXECUTIONERCLEARGAMEMONSOON_NAME", "Executioner: Mastery");
             LanguageAPI.Add("ACHIEVEMENT_SS2UEXECUTIONERCLEARGAMEMONSOON_DESCRIPTION", "As Executioner, beat the game or obliterate on Monsoon.");
 
@@ -769,6 +773,7 @@ namespace Starstorm2.Modules.Survivors
         private void SetupFearExecute()
         {
             On.RoR2.HealthComponent.GetHealthBarValues += FearExecuteHealthbar;
+            RoR2.GlobalEventManager.onCharacterDeathGlobal += FearOnKillVFX;
 
             //Prone to breaking when the game updates
             IL.RoR2.HealthComponent.TakeDamage += (il) =>
@@ -804,7 +809,38 @@ namespace Starstorm2.Modules.Survivors
                 {
                     UnityEngine.Debug.LogError("Starstorm 2 Unofficial: Fear Execute IL Hook failed.");
                 }
+
             };
+            IL.RoR2.CharacterBody.UpdateAllTemporaryVisualEffects += (il) =>
+            {
+                ILCursor c = new ILCursor(il);
+                if (c.TryGotoNext(
+                      x => x.MatchLdsfld(typeof(RoR2Content.Buffs), "Cripple")
+                     ))
+                {
+                    c.Index += 2;
+                    c.Emit(OpCodes.Ldarg_0);
+                    c.EmitDelegate<Func<bool, CharacterBody, bool>>((hasBuff, self) =>
+                    {
+                        return hasBuff || self.HasBuff(BuffCore.fearDebuff);
+                    });
+                }
+                else
+                {
+                    UnityEngine.Debug.LogError("Starstorm 2 Unofficial: Fear VFX IL Hook failed.");
+                }    
+            };
+        }
+
+        private void FearOnKillVFX(DamageReport report)
+        {
+            if (report.victimBody && report.victimBody.HasBuff(BuffCore.fearDebuff))
+            {
+                EffectManager.SpawnEffect(Executioner.fearKillEffect, new EffectData
+                {
+                    origin = report.damageInfo.position
+                }, true);
+            }
         }
 
         private HealthComponent.HealthBarValues FearExecuteHealthbar(On.RoR2.HealthComponent.orig_GetHealthBarValues orig, HealthComponent self)
@@ -822,13 +858,17 @@ namespace Starstorm2.Modules.Survivors
 public class IonGunChargeComponent : NetworkBehaviour
 {
     public int storedCharges = 0;
+    public SkillLocator skillLocator;
 
     [ClientRpc]
     public void RpcAddIonCharge()
     {
-        SkillLocator skillLoc = this.gameObject.GetComponent<SkillLocator>();
-        GenericSkill ionGunSkill = skillLoc?.secondary;
-        if (this.hasAuthority && ionGunSkill && ionGunSkill.stock < ionGunSkill.maxStock)
-            ionGunSkill.AddOneStock();
+        if (this.hasAuthority)
+        {
+            if (!skillLocator) skillLocator = this.gameObject.GetComponent<SkillLocator>();
+            GenericSkill ionGunSkill = skillLocator?.secondary;
+            if (ionGunSkill && ionGunSkill.stock < ionGunSkill.maxStock)
+                ionGunSkill.AddOneStock();
+        }
     }
 }

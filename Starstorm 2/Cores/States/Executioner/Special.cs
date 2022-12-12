@@ -12,8 +12,8 @@ namespace EntityStates.Executioner
 {
     public class ExecutionerAxe : BaseSkillState
     {
-        public static float baseDuration = 0.85f;
-        public static float velocityMultiplier = 0.6f;
+        public static float baseDuration = 0.5f;    //was 0.85
+        public static float velocityMultiplier = 1f;    //was 0.6
 
         private float duration;
         private Animator animator;
@@ -82,7 +82,7 @@ namespace EntityStates.Executioner
         {
             base.FixedUpdate();
 
-            float moveSpeed = Mathf.Clamp(0f, 11f, 0.5f * this.moveSpeedStat);
+            float moveSpeed = 11f;//Mathf.Clamp(0f, 11f, 0.5f * this.moveSpeedStat); //Don't scale with movement speed or else you launch yourself into the skybox.
             base.characterMotor.rootMotion += velocityMultiplier * Vector3.up * (moveSpeed * Mage.FlyUpState.speedCoefficientCurve.Evaluate(base.fixedAge / this.duration) * Time.fixedDeltaTime);
             base.characterMotor.velocity.y = 0f;
 

@@ -1,4 +1,5 @@
-﻿using RoR2;
+﻿using R2API;
+using RoR2;
 using Starstorm2.Cores;
 using Starstorm2.Cores.States;
 using System;
@@ -26,13 +27,12 @@ namespace EntityStates.Executioner
         private float duration;
         private BulletAttack bullet;
         private string muzzleString;
-        private BullseyeSearch search;
-        private List<HurtBox> targets;
         private float shotTimer;
         private int shotsToFire;
         private GenericSkill skill;
         private Animator animator;
         private EffectData ionEffectData;
+        private bool isCrit;
 
         public override void OnEnter()
         {
@@ -46,15 +46,8 @@ namespace EntityStates.Executioner
             this.duration = baseDuration;// / this.attackSpeedStat;
             base.characterBody.SetAimTimer(2f);
             this.muzzleString = "Muzzle";
-
-            search = new BullseyeSearch();
-            search.teamMaskFilter = TeamMask.GetEnemyTeams(base.GetTeam());
-            search.filterByLoS = true;
-            search.maxDistanceFilter = ExecutionerIonGun.range;
-            search.minAngleFilter = 0;
-            search.maxAngleFilter = aimSnapAngle;
-            search.sortMode = BullseyeSearch.SortMode.DistanceAndAngle;
-            search.filterByDistinctEntity = true;
+            
+            isCrit = base.RollCrit();
 
             Shoot();
             shotsToFire--;
@@ -88,8 +81,6 @@ namespace EntityStates.Executioner
 
         private void Shoot()
         {
-            bool isCrit = base.RollCrit();
-
             Util.PlayAttackSpeedSound(base.effectComponent.ionShootSound, base.gameObject, this.attackSpeedStat);
             base.AddRecoil(-2f * recoil, -3f * recoil, -1f * recoil, 1f * recoil);
             //base.characterBody.AddSpreadBloom(Commando.CommandoWeapon.FirePistol2.spreadBloomValue * 1.0f);
@@ -113,17 +104,6 @@ namespace EntityStates.Executioner
                 float dmg = damageCoefficient * this.damageStat;
                 Ray r = base.GetAimRay();
                 Vector3 vec = r.direction;
-
-                search.searchOrigin = r.origin;
-                search.searchDirection = r.direction;
-                search.RefreshCandidates();
-                targets = search.GetResults().Where(new Func<HurtBox, bool>(Util.IsValid)).Distinct(default(HurtBox.EntityEqualityComparer)).ToList();
-
-                if (targets.Count > 0 && targets[0].healthComponent)
-                {
-                    //idx = (idx + 1) % targets.Count;
-                    vec = (targets[0].transform.position - r.origin);
-                }
                 bullet = new BulletAttack
                 {
                     aimVector = vec,
@@ -147,6 +127,7 @@ namespace EntityStates.Executioner
                     hitEffectPrefab = hitPrefab
                     //HitEffectNormal = ClayBruiser.Weapon.MinigunFire.bulletHitEffectNormal
                 };
+                bullet.AddModdedDamageType(DamageTypeCore.ModdedDamageTypes.ExtendFear);
                 bullet.Fire();
 
                 if (!base.characterBody.HasBuff(Starstorm2.Cores.BuffCore.exeSuperchargedBuff)) skill.DeductStock(1);

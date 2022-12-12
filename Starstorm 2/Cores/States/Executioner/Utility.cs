@@ -28,7 +28,13 @@ namespace EntityStates.Executioner
         {
             base.OnEnter();
             debuffCheckStopwatch = 0f;
-            initialSpeed = base.moveSpeedStat;
+
+            initialSpeed = 10.15f; //7 * 1.45, base sprint speed
+            if (base.moveSpeedStat > 10.15f)
+            {
+                initialSpeed *= Mathf.Sqrt(base.moveSpeedStat / 10.15f);
+            }
+
             if (base.inputBank)
             {
                 initialDirection = base.inputBank.moveVector;
@@ -55,12 +61,6 @@ namespace EntityStates.Executioner
 
             if (this.exeController) this.exeController.PlayDashEffect();
 
-            //create dash aoe
-            if (NetworkServer.active)
-            {
-                CreateFearAoe();
-            }
-
             hits = new List<HurtBox>();
             fearSearch = new SphereSearch();
             fearSearch.mask = LayerIndex.entityPrecise.mask;
@@ -76,6 +76,12 @@ namespace EntityStates.Executioner
                 temporaryOverlay.destroyComponentOnEnd = true;
                 temporaryOverlay.originalMaterial = LegacyResourcesAPI.Load<Material>("Materials/matHuntressFlashBright");
                 temporaryOverlay.AddToCharacerModel(modelTransform.GetComponent<CharacterModel>());
+            }
+
+            //create dash aoe
+            if (NetworkServer.active)
+            {
+                CreateFearAoe();
             }
         }
 

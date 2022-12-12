@@ -14,6 +14,7 @@ namespace Starstorm2.Modules
         {
             AddSkill(typeof(ExecutionerMain));
             AddSkill(typeof(ExecutionerPistol));
+            AddSkill(typeof(ExecutionerBurstPistol));
             AddSkill(typeof(ExecutionerTaser));
             AddSkill(typeof(ExecutionerIonGun));
             AddSkill(typeof(ExecutionerDash));
