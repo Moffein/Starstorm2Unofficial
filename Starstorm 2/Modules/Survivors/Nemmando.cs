@@ -84,7 +84,7 @@ namespace Starstorm2.Modules.Survivors
         internal override ItemDisplayRuleSet itemDisplayRuleSet { get; set; }
         internal override List<ItemDisplayRuleSet.KeyAssetRuleGroup> itemDisplayRules { get; set; }
 
-        internal override UnlockableDef characterUnlockableDef { get; set; } = Modules.Unlockables.AddUnlockable<Cores.Unlockables.Achievements.NemmandoUnlockAchievement>(true);
+        internal override UnlockableDef characterUnlockableDef { get; set; }// = Modules.Unlockables.AddUnlockable<Cores.Unlockables.Achievements.NemmandoUnlockAchievement>(true);
         private static UnlockableDef masterySkinUnlockableDef;
         private static UnlockableDef grandMasterySkinUnlockableDef;
         private static UnlockableDef singleTapUnlockableDef;
@@ -261,7 +261,7 @@ namespace Starstorm2.Modules.Survivors
             });
 
             Modules.Skills.AddSecondarySkill(bodyPrefab, gashSkillDef);
-            Modules.Skills.AddSecondarySkill(bodyPrefab, gunSkillDef, singleTapUnlockableDef);
+            Modules.Skills.AddSecondarySkill(bodyPrefab, gunSkillDef);//, singleTapUnlockableDef
             #endregion
 
             #region Utility
@@ -344,7 +344,7 @@ namespace Starstorm2.Modules.Survivors
             specialEpic = decisiveStrikeSkillDef;
 
             Modules.Skills.AddSpecialSkill(bodyPrefab, submissionSkillDef);
-            Modules.Skills.AddSpecialSkill(bodyPrefab, decisiveStrikeSkillDef, decisiveStrikeUnlockableDef);
+            Modules.Skills.AddSpecialSkill(bodyPrefab, decisiveStrikeSkillDef);//, decisiveStrikeUnlockableDef
             #endregion
         }
 

@@ -76,7 +76,7 @@ namespace Starstorm2.Modules.Survivors
         internal override ItemDisplayRuleSet itemDisplayRuleSet { get; set; }
         internal override List<ItemDisplayRuleSet.KeyAssetRuleGroup> itemDisplayRules { get; set; }
 
-        internal override UnlockableDef characterUnlockableDef { get; set; } = Modules.Unlockables.AddUnlockable<Cores.Unlockables.Achievements.ExecutionerUnlockAchievement>(true);
+        internal override UnlockableDef characterUnlockableDef { get; set; }// = Modules.Unlockables.AddUnlockable<Cores.Unlockables.Achievements.ExecutionerUnlockAchievement>(true);
         private static UnlockableDef masterySkinUnlockableDef;
         private static UnlockableDef grandMasterySkinUnlockableDef;
         private static UnlockableDef wastelanderSkinUnlockableDef;
