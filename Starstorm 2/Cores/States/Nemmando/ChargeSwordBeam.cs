@@ -9,7 +9,7 @@ namespace Starstorm2.Cores.States.Nemmando
 {
     public class ChargeSwordBeam : BaseCustomSkillState
     {
-        public static float baseChargeDuration = 1.25f;
+        public static float baseChargeDuration = 1f;
 
         public static float maxEmission;
         public static float minEmission;

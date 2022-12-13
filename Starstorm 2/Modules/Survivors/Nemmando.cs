@@ -39,7 +39,7 @@ namespace Starstorm2.Modules.Survivors
             crosshair = Modules.Assets.LoadCrosshair("Standard"),
             damage = 12f,
             healthGrowth = 33f,
-            healthRegen = 1f,
+            healthRegen = 2.5f,
             jumpCount = 1,
             maxHealth = 110f,
             subtitleNameToken = "NEMMANDO_SUBTITLE",
@@ -444,10 +444,11 @@ namespace Starstorm2.Modules.Survivors
             LanguageAPI.Add("NEMMANDO_COMMANDO_SKIN_NAME", "Commando");
             LanguageAPI.Add("NEMMANDO_VERGIL_SKIN_NAME", "Motivator");
 
-            string gougeDamage = $"<style=cIsDamage>{DamageTypeCore.gougeDamageCoefficient * 100}% damage</style>";
+            float gougeDuration = 2f;
+            string gougeDamage = $"<style=cIsDamage>{gougeDuration * DamageTypeCore.gougeDamageCoefficient * 100}%</style> base damage";
             string bladeDamage = $"<style=cIsDamage>{Cores.States.Nemmando.BladeOfCessation2.damageCoefficient * 100}% damage</style>";
 
-            LanguageAPI.Add("KEYWORD_GOUGE", $"<style=cKeywordName>Gouge</style><style=cSub>Applies {gougeDamage} over time, capable of critical hits.");
+            LanguageAPI.Add("KEYWORD_GOUGE", $"<style=cKeywordName>Gouge</style><style=cSub>Deal {gougeDamage} over {gougeDuration}s. <i>Capable of critical hits.</i>");
 
             LanguageAPI.Add("NEMMANDO_PRIMARY_BLADE_NAME", "Blade of Cessation");
             LanguageAPI.Add("NEMMANDO_PRIMARY_BLADE_DESCRIPTION", $@"<style=cIsHealth>Gouging</style>. <style=cIsUtility>Agile.</style> Slice enemies for {bladeDamage}.");
