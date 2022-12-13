@@ -52,7 +52,7 @@ namespace Starstorm2.Cores.States.Nemmando
 			this.previousPosition = base.transform.position - velocity;
 
             this.nemmandoController.rolling = true;
-            //this.nemmandoController.ActivateThrusters();	//Causes a weird mapwide effect to show up.
+            //this.nemmandoController.ActivateThrusters();
         }
 
 		private void RecalculateRollSpeed()

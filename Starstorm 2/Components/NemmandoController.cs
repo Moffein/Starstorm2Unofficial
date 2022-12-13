@@ -2,6 +2,7 @@
 using RoR2.Projectile;
 using Starstorm2.Cores;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
 
 namespace Starstorm2.Components
 {
@@ -19,6 +20,10 @@ namespace Starstorm2.Components
         private CharacterBody characterBody;
         private CharacterModel model;
         private ChildLocator childLocator;
+
+        public static GameObject jetEffect = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Commando/CommandoDashJets.prefab").WaitForCompletion();
+        private GameObject leftJetInstance;
+        private GameObject rightJetInstance;
 
         private void Awake()
         {
@@ -54,16 +59,38 @@ namespace Starstorm2.Components
             }
         }
 
+        //Still doesn't work. Just going to not use this.
         public void ActivateThrusters()
         {
-            this.childLocator.FindChild("JetMuzzleL").gameObject.SetActive(true);
-            this.childLocator.FindChild("JetMuzzleR").gameObject.SetActive(true);
+            //this.childLocator.FindChild("JetMuzzleL").gameObject.SetActive(true);
+            //this.childLocator.FindChild("JetMuzzleR").gameObject.SetActive(true);
+            Transform leftJet = this.childLocator.FindChild("JetMuzzleL");
+            Transform rightJet = this.childLocator.FindChild("JetMuzzleR");
+            if (leftJet && !leftJetInstance)
+            {
+                leftJetInstance = UnityEngine.Object.Instantiate<GameObject>(NemmandoController.jetEffect, leftJet);
+            }
+            if (rightJet && !rightJetInstance)
+            {
+                rightJetInstance = UnityEngine.Object.Instantiate<GameObject>(NemmandoController.jetEffect, rightJet);
+            }
         }
 
+        //Still doesn't work. Just going to not use this.
         public void DeactivateThrusters()
         {
-            this.childLocator.FindChild("JetMuzzleL").gameObject.SetActive(false);
-            this.childLocator.FindChild("JetMuzzleR").gameObject.SetActive(false);
+            //this.childLocator.FindChild("JetMuzzleL").gameObject.SetActive(false);
+            //this.childLocator.FindChild("JetMuzzleR").gameObject.SetActive(false);
+            if (leftJetInstance)
+            {
+                Destroy(leftJetInstance);
+                leftJetInstance = null;
+            }
+            if (rightJetInstance)
+            {
+                Destroy(leftJetInstance);
+                leftJetInstance = null;
+            }
         }
 
         public void CoverScreen()
