@@ -26,25 +26,6 @@ namespace Starstorm2.Cores
         public static List<GameObject> bodyList = new List<GameObject>();
         //public static GameObject[] bodyArray;
 
-        public PrefabCore()
-        {
-            //CreatePrefabs();
-            //RegisterSurvivors();
-        }
-
-        public static void RegisterSurvivors()
-        {
-            //here are your funny numbers now shut your fuck up
-            //if (Starstorm.EnableCyborg.Value) RegisterNewSurvivor(cyborgPrefab, cyborgDisplayPrefab, 202, "CYBORG", "");
-            //if (Starstorm.EnableNucleator.Value) RegisterNewSurvivor(nucleatorPrefab, nucleatorDisplayPrefab, 204, "NUCLEATOR", "");
-            //if (Starstorm.EnableChirr.Value) RegisterNewSurvivor(chirrPrefab, chirrDisplayPrefab, 206, "CHIRR", "");
-            //if (Starstorm.EnablePyro.Value) RegisterNewSurvivor(pyroPrefab, pyroDisplayPrefab, 207, "PYRO");
-        }
-
-        public static void CreatePrefabs()
-        {
-        }
-
         private static void RegisterNewSurvivor(GameObject bodyPrefab, GameObject displayPrefab, float sortPosition, string namePrefix, UnlockableDef unlockDef)
         {
             SurvivorDef survivorDef = ScriptableObject.CreateInstance<SurvivorDef>();
