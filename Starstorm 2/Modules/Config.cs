@@ -12,8 +12,6 @@ namespace Starstorm2.Modules
         internal static ConfigEntry<bool> ss_test;
         internal static ConfigEntry<bool> cursed;
 
-        internal static ConfigEntry<bool> EnableEnemies;
-
         internal static ConfigEntry<KeyCode> RestKeybind;
         internal static KeyCode restKeybind;
         internal static ConfigEntry<KeyCode> TauntKeybind;
@@ -26,10 +24,6 @@ namespace Starstorm2.Modules
 
         internal static ConfigEntry<bool> EnableTyphoon;
         internal static ConfigEntry<bool> TyphoonIncreaseSpawnCap;
-        internal static ConfigEntry<bool> EnableEthereal;
-        internal static ConfigEntry<bool> EnableVoid;
-        internal static ConfigEntry<bool> EnableElites;
-
         internal static ConfigEntry<bool> EnableEvents;
         internal static ConfigEntry<int> stormCreditCost;
         internal static ConfigEntry<bool> enableOptimizedStormVisuals;

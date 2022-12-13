@@ -71,71 +71,70 @@ namespace Starstorm2
 
         internal static void InitValues()
         {
-            sekiroArmor = ItemStatConfigValue("Hunters Sigil", "Armor", "Base armor gained", 15f);
-            sekiroArmorStack = ItemStatConfigValue("Hunters Sigil", "Armor Stacking", "Armor gained per stack", 10f);
-            sekiroCrit = ItemStatConfigValue("Hunters Sigil", "Crit Chance", "Base crit chance", 25f);
-            sekiroCritStack = ItemStatConfigValue("Hunters Sigil", "Crit Stacking", "Crit chance per stack", 20f);
+            sekiroArmor = 15f;
+            sekiroArmorStack = 10f;
+            sekiroCrit = 25f;
+            sekiroCritStack = 20f;
 
-            hottestSusHit = ItemStatConfigValue("Hottest Sauce", "Damage", "Damage of the initial bursts damage", 1.5f);
-            hottestSusRadius = ItemStatConfigValue("Hottest Sauce", "Radius", "Radius of hottest sauce effects", 30f);
-            hottestSusDuration = ItemStatConfigValue("Hottest Sauce", "Duration", "Duration of hottest sauces burn", 6f);
-            hottestSusDamage = ItemStatConfigValue("Hottest Sauce", "Burn Damage", "Damage multipler of hottest sauces burn", 1f);
+            hottestSusHit = 1.5f;
+            hottestSusRadius = 30f;
+            hottestSusDuration = 6f;
+            hottestSusDamage = 1f;
 
-            choccyThreshold = ItemStatConfigValue("Green Chocolate", "Health Threshold", "Amount of health to lose to proc", 0.2f);
-            choccyBaseTime = ItemStatConfigValue("Green Chocolate", "Base Duration", "Duration of the green chocolate buff", 5f);
-            choccyStackTime = ItemStatConfigValue("Green Chocolate", "Duration Stacking", "Duration of the green chocolate buff per green chocolate", 10f);
+            choccyThreshold = 0.2f;
+            choccyBaseTime = 5f;
+            choccyStackTime = 10f;
 
-            dungusBase = ItemStatConfigValue("Dormant Fungus", "Base Healing", "Base healing per second", 0.015f);
-            dungusStack = ItemStatConfigValue("Dormant Fungus", "Heal Stacking", "Healing per stack of dungus", 0.005f);
-            dungusTime = ItemStatConfigValue("Dormant Fungus", "Heal Timer", "How many seconds between heals", 1f);
+            dungusBase = 0.015f;
+            dungusStack = 0.005f;
+            dungusTime = 1f;
 
-            canBaseChance = ItemStatConfigValue("Strange Can", "Base Chance", "Base chance of intoxication", 8.5f);
-            canStackChance = ItemStatConfigValue("Strange Can", "Chance Stacking", "Chance of intoxication per strange can", 5f);
-            canDuration = ItemStatConfigValue("Strange Can", "Duration", "Duration of intoxication effect", 3.5f);
-            canDamage = ItemStatConfigValue("Strange Can", "Damage", "Damage of intoxication effect per tick", 1f);
+            canBaseChance = 8.5f;
+            canStackChance = 5f;
+            canDuration = 3.5f;
+            canDamage = 1f;
 
-            bootsBase = ItemStatConfigValue("Prototype Jet Boots", "Damage", "Damage dealt on jump", 1.5f);
-            bootsStack = ItemStatConfigValue("Prototype Jet Boots", "Damage Stacking", "Damage added per stack", 1f);
-            bootsRadius = ItemStatConfigValue("Prototype Jet Boots", "Radius", "Radius of explosion", 7.5f);
-            bootsProc = ItemStatConfigValue("Prototype Jet Boots", "Proc Coefficient", "Proc coefficient", 0f);
-            timbsQuality = Starstorm.instance.Config.Bind<JetBootsEffectQuality>("Starstorm 2 :: Items :: Prototype Jet Boots", "Effect Quality", JetBootsEffectQuality.Default, new ConfigDescription("Quality of the explosion effect")).Value;
+            bootsBase = 1.5f;
+            bootsStack = 1f;
+            bootsRadius = 7.5f;
+            bootsProc = 0f;
+            timbsQuality = JetBootsEffectQuality.Default;
 
-            forkDamageValue = ItemStatConfigValue("Fork", "Damage", "Amount of damage per fork", 0.07f);
+            forkDamageValue = 0.07f;
 
-            coffeeAttackSpeedValue = ItemStatConfigValue("Coffee Bag", "Attack Speed", "Amount of attack speed per coffee bag", 0.075f);
-            coffeeMoveSpeedValue = ItemStatConfigValue("Coffee Bag", "Movement Speed", "Amount of movement speed per coffee bag", 0.07f);
+            coffeeAttackSpeedValue = 0.075f;
+            coffeeMoveSpeedValue = 0.07f;
 
-            maliceRangeValue = ItemStatConfigValue("Malice", "Radius", "Radius", 9.0f);
-            maliceRangeStackValue = ItemStatConfigValue("Malice", "Radius Stacking", "Amount of added range per malice", 1f);
-            maliceDmgReductionValue = ItemStatConfigValue("Malice", "Damage Preserved", "Amount of damage preserved", 0.55f);
-            maliceProcCoefValue = ItemStatConfigValue("Malice", "Proc Coefficient", "Proc coefficient", 0f);
+            maliceRangeValue = 9f;
+            maliceRangeStackValue = 1f;
+            maliceDmgReductionValue = 0.55f;
+            maliceProcCoefValue = 0f;
 
-            trematodeDamage = ItemStatConfigValue("Detritive Trematode", "Damage", "Damage per hit", 1f);
-            trematodeDuration = ItemStatConfigValue("Detritive Trematode", "Duration", "Duration of trematodes", 3f);
-            trematodeCritical = ItemStatConfigValue("Detritive Trematode", "Critical Health Threshold", "Threshold for trematodes to activate", 0.4f);
+            trematodeDamage = 1f;
+            trematodeDuration = 3f;
+            trematodeCritical = 0.4f;
 
-            diaryTime = ItemStatConfigValue("Diary", "XP Gain Rate", "Seconds between xp gain", 2f);
+            diaryTime = 2f;
 
-            coinChance = ItemStatConfigValue("Molten Coin", "Proc Rate", "Chance to burn on hit", 6f);
-            coinDuration = ItemStatConfigValue("Molten Coin", "Duration", "Burn duration", 4f);
-            coinDamage = ItemStatConfigValue("Molten Coin", "Damage", "Damage dealt by burn", 1f);
-            //I don't know how this fucking works but I'm sure some bored user will figure it out.
-            coinMoneyGained = ItemStatConfigValue("Molten Coin", "Money Gained", "Money gained per proc", 1f);
+            coinChance = 6f;
+            coinDuration = 4f;
+            coinDamage = 1f;
+            coinMoneyGained = 1f;
 
-            massFactor = ItemStatConfigValue("Relic of Mass", "Acceleration Multiplier", "Factor by which acceleration is multiplied", 8f);
-            massHealthGain = ItemStatConfigValue("Relic of Mass", "Health Multiplier", "Amount of health is gained", 1f);
+            massFactor = 8f;
+            massHealthGain = 1f;
 
-            testerGold = ItemStatConfigValue("Broken Blood Tester", "Gold Per Heal", "Amount of gold earned on heal", 5f);
-            testerHealing = ItemStatConfigValue("Broken Blood Tester", "Healing Threshold", "Amount of health to proc", 15f);
+            testerGold = 5f;
+            testerHealing = 15f;
 
-            gadgetDamage = ItemStatConfigValue("Erratic Gadget", "Crit Boost Amount", "Damage added to crit", 0.5f);
-            gadgetCrit = ItemStatConfigValue("Erratic Gadget", "Crit Chance Increase", "Amount of added crit chance", 10f);
+            gadgetDamage = 0.5f;
+            gadgetCrit = 10f;
 
-            droidLife = ItemStatConfigValue("Droid Head", "Drone Lifetime", "Lifetime of drones", 15f);
-            droidDamage = ItemStatConfigValue("Droid Head", "Drone Damage", "Damage dealt by drones", 1f);
-            droidSpeed = ItemStatConfigValue("Droid Head", "Drone Speed", "Movement speed of drones", 2f);
+            droidLife = 15f;
+            droidDamage = 1f;
+            droidSpeed = 2f;
 
-            soulChance = ItemStatConfigValue("Stirring Soul", "Item Chance", "Chance of dropping an item", 3f);
+            soulChance = 3f;
         }
 
         // helper for ez item stat config
