@@ -23,6 +23,7 @@ namespace EntityStates.Starstorm2States.Nemmando
         public static float maxProjectileSpeed = 120f;
         public static float minProjectileSpeed = 50f;
         public float baseDuration = 0.6f;
+        public static GameObject projectilePrefab;
 
         private float emission;
         private Material swordMat;
@@ -100,7 +101,7 @@ namespace EntityStates.Starstorm2States.Nemmando
 
                     Ray aimRay = base.GetAimRay();
 
-                    ProjectileManager.instance.FireProjectile(Starstorm2.Modules.Projectiles.swordBeam, aimRay.origin, Util.QuaternionSafeLookRotation(aimRay.direction), base.gameObject, damage, 0f, base.RollCrit(), DamageColorIndex.Default, null, this.projectileSpeed);
+                    ProjectileManager.instance.FireProjectile(FireSwordBeam.projectilePrefab, aimRay.origin, Util.QuaternionSafeLookRotation(aimRay.direction), base.gameObject, damage, 0f, base.RollCrit(), DamageColorIndex.Default, null, this.projectileSpeed);
                 }
             }
         }

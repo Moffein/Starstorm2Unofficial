@@ -1,6 +1,7 @@
 ﻿using EntityStates;
 using RoR2;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
 
 namespace EntityStates.Starstorm2States.Nemmando
 {
@@ -12,18 +13,23 @@ namespace EntityStates.Starstorm2States.Nemmando
         public static float laserBlastRadius = 8f;
         public static float laserBlastForce = 2000f;
 
-        public static float damageCoefficient = 0.6f;
+        public static float damageCoefficient = 1.2f;
         public static float procCoefficient = 0.5f;
-        public static uint bulletCountPerShot = 8;
+        public static uint bulletCountPerShot = 4;
         public static float range = 128f;
-        public static float maxSpread = 40f;
+        public static float maxSpread = 8f;
         public static int minBulletCount = 2;
-        public static int maxBulletCount = 6;
+        public static int maxBulletCount = 5;
 
         public static float baseDuration = 0.8f;
         public static float minTimeBetweenShots = 0.2f;
         public static float maxTimeBetweenShots = 0.075f;
         public static float recoil = 5f;
+
+        public static float force = 200f;
+        public static float bulletRadius = 2f;
+
+        private bool isCrit;
 
         private int totalBulletsFired;
         private int bulletCount;
@@ -32,7 +38,9 @@ namespace EntityStates.Starstorm2States.Nemmando
         private Transform modelTransform;
         private float duration;
         private float durationBetweenShots;
+        public static GameObject tracerEffectPrefab;
         private GameObject muzzleFlashEffect = LegacyResourcesAPI.Load<GameObject>("Prefabs/Effects/ImpactEffects/FusionCellExplosion");
+        public static GameObject impactEffectPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Commando/HitsparkCommando.prefab").WaitForCompletion();
 
         public override void OnEnter()
         {
@@ -46,6 +54,8 @@ namespace EntityStates.Starstorm2States.Nemmando
             this.modelTransform = base.GetModelTransform();
             base.characterBody.SetAimTimer(2f);
             base.characterBody.outOfCombatStopwatch = 0f;
+
+            isCrit = base.RollCrit();
 
             this.FireBullet();
         }
@@ -77,12 +87,12 @@ namespace EntityStates.Starstorm2States.Nemmando
                     maxSpread = ScepterBarrageFire.maxSpread,
                     bulletCount = ScepterBarrageFire.bulletCountPerShot,
                     damage = ScepterBarrageFire.damageCoefficient * this.damageStat,
-                    force = 0.5f * EntityStates.Commando.CommandoWeapon.FireBarrage.force,
-                    tracerEffectPrefab = Starstorm2.Modules.Projectiles.laserTracer,
+                    force = force,
+                    tracerEffectPrefab = ScepterBarrageFire.tracerEffectPrefab,
                     muzzleName = muzzleName,
-                    hitEffectPrefab = EntityStates.Commando.CommandoWeapon.FireBarrage.hitEffectPrefab,
-                    isCrit = base.RollCrit(),
-                    radius = EntityStates.Commando.CommandoWeapon.FireBarrage.bulletRadius,
+                    hitEffectPrefab = ScepterBarrageFire.impactEffectPrefab,
+                    isCrit = isCrit,
+                    radius = bulletRadius,
                     smartCollision = true,
                     damageType = DamageType.Generic,
                     spreadPitchScale = 0.5f,

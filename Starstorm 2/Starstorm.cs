@@ -118,7 +118,6 @@ namespace Starstorm2
             Modules.CameraParams.Initialize();
             Modules.States.Initialize();
             Modules.Config.Initialize();
-            Modules.Projectiles.Initialize();
             Modules.Music.Initialize();
             Cores.Unlockables.VanillaSurvivorUnlockables.RegisterUnlockables();
 

@@ -220,7 +220,6 @@
     <Compile Include="Modules\Orbs\ExecutionerIonTempSuperOrb.cs" />
     <Compile Include="Modules\Orbs\NemmandoDashOrb.cs" />
     <Compile Include="Modules\Prefabs.cs" />
-    <Compile Include="Modules\Projectiles.cs" />
     <Compile Include="Modules\Skills.cs" />
     <Compile Include="Modules\Skins.cs" />
     <Compile Include="Modules\States.cs" />

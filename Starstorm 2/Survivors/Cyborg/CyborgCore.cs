@@ -21,7 +21,13 @@ namespace Starstorm2.Cores
         public static GameObject bfgProjectile;
         public static GameObject cyborgPylon;
 
+        public static BodyIndex bodyIndex;
+
         public CyborgCore() => Setup();
+        private void SetBodyIndex()
+        {
+            bodyIndex = BodyCatalog.FindBodyIndex("CyborgBody");
+        }
 
         private void Setup()
         {
@@ -56,6 +62,7 @@ namespace Starstorm2.Cores
             CreateDoppelganger();
 
             Modules.Prefabs.RegisterNewSurvivor(cybPrefab, PrefabCore.CreateDisplayPrefab("CyborgDisplay", cybPrefab), Color.blue, "CYBORG");
+            RoR2.RoR2Application.onLoad += SetBodyIndex;
         }
 
         private void RegisterStates()

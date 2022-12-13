@@ -5,6 +5,7 @@ using R2API;
 using R2API.Utils;
 using RoR2;
 using RoR2.CharacterAI;
+using RoR2.Projectile;
 using RoR2.Skills;
 using Starstorm2.Cores;
 using Starstorm2.Modules;
@@ -106,6 +107,10 @@ namespace Starstorm2.Survivors.Nemmando
         internal override void InitializeCharacter()
         {
             base.InitializeCharacter();
+
+            SetupSwordProjectile();
+            SetupLaserTracer();
+
             RoR2.RoR2Application.onLoad += SetBodyIndex;
             if (characterEnabled.Value)
             {
@@ -126,6 +131,64 @@ namespace Starstorm2.Survivors.Nemmando
 
                 InitializeBoss();
             }
+        }
+
+        private void SetupSwordProjectile()
+        {
+
+            GameObject swordBeam = PrefabAPI.InstantiateClone(LegacyResourcesAPI.Load<GameObject>("Prefabs/Projectiles/FMJ"), "NemmandoSwordBeam", true);
+            swordBeam.transform.localScale = new Vector3(4.5f, 2.5f, 2.5f);
+
+            GameObject swordBeamGhost = PrefabAPI.InstantiateClone(LegacyResourcesAPI.Load<GameObject>("Prefabs/Projectiles/EvisProjectile").GetComponent<ProjectileController>().ghostPrefab, "NemmandoSwordBeamGhost", false);
+            foreach (ParticleSystemRenderer i in swordBeamGhost.GetComponentsInChildren<ParticleSystemRenderer>())
+            {
+                if (i)
+                {
+                    Material mat = UnityEngine.Object.Instantiate<Material>(i.material);
+                    mat.SetColor("_TintColor", Color.red);
+                    i.material = mat;
+                }
+            }
+            foreach (Light i in swordBeamGhost.GetComponentsInChildren<Light>())
+            {
+                if (i)
+                {
+                    i.color = Color.red;
+                }
+            }
+
+            swordBeam.GetComponent<ProjectileController>().ghostPrefab = swordBeamGhost;
+            swordBeam.GetComponent<ProjectileDamage>().damageType = DamageType.Generic;
+
+            DamageAPI.ModdedDamageTypeHolderComponent moddedDamage = swordBeam.AddComponent<DamageAPI.ModdedDamageTypeHolderComponent>();
+            moddedDamage.Add(Cores.DamageTypeCore.ModdedDamageTypes.GougeOnHit);
+
+            Starstorm.Destroy(swordBeam.transform.Find("SweetSpotBehavior").gameObject);
+
+            Modules.Prefabs.projectilePrefabs.Add(swordBeam);
+
+            FireSwordBeam.projectilePrefab = swordBeam;
+        }
+
+        private void SetupLaserTracer()
+        {
+            GameObject laserTracer = LegacyResourcesAPI.Load<GameObject>("Prefabs/Effects/Tracers/TracerCommandoShotgun").InstantiateClone("NemmandoLaserTracer", true);
+
+            foreach (LineRenderer i in laserTracer.GetComponentsInChildren<LineRenderer>())
+            {
+                if (i)
+                {
+                    Material material = UnityEngine.Object.Instantiate<Material>(i.material);
+                    material.SetColor("_TintColor", Color.red);
+                    i.material = material;
+                    i.startColor = new Color(0.8f, 0.19f, 0.19f);
+                    i.endColor = new Color(0.8f, 0.19f, 0.19f);
+                }
+            }
+
+            Modules.Assets.AddEffect(laserTracer);
+            ChargeBarrageFire.tracerEffectPrefab = laserTracer;
+            ScepterBarrageFire.tracerEffectPrefab = laserTracer;
         }
 
         private void InitializeBoss()
@@ -776,7 +839,7 @@ namespace Starstorm2.Survivors.Nemmando
                 {
                     new SkinDef.ProjectileGhostReplacement
                     {
-                        projectilePrefab = Modules.Projectiles.swordBeam,
+                        projectilePrefab = FireSwordBeam.projectilePrefab,
                         projectileGhostReplacementPrefab = LegacyResourcesAPI.Load<GameObject>("Prefabs/ProjectileGhosts/EvisProjectileGhost")
                     }
                 };
@@ -869,7 +932,7 @@ namespace Starstorm2.Survivors.Nemmando
                 {
                     new SkinDef.ProjectileGhostReplacement
                     {
-                        projectilePrefab = Modules.Projectiles.swordBeam,
+                        projectilePrefab = FireSwordBeam.projectilePrefab,
                         projectileGhostReplacementPrefab = LegacyResourcesAPI.Load<GameObject>("Prefabs/ProjectileGhosts/EvisProjectileGhost")
                     }
                 };
