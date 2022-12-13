@@ -34,9 +34,6 @@ namespace EntityStates.Cyborg
         private Animator animator;
         private string muzzleString;
 
-        private float groundKnockbackDistance = 8;
-        private float airKnockbackDistance = 12;
-
         private CyborgController cyborgController;
 
         public override void OnEnter()
