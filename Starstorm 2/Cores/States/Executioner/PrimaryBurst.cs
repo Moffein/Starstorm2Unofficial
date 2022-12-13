@@ -11,11 +11,11 @@ namespace EntityStates.Executioner
         public static float force = 100f;
         public static float baseDuration = 0.5f;
         public static float baseShotDuration = 0.12f;
-        public static string attackSoundString = "ExecutionerPrimary";
-        public static string critSoundString = "ExecutionerPrimaryCrit";
+        public static string attackSoundString = "ExecutionerPrimaryClassic";//"ExecutionerPrimary";
+        public static string critSoundString = "ExecutionerPrimaryClassic";//"ExecutionerPrimaryCrit";
         public static int baseShotCount = 2;
         public static string muzzleString = "Muzzle";
-        public static float spreadBloom = 0.3f;
+        public static float spreadBloom = 0.4f;
         public static float recoil = 1f;
 
         public static GameObject tracerEffectPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Commando/TracerCommandoDefault.prefab").WaitForCompletion();
@@ -68,6 +68,7 @@ namespace EntityStates.Executioner
             shotStopwatch = 0f;
             shotCount++;
             Util.PlaySound(crit ? ExecutionerBurstPistol.critSoundString : ExecutionerBurstPistol.attackSoundString, base.gameObject);
+            EffectManager.SimpleMuzzleFlash(Commando.CommandoWeapon.FirePistol2.muzzleEffectPrefab, base.gameObject, muzzleString, false);
             base.PlayAnimation("Gesture, Override", "Primary", "Primary.playbackRate", this.duration);
 
             if (base.isAuthority)

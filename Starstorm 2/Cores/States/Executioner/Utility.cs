@@ -13,7 +13,7 @@ namespace EntityStates.Executioner
         public static float baseDuration = 0.5f;
         public static float speedMultiplier = 4.0f;
         public static float debuffRadius = 12f;
-        public static float debuffDuration = 2.0f;
+        public static float debuffDuration = 3f;
         public static float debuffCheckInterval = 0.1f;
 
         private float debuffCheckStopwatch;
