@@ -15,7 +15,7 @@ namespace EntityStates.Executioner
         public static string critSoundString = "ExecutionerPrimaryCrit";
         public static int baseShotCount = 2;
         public static string muzzleString = "Muzzle";
-        public static float spreadBloom = 0.2f;
+        public static float spreadBloom = 0.3f;
         public static float recoil = 1f;
 
         public static GameObject tracerEffectPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Commando/TracerCommandoDefault.prefab").WaitForCompletion();
