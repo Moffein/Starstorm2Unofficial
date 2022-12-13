@@ -132,7 +132,8 @@ namespace Starstorm2.Components
 
         private void FixedUpdate()
         {
-            this.currentEmission = Mathf.Lerp(this.currentEmission, this.characterBody.skillLocator.secondary.stock, 1.5f * Time.fixedDeltaTime);
+            //This breaks emission between runs
+            /*this.currentEmission = Mathf.Lerp(this.currentEmission, this.characterBody.skillLocator.secondary.stock, 1.5f * Time.fixedDeltaTime);
 
             if (this.gunMat)
             {
@@ -140,7 +141,7 @@ namespace Starstorm2.Components
                 float colorValue = Util.Remap(this.currentEmission, 0, this.characterBody.skillLocator.secondary.maxStock, 0f, 1f);
                 Color emColor = emColor = new Color(colorValue, colorValue, colorValue);
                 this.gunMat.SetColor("_EmColor", emColor);
-            }
+            }*/
 
             if (this.bodyMat)
             {
