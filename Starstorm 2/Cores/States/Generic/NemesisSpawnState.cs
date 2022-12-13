@@ -27,7 +27,7 @@ namespace Starstorm2.Cores.States.Generic
             base.OnEnter();
             this.initCamera = false;
             base.PlayAnimation("FullBody, Override", "Spawn");
-            Util.PlaySound(EntityStates.NullifierMonster.SpawnState.spawnSoundString, base.gameObject);
+            Util.PlaySound("Play_elite_haunt_spawn", base.gameObject);
 
             if (NetworkServer.active) base.characterBody.AddBuff(RoR2Content.Buffs.HiddenInvincibility);
             this.SpawnEffect();

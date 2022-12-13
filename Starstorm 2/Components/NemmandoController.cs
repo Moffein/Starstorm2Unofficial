@@ -27,8 +27,6 @@ namespace Starstorm2.Components
             this.model = this.GetComponentInChildren<CharacterModel>();
 
             Invoke("HolsterGun", 0.5f);
-
-            this.FixProjectile();
         }
 
         private void LateUpdate()
@@ -66,19 +64,6 @@ namespace Starstorm2.Components
         {
             this.childLocator.FindChild("JetMuzzleL").gameObject.SetActive(false);
             this.childLocator.FindChild("JetMuzzleR").gameObject.SetActive(false);
-        }
-
-        private void FixProjectile()
-        {
-            // i need this code to run in start but i don't know how to navigate this plugin so i'm doing the hackiest thing and throwing it in here instead.
-            // cry about it.
-            // code is fixing phase round lightning interaction
-            GameObject swordBeam = Modules.Projectiles.swordBeam;
-
-            var overlapAttack = swordBeam.GetComponent<ProjectileOverlapAttack>();
-            if (overlapAttack) overlapAttack.damageCoefficient = 1f;
-
-            if (swordBeam.GetComponent<ProjectileProximityBeamController>()) Starstorm.Destroy(swordBeam.GetComponent<ProjectileProximityBeamController>());
         }
 
         public void CoverScreen()
