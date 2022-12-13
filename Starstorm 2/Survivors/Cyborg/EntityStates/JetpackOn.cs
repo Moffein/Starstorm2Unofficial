@@ -2,7 +2,7 @@
 using UnityEngine;
 using EntityStates;
 
-namespace Starstorm2.Cores.States.Cyborg
+namespace EntityStates.Starstorm2States.Cyborg
 {
 	public class JetpackOn : BaseState
 	{

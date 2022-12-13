@@ -4,14 +4,15 @@ using RoR2.Projectile;
 using RoR2.Skills;
 using UnityEngine;
 using UnityEngine.Networking;
-using EntityStates.Cyborg;
-using Starstorm2.Cores.States.Cyborg;
 using UnityEngine.AddressableAssets;
 using EntityStates;
 using System.Linq;
+using EntityStates.Starstorm2States.Cyborg;
+using Starstorm2.Survivors.Cyborg.Components;
 
 namespace Starstorm2.Cores
 {
+    //Would prefer for this to be the same as Nemmando/ExeCore, but I don't want to rewrite this so I'll leave it as-is.
     public class CyborgCore
     {
         public static GameObject cybPrefab;
@@ -24,7 +25,7 @@ namespace Starstorm2.Cores
 
         private void Setup()
         {
-            cybPrefab = PrefabCore.CreateCyborgPrefab();
+            cybPrefab = CreateCyborgPrefab();
             cybPrefab.GetComponent<EntityStateMachine>().mainStateType = new EntityStates.SerializableEntityStateType(typeof(CyborgMain));
 
             EntityStateMachine jetpackStateMachine = cybPrefab.AddComponent<EntityStateMachine>();
@@ -54,7 +55,7 @@ namespace Starstorm2.Cores
             Skins.CyborgSkins.RegisterSkins();
             CreateDoppelganger();
 
-            Modules.Prefabs.RegisterNewSurvivor(cybPrefab, PrefabCore.cyborgDisplayPrefab, Color.blue, "CYBORG");
+            Modules.Prefabs.RegisterNewSurvivor(cybPrefab, PrefabCore.CreateDisplayPrefab("CyborgDisplay", cybPrefab), Color.blue, "CYBORG");
         }
 
         private void RegisterStates()
@@ -299,26 +300,42 @@ namespace Starstorm2.Cores
 
             Modules.Prefabs.masterPrefabs.Add(doppelganger);
         }
-    }
-    public class CyborgInfoComponent : NetworkBehaviour
-    {
-        public bool tpReady;
-        public Vector3 tpPos;
-        public bool isHooked;
 
-        /*[ClientRpc]
-         * I could need some RPC later, so keeping it handy
-        public void RpcAddIonCharge()
+
+        internal static GameObject CreateCyborgPrefab()
         {
-            SkillLocator skillLoc = this.gameObject.GetComponent<SkillLocator>();
-            GenericSkill ionGunSkill = skillLoc?.secondary;
-            if (this.hasAuthority && ionGunSkill && ionGunSkill.stock < ionGunSkill.maxStock)
-                ionGunSkill.AddOneStock();
-        }*/
-    }
+            GameObject cyborgPrefab = PrefabCore.CreatePrefab("CyborgBody", "mdlCyborg", new BodyInfo
+            {
+                armor = 0f,
+                armorGrowth = 0f,
+                bodyName = "CyborgBody",
+                bodyNameToken = "CYBORG_NAME",
+                characterPortrait = Modules.Assets.mainAssetBundle.LoadAsset<Texture2D>("cyborgicon"),
+                bodyColor = new Color32(138, 183, 168, 255),
+                crosshair = LegacyResourcesAPI.Load<GameObject>("Prefabs/Crosshair/StandardCrosshair"),
+                damage = 12f,
+                healthGrowth = 33f,
+                healthRegen = 1f,
+                jumpCount = 1,
+                maxHealth = 110f,
+                subtitleNameToken = "CYBORG_SUBTITLE",
+                podPrefab = LegacyResourcesAPI.Load<GameObject>("Prefabs/NetworkedObjects/SurvivorPod"),
+                acceleration = 40f
+            });
 
-    public class CyborgPylonComponent : NetworkBehaviour
-    {
-        
+            PrefabCore.SetupCharacterModel(cyborgPrefab, new CustomRendererInfo[]
+            {
+                new CustomRendererInfo
+                {
+                    childName = "Model",
+                    material = Modules.Assets.CreateMaterial("matCyborg", 1f, new Color(0.839f, 0.812f, 0.812f))
+                }
+            }, 0);
+
+            cyborgPrefab.AddComponent<CyborgController>();
+            cyborgPrefab.AddComponent<CyborgInfoComponent>();
+
+            return cyborgPrefab;
+        }
     }
 }

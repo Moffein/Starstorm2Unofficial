@@ -29,7 +29,7 @@ namespace Starstorm2.Survivors.Executioner
         internal override GameObject bodyPrefab { get; set; }
         internal override GameObject displayPrefab { get; set; }
 
-        internal override float sortPosition { get; set; } = 4.001f;
+        internal override float sortPosition { get; set; } = 40f;
 
         internal override ConfigEntry<bool> characterEnabled { get; set; }
 

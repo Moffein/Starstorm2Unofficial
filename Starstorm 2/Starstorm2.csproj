@@ -79,7 +79,8 @@
     <Compile Include="API\LogCore.cs" />
     <Compile Include="API\Utils.cs" />
     <Compile Include="Components\ChirrController.cs" />
-    <Compile Include="Components\CyborgController.cs" />
+    <Compile Include="Survivors\Cyborg\Components\CyborgController.cs" />
+    <Compile Include="Survivors\Cyborg\Components\CyborgInfoComponent.cs" />
     <Compile Include="Survivors\Executioner\Components\ExecutionerController.cs" />
     <Compile Include="Survivors\Executioner\Components\ExecutionerKillComponent.cs" />
     <Compile Include="Components\MenuSound.cs" />
@@ -153,7 +154,7 @@
     <Compile Include="Survivors\Executioner\EntityStates\Secondary.cs" />
     <Compile Include="Survivors\Executioner\EntityStates\Special.cs" />
     <Compile Include="Survivors\Executioner\EntityStates\Utility.cs" />
-    <Compile Include="Cores\Survivors\CyborgCore.cs" />
+    <Compile Include="Survivors\Cyborg\CyborgCore.cs" />
     <Compile Include="Cores\ItemCore.cs" />
     <Compile Include="Cores\DotCore.cs" />
     <Compile Include="Cores\EquipmentCore.cs" />

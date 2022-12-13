@@ -15,10 +15,7 @@ using Starstorm2.Cores;
 using UnityEngine.Networking;
 using KinematicCharacterController;
 
-//FIXME: ion gun doesn't build charges in mp if player is not host
-//FIXME: ion burst stocks do not carry over between stages (may leave this as feature)
-
-namespace EntityStates.Cyborg
+namespace EntityStates.Starstorm2States.Cyborg
 {
     public class CyborgFireBaseShot : BaseSkillState
     {

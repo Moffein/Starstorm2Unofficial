@@ -1,12 +1,7 @@
 ﻿using RoR2;
-using UnityEngine;
-using EntityStates;
-using RoR2.Audio;
-using Starstorm2.Components;
+using Starstorm2.Survivors.Cyborg.Components;
 
-//TODO: should check that secondary is ion gun before attempting to store/load charges
-
-namespace Starstorm2.Cores.States.Cyborg
+namespace EntityStates.Starstorm2States.Cyborg
 {
     public class CyborgMain : GenericCharacterMain
     {

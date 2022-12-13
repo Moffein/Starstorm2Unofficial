@@ -9,7 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
 
-namespace Starstorm2.Components
+namespace Starstorm2.Survivors.Cyborg.Components
 {
     public class CyborgController : MonoBehaviour
     {

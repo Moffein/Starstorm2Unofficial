@@ -1,6 +1,7 @@
 ﻿using EntityStates;
 using RoR2;
 using Starstorm2.Components;
+using Starstorm2.Survivors.Nemmando.Components;
 using UnityEngine;
 using UnityEngine.Networking;
 

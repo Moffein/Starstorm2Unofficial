@@ -1,6 +1,7 @@
 ﻿using R2API;
 using RoR2;
 using RoR2.ContentManagement;
+using Starstorm2.Survivors.Cyborg.Components;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -10,17 +11,8 @@ namespace Starstorm2.Cores
     {
         internal static List<SurvivorDef> survivorDefs = new List<SurvivorDef>();
 
-        public static GameObject executionerPrefab;
-        public static GameObject executionerDisplayPrefab;
-
-        public static GameObject nemmandoPrefab;
-        public static GameObject nemmandoDisplayPrefab;
-
         public static GameObject pyroPrefab;
         public static GameObject pyroDisplayPrefab;
-
-        public static GameObject cyborgPrefab;
-        public static GameObject cyborgDisplayPrefab;
 
         public static GameObject chirrPrefab;
         public static GameObject chirrDisplayPrefab;
@@ -67,46 +59,6 @@ namespace Starstorm2.Cores
 
             survivorDefs.Add(survivorDef);
         }
-
-        
-        #region Cyborg
-        internal static GameObject CreateCyborgPrefab()
-        {
-            cyborgPrefab = CreatePrefab("CyborgBody", "mdlCyborg", new BodyInfo
-            {
-                armor = 0f,
-                armorGrowth = 0f,
-                bodyName = "CyborgBody",
-                bodyNameToken = "CYBORG_NAME",
-                characterPortrait = Modules.Assets.mainAssetBundle.LoadAsset<Texture2D>("cyborgicon"),
-                bodyColor = new Color32(138, 183, 168, 255),
-                crosshair = LegacyResourcesAPI.Load<GameObject>("Prefabs/Crosshair/StandardCrosshair"),
-                damage = 12f,
-                healthGrowth = 33f,
-                healthRegen = 1f,
-                jumpCount = 1,
-                maxHealth = 110f,
-                subtitleNameToken = "CYBORG_SUBTITLE",
-                podPrefab = LegacyResourcesAPI.Load<GameObject>("Prefabs/NetworkedObjects/SurvivorPod"),
-                acceleration = 40f
-            });
-
-            SetupCharacterModel(cyborgPrefab, new CustomRendererInfo[]
-            {
-                new CustomRendererInfo
-                {
-                    childName = "Model",
-                    material = Modules.Assets.CreateMaterial("matCyborg", 1f, new Color(0.839f, 0.812f, 0.812f))
-                }
-            }, 0);
-
-            cyborgPrefab.AddComponent<Components.CyborgController>();
-            cyborgPrefab.AddComponent<CyborgInfoComponent>();
-            cyborgDisplayPrefab = CreateDisplayPrefab("CyborgDisplay", cyborgPrefab);
-
-            return cyborgPrefab;
-        }
-        #endregion
 
         #region Chirr
         internal static GameObject CreateChirrPrefab()

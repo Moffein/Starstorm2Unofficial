@@ -1,26 +1,10 @@
-﻿using System;
-using System.Reflection;
-using System.Linq;
-using System.Collections.Generic;
-using BepInEx;
-using R2API;
-using R2API.Utils;
-using EntityStates;
-using RoR2;
-using RoR2.Skills;
+﻿using RoR2;
 using RoR2.Projectile;
 using UnityEngine;
 using Starstorm2.Cores;
-using UnityEngine.Networking;
-using KinematicCharacterController;
-using JetBrains.Annotations;
-using RoR2.Networking;
-using Starstorm2.Components;
+using Starstorm2.Survivors.Cyborg.Components;
 
-//FIXME: ion gun doesn't build charges in mp if player is not host
-//FIXME: ion burst stocks do not carry over between stages (may leave this as feature)
-
-namespace EntityStates.Cyborg
+namespace EntityStates.Starstorm2States.Cyborg
 {
     public class CyborgFireBFG : BaseSkillState
     {

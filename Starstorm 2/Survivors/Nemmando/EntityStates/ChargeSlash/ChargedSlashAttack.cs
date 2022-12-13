@@ -4,6 +4,7 @@ using R2API;
 using RoR2;
 using Starstorm2.Components;
 using Starstorm2.Cores;
+using Starstorm2.Survivors.Nemmando.Components;
 using UnityEngine;
 
 namespace EntityStates.Starstorm2States.Nemmando

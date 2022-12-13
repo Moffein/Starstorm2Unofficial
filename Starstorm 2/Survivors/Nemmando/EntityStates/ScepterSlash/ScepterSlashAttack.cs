@@ -3,6 +3,7 @@ using EntityStates.Starstorm2States.Common;
 using RoR2;
 using RoR2.Orbs;
 using Starstorm2.Components;
+using Starstorm2.Survivors.Nemmando.Components;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
