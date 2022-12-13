@@ -96,7 +96,9 @@ namespace EntityStates.Cyborg
                         tracerEffectPrefab = tracerEffectPrefab,
                         muzzleName = muzzleString,
                         hitEffectPrefab = (Util.CheckRoll(this.critStat, base.characterBody.master)) ? critEffectPrefab : effectPrefab,
-                        isCrit = Util.CheckRoll(this.critStat, base.characterBody.master)
+                        isCrit = Util.CheckRoll(this.critStat, base.characterBody.master),
+                        falloffModel = BulletAttack.FalloffModel.None,
+                        damageType = DamageType.SlowOnHit
                     }.Fire();
                     //ProjectileManager.instance.FireProjectile(ExampleSurvivor.ExampleSurvivor.bfgProjectile, aimRay.origin, Util.QuaternionSafeLookRotation(aimRay.direction), base.gameObject, this.damageCoefficient * this.damageStat, 0f, Util.CheckRoll(this.critStat, base.characterBody.master), DamageColorIndex.Default, null, -1f);
                 }

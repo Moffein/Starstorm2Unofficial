@@ -93,10 +93,10 @@ namespace Starstorm2
             //if (Modules.Config.EnableExecutioner.Value)
             new Modules.Survivors.Executioner().Initialize();
             new Modules.Survivors.Nemmando().Initialize();
+            cyborgCore = new CyborgCore();
 
             if (Modules.Config.ss_test.Value)
             {
-                cyborgCore = new CyborgCore();
                 chirrCore = new ChirrCore();
                 new Modules.Survivors.Nucleator().Initialize();
             }
