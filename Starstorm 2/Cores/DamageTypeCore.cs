@@ -61,7 +61,7 @@ namespace Starstorm2.Cores
                         victimBody = victim.GetComponent<CharacterBody>();
                         if (victimBody && victimBody.HasBuff(BuffCore.fearDebuff))
                         {
-                            victimBody.AddTimedBuff(BuffCore.fearDebuff, EntityStates.Executioner.ExecutionerDash.debuffDuration);
+                            victimBody.AddTimedBuff(BuffCore.fearDebuff, EntityStates.Starstorm2States.Executioner.ExecutionerDash.debuffDuration);
                         }
                     }
                 }

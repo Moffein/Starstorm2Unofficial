@@ -1,5 +1,6 @@
 ﻿using RoR2;
 using RoR2.Orbs;
+using Starstorm2.Survivors.Executioner.Components;
 
 namespace Starstorm2.Modules.Orbs
 {

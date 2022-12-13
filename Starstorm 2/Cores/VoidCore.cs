@@ -51,7 +51,7 @@ namespace Starstorm2.Cores
         {
             new NemesisSpawnData
             {
-                masterPrefab = Modules.Survivors.Nemmando.bossMasterPrefab,
+                masterPrefab = Survivors.Nemmando.NemmandoCore.bossMasterPrefab,
                 itemDrop = Items.StirringSoul.instance.itemDef,
                 musicString = ""
             }

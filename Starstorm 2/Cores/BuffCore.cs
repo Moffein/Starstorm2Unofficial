@@ -6,12 +6,14 @@ using RoR2;
 using RoR2.ContentManagement;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
 using UnityEngine.Networking;
 
 namespace Starstorm2.Cores
 {
     public class BuffCore
     {
+
         public static BuffDef detritiveBuff;
         public static BuffDef greaterBannerBuff;
         public static BuffDef strangeCanPoisonBuff;

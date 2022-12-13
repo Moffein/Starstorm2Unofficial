@@ -18,7 +18,7 @@ namespace Starstorm2.Components
         {
             if (this.body)
             {
-                if (this.body.teamComponent && this.body.teamComponent.teamIndex != TeamIndex.Player) this.body.skillLocator.special.SetBaseSkill(Modules.Survivors.Nemmando.decisiveStrikeSkillDef);
+                if (this.body.teamComponent && this.body.teamComponent.teamIndex != TeamIndex.Player) this.body.skillLocator.special.SetBaseSkill(Survivors.Nemmando.NemmandoCore.decisiveStrikeSkillDef);
             }
 
             Destroy(this);

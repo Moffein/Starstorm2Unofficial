@@ -48,7 +48,7 @@ namespace Starstorm2.Components
         {
             if (this.characterBody)
             {
-                if (this.characterBody.skillLocator.secondary.skillDef== Starstorm2.Modules.Survivors.Nemmando.secondaryConc && this.characterBody.skillLocator.special == Starstorm2.Modules.Survivors.Nemmando.specialEpic)
+                if (this.characterBody.skillLocator.secondary.skillDef== Starstorm2.Survivors.Nemmando.NemmandoCore.secondaryConc && this.characterBody.skillLocator.special == Starstorm2.Survivors.Nemmando.NemmandoCore.specialEpic)
                 {
                     this.gunHolstered = true;
                     this.gun = this.childLocator.FindChild("Gun");
@@ -121,7 +121,7 @@ namespace Starstorm2.Components
                 if (i)
                 {
                     TemporaryOverlay temporaryOverlay = i.gameObject.AddComponent<TemporaryOverlay>();
-                    temporaryOverlay.duration = 5f * (Cores.States.Nemmando.ChargedSlashAttack.baseDuration / this.characterBody.attackSpeed);
+                    temporaryOverlay.duration = 5f * (EntityStates.Starstorm2States.Nemmando.ChargedSlashAttack.baseDuration / this.characterBody.attackSpeed);
                     temporaryOverlay.animateShaderAlpha = true;
                     temporaryOverlay.alphaCurve = AnimationCurve.EaseInOut(0f, 1f, 1f, 1f);
                     temporaryOverlay.destroyComponentOnEnd = true;
