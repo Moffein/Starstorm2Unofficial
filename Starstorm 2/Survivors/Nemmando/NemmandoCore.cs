@@ -167,7 +167,7 @@ namespace Starstorm2.Survivors.Nemmando
 
             bossBodyPrefab.AddComponent<Components.NemmandoUnlockComponent>();
             bossBodyPrefab.AddComponent<Components.NemmandoSpecialSwapComponent>();
-            bossBodyPrefab.AddComponent<Components.NemesisBossComponent>();
+            bossBodyPrefab.AddComponent<Starstorm2.Components.NemesisBossComponent>();
 
             Modules.Prefabs.bodyPrefabs.Add(bossBodyPrefab);
             Modules.Prefabs.masterPrefabs.Add(bossMasterPrefab);

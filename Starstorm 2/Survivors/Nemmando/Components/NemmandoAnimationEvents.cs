@@ -1,7 +1,7 @@
 ﻿using RoR2;
 using UnityEngine;
 
-namespace Starstorm2.Components
+namespace Starstorm2.Survivors.Nemmando.Components
 {
     public class SS2CharacterAnimationEvents : MonoBehaviour
     {

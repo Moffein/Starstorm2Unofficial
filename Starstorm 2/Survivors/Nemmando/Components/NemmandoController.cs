@@ -4,7 +4,7 @@ using Starstorm2.Cores;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 
-namespace Starstorm2.Components
+namespace Starstorm2.Survivors.Nemmando.Components
 {
     public class NemmandoController : MonoBehaviour
     {
