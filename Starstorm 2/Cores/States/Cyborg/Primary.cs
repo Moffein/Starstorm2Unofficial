@@ -10,6 +10,7 @@ using RoR2;
 using RoR2.Skills;
 using RoR2.Projectile;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
 using Starstorm2.Cores;
 using UnityEngine.Networking;
 using KinematicCharacterController;
@@ -24,9 +25,9 @@ namespace EntityStates.Cyborg
         public static float damageCoefficient = 2.5f;
         public float baseDuration = 0.5f;
         public float recoil = 1f;
-        public static GameObject tracerEffectPrefab = LegacyResourcesAPI.Load<GameObject>("Prefabs/Effects/Tracers/TracerHuntressSnipe");
-        public GameObject effectPrefab = LegacyResourcesAPI.Load<GameObject>("prefabs/effects/impacteffects/HitsparkCommandoShotgun");
-        public GameObject critEffectPrefab = LegacyResourcesAPI.Load<GameObject>("prefabs/effects/impacteffects/critspark");
+        public static GameObject tracerEffectPrefab;//Prefabs/Effects/Tracers/TracerHuntressSnipe
+        public static GameObject hitEffectPrefab = LegacyResourcesAPI.Load<GameObject>("prefabs/effects/impacteffects/HitsparkCommandoShotgun");
+        public static GameObject muzzleflashEffectPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Commando/MuzzleflashFMJ.prefab").WaitForCompletion();
         public static bool switchHand;
 
         private float duration;
@@ -91,17 +92,19 @@ namespace EntityStates.Cyborg
                         minSpread = 0,
                         maxSpread = 0,
                         damage = damageCoefficient * this.damageStat,
-                        force = 100,
-                        radius = .35f,
+                        force = 1000f,
+                        radius = .5f,
                         tracerEffectPrefab = tracerEffectPrefab,
                         muzzleName = muzzleString,
-                        hitEffectPrefab = (Util.CheckRoll(this.critStat, base.characterBody.master)) ? critEffectPrefab : effectPrefab,
+                        hitEffectPrefab = hitEffectPrefab,
                         isCrit = Util.CheckRoll(this.critStat, base.characterBody.master),
                         falloffModel = BulletAttack.FalloffModel.None,
-                        damageType = DamageType.SlowOnHit
+                        damageType = DamageType.SlowOnHit,
+                        maxDistance = 1000f
                     }.Fire();
                     //ProjectileManager.instance.FireProjectile(ExampleSurvivor.ExampleSurvivor.bfgProjectile, aimRay.origin, Util.QuaternionSafeLookRotation(aimRay.direction), base.gameObject, this.damageCoefficient * this.damageStat, 0f, Util.CheckRoll(this.critStat, base.characterBody.master), DamageColorIndex.Default, null, -1f);
                 }
+                EffectManager.SimpleMuzzleFlash(CyborgFireBaseShot.muzzleflashEffectPrefab, base.gameObject, muzzleString, false);
             }
         }
 

@@ -83,7 +83,7 @@ namespace Starstorm2.Cores
                 crosshair = LegacyResourcesAPI.Load<GameObject>("Prefabs/Crosshair/StandardCrosshair"),
                 damage = 12f,
                 healthGrowth = 33f,
-                healthRegen = 1.5f,
+                healthRegen = 1f,
                 jumpCount = 1,
                 maxHealth = 110f,
                 subtitleNameToken = "CYBORG_SUBTITLE",

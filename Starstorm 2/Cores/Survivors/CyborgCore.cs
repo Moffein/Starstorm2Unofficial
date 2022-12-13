@@ -6,6 +6,7 @@ using UnityEngine;
 using UnityEngine.Networking;
 using EntityStates.Cyborg;
 using Starstorm2.Cores.States.Cyborg;
+using UnityEngine.AddressableAssets;
 
 namespace Starstorm2.Cores
 {
@@ -24,11 +25,17 @@ namespace Starstorm2.Cores
             cybPrefab = PrefabCore.CreateCyborgPrefab();
             cybPrefab.GetComponent<EntityStateMachine>().mainStateType = new EntityStates.SerializableEntityStateType(typeof(CyborgMain));
 
+            CyborgMain.jetpackOnNetworkSound = Modules.Assets.CreateNetworkSoundEventDef("Play_mage_m1_impact");
+            CyborgFireBaseShot.tracerEffectPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Junk/Mage/TracerMageIceLaser.prefab").WaitForCompletion().InstantiateClone("SS2UCyborgTracer", false);
+            CyborgFireBaseShot.tracerEffectPrefab.AddComponent<DestroyOnTimer>().duration = 0.3f;
+            CyborgFireBaseShot.tracerEffectPrefab.transform.localScale *= 0.5f;
+            Modules.Assets.effectDefs.Add(new EffectDef(CyborgFireBaseShot.tracerEffectPrefab));
+
             LanguageAPI.Add("CYBORG_NAME", "Cyborg");
             LanguageAPI.Add("CYBORG_SUBTITLE", "Man Made Monstrosity");
             LanguageAPI.Add("CYBORG_OUTRO_FLAVOR", "..and so he left, programming releasing excess serotonin.");
             LanguageAPI.Add("CYBORG_OUTRO_FAILURE", "..and so he vanished, teleportation beacon left with no signal.");
-            LanguageAPI.Add("CYBORG_LORE", "hey someone remind me to add this back in im too fucking lazy atm thanks man");
+            //LanguageAPI.Add("CYBORG_LORE", "hey someone remind me to add this back in im too fucking lazy atm thanks man");
 
             RegisterProjectiles();
             RegisterStates();
