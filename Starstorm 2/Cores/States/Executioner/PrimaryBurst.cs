@@ -36,7 +36,10 @@ namespace EntityStates.Executioner
             shotStopwatch = 0f;
             duration = ExecutionerBurstPistol.baseDuration / this.attackSpeedStat;
             shotDuration = ExecutionerBurstPistol.baseShotDuration / this.attackSpeedStat;
-            base.characterBody.SetAimTimer(2f);
+            if (base.characterBody)
+            {
+                base.characterBody.SetAimTimer(2f);
+            }
 
             FireBullet();
         }
@@ -62,6 +65,14 @@ namespace EntityStates.Executioner
             }
         }
 
+        public override void OnExit()
+        {
+            if (base.characterBody)
+            {
+                base.characterBody.SetSpreadBloom(0f, false);
+            }
+            base.OnExit();
+        }
 
         private void FireBullet()
         {
@@ -101,7 +112,7 @@ namespace EntityStates.Executioner
                 bullet.Fire();
             }
             base.AddRecoil(-0.4f * recoil, -0.8f * recoil, -0.3f * recoil, 0.3f * recoil);
-            base.characterBody.AddSpreadBloom(spreadBloom); //Spread is cosmetic. Skill is always perfectly accurate.
+            if (base.characterBody) base.characterBody.AddSpreadBloom(spreadBloom); //Spread is cosmetic. Skill is always perfectly accurate.
         }
 
         public override InterruptPriority GetMinimumInterruptPriority()

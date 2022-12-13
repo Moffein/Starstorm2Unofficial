@@ -856,7 +856,6 @@ namespace Starstorm2.Modules.Survivors
 
 public class IonGunChargeComponent : NetworkBehaviour
 {
-    public int storedCharges = 0;
     public SkillLocator skillLocator;
 
     [ClientRpc]
@@ -870,4 +869,9 @@ public class IonGunChargeComponent : NetworkBehaviour
                 ionGunSkill.AddOneStock();
         }
     }
+}
+
+public class MasterIonStockComponent : MonoBehaviour
+{
+    public int stocks = 0;
 }

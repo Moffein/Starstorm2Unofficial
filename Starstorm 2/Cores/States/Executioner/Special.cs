@@ -102,7 +102,6 @@ namespace EntityStates.Executioner
 
     public class ExecutionerAxeSlam : BaseSkillState
     {
-        public static float dropDamageCoefficient = 1.0f;
         public static float baseDamageCoefficient = 8f;
         public static float procCoefficient = 1.0f;
         //shorter value if axe slam should be finite
@@ -169,41 +168,13 @@ namespace EntityStates.Executioner
             if (base.isAuthority)
             {
                 if (base.characterMotor.velocity.y > -200f) base.characterMotor.velocity.y = -200f;
-                //if (base.characterMotor.rootMotion.y > -120f) base.characterMotor.rootMotion.y = -120f;
 
-                DamageInfo dropDamage = new DamageInfo();
-                dropDamage.attacker = base.gameObject;
-                dropDamage.crit = this.crit;
-                dropDamage.damage = (base.characterBody.damage * dropDamageCoefficient);
-                dropDamage.damageColorIndex = DamageColorIndex.Default;
-                dropDamage.damageType = DamageType.Generic;
-                dropDamage.procChainMask = default(ProcChainMask);
-                dropDamage.procCoefficient = procCoefficient;
-                dropDamage.force = Vector3.down * 8000f;
+                bool hitEnemy = base.characterBody ? IsEnemyInSphere(5f, base.characterBody.footPosition, base.GetTeam(), true) : false;
 
-                Vector3 atkCenter = base.characterBody.corePosition;
-                search.ClearCandidates();
-                search.origin = atkCenter;
-                search.RefreshCandidates();
-                search.FilterCandidatesByDistinctHurtBoxEntities();
-                search.FilterCandidatesByHurtBoxTeam(TeamMask.GetUnprotectedTeams(base.teamComponent.teamIndex));
-                search.GetHurtBoxes(hits);
-
-                foreach (HurtBox h in hits)
+                if (base.fixedAge >= baseDuration || base.characterMotor.isGrounded || hitEnemy)
                 {
-                    HealthComponent hp = h.healthComponent;
-                    if (hp && !hitTargets.Contains(hp) && hp != base.healthComponent)
-                    {
-                        dropDamage.position = hp.transform.position;
-                        hp.TakeDamage(dropDamage);
-                        hitTargets.Add(hp);
-                    }
+                    this.outer.SetNextStateToMain();
                 }
-            }
-
-            if ((base.fixedAge >= baseDuration || base.characterMotor.isGrounded) && base.isAuthority)
-            {
-                this.outer.SetNextStateToMain();
             }
         }
 
@@ -233,28 +204,6 @@ namespace EntityStates.Executioner
             if (base.isAuthority)
             {
                 Vector3 atkCenter = base.characterBody.footPosition;
-
-                //get number of enemies hit to divide damage
-                //(there is surely a better way to get enemy hit count)
-                search.ClearCandidates();
-                search.origin = atkCenter;
-                search.radius = slamRadius;
-                search.RefreshCandidates();
-                search.FilterCandidatesByDistinctHurtBoxEntities();
-                search.FilterCandidatesByHurtBoxTeam(TeamMask.GetEnemyTeams(base.teamComponent.teamIndex));
-                search.GetHurtBoxes(hits);
-                hitTargets.Clear();
-                foreach (HurtBox h in hits)
-                {
-                    HealthComponent hp = h.healthComponent;
-                    if (hp && !hitTargets.Contains(hp))
-                    {
-                        hitTargets.Add(hp);
-                    }
-                }
-                int hitcount = hitTargets.Count;
-                float damage = ExecutionerAxeSlam.baseDamageCoefficient;
-
                 BlastAttack blast = new BlastAttack()
                 {
                     radius = slamRadius,
@@ -263,34 +212,13 @@ namespace EntityStates.Executioner
                     attacker = base.gameObject,
                     teamIndex = base.teamComponent.teamIndex,
                     crit = this.crit,
-                    baseDamage = (base.characterBody.damage * damage),
+                    baseDamage = (base.characterBody.damage * ExecutionerAxeSlam.baseDamageCoefficient),
                     damageColorIndex = DamageColorIndex.Default,
                     falloffModel = BlastAttack.FalloffModel.None,
                     attackerFiltering = AttackerFiltering.NeverHitSelf,
                     damageType = DamageType.BonusToLowHealth
                 };
                 blast.Fire();
-
-                foreach (HealthComponent hp in hitTargets)
-                {
-                    if (!hp.alive)
-                    {
-                        //cooldown reduction on kills
-                        /*
-                        var skillLoc = base.characterBody.skillLocator;
-                        if (skillLoc)
-                        {
-                            //skillLoc.secondary.RunRecharge(rechargePerKill);
-                            skillLoc.utility.RunRecharge(rechargePerKill);
-                            skillLoc.special.RunRecharge(rechargePerKill);
-                        }
-                        */
-
-                        //bonus m2 charge on kills
-                        //base.GetComponent<IonGunChargeComponent>()?.RpcAddIonCharge();
-                        // this is handled with a hook now
-                    }
-                }
 
                 base.characterMotor.velocity.y = 0f;
             }
@@ -301,6 +229,34 @@ namespace EntityStates.Executioner
             }
 
             base.OnExit();
+        }
+
+        private bool IsEnemyInSphere(float radius, Vector3 position, TeamIndex team, bool airborneOnly = false)
+        {
+            List<HealthComponent> hcList = new List<HealthComponent>();
+            Collider[] array = Physics.OverlapSphere(position, radius, LayerIndex.entityPrecise.mask);
+            for (int i = 0; i < array.Length; i++)
+            {
+                HurtBox hurtBox = array[i].GetComponent<HurtBox>();
+                if (hurtBox)
+                {
+                    HealthComponent healthComponent = hurtBox.healthComponent;
+                    if (healthComponent && !hcList.Contains(healthComponent))
+                    {
+                        hcList.Add(healthComponent);
+                        if (healthComponent.body && healthComponent.body.teamComponent && healthComponent.body.teamComponent.teamIndex != team)
+                        {
+                            if (!airborneOnly ||
+                                (healthComponent.body.isFlying ||
+                                (healthComponent.body.characterMotor && !healthComponent.body.characterMotor.isGrounded)))
+                            {
+                                return true;
+                            }
+                        }
+                    }
+                }
+            }
+            return false;
         }
 
         public override InterruptPriority GetMinimumInterruptPriority()

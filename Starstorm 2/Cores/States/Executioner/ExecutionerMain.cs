@@ -11,6 +11,7 @@ namespace Starstorm2.Cores.States.Executioner
         private Animator animator;
         private GenericSkill ionGunSkill;
         private IonGunChargeComponent storedChargeComp;
+        private MasterIonStockComponent masterIonStock;
 
         public override void OnEnter()
         {
@@ -20,8 +21,12 @@ namespace Starstorm2.Cores.States.Executioner
             //set up ion gun stock system
             ionGunSkill = skillLocator.secondary;
             storedChargeComp = base.GetComponent<IonGunChargeComponent>();
-            if (ionGunSkill && storedChargeComp)
-                ionGunSkill.stock = storedChargeComp.storedCharges;
+
+            if (base.characterBody && base.characterBody.master)
+            {
+                masterIonStock = base.characterBody.master.GetComponent<MasterIonStockComponent>();
+                if (!masterIonStock) masterIonStock = base.characterBody.master.AddComponent<MasterIonStockComponent>();
+            }
 
             //GlobalEventManager.onCharacterDeathGlobal += OnKillHandler;
         }
@@ -30,8 +35,10 @@ namespace Starstorm2.Cores.States.Executioner
         {
             //GlobalEventManager.onCharacterDeathGlobal -= OnKillHandler;
 
-            if (ionGunSkill && storedChargeComp)
-                storedChargeComp.storedCharges = ionGunSkill.stock;
+            if (ionGunSkill && masterIonStock)
+            {
+                masterIonStock.stocks = ionGunSkill.stock;
+            }
 
             base.OnExit();
         }

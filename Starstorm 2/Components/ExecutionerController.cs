@@ -52,9 +52,15 @@ namespace Starstorm2.Components
             if (skillLocator)
             {
                 GenericSkill ionGunSkill = skillLocator.secondary;
-                IonGunChargeComponent storedChargeComp = base.GetComponent<IonGunChargeComponent>();
-                if (ionGunSkill && storedChargeComp)
-                    ionGunSkill.stock = storedChargeComp.storedCharges;
+                if (ionGunSkill)
+                {
+                    ionGunSkill.stock = 0;
+                    if (this.characterBody && this.characterBody.masterObject)
+                    {
+                        MasterIonStockComponent ionStocks = this.characterBody.masterObject.GetComponent<MasterIonStockComponent>();
+                        if(ionStocks) ionGunSkill.stock = ionStocks.stocks;
+                    }
+                }
             }
         }
 
@@ -141,7 +147,7 @@ namespace Starstorm2.Components
                 float colorValue = Util.Remap(this.currentEmission, 0, this.characterBody.skillLocator.secondary.maxStock, 0f, 1f);
                 Color emColor = emColor = new Color(colorValue, colorValue, colorValue);
                 this.gunMat.SetColor("_EmColor", emColor);
-            }*/
+            }
 
             if (this.bodyMat)
             {
@@ -153,7 +159,7 @@ namespace Starstorm2.Components
                 {
                     this.bodyMat.SetFloat("_EmPower", this.defaultBodyEmission);
                 }
-            }
+            }*/
 
             // max charge sound
             if (this.characterBody && this.characterBody.skillLocator)
