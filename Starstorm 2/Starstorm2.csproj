@@ -93,6 +93,7 @@
     <Compile Include="API\SS2Equipment.cs" />
     <Compile Include="API\SS2Item.cs" />
     <Compile Include="Components\StormSoundComponent.cs" />
+    <Compile Include="Cores\States\Cyborg\JetpackOn.cs" />
     <Compile Include="Cores\States\Executioner\PrimaryBurst.cs" />
     <Compile Include="Cores\Survivors\ChirrCore.cs" />
     <Compile Include="Cores\ItemDisplays\PyroItemDisplays.cs" />

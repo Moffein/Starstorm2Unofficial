@@ -87,7 +87,8 @@ namespace Starstorm2.Cores
                 jumpCount = 1,
                 maxHealth = 110f,
                 subtitleNameToken = "CYBORG_SUBTITLE",
-                podPrefab = LegacyResourcesAPI.Load<GameObject>("Prefabs/NetworkedObjects/SurvivorPod")
+                podPrefab = LegacyResourcesAPI.Load<GameObject>("Prefabs/NetworkedObjects/SurvivorPod"),
+                acceleration = 40f
             });
 
             SetupCharacterModel(cyborgPrefab, new CustomRendererInfo[]

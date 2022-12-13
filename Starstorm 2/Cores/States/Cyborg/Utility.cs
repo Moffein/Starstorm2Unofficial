@@ -15,6 +15,7 @@ using UnityEngine.Networking;
 using KinematicCharacterController;
 using JetBrains.Annotations;
 using RoR2.Networking;
+using Starstorm2.Components;
 
 //FIXME: ion gun doesn't build charges in mp if player is not host
 //FIXME: ion burst stocks do not carry over between stages (may leave this as feature)
@@ -36,7 +37,7 @@ namespace EntityStates.Cyborg
         private float groundKnockbackDistance = 8;
         private float airKnockbackDistance = 12;
 
-
+        private CyborgController cyborgController;
 
         public override void OnEnter()
         {
@@ -46,22 +47,55 @@ namespace EntityStates.Cyborg
             base.characterBody.SetAimTimer(2f);
             this.animator = base.GetModelAnimator();
             this.muzzleString = "Muzzle";
-
+            cyborgController = base.GetComponent<CyborgController>();
+            if (cyborgController)
+            {
+                cyborgController.allowJetpack = false;
+            }
 
             base.PlayAnimation("Gesture, Override", "FireSpecial", "FireArrow.playbackRate", this.duration);
 
-            if (base.isAuthority && base.characterBody && base.characterBody.characterMotor)
+            //old code
+            /*if (base.isAuthority && base.characterBody && base.characterBody.characterMotor)
             {
                 float height = base.characterBody.characterMotor.isGrounded ? this.groundKnockbackDistance : this.airKnockbackDistance;
                 float num3 = base.characterBody.characterMotor ? base.characterBody.characterMotor.mass : 1f;
                 float acceleration2 = base.characterBody.acceleration;
                 float num4 = Trajectory.CalculateInitialYSpeedForHeight(height, -acceleration2);
                 base.characterBody.characterMotor.ApplyForce(-num4 * num3 * base.GetAimRay().direction, false, false);
+            }*/
+
+            //copied from sniper
+            Vector3 direction = -base.GetAimRay().direction;
+            if (base.isAuthority)
+            {
+                direction.y = Mathf.Max(direction.y, 0.05f);
+                Vector3 a = direction.normalized * 4f * 10f;
+                Vector3 b = Vector3.up * 7f;
+                Vector3 b2 = new Vector3(direction.x, 0f, direction.z).normalized * 3f;
+
+
+                if (base.characterMotor)
+                {
+                    base.characterMotor.Motor.ForceUnground();
+                    base.characterMotor.velocity = a + b + b2;
+                    base.characterMotor.velocity.y *= 0.8f;
+                    if (base.characterMotor.velocity.y < 0) base.characterMotor.velocity.y *= 0.1f;
+                }
+                if (base.characterDirection)
+                {
+
+                    base.characterDirection.moveVector = direction;
+                }
             }
         }
 
         public override void OnExit()
         {
+            if (cyborgController)
+            {
+                cyborgController.allowJetpack = true;
+            }
             base.OnExit();
         }
 

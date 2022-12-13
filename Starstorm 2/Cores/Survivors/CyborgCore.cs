@@ -7,6 +7,8 @@ using UnityEngine.Networking;
 using EntityStates.Cyborg;
 using Starstorm2.Cores.States.Cyborg;
 using UnityEngine.AddressableAssets;
+using EntityStates;
+using System.Linq;
 
 namespace Starstorm2.Cores
 {
@@ -25,7 +27,17 @@ namespace Starstorm2.Cores
             cybPrefab = PrefabCore.CreateCyborgPrefab();
             cybPrefab.GetComponent<EntityStateMachine>().mainStateType = new EntityStates.SerializableEntityStateType(typeof(CyborgMain));
 
-            CyborgMain.jetpackOnNetworkSound = Modules.Assets.CreateNetworkSoundEventDef("Play_mage_m1_impact");
+            EntityStateMachine jetpackStateMachine = cybPrefab.AddComponent<EntityStateMachine>();
+            jetpackStateMachine.customName = "Jetpack";
+            jetpackStateMachine.initialStateType = new SerializableEntityStateType(typeof(EntityStates.Idle));
+            jetpackStateMachine.mainStateType = new SerializableEntityStateType(typeof(EntityStates.Idle));
+            NetworkStateMachine nsm = cybPrefab.GetComponent<NetworkStateMachine>();
+            nsm.stateMachines = nsm.stateMachines.Append(jetpackStateMachine).ToArray();
+
+            //This makes the Jetpack get shut off when frozen
+            SetStateOnHurt ssoh = cybPrefab.GetComponent<SetStateOnHurt>();
+            ssoh.idleStateMachine.Append(jetpackStateMachine);
+
             CyborgFireBaseShot.tracerEffectPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Junk/Mage/TracerMageIceLaser.prefab").WaitForCompletion().InstantiateClone("SS2UCyborgTracer", false);
             CyborgFireBaseShot.tracerEffectPrefab.AddComponent<DestroyOnTimer>().duration = 0.3f;
             Modules.Assets.effectDefs.Add(new EffectDef(CyborgFireBaseShot.tracerEffectPrefab));
@@ -47,6 +59,7 @@ namespace Starstorm2.Cores
 
         private void RegisterStates()
         {
+            Modules.States.AddSkill(typeof(JetpackOn));
             Modules.States.AddSkill(typeof(CyborgMain));
             Modules.States.AddSkill(typeof(CyborgFireBaseShot));
             Modules.States.AddSkill(typeof(CyborgFireTrackshot));

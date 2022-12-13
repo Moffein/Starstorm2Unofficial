@@ -2,6 +2,7 @@
 using UnityEngine;
 using EntityStates;
 using RoR2.Audio;
+using Starstorm2.Components;
 
 //TODO: should check that secondary is ion gun before attempting to store/load charges
 
@@ -11,13 +12,15 @@ namespace Starstorm2.Cores.States.Cyborg
     {
         private float hoverVelocity = -1f;    //was -1.1
         private float hoverAcceleration = 60f;  //was 25f
-        private bool wasHovering = false;
+        private CyborgController cyborgController;
 
-        public static NetworkSoundEventDef jetpackOnNetworkSound;
+        private EntityStateMachine jetpackStateMachine;
 
         public override void OnEnter()
         {
             base.OnEnter();
+            jetpackStateMachine = EntityStateMachine.FindByCustomName(base.gameObject, "Jetpack");
+            cyborgController = base.GetComponent<CyborgController>();
         }
 
         public override void OnExit()
@@ -31,28 +34,15 @@ namespace Starstorm2.Cores.States.Cyborg
             base.ProcessJump();
             if (this.hasCharacterMotor && this.hasInputBank && base.isAuthority)
             {
-                bool hoverInput = base.inputBank.jump.down && base.characterMotor.velocity.y < 0f && !base.characterMotor.isGrounded;
-
-                if (base.isAuthority)
+                bool inputPressed = base.inputBank.jump.down && base.characterMotor.velocity.y < 0f && !base.characterMotor.isGrounded;
+                bool inJetpackState = this.jetpackStateMachine.state.GetType() == typeof(JetpackOn);
+                if (inputPressed && !inJetpackState && cyborgController.allowJetpack)
                 {
-                    if (hoverInput)
-                    {
-                        if (!wasHovering)
-                        {
-                            wasHovering = true;
-                            if (jetpackOnNetworkSound) EntitySoundManager.EmitSoundServer(jetpackOnNetworkSound.index, base.gameObject);
-                        }
-                        float num = base.characterMotor.velocity.y;
-                        num = Mathf.MoveTowards(num, hoverVelocity, hoverAcceleration * Time.fixedDeltaTime);
-                        base.characterMotor.velocity = new Vector3(base.characterMotor.velocity.x, num, base.characterMotor.velocity.z);
-                    }
-                    else
-                    {
-                        if (wasHovering)
-                        {
-                            wasHovering = false;
-                        }
-                    }
+                    this.jetpackStateMachine.SetNextState(new JetpackOn());
+                }
+                if (inJetpackState &&(!inputPressed || !cyborgController.allowJetpack))
+                {
+                    this.jetpackStateMachine.SetNextState(new Idle());
                 }
             }
         }

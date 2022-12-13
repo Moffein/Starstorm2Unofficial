@@ -16,7 +16,8 @@ namespace Starstorm2.Components
         private CharacterBody characterBody;
         private CharacterModel model;
         private ChildLocator childLocator;//gonna store this for when it's needed (if it's ever needed kek)
-        
+
+        public bool allowJetpack = true;
 
         private void Awake()
         {

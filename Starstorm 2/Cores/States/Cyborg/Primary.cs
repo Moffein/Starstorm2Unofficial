@@ -48,12 +48,12 @@ namespace EntityStates.Cyborg
             if (switchHand)
             {
                 this.muzzleString = "Lowerarm.R_end";
-                base.PlayAnimation("Gesture, Override", "FireM1", "FireM1.playbackRate", this.duration);
+                base.PlayCrossfade("Gesture, Override", "FireM1", "FireM1.playbackRate", this.duration, 0.1f);
             }
             else
             {
                 this.muzzleString = "Lowerarm.L_end";
-                base.PlayAnimation("Gesture, Override", "FireM1Alt", "FireM1.playbackRate", this.duration);
+                base.PlayCrossfade("Gesture, Override", "FireM1Alt", "FireM1.playbackRate", this.duration, 0.1f);
             }
             switchHand = !switchHand;
         }
