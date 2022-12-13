@@ -45,9 +45,10 @@ namespace Starstorm2.Cores
             SetStateOnHurt ssoh = cybPrefab.GetComponent<SetStateOnHurt>();
             ssoh.idleStateMachine.Append(jetpackStateMachine);
 
-            CyborgFireBaseShot.tracerEffectPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Junk/Mage/TracerMageIceLaser.prefab").WaitForCompletion().InstantiateClone("SS2UCyborgTracer", false);
-            CyborgFireBaseShot.tracerEffectPrefab.AddComponent<DestroyOnTimer>().duration = 0.3f;
-            Modules.Assets.effectDefs.Add(new EffectDef(CyborgFireBaseShot.tracerEffectPrefab));
+            GameObject tracerEffectPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Junk/Mage/TracerMageIceLaser.prefab").WaitForCompletion().InstantiateClone("SS2UCyborgTracer", false);
+            tracerEffectPrefab.AddComponent<DestroyOnTimer>().duration = 0.3f;
+            Modules.Assets.effectDefs.Add(new EffectDef(tracerEffectPrefab));
+            PrimaryLaser.tracerEffectPrefab = tracerEffectPrefab;
 
             LanguageAPI.Add("CYBORG_NAME", "Cyborg");
             LanguageAPI.Add("CYBORG_SUBTITLE", "Man Made Monstrosity");
@@ -69,10 +70,11 @@ namespace Starstorm2.Cores
         {
             Modules.States.AddSkill(typeof(JetpackOn));
             Modules.States.AddSkill(typeof(CyborgMain));
-            Modules.States.AddSkill(typeof(CyborgFireBaseShot));
             Modules.States.AddSkill(typeof(CyborgFireTrackshot));
             Modules.States.AddSkill(typeof(CyborgFireBFG));
             Modules.States.AddSkill(typeof(CyborgTeleport));
+
+            Modules.States.AddSkill(typeof(PrimaryLaser));
         }
 
         private void RegisterProjectiles()
@@ -157,13 +159,13 @@ namespace Starstorm2.Cores
 
         private void SetUpPrimaries(SkillLocator skillLocator)
         {
-            var dmg = CyborgFireBaseShot.damageCoefficient * 100f;
+            var dmg = PrimaryLaser.damageCoefficient * 100f;
 
             LanguageAPI.Add("CYBORG_PRIMARY_GUN_NAME", "Unmaker");
             LanguageAPI.Add("CYBORG_PRIMARY_GUN_DESCRIPTION", $"Shoot an enemy for <style=cIsDamage>{dmg}% damage</style>.");
 
-            SkillDef primaryDef1 = ScriptableObject.CreateInstance<SkillDef>();
-            primaryDef1.activationState = new EntityStates.SerializableEntityStateType(typeof(CyborgFireBaseShot));
+            SteppedSkillDef primaryDef1 = ScriptableObject.CreateInstance<SteppedSkillDef>();
+            primaryDef1.activationState = new EntityStates.SerializableEntityStateType(typeof(PrimaryLaser));
             primaryDef1.activationStateMachineName = "Weapon";
             primaryDef1.skillName = "CYBORG_PRIMARY_GUN_NAME";
             primaryDef1.skillNameToken = "CYBORG_PRIMARY_GUN_NAME";
@@ -181,8 +183,9 @@ namespace Starstorm2.Cores
             primaryDef1.rechargeStock = 1;
             primaryDef1.requiredStock = 1;
             primaryDef1.stockToConsume = 1;
+            primaryDef1.stepCount = 2;
 
-            Utils.RegisterSkillDef(primaryDef1, typeof(CyborgFireBaseShot));
+            Modules.Skills.skillDefs.Add(primaryDef1);
             SkillFamily.Variant primaryVariant1 = Utils.RegisterSkillVariant(primaryDef1);
 
             skillLocator.primary = Utils.RegisterSkillsToFamily(cybPrefab, primaryVariant1);

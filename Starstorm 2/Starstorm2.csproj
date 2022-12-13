@@ -81,6 +81,7 @@
     <Compile Include="Components\ChirrController.cs" />
     <Compile Include="Survivors\Cyborg\Components\CyborgController.cs" />
     <Compile Include="Survivors\Cyborg\Components\CyborgInfoComponent.cs" />
+    <Compile Include="Survivors\Cyborg\EntityStates\PrimaryLaser.cs" />
     <Compile Include="Survivors\Executioner\Components\ExecutionerController.cs" />
     <Compile Include="Survivors\Executioner\Components\ExecutionerKillComponent.cs" />
     <Compile Include="Components\MenuSound.cs" />
@@ -143,7 +144,6 @@
     <Compile Include="Cores\States\Chirr\Utility.cs" />
     <Compile Include="Survivors\Cyborg\EntityStates\CyborgMain.cs" />
     <Compile Include="Survivors\Cyborg\EntityStates\Special.cs" />
-    <Compile Include="Survivors\Cyborg\EntityStates\Primary.cs" />
     <Compile Include="Survivors\Cyborg\EntityStates\Secondary.cs" />
     <Compile Include="Survivors\Cyborg\EntityStates\Utility.cs" />
     <Compile Include="Modules\EntityStates\Emotes\BaseEmote.cs" />
