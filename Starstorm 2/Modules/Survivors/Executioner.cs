@@ -174,7 +174,8 @@ namespace Starstorm2.Modules.Survivors
                 cancelSprintingOnActivation = true,
                 rechargeStock = 0,
                 requiredStock = 1,
-                stockToConsume = 0
+                stockToConsume = 0,
+                keywordTokens = new string[] { "KEYWORD_SHOCKING" }
             });
 
             Modules.Skills.AddSecondarySkills(bodyPrefab, ionGunSkillDef);
@@ -188,7 +189,7 @@ namespace Starstorm2.Modules.Survivors
                 skillDescriptionToken = "EXECUTIONER_DASH_DESCRIPTION",
                 skillIcon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("texExecutionerUtility"),
                 activationState = new EntityStates.SerializableEntityStateType(typeof(EntityStates.Executioner.ExecutionerDash)),
-                activationStateMachineName = "Weapon",
+                activationStateMachineName = "Slide",
                 baseMaxStock = 1,
                 baseRechargeInterval = 5f,
                 beginSkillCooldownOnSkillEnd = true,
@@ -278,12 +279,12 @@ namespace Starstorm2.Modules.Survivors
             dmg = ExecutionerIonGun.damageCoefficient * 100f;
 
             LanguageAPI.Add("EXECUTIONER_IONGUN_NAME", "Ion Burst");
-            LanguageAPI.Add("EXECUTIONER_IONGUN_DESCRIPTION", $"Unload a barrage of ionized bullets for <style=cIsDamage>{dmg}% damage</style> each. Every slain enemy <style=cIsUtility>adds a bullet</style>.");
+            LanguageAPI.Add("EXECUTIONER_IONGUN_DESCRIPTION", $"<style=cIsDamage>Shocking</style>. Unload a barrage of ionized bullets for <style=cIsDamage>{dmg}% damage</style> each. Every slain enemy <style=cIsUtility>adds a bullet</style>.");
 
-            LanguageAPI.Add("KEYWORD_FEAR", "<style=cKeywordName>Fear</style><style=cSub>Reduce movement speed by <style=cIsUtility>50%</style>. Feared enemies are <style=cIsHealth>instantly killed</style> if below <style=cIsHealth>15%</style> health.</style>");
+            LanguageAPI.Add("KEYWORD_FEAR", "<style=cKeywordName>Fear</style><style=cSub>Reduce movement speed by <style=cIsDamage>50%</style>. Feared enemies are <style=cIsHealth>instantly killed</style> if below <style=cIsHealth>15%</style> health.</style>");
 
             LanguageAPI.Add("EXECUTIONER_DASH_NAME", "Crowd Dispersion");
-            LanguageAPI.Add("EXECUTIONER_DASH_DESCRIPTION", $"<style=cIsUtility>Dash forward</style> and <style=cIsUtility>fear</style> nearby enemies.");
+            LanguageAPI.Add("EXECUTIONER_DASH_DESCRIPTION", $"<style=cIsUtility>Dash forward</style> and <style=cIsDamage>Fear</style> nearby enemies.");
 
             dmg = ExecutionerAxeSlam.baseDamageCoefficient * 100f;
 
@@ -723,6 +724,15 @@ namespace Starstorm2.Modules.Survivors
             CharacterBody victimBody = damageReport.victimBody;
             if (victimBody)
             {
+                bool victimFeared = victimBody.HasBuff(BuffCore.fearDebuff);
+                if (victimFeared)
+                {
+                    EffectManager.SpawnEffect(Executioner.fearKillEffect, new EffectData
+                    {
+                        origin = damageReport.damageInfo.position
+                    }, true);
+                }
+
                 Components.ExecutionerKillComponent killComponent = victimBody.GetComponent<Components.ExecutionerKillComponent>();
                 if (killComponent)
                 {
@@ -733,9 +743,10 @@ namespace Starstorm2.Modules.Survivors
                     if (damageReport.attackerBody && damageReport.attackerBody.bodyIndex == Executioner.bodyIndex)
                     {
                         int orbCount = GetIonCountFromBody(victimBody);
-                        //if (damageReport.damageInfo.damageType.HasFlag(DamageType.BypassOneShotProtection)) orbCount *= 2;    //Was used to make exe axe give double charges on kill. Unnecessary.
+                        if (victimFeared) orbCount *= 2;
+                            //if (damageReport.damageInfo.damageType.HasFlag(DamageType.BypassOneShotProtection)) orbCount *= 2;    //Was used to make exe axe give double charges on kill. Unnecessary.
 
-                        for (int i = 0; i < orbCount; i++)
+                            for (int i = 0; i < orbCount; i++)
                         {
                             Modules.Orbs.ExecutionerIonOrb ionOrb = new Modules.Orbs.ExecutionerIonOrb();
                             ionOrb.origin = victimBody.corePosition;
@@ -773,7 +784,6 @@ namespace Starstorm2.Modules.Survivors
         private void SetupFearExecute()
         {
             On.RoR2.HealthComponent.GetHealthBarValues += FearExecuteHealthbar;
-            RoR2.GlobalEventManager.onCharacterDeathGlobal += FearOnKillVFX;
 
             //Prone to breaking when the game updates
             IL.RoR2.HealthComponent.TakeDamage += (il) =>
@@ -830,17 +840,6 @@ namespace Starstorm2.Modules.Survivors
                     UnityEngine.Debug.LogError("Starstorm 2 Unofficial: Fear VFX IL Hook failed.");
                 }    
             };
-        }
-
-        private void FearOnKillVFX(DamageReport report)
-        {
-            if (report.victimBody && report.victimBody.HasBuff(BuffCore.fearDebuff))
-            {
-                EffectManager.SpawnEffect(Executioner.fearKillEffect, new EffectData
-                {
-                    origin = report.damageInfo.position
-                }, true);
-            }
         }
 
         private HealthComponent.HealthBarValues FearExecuteHealthbar(On.RoR2.HealthComponent.orig_GetHealthBarValues orig, HealthComponent self)

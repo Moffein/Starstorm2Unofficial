@@ -1,6 +1,7 @@
 ﻿using RoR2;
 using Starstorm2.Components;
 using Starstorm2.Cores;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
@@ -11,7 +12,7 @@ namespace EntityStates.Executioner
     {
         public static float baseDuration = 0.5f;
         public static float speedMultiplier = 4.0f;
-        public static float debuffRadius = 20f;
+        public static float debuffRadius = 12f;
         public static float debuffDuration = 2.0f;
         public static float debuffCheckInterval = 0.1f;
 
@@ -118,7 +119,11 @@ namespace EntityStates.Executioner
                     SetStateOnHurt ssoh = hp.GetComponent<SetStateOnHurt>();
                     if (ssoh)
                     {
-                        ssoh.SetStun(-1f);
+                        Type state = ssoh.targetStateMachine.state.GetType();
+                        if (state != typeof(EntityStates.StunState) && state != typeof(EntityStates.ShockState) && state != typeof(EntityStates.FrozenState))
+                        {
+                            ssoh.SetStun(-1f);
+                        }
                     }
 
                     CharacterBody body = hp.body;

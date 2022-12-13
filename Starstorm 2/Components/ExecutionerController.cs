@@ -44,6 +44,20 @@ namespace Starstorm2.Components
             Invoke("CheckInventory", 0.2f);
         }
 
+
+        //Duplicated from ExecutionerMain. This makes special stock get set before he exits his pod.
+        private void Start()
+        {
+            SkillLocator skillLocator = base.GetComponent<SkillLocator>();
+            if (skillLocator)
+            {
+                GenericSkill ionGunSkill = skillLocator.secondary;
+                IonGunChargeComponent storedChargeComp = base.GetComponent<IonGunChargeComponent>();
+                if (ionGunSkill && storedChargeComp)
+                    ionGunSkill.stock = storedChargeComp.storedCharges;
+            }
+        }
+
         public void CheckInventory()
         {
             if (this.characterBody && this.characterBody.master)

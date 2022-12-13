@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
 
 //FIXME: ion gun doesn't build charges in mp if player is not host
 //FIXME: ion burst stocks do not carry over between stages (may leave this as feature)
@@ -14,15 +15,14 @@ namespace EntityStates.Executioner
 {
     public class ExecutionerIonGun : BaseCustomSkillState
     {
-        public static float damageCoefficient = 3.5f;
+        public static float damageCoefficient = 3.2f;
         public static float procCoefficient = 1.0f;
-        public static float baseDuration = 0.1f;
-        public static float recoil = 2f;
-        public static float aimSnapAngle = 7.5f;
-        public static float range = 200f; //copied from default range
-        public static GameObject muzzlePrefab = LegacyResourcesAPI.Load<GameObject>("Prefabs/Effects/MuzzleFlashes/MuzzleflashHuntressFlurry");
-        public static GameObject tracerPrefab;
-        public static GameObject hitPrefab = Commando.CommandoWeapon.FireBarrage.hitEffectPrefab;
+        public static float baseDuration = 0.12f;
+        public static float recoil = 1f;
+        public static float range = 1000f;
+        public static GameObject muzzlePrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Huntress/MuzzleflashHuntressFlurry.prefab").WaitForCompletion();
+        public GameObject tracerPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Commando/TracerCommandoShotgun.prefab").WaitForCompletion();
+        public static GameObject hitPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Commando/OmniExplosionVFXFMJ.prefab").WaitForCompletion();
 
         private float duration;
         private BulletAttack bullet;
@@ -37,12 +37,14 @@ namespace EntityStates.Executioner
         public override void OnEnter()
         {
             base.OnEnter();
+            //tracerPrefab = Starstorm2.Modules.Assets.exeIonBurstTracer;   //doesn't sync up with the impact effect well enough
             this.animator = base.GetModelAnimator();
+
             //how do we get this skill's slot without hardcoding like this
             // doesn't really matter
             skill = base.characterBody.skillLocator.GetSkill(SkillSlot.Secondary);
             this.shotsToFire = skill.stock;
-            if (shotsToFire > 10) shotsToFire = 10;
+            //if (shotsToFire > 10) shotsToFire = 10;
             this.duration = baseDuration;// / this.attackSpeedStat;
             base.characterBody.SetAimTimer(2f);
             this.muzzleString = "Muzzle";
@@ -97,7 +99,6 @@ namespace EntityStates.Executioner
             if (this.shotsToFire == 1) animSpeed = 8f;
 
             base.PlayAnimation("Gesture, Override", "Secondary", "Secondary.playbackRate", this.duration * animSpeed);
-            tracerPrefab = Starstorm2.Modules.Assets.exeIonBurstTracer;
 
             if (base.isAuthority)
             {
@@ -109,10 +110,10 @@ namespace EntityStates.Executioner
                     aimVector = vec,
                     origin = r.origin,
                     damage = damageCoefficient * damageStat,
-                    damageType = DamageType.Generic,
+                    damageType = DamageType.Shock5s,
                     damageColorIndex = DamageColorIndex.Default,
                     minSpread = 0f,
-                    maxSpread = 0.2f,
+                    maxSpread = 0f,
                     falloffModel = BulletAttack.FalloffModel.None,
                     maxDistance = range,
                     force = Commando.CommandoWeapon.FireBarrage.force,
@@ -121,10 +122,11 @@ namespace EntityStates.Executioner
                     muzzleName = muzzleString,
                     smartCollision = true,
                     procCoefficient = procCoefficient,
-                    radius = 0.5f,
+                    radius = 1f,
                     weapon = base.gameObject,
                     tracerEffectPrefab = tracerPrefab,
-                    hitEffectPrefab = hitPrefab
+                    hitEffectPrefab = hitPrefab,
+                    stopperMask = LayerIndex.world.mask
                     //HitEffectNormal = ClayBruiser.Weapon.MinigunFire.bulletHitEffectNormal
                 };
                 bullet.AddModdedDamageType(DamageTypeCore.ModdedDamageTypes.ExtendFear);
