@@ -1,12 +1,12 @@
 ManifestFileVersion: 0
-CRC: 2608147097
+CRC: 4259372174
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: d05ae7685f8c494053fad37809a13328
+    Hash: c482ac0cfc9da33d8575ee4924937f6f
   TypeTreeHash:
     serializedVersion: 2
-    Hash: 1426b0bbc16dc29b53ce9579db351688
+    Hash: 7aec747c424dad58343d1828cf4a71ef
 HashAppended: 0
 ClassTypes:
 - Class: 1
@@ -73,6 +73,7 @@ ClassTypes:
   Script: {instanceID: 0}
 - Class: 319
   Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
 Assets:
 - Assets/AssetBundle/Chirr/ChirrSpecial2.png
 - Assets/AssetBundle/Nucleator/Icons/texNucleatorSkin.png
@@ -112,7 +113,6 @@ Assets:
 - Assets/AssetBundle/Enemies/Spooder/matSpooder.mat
 - Assets/AssetBundle/Nucleator/Animations/Clips/SecondaryCharge.anim
 - Assets/AssetBundle/GeneralAssets/Textures/texNeedlerEmission.png
-- Assets/AssetBundle/Enemies/Wayfarer/Lamp_Boss.blend
 - Assets/AssetBundle/Enemies/Spooder/Animations/Idle.anim
 - Assets/AssetBundle/Cyborg/Animations/SprintFWD.anim
 - Assets/AssetBundle/Executioner/Textures/texExecutioner.png
@@ -195,7 +195,6 @@ Assets:
 - Assets/AssetBundle/Cyborg/Materials/T_Cyborg_Color.png
 - Assets/AssetBundle/Cyborg/Animations/Hitstun.anim
 - Assets/AssetBundle/Chirr/Animations/Sprint.anim
-- Assets/AssetBundle/Items/ErraticGadget/erraticgadget.blend
 - Assets/AssetBundle/Cyborg/Materials/No Name.mat
 - Assets/AssetBundle/Items/StirringSoul/StirlingSoul.prefab
 - Assets/AssetBundle/Cyborg/Animations/CyborgDEAD-Alive.anim
@@ -265,7 +264,6 @@ Assets:
 - Assets/AssetBundle/Items/GreaterWarbanner/greater_warbanner.fbx
 - Assets/AssetBundle/Items/GreenChocolate/MDLGreenChocolate.prefab
 - Assets/AssetBundle/Executioner/Mesh/meshWastelanderGun.mesh
-- Assets/AssetBundle/Items/StrangeCan/Strange_can.blend
 - Assets/AssetBundle/Items/BloodTester/MDLBloodTester.prefab
 - Assets/AssetBundle/Nemmando/Animations/WalkRHT.anim
 - Assets/AssetBundle/Pyro/Animations/RunL.anim
@@ -286,7 +284,6 @@ Assets:
 - Assets/AssetBundle/Nemmando/Animations/ChargingAttack.anim
 - Assets/AssetBundle/Items/RelicOfMass/MDLRelicOfMass.prefab
 - Assets/AssetBundle/Nemmando/VFX/Materials/matNemmandoLightning.mat
-- Assets/AssetBundle/Items/PressurizedCanister/canister.blend
 - Assets/AssetBundle/Pyro/Animations/FiringLoop.anim
 - Assets/AssetBundle/Nemmando/VFX/Textures/texNemmandoLightningWhite.png
 - Assets/AssetBundle/Items/WatchMetronome/MDLWatchMetronome.prefab
@@ -327,8 +324,6 @@ Assets:
 - Assets/AssetBundle/Nucleator/Animations/Clips/SecondaryRelease.anim
 - Assets/AssetBundle/Items/DroidHead/matDroidHead.mat
 - Assets/AssetBundle/Nemmando/VFX/NemmandoSwingEffectOld.prefab
-- Assets/AssetBundle/Items/DormantFungus/Dormant_Fungus_V01.blend
-- Assets/AssetBundle/Items/CoffeeBag/coffeebag.blend
 - Assets/AssetBundle/Cyborg/Meshes/meshCyborgSteam.mesh
 - Assets/AssetBundle/Cyborg/Animations/ascend.anim
 - Assets/AssetBundle/Enemies/Wayfarer/LampBoss.png
@@ -342,8 +337,6 @@ Assets:
 - Assets/AssetBundle/Nemmando/Materials/matVergil.mat
 - Assets/AssetBundle/Items/DroidHead/DroidHead_Icon.png
 - Assets/AssetBundle/Nucleator/Animations/Clips/UtilityCharge.anim
-- Assets/AssetBundle/Items/JetBoots/jetboots.blend
-- Assets/AssetBundle/Items/HottestSauce/hottest_sauce.blend
 - Assets/AssetBundle/Enemies/Spooder/Animations/WalkL.anim
 - Assets/AssetBundle/Items/GreaterWarbanner/MDLGreaterWarbannerWard.prefab
 - Assets/AssetBundle/Nemmando/Icons/texNemmandoIconUnlock.png
@@ -479,7 +472,6 @@ Assets:
 - Assets/AssetBundle/Chirr/Animations/Descending.anim
 - Assets/AssetBundle/Items/CloakingHeadband/MDLCloakingHeadband.prefab
 - Assets/AssetBundle/Nemmando/Animations/DecisiveDash.anim
-- Assets/AssetBundle/Items/MoltenCoin/Molten_Coin.blend
 - Assets/AssetBundle/Nemmando/Animations/SprintFWD.anim
 - Assets/AssetBundle/Nucleator/mdlNucleator.prefab
 - Assets/AssetBundle/Nemmando/VFX/NemmandoChargeSlashStartEffect.prefab
@@ -498,11 +490,9 @@ Assets:
 - Assets/AssetBundle/Pyro/Animations/Descend.anim
 - Assets/AssetBundle/Nemmando/VFX/NemmandoSwingEffectSaber.prefab
 - Assets/AssetBundle/Items/RelicOfMass/mass_em.png
-- Assets/AssetBundle/Items/StirringSoul/StirlingSoul.blend
 - Assets/AssetBundle/Cyborg/Meshes/meshCyborg.mesh
 - Assets/AssetBundle/Chirr/Animations/ChirrGestureAdd.mask
 - Assets/AssetBundle/Nemmando/VFX/Mesh/SwordSwipe.asset
-- Assets/AssetBundle/Items/Fork/fork.blend
 - Assets/AssetBundle/Items/Fork/matFork.mat
 - Assets/AssetBundle/Chirr/Animations/animChirr.controller
 - Assets/AssetBundle/Nemmando/Mesh/meshVergil.mesh
@@ -515,7 +505,6 @@ Assets:
 - Assets/AssetBundle/Nemmando/Animations/LightImpact.anim
 - Assets/AssetBundle/Nemmando/Mesh/meshNemmandoGun.mesh
 - Assets/AssetBundle/Nemmando/Animations/ScepterSpecialEnd.anim
-- Assets/AssetBundle/Items/Diary/Diary_V01.blend
 - Assets/AssetBundle/Nemmando/Animations/Utility.Left.anim
 - Assets/AssetBundle/Items/BloodTester/blood_tester.png
 - Assets/AssetBundle/Nucleator/Animations/Clips/CombatIdle.anim
@@ -529,7 +518,6 @@ Assets:
 - Assets/AssetBundle/Cyborg/VFX/texThrusterEffect.png
 - Assets/AssetBundle/Pyro/Animations/animPyroDisplay.controller
 - Assets/AssetBundle/Cyborg/Animations/animCyTP_Default.anim
-- Assets/AssetBundle/Items/Malice/malice.blend
 - Assets/AssetBundle/Nucleator/Animations/Clips/maskNucleatorPitch.mask
 - Assets/AssetBundle/Nemmando/Mesh/meshMercSword.mesh
 - Assets/AssetBundle/Cyborg/Animations/Tele/animCyborgTele2.controller
@@ -554,9 +542,6 @@ Assets:
 - Assets/AssetBundle/Nemmando/Textures/texYamato.png
 - Assets/AssetBundle/Cyborg/cyborgsecondary.png
 - Assets/AssetBundle/Items/StirringSoul/matTemp purple.mat
-- Assets/AssetBundle/Items/DetritiveTrematode/Detritive_Trematode.blend
-- Assets/AssetBundle/Items/DroidHead/droidhead.blend
-- Assets/AssetBundle/Items/HuntersSigil/sigil.blend
 - Assets/AssetBundle/Nemmando/Icons/texSubmission.png
 - Assets/AssetBundle/BuffIcons/Status_Trematodes.png
 - Assets/AssetBundle/Cyborg/Animations/Secondary.anim
@@ -596,7 +581,6 @@ Assets:
 - Assets/AssetBundle/Nemmando/Animations/Secondary3(weak).anim
 - Assets/AssetBundle/Pyro/Animations/Jump.anim
 - Assets/AssetBundle/Items/Malice/Malice_Icon.png
-- Assets/AssetBundle/Items/ShackledLamp/Lamp_Item.blend
 - Assets/AssetBundle/Items/JetBoots/JetBoots_Icon.png
 - Assets/AssetBundle/Nemmando/VFX/Materials/metNemmandoChargeBlue.mat
 - Assets/AssetBundle/Enemies/Spooder/Animations/WalkB.anim
@@ -612,7 +596,6 @@ Assets:
 - Assets/AssetBundle/Skins/Icons/texAcridSkinGrandMaster.png
 - Assets/AssetBundle/Nemmando/Animations/SprintLFT.anim
 - Assets/AssetBundle/BuffIcons/Status_Chocolate.png
-- Assets/AssetBundle/Items/CloakingHeadband/cloak.blend
 - Assets/AssetBundle/Items/JetBoots/MDLJetBoots.prefab
 - Assets/AssetBundle/Items/CloakingHeadband/matCloakingHeadband.mat
 - Assets/AssetBundle/Executioner/Mesh/meshExecutioner.mesh
@@ -625,7 +608,6 @@ Assets:
 - Assets/AssetBundle/Cyborg/mdlCyborg2.prefab
 - Assets/AssetBundle/Executioner/Mesh/meshExecutionerAxe.mesh
 - Assets/AssetBundle/Nemmando/Animations/ReloadGun.anim
-- Assets/AssetBundle/Items/NkotasHeritage/Nkotas_heritage.blend
 - Assets/AssetBundle/Cyborg/cyborgspecial.png
 - Assets/AssetBundle/Skins/Textures/texCrocoNormal.png
 - Assets/AssetBundle/Items/DroidHead/MDLDroidHead.prefab
@@ -666,7 +648,6 @@ Assets:
 - Assets/AssetBundle/Chirr/ChirrUtility.png
 - Assets/AssetBundle/Nemmando/VFX/Mesh/NemmandoDashMesh.mesh
 - Assets/AssetBundle/Nemmando/Animations/Primary2.anim
-- Assets/AssetBundle/Items/WatchMetronome/watch_metronome.blend
 - Assets/AssetBundle/FX/Textures/matSigil.mat
 - Assets/AssetBundle/Cyborg/cyborgicon.png
 - Assets/AssetBundle/Nemmando/VFX/NemmandoSwingEffectMerc.prefab
@@ -717,7 +698,6 @@ Assets:
 - Assets/AssetBundle/Nemmando/VFX/Materials/matNemmandoDistortionLight.mat
 - Assets/AssetBundle/Items/NkotasHeritage/MDLNkotasHeritage.prefab
 - Assets/AssetBundle/Cyborg/Materials/matSteamborg.mat
-- Assets/AssetBundle/Items/RelicOfMass/relicofmass_spenny.blend
 - Assets/AssetBundle/Pyro/PyroDisplay.prefab
 - Assets/AssetBundle/Chirr/Textures/texChirrNormal.png
 - Assets/AssetBundle/Items/JetBoots/matJetBoots.mat
@@ -729,7 +709,6 @@ Assets:
 - Assets/AssetBundle/Items/RelicOfMass/RelicOfMassFollowerObject.prefab
 - Assets/AssetBundle/Skins/Mesh/meshCommandoClassicGun.mesh
 - Assets/AssetBundle/Items/Diary/matDiary.mat
-- Assets/AssetBundle/Items/GreenChocolate/green_choccy_2.blend
 - Assets/AssetBundle/Cyborg/Animations/Idle-Primary.anim
 - Assets/AssetBundle/Nemmando/Icons/texTacticalRoll.png
 - Assets/AssetBundle/Nucleator/Animations/Clips/DefaultPose.anim

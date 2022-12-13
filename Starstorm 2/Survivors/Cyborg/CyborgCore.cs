@@ -303,7 +303,7 @@ namespace Starstorm2.Cores
             skillLocator.special = Utils.RegisterSkillsToFamily(cybPrefab, specialVariant1);
         }
 
-        public static void CreateDoppelganger()
+        internal static void CreateDoppelganger()
         {
             doppelganger = PrefabAPI.InstantiateClone(LegacyResourcesAPI.Load<GameObject>("Prefabs/CharacterMasters/CommandoMonsterMaster"), "CyborgMonsterMaster", true);
             doppelganger.GetComponent<CharacterMaster>().bodyPrefab = cybPrefab;

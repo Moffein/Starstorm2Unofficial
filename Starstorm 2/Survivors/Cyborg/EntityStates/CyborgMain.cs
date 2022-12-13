@@ -1,5 +1,6 @@
 ﻿using RoR2;
 using Starstorm2.Survivors.Cyborg.Components;
+using UnityEngine;
 
 namespace EntityStates.Starstorm2States.Cyborg
 {
@@ -16,6 +17,16 @@ namespace EntityStates.Starstorm2States.Cyborg
             base.OnEnter();
             jetpackStateMachine = EntityStateMachine.FindByCustomName(base.gameObject, "Jetpack");
             cyborgController = base.GetComponent<CyborgController>();
+
+            ChildLocator cl = base.GetModelChildLocator();
+            if (cl)
+            {
+                Transform thrusterEffectL = cl.FindChild("ThrusterEffectL");
+                if (thrusterEffectL) thrusterEffectL.gameObject.SetActive(false);
+
+                Transform thrusterEffectR = cl.FindChild("ThrusterEffectR");
+                if (thrusterEffectR) thrusterEffectR.gameObject.SetActive(false);
+            }
         }
 
         public override void OnExit()
