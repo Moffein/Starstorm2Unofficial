@@ -37,6 +37,10 @@ namespace Starstorm2.Survivors.Cyborg
             cybPrefab = CreateCyborgPrefab();
             cybPrefab.GetComponent<EntityStateMachine>().mainStateType = new EntityStates.SerializableEntityStateType(typeof(CyborgMain));
 
+            SfxLocator sfx = cybPrefab.GetComponent<SfxLocator>();
+            sfx.sprintLoopStart = "Play_engi_sprint_start";
+            sfx.sprintLoopStop = "Play_engi_sprint_end";
+
             EntityStateMachine jetpackStateMachine = cybPrefab.AddComponent<EntityStateMachine>();
             jetpackStateMachine.customName = "Jetpack";
             jetpackStateMachine.initialStateType = new SerializableEntityStateType(typeof(EntityStates.Idle));

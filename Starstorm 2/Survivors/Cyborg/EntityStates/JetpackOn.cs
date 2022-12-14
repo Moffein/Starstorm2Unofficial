@@ -1,6 +1,7 @@
 ﻿using RoR2;
 using UnityEngine;
 using EntityStates;
+using UnityEngine.AddressableAssets;
 
 namespace EntityStates.Starstorm2States.Cyborg
 {
@@ -10,6 +11,37 @@ namespace EntityStates.Starstorm2States.Cyborg
         {
             base.OnEnter();
 			Util.PlaySound("Play_mage_m1_impact", base.gameObject);
+
+			if (JetpackOn.activationEffectPrefab)
+			{
+				ChildLocator cl = base.GetModelChildLocator();
+				if (cl)
+				{
+					Transform thrusterEffectL = cl.FindChild("ThrusterEffectL");
+					if (thrusterEffectL)
+					{
+						EffectManager.SpawnEffect(activationEffectPrefab, new EffectData
+						{
+							scale = 0.25f,
+							origin = thrusterEffectL.transform.position,
+							rotation = thrusterEffectL.transform.rotation,
+							rootObject = thrusterEffectL.gameObject
+						}, false);
+					}
+
+					Transform thrusterEffectR = cl.FindChild("ThrusterEffectR");
+					if (thrusterEffectR)
+					{
+						EffectManager.SpawnEffect(activationEffectPrefab, new EffectData
+						{
+							scale = 0.25f,
+							origin = thrusterEffectR.transform.position,
+							rotation = thrusterEffectR.transform.rotation,
+							rootObject = thrusterEffectR.gameObject
+						}, false);
+					}
+				}
+			}
 		}
 
         public override void OnExit()
@@ -29,5 +61,6 @@ namespace EntityStates.Starstorm2States.Cyborg
 		}
 		public static float hoverVelocity = -1f;
 		public static float hoverAcceleration = 60f;
+		public static GameObject activationEffectPrefab;// Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Engi/MuzzleflashEngiTurret.prefab").WaitForCompletion();	//Too big, need to find suitable VFX.
 	}
 }
