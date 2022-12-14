@@ -18,9 +18,20 @@ namespace Starstorm2.Survivors.Cyborg.Components
         {
             if (NetworkServer.active)
             {
-                if (_canTeleport && !teleportObject)
+                if (_canTeleport)
                 {
-                    DestroyTeleporter();
+                    if (!teleportObject)
+                    {
+                        DestroyTeleporterServer();
+                    }
+                    else
+                    {
+                        Vector3 newTelePos = teleportObject.transform.position;
+                        if (newTelePos != _teleportPosition)
+                        {
+                            _teleportPosition = newTelePos;
+                        }
+                    }
                 }
             }
         }
@@ -31,21 +42,32 @@ namespace Starstorm2.Survivors.Cyborg.Components
             return _teleportPosition;
         }
 
-        public void SetTeleporter(GameObject teleportProjectile)
+        [Server]
+        public void SetTeleporterServer(GameObject teleportProjectile)
         {
-            if (!NetworkServer.active || !teleportProjectile) return;
-            if (teleportObject) DestroyTeleporter();
+            if (!NetworkServer.active) return;
+            if (!teleportProjectile) return;
+
+            if (teleportObject) DestroyTeleporterServer();
             teleportObject = teleportProjectile;
             _teleportPosition = teleportObject.transform.position;
             _canTeleport = true;
         }
 
-        public void DestroyTeleporter()
+        [Server]
+        public void DestroyTeleporterServer()
         {
             if (!NetworkServer.active) return;
+
             if (teleportObject) UnityEngine.Object.Destroy(teleportObject);
             teleportObject = null;
             _canTeleport = false;
+        }
+
+        [Command]
+        public void CmdDestroyTeleporter()
+        {
+            if (NetworkServer.active) DestroyTeleporterServer();
         }
     }
 }

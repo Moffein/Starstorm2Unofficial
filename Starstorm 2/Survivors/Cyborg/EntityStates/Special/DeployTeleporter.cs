@@ -4,6 +4,7 @@ using RoR2.Projectile;
 using RoR2.Skills;
 using Starstorm2.Survivors.Cyborg.Components;
 using UnityEngine.Networking;
+using Starstorm2.Survivors.Cyborg;
 
 namespace EntityStates.Starstorm2States.Cyborg.Special
 {
@@ -11,10 +12,14 @@ namespace EntityStates.Starstorm2States.Cyborg.Special
     {
         public static float timeoutDuration = 10f;  //Cancels skill if it can't find teleporter gameobject within 10s.
         public static GameObject projectilePrefab;
-        public static SkillDef teleportSkillDef;
+        public static CyborgTeleSkillDef teleportSkillDef;
         private CyborgTeleportTracker teleTracker;
 
         private bool foundTeleporter;
+        private bool appliedSkillOverride;
+
+        private int origSpecialStock;
+        private float origSpecialRechargeStopwatch;
 
         public override void OnEnter()
         {
@@ -22,9 +27,27 @@ namespace EntityStates.Starstorm2States.Cyborg.Special
             teleTracker = base.GetComponent<CyborgTeleportTracker>();
             base.PlayAnimation("Gesture, Override", "CreateTP", "FireM1.playbackRate", 1f);
 
+            appliedSkillOverride = false;
             foundTeleporter = false;
 
             FireTeleportProjectile();
+
+            if (!appliedSkillOverride)
+            {
+                if (base.skillLocator)
+                {
+                    GenericSkill specialSlot = base.skillLocator.special;
+                    if (specialSlot)
+                    {
+                        origSpecialStock = specialSlot.stock;
+                        origSpecialRechargeStopwatch = specialSlot.rechargeStopwatch;
+
+                        appliedSkillOverride = true;
+                        specialSlot.SetSkillOverride(this, teleportSkillDef, GenericSkill.SkillOverridePriority.Contextual);
+                        specialSlot.stock = 1;
+                    }
+                }
+            }
         }
 
         private void FireTeleportProjectile()
@@ -61,7 +84,7 @@ namespace EntityStates.Starstorm2States.Cyborg.Special
                     foundTeleporter = teleTracker && teleTracker.GetTeleportCoordinates() != null;
                 }
 
-                bool timeout = base.fixedAge >= timeoutDuration && !foundTeleporter;
+                bool timeout = !foundTeleporter && base.fixedAge >= timeoutDuration;
                 bool teleNoLongerValid = foundTeleporter && teleTracker && teleTracker.GetTeleportCoordinates() == null;
                 if (timeout || teleNoLongerValid)
                 {
@@ -73,11 +96,34 @@ namespace EntityStates.Starstorm2States.Cyborg.Special
 
         public override void OnExit()
         {
-            if (NetworkServer.active && teleTracker)
+            if (base.isAuthority)
+            {
+                if (appliedSkillOverride)
+                {
+                    if (base.skillLocator)
+                    {
+                        GenericSkill specialSlot = base.skillLocator.special;
+                        if (specialSlot)
+                        {
+                            specialSlot.UnsetSkillOverride(this, teleportSkillDef, GenericSkill.SkillOverridePriority.Contextual);
+                            specialSlot.rechargeStopwatch = origSpecialRechargeStopwatch;
+                            specialSlot.stock = origSpecialStock;
+                        }
+                    }
+                }
+            }
+
+            //This runs before teleport: causes teleporter be destroyed before it gets used.
+            /*if (NetworkServer.active && teleTracker)
             {
                 teleTracker.DestroyTeleporter();
-            }
+            }*/
             base.OnExit();
+        }
+
+        public override InterruptPriority GetMinimumInterruptPriority()
+        {
+            return InterruptPriority.Skill;
         }
     }
 }

@@ -82,6 +82,7 @@
     <Compile Include="Survivors\Cyborg\Components\CyborgController.cs" />
     <Compile Include="Survivors\Cyborg\Components\CyborgTeleportTracker.cs" />
     <Compile Include="Survivors\Cyborg\Components\TeleportProjectile\AssignToTeleportTracker.cs" />
+    <Compile Include="Survivors\Cyborg\CyborgTeleSkillDef.cs" />
     <Compile Include="Survivors\Cyborg\EntityStates\PrimaryLaser.cs" />
     <Compile Include="Survivors\Cyborg\EntityStates\Special\DeployTeleporter.cs" />
     <Compile Include="Survivors\Cyborg\EntityStates\Special\UseTeleporter.cs" />

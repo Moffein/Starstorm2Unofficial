@@ -15,7 +15,7 @@ namespace EntityStates.Starstorm2States.Executioner
         public static float speedMultiplier = 4.0f;
         public static float debuffRadius = 12f;
         public static float debuffDuration = 3f;
-        public static float debuffCheckInterval = 0.04f;
+        public static float debuffCheckInterval = 0.03f;
 
         private float debuffCheckStopwatch;
         private Vector3 initialDirection;

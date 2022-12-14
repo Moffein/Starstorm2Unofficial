@@ -21,7 +21,7 @@ namespace Starstorm2.Survivors.Cyborg.Components.TeleportProjectile
                 if (pc && pc.owner)
                 {
                     ctt = pc.owner.GetComponent<CyborgTeleportTracker>();
-                    ctt.SetTeleporter(base.gameObject);
+                    ctt.SetTeleporterServer(base.gameObject);
                 }
             }
         }

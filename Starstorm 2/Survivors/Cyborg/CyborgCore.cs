@@ -172,6 +172,12 @@ namespace Starstorm2.Survivors.Cyborg
             Modules.Prefabs.projectilePrefabs.Add(cyborgPylon);
 
             DeployTeleporter.projectilePrefab = cyborgPylon;
+
+            GameObject telefragExplosionEffect = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Mage/OmniImpactVFXLightningMage.prefab").WaitForCompletion().InstantiateClone("SS2UCyborgTelefragEffect", false);
+            EffectComponent ec = telefragExplosionEffect.GetComponent<EffectComponent>();
+            ec.soundName = "Play_mage_R_lightningBlast";
+            Modules.Assets.effectDefs.Add(new EffectDef(telefragExplosionEffect));
+            UseTeleporter.explosionEffectPrefab = telefragExplosionEffect;
         }
 
         private void SetUpSkills()
@@ -305,33 +311,53 @@ namespace Starstorm2.Survivors.Cyborg
             SkillLocator skill = cybPrefab.GetComponent<SkillLocator>();
 
             LanguageAPI.Add("CYBORG_SPECIAL_TELEPORT_NAME", "Recall");
-            LanguageAPI.Add("CYBORG_SPECIAL_TELEPORT_DESCRIPTION", "Create a warp point. Once a warp point is set, teleport to its location. Teleporting <style=cIsDamage>reduces skill cooldowns by 4 seconds</style>. " +
-                $"Telefragging.");
-            SkillDef specialDef1 = ScriptableObject.CreateInstance<SkillDef>();
-            specialDef1.activationState = new EntityStates.SerializableEntityStateType(typeof(DeployTeleporter));
-            specialDef1.activationStateMachineName = "Teleporter";
-            specialDef1.skillName = "CYBORG_SPECIAL_TELEPORT_NAME";
-            specialDef1.skillNameToken = "CYBORG_SPECIAL_TELEPORT_NAME";
-            specialDef1.skillDescriptionToken = "CYBORG_SPECIAL_TELEPORT_DESCRIPTION";
-            specialDef1.icon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("cyborgspecial");
-            specialDef1.baseMaxStock = 1;
-            specialDef1.baseRechargeInterval = 3f;
-            specialDef1.beginSkillCooldownOnSkillEnd = false;
-            specialDef1.canceledFromSprinting = false;
-            specialDef1.fullRestockOnAssign = true;
-            specialDef1.interruptPriority = EntityStates.InterruptPriority.Pain;
-            specialDef1.isCombatSkill = false;
-            specialDef1.mustKeyPress = false;
-            specialDef1.cancelSprintingOnActivation = false;
-            specialDef1.rechargeStock = 1;
-            specialDef1.requiredStock = 1;
-            specialDef1.stockToConsume = 1;
-            specialDef1.keywordTokens = new string[] {};
-
-            Modules.Skills.skillDefs.Add(specialDef1);
-            SkillFamily.Variant specialVariant1 = Utils.RegisterSkillVariant(specialDef1);
-
+            LanguageAPI.Add("CYBORG_SPECIAL_TELEPORT_DESCRIPTION", "<style=cIsDamage>Shocking</style>. Create a <style=cIsUtility>warp point</style>. Reactivate to <style=cIsUtility>teleport to its location</style> and deal <style=cIsDamage>1200% damage</style>.");
+            SkillDef specialDeploy = ScriptableObject.CreateInstance<SkillDef>();
+            specialDeploy.activationState = new EntityStates.SerializableEntityStateType(typeof(DeployTeleporter));
+            specialDeploy.activationStateMachineName = "Teleporter";
+            specialDeploy.skillName = "CYBORG_SPECIAL_TELEPORT_NAME";
+            specialDeploy.skillNameToken = "CYBORG_SPECIAL_TELEPORT_NAME";
+            specialDeploy.skillDescriptionToken = "CYBORG_SPECIAL_TELEPORT_DESCRIPTION";
+            specialDeploy.icon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("cyborgspecial");
+            specialDeploy.baseMaxStock = 1;
+            specialDeploy.baseRechargeInterval = 20f;
+            specialDeploy.beginSkillCooldownOnSkillEnd = true;
+            specialDeploy.canceledFromSprinting = false;
+            specialDeploy.fullRestockOnAssign = true;
+            specialDeploy.interruptPriority = EntityStates.InterruptPriority.Any;
+            specialDeploy.isCombatSkill = false;
+            specialDeploy.mustKeyPress = false;
+            specialDeploy.cancelSprintingOnActivation = false;
+            specialDeploy.rechargeStock = 1;
+            specialDeploy.requiredStock = 1;
+            specialDeploy.stockToConsume = 1;
+            specialDeploy.keywordTokens = new string[] { "KEYWORD_SHOCKING" };
+            Modules.Skills.skillDefs.Add(specialDeploy);
+            SkillFamily.Variant specialVariant1 = Utils.RegisterSkillVariant(specialDeploy);
             skillLocator.special = Utils.RegisterSkillsToFamily(cybPrefab, specialVariant1);
+
+            CyborgTeleSkillDef specialTeleport = ScriptableObject.CreateInstance<CyborgTeleSkillDef>();
+            specialTeleport.activationState = new EntityStates.SerializableEntityStateType(typeof(UseTeleporter));
+            specialTeleport.activationStateMachineName = "Teleporter";
+            specialTeleport.skillName = "CYBORG_SPECIAL_TELEPORT_NAME";
+            specialTeleport.skillNameToken = "CYBORG_SPECIAL_TELEPORT_NAME";
+            specialTeleport.skillDescriptionToken = "CYBORG_SPECIAL_TELEPORT_DESCRIPTION";
+            specialTeleport.icon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("cyborgspecial2");
+            specialTeleport.baseMaxStock = 1;
+            specialTeleport.baseRechargeInterval = 0f;
+            specialTeleport.beginSkillCooldownOnSkillEnd = false;
+            specialTeleport.canceledFromSprinting = false;
+            specialTeleport.fullRestockOnAssign = true;
+            specialTeleport.interruptPriority = EntityStates.InterruptPriority.Skill;
+            specialTeleport.isCombatSkill = false;
+            specialTeleport.mustKeyPress = true;
+            specialTeleport.cancelSprintingOnActivation = false;
+            specialTeleport.rechargeStock = 0;
+            specialTeleport.requiredStock = 1;
+            specialTeleport.stockToConsume = 1;
+            specialTeleport.keywordTokens = new string[] { };
+            Modules.Skills.skillDefs.Add(specialTeleport);
+            DeployTeleporter.teleportSkillDef = specialTeleport;
         }
 
         internal static void CreateDoppelganger()
