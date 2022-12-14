@@ -63,7 +63,7 @@ namespace Starstorm2.Survivors.Cyborg
             Modules.Assets.effectDefs.Add(new EffectDef(tracerEffectPrefab));
             PrimaryLaser.tracerEffectPrefab = tracerEffectPrefab;
 
-            LanguageAPI.Add("CYBORG_NAME", "Cyborg");
+            LanguageAPI.Add("CYBORG_NAME", "CYBORG");
             LanguageAPI.Add("CYBORG_SUBTITLE", "Man Made Monstrosity");
             LanguageAPI.Add("CYBORG_OUTRO_FLAVOR", "..and so he left, programming releasing excess serotonin.");
             LanguageAPI.Add("CYBORG_OUTRO_FAILURE", "..and so he vanished, teleportation beacon left with no signal.");
@@ -189,6 +189,13 @@ namespace Starstorm2.Survivors.Cyborg
 
             SkillLocator skillLocator = cybPrefab.GetComponent<SkillLocator>();
 
+            LanguageAPI.Add("CYBORG_PASSIVE_NAME", "Thrusters");
+            LanguageAPI.Add("CYBORG_PASSIVE_DESCRIPTION", "Holding the Jump key causes the CYBORG to <style=cIsUtility>hover in the air</style>.");
+            skillLocator.passiveSkill.enabled = true;
+            skillLocator.passiveSkill.skillNameToken = "CYBORG_PASSIVE_NAME";
+            skillLocator.passiveSkill.skillDescriptionToken = "CYBORG_PASSIVE_DESCRIPTION";
+            skillLocator.passiveSkill.icon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("cyborgpassive");
+
             SetUpPrimaries(skillLocator);
             SetUpSecondaries(skillLocator);
             SetUpUtilities(skillLocator);
@@ -200,7 +207,7 @@ namespace Starstorm2.Survivors.Cyborg
             var dmg = PrimaryLaser.damageCoefficient * 100f;
 
             LanguageAPI.Add("CYBORG_PRIMARY_GUN_NAME", "Unmaker");
-            LanguageAPI.Add("CYBORG_PRIMARY_GUN_DESCRIPTION", $"Shoot an enemy for <style=cIsDamage>{dmg}% damage</style>.");
+            LanguageAPI.Add("CYBORG_PRIMARY_GUN_DESCRIPTION", $"Shoot a beam at a contender for <style=cIsDamage>{dmg}% damage</style>.");
 
             SteppedSkillDef primaryDef1 = ScriptableObject.CreateInstance<SteppedSkillDef>();
             primaryDef1.activationState = new EntityStates.SerializableEntityStateType(typeof(PrimaryLaser));
@@ -311,7 +318,7 @@ namespace Starstorm2.Survivors.Cyborg
             SkillLocator skill = cybPrefab.GetComponent<SkillLocator>();
 
             LanguageAPI.Add("CYBORG_SPECIAL_TELEPORT_NAME", "Recall");
-            LanguageAPI.Add("CYBORG_SPECIAL_TELEPORT_DESCRIPTION", "<style=cIsDamage>Shocking</style>. Create a <style=cIsUtility>warp point</style>. Reactivate to <style=cIsUtility>teleport to its location</style> and deal <style=cIsDamage>1200% damage</style>.");
+            LanguageAPI.Add("CYBORG_SPECIAL_TELEPORT_DESCRIPTION", "<style=cIsDamage>Shocking</style>. Create a <style=cIsUtility>warp point</style>. Reactivate to <style=cIsUtility>teleport to its LOCATION</style> and deal <style=cIsDamage>1200% damage</style>.");
             SkillDef specialDeploy = ScriptableObject.CreateInstance<SkillDef>();
             specialDeploy.activationState = new EntityStates.SerializableEntityStateType(typeof(DeployTeleporter));
             specialDeploy.activationStateMachineName = "Teleporter";
