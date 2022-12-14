@@ -318,7 +318,7 @@ namespace Starstorm2.Survivors.Executioner
                 " < ! > Some enemies provide multiple charges for Ion burst - and bosses fully charge it!\n\n" +
                 " < ! > Execution is a great crowd control AND single target tool. Don't forget that its damage depends on how many targets it hits!\n\n" +
                 " < ! > If you find yourself getting swarmed, Crowd Dispersion can get enemies off your back fast.\n\n");
-            LanguageAPI.Add("EXECUTIONER_OUTRO_FLAVOR", "..and so he left, an empty shell of armor drenched in blood.");
+            LanguageAPI.Add("EXECUTIONER_OUTRO_FLAVOR", "..and so he left, bloodlust unfulfilled.");
             LanguageAPI.Add("EXECUTIONER_OUTRO_FAILURE", "..and so he vanished, escaping what he'd believed was inevitable.");
             LanguageAPI.Add("EXECUTIONER_LORE", "Death is inevitable. It comes for us all. Some may try to evade it, or run from it. But death arrives all the same. Death, however, is simply the cost of war. And death in glorious combat is one of the best deaths a man could ask for.\n\n" +
                 "But, as always, some would seek to run from death. We call them by many names. Deserters, cowards, turncoats. Each and every one of them, traitors to the cause. These traitors must be punished for their crime. And that punishment: in an ironic twist, is the very thing they tried to avoid.\n\n" +
