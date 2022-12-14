@@ -13,6 +13,7 @@ using Starstorm2.Cores;
 using Starstorm2.Modules;
 using EntityStates.Starstorm2States.Cyborg.Special;
 using Starstorm2.Survivors.Cyborg.Components.TeleportProjectile;
+using Starstorm2.Survivors.Cyborg.Components.OverheatProjectile;
 
 namespace Starstorm2.Survivors.Cyborg
 {
@@ -21,8 +22,6 @@ namespace Starstorm2.Survivors.Cyborg
     {
         public static GameObject cybPrefab;
         public static GameObject doppelganger;
-
-        public static GameObject bfgProjectile;
 
         public static BodyIndex bodyIndex;
 
@@ -71,12 +70,34 @@ namespace Starstorm2.Survivors.Cyborg
             RegisterProjectiles();
             RegisterStates();
             SetUpSkills();
-            CyborgItemDisplays.RegisterDisplays();
+            RoR2.ContentManagement.ContentManager.onContentPacksAssigned += LateSetup;
             CyborgSkins.RegisterSkins();
             CreateDoppelganger();
 
             Modules.Prefabs.RegisterNewSurvivor(cybPrefab, PrefabCore.CreateDisplayPrefab("CyborgDisplay", cybPrefab), Color.blue, "CYBORG");
             RoR2.RoR2Application.onLoad += SetBodyIndex;
+
+            DumpEntityStateConfig(Addressables.LoadAssetAsync<EntityStateConfiguration>("RoR2/DLC1/VoidSurvivor/EntityStates.VoidSurvivor.Weapon.FireHandBeam.asset").WaitForCompletion());
+        }
+
+        public static void DumpEntityStateConfig(EntityStateConfiguration esc)
+        {
+
+            for (int i = 0; i < esc.serializedFieldsCollection.serializedFields.Length; i++)
+            {
+                if (esc.serializedFieldsCollection.serializedFields[i].fieldValue.objectValue)
+                {
+                    Debug.Log(esc.serializedFieldsCollection.serializedFields[i].fieldName + " - " + esc.serializedFieldsCollection.serializedFields[i].fieldValue.objectValue);
+                }
+                else
+                {
+                    Debug.Log(esc.serializedFieldsCollection.serializedFields[i].fieldName + " - " + esc.serializedFieldsCollection.serializedFields[i].fieldValue.stringValue);
+                }
+            }
+        }
+        private void LateSetup(HG.ReadOnlyArray<RoR2.ContentManagement.ReadOnlyContentPack> obj)
+        {
+            CyborgItemDisplays.RegisterDisplays();
         }
 
         private void RegisterStates()
@@ -84,7 +105,7 @@ namespace Starstorm2.Survivors.Cyborg
             Modules.States.AddSkill(typeof(JetpackOn));
             Modules.States.AddSkill(typeof(CyborgMain));
             Modules.States.AddSkill(typeof(CyborgFireTrackshot));
-            Modules.States.AddSkill(typeof(CyborgFireBFG));
+            Modules.States.AddSkill(typeof(CyborgFireOverheat));
 
             Modules.States.AddSkill(typeof(PrimaryLaser));
             Modules.States.AddSkill(typeof(DeployTeleporter));
@@ -93,51 +114,27 @@ namespace Starstorm2.Survivors.Cyborg
 
         private void RegisterProjectiles()
         {
-            bfgProjectile = PrefabAPI.InstantiateClone(LegacyResourcesAPI.Load<GameObject>("Prefabs/Projectiles/FMJ"), "Prefabs/Projectiles/CyborgbfgProjectile", true);
+            GameObject overheatGhost = LegacyResourcesAPI.Load<GameObject>("Prefabs/ProjectileGhosts/BeamSphereGhost").InstantiateClone("SS2UCyborgOverheatGhost", false);
+            ParticleSystem[] overheatParticles = overheatGhost.GetComponentsInChildren<ParticleSystem>();
+            for (int i = 0; i < overheatParticles.Length; i++)
+            {
+                switch (i)
+                {
+                    case 0: //fire
+                        overheatParticles[i].startColor = new Color(244f / 255f, 243f / 255f, 183f / 255f);
+                        break;
+                    case 1: //beams
+                        overheatParticles[i].startColor = Color.white;
+                        break;
+                    case 2: //lightning
+                        overheatParticles[i].startColor = Color.white;
+                        break;
+                }
+            }
+            overheatGhost.AddComponent<BFGReduceSizeOverTime>();
 
-            ProjectileController bfgProjectileController = bfgProjectile.GetComponent<ProjectileController>();
-            bfgProjectileController.procCoefficient = 1f;
-            bfgProjectileController.ghostPrefab = LegacyResourcesAPI.Load<GameObject>("Prefabs/ProjectileGhosts/BeamSphereGhost");
-
-            ProjectileDamage bfgDamage = bfgProjectile.GetComponent<ProjectileDamage>();
-            bfgDamage.damage = 1f;
-            bfgDamage.damageType = DamageType.Generic;
-            bfgDamage.damageColorIndex = DamageColorIndex.Default;
-
-            ProjectileSimple bfgProjectileSimple = bfgProjectile.GetComponent<ProjectileSimple>();
-            bfgProjectileSimple.desiredForwardSpeed = 13;
-            bfgProjectileSimple.lifetime = 4;
-
-            ProjectileProximityBeamController bfgPbc = bfgProjectile.AddComponent<ProjectileProximityBeamController>();
-            bfgPbc.attackRange = 8;
-            bfgPbc.listClearInterval = .2f;
-            bfgPbc.attackInterval = .2f;
-            bfgPbc.damageCoefficient = 0.8f;
-            bfgPbc.procCoefficient = .2f;
-            bfgPbc.inheritDamageType = true;
-
-            RadialForce bfgRadialForce = bfgProjectile.AddComponent<RadialForce>();
-            bfgRadialForce.radius = 18;
-            bfgRadialForce.damping = 0.5f;
-            bfgRadialForce.forceMagnitude = -1500;
-            bfgRadialForce.forceCoefficientAtEdge = 0.5f;
-
-            ProjectileImpactExplosion bfgExplosion = bfgProjectile.AddComponent<ProjectileImpactExplosion>();
-            bfgExplosion.impactEffect = LegacyResourcesAPI.Load<GameObject>("Prefabs/Effects/BeamSphereExplosion");
-            bfgExplosion.destroyOnEnemy = true;
-            bfgExplosion.destroyOnWorld = true;
-            bfgExplosion.timerAfterImpact = false;
-            bfgExplosion.falloffModel = BlastAttack.FalloffModel.SweetSpot;
-            bfgExplosion.lifetime = 3;
-            bfgExplosion.lifetimeAfterImpact = 0;
-            bfgExplosion.lifetimeRandomOffset = 0;
-            bfgExplosion.blastRadius = 20;
-            bfgExplosion.blastDamageCoefficient = 12f;
-            bfgExplosion.blastProcCoefficient = 1;
-            bfgExplosion.blastAttackerFiltering = AttackerFiltering.Default;
-            bfgProjectile.GetComponent<ProjectileOverlapAttack>().enabled = false;
-
-            //bfgProjectile.GetComponent<ProjectileProximityBeamController>().enabled = false;
+            GameObject overheatProjectile = CreateOverheatProjectile("SS2UCyborgOverheatProjectile", overheatGhost);
+            CyborgFireOverheat.projectilePrefab = overheatProjectile;
 
             GameObject cyborgPylon = PrefabAPI.InstantiateClone(LegacyResourcesAPI.Load<GameObject>("Prefabs/Projectiles/EngiGrenadeProjectile"), "Prefabs/Projectiles/CyborgTPPylon", true);
 
@@ -168,7 +165,6 @@ namespace Starstorm2.Survivors.Cyborg
 
             cyborgPylon.AddComponent<AssignToTeleportTracker>();
 
-            Modules.Prefabs.projectilePrefabs.Add(bfgProjectile);
             Modules.Prefabs.projectilePrefabs.Add(cyborgPylon);
 
             DeployTeleporter.projectilePrefab = cyborgPylon;
@@ -178,6 +174,65 @@ namespace Starstorm2.Survivors.Cyborg
             ec.soundName = "Play_mage_R_lightningBlast";
             Modules.Assets.effectDefs.Add(new EffectDef(telefragExplosionEffect));
             UseTeleporter.explosionEffectPrefab = telefragExplosionEffect;
+        }
+
+        private GameObject CreateOverheatProjectile(string name, GameObject ghostPrefab)
+        {
+            GameObject bfgProjectile = PrefabAPI.InstantiateClone(LegacyResourcesAPI.Load<GameObject>("Prefabs/Projectiles/FMJ"), name, true);
+
+            ProjectileController bfgProjectileController = bfgProjectile.GetComponent<ProjectileController>();
+            bfgProjectileController.procCoefficient = 1f;
+            bfgProjectileController.ghostPrefab = ghostPrefab;
+
+            ProjectileDamage bfgDamage = bfgProjectile.GetComponent<ProjectileDamage>();
+            bfgDamage.damage = 1f;
+            bfgDamage.damageType = DamageType.Generic;
+            bfgDamage.damageColorIndex = DamageColorIndex.Default;
+
+            ProjectileSimple bfgProjectileSimple = bfgProjectile.GetComponent<ProjectileSimple>();
+            bfgProjectileSimple.desiredForwardSpeed = 12f;
+            bfgProjectileSimple.lifetime = 3f;
+
+            ProjectileProximityBeamController bfgPbc = bfgProjectile.AddComponent<ProjectileProximityBeamController>();
+            bfgPbc.attackRange = 15f;
+            bfgPbc.listClearInterval = 1f / 5f;
+            bfgPbc.attackInterval = bfgPbc.listClearInterval;
+            bfgPbc.damageCoefficient = 1f * bfgPbc.listClearInterval;
+            bfgPbc.procCoefficient = 1f;
+            bfgPbc.inheritDamageType = true;
+            bfgPbc.bounces = 1;
+            bfgPbc.attackFireCount = 30;
+
+            RadialForce bfgRadialForce = bfgProjectile.AddComponent<RadialForce>();
+            bfgRadialForce.radius = bfgPbc.attackRange;
+            bfgRadialForce.damping = 0.5f;
+            bfgRadialForce.forceMagnitude = -400f;
+            bfgRadialForce.forceCoefficientAtEdge = 0.5f;
+
+            //No clue how to get this working. Simpler to just rely on PBC
+            ProjectileOverlapAttack bfgOverlap = bfgProjectile.GetComponent<ProjectileOverlapAttack>();
+            UnityEngine.Object.Destroy(bfgOverlap);
+            /*bfgOverlap.resetInterval = 5f / 30f;
+            bfgOverlap.fireFrequency = 5f / 30f;
+            bfgOverlap.damageCoefficient = 5f / 30f;*/
+
+            /*ProjectileImpactExplosion bfgExplosion = bfgProjectile.AddComponent<ProjectileImpactExplosion>();
+            bfgExplosion.impactEffect = LegacyResourcesAPI.Load<GameObject>("Prefabs/Effects/BeamSphereExplosion");
+            bfgExplosion.destroyOnEnemy = false;
+            bfgExplosion.destroyOnWorld = false;
+            bfgExplosion.timerAfterImpact = false;
+            bfgExplosion.falloffModel = BlastAttack.FalloffModel.None;
+            bfgExplosion.lifetime = bfgProjectileSimple.lifetime;
+            bfgExplosion.lifetimeAfterImpact = 0;
+            bfgExplosion.lifetimeRandomOffset = 0;
+            bfgExplosion.blastRadius = bfgPbc.attackRange;
+            bfgExplosion.blastDamageCoefficient = 1f;
+            bfgExplosion.blastProcCoefficient = 1f;
+            bfgExplosion.blastAttackerFiltering = AttackerFiltering.Default;*/
+
+            bfgProjectile.AddComponent<OverheatReduceTickrateOverTime>();
+
+            return bfgProjectile;
         }
 
         private void SetUpSkills()
@@ -207,7 +262,7 @@ namespace Starstorm2.Survivors.Cyborg
             var dmg = PrimaryLaser.damageCoefficient * 100f;
 
             LanguageAPI.Add("CYBORG_PRIMARY_GUN_NAME", "Unmaker");
-            LanguageAPI.Add("CYBORG_PRIMARY_GUN_DESCRIPTION", $"Shoot a beam at a contender for <style=cIsDamage>{dmg}% damage</style>.");
+            LanguageAPI.Add("CYBORG_PRIMARY_GUN_DESCRIPTION", $"Fire a beam at a contender for <style=cIsDamage>{dmg}% damage</style>.");
 
             SteppedSkillDef primaryDef1 = ScriptableObject.CreateInstance<SteppedSkillDef>();
             primaryDef1.activationState = new EntityStates.SerializableEntityStateType(typeof(PrimaryLaser));
@@ -274,19 +329,17 @@ namespace Starstorm2.Survivors.Cyborg
 
         private void SetUpUtilities(SkillLocator skillLocator)
         {
-            var zapDmg = 0.8f * 100f * 5f;
-            var explosionDmg = 12f * 100f;
+            var zapDmg = CyborgFireOverheat.damageCoefficient * 100f;
 
             //var dur = ExecutionerDash.debuffDuration;
 
             SkillLocator skill = cybPrefab.GetComponent<SkillLocator>();
 
             LanguageAPI.Add("CYBORG_SPECIAL_NOTPREON_NAME", "Overheat Redress");
-            LanguageAPI.Add("CYBORG_SPECIAL_NOTPREON_DESCRIPTION", $"Blast yourself backwards, firing a greater energy bullet, dealing up to <style=cIsDamage>{zapDmg}%</style> damage per second. " +
-                $"Explodes at the end dealing <style=cIsDamage>{explosionDmg}%</style> in an area.");
+            LanguageAPI.Add("CYBORG_SPECIAL_NOTPREON_DESCRIPTION", $"Blast yourself backwards, firing a greater energy bullet, dealing up to <style=cIsDamage>{zapDmg}%</style> damage per second.");
 
             SkillDef utilityDef1 = ScriptableObject.CreateInstance<SkillDef>();
-            utilityDef1.activationState = new EntityStates.SerializableEntityStateType(typeof(CyborgFireBFG));
+            utilityDef1.activationState = new EntityStates.SerializableEntityStateType(typeof(CyborgFireOverheat));
             utilityDef1.activationStateMachineName = "Weapon";
             utilityDef1.skillName = "CYBORG_SPECIAL_NOTPREON_NAME";
             utilityDef1.skillNameToken = "CYBORG_SPECIAL_NOTPREON_NAME";
@@ -305,7 +358,7 @@ namespace Starstorm2.Survivors.Cyborg
             utilityDef1.requiredStock = 1;
             utilityDef1.stockToConsume = 1;
 
-            Utils.RegisterSkillDef(utilityDef1, typeof(CyborgFireBFG));
+            Utils.RegisterSkillDef(utilityDef1, typeof(CyborgFireOverheat));
             SkillFamily.Variant utilityVariant1 = Utils.RegisterSkillVariant(utilityDef1);
 
             skillLocator.utility = Utils.RegisterSkillsToFamily(cybPrefab, utilityVariant1);
@@ -316,7 +369,7 @@ namespace Starstorm2.Survivors.Cyborg
             SkillLocator skill = cybPrefab.GetComponent<SkillLocator>();
 
             LanguageAPI.Add("CYBORG_SPECIAL_TELEPORT_NAME", "Recall");
-            LanguageAPI.Add("CYBORG_SPECIAL_TELEPORT_DESCRIPTION", "<style=cIsDamage>Shocking</style>. Create a <style=cIsUtility>warp point</style>. Reactivate to <style=cIsUtility>teleport to its LOCATION</style> and deal <style=cIsDamage>1200% damage</style>.");
+            LanguageAPI.Add("CYBORG_SPECIAL_TELEPORT_DESCRIPTION", "<style=cIsDamage>Shocking</style>. Create a <style=cIsUtility>warp point</style>. Reactivate to <style=cIsUtility>teleport to its location</style> and deal <style=cIsDamage>1200% damage</style>.");
             SkillDef specialDeploy = ScriptableObject.CreateInstance<SkillDef>();
             specialDeploy.activationState = new EntityStates.SerializableEntityStateType(typeof(DeployTeleporter));
             specialDeploy.activationStateMachineName = "Teleporter";

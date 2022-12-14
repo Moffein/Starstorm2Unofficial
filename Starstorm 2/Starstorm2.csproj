@@ -81,6 +81,8 @@
     <Compile Include="Components\ChirrController.cs" />
     <Compile Include="Survivors\Cyborg\Components\CyborgController.cs" />
     <Compile Include="Survivors\Cyborg\Components\CyborgTeleportTracker.cs" />
+    <Compile Include="Survivors\Cyborg\Components\OverheatProjectile\BFGReduceSizeOverTime.cs" />
+    <Compile Include="Survivors\Cyborg\Components\OverheatProjectile\OverheatReduceTickrateOverTime.cs" />
     <Compile Include="Survivors\Cyborg\Components\TeleportProjectile\AssignToTeleportTracker.cs" />
     <Compile Include="Survivors\Cyborg\CyborgTeleSkillDef.cs" />
     <Compile Include="Survivors\Cyborg\EntityStates\PrimaryLaser.cs" />

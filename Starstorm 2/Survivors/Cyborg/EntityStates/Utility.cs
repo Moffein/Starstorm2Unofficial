@@ -6,14 +6,14 @@ using Starstorm2.Survivors.Cyborg.Components;
 
 namespace EntityStates.Starstorm2States.Cyborg
 {
-    public class CyborgFireBFG : BaseSkillState
+    public class CyborgFireOverheat : BaseSkillState
     {
-        public float damageCoefficient = 1.85f;
-        public float baseDuration = 0.5f;
-        public float recoil = 1f;
+        public static float damageCoefficient = 6f;
+        public static float baseDuration = 0.5f;
+        public static float recoil = 1f;
+        public static GameObject projectilePrefab;
 
         private float duration;
-        private float fireDuration;
         private bool hasFired;
         private Animator animator;
         private string muzzleString;
@@ -23,8 +23,7 @@ namespace EntityStates.Starstorm2States.Cyborg
         public override void OnEnter()
         {
             base.OnEnter();
-            this.duration = this.baseDuration / this.attackSpeedStat;
-            this.fireDuration = 0.25f * this.duration;
+            this.duration = CyborgFireOverheat.baseDuration / this.attackSpeedStat;
             base.characterBody.SetAimTimer(2f);
             this.animator = base.GetModelAnimator();
             this.muzzleString = "Muzzle";
@@ -34,6 +33,7 @@ namespace EntityStates.Starstorm2States.Cyborg
                 cyborgController.allowJetpack = false;
             }
 
+            Util.PlaySound("CyborgUtility", base.gameObject);
             base.PlayAnimation("Gesture, Override", "FireSpecial", "FireArrow.playbackRate", this.duration);
 
             //old code
@@ -47,7 +47,7 @@ namespace EntityStates.Starstorm2States.Cyborg
             }*/
 
             //copied from sniper
-            Vector3 direction = -base.GetAimRay().direction;
+            /*Vector3 direction = -base.GetAimRay().direction;
             if (base.isAuthority)
             {
                 direction.y = Mathf.Max(direction.y, 0.05f);
@@ -68,7 +68,8 @@ namespace EntityStates.Starstorm2States.Cyborg
 
                     base.characterDirection.moveVector = direction;
                 }
-            }
+            }*/
+            FireBFG();
         }
 
         public override void OnExit()
@@ -84,9 +85,6 @@ namespace EntityStates.Starstorm2States.Cyborg
         {
             if (!this.hasFired)
             {
-                string soundString = "CyborgUtility";//base.effectComponent.shootSound;
-                //if (isCrit) soundString += "Crit";
-                Util.PlaySound(soundString, base.gameObject);
                 this.hasFired = true;
 
                 base.characterBody.AddSpreadBloom(0.75f);
@@ -95,9 +93,9 @@ namespace EntityStates.Starstorm2States.Cyborg
 
                 if (base.isAuthority)
                 {
-                    ProjectileManager.instance.FireProjectile(Starstorm2.Survivors.Cyborg.CyborgCore.bfgProjectile,
+                    ProjectileManager.instance.FireProjectile(CyborgFireOverheat.projectilePrefab,
                         aimRay.origin, Util.QuaternionSafeLookRotation(aimRay.direction),
-                        base.gameObject, this.characterBody.damage * 1f,
+                        base.gameObject, this.characterBody.damage * CyborgFireOverheat.damageCoefficient,
                         0f,
                         Util.CheckRoll(this.characterBody.crit,
                         this.characterBody.master),
@@ -110,11 +108,6 @@ namespace EntityStates.Starstorm2States.Cyborg
         {
             base.FixedUpdate();
 
-            if (base.fixedAge >= this.fireDuration)
-            {
-                FireBFG();
-            }
-
             if (base.fixedAge >= this.duration && base.isAuthority)
             {
                 this.outer.SetNextStateToMain();
@@ -123,7 +116,7 @@ namespace EntityStates.Starstorm2States.Cyborg
 
         public override InterruptPriority GetMinimumInterruptPriority()
         {
-            return InterruptPriority.Pain;
+            return InterruptPriority.PrioritySkill;
         }
     }
 }

@@ -21,7 +21,6 @@ namespace EntityStates.Starstorm2States.Cyborg
         public override void OnEnter()
         {
             base.OnEnter();
-
             duration = PrimaryLaser.baseDuration / this.attackSpeedStat;
             if (step == 1)
             {
