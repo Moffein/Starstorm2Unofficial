@@ -142,21 +142,24 @@ namespace Starstorm2.Survivors.Cyborg
 
             ProjectileController pylonProjectileController = cyborgPylon.GetComponent<ProjectileController>();
             pylonProjectileController.ghostPrefab = ghost;
+            pylonProjectileController.cannotBeDeleted = true;
+            pylonProjectileController.allowPrediction = false;
 
-            cyborgPylon.GetComponent<ProjectileSimple>().lifetime = 1000000f;
+            ProjectileSimple cyborgPylonProjectileSimple = cyborgPylon.GetComponent<ProjectileSimple>();
+            cyborgPylonProjectileSimple.lifetime = 1000000f;
 
             ProjectileImpactExplosion pylonProjectileImpactExplosion = cyborgPylon.GetComponent<ProjectileImpactExplosion>();
             pylonProjectileImpactExplosion.lifetime = 1000000f;
             pylonProjectileImpactExplosion.lifetimeAfterImpact = 1000000f;
             pylonProjectileImpactExplosion.destroyOnEnemy = false;
+            pylonProjectileImpactExplosion.destroyOnWorld = false;
             //cyborgPylon.GetComponent<ProjectileImpactExplosion>().falloffModel = BlastAttack.FalloffModel.SweetSpot;
 
             Rigidbody pylonRigidBody = cyborgPylon.GetComponent<Rigidbody>();
-            pylonRigidBody.drag = 2;
-            pylonRigidBody.angularDrag = 2f;
+            pylonRigidBody.drag = 2f;   //loader is 3
+            pylonRigidBody.angularDrag = 2f;   //loader is 3
 
-            AntiGravityForce pylonAntiGrav = cyborgPylon.AddComponent<AntiGravityForce>();
-            pylonAntiGrav.rb = pylonRigidBody;
+            AntiGravityForce pylonAntiGrav = cyborgPylon.GetComponent<AntiGravityForce>();
             pylonAntiGrav.antiGravityCoefficient = 1;
 
             cyborgPylon.AddComponent<AssignToTeleportTracker>();

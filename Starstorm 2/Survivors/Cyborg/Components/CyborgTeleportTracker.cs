@@ -7,29 +7,45 @@ namespace Starstorm2.Survivors.Cyborg.Components
     public class CyborgTeleportTracker : NetworkBehaviour
     {
         [SyncVar]
+        private Vector3 _teleportPosition = Vector3.zero;
+
+        [SyncVar]
         private bool _canTeleport = false;
 
-        public bool CanTeleport()
+        private GameObject teleportObject;
+
+        public void FixedUpdate()
         {
-            return _canTeleport;
+            if (NetworkServer.active)
+            {
+                if (_canTeleport && !teleportObject)
+                {
+                    DestroyTeleporter();
+                }
+            }
         }
 
         public Vector3? GetTeleportCoordinates()
         {
-            return null;
+            if (!_canTeleport) return null;
+            return _teleportPosition;
         }
 
-        [Server]
-        public void SetTeleporter(GameObject teleporterObject)
+        public void SetTeleporter(GameObject teleportProjectile)
         {
-            if (!NetworkServer.active) return;
-            DestroyTeleporter();
+            if (!NetworkServer.active || !teleportProjectile) return;
+            if (teleportObject) DestroyTeleporter();
+            teleportObject = teleportProjectile;
+            _teleportPosition = teleportObject.transform.position;
+            _canTeleport = true;
         }
 
-        [Server]
         public void DestroyTeleporter()
         {
             if (!NetworkServer.active) return;
+            if (teleportObject) UnityEngine.Object.Destroy(teleportObject);
+            teleportObject = null;
+            _canTeleport = false;
         }
     }
 }

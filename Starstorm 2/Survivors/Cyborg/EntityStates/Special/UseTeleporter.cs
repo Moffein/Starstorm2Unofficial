@@ -2,6 +2,7 @@
 using UnityEngine;
 using RoR2.Projectile;
 using Starstorm2.Survivors.Cyborg.Components;
+using UnityEngine.Networking;
 
 namespace EntityStates.Starstorm2States.Cyborg.Special
 {
@@ -23,7 +24,7 @@ namespace EntityStates.Starstorm2States.Cyborg.Special
                 {
 
                 }
-                teleTracker.DestroyTeleporter();
+                if (NetworkServer.active) teleTracker.DestroyTeleporter();
             }
         }
 

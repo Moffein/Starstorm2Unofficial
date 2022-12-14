@@ -59,10 +59,10 @@ namespace EntityStates.Starstorm2States.Cyborg.Special
 
         public override void OnExit()
         {
-            if (NetworkServer.active)
+            /*if (NetworkServer.active)
             {
                 teleTracker.DestroyTeleporter();
-            }
+            }*/
             base.OnExit();
         }
     }
