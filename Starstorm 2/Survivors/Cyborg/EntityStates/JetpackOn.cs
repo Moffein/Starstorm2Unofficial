@@ -22,7 +22,7 @@ namespace EntityStates.Starstorm2States.Cyborg
 					{
 						EffectManager.SpawnEffect(activationEffectPrefab, new EffectData
 						{
-							scale = 0.25f,
+							scale = 0.2f,
 							origin = thrusterEffectL.transform.position,
 							rotation = thrusterEffectL.transform.rotation,
 							rootObject = thrusterEffectL.gameObject
@@ -34,7 +34,7 @@ namespace EntityStates.Starstorm2States.Cyborg
 					{
 						EffectManager.SpawnEffect(activationEffectPrefab, new EffectData
 						{
-							scale = 0.25f,
+							scale = 0.2f,
 							origin = thrusterEffectR.transform.position,
 							rotation = thrusterEffectR.transform.rotation,
 							rootObject = thrusterEffectR.gameObject
@@ -61,6 +61,6 @@ namespace EntityStates.Starstorm2States.Cyborg
 		}
 		public static float hoverVelocity = -1f;
 		public static float hoverAcceleration = 60f;
-		public static GameObject activationEffectPrefab;// Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Engi/MuzzleflashEngiTurret.prefab").WaitForCompletion();	//Too big, need to find suitable VFX.
+		public static GameObject activationEffectPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Engi/EngiHarpoonExplosion.prefab").WaitForCompletion();	//Too big, need to find suitable VFX.
 	}
 }
