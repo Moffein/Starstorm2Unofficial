@@ -12,6 +12,7 @@ using Starstorm2.Survivors.Cyborg.Components;
 using Starstorm2.Cores;
 using Starstorm2.Modules;
 using EntityStates.Starstorm2States.Cyborg.Special;
+using Starstorm2.Survivors.Cyborg.Components.TeleportProjectile;
 
 namespace Starstorm2.Survivors.Cyborg
 {
@@ -89,39 +90,47 @@ namespace Starstorm2.Survivors.Cyborg
         private void RegisterProjectiles()
         {
             bfgProjectile = PrefabAPI.InstantiateClone(LegacyResourcesAPI.Load<GameObject>("Prefabs/Projectiles/FMJ"), "Prefabs/Projectiles/CyborgbfgProjectile", true);
-            bfgProjectile.GetComponent<ProjectileController>().procCoefficient = 1f;
-            //bfgProjectile.GetComponent<ProjectileController>().catalogIndex = 53;
-            bfgProjectile.GetComponent<ProjectileController>().ghostPrefab = LegacyResourcesAPI.Load<GameObject>("Prefabs/ProjectileGhosts/BeamSphereGhost");
-            bfgProjectile.GetComponent<ProjectileDamage>().damage = 1f;
-            bfgProjectile.GetComponent<ProjectileDamage>().damageType = DamageType.Generic;
-            bfgProjectile.GetComponent<ProjectileDamage>().damageColorIndex = DamageColorIndex.Default;
-            bfgProjectile.GetComponent<ProjectileSimple>().desiredForwardSpeed = 13;
-            bfgProjectile.GetComponent<ProjectileSimple>().lifetime = 4;
-            bfgProjectile.AddComponent<ProjectileProximityBeamController>();
-            bfgProjectile.GetComponent<ProjectileProximityBeamController>().attackRange = 8;
-            bfgProjectile.GetComponent<ProjectileProximityBeamController>().listClearInterval = .2f;
-            bfgProjectile.GetComponent<ProjectileProximityBeamController>().attackInterval = .2f;
-            bfgProjectile.GetComponent<ProjectileProximityBeamController>().damageCoefficient = 0.8f;
-            bfgProjectile.GetComponent<ProjectileProximityBeamController>().procCoefficient = .2f;
-            bfgProjectile.GetComponent<ProjectileProximityBeamController>().inheritDamageType = true;
-            bfgProjectile.AddComponent<RadialForce>();
-            bfgProjectile.GetComponent<RadialForce>().radius = 18;
-            bfgProjectile.GetComponent<RadialForce>().damping = 0.5f;
-            bfgProjectile.GetComponent<RadialForce>().forceMagnitude = -1500;
-            bfgProjectile.GetComponent<RadialForce>().forceCoefficientAtEdge = 0.5f;
-            bfgProjectile.AddComponent<ProjectileImpactExplosion>();
-            bfgProjectile.GetComponent<ProjectileImpactExplosion>().impactEffect = LegacyResourcesAPI.Load<GameObject>("Prefabs/Effects/BeamSphereExplosion");
-            bfgProjectile.GetComponent<ProjectileImpactExplosion>().destroyOnEnemy = true;
-            bfgProjectile.GetComponent<ProjectileImpactExplosion>().destroyOnWorld = true;
-            bfgProjectile.GetComponent<ProjectileImpactExplosion>().timerAfterImpact = false;
-            bfgProjectile.GetComponent<ProjectileImpactExplosion>().falloffModel = BlastAttack.FalloffModel.SweetSpot;
-            bfgProjectile.GetComponent<ProjectileImpactExplosion>().lifetime = 3;
-            bfgProjectile.GetComponent<ProjectileImpactExplosion>().lifetimeAfterImpact = 0;
-            bfgProjectile.GetComponent<ProjectileImpactExplosion>().lifetimeRandomOffset = 0;
-            bfgProjectile.GetComponent<ProjectileImpactExplosion>().blastRadius = 20;
-            bfgProjectile.GetComponent<ProjectileImpactExplosion>().blastDamageCoefficient = 12f;
-            bfgProjectile.GetComponent<ProjectileImpactExplosion>().blastProcCoefficient = 1;
-            bfgProjectile.GetComponent<ProjectileImpactExplosion>().blastAttackerFiltering = AttackerFiltering.Default;
+
+            ProjectileController bfgProjectileController = bfgProjectile.GetComponent<ProjectileController>();
+            bfgProjectileController.procCoefficient = 1f;
+            bfgProjectileController.ghostPrefab = LegacyResourcesAPI.Load<GameObject>("Prefabs/ProjectileGhosts/BeamSphereGhost");
+
+            ProjectileDamage bfgDamage = bfgProjectile.GetComponent<ProjectileDamage>();
+            bfgDamage.damage = 1f;
+            bfgDamage.damageType = DamageType.Generic;
+            bfgDamage.damageColorIndex = DamageColorIndex.Default;
+
+            ProjectileSimple bfgProjectileSimple = bfgProjectile.GetComponent<ProjectileSimple>();
+            bfgProjectileSimple.desiredForwardSpeed = 13;
+            bfgProjectileSimple.lifetime = 4;
+
+            ProjectileProximityBeamController bfgPbc = bfgProjectile.AddComponent<ProjectileProximityBeamController>();
+            bfgPbc.attackRange = 8;
+            bfgPbc.listClearInterval = .2f;
+            bfgPbc.attackInterval = .2f;
+            bfgPbc.damageCoefficient = 0.8f;
+            bfgPbc.procCoefficient = .2f;
+            bfgPbc.inheritDamageType = true;
+
+            RadialForce bfgRadialForce = bfgProjectile.AddComponent<RadialForce>();
+            bfgRadialForce.radius = 18;
+            bfgRadialForce.damping = 0.5f;
+            bfgRadialForce.forceMagnitude = -1500;
+            bfgRadialForce.forceCoefficientAtEdge = 0.5f;
+
+            ProjectileImpactExplosion bfgExplosion = bfgProjectile.AddComponent<ProjectileImpactExplosion>();
+            bfgExplosion.impactEffect = LegacyResourcesAPI.Load<GameObject>("Prefabs/Effects/BeamSphereExplosion");
+            bfgExplosion.destroyOnEnemy = true;
+            bfgExplosion.destroyOnWorld = true;
+            bfgExplosion.timerAfterImpact = false;
+            bfgExplosion.falloffModel = BlastAttack.FalloffModel.SweetSpot;
+            bfgExplosion.lifetime = 3;
+            bfgExplosion.lifetimeAfterImpact = 0;
+            bfgExplosion.lifetimeRandomOffset = 0;
+            bfgExplosion.blastRadius = 20;
+            bfgExplosion.blastDamageCoefficient = 12f;
+            bfgExplosion.blastProcCoefficient = 1;
+            bfgExplosion.blastAttackerFiltering = AttackerFiltering.Default;
             bfgProjectile.GetComponent<ProjectileOverlapAttack>().enabled = false;
 
             //bfgProjectile.GetComponent<ProjectileProximityBeamController>().enabled = false;
@@ -130,17 +139,27 @@ namespace Starstorm2.Survivors.Cyborg
 
             GameObject ghost = Modules.Assets.mainAssetBundle.LoadAsset<GameObject>("cyborgTeleGhost2");
             ghost.AddComponent<ProjectileGhostController>();
-            cyborgPylon.GetComponent<ProjectileController>().ghostPrefab = ghost;
+
+            ProjectileController pylonProjectileController = cyborgPylon.GetComponent<ProjectileController>();
+            pylonProjectileController.ghostPrefab = ghost;
+
             cyborgPylon.GetComponent<ProjectileSimple>().lifetime = 1000000f;
-            cyborgPylon.GetComponent<ProjectileImpactExplosion>().lifetime = 1000000f;
-            cyborgPylon.GetComponent<ProjectileImpactExplosion>().lifetimeAfterImpact = 1000000f;
-            cyborgPylon.GetComponent<ProjectileImpactExplosion>().destroyOnEnemy = false;
+
+            ProjectileImpactExplosion pylonProjectileImpactExplosion = cyborgPylon.GetComponent<ProjectileImpactExplosion>();
+            pylonProjectileImpactExplosion.lifetime = 1000000f;
+            pylonProjectileImpactExplosion.lifetimeAfterImpact = 1000000f;
+            pylonProjectileImpactExplosion.destroyOnEnemy = false;
             //cyborgPylon.GetComponent<ProjectileImpactExplosion>().falloffModel = BlastAttack.FalloffModel.SweetSpot;
-            cyborgPylon.GetComponent<Rigidbody>().drag = 2;
-            cyborgPylon.GetComponent<Rigidbody>().angularDrag = 2f;
-            cyborgPylon.AddComponent<AntiGravityForce>();
-            cyborgPylon.GetComponent<AntiGravityForce>().rb = cyborgPylon.GetComponent<Rigidbody>();
-            cyborgPylon.GetComponent<AntiGravityForce>().antiGravityCoefficient = 1;
+
+            Rigidbody pylonRigidBody = cyborgPylon.GetComponent<Rigidbody>();
+            pylonRigidBody.drag = 2;
+            pylonRigidBody.angularDrag = 2f;
+
+            AntiGravityForce pylonAntiGrav = cyborgPylon.AddComponent<AntiGravityForce>();
+            pylonAntiGrav.rb = pylonRigidBody;
+            pylonAntiGrav.antiGravityCoefficient = 1;
+
+            cyborgPylon.AddComponent<AssignToTeleportTracker>();
 
             Modules.Prefabs.projectilePrefabs.Add(bfgProjectile);
             Modules.Prefabs.projectilePrefabs.Add(cyborgPylon);

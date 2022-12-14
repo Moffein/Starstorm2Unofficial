@@ -35,7 +35,7 @@ namespace Starstorm2.Survivors.Cyborg.Components
                 }*/
             }
 
-            this.InitItemDisplays();
+            //this.InitItemDisplays();
         }
 
         private void FixedUpdate()
@@ -51,13 +51,13 @@ namespace Starstorm2.Survivors.Cyborg.Components
             }*/
         }
 
-        private void InitItemDisplays()
+        /*sprivate void InitItemDisplays()
         {
             // i really don't know why this is necessary but just deal with it for now
             Starstorm2.Cores.ItemDisplays.CyborgItemDisplays.RegisterModdedDisplays();
 
             ItemDisplayRuleSet newRuleset = Instantiate(Starstorm2.Cores.ItemDisplays.CyborgItemDisplays.itemDisplayRuleSet);
             this.model.itemDisplayRuleSet = newRuleset;
-        }
+        }*/
     }
 }

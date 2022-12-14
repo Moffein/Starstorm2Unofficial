@@ -50,13 +50,13 @@ namespace Starstorm2.Components
             }*/
         }
 
-        private void InitItemDisplays()
+        /*private void InitItemDisplays()
         {
             // i really don't know why this is necessary but just deal with it for now
             Starstorm2.Cores.ItemDisplays.CyborgItemDisplays.RegisterModdedDisplays();
 
             ItemDisplayRuleSet newRuleset = Instantiate(Starstorm2.Cores.ItemDisplays.CyborgItemDisplays.itemDisplayRuleSet);
             this.model.itemDisplayRuleSet = newRuleset;
-        }
+        }*/
     }
 }
