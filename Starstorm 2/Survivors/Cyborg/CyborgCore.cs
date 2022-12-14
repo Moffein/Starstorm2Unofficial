@@ -9,8 +9,11 @@ using EntityStates;
 using System.Linq;
 using EntityStates.Starstorm2States.Cyborg;
 using Starstorm2.Survivors.Cyborg.Components;
+using Starstorm2.Cores;
+using Starstorm2.Modules;
+using EntityStates.Starstorm2States.Cyborg.Special;
 
-namespace Starstorm2.Cores
+namespace Starstorm2.Survivors.Cyborg
 {
     //Would prefer for this to be the same as Nemmando/ExeCore, but I don't want to rewrite this so I'll leave it as-is.
     public class CyborgCore
@@ -19,7 +22,6 @@ namespace Starstorm2.Cores
         public static GameObject doppelganger;
 
         public static GameObject bfgProjectile;
-        public static GameObject cyborgPylon;
 
         public static BodyIndex bodyIndex;
 
@@ -45,6 +47,12 @@ namespace Starstorm2.Cores
             SetStateOnHurt ssoh = cybPrefab.GetComponent<SetStateOnHurt>();
             ssoh.idleStateMachine.Append(jetpackStateMachine);
 
+            EntityStateMachine teleStateMachine = cybPrefab.AddComponent<EntityStateMachine>();
+            teleStateMachine.customName = "Teleporter";
+            teleStateMachine.initialStateType = new SerializableEntityStateType(typeof(EntityStates.Idle));
+            teleStateMachine.mainStateType = new SerializableEntityStateType(typeof(EntityStates.Idle));
+            nsm.stateMachines = nsm.stateMachines.Append(teleStateMachine).ToArray();
+
             GameObject tracerEffectPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Junk/Mage/TracerMageIceLaser.prefab").WaitForCompletion().InstantiateClone("SS2UCyborgTracer", false);
             tracerEffectPrefab.AddComponent<DestroyOnTimer>().duration = 0.3f;
             Modules.Assets.effectDefs.Add(new EffectDef(tracerEffectPrefab));
@@ -58,8 +66,8 @@ namespace Starstorm2.Cores
             RegisterProjectiles();
             RegisterStates();
             SetUpSkills();
-            ItemDisplays.CyborgItemDisplays.RegisterDisplays();
-            Skins.CyborgSkins.RegisterSkins();
+            CyborgItemDisplays.RegisterDisplays();
+            CyborgSkins.RegisterSkins();
             CreateDoppelganger();
 
             Modules.Prefabs.RegisterNewSurvivor(cybPrefab, PrefabCore.CreateDisplayPrefab("CyborgDisplay", cybPrefab), Color.blue, "CYBORG");
@@ -72,9 +80,10 @@ namespace Starstorm2.Cores
             Modules.States.AddSkill(typeof(CyborgMain));
             Modules.States.AddSkill(typeof(CyborgFireTrackshot));
             Modules.States.AddSkill(typeof(CyborgFireBFG));
-            Modules.States.AddSkill(typeof(CyborgTeleport));
 
             Modules.States.AddSkill(typeof(PrimaryLaser));
+            Modules.States.AddSkill(typeof(DeployTeleporter));
+            Modules.States.AddSkill(typeof(UseTeleporter));
         }
 
         private void RegisterProjectiles()
@@ -117,14 +126,14 @@ namespace Starstorm2.Cores
 
             //bfgProjectile.GetComponent<ProjectileProximityBeamController>().enabled = false;
 
-            cyborgPylon = PrefabAPI.InstantiateClone(LegacyResourcesAPI.Load<GameObject>("Prefabs/Projectiles/EngiGrenadeProjectile"), "Prefabs/Projectiles/CyborgTPPylon", true);
+            GameObject cyborgPylon = PrefabAPI.InstantiateClone(LegacyResourcesAPI.Load<GameObject>("Prefabs/Projectiles/EngiGrenadeProjectile"), "Prefabs/Projectiles/CyborgTPPylon", true);
 
             GameObject ghost = Modules.Assets.mainAssetBundle.LoadAsset<GameObject>("cyborgTeleGhost2");
             ghost.AddComponent<ProjectileGhostController>();
             cyborgPylon.GetComponent<ProjectileController>().ghostPrefab = ghost;
-            cyborgPylon.GetComponent<ProjectileSimple>().lifetime = 2147483646;
-            cyborgPylon.GetComponent<ProjectileImpactExplosion>().lifetime = 2147483646;
-            cyborgPylon.GetComponent<ProjectileImpactExplosion>().lifetimeAfterImpact = 2147483646;
+            cyborgPylon.GetComponent<ProjectileSimple>().lifetime = 1000000f;
+            cyborgPylon.GetComponent<ProjectileImpactExplosion>().lifetime = 1000000f;
+            cyborgPylon.GetComponent<ProjectileImpactExplosion>().lifetimeAfterImpact = 1000000f;
             cyborgPylon.GetComponent<ProjectileImpactExplosion>().destroyOnEnemy = false;
             //cyborgPylon.GetComponent<ProjectileImpactExplosion>().falloffModel = BlastAttack.FalloffModel.SweetSpot;
             cyborgPylon.GetComponent<Rigidbody>().drag = 2;
@@ -133,13 +142,10 @@ namespace Starstorm2.Cores
             cyborgPylon.GetComponent<AntiGravityForce>().rb = cyborgPylon.GetComponent<Rigidbody>();
             cyborgPylon.GetComponent<AntiGravityForce>().antiGravityCoefficient = 1;
 
-            // register it for networking
-            if (bfgProjectile) PrefabAPI.RegisterNetworkPrefab(bfgProjectile);
-            if (cyborgPylon) PrefabAPI.RegisterNetworkPrefab(cyborgPylon);
-
-            // add it to the projectile catalog or it won't work in multiplayer
             Modules.Prefabs.projectilePrefabs.Add(bfgProjectile);
             Modules.Prefabs.projectilePrefabs.Add(cyborgPylon);
+
+            DeployTeleporter.projectilePrefab = cyborgPylon;
         }
 
         private void SetUpSkills()
@@ -272,13 +278,12 @@ namespace Starstorm2.Cores
         {
             SkillLocator skill = cybPrefab.GetComponent<SkillLocator>();
 
-            LanguageAPI.Add("KEYWORD_TELEFRAG", $"<style=cKeywordName>Telefragging</style><style=cSub>Deals heavy damage to enemies when teleporting inside of them.</style>");
             LanguageAPI.Add("CYBORG_SPECIAL_TELEPORT_NAME", "Recall");
             LanguageAPI.Add("CYBORG_SPECIAL_TELEPORT_DESCRIPTION", "Create a warp point. Once a warp point is set, teleport to its location. Teleporting <style=cIsDamage>reduces skill cooldowns by 4 seconds</style>. " +
                 $"Telefragging.");
             SkillDef specialDef1 = ScriptableObject.CreateInstance<SkillDef>();
-            specialDef1.activationState = new EntityStates.SerializableEntityStateType(typeof(CyborgTeleport));
-            specialDef1.activationStateMachineName = "Weapon";
+            specialDef1.activationState = new EntityStates.SerializableEntityStateType(typeof(DeployTeleporter));
+            specialDef1.activationStateMachineName = "Teleporter";
             specialDef1.skillName = "CYBORG_SPECIAL_TELEPORT_NAME";
             specialDef1.skillNameToken = "CYBORG_SPECIAL_TELEPORT_NAME";
             specialDef1.skillDescriptionToken = "CYBORG_SPECIAL_TELEPORT_DESCRIPTION";
@@ -295,9 +300,9 @@ namespace Starstorm2.Cores
             specialDef1.rechargeStock = 1;
             specialDef1.requiredStock = 1;
             specialDef1.stockToConsume = 1;
-            specialDef1.keywordTokens = new string[] { "KEYWORD_TELEFRAG" };
+            specialDef1.keywordTokens = new string[] {};
 
-            Utils.RegisterSkillDef(specialDef1, typeof(CyborgTeleport));
+            Modules.Skills.skillDefs.Add(specialDef1);
             SkillFamily.Variant specialVariant1 = Utils.RegisterSkillVariant(specialDef1);
 
             skillLocator.special = Utils.RegisterSkillsToFamily(cybPrefab, specialVariant1);
@@ -343,7 +348,7 @@ namespace Starstorm2.Cores
             }, 0);
 
             cyborgPrefab.AddComponent<CyborgController>();
-            cyborgPrefab.AddComponent<CyborgInfoComponent>();
+            cyborgPrefab.AddComponent<CyborgTeleportTracker>();
 
             return cyborgPrefab;
         }

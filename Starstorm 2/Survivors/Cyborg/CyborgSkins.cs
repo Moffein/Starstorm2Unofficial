@@ -4,8 +4,9 @@ using R2API;
 using RoR2;
 using R2API.Utils;
 using System.Collections.Generic;
+using Starstorm2.Cores;
 
-namespace Starstorm2.Cores.Skins
+namespace Starstorm2.Survivors.Cyborg
 {
     public static class CyborgSkins 
     {

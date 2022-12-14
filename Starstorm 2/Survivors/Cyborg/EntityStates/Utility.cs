@@ -95,7 +95,7 @@ namespace EntityStates.Starstorm2States.Cyborg
 
                 if (base.isAuthority)
                 {
-                    ProjectileManager.instance.FireProjectile(CyborgCore.bfgProjectile,
+                    ProjectileManager.instance.FireProjectile(Starstorm2.Survivors.Cyborg.CyborgCore.bfgProjectile,
                         aimRay.origin, Util.QuaternionSafeLookRotation(aimRay.direction),
                         base.gameObject, this.characterBody.damage * 1f,
                         0f,

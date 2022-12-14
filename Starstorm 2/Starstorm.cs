@@ -5,6 +5,7 @@ using RoR2;
 using Starstorm2.Cores;
 using Starstorm2.Cores.Equipment;
 using Starstorm2.Cores.Items;
+using Starstorm2.Survivors.Cyborg;
 using System;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
