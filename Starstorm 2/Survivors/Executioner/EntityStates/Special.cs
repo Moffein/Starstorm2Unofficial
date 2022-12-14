@@ -93,8 +93,14 @@ namespace EntityStates.Starstorm2States.Executioner
 
             if (base.fixedAge >= this.duration && base.isAuthority)
             {
-                this.outer.SetNextState(new ExecutionerAxeSlam());
+                SetNextState();
+                return;
             }
+        }
+
+        public virtual void SetNextState()
+        {
+            this.outer.SetNextState(new ExecutionerAxeSlam());
         }
 
         public override InterruptPriority GetMinimumInterruptPriority()
@@ -105,7 +111,7 @@ namespace EntityStates.Starstorm2States.Executioner
 
     public class ExecutionerAxeSlam : BaseSkillState
     {
-        public static float baseDamageCoefficient = 8f;
+        public static float damageCoefficient = 8f;
         public static float procCoefficient = 1.0f;
         //shorter value if axe slam should be finite
         //public static float baseDuration = 0.4f;
@@ -117,10 +123,10 @@ namespace EntityStates.Starstorm2States.Executioner
         private GameObject slamEffect = LegacyResourcesAPI.Load<GameObject>("Prefabs/Effects/ImpactEffects/VagrantCannonExplosion");
         private EffectData slamEffectData;
         private Animator animator;
-        private SphereSearch search;
-        private List<HurtBox> hits;
-        private List<HealthComponent> hitTargets;
         private bool crit;
+
+        public float radiusInternal;
+        public float damageCoefficientInternal;
 
         private CameraTargetParams.CameraParamsOverrideHandle camOverrideHandle;
         public static CharacterCameraParamsData slamCameraParams = new CharacterCameraParamsData
@@ -135,12 +141,6 @@ namespace EntityStates.Starstorm2States.Executioner
         public override void OnEnter()
         {
             base.OnEnter();
-            search = new SphereSearch();
-            search.mask = LayerIndex.entityPrecise.mask;
-            search.radius = dropAttackRadius;
-            hits = new List<HurtBox>();
-            hitTargets = new List<HealthComponent>();
-
             this.animator = base.GetModelAnimator();
 
             base.PlayAnimation("FullBody, Override", "Special2", "Special.playbackRate", 0.15f);
@@ -162,7 +162,13 @@ namespace EntityStates.Starstorm2States.Executioner
                 priority = 0f
             };
             camOverrideHandle = cameraTargetParams.AddParamsOverride(request, 0.15f);
+
+            damageCoefficientInternal = ExecutionerAxeSlam.damageCoefficient;
+            radiusInternal = ExecutionerAxeSlam.slamRadius;
+            OverrideStats();
         }
+
+        public virtual void OverrideStats() { }
 
         public override void FixedUpdate()
         {
@@ -215,12 +221,13 @@ namespace EntityStates.Starstorm2States.Executioner
                     attacker = base.gameObject,
                     teamIndex = base.teamComponent.teamIndex,
                     crit = this.crit,
-                    baseDamage = (base.characterBody.damage * ExecutionerAxeSlam.baseDamageCoefficient),
+                    baseDamage = (base.characterBody.damage * ExecutionerAxeSlam.damageCoefficient),
                     damageColorIndex = DamageColorIndex.Default,
                     falloffModel = BlastAttack.FalloffModel.None,
                     attackerFiltering = AttackerFiltering.NeverHitSelf,
                     damageType = DamageType.BonusToLowHealth
                 };
+                blast = ModifyBlastAttack(blast);
                 blast.Fire();
 
                 base.characterMotor.velocity.y = 0f;
@@ -232,6 +239,11 @@ namespace EntityStates.Starstorm2States.Executioner
             }
 
             base.OnExit();
+        }
+
+        public virtual BlastAttack ModifyBlastAttack(BlastAttack blast)
+        {
+            return blast;
         }
 
         private bool IsEnemyInSphere(float radius, Vector3 position, TeamIndex team, bool airborneOnly = false)

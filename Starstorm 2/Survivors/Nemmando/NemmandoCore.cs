@@ -97,8 +97,9 @@ namespace Starstorm2.Survivors.Nemmando
         internal static SkillDef scepterSubmissionSkillDef;
 
         //Used by NemmandoController. Todo: organize and rename
-        public static SkillDef secondaryConc;
-        public static SkillDef specialEpic;
+        public static SkillDef secondaryDistantGash;
+        public static SkillDef specialDecisiveStrike;
+        public static SkillDef specialSubmission;
 
         private void SetBodyIndex()
         {
@@ -123,11 +124,6 @@ namespace Starstorm2.Survivors.Nemmando
                 bodyPrefab.GetComponent<ModelLocator>().modelTransform.gameObject.AddComponent<Components.SS2CharacterAnimationEvents>();
 
                 bodyPrefab.GetComponentInChildren<ChildLocator>().FindChild("GunReloadEffect").GetChild(0).GetComponent<ParticleSystemRenderer>().material = Modules.Assets.CreateMaterial("matAmmo");
-
-                if (BepInEx.Bootstrap.Chainloader.PluginInfos.ContainsKey("com.DestroyedClone.AncientScepter"))
-                {
-                    ScepterSetup();
-                }
 
                 InitializeBoss();
             }
@@ -313,7 +309,7 @@ namespace Starstorm2.Survivors.Nemmando
                 stockToConsume = 1,
                 keywordTokens = new string[] { "KEYWORD_GOUGE" }
             });
-            secondaryConc = gashSkillDef;
+            secondaryDistantGash = gashSkillDef;
 
             SkillDef gunSkillDef = Modules.Skills.CreateSkillDef(new SkillDefInfo
             {
@@ -396,6 +392,7 @@ namespace Starstorm2.Survivors.Nemmando
                 requiredStock = 1,
                 stockToConsume = 1
             });
+            specialSubmission = submissionSkillDef;
 
             decisiveStrikeSkillDef = Modules.Skills.CreateSkillDef(new SkillDefInfo
             {
@@ -421,11 +418,21 @@ namespace Starstorm2.Survivors.Nemmando
                 stockToConsume = 1,
                 keywordTokens = new string[] { "KEYWORD_GOUGE" }
             });
-            specialEpic = decisiveStrikeSkillDef;
+            specialDecisiveStrike = decisiveStrikeSkillDef;
 
             Modules.Skills.AddSpecialSkill(bodyPrefab, submissionSkillDef);
             Modules.Skills.AddSpecialSkill(bodyPrefab, decisiveStrikeSkillDef);//, decisiveStrikeUnlockableDef
             #endregion
+
+            SetupScepterSkills();
+            if (Starstorm.scepterPluginLoaded)
+            {
+                ScepterSetup();
+            }
+            if (Starstorm.classicItemsLoaded)
+            {
+                ClassicScepterSetup();
+            }
         }
 
         private void RegisterStates()
@@ -447,10 +454,16 @@ namespace Starstorm2.Survivors.Nemmando
         [MethodImpl(MethodImplOptions.NoInlining | MethodImplOptions.NoOptimization)]
         private void ScepterSetup()
         {
-            SetupScepterSkills();
 
             AncientScepter.AncientScepterItem.instance.RegisterScepterSkill(scepterSubmissionSkillDef, fullBodyName, SkillSlot.Special, 0);
             AncientScepter.AncientScepterItem.instance.RegisterScepterSkill(scepterDecisiveStrikeSkillDef, fullBodyName, SkillSlot.Special, 1);
+        }
+
+        [MethodImpl(MethodImplOptions.NoInlining | MethodImplOptions.NoOptimization)]
+        private void ClassicScepterSetup()
+        {
+            ThinkInvisible.ClassicItems.Scepter.instance.RegisterScepterSkill(scepterSubmissionSkillDef, bodyInfo.bodyName, SkillSlot.Special, specialSubmission);
+            ThinkInvisible.ClassicItems.Scepter.instance.RegisterScepterSkill(scepterDecisiveStrikeSkillDef, bodyInfo.bodyName, SkillSlot.Special, specialDecisiveStrike);
         }
 
         private static void SetupScepterSkills()

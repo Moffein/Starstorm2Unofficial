@@ -48,7 +48,7 @@ namespace Starstorm2.Survivors.Nemmando.Components
         {
             if (this.characterBody)
             {
-                if (this.characterBody.skillLocator.secondary.skillDef== Starstorm2.Survivors.Nemmando.NemmandoCore.secondaryConc && this.characterBody.skillLocator.special == Starstorm2.Survivors.Nemmando.NemmandoCore.specialEpic)
+                if (this.characterBody.skillLocator.secondary.skillDef== Starstorm2.Survivors.Nemmando.NemmandoCore.secondaryDistantGash && this.characterBody.skillLocator.special == Starstorm2.Survivors.Nemmando.NemmandoCore.specialDecisiveStrike)
                 {
                     this.gunHolstered = true;
                     this.gun = this.childLocator.FindChild("Gun");

@@ -277,8 +277,6 @@ namespace Starstorm2.Survivors.Cyborg
             var zapDmg = 0.8f * 100f * 5f;
             var explosionDmg = 12f * 100f;
 
-            
-
             //var dur = ExecutionerDash.debuffDuration;
 
             SkillLocator skill = cybPrefab.GetComponent<SkillLocator>();

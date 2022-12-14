@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 907628727
+CRC: 280013672
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 1458ce05db0839d0953e720d4bdb123f
+    Hash: 508c5c24d18e650ebda59573a2fc11ef
   TypeTreeHash:
     serializedVersion: 2
     Hash: 7aec747c424dad58343d1828cf4a71ef
@@ -542,6 +542,7 @@ Assets:
 - Assets/AssetBundle/Nemmando/Textures/texYamato.png
 - Assets/AssetBundle/Cyborg/cyborgsecondary.png
 - Assets/AssetBundle/Items/StirringSoul/matTemp purple.mat
+- Assets/AssetBundle/Executioner/Icons/texExecutionerSpecialScepter.png
 - Assets/AssetBundle/Nemmando/Icons/texSubmission.png
 - Assets/AssetBundle/BuffIcons/Status_Trematodes.png
 - Assets/AssetBundle/Cyborg/Animations/Secondary.anim

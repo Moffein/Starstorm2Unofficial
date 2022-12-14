@@ -16,6 +16,7 @@ namespace Starstorm2.Cores
         {
             public static DamageAPI.ModdedDamageType GougeOnHit;
             public static DamageAPI.ModdedDamageType ExtendFear;
+            public static DamageAPI.ModdedDamageType GuaranteedFearOnHit;   //Used for Exe Scepter
         }
 
         //public static DamageType
@@ -29,6 +30,7 @@ namespace Starstorm2.Cores
 
             ModdedDamageTypes.GougeOnHit = DamageAPI.ReserveDamageType();
             ModdedDamageTypes.ExtendFear = DamageAPI.ReserveDamageType();
+            ModdedDamageTypes.GuaranteedFearOnHit = DamageAPI.ReserveDamageType();
 
             On.RoR2.HealthComponent.TakeDamage += HealthComponent_TakeDamage;
             On.RoR2.GlobalEventManager.OnHitEnemy += GlobalEventManager_OnHitEnemy;
@@ -71,18 +73,26 @@ namespace Starstorm2.Cores
         private void HealthComponent_TakeDamage(On.RoR2.HealthComponent.orig_TakeDamage orig, HealthComponent self, DamageInfo damageInfo)
         {
             bool triggerGougeProc = false;
-            if (damageInfo.dotIndex == DoTCore.gougeIndex && damageInfo.procCoefficient == 0f)
+            if (NetworkServer.active)
             {
-                if (damageInfo.attacker)
+                if (damageInfo.dotIndex == DoTCore.gougeIndex && damageInfo.procCoefficient == 0f)
                 {
-                    CharacterBody attackerBody = damageInfo.attacker.GetComponent<CharacterBody>();
-                    if (attackerBody)
+                    if (damageInfo.attacker)
                     {
-                        damageInfo.crit = Util.CheckRoll(attackerBody.crit, attackerBody.master);
+                        CharacterBody attackerBody = damageInfo.attacker.GetComponent<CharacterBody>();
+                        if (attackerBody)
+                        {
+                            damageInfo.crit = Util.CheckRoll(attackerBody.crit, attackerBody.master);
+                        }
                     }
+                    damageInfo.procCoefficient = 0.5f;
+                    triggerGougeProc = true;
                 }
-                damageInfo.procCoefficient = 0.5f;
-                triggerGougeProc = true;
+
+                if (damageInfo.HasModdedDamageType(ModdedDamageTypes.GuaranteedFearOnHit))
+                {
+                    self.body.AddTimedBuff(BuffCore.fearDebuff, EntityStates.Starstorm2States.Executioner.ExecutionerDash.debuffDuration);
+                }
             }
 
             orig(self, damageInfo);

@@ -13,6 +13,7 @@ using Starstorm2.Modules.Survivors;
 using Starstorm2.Survivors.Executioner.Components;
 using System;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 
@@ -81,6 +82,8 @@ namespace Starstorm2.Survivors.Executioner
         private static UnlockableDef masterySkinUnlockableDef;
         private static UnlockableDef grandMasterySkinUnlockableDef;
         private static UnlockableDef wastelanderSkinUnlockableDef;
+
+        public static SkillDef specialDef, specialScepterDef;
 
         private void SetBodyIndex()
         {
@@ -206,7 +209,7 @@ namespace Starstorm2.Survivors.Executioner
                 stockToConsume = 1,
                 keywordTokens = new string[]
                 {
-                    "KEYWORD_FEAR"
+                    "KEYWORD_SS2U_FEAR"
                 }
             });
 
@@ -238,10 +241,59 @@ namespace Starstorm2.Survivors.Executioner
                 stockToConsume = 1,
                 keywordTokens = new string[] { "KEYWORD_SLAYER" }
             });
-
+            specialDef = executionSkillDef;
             Modules.Skills.AddSpecialSkills(bodyPrefab, executionSkillDef);
             #endregion
+
+
+            SkillDef scepterSkillDef = Modules.Skills.CreateSkillDef(new SkillDefInfo
+            {
+                skillName = "EXECUTIONER_AXE_SCEPTER_NAME",
+                skillNameToken = "EXECUTIONER_AXE_SCEPTER_NAME",
+                skillDescriptionToken = "EXECUTIONER_AXE_SCEPTER_DESCRIPTION",
+                skillIcon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("texExecutionerSpecialScepter"),
+                activationState = new EntityStates.SerializableEntityStateType(typeof(ExecutionerAxeScepter)),
+                activationStateMachineName = "Weapon",
+                baseMaxStock = 1,
+                baseRechargeInterval = 8f,
+                beginSkillCooldownOnSkillEnd = true,
+                canceledFromSprinting = false,
+                forceSprintDuringState = true,
+                fullRestockOnAssign = true,
+                interruptPriority = InterruptPriority.PrioritySkill,
+                resetCooldownTimerOnUse = false,
+                isCombatSkill = true,
+                mustKeyPress = false,
+                cancelSprintingOnActivation = false,
+                rechargeStock = 1,
+                requiredStock = 1,
+                stockToConsume = 1,
+                keywordTokens = new string[] { "KEYWORD_SLAYER", "KEYWORD_SS2U_FEAR" }
+            });
+            specialScepterDef = scepterSkillDef;
+            if (Starstorm.scepterPluginLoaded)
+            {
+                ScepterSetup();
+            }
+            if (Starstorm.classicItemsLoaded)
+            {
+                ClassicScepterSetup();
+            }
         }
+
+        [MethodImpl(MethodImplOptions.NoInlining | MethodImplOptions.NoOptimization)]
+        private void ScepterSetup()
+        {
+
+            AncientScepter.AncientScepterItem.instance.RegisterScepterSkill(specialScepterDef, fullBodyName, SkillSlot.Special, 0);
+        }
+
+        [MethodImpl(MethodImplOptions.NoInlining | MethodImplOptions.NoOptimization)]
+        private void ClassicScepterSetup()
+        {
+            ThinkInvisible.ClassicItems.Scepter.instance.RegisterScepterSkill(specialScepterDef, bodyInfo.bodyName, SkillSlot.Special, specialDef);
+        }
+
 
         private void RegisterStates()
         {
@@ -253,6 +305,8 @@ namespace Starstorm2.Survivors.Executioner
             Modules.States.AddSkill(typeof(ExecutionerDash));
             Modules.States.AddSkill(typeof(ExecutionerAxe));
             Modules.States.AddSkill(typeof(ExecutionerAxeSlam));
+            Modules.States.AddSkill(typeof(ExecutionerAxeScepter));
+            Modules.States.AddSkill(typeof(ExecutionerAxeSlamScepter));
         }
 
         internal override void RegisterTokens()
@@ -293,15 +347,19 @@ namespace Starstorm2.Survivors.Executioner
             LanguageAPI.Add("EXECUTIONER_IONGUN_NAME", "Ion Burst");
             LanguageAPI.Add("EXECUTIONER_IONGUN_DESCRIPTION", $"<style=cIsDamage>Shocking</style>. Unload a barrage of ionized bullets for <style=cIsDamage>{dmg}% damage</style> each. Every slain enemy <style=cIsUtility>adds a bullet</style>.");
 
-            LanguageAPI.Add("KEYWORD_FEAR", "<style=cKeywordName>Fear</style><style=cSub>Reduce movement speed by <style=cIsDamage>50%</style>. Feared enemies are <style=cIsHealth>instantly killed</style> if below <style=cIsHealth>15%</style> health.</style>");
+            LanguageAPI.Add("KEYWORD_SS2U_FEAR", "<style=cKeywordName>Fear</style><style=cSub>Reduce movement speed by <style=cIsDamage>50%</style>. Feared enemies are <style=cIsHealth>instantly killed</style> if below <style=cIsHealth>15%</style> health.</style>");
 
             LanguageAPI.Add("EXECUTIONER_DASH_NAME", "Crowd Dispersion");
             LanguageAPI.Add("EXECUTIONER_DASH_DESCRIPTION", $"<style=cIsUtility>Dash forward</style> and <style=cIsDamage>Fear</style> nearby enemies.");
 
-            dmg = ExecutionerAxeSlam.baseDamageCoefficient * 100f;
+            dmg = ExecutionerAxeSlam.damageCoefficient * 100f;
 
             LanguageAPI.Add("EXECUTIONER_AXE_NAME", "Execution");
             LanguageAPI.Add("EXECUTIONER_AXE_DESCRIPTION", $"<style=cIsDamage>Slayer</style>. <style=cIsUtility>Launch into the air</style>, then slam downwards with your ion axe for <style=cIsDamage>{dmg}% damage</style>.");
+
+            dmg = ExecutionerAxeSlam.damageCoefficient * 100f * 1.5f;
+            LanguageAPI.Add("EXECUTIONER_AXE_SCEPTER_NAME", "Crowd Execution");
+            LanguageAPI.Add("EXECUTIONER_AXE_SCEPTER_DESCRIPTION", $"<style=cIsDamage>Slayer</style>. <style=cIsUtility>Launch into the air</style>, then slam downwards with your ion axe and <style=cIsUtility>fear</style> nearby enemies while dealing <style=cIsDamage>{dmg}% damage</style>.");
 
             LanguageAPI.Add("EXECUTIONER_UNLOCKUNLOCKABLE_ACHIEVEMENT_NAME", "Overkill");
             LanguageAPI.Add("EXECUTIONER_UNLOCKUNLOCKABLE_ACHIEVEMENT_DESC", "Defeat an enemy by dealing 1000% of its max health in damage. <color=#c11>Host only</color>");

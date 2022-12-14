@@ -47,6 +47,8 @@ namespace Starstorm2
         public static bool scrollableLobbyInstalled = false; // putting this here because lazy, move it if you want
         public static bool infernoPluginLoaded = false;
         public static bool riskOfOptionsLoaded = false;
+        public static bool scepterPluginLoaded = false;
+        public static bool classicItemsLoaded = false;
 
         LogCore logCore;
         PrefabCore prefabCore;
@@ -75,6 +77,8 @@ namespace Starstorm2
             {
                 return;
             }
+            scepterPluginLoaded = BepInEx.Bootstrap.Chainloader.PluginInfos.ContainsKey("com.DestroyedClone.AncientScepter");
+            classicItemsLoaded = BepInEx.Bootstrap.Chainloader.PluginInfos.ContainsKey("com.ThinkInvisible.ClassicItems");
 
             instance = this;
             LogCore.logger = Logger;
