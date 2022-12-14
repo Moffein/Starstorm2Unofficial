@@ -15,7 +15,7 @@ namespace EntityStates.Starstorm2States.Executioner
         public static float speedMultiplier = 4.0f;
         public static float debuffRadius = 12f;
         public static float debuffDuration = 3f;
-        public static float debuffCheckInterval = 0.1f;
+        public static float debuffCheckInterval = 0.04f;
 
         private float debuffCheckStopwatch;
         private Vector3 initialDirection;
@@ -31,11 +31,12 @@ namespace EntityStates.Starstorm2States.Executioner
             base.OnEnter();
             debuffCheckStopwatch = 0f;
 
-            initialSpeed = 10.15f; //7 * 1.45, base sprint speed
+            initialSpeed = base.moveSpeedStat;
+            /*initialSpeed = 10.15f; //7 * 1.45, base sprint speed
             if (base.moveSpeedStat > 10.15f)
             {
                 initialSpeed *= Mathf.Sqrt(base.moveSpeedStat / 10.15f);
-            }
+            }*/
 
             if (base.inputBank)
             {

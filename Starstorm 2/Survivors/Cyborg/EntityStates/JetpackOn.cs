@@ -61,6 +61,6 @@ namespace EntityStates.Starstorm2States.Cyborg
 		}
 		public static float hoverVelocity = -1f;
 		public static float hoverAcceleration = 60f;
-		public static GameObject activationEffectPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Engi/EngiHarpoonExplosion.prefab").WaitForCompletion();	//Too big, need to find suitable VFX.
+		public static GameObject activationEffectPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Engi/EngiHarpoonExplosion.prefab").WaitForCompletion();
 	}
 }

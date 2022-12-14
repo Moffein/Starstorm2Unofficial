@@ -9,17 +9,20 @@ namespace EntityStates.Starstorm2States.Cyborg.Special
 {
     public class DeployTeleporter : BaseState
     {
+        public static float timeoutDuration = 10f;  //Cancels skill if it can't find teleporter gameobject within 10s.
         public static GameObject projectilePrefab;
-        public static float damageCoefficient = 12f;
-        public static float baseDuration = 0.5f;
         public static SkillDef teleportSkillDef;
         private CyborgTeleportTracker teleTracker;
+
+        private bool foundTeleporter;
 
         public override void OnEnter()
         {
             base.OnEnter();
             teleTracker = base.GetComponent<CyborgTeleportTracker>();
-            base.PlayAnimation("Gesture, Override", "CreateTP", "FireM1.playbackRate", DeployTeleporter.baseDuration);
+            base.PlayAnimation("Gesture, Override", "CreateTP", "FireM1.playbackRate", 1f);
+
+            foundTeleporter = false;
 
             FireTeleportProjectile();
         }
@@ -32,8 +35,8 @@ namespace EntityStates.Starstorm2States.Cyborg.Special
                 Ray aimRay = base.GetAimRay();
                 FireProjectileInfo fireProjectileInfo = new FireProjectileInfo
                 {
-                    crit = base.RollCrit(),
-                    damage = this.damageStat * DeployTeleporter.damageCoefficient,
+                    crit = false,
+                    damage = 0f,
                     damageColorIndex = DamageColorIndex.Default,
                     force = 0f,
                     owner = base.gameObject,
@@ -50,19 +53,30 @@ namespace EntityStates.Starstorm2States.Cyborg.Special
         public override void FixedUpdate()
         {
             base.FixedUpdate();
-            if (base.fixedAge >= DeployTeleporter.baseDuration)
+
+            if (base.isAuthority)
             {
-                this.outer.SetNextStateToMain();
-                return;
+                if (!foundTeleporter)
+                {
+                    foundTeleporter = teleTracker && teleTracker.GetTeleportCoordinates() != null;
+                }
+
+                bool timeout = base.fixedAge >= timeoutDuration && !foundTeleporter;
+                bool teleNoLongerValid = foundTeleporter && teleTracker && teleTracker.GetTeleportCoordinates() == null;
+                if (timeout || teleNoLongerValid)
+                {
+                    this.outer.SetNextStateToMain();
+                    return;
+                }
             }
         }
 
         public override void OnExit()
         {
-            /*if (NetworkServer.active)
+            if (NetworkServer.active && teleTracker)
             {
                 teleTracker.DestroyTeleporter();
-            }*/
+            }
             base.OnExit();
         }
     }

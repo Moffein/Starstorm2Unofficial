@@ -43,6 +43,12 @@ namespace EntityStates.Starstorm2States.Executioner
                 base.characterMotor.Motor.ForceUnground();
                 base.characterMotor.jumpCount = base.characterBody.maxJumpCount;
                 base.characterMotor.velocity *= 0.5f;
+
+                EntityStateMachine dashMachine = EntityStateMachine.FindByCustomName(base.gameObject, "Slide");
+                if (dashMachine.state.GetType() == typeof(ExecutionerDash))
+                {
+                    dashMachine.SetNextStateToMain();
+                }
             }
 
             CameraTargetParams.CameraParamsOverrideRequest request = new CameraTargetParams.CameraParamsOverrideRequest
