@@ -105,6 +105,7 @@ namespace EntityStates.SS2UStates.Nemmando
             base.characterMotor.velocity = Vector3.zero;
 
             base.characterBody.bodyFlags &= ~CharacterBody.BodyFlags.IgnoreFallDamage;
+            if (!this.outer.destroying) base.PlayAnimation("FullBody, Override", "BufferEmpty");
 
             base.OnExit();
         }

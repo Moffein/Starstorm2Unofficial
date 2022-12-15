@@ -2,21 +2,16 @@
 using UnityEngine;
 using EntityStates;
 using RoR2.CharacterAI;
-using RoR2.Skills;
-using EntityStates.Chirr;
-using Starstorm2.Cores;
-using System;
 using System.Linq;
 using System.Collections.Generic;
-using JetBrains.Annotations;
-using RoR2.Navigation;
-using UnityEngine.AI;
 using UnityEngine.Networking;
+using Starstorm2.Survivors.Chirr.Components;
+using Starstorm2.Survivors.Chirr;
 
 
 //TODO: should check that secondary is ion gun before attempting to store/load charges
 
-namespace Starstorm2.Cores.States.Chirr
+namespace EntityStates.SS2UStates.Chirr
 {
     public class ChirrMain : GenericCharacterMain
     {

@@ -40,51 +40,6 @@ namespace Starstorm2.Cores
 
             survivorDefs.Add(survivorDef);
         }
-
-        #region Chirr
-        internal static GameObject CreateChirrPrefab()
-        {
-            chirrPrefab = CreatePrefab("ChirrBody", "mdlChirr", new BodyInfo
-            {
-                armor = 0f,
-                armorGrowth = 0f,
-                bodyName = "ChirrBody",
-                bodyNameToken = "CHIRR_NAME",
-                characterPortrait = Modules.Assets.mainAssetBundle.LoadAsset<Texture2D>("ChirrIcon"),
-                bodyColor = new Color32(129, 167, 98, 255),
-                crosshair = LegacyResourcesAPI.Load<GameObject>("Prefabs/Crosshair/StandardCrosshair"),
-                damage = 12f,
-                healthGrowth = 33f,
-                healthRegen = 1.5f,
-                jumpCount = 1,
-                jumpPower = 22.5f,
-                maxHealth = 110f,
-                subtitleNameToken = "CHIRR_SUBTITLE",
-                podPrefab = LegacyResourcesAPI.Load<GameObject>("Prefabs/NetworkedObjects/SurvivorPod")
-            });
-
-            SetupCharacterModel(chirrPrefab, new CustomRendererInfo[]
-            {
-                new CustomRendererInfo
-                {
-                    childName = "Model",
-                    material = Modules.Assets.CreateMaterial("matChirr")
-                }
-            }, 0);
-
-            chirrPrefab.AddComponent<Components.ChirrController>();
-            chirrPrefab.AddComponent<ChirrInfoComponent>();
-            chirrDisplayPrefab = CreateDisplayPrefab("ChirrDisplay", chirrPrefab);
-            // create hitboxes
-
-            GameObject model = chirrPrefab.GetComponent<ModelLocator>().modelTransform.gameObject;
-            ChildLocator childLocator = model.GetComponent<ChildLocator>();
-
-            SetupHitbox(model, childLocator.FindChild("HeadbuttHitbox"), "HeadbuttHitbox");
-
-            return chirrPrefab;
-        }
-        #endregion
         /*
         #region Pyro
         private static void CreatePyro()
@@ -420,7 +375,7 @@ namespace Starstorm2.Cores
             aimAnimator.inputBank = prefab.GetComponent<InputBankTest>();
         }
 
-        private static void SetupHitbox(GameObject prefab, Transform hitboxTransform, string hitboxName)
+        public static void SetupHitbox(GameObject prefab, Transform hitboxTransform, string hitboxName)
         {
             HitBoxGroup hitBoxGroup = prefab.AddComponent<HitBoxGroup>();
 

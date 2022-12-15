@@ -20,7 +20,7 @@ using System.Collections.ObjectModel;
 //FIXME: ion gun doesn't build charges in mp if player is not host
 //FIXME: ion burst stocks do not carry over between stages (may leave this as feature)
 
-namespace EntityStates.Chirr
+namespace EntityStates.SS2UStates.Chirr
 {
     public class ChirrHeal : BaseSkillState
     {

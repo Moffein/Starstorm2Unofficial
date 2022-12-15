@@ -78,7 +78,7 @@
     <Compile Include="API\ComponentHelpers.cs" />
     <Compile Include="API\LogCore.cs" />
     <Compile Include="API\Utils.cs" />
-    <Compile Include="Components\ChirrController.cs" />
+    <Compile Include="Survivors\Chirr\Components\ChirrInfoComponent.cs" />
     <Compile Include="Survivors\Cyborg\Achievements\CyborgGrandMasteryAchievement.cs" />
     <Compile Include="Survivors\Cyborg\Achievements\CyborgMasteryAchievement.cs" />
     <Compile Include="Survivors\Cyborg\Components\CyborgController.cs" />
@@ -112,7 +112,7 @@
     <Compile Include="Survivors\Executioner\Components\IonGunChargeComponent.cs" />
     <Compile Include="Survivors\Executioner\Components\MasterIonStockComponent.cs" />
     <Compile Include="Survivors\Executioner\EntityStates\PrimaryBurst.cs" />
-    <Compile Include="Cores\Survivors\ChirrCore.cs" />
+    <Compile Include="Survivors\Chirr\ChirrCore.cs" />
     <Compile Include="Cores\ItemDisplays\PyroItemDisplays.cs" />
     <Compile Include="Survivors\Cyborg\CyborgItemDisplays.cs" />
     <Compile Include="Cores\Items\BabyToys.cs" />
@@ -150,11 +150,11 @@
     <Compile Include="Cores\Skins\VanillaSurvivorSkins.cs" />
     <Compile Include="Cores\Survivors\SpooderCore.cs" />
     <Compile Include="Cores\Starstorm2ItemManager.cs" />
-    <Compile Include="Cores\States\Chirr\ChirrMain.cs" />
-    <Compile Include="Cores\States\Chirr\Secondary.cs" />
-    <Compile Include="Cores\States\Chirr\Primary.cs" />
-    <Compile Include="Cores\States\Chirr\Special.cs" />
-    <Compile Include="Cores\States\Chirr\Utility.cs" />
+    <Compile Include="Survivors\Chirr\EntityStates\ChirrMain.cs" />
+    <Compile Include="Survivors\Chirr\EntityStates\Secondary.cs" />
+    <Compile Include="Survivors\Chirr\EntityStates\Primary.cs" />
+    <Compile Include="Survivors\Chirr\EntityStates\Special.cs" />
+    <Compile Include="Survivors\Chirr\EntityStates\Utility.cs" />
     <Compile Include="Survivors\Cyborg\EntityStates\CyborgMain.cs" />
     <Compile Include="Survivors\Cyborg\EntityStates\Secondary.cs" />
     <Compile Include="Survivors\Cyborg\EntityStates\Utility.cs" />

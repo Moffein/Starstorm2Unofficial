@@ -290,20 +290,20 @@ namespace Starstorm2.Survivors.Cyborg
 
             SkillLocator skill = cybPrefab.GetComponent<SkillLocator>();
 
-            LanguageAPI.Add("CYBORG_SECONDARY_AIMBOT_NAME", "Rising Star");
-            //LanguageAPI.Add("CYBORG_SECONDARY_AIMBOT_DESCRIPTION", $"Quickly fire three seeking shots at contenders in front for <style=cIsDamage>3x{dmg}% damage</style>. <style=cKeywordName>Stunning</style><style=cSub>.");
-            LanguageAPI.Add("CYBORG_SECONDARY_AIMBOT_DESCRIPTION", $"Quickly fire three seeking shots at contenders in front for <style=cIsDamage>3x{dmg}% damage</style>. Stunning.");
+            LanguageAPI.Add("CYBORG_SECONDARY_CHARGERIFLE_NAME", "Rising Star");
+            //LanguageAPI.Add("CYBORG_SECONDARY_CHARGERIFLE_DESCRIPTION", $"Quickly fire three seeking shots at contenders in front for <style=cIsDamage>3x{dmg}% damage</style>. <style=cKeywordName>Stunning</style><style=cSub>.");
+            LanguageAPI.Add("CYBORG_SECONDARY_CHARGERIFLE_DESCRIPTION", $"<style=cIsDamage>Stunning</style>. Charge up a powerful beam that deals <style=cIsDamage>400%-800% damage</style>. Deals <style=cIsDamage>+50% damage</style> when <style=cIsDamage>perfectly charged</style>.");
 
             SkillDef secondaryDef1 = ScriptableObject.CreateInstance<SkillDef>();
-            secondaryDef1.activationState = new EntityStates.SerializableEntityStateType(typeof(CyborgFireTrackshot));
+            secondaryDef1.activationState = new EntityStates.SerializableEntityStateType(typeof(ChargeBeam));
             secondaryDef1.activationStateMachineName = "Weapon";
-            secondaryDef1.skillName = "CYBORG_SECONDARY_AIMBOT_NAME";
-            secondaryDef1.skillNameToken = "CYBORG_SECONDARY_AIMBOT_NAME";
-            secondaryDef1.skillDescriptionToken = "CYBORG_SECONDARY_AIMBOT_DESCRIPTION";
+            secondaryDef1.skillName = "CYBORG_SECONDARY_CHARGERIFLE_NAME";
+            secondaryDef1.skillNameToken = "CYBORG_SECONDARY_CHARGERIFLE_NAME";
+            secondaryDef1.skillDescriptionToken = "CYBORG_SECONDARY_CHARGERIFLE_DESCRIPTION";
             secondaryDef1.icon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("cyborgsecondary");
             secondaryDef1.baseMaxStock = 1;
-            secondaryDef1.baseRechargeInterval = 3f;
-            secondaryDef1.beginSkillCooldownOnSkillEnd = false;
+            secondaryDef1.baseRechargeInterval = 4f;
+            secondaryDef1.beginSkillCooldownOnSkillEnd = true;
             secondaryDef1.canceledFromSprinting = false;
             secondaryDef1.fullRestockOnAssign = true;
             secondaryDef1.interruptPriority = EntityStates.InterruptPriority.Skill;
@@ -313,8 +313,9 @@ namespace Starstorm2.Survivors.Cyborg
             secondaryDef1.rechargeStock = 1;
             secondaryDef1.requiredStock = 1;
             secondaryDef1.stockToConsume = 1;
+            secondaryDef1.keywordTokens = new string[] { "KEYWORD_STUNNING" };
 
-            Utils.RegisterSkillDef(secondaryDef1, typeof(CyborgFireTrackshot));
+            Utils.RegisterSkillDef(secondaryDef1, typeof(ChargeBeam));
             SkillFamily.Variant secondaryVariant1 = Utils.RegisterSkillVariant(secondaryDef1);
 
             skillLocator.secondary = Utils.RegisterSkillsToFamily(cybPrefab, secondaryVariant1);

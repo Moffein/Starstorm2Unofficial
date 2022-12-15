@@ -9,8 +9,8 @@ namespace EntityStates.SS2UStates.Executioner
 {
     public class ExecutionerAxe : BaseSkillState
     {
-        public static float baseDuration = 0.5f;    //was 0.85
-        public static float velocityMultiplier = 1f;    //was 0.6
+        public static float baseDuration = 0.85f;    //was 0.85
+        public static float velocityMultiplier = 0.6f;    //was 0.6
 
         private float duration;
         private Animator animator;
@@ -73,6 +73,7 @@ namespace EntityStates.SS2UStates.Executioner
 
         public override void OnExit()
         {
+            if (!this.outer.destroying) base.PlayAnimation("FullBody, Override", "BufferEmpty");
             if (cameraTargetParams)
             {
                 cameraTargetParams.RemoveParamsOverride(camOverrideHandle, .4f);

@@ -3,11 +3,11 @@ using RoR2;
 using RoR2.Skills;
 using UnityEngine;
 using UnityEngine.Networking;
-using EntityStates.Chirr;
-using Starstorm2.Cores.States.Chirr;
 using TMPro;
+using Starstorm2.Survivors.Chirr.Components;
+using EntityStates.SS2UStates.Chirr;
 
-namespace Starstorm2.Cores
+namespace Starstorm2.Survivors.Chirr
 {
     public class ChirrCore
     {
@@ -26,19 +26,17 @@ namespace Starstorm2.Cores
 
         private void Setup()
         {
-            chirrPrefab = PrefabCore.CreateChirrPrefab();
+            chirrPrefab = CreateChirrPrefab();
             chirrPrefab.GetComponent<EntityStateMachine>().mainStateType = new EntityStates.SerializableEntityStateType(typeof(ChirrMain));
 
             LanguageAPI.Add("CHIRR_NAME", "Chirr");
             LanguageAPI.Add("CHIRR_SUBTITLE", "Supreme Bug of Comf");
             //change this one also (come up with a new one)
             LanguageAPI.Add("CHIRR_DESCRIPTION", "Chirr is a mystical creature who holds a pure connection with the planet.<color=#CCD3E0>\n\n < ! > Natural Link allows you to befriend an enemy, giving it a copy of your inventory.\n\n < ! > Your ally will target the same enemy you attack - and Life Thorns is a great tool to 'mark' enemies with.\n\n < ! > Sanative Aura can be used to keep yourself and allies alive, which is especially valuable when using Natural Link to share damage.\n\n < ! > Headbutt can be used alongside Chirr's jumping capabilities to escape from enemies when surrounded.</color>");
-            //LanguageAPI.Add("CHIRR_LORE", "\"Will? Will, do you copy?\"\n\n\"Uh, yeah, what's up?\"\n\n\"Against all odds, I found something that only didn't immediately try to kill me, but actually seems genuinely friendly.\"\n\n\"Oh yeah? That's impressive. What is it?\"\n\n\"It's, uh, a bug? Maybe? I'm not sure. It definitely looks like some sort of giant mantis, but-\"\n\n\"Hold on, hold on. You said giant mantis? How big was it, you think?\"\n\n\"Uh, hang on, gimme a minute...\"\n\n\"...About, say, 10 feet long? And about 6 or so feet tall.\"\n\n\"That's... pretty big. You sure that thing is friendly?\"\n\n\"Oh, absolutely. I ran into them while running away from a swarm of those wasps, and the moment I passed by it started gettin' real aggressive towards them. Spraying needles at them, headbutting the ones on the ground, and it just kept going at 'em until they flew away. Territorial? Probably, but it kinda looked like the wasps thaed that thing as much as it feels they hate me.\"\n\n\"Huh. Well, I guess if it's keeping you safe, then by all means continue as you were.\"\n\n\"Alright, then. I'll keep you poste- Hmm? Something wrong, Chirr?\"\n\n\"H- Hold on. Who's Chirr?\"\n\n\"That's her name. The mantis, or whatever.\"\n\n\"...Hang on.\"");
-            LanguageAPI.Add("CHIRR_LORE", "Nowhere has nature more strikingly displayed her mechanical genius than in the thorax of a Petrichorian winged insect; nowhere else can we find a mechanism so compact, so efficient, so erotic, and yet of such varied powers. Locomotion by the coordinated action of three legs, flight by the unified vibration of one pairs of wings—these are the common functions of the thorax; but, add to them the powers of shooting medical syringes, taming lizards, opening space shipping containers, seducing commandos, obliterating and many others of which the thoraxes of various other insects (beetles) are incapable, it becomes needless to repeat that this insect's thorax is a marvelous bit of machinery.");
+            LanguageAPI.Add("CHIRR_LORE", "\"Will? Will, do you copy?\"\n\n\"Uh, yeah, what's up?\"\n\n\"Against all odds, I found something that only didn't immediately try to kill me, but actually seems genuinely friendly.\"\n\n\"Oh yeah? That's impressive. What is it?\"\n\n\"It's, uh, a bug? Maybe? I'm not sure. It definitely looks like some sort of giant mantis, but-\"\n\n\"Hold on, hold on. You said giant mantis? How big was it, you think?\"\n\n\"Uh, hang on, gimme a minute...\"\n\n\"...About, say, 10 feet long? And about 6 or so feet tall.\"\n\n\"That's... pretty big. You sure that thing is friendly?\"\n\n\"Oh, absolutely. I ran into them while running away from a swarm of those wasps, and the moment I passed by it started gettin' real aggressive towards them. Spraying needles at them, headbutting the ones on the ground, and it just kept going at 'em until they flew away. Territorial? Probably, but it kinda looked like the wasps thaed that thing as much as it feels they hate me.\"\n\n\"Huh. Well, I guess if it's keeping you safe, then by all means continue as you were.\"\n\n\"Alright, then. I'll keep you poste- Hmm? Something wrong, Chirr?\"\n\n\"H- Hold on. Who's Chirr?\"\n\n\"That's her name. The mantis, or whatever.\"\n\n\"...Hang on.\"");
+            //LanguageAPI.Add("CHIRR_LORE", "Nowhere has nature more strikingly displayed her mechanical genius than in the thorax of a Petrichorian winged insect; nowhere else can we find a mechanism so compact, so efficient, so erotic, and yet of such varied powers. Locomotion by the coordinated action of three legs, flight by the unified vibration of one pairs of wings—these are the common functions of the thorax; but, add to them the powers of shooting medical syringes, taming lizards, opening space shipping containers, seducing commandos, obliterating and many others of which the thoraxes of various other insects (beetles) are incapable, it becomes needless to repeat that this insect's thorax is a marvelous bit of machinery.");
             LanguageAPI.Add("CHIRR_OUTRO_FLAVOR", "..and so she left, carrying new life in her spirit.");
-            //"CHIRR_OUTRO_FAILURE": "..and so she vanished, with no one left to keep her company.",
-            //actual line but leave it as the one below for a bit (it's funnier)
-            LanguageAPI.Add("CHIRR_OUTRO_FAILURE", "..and so she died.");
+            LanguageAPI.Add("CHIRR_OUTRO_FAILURE", "..and so she vanished, with no one left to keep her company.");
 
             //These aren't implemented but I'm putting them here in case they ever are
             LanguageAPI.Add("BROTHER_KILL_CHIRR", "Join your sisters.");
@@ -50,7 +48,7 @@ namespace Starstorm2.Cores
             RegisterHooks();
             CreateDoppelganger();
 
-            Modules.Prefabs.RegisterNewSurvivor(chirrPrefab, PrefabCore.chirrDisplayPrefab, Color.green, "CHIRR");
+            Modules.Prefabs.RegisterNewSurvivor(chirrPrefab, Cores.PrefabCore.CreateDisplayPrefab("ChirrDisplay", chirrPrefab), Color.green, "CHIRR");
         }
 
         private void RegisterStates()
@@ -236,7 +234,7 @@ namespace Starstorm2.Cores
             SkillLocator skill = chirrPrefab.GetComponent<SkillLocator>();
 
             LanguageAPI.Add("CHIRR_HEADBUTT_NAME", "Headbutt");
-            //LanguageAPI.Add("CYBORG_SECONDARY_AIMBOT_DESCRIPTION", $"Quickly fire three seeking shots at contenders in front for <style=cIsDamage>3x{dmg}% damage</style>. <style=cKeywordName>Stunning</style><style=cSub>.");
+            //LanguageAPI.Add("CYBORG_SECONDARY_CHARGERIFLE_DESCRIPTION", $"Quickly fire three seeking shots at contenders in front for <style=cIsDamage>3x{dmg}% damage</style>. <style=cKeywordName>Stunning</style><style=cSub>.");
             LanguageAPI.Add("CHIRR_HEADBUTT_DESCRIPTION", $"Headbutt enemies in front of you for <style=cIsDamage>{dmg}% damage</style>. <style=cIsDamage>Stunning</style>.");
 
             SkillDef secondaryDef1 = ScriptableObject.CreateInstance<SkillDef>();
@@ -370,42 +368,46 @@ namespace Starstorm2.Cores
 
             Modules.Prefabs.masterPrefabs.Add(doppelganger);
         }
-    }
-    public class ChirrInfoComponent : NetworkBehaviour
-    {
-        public CharacterBody friend = new CharacterBody();
-        public bool friendState = false;
-        public bool sharing = false;
-        public Inventory baseInventory;
-        public CharacterBody mouseTarget;
-        public CharacterBody pingTarget;
-        public HurtBox futureFriend;
 
-        /*void Update()
+        internal static GameObject CreateChirrPrefab()
         {
-            if (friend)
+            chirrPrefab = Cores.PrefabCore.CreatePrefab("ChirrBody", "mdlChirr", new BodyInfo
             {
-                BaseAI friendAI = friend.master.GetComponent<BaseAI>();
+                armor = 0f,
+                armorGrowth = 0f,
+                bodyName = "ChirrBody",
+                bodyNameToken = "CHIRR_NAME",
+                characterPortrait = Modules.Assets.mainAssetBundle.LoadAsset<Texture2D>("ChirrIcon"),
+                bodyColor = new Color32(129, 167, 98, 255),
+                crosshair = LegacyResourcesAPI.Load<GameObject>("Prefabs/Crosshair/StandardCrosshair"),
+                damage = 12f,
+                healthGrowth = 33f,
+                healthRegen = 1.5f,
+                jumpCount = 1,
+                jumpPower = 22.5f,
+                maxHealth = 110f,
+                subtitleNameToken = "CHIRR_SUBTITLE",
+                podPrefab = LegacyResourcesAPI.Load<GameObject>("Prefabs/NetworkedObjects/SurvivorPod")
+            });
 
-                if (pingTarget)
-                    friendAI.currentEnemy.gameObject = pingTarget.gameObject;
-                else if (mouseTarget)
-                    friendAI.currentEnemy.gameObject = mouseTarget.gameObject;
-                friendAI.UpdateTargets();
-                if (mouseTarget)
-                    Chat.AddMessage(mouseTarget.ToString());
-            }
+            Cores.PrefabCore.SetupCharacterModel(chirrPrefab, new CustomRendererInfo[]
+            {
+                new CustomRendererInfo
+                {
+                    childName = "Model",
+                    material = Modules.Assets.CreateMaterial("matChirr")
+                }
+            }, 0);
+
+            chirrPrefab.AddComponent<ChirrInfoComponent>();
+            // create hitboxes
+
+            GameObject model = chirrPrefab.GetComponent<ModelLocator>().modelTransform.gameObject;
+            ChildLocator childLocator = model.GetComponent<ChildLocator>();
+
+            Cores.PrefabCore.SetupHitbox(model, childLocator.FindChild("HeadbuttHitbox"), "HeadbuttHitbox");
+
+            return chirrPrefab;
         }
-
-        /*[ClientRpc]
-         * I could need some RPC later, so keeping it handy
-        public void RpcAddIonCharge()
-        {
-            SkillLocator skillLoc = this.gameObject.GetComponent<SkillLocator>();
-            GenericSkill ionGunSkill = skillLoc?.secondary;
-            if (this.hasAuthority && ionGunSkill && ionGunSkill.stock < ionGunSkill.maxStock)
-                ionGunSkill.AddOneStock();
-        }*/
     }
-
 }

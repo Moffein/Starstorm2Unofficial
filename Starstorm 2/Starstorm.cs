@@ -5,6 +5,7 @@ using RoR2;
 using Starstorm2.Cores;
 using Starstorm2.Cores.Equipment;
 using Starstorm2.Cores.Items;
+using Starstorm2.Survivors.Chirr;
 using Starstorm2.Survivors.Cyborg;
 using System;
 using System.Collections.Generic;
@@ -40,7 +41,7 @@ namespace Starstorm2
     {
         internal const string guid = "com.ChirrLover.Starstorm2Unofficial";
         internal const string modName = "Starstorm 2 Unofficial";
-        internal const string version = "0.4.0";
+        internal const string version = "0.4.1";
 
         public static Starstorm instance;
 

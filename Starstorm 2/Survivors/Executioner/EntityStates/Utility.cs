@@ -11,11 +11,11 @@ namespace EntityStates.SS2UStates.Executioner
 {
     public class ExecutionerDash : BaseSkillState
     {
-        public static float baseDuration = 0.5f;
-        public static float speedMultiplier = 4.0f;
+        public static float baseDuration = 0.6f;
+        public static float speedMultiplier = 3.3333333333f;
         public static float debuffRadius = 12f;
         public static float debuffDuration = 3f;
-        public static float debuffCheckInterval = 0.03f;
+        public static float debuffCheckInterval = 0.0333333333f;
 
         private float debuffCheckStopwatch;
         private Vector3 initialDirection;

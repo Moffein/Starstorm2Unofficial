@@ -18,6 +18,7 @@ namespace EntityStates.SS2UStates.Executioner
         public static float spreadBloom = Commando.CommandoWeapon.FirePistol2.spreadBloomValue * 2.5f;
         public static GameObject tracerPrefab;
         public static GameObject hitPrefab = Commando.CommandoWeapon.FirePistol2.hitEffectPrefab;
+        public static float force = 100f;
 
         private float duration;
         private float fireDuration;
@@ -75,7 +76,6 @@ namespace EntityStates.SS2UStates.Executioner
 
                 if (base.isAuthority)
                 {
-                    float dmg = damageCoefficient * this.damageStat;
                     Ray r = base.GetAimRay();
                     BulletAttack bullet = new BulletAttack {
                         aimVector = r.direction,
@@ -86,7 +86,7 @@ namespace EntityStates.SS2UStates.Executioner
                         minSpread = 0f,
                         maxSpread = base.characterBody.spreadBloomAngle * 0.5f,
                         falloffModel = BulletAttack.FalloffModel.DefaultBullet,
-                        force = Commando.CommandoWeapon.FirePistol2.force,
+                        force = ExecutionerPistol.force,
                         isCrit = isCrit,
                         owner = base.gameObject,
                         muzzleName = muzzleString,

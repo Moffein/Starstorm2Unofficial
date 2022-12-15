@@ -1,23 +1,12 @@
-﻿using System;
-using System.Reflection;
-using System.Linq;
-using System.Collections.Generic;
-using BepInEx;
-using R2API;
-using R2API.Utils;
-using EntityStates;
-using RoR2;
-using RoR2.Skills;
+﻿using RoR2;
 using RoR2.Projectile;
 using UnityEngine;
-using Starstorm2.Cores;
-using UnityEngine.Networking;
-using KinematicCharacterController;
+using Starstorm2.Survivors.Chirr;
 
 //FIXME: ion gun doesn't build charges in mp if player is not host
 //FIXME: ion burst stocks do not carry over between stages (may leave this as feature)
 
-namespace EntityStates.Chirr
+namespace EntityStates.SS2UStates.Chirr
 {
     public class ChirrFireDarts : BaseSkillState
     {
