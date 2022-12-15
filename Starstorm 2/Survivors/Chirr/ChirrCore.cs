@@ -179,7 +179,7 @@ namespace Starstorm2.Survivors.Chirr
 
         private void SetUpSecondaries(SkillLocator skillLocator)
         {
-            var dmg = Headbutt.damageCoefficient * 100f;
+            var dmg = 6f * 100f;
 
             SkillLocator skill = chirrPrefab.GetComponent<SkillLocator>();
 

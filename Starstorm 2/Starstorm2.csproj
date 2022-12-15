@@ -78,6 +78,7 @@
     <Compile Include="API\ComponentHelpers.cs" />
     <Compile Include="API\LogCore.cs" />
     <Compile Include="API\Utils.cs" />
+    <Compile Include="Modules\EntityStates\BaseMeleeAttack.cs" />
     <Compile Include="Survivors\Chirr\ChirrSkins.cs" />
     <Compile Include="Survivors\Chirr\Components\ChirrInfoComponent.cs" />
     <Compile Include="Survivors\Chirr\EntityStates\Headbutt.cs" />
