@@ -4,7 +4,13 @@ namespace EntityStates.SS2UStates.Chirr
 {
 	public class JetpackOn : BaseState
 	{
-		public override void FixedUpdate()
+        public override void OnEnter()
+        {
+            base.OnEnter();
+			base.PlayCrossfade("Jetpack, Override", "Sprint", 0.5f);
+        }
+
+        public override void FixedUpdate()
 		{
 			base.FixedUpdate();
 			if (base.isAuthority)
@@ -14,7 +20,14 @@ namespace EntityStates.SS2UStates.Chirr
 				base.characterMotor.velocity = new Vector3(base.characterMotor.velocity.x, num, base.characterMotor.velocity.z);
 			}
 		}
-		public static float hoverVelocity = -1f;
+
+        public override void OnExit()
+		{
+			base.PlayCrossfade("Jetpack, Override", "BufferEmpty", 0.5f);
+			base.OnExit();
+        }
+
+        public static float hoverVelocity = -1f;
 		public static float hoverAcceleration = 60f;
 	}
 }
