@@ -11,6 +11,7 @@ namespace EntityStates.Starstorm2States.Cyborg
         {
             base.OnEnter();
 			Util.PlaySound("Play_mage_m1_impact", base.gameObject);
+			Util.PlaySound("Play_engi_sprint_start", base.gameObject);
 
 			if (JetpackOn.activationEffectPrefab)
 			{
@@ -46,6 +47,7 @@ namespace EntityStates.Starstorm2States.Cyborg
 
         public override void OnExit()
 		{
+			Util.PlaySound("Play_engi_sprint_end", base.gameObject);
 			base.OnExit();
         }
 

@@ -455,8 +455,8 @@ namespace Starstorm2.Survivors.Nemmando
         private void ScepterSetup()
         {
 
-            AncientScepter.AncientScepterItem.instance.RegisterScepterSkill(scepterSubmissionSkillDef, fullBodyName, SkillSlot.Special, 0);
-            AncientScepter.AncientScepterItem.instance.RegisterScepterSkill(scepterDecisiveStrikeSkillDef, fullBodyName, SkillSlot.Special, 1);
+            AncientScepter.AncientScepterItem.instance.RegisterScepterSkill(scepterSubmissionSkillDef, bodyInfo.bodyName, SkillSlot.Special, 0);
+            AncientScepter.AncientScepterItem.instance.RegisterScepterSkill(scepterDecisiveStrikeSkillDef, bodyInfo.bodyName, SkillSlot.Special, 1);
         }
 
         [MethodImpl(MethodImplOptions.NoInlining | MethodImplOptions.NoOptimization)]

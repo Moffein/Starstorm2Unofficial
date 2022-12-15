@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 280013672
+CRC: 2928161180
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 508c5c24d18e650ebda59573a2fc11ef
+    Hash: b880575f84bff1009b7c74fd540f92d6
   TypeTreeHash:
     serializedVersion: 2
     Hash: 7aec747c424dad58343d1828cf4a71ef
@@ -172,6 +172,7 @@ Assets:
 - Assets/AssetBundle/Skins/Icons/texCommandoSkinGrandMaster.png
 - Assets/AssetBundle/Items/MoltenCoin/matMoltenCoin.mat
 - Assets/AssetBundle/Cyborg/Animations/Tele/animCyTP2_Spawn.anim
+- Assets/AssetBundle/Cyborg/cyborgutilityscepter.png
 - Assets/AssetBundle/Nucleator/Animations/animNucleatorMenu.controller
 - Assets/AssetBundle/Nemmando/Animations/NemmandoIdle.anim
 - Assets/AssetBundle/Executioner/Animations/RestIdleIn.anim

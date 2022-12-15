@@ -1028,6 +1028,20 @@
 						</Action>
 					</ChildrenList>
 				</Event>
+				<Event Name="Play_SS2U_RoR1Lightning" ID="{DCC575E6-3496-4AC6-996C-78B9580A6963}">
+					<ChildrenList>
+						<Action Name="" ID="{BBB714B2-6058-4AB6-8B81-3B5913FEACE6}" ShortID="322635578">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="1"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="wChainLightning" ID="{ACDEB48B-F5F2-4187-BBF4-ED9BB377405F}" WorkUnitID="{3D683E44-DAC0-4717-B7E2-3D4C4555FE6A}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
 			</ChildrenList>
 		</WorkUnit>
 	</Events>

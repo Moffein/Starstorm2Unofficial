@@ -218,8 +218,14 @@ namespace Starstorm2.Modules
             skillDef.keywordTokens = skillDefInfo.keywordTokens;
 
             skillDefs.Add(skillDef);
+            FixSkillName(skillDef);
 
             return skillDef;
+        }
+
+        public static void FixSkillName(SkillDef skillDef)
+        {
+            (skillDef as ScriptableObject).name = skillDef.name;
         }
     }
 }

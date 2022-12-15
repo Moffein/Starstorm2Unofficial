@@ -62,7 +62,9 @@ namespace EntityStates.Starstorm2States.Cyborg
             base.FixedUpdate();
 
             inJetpackState = this.jetpackStateMachine.state.GetType() == typeof(JetpackOn);
-            bool shouldShowThruster = (inJetpackState || (base.characterBody && base.characterBody.isSprinting));
+
+            //Need separate effect intensity for Jetpack/Sprint, or else it doesn't look good.
+            bool shouldShowThruster = inJetpackState;//(inJetpackState || (base.characterBody && base.characterBody.isSprinting));
             if (shouldShowThruster)
             {
                 if (thrusterEffectL)

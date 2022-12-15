@@ -14,6 +14,7 @@ using Starstorm2.Modules;
 using EntityStates.Starstorm2States.Cyborg.Special;
 using Starstorm2.Survivors.Cyborg.Components.TeleportProjectile;
 using Starstorm2.Survivors.Cyborg.Components.OverheatProjectile;
+using System.Runtime.CompilerServices;
 
 namespace Starstorm2.Survivors.Cyborg
 {
@@ -25,6 +26,9 @@ namespace Starstorm2.Survivors.Cyborg
 
         public static BodyIndex bodyIndex;
 
+        public static SkillDef overheatDef;
+        public static SkillDef overheatScepterDef;
+
         public CyborgCore() => Setup();
         private void SetBodyIndex()
         {
@@ -35,10 +39,6 @@ namespace Starstorm2.Survivors.Cyborg
         {
             cybPrefab = CreateCyborgPrefab();
             cybPrefab.GetComponent<EntityStateMachine>().mainStateType = new EntityStates.SerializableEntityStateType(typeof(CyborgMain));
-
-            SfxLocator sfx = cybPrefab.GetComponent<SfxLocator>();
-            sfx.sprintLoopStart = "Play_engi_sprint_start";
-            sfx.sprintLoopStop = "Play_engi_sprint_end";
 
             EntityStateMachine jetpackStateMachine = cybPrefab.AddComponent<EntityStateMachine>();
             jetpackStateMachine.customName = "Jetpack";
@@ -76,25 +76,8 @@ namespace Starstorm2.Survivors.Cyborg
 
             Modules.Prefabs.RegisterNewSurvivor(cybPrefab, PrefabCore.CreateDisplayPrefab("CyborgDisplay", cybPrefab), Color.blue, "CYBORG");
             RoR2.RoR2Application.onLoad += SetBodyIndex;
-
-            DumpEntityStateConfig(Addressables.LoadAssetAsync<EntityStateConfiguration>("RoR2/DLC1/VoidSurvivor/EntityStates.VoidSurvivor.Weapon.FireHandBeam.asset").WaitForCompletion());
         }
 
-        public static void DumpEntityStateConfig(EntityStateConfiguration esc)
-        {
-
-            for (int i = 0; i < esc.serializedFieldsCollection.serializedFields.Length; i++)
-            {
-                if (esc.serializedFieldsCollection.serializedFields[i].fieldValue.objectValue)
-                {
-                    Debug.Log(esc.serializedFieldsCollection.serializedFields[i].fieldName + " - " + esc.serializedFieldsCollection.serializedFields[i].fieldValue.objectValue);
-                }
-                else
-                {
-                    Debug.Log(esc.serializedFieldsCollection.serializedFields[i].fieldName + " - " + esc.serializedFieldsCollection.serializedFields[i].fieldValue.stringValue);
-                }
-            }
-        }
         private void LateSetup(HG.ReadOnlyArray<RoR2.ContentManagement.ReadOnlyContentPack> obj)
         {
             CyborgItemDisplays.RegisterDisplays();
@@ -106,6 +89,7 @@ namespace Starstorm2.Survivors.Cyborg
             Modules.States.AddSkill(typeof(CyborgMain));
             Modules.States.AddSkill(typeof(CyborgFireTrackshot));
             Modules.States.AddSkill(typeof(CyborgFireOverheat));
+            Modules.States.AddSkill(typeof(OverheatScepter));
 
             Modules.States.AddSkill(typeof(PrimaryLaser));
             Modules.States.AddSkill(typeof(DeployTeleporter));
@@ -114,6 +98,7 @@ namespace Starstorm2.Survivors.Cyborg
 
         private void RegisterProjectiles()
         {
+
             GameObject overheatGhost = LegacyResourcesAPI.Load<GameObject>("Prefabs/ProjectileGhosts/BeamSphereGhost").InstantiateClone("SS2UCyborgOverheatGhost", false);
             ParticleSystem[] overheatParticles = overheatGhost.GetComponentsInChildren<ParticleSystem>();
             for (int i = 0; i < overheatParticles.Length; i++)
@@ -131,10 +116,11 @@ namespace Starstorm2.Survivors.Cyborg
                         break;
                 }
             }
-            overheatGhost.AddComponent<BFGReduceSizeOverTime>();
+            overheatGhost.AddComponent<BFGGhostReduceSizeOverTime>();
 
-            GameObject overheatProjectile = CreateOverheatProjectile("SS2UCyborgOverheatProjectile", overheatGhost);
-            CyborgFireOverheat.projectilePrefab = overheatProjectile;
+            LightningSoundComponent.lightningSound = Modules.Assets.CreateNetworkSoundEventDef("Play_SS2U_RoR1Lightning");
+            CyborgFireOverheat.projectilePrefab = CreateOverheatProjectile("SS2UCyborgOverheatProjectile", overheatGhost, 1, -300f);
+            OverheatScepter.projectileOverride = CreateOverheatProjectile("SS2UCyborgOverheatScepterProjectile", overheatGhost, 3, -600f);
 
             GameObject cyborgPylon = PrefabAPI.InstantiateClone(LegacyResourcesAPI.Load<GameObject>("Prefabs/Projectiles/EngiGrenadeProjectile"), "Prefabs/Projectiles/CyborgTPPylon", true);
 
@@ -176,7 +162,7 @@ namespace Starstorm2.Survivors.Cyborg
             UseTeleporter.explosionEffectPrefab = telefragExplosionEffect;
         }
 
-        private GameObject CreateOverheatProjectile(string name, GameObject ghostPrefab)
+        private GameObject CreateOverheatProjectile(string name, GameObject ghostPrefab, int bounceCount, float pullStrength)
         {
             GameObject bfgProjectile = PrefabAPI.InstantiateClone(LegacyResourcesAPI.Load<GameObject>("Prefabs/Projectiles/FMJ"), name, true);
 
@@ -200,13 +186,14 @@ namespace Starstorm2.Survivors.Cyborg
             bfgPbc.damageCoefficient = 1f * bfgPbc.listClearInterval;
             bfgPbc.procCoefficient = 1f;
             bfgPbc.inheritDamageType = true;
-            bfgPbc.bounces = 1;
+            bfgPbc.bounces = bounceCount;
             bfgPbc.attackFireCount = 30;
+            bfgPbc.lightningType = RoR2.Orbs.LightningOrb.LightningType.Loader;
 
             RadialForce bfgRadialForce = bfgProjectile.AddComponent<RadialForce>();
             bfgRadialForce.radius = bfgPbc.attackRange;
             bfgRadialForce.damping = 0.5f;
-            bfgRadialForce.forceMagnitude = -400f;
+            bfgRadialForce.forceMagnitude = pullStrength;
             bfgRadialForce.forceCoefficientAtEdge = 0.5f;
 
             //No clue how to get this working. Simpler to just rely on PBC
@@ -231,6 +218,7 @@ namespace Starstorm2.Survivors.Cyborg
             bfgExplosion.blastAttackerFiltering = AttackerFiltering.Default;*/
 
             bfgProjectile.AddComponent<OverheatReduceTickrateOverTime>();
+            bfgProjectile.AddComponent<LightningSoundComponent>();
 
             return bfgProjectile;
         }
@@ -262,7 +250,7 @@ namespace Starstorm2.Survivors.Cyborg
             var dmg = PrimaryLaser.damageCoefficient * 100f;
 
             LanguageAPI.Add("CYBORG_PRIMARY_GUN_NAME", "Unmaker");
-            LanguageAPI.Add("CYBORG_PRIMARY_GUN_DESCRIPTION", $"Fire a beam at a contender for <style=cIsDamage>{dmg}% damage</style>.");
+            LanguageAPI.Add("CYBORG_PRIMARY_GUN_DESCRIPTION", $"Fire a beam at contenders for <style=cIsDamage>{dmg}% damage</style>.");
 
             SteppedSkillDef primaryDef1 = ScriptableObject.CreateInstance<SteppedSkillDef>();
             primaryDef1.activationState = new EntityStates.SerializableEntityStateType(typeof(PrimaryLaser));
@@ -284,6 +272,7 @@ namespace Starstorm2.Survivors.Cyborg
             primaryDef1.requiredStock = 1;
             primaryDef1.stockToConsume = 1;
             primaryDef1.stepCount = 2;
+            Modules.Skills.FixSkillName(primaryDef1);
 
             Modules.Skills.skillDefs.Add(primaryDef1);
             SkillFamily.Variant primaryVariant1 = Utils.RegisterSkillVariant(primaryDef1);
@@ -335,15 +324,19 @@ namespace Starstorm2.Survivors.Cyborg
 
             SkillLocator skill = cybPrefab.GetComponent<SkillLocator>();
 
-            LanguageAPI.Add("CYBORG_SPECIAL_NOTPREON_NAME", "Overheat Redress");
-            LanguageAPI.Add("CYBORG_SPECIAL_NOTPREON_DESCRIPTION", $"Blast yourself backwards, firing a greater energy bullet, dealing up to <style=cIsDamage>{zapDmg}%</style> damage per second.");
+            LanguageAPI.Add("CYBORG_UTILITY_NAME", "Overheat Redress");
+            LanguageAPI.Add("CYBORG_UTILITY_DESCRIPTION", $"<style=cIsUtility>Blast yourself backwards</style>, firing a greater energy bullet that deals a maximum of <style=cIsDamage>{zapDmg}% damage per second</style>.");
+
+            zapDmg = CyborgFireOverheat.damageCoefficient * 100f * 1.5f;
+            LanguageAPI.Add("CYBORG_UTILITY_SCEPTER_NAME", "Gamma Overheat Redress");
+            LanguageAPI.Add("CYBORG_UTILITY_SCEPTER_DESCRIPTION", $"<style=cIsUtility>Blast yourself backwards</style>, firing a greater energy bullet that deals a maximum of <style=cIsDamage>{zapDmg}% damage per second</style>.");
 
             SkillDef utilityDef1 = ScriptableObject.CreateInstance<SkillDef>();
             utilityDef1.activationState = new EntityStates.SerializableEntityStateType(typeof(CyborgFireOverheat));
             utilityDef1.activationStateMachineName = "Weapon";
-            utilityDef1.skillName = "CYBORG_SPECIAL_NOTPREON_NAME";
-            utilityDef1.skillNameToken = "CYBORG_SPECIAL_NOTPREON_NAME";
-            utilityDef1.skillDescriptionToken = "CYBORG_SPECIAL_NOTPREON_DESCRIPTION";
+            utilityDef1.skillName = "CYBORG_UTILITY_NAME";
+            utilityDef1.skillNameToken = "CYBORG_UTILITY_NAME";
+            utilityDef1.skillDescriptionToken = "CYBORG_UTILITY_DESCRIPTION";
             utilityDef1.icon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("cyborgutility");
             utilityDef1.baseMaxStock = 1;
             utilityDef1.baseRechargeInterval = 10f;
@@ -357,11 +350,57 @@ namespace Starstorm2.Survivors.Cyborg
             utilityDef1.rechargeStock = 1;
             utilityDef1.requiredStock = 1;
             utilityDef1.stockToConsume = 1;
-
-            Utils.RegisterSkillDef(utilityDef1, typeof(CyborgFireOverheat));
+            overheatDef = utilityDef1;
+            Modules.Skills.skillDefs.Add(utilityDef1);
+            Modules.Skills.FixSkillName(utilityDef1);
             SkillFamily.Variant utilityVariant1 = Utils.RegisterSkillVariant(utilityDef1);
 
             skillLocator.utility = Utils.RegisterSkillsToFamily(cybPrefab, utilityVariant1);
+
+            SkillDef utilityScepterDef1 = ScriptableObject.CreateInstance<SkillDef>();
+            utilityScepterDef1.activationState = new EntityStates.SerializableEntityStateType(typeof(OverheatScepter));
+            utilityScepterDef1.activationStateMachineName = "Weapon";
+            utilityScepterDef1.skillName = "CYBORG_UTILITY_SCEPTER_NAME";
+            utilityScepterDef1.skillNameToken = "CYBORG_UTILITY_SCEPTER_NAME";
+            utilityScepterDef1.skillDescriptionToken = "CYBORG_UTILITY_SCEPTER_DESCRIPTION";
+            utilityScepterDef1.icon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("cyborgutilityscepter");
+            utilityScepterDef1.baseMaxStock = 1;
+            utilityScepterDef1.baseRechargeInterval = 10f;
+            utilityScepterDef1.beginSkillCooldownOnSkillEnd = false;
+            utilityScepterDef1.canceledFromSprinting = false;
+            utilityScepterDef1.fullRestockOnAssign = true;
+            utilityScepterDef1.interruptPriority = EntityStates.InterruptPriority.Skill;
+            utilityScepterDef1.isCombatSkill = true;
+            utilityScepterDef1.mustKeyPress = false;
+            utilityScepterDef1.cancelSprintingOnActivation = false;
+            utilityScepterDef1.rechargeStock = 1;
+            utilityScepterDef1.requiredStock = 1;
+            utilityScepterDef1.stockToConsume = 1;
+            Modules.Skills.skillDefs.Add(utilityScepterDef1);
+            overheatScepterDef = utilityScepterDef1;
+            Modules.Skills.FixSkillName(utilityScepterDef1);
+
+            if (Starstorm.scepterPluginLoaded)
+            {
+                ScepterSetup();
+            }
+            if (Starstorm.classicItemsLoaded)
+            {
+                ClassicScepterSetup();
+            }
+        }
+
+        [MethodImpl(MethodImplOptions.NoInlining | MethodImplOptions.NoOptimization)]
+        private void ScepterSetup()
+        {
+
+            AncientScepter.AncientScepterItem.instance.RegisterScepterSkill(overheatScepterDef, "CyborgBody", SkillSlot.Special, 0);
+        }
+
+        [MethodImpl(MethodImplOptions.NoInlining | MethodImplOptions.NoOptimization)]
+        private void ClassicScepterSetup()
+        {
+            ThinkInvisible.ClassicItems.Scepter.instance.RegisterScepterSkill(overheatScepterDef, "CyborgBody", SkillSlot.Special, overheatDef);
         }
 
         private void SetUpSpecials(SkillLocator skillLocator)
@@ -391,6 +430,7 @@ namespace Starstorm2.Survivors.Cyborg
             specialDeploy.stockToConsume = 1;
             specialDeploy.keywordTokens = new string[] { "KEYWORD_SHOCKING" };
             Modules.Skills.skillDefs.Add(specialDeploy);
+            Modules.Skills.FixSkillName(specialDeploy);
             SkillFamily.Variant specialVariant1 = Utils.RegisterSkillVariant(specialDeploy);
             skillLocator.special = Utils.RegisterSkillsToFamily(cybPrefab, specialVariant1);
 
@@ -414,6 +454,7 @@ namespace Starstorm2.Survivors.Cyborg
             specialTeleport.requiredStock = 1;
             specialTeleport.stockToConsume = 1;
             specialTeleport.keywordTokens = new string[] { };
+            Modules.Skills.FixSkillName(specialTeleport);
             Modules.Skills.skillDefs.Add(specialTeleport);
             DeployTeleporter.teleportSkillDef = specialTeleport;
         }

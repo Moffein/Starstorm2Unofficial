@@ -285,7 +285,7 @@ namespace Starstorm2.Survivors.Executioner
         private void ScepterSetup()
         {
 
-            AncientScepter.AncientScepterItem.instance.RegisterScepterSkill(specialScepterDef, fullBodyName, SkillSlot.Special, 0);
+            AncientScepter.AncientScepterItem.instance.RegisterScepterSkill(specialScepterDef, bodyInfo.bodyName, SkillSlot.Special, 0);
         }
 
         [MethodImpl(MethodImplOptions.NoInlining | MethodImplOptions.NoOptimization)]

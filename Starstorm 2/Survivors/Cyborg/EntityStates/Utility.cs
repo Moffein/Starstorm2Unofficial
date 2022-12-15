@@ -8,7 +8,7 @@ namespace EntityStates.Starstorm2States.Cyborg
 {
     public class CyborgFireOverheat : BaseSkillState
     {
-        public static float damageCoefficient = 6f;
+        public static float damageCoefficient = 8f;
         public static float baseDuration = 0.5f;
         public static float recoil = 1f;
         public static GameObject projectilePrefab;
@@ -19,6 +19,9 @@ namespace EntityStates.Starstorm2States.Cyborg
         private string muzzleString;
 
         private CyborgController cyborgController;
+
+        public float damageCoefficientInternal;
+        public GameObject projectilePrefabInternal;
 
         public override void OnEnter()
         {
@@ -36,41 +39,20 @@ namespace EntityStates.Starstorm2States.Cyborg
             Util.PlaySound("CyborgUtility", base.gameObject);
             base.PlayAnimation("Gesture, Override", "FireSpecial", "FireArrow.playbackRate", this.duration);
 
-            //old code
-            /*if (base.isAuthority && base.characterBody && base.characterBody.characterMotor)
-            {
-                float height = base.characterBody.characterMotor.isGrounded ? this.groundKnockbackDistance : this.airKnockbackDistance;
-                float num3 = base.characterBody.characterMotor ? base.characterBody.characterMotor.mass : 1f;
-                float acceleration2 = base.characterBody.acceleration;
-                float num4 = Trajectory.CalculateInitialYSpeedForHeight(height, -acceleration2);
-                base.characterBody.characterMotor.ApplyForce(-num4 * num3 * base.GetAimRay().direction, false, false);
-            }*/
+            damageCoefficientInternal = CyborgFireOverheat.damageCoefficient;
+            projectilePrefabInternal = CyborgFireOverheat.projectilePrefab;
+            OverrideStats();
 
-            //copied from sniper
-            /*Vector3 direction = -base.GetAimRay().direction;
-            if (base.isAuthority)
-            {
-                direction.y = Mathf.Max(direction.y, 0.05f);
-                Vector3 a = direction.normalized * 4f * 10f;
-                Vector3 b = Vector3.up * 7f;
-                Vector3 b2 = new Vector3(direction.x, 0f, direction.z).normalized * 3f;
-
-
-                if (base.characterMotor)
-                {
-                    base.characterMotor.Motor.ForceUnground();
-                    base.characterMotor.velocity = a + b + b2;
-                    base.characterMotor.velocity.y *= 0.8f;
-                    if (base.characterMotor.velocity.y < 0) base.characterMotor.velocity.y *= 0.1f;
-                }
-                if (base.characterDirection)
-                {
-
-                    base.characterDirection.moveVector = direction;
-                }
-            }*/
             FireBFG();
+
+            if (base.isAuthority && base.characterBody && base.characterMotor)
+            {
+                if (base.characterMotor.velocity.y < 0f) base.characterMotor.velocity.y = 0f;
+                base.characterMotor.ApplyForce(-2400f * base.GetAimRay().direction, true, false);
+            }
         }
+
+        public virtual void OverrideStats() { }
 
         public override void OnExit()
         {
@@ -93,9 +75,9 @@ namespace EntityStates.Starstorm2States.Cyborg
 
                 if (base.isAuthority)
                 {
-                    ProjectileManager.instance.FireProjectile(CyborgFireOverheat.projectilePrefab,
+                    ProjectileManager.instance.FireProjectile(projectilePrefabInternal,
                         aimRay.origin, Util.QuaternionSafeLookRotation(aimRay.direction),
-                        base.gameObject, this.characterBody.damage * CyborgFireOverheat.damageCoefficient,
+                        base.gameObject, this.characterBody.damage * damageCoefficientInternal,
                         0f,
                         Util.CheckRoll(this.characterBody.crit,
                         this.characterBody.master),
