@@ -100,7 +100,7 @@ namespace Starstorm2
             new Survivors.Nemmando.NemmandoCore().Initialize();
             cyborgCore = new CyborgCore();
 
-            if (Modules.Config.ss_test.Value)
+            if (false)//(Modules.Config.ss_test.Value)
             {
                 chirrCore = new ChirrCore();
                 new Modules.Survivors.Nucleator().Initialize();

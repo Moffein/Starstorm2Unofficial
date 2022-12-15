@@ -1,13 +1,13 @@
 ﻿using EntityStates;
 using EntityStates.Captain.Weapon;
-using EntityStates.Starstorm2States.Common;
+using EntityStates.SS2UStates.Common;
 using RoR2;
 using RoR2.UI;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace EntityStates.Starstorm2States.Nemmando
+namespace EntityStates.SS2UStates.Nemmando
 {
     public class ChargeDecisiveStrike : BaseCustomSkillState
     {

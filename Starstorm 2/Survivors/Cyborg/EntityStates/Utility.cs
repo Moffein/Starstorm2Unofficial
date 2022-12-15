@@ -4,7 +4,7 @@ using UnityEngine;
 using Starstorm2.Cores;
 using Starstorm2.Survivors.Cyborg.Components;
 
-namespace EntityStates.Starstorm2States.Cyborg
+namespace EntityStates.SS2UStates.Cyborg
 {
     public class CyborgFireOverheat : BaseSkillState
     {

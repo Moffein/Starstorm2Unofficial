@@ -3,7 +3,7 @@ using UnityEngine;
 using EntityStates;
 using UnityEngine.AddressableAssets;
 
-namespace EntityStates.Starstorm2States.Cyborg
+namespace EntityStates.SS2UStates.Cyborg
 {
 	public class JetpackOn : BaseState
 	{

@@ -1,4 +1,4 @@
-﻿using EntityStates.Starstorm2States.Common;
+﻿using EntityStates.SS2UStates.Common;
 using R2API;
 using RoR2;
 using Starstorm2.Cores;
@@ -9,7 +9,7 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 
-namespace EntityStates.Starstorm2States.Executioner
+namespace EntityStates.SS2UStates.Executioner
 {
     public class ExecutionerIonGun : BaseCustomSkillState
     {

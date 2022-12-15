@@ -4,10 +4,10 @@ using EntityStates;
 using RoR2.Projectile;
 using R2API;
 using Starstorm2.Components;
-using EntityStates.Starstorm2States.Common;
+using EntityStates.SS2UStates.Common;
 using Starstorm2.Survivors.Nemmando.Components;
 
-namespace EntityStates.Starstorm2States.Nemmando
+namespace EntityStates.SS2UStates.Nemmando
 {
     public class FireSwordBeam : BaseCustomSkillState
     {

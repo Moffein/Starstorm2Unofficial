@@ -63,7 +63,7 @@ namespace Starstorm2.Cores
                         victimBody = victim.GetComponent<CharacterBody>();
                         if (victimBody && victimBody.HasBuff(BuffCore.fearDebuff))
                         {
-                            victimBody.AddTimedBuff(BuffCore.fearDebuff, EntityStates.Starstorm2States.Executioner.ExecutionerDash.debuffDuration);
+                            victimBody.AddTimedBuff(BuffCore.fearDebuff, EntityStates.SS2UStates.Executioner.ExecutionerDash.debuffDuration);
                         }
                     }
                 }
@@ -91,7 +91,7 @@ namespace Starstorm2.Cores
 
                 if (damageInfo.HasModdedDamageType(ModdedDamageTypes.GuaranteedFearOnHit))
                 {
-                    self.body.AddTimedBuff(BuffCore.fearDebuff, EntityStates.Starstorm2States.Executioner.ExecutionerDash.debuffDuration);
+                    self.body.AddTimedBuff(BuffCore.fearDebuff, EntityStates.SS2UStates.Executioner.ExecutionerDash.debuffDuration);
                 }
             }
 

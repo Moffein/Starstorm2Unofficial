@@ -3,7 +3,7 @@ using RoR2;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 
-namespace EntityStates.Starstorm2States.Nemmando
+namespace EntityStates.SS2UStates.Nemmando
 {
     public class ChargeBarrageFire : BaseState
     {

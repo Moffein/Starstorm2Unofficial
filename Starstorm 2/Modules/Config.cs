@@ -34,11 +34,11 @@ namespace Starstorm2.Modules
 
         internal static void Initialize()
         {
-            ss_test =
+            /*ss_test =
                 Starstorm.instance.Config.Bind("Starstorm 2 :: Unfinished Content",
                             "Enabled",
                             false,
-                            "Enables Starstorm 2's work-in-progress content. May be unstable so enable at your own risk.");
+                            "Enables Starstorm 2's work-in-progress content. May be unstable so enable at your own risk.");*/
             cursed =
                 Starstorm.instance.Config.Bind("Starstorm 2 :: Cursed",
                             "Enabled",

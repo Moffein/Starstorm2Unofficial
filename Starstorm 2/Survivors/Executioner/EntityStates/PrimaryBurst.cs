@@ -3,7 +3,7 @@ using RoR2;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 
-namespace EntityStates.Starstorm2States.Executioner
+namespace EntityStates.SS2UStates.Executioner
 {
     public class ExecutionerBurstPistol : BaseState
     {

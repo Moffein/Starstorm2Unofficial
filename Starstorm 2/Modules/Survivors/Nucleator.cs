@@ -59,7 +59,7 @@ namespace Starstorm2.Modules.Survivors
                     material = nucleatorMat,
                 }};
 
-        internal override Type characterMainState { get; set; } = typeof(EntityStates.Starstorm2States.Nemmando.NemmandoMain);
+        internal override Type characterMainState { get; set; } = typeof(EntityStates.SS2UStates.Nemmando.NemmandoMain);
 
         // item display stuffs
         internal override ItemDisplayRuleSet itemDisplayRuleSet { get; set; }

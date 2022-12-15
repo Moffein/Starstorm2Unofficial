@@ -6,7 +6,7 @@ using Starstorm2.Survivors.Cyborg.Components;
 using UnityEngine.Networking;
 using Starstorm2.Survivors.Cyborg;
 
-namespace EntityStates.Starstorm2States.Cyborg.Special
+namespace EntityStates.SS2UStates.Cyborg.Special
 {
     public class DeployTeleporter : BaseState
     {

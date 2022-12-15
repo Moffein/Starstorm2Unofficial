@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace EntityStates.Starstorm2States.Executioner
+namespace EntityStates.SS2UStates.Executioner
 {
     public class ExecutionerAxeScepter : ExecutionerAxe
     {

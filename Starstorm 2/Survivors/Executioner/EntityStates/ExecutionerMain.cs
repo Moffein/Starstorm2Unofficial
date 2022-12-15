@@ -5,7 +5,7 @@ using Starstorm2.Survivors.Executioner.Components;
 
 //TODO: should check that secondary is ion gun before attempting to store/load charges
 
-namespace EntityStates.Starstorm2States.Executioner
+namespace EntityStates.SS2UStates.Executioner
 {
     public class ExecutionerMain : GenericCharacterMain
     {
@@ -60,12 +60,12 @@ namespace EntityStates.Starstorm2States.Executioner
             {
                 if (Input.GetKeyDown(Starstorm2.Modules.Config.restKeybind))
                 {
-                    this.outer.SetInterruptState(new EntityStates.Starstorm2States.Common.Emotes.RestEmote(), InterruptPriority.Any);
+                    this.outer.SetInterruptState(new EntityStates.SS2UStates.Common.Emotes.RestEmote(), InterruptPriority.Any);
                     return;
                 }
                 else if (Input.GetKeyDown(Starstorm2.Modules.Config.tauntKeybind))
                 {
-                    this.outer.SetInterruptState(new EntityStates.Starstorm2States.Common.Emotes.TauntEmote(), InterruptPriority.Any);
+                    this.outer.SetInterruptState(new EntityStates.SS2UStates.Common.Emotes.TauntEmote(), InterruptPriority.Any);
                     return;
                 }
             }

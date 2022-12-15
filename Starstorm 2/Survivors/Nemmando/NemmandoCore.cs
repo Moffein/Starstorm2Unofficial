@@ -1,6 +1,6 @@
 ﻿using BepInEx.Configuration;
 using EntityStates;
-using EntityStates.Starstorm2States.Nemmando;
+using EntityStates.SS2UStates.Nemmando;
 using R2API;
 using R2API.Utils;
 using RoR2;
@@ -118,7 +118,7 @@ namespace Starstorm2.Survivors.Nemmando
                 Modules.Assets.LoadNemmandoEffects();
 
                 bodyPrefab.AddComponent<Components.NemmandoController>();
-                bodyPrefab.GetComponent<EntityStateMachine>().initialStateType = new SerializableEntityStateType(typeof(EntityStates.Starstorm2States.Common.NemmandoSpawnState));
+                bodyPrefab.GetComponent<EntityStateMachine>().initialStateType = new SerializableEntityStateType(typeof(EntityStates.SS2UStates.Common.NemmandoSpawnState));
                 bodyPrefab.AddComponent<CustomEffectComponent>();
 
                 bodyPrefab.GetComponent<ModelLocator>().modelTransform.gameObject.AddComponent<Components.SS2CharacterAnimationEvents>();
@@ -437,7 +437,7 @@ namespace Starstorm2.Survivors.Nemmando
 
         private void RegisterStates()
         {
-            Modules.States.AddSkill(typeof(EntityStates.Starstorm2States.Common.NemmandoSpawnState));
+            Modules.States.AddSkill(typeof(EntityStates.SS2UStates.Common.NemmandoSpawnState));
             Modules.States.AddSkill(typeof(NemmandoMain));
             Modules.States.AddSkill(typeof(BladeOfCessation2));
             Modules.States.AddSkill(typeof(ChargeSwordBeam));

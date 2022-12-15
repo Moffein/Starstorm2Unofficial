@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System;
-using EntityStates.Starstorm2States.Common.Emotes;
-using EntityStates.Starstorm2States.Common;
+using EntityStates.SS2UStates.Common.Emotes;
+using EntityStates.SS2UStates.Common;
 
 namespace Starstorm2.Modules
 {

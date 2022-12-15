@@ -1,7 +1,7 @@
 ﻿using EntityStates;
 using Starstorm2.Modules;
 
-namespace EntityStates.Starstorm2States.Common
+namespace EntityStates.SS2UStates.Common
 {
     public class BaseCustomMainState : GenericCharacterMain
     {

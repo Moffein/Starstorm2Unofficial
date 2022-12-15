@@ -14,7 +14,7 @@ using Starstorm2.Cores;
 using UnityEngine.Networking;
 using KinematicCharacterController;
 
-namespace EntityStates.Starstorm2States.Cyborg
+namespace EntityStates.SS2UStates.Cyborg
 {
     public class CyborgFireTrackshot : BaseSkillState
     {

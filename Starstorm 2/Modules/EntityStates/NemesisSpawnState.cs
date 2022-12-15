@@ -3,7 +3,7 @@ using RoR2;
 using UnityEngine;
 using UnityEngine.Networking;
 
-namespace EntityStates.Starstorm2States.Common
+namespace EntityStates.SS2UStates.Common
 {
     public class NemmandoSpawnState : NemesisSpawnState
     {

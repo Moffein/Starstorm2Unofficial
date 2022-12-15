@@ -4,7 +4,7 @@ using RoR2.Projectile;
 using Starstorm2.Survivors.Cyborg.Components;
 using UnityEngine.Networking;
 
-namespace EntityStates.Starstorm2States.Cyborg.Special
+namespace EntityStates.SS2UStates.Cyborg.Special
 {
     public class UseTeleporter : BaseState
     {

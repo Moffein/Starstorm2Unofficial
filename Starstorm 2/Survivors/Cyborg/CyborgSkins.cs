@@ -5,6 +5,7 @@ using RoR2;
 using R2API.Utils;
 using System.Collections.Generic;
 using Starstorm2.Cores;
+using Starstorm2.Modules;
 
 namespace Starstorm2.Survivors.Cyborg
 {
@@ -44,6 +45,7 @@ namespace Starstorm2.Survivors.Cyborg
             List<SkinDef> skinDefs = new List<SkinDef>();
 
             #region DefaultSkin
+
             CharacterModel.RendererInfo[] defaultRenderers = characterModel.baseRendererInfos;
 
             LanguageAPI.Add("CYBORG_DEFAULT_SKIN_NAME", "Default");
@@ -59,8 +61,18 @@ namespace Starstorm2.Survivors.Cyborg
 
             skinDefs.Add(defaultSkin);
             #endregion
-            
+
             #region MasterySkin
+
+            LanguageAPI.Add("ACHIEVEMENT_SS2UCYBORGCLEARGAMEMONSOON_NAME", "CYBORG: Mastery");
+            LanguageAPI.Add("ACHIEVEMENT_SS2UCYBORGCLEARGAMEMONSOON_DESCRIPTION", "As CYBORG, beat the game or obliterate on Monsoon.");
+
+            UnlockableDef masterySkinUnlockableDef = ScriptableObject.CreateInstance<UnlockableDef>();
+            masterySkinUnlockableDef.cachedName = "Skins.SS2UCyborg.Mastery";
+            masterySkinUnlockableDef.nameToken = "ACHIEVEMENT_SS2UCYBORGCLEARGAMEMONSOON_NAME";
+            masterySkinUnlockableDef.achievementIcon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("cyborgsecondary");
+            Unlockables.unlockableDefs.Add(masterySkinUnlockableDef);
+
             CharacterModel.RendererInfo[] masteryRendererInfos = new CharacterModel.RendererInfo[defaultRenderers.Length];
             defaultRenderers.CopyTo(masteryRendererInfos, 0);
 
@@ -75,7 +87,7 @@ namespace Starstorm2.Survivors.Cyborg
                                                           masteryRendererInfos, 
                                                           mainRenderer, 
                                                           model,
-                                                          null);
+                                                          masterySkinUnlockableDef);
 
             masterySkin.meshReplacements = CreateMeshReplacements(masteryRendererInfos, 
                                                                   meshCyborgSteam);
@@ -84,6 +96,16 @@ namespace Starstorm2.Survivors.Cyborg
             #endregion
 
             #region GrandMasterySkin
+
+            LanguageAPI.Add("ACHIEVEMENT_SS2UCYBORGCLEARGAMETYPHOON_NAME", "CYBORG: Grandmastery");
+            LanguageAPI.Add("ACHIEVEMENT_SS2UCYBORGCLEARGAMETYPHOON_DESCRIPTION", "As CYBORG, beat the game or obliterate on Typhoon.");
+
+            UnlockableDef grandmasterySkinUnlockableDef = ScriptableObject.CreateInstance<UnlockableDef>();
+            grandmasterySkinUnlockableDef.cachedName = "Skins.SS2UCyborg.GrandMastery";
+            grandmasterySkinUnlockableDef.nameToken = "ACHIEVEMENT_SS2UCYBORGCLEARGAMETYPHOON_NAME";
+            grandmasterySkinUnlockableDef.achievementIcon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("cyborgspecial");
+            Unlockables.unlockableDefs.Add(grandmasterySkinUnlockableDef);
+
             CharacterModel.RendererInfo[] grandMasteryRendererInfos = new CharacterModel.RendererInfo[defaultRenderers.Length];
             defaultRenderers.CopyTo(grandMasteryRendererInfos, 0);
 
@@ -98,7 +120,7 @@ namespace Starstorm2.Survivors.Cyborg
                                                           grandMasteryRendererInfos,
                                                           mainRenderer,
                                                           model,
-                                                          null);
+                                                          grandmasterySkinUnlockableDef);
 
             grandMasterySkin.meshReplacements = CreateMeshReplacements(grandMasteryRendererInfos,
                                                                   meshCyborgRock);

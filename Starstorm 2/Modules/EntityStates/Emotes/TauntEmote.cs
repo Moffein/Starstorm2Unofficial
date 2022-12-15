@@ -1,6 +1,6 @@
 ﻿using Starstorm2.Modules;
 
-namespace EntityStates.Starstorm2States.Common.Emotes
+namespace EntityStates.SS2UStates.Common.Emotes
 {
     public class TauntEmote : BaseEmote
     {

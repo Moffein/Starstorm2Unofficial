@@ -1,9 +1,9 @@
 ﻿using EntityStates;
-using EntityStates.Starstorm2States.Common;
+using EntityStates.SS2UStates.Common;
 using RoR2;
 using UnityEngine;
 
-namespace EntityStates.Starstorm2States.Nemmando
+namespace EntityStates.SS2UStates.Nemmando
 {
     public class ShootGun : BaseCustomSkillState
     {

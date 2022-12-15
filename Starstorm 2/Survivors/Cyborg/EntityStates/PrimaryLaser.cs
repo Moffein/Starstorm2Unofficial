@@ -3,7 +3,7 @@ using RoR2.Skills;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 
-namespace EntityStates.Starstorm2States.Cyborg
+namespace EntityStates.SS2UStates.Cyborg
 {
     public class PrimaryLaser : BaseSkillState, SteppedSkillDef.IStepSetter
     {

@@ -5,9 +5,9 @@ using System.Linq;
 using System.Collections.Generic;
 using Starstorm2.Cores.States;
 using UnityEngine.Networking;
-using EntityStates.Starstorm2States.Common;
+using EntityStates.SS2UStates.Common;
 
-namespace EntityStates.Starstorm2States.Executioner
+namespace EntityStates.SS2UStates.Executioner
 {
     public class ExecutionerPistol : BaseCustomSkillState
     {

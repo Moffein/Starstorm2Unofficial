@@ -1,4 +1,4 @@
-﻿using EntityStates.Starstorm2States.Common;
+﻿using EntityStates.SS2UStates.Common;
 using R2API;
 using RoR2;
 using Starstorm2.Cores;
@@ -6,7 +6,7 @@ using Starstorm2.Survivors.Nemmando.Components;
 using UnityEngine;
 using UnityEngine.Networking;
 
-namespace EntityStates.Starstorm2States.Nemmando
+namespace EntityStates.SS2UStates.Nemmando
 {
 	public class BladeOfCessation2 : BaseCustomSkillState
     {

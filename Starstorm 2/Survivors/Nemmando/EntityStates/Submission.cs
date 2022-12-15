@@ -2,7 +2,7 @@
 using RoR2;
 using UnityEngine;
 
-namespace EntityStates.Starstorm2States.Nemmando
+namespace EntityStates.SS2UStates.Nemmando
 {
     public class Submission : BaseState
     {

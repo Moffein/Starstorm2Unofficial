@@ -4,7 +4,7 @@ using Starstorm2.Components;
 using Starstorm2.Survivors.Nemmando.Components;
 using UnityEngine;
 
-namespace EntityStates.Starstorm2States.Nemmando
+namespace EntityStates.SS2UStates.Nemmando
 {
     public class ScepterSlashCharge : BaseSkillState
     {

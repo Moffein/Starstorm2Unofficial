@@ -7,14 +7,15 @@ using UnityEngine.Networking;
 using UnityEngine.AddressableAssets;
 using EntityStates;
 using System.Linq;
-using EntityStates.Starstorm2States.Cyborg;
+using EntityStates.SS2UStates.Cyborg;
 using Starstorm2.Survivors.Cyborg.Components;
 using Starstorm2.Cores;
 using Starstorm2.Modules;
-using EntityStates.Starstorm2States.Cyborg.Special;
+using EntityStates.SS2UStates.Cyborg.Special;
 using Starstorm2.Survivors.Cyborg.Components.TeleportProjectile;
 using Starstorm2.Survivors.Cyborg.Components.OverheatProjectile;
 using System.Runtime.CompilerServices;
+using EntityStates.SS2UStates.Cyborg.Secondary;
 
 namespace Starstorm2.Survivors.Cyborg
 {
@@ -94,6 +95,9 @@ namespace Starstorm2.Survivors.Cyborg
             Modules.States.AddSkill(typeof(PrimaryLaser));
             Modules.States.AddSkill(typeof(DeployTeleporter));
             Modules.States.AddSkill(typeof(UseTeleporter));
+
+            Modules.States.AddSkill(typeof(ChargeBeam));
+            Modules.States.AddSkill(typeof(FireBeam));
         }
 
         private void RegisterProjectiles()

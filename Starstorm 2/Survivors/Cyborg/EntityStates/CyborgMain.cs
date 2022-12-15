@@ -2,7 +2,7 @@
 using Starstorm2.Survivors.Cyborg.Components;
 using UnityEngine;
 
-namespace EntityStates.Starstorm2States.Cyborg
+namespace EntityStates.SS2UStates.Cyborg
 {
     public class CyborgMain : GenericCharacterMain
     {

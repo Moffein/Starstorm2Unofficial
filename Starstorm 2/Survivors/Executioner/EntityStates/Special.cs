@@ -5,7 +5,7 @@ using Starstorm2.Survivors.Executioner.Components;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace EntityStates.Starstorm2States.Executioner
+namespace EntityStates.SS2UStates.Executioner
 {
     public class ExecutionerAxe : BaseSkillState
     {

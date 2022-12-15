@@ -79,6 +79,8 @@
     <Compile Include="API\LogCore.cs" />
     <Compile Include="API\Utils.cs" />
     <Compile Include="Components\ChirrController.cs" />
+    <Compile Include="Survivors\Cyborg\Achievements\CyborgGrandMasteryAchievement.cs" />
+    <Compile Include="Survivors\Cyborg\Achievements\CyborgMasteryAchievement.cs" />
     <Compile Include="Survivors\Cyborg\Components\CyborgController.cs" />
     <Compile Include="Survivors\Cyborg\Components\CyborgTeleportTracker.cs" />
     <Compile Include="Survivors\Cyborg\Components\OverheatProjectile\BFGGhostReduceSizeOverTime.cs" />
@@ -88,6 +90,8 @@
     <Compile Include="Survivors\Cyborg\CyborgTeleSkillDef.cs" />
     <Compile Include="Survivors\Cyborg\EntityStates\OverheatScepter.cs" />
     <Compile Include="Survivors\Cyborg\EntityStates\PrimaryLaser.cs" />
+    <Compile Include="Survivors\Cyborg\EntityStates\Secondary\ChargeBeam.cs" />
+    <Compile Include="Survivors\Cyborg\EntityStates\Secondary\FireBeam.cs" />
     <Compile Include="Survivors\Cyborg\EntityStates\Special\DeployTeleporter.cs" />
     <Compile Include="Survivors\Cyborg\EntityStates\Special\UseTeleporter.cs" />
     <Compile Include="Survivors\Executioner\Components\ExecutionerController.cs" />

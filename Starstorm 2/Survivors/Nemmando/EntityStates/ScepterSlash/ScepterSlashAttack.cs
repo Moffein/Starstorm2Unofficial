@@ -1,5 +1,5 @@
 ﻿using EntityStates;
-using EntityStates.Starstorm2States.Common;
+using EntityStates.SS2UStates.Common;
 using RoR2;
 using RoR2.Orbs;
 using Starstorm2.Components;
@@ -9,7 +9,7 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.Networking;
 
-namespace EntityStates.Starstorm2States.Nemmando
+namespace EntityStates.SS2UStates.Nemmando
 {
     public class ScepterSlashAttack : BaseCustomSkillState
     {

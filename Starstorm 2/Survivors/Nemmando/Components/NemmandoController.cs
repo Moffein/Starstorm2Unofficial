@@ -121,7 +121,7 @@ namespace Starstorm2.Survivors.Nemmando.Components
                 if (i)
                 {
                     TemporaryOverlay temporaryOverlay = i.gameObject.AddComponent<TemporaryOverlay>();
-                    temporaryOverlay.duration = 5f * (EntityStates.Starstorm2States.Nemmando.ChargedSlashAttack.baseDuration / this.characterBody.attackSpeed);
+                    temporaryOverlay.duration = 5f * (EntityStates.SS2UStates.Nemmando.ChargedSlashAttack.baseDuration / this.characterBody.attackSpeed);
                     temporaryOverlay.animateShaderAlpha = true;
                     temporaryOverlay.alphaCurve = AnimationCurve.EaseInOut(0f, 1f, 1f, 1f);
                     temporaryOverlay.destroyComponentOnEnd = true;
