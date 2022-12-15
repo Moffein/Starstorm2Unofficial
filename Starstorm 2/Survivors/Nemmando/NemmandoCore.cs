@@ -522,11 +522,11 @@ namespace Starstorm2.Survivors.Nemmando
         {
             LanguageAPI.Add("NEMMANDO_NAME", "Nemesis Commando");
             LanguageAPI.Add("NEMMANDO_SUBTITLE", "Lone Echo");
-            LanguageAPI.Add("NEMMANDO_DESCRIPTION", "The Nemesis Commando is a wildcard on the battlefield, capable of turning any situation to his favor.\n\n<color=#CCD3E0>" +
-                "< ! > Blade of Cessayion is risky but can build up a lot of damage by stacking Gouge.\n\n" +
-                "< ! > Distant Gash can be used to safely apply stacks of Gouge to groups of enemies - take advantage of its piercing!\n\n" +
-                "< ! > Proper balance of melee and ranged combat is key, and Tactical Roll grants high armor to help enter and exit battles.\n\n" +
-                "< ! > Submission can be utilized to quickly stun enemies, whether it be to aid in an escape or get the jump on an unsuspecting target.\n");
+            LanguageAPI.Add("NEMMANDO_DESCRIPTION", "The Nemesis Commando is a wildcard on the battlefield, capable of turning any situation to his favor.\r\n\r\n" +
+                "< ! > Blade of Cessation is risky but can build up a lot of damage by stacking Gouge.\r\n\r\n" +
+                "< ! > Distant Gash can be used to safely apply stacks of Gouge to groups of enemies - take advantage of its piercing!\r\n\r\n" +
+                "< ! > Proper balance of melee and ranged combat is key, and Tactical Roll grants high armor to help enter and exit battles.\r\n\r\n" +
+                "< ! > Submission deals massive damage when fully charged.\r\n\r\n");
             LanguageAPI.Add("NEMMANDO_OUTRO_FLAVOR", "..and so he left, newfound sense of humanity within.");
             LanguageAPI.Add("NEMMANDO_OUTRO_FAILURE", "..and so he returned, concluding his endless struggle.");
             LanguageAPI.Add("NEMMANDO_LORE", "He lays to rest by a fire, setting the weapons he carries within an arm's reach. Checking his surroundings, hoping the cave he hid in would be enough shelter. Some would say, it isn't wise to be overly cautious. He would say, <color=#FFCCED>they haven't seen enough.</color>\n\n" +

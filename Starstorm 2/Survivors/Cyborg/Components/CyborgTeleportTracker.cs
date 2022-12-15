@@ -1,5 +1,6 @@
 ﻿using RoR2;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
 using UnityEngine.Networking;
 
 namespace Starstorm2.Survivors.Cyborg.Components
@@ -13,6 +14,7 @@ namespace Starstorm2.Survivors.Cyborg.Components
         private bool _canTeleport = false;
 
         private GameObject teleportObject;
+        public static GameObject teleportDestroyEffect = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Engi/OmniExplosionVFXEngiTurretDeath.prefab").WaitForCompletion();
 
         public void FixedUpdate()
         {

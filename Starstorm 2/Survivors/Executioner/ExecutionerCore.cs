@@ -313,11 +313,11 @@ namespace Starstorm2.Survivors.Executioner
         {
             LanguageAPI.Add("EXECUTIONER_NAME", "Executioner");
             LanguageAPI.Add("EXECUTIONER_SUBTITLE", "Dreaded Guillotine");
-            LanguageAPI.Add("EXECUTIONER_DESCRIPTION", "The Executioner is a high-risk, high-reward survivor that's all about racking up an endless kill count.\n\n" +
-                "<color=#CCD3E0> < ! > Use Service Pistol to score some kills, with each kill building up an even stronger Ion Burst.\n\n" +
-                " < ! > Some enemies provide multiple charges for Ion burst - and bosses fully charge it!\n\n" +
-                " < ! > Execution is a great crowd control AND single target tool. Don't forget that its damage depends on how many targets it hits!\n\n" +
-                " < ! > If you find yourself getting swarmed, Crowd Dispersion can get enemies off your back fast.\n\n");
+            LanguageAPI.Add("EXECUTIONER_DESCRIPTION", "The Executioner is a mobile fighter who specializes in counting heads.\r\n\r\n" +
+                " < ! > Ion Burst deals massive damage, but does not regenerate stocks over time.\r\n\r\n" +
+                " < ! > Crowd Disperion interrupts enemy attacks, providing you with a window of opportunity.\r\n\r\n" +
+                " < ! > Feared enemies give extra Ion Burst charges when killed.\r\n\r\n" +
+                " < ! > Combine Execution with Crowd Dispersion to quickly kill groups of enemies.\r\n\r\n");
             LanguageAPI.Add("EXECUTIONER_OUTRO_FLAVOR", "..and so he left, bloodlust unfulfilled.");
             LanguageAPI.Add("EXECUTIONER_OUTRO_FAILURE", "..and so he vanished, escaping what he'd believed was inevitable.");
             LanguageAPI.Add("EXECUTIONER_LORE", "Death is inevitable. It comes for us all. Some may try to evade it, or run from it. But death arrives all the same. Death, however, is simply the cost of war. And death in glorious combat is one of the best deaths a man could ask for.\n\n" +

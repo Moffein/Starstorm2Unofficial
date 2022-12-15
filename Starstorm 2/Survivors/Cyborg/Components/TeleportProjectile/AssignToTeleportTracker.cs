@@ -7,8 +7,6 @@ namespace Starstorm2.Survivors.Cyborg.Components.TeleportProjectile
 {
     public class AssignToTeleportTracker : MonoBehaviour
     {
-        public static float timeBeforeFreeze = 1.1f;
-        
         private Rigidbody rigidBody;
         private CyborgTeleportTracker ctt;
 

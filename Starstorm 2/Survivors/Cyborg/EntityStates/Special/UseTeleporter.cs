@@ -11,23 +11,28 @@ namespace EntityStates.SS2UStates.Cyborg.Special
         public static GameObject explosionEffectPrefab;
         public static float damageCoefficient = 12f;
         public static float radius = 14f;
-        public static float baseDuration = 0.5f;
+        public static float baseDuration = 0.6f;
+        public static float tapDuration = 0.3f;
         private CyborgTeleportTracker teleTracker;
         private bool teleported;
+        private float stopwatch;
 
         public override void OnEnter()
         {
             base.OnEnter();
-
             teleported = false;
-            base.PlayAnimation("Gesture, Override", "UseTP", "FireM1.playbackRate", UseTeleporter.baseDuration);
             teleTracker = base.GetComponent<CyborgTeleportTracker>();
+            base.PlayAnimation("Gesture, Override", "UseTP", "FireM1.playbackRate", UseTeleporter.baseDuration);
+        }
+
+        private void Teleport()
+        {
             if (base.isAuthority && base.characterMotor && teleTracker)
             {
                 Vector3? teleportLocation = teleTracker.GetTeleportCoordinates();
                 if (teleportLocation != null)
                 {
-                    Util.PlaySound("Play_UI_charTeleport", base.gameObject);
+                    Util.PlaySound("CyborgSpecialTeleport", base.gameObject);
                     base.characterMotor.velocity.y = 0f;
                     base.characterMotor.disableAirControlUntilCollision = false;
 
@@ -72,16 +77,34 @@ namespace EntityStates.SS2UStates.Cyborg.Special
         {
             base.FixedUpdate();
 
-            if (base.isAuthority && base.fixedAge >= UseTeleporter.baseDuration)
+            if (base.isAuthority)
             {
-                this.outer.SetNextStateToMain();
-                return;
+                if (!base.inputBank.skill4.down)
+                {
+                    if (!teleported && base.fixedAge <= UseTeleporter.tapDuration)
+                    {
+                        Teleport();
+                    }
+                }
+                
+                if (base.fixedAge >= UseTeleporter.baseDuration)
+                {
+                    this.outer.SetNextStateToMain();
+                    return;
+                }
             }
         }
 
         public override void OnExit()
         {
-            if (!teleported && base.isAuthority) TelefragExplosionAuthority(base.transform.position);
+            if (base.isAuthority)
+            {
+                if (teleTracker && !teleported)
+                {
+                    teleTracker.CmdDestroyTeleporter();
+                    Util.PlaySound("Play_railgunner_m2_reload_fail", base.gameObject);
+                }
+            }
             base.OnExit();
         }
 
