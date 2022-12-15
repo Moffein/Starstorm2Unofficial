@@ -11,13 +11,13 @@ namespace EntityStates.SS2UStates.Cyborg.Secondary
         public static string fullChargeSound = "Play_item_proc_crit_cooldown";
         public static string beginChargeSound = "Play_MULT_m1_snipe_charge";
         public static string endChargeSound = "Play_MULT_m1_snipe_charge_end";
-        public static GameObject chargeCrosshairPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/UI/TiltedBracketCrosshair.prefab").WaitForCompletion();
+        public static GameObject chargeCrosshairPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/UI/StandardCrosshairSmall.prefab").WaitForCompletion();
         public static GameObject chargeupVfxPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Junk/Toolbot/SpearChargeUpVFX.prefab").WaitForCompletion();
         public static GameObject holdChargeVfxPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Captain/SpearChargedVFX.prefab").WaitForCompletion();
 
         public static GameObject fullChargeEffectPrefab;
         public static float baseDuration = 1f;
-        public static float perfectChargeDuration = 0.25f;   //dont scale this with attack speed
+        public static float perfectChargeDuration = 0.3f;   //dont scale this with attack speed
 
         private CrosshairUtils.OverrideRequest crosshairOverrideRequest;
         private float duration;

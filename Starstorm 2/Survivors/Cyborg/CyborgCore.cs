@@ -491,7 +491,13 @@ namespace Starstorm2.Survivors.Cyborg
 
             cyborgPrefab.GetComponent<EntityStateMachine>().mainStateType = new SerializableEntityStateType(typeof(CyborgMain));
 
-            EntityStateMachine jetpackStateMachine = cyborgPrefab.AddComponent<EntityStateMachine>();
+            bool hadSlide = true;
+            EntityStateMachine jetpackStateMachine = EntityStateMachine.FindByCustomName(cyborgPrefab, "Slide");
+            if (!jetpackStateMachine)
+            {
+                hadSlide = false;
+                jetpackStateMachine = cyborgPrefab.AddComponent<EntityStateMachine>();
+            }
             jetpackStateMachine.customName = "Jetpack";
             jetpackStateMachine.initialStateType = new SerializableEntityStateType(typeof(EntityStates.Idle));
             jetpackStateMachine.mainStateType = new SerializableEntityStateType(typeof(EntityStates.Idle));
@@ -499,8 +505,11 @@ namespace Starstorm2.Survivors.Cyborg
             nsm.stateMachines = nsm.stateMachines.Append(jetpackStateMachine).ToArray();
 
             //This makes the Jetpack get shut off when frozen
-            SetStateOnHurt ssoh = cyborgPrefab.GetComponent<SetStateOnHurt>();
-            ssoh.idleStateMachine.Append(jetpackStateMachine);
+            if (!hadSlide)
+            {
+                SetStateOnHurt ssoh = cyborgPrefab.GetComponent<SetStateOnHurt>();
+                ssoh.idleStateMachine.Append(jetpackStateMachine);
+            }
 
             EntityStateMachine teleStateMachine = cyborgPrefab.AddComponent<EntityStateMachine>();
             teleStateMachine.customName = "Teleporter";

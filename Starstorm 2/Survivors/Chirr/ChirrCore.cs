@@ -349,7 +349,13 @@ namespace Starstorm2.Survivors.Chirr
 
             Cores.PrefabCore.SetupHitbox(model, childLocator.FindChild("HeadbuttHitbox"), "HeadbuttHitbox");
 
-            EntityStateMachine jetpackStateMachine = chirrPrefab.AddComponent<EntityStateMachine>();
+            bool hadSlide = true;
+            EntityStateMachine jetpackStateMachine = EntityStateMachine.FindByCustomName(chirrPrefab, "Slide");
+            if (!jetpackStateMachine)
+            {
+                hadSlide = false;
+                jetpackStateMachine = chirrPrefab.AddComponent<EntityStateMachine>();
+            }
             jetpackStateMachine.customName = "Jetpack";
             jetpackStateMachine.initialStateType = new SerializableEntityStateType(typeof(EntityStates.Idle));
             jetpackStateMachine.mainStateType = new SerializableEntityStateType(typeof(EntityStates.Idle));
@@ -357,8 +363,11 @@ namespace Starstorm2.Survivors.Chirr
             nsm.stateMachines = nsm.stateMachines.Append(jetpackStateMachine).ToArray();
 
             //This makes the Jetpack get shut off when frozen
-            SetStateOnHurt ssoh = chirrPrefab.GetComponent<SetStateOnHurt>();
-            ssoh.idleStateMachine.Append(jetpackStateMachine);
+            if (!hadSlide)
+            {
+                SetStateOnHurt ssoh = chirrPrefab.GetComponent<SetStateOnHurt>();
+                ssoh.idleStateMachine.Append(jetpackStateMachine);
+            }
 
             return chirrPrefab;
         }
