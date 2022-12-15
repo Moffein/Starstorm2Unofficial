@@ -18,8 +18,6 @@ namespace EntityStates.SS2UStates.Cyborg
         private Animator animator;
         private string muzzleString;
 
-        private CyborgController cyborgController;
-
         public float damageCoefficientInternal;
         public GameObject projectilePrefabInternal;
 
@@ -30,11 +28,6 @@ namespace EntityStates.SS2UStates.Cyborg
             base.characterBody.SetAimTimer(2f);
             this.animator = base.GetModelAnimator();
             this.muzzleString = "Muzzle";
-            cyborgController = base.GetComponent<CyborgController>();
-            if (cyborgController)
-            {
-                cyborgController.allowJetpack = false;
-            }
 
             Util.PlaySound("CyborgUtility", base.gameObject);
             base.PlayAnimation("Gesture, Override", "FireSpecial", "FireArrow.playbackRate", this.duration);
@@ -56,10 +49,6 @@ namespace EntityStates.SS2UStates.Cyborg
 
         public override void OnExit()
         {
-            if (cyborgController)
-            {
-                cyborgController.allowJetpack = true;
-            }
             base.OnExit();
         }
 

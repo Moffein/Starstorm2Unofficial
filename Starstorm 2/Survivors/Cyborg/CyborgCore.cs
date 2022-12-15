@@ -65,9 +65,9 @@ namespace Starstorm2.Survivors.Cyborg
 
             LanguageAPI.Add("CYBORG_NAME", "CYBORG");
             LanguageAPI.Add("CYBORG_SUBTITLE", "Man Made Monstrosity");
-            LanguageAPI.Add("CYBORG_OUTRO_FLAVOR", "..and so he left, programming releasing excess serotonin.");
-            LanguageAPI.Add("CYBORG_OUTRO_FAILURE", "..and so he vanished, teleportation beacon left with no signal.");
-            LanguageAPI.Add("CYBORG_DESCRIPTION", "The CYBORG is versatile and very time-efficient.\r\n\r\n< ! > Unmaker and Rising Star deal consistent damage at all ranges.\r\n\r\n< ! > Overheat Redress fizzles out over distance, so use it up close to deal the most damage!\r\n\r\n< ! > Use Recall to place warp points to return to while exploring a stage.\r\n\r\n< ! > Hold down the Recall button to destroy unwanted warp points.\r\n\r\n");
+            LanguageAPI.Add("CYBORG_OUTRO_FLAVOR", "..and so it left, programming releasing excess serotonin.");
+            LanguageAPI.Add("CYBORG_OUTRO_FAILURE", "..and so it vanished, teleportation beacon left with no signal.");
+            LanguageAPI.Add("CYBORG_DESCRIPTION", "The CYBORG is a versatile and highly-efficient fusion of man and machine.\r\n\r\n< ! > Unmaker and Rising Star deal consistent damage at all ranges.\r\n\r\n< ! > Overheat Redress fizzles out over distance, so use it up close to deal the most damage!\r\n\r\n< ! > Use Recall to place warp points to return to while exploring a stage.\r\n\r\n< ! > Hold down the Recall button to destroy unwanted warp points.\r\n\r\n");
 
             RegisterProjectiles();
             RegisterStates();
@@ -255,7 +255,7 @@ namespace Starstorm2.Survivors.Cyborg
             var dmg = PrimaryLaser.damageCoefficient * 100f;
 
             LanguageAPI.Add("CYBORG_PRIMARY_GUN_NAME", "Unmaker");
-            LanguageAPI.Add("CYBORG_PRIMARY_GUN_DESCRIPTION", $"Fire a beam at contenders for <style=cIsDamage>{dmg}% damage</style>.");
+            LanguageAPI.Add("CYBORG_PRIMARY_GUN_DESCRIPTION", $"Fire a <style=cIsUtility>slowing</style> beam at contenders for <style=cIsDamage>{dmg}% damage</style>.");
 
             SteppedSkillDef primaryDef1 = ScriptableObject.CreateInstance<SteppedSkillDef>();
             primaryDef1.activationState = new EntityStates.SerializableEntityStateType(typeof(PrimaryLaser));

@@ -61,7 +61,11 @@ namespace Starstorm2.Survivors.Cyborg.Components
         {
             if (!NetworkServer.active) return;
 
-            if (teleportObject) UnityEngine.Object.Destroy(teleportObject);
+            if (teleportObject)
+            {
+                EffectManager.SimpleEffect(CyborgTeleportTracker.teleportDestroyEffect, teleportObject.transform.position, default, true);
+                UnityEngine.Object.Destroy(teleportObject);
+            }
             teleportObject = null;
             _canTeleport = false;
         }
