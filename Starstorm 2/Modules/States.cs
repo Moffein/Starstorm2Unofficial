@@ -17,6 +17,9 @@ namespace Starstorm2.Modules
 
             AddSkill(typeof(NemesisSpawnState));
 
+            AddSkill(typeof(BaseCustomMainState));
+            AddSkill(typeof(BaseCustomSkillState));
+
             AddSkill(typeof(Cores.States.Nucleator.ApplyRadionuclideSurge));
             AddSkill(typeof(Cores.States.Nucleator.ChargeFissionImpulse));
             AddSkill(typeof(Cores.States.Nucleator.ChargeIrradiate));

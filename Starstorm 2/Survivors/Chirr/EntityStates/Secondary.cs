@@ -14,9 +14,6 @@ using Starstorm2.Cores;
 using UnityEngine.Networking;
 using KinematicCharacterController;
 
-//FIXME: ion gun doesn't build charges in mp if player is not host
-//FIXME: ion burst stocks do not carry over between stages (may leave this as feature)
-
 namespace EntityStates.SS2UStates.Chirr
 {
     public class ChirrHeadbutt : BasicMeleeAttack, SteppedSkillDef.IStepSetter
@@ -29,13 +26,7 @@ namespace EntityStates.SS2UStates.Chirr
         public GameObject effectPrefab = LegacyResourcesAPI.Load<GameObject>("prefabs/effects/impacteffects/HitsparkCommandoShotgun");
         public GameObject critEffectPrefab = LegacyResourcesAPI.Load<GameObject>("prefabs/effects/impacteffects/critspark");
 
-        //private float duration;
-        //private float fireDuration;
-        //private bool firstShot = false;
-        //private bool secondShot = false;
-        //private bool thirdShot = false;
         private Animator animator;
-        //private string muzzleString;
         private BullseyeSearch search = new BullseyeSearch();
         private float forceMagnitude = 7000;
 
@@ -43,19 +34,13 @@ namespace EntityStates.SS2UStates.Chirr
         public override void OnEnter()
         {
             this.hitBoxGroupName = "HeadbuttHitbox";
-            //base.baseDuration = BladeOfCessation.baseDurationNormal;
             base.duration = base.baseDuration / base.attackSpeedStat;
             base.hitPauseDuration = 0f;
             base.damageCoefficient = damageCoefficient;
             base.procCoefficient = 1.0f;
 
-            //base.mecanimHitboxActiveParameter = "Primary.Hitbox";
-            //this.effectTime = duration * baseEffectTime;
             base.PlayAnimation("Gesture, Override", "Secondary", "Secondary.playbackRate", this.baseDuration / base.attackSpeedStat);
             base.PlayAnimation("Gesture, Additive", "Secondary", "Secondary.playbackRate", this.baseDuration / base.attackSpeedStat);
-            //Util.PlaySound(EntityStates.BeetleMonster.HeadbuttState.attackSoundString, base.gameObject);
-            Util.PlaySound(EntityStates.Merc.Weapon.GroundLight2.slash1Sound, base.gameObject);
-            //base.characterDirection.forward = base.GetAimRay().direction;
 
             base.OnEnter();
 

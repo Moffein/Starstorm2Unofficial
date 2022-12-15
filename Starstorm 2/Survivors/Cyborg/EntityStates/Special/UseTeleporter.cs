@@ -103,6 +103,10 @@ namespace EntityStates.SS2UStates.Cyborg.Special
                 {
                     teleTracker.CmdDestroyTeleporter();
                     Util.PlaySound("Play_railgunner_m2_reload_fail", base.gameObject);
+                    if (base.skillLocator)
+                    {
+                        base.skillLocator.special.AddOneStock();
+                    }
                 }
             }
             base.OnExit();

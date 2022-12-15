@@ -411,7 +411,7 @@ namespace Starstorm2.Survivors.Cyborg
             specialDeploy.fullRestockOnAssign = true;
             specialDeploy.interruptPriority = EntityStates.InterruptPriority.Any;
             specialDeploy.isCombatSkill = false;
-            specialDeploy.mustKeyPress = false;
+            specialDeploy.mustKeyPress = true;
             specialDeploy.cancelSprintingOnActivation = false;
             specialDeploy.rechargeStock = 1;
             specialDeploy.requiredStock = 1;

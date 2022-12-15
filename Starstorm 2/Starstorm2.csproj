@@ -80,6 +80,7 @@
     <Compile Include="API\Utils.cs" />
     <Compile Include="Survivors\Chirr\ChirrSkins.cs" />
     <Compile Include="Survivors\Chirr\Components\ChirrInfoComponent.cs" />
+    <Compile Include="Survivors\Chirr\EntityStates\Headbutt.cs" />
     <Compile Include="Survivors\Chirr\EntityStates\JetpackOn.cs" />
     <Compile Include="Survivors\Chirr\EntityStates\TriDart.cs" />
     <Compile Include="Survivors\Cyborg\Achievements\CyborgGrandMasteryAchievement.cs" />

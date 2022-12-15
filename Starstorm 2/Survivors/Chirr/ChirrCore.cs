@@ -64,6 +64,8 @@ namespace Starstorm2.Survivors.Chirr
             Modules.States.AddSkill(typeof(ChirrHeal));
             Modules.States.AddSkill(typeof(ChirrBefriend));
             Modules.States.AddSkill(typeof(ChirrLeash));
+
+            Modules.States.AddSkill(typeof(Headbutt));
         }
 
         private void RegisterHooks()
@@ -177,7 +179,7 @@ namespace Starstorm2.Survivors.Chirr
 
         private void SetUpSecondaries(SkillLocator skillLocator)
         {
-            var dmg = ChirrHeadbutt.damageCoefficient * 100f;
+            var dmg = Headbutt.damageCoefficient * 100f;
 
             SkillLocator skill = chirrPrefab.GetComponent<SkillLocator>();
 
@@ -185,7 +187,7 @@ namespace Starstorm2.Survivors.Chirr
             LanguageAPI.Add("CHIRR_HEADBUTT_DESCRIPTION", $"Headbutt enemies in front of you for <style=cIsDamage>{dmg}% damage</style>. <style=cIsDamage>Stunning</style>.");
 
             SkillDef secondaryDef1 = ScriptableObject.CreateInstance<SkillDef>();
-            secondaryDef1.activationState = new SerializableEntityStateType(typeof(ChirrHeadbutt));
+            secondaryDef1.activationState = new SerializableEntityStateType(typeof(Headbutt));
             secondaryDef1.activationStateMachineName = "Weapon";
             secondaryDef1.skillName = "CHIRR_HEADBUTT_NAME";
             secondaryDef1.skillNameToken = "CHIRR_HEADBUTT_NAME";
