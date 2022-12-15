@@ -93,25 +93,5 @@ namespace EntityStates.SS2UStates.Cyborg
             // rest idle!!
             //if (this.animator) this.animator.SetBool("inCombat", (!base.characterBody.outOfCombat || !base.characterBody.outOfDanger));
         }
-
-        public override void Update()
-        {
-            base.Update();
-
-            /*if (base.isAuthority && base.characterMotor.isGrounded)
-            {
-                if (Input.GetKeyDown(Starstorm.restKeybind))
-                {
-                    this.outer.SetInterruptState(EntityState.Instantiate(new SerializableEntityStateType(typeof(Emotes.RestEmote))), InterruptPriority.Any);
-                    return;
-                }
-                else if (Input.GetKeyDown(Starstorm.tauntKeybind))
-                {
-                    this.outer.SetInterruptState(EntityState.Instantiate(new SerializableEntityStateType(typeof(Emotes.TauntEmote))), InterruptPriority.Any);
-                    return;
-                }
-            }*/
-            // I ll need those eventually
-        }
     }
 }

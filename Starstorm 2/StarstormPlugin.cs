@@ -37,13 +37,13 @@ namespace Starstorm2
         "ContentAddition"
     })]
 
-    public class Starstorm : BaseUnityPlugin
+    public class StarstormPlugin : BaseUnityPlugin
     {
         internal const string guid = "com.ChirrLover.Starstorm2Unofficial";
         internal const string modName = "Starstorm 2 Unofficial";
-        internal const string version = "0.4.1";
+        internal const string version = "0.4.2";
 
-        public static Starstorm instance;
+        public static StarstormPlugin instance;
 
         public static bool scrollableLobbyInstalled = false; // putting this here because lazy, move it if you want
         public static bool infernoPluginLoaded = false;
@@ -100,10 +100,10 @@ namespace Starstorm2
             new Survivors.Executioner.ExecutionerCore().Initialize();
             new Survivors.Nemmando.NemmandoCore().Initialize();
             cyborgCore = new CyborgCore();
+            chirrCore = new ChirrCore();
 
             if (false)//(Modules.Config.ss_test.Value)
             {
-                chirrCore = new ChirrCore();
                 new Modules.Survivors.Nucleator().Initialize();
             }
             //

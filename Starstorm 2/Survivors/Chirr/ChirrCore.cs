@@ -6,6 +6,8 @@ using UnityEngine.Networking;
 using TMPro;
 using Starstorm2.Survivors.Chirr.Components;
 using EntityStates.SS2UStates.Chirr;
+using EntityStates;
+using System.Linq;
 
 namespace Starstorm2.Survivors.Chirr
 {
@@ -27,7 +29,7 @@ namespace Starstorm2.Survivors.Chirr
         private void Setup()
         {
             chirrPrefab = CreateChirrPrefab();
-            chirrPrefab.GetComponent<EntityStateMachine>().mainStateType = new EntityStates.SerializableEntityStateType(typeof(ChirrMain));
+            chirrPrefab.GetComponent<EntityStateMachine>().mainStateType = new SerializableEntityStateType(typeof(ChirrMain));
 
             LanguageAPI.Add("CHIRR_NAME", "Chirr");
             LanguageAPI.Add("CHIRR_SUBTITLE", "Supreme Bug of Comf");
@@ -48,11 +50,14 @@ namespace Starstorm2.Survivors.Chirr
             RegisterHooks();
             CreateDoppelganger();
 
-            Modules.Prefabs.RegisterNewSurvivor(chirrPrefab, Cores.PrefabCore.CreateDisplayPrefab("ChirrDisplay", chirrPrefab), Color.green, "CHIRR");
+            Modules.Prefabs.RegisterNewSurvivor(chirrPrefab, Cores.PrefabCore.CreateDisplayPrefab("ChirrDisplay", chirrPrefab), Color.green, "CHIRR", 40.2f);
+
+            ChirrSkins.RegisterSkins();
         }
 
         private void RegisterStates()
         {
+            Modules.States.AddSkill(typeof(JetpackOn));
             Modules.States.AddSkill(typeof(ChirrMain));
             Modules.States.AddSkill(typeof(ChirrFireDarts));
             Modules.States.AddSkill(typeof(ChirrHeadbutt));
@@ -85,63 +90,6 @@ namespace Starstorm2.Survivors.Chirr
         private void RegisterProjectiles()
         {
             chirrDart = PrefabAPI.InstantiateClone(LegacyResourcesAPI.Load<GameObject>("prefabs/projectiles/SyringeProjectile"), "Prefabs/Projectiles/ChirrDart", true);
-
-            //chirrHeal = PrefabAPI.InstantiateClone(LegacyResourcesAPI.Load<GameObject>("prefabs/effects/TPHealNovaEffect.prefab"), "Prefabs/Projectiles/ChirrHeal", true);
-            /*bfgProjectile.GetComponent<ProjectileController>().procCoefficient = 1f;
-            //bfgProjectile.GetComponent<ProjectileController>().catalogIndex = 53;
-            bfgProjectile.GetComponent<ProjectileController>().ghostPrefab = LegacyResourcesAPI.Load<GameObject>("Prefabs/ProjectileGhosts/BeamSphereGhost");
-            bfgProjectile.GetComponent<ProjectileDamage>().damage = 1f;
-            bfgProjectile.GetComponent<ProjectileDamage>().damageType = DamageType.Generic;
-            bfgProjectile.GetComponent<ProjectileDamage>().damageColorIndex = DamageColorIndex.Default;
-            bfgProjectile.GetComponent<ProjectileSimple>().velocity = 13;
-            bfgProjectile.GetComponent<ProjectileSimple>().lifetime = 4;
-            bfgProjectile.AddComponent<ProjectileProximityBeamController>();
-            bfgProjectile.GetComponent<ProjectileProximityBeamController>().attackRange = 8;
-            bfgProjectile.GetComponent<ProjectileProximityBeamController>().listClearInterval = .2f;
-            bfgProjectile.GetComponent<ProjectileProximityBeamController>().attackInterval = .2f;
-            bfgProjectile.GetComponent<ProjectileProximityBeamController>().damageCoefficient = 0.8f;
-            bfgProjectile.GetComponent<ProjectileProximityBeamController>().procCoefficient = .2f;
-            bfgProjectile.GetComponent<ProjectileProximityBeamController>().inheritDamageType = true;
-            bfgProjectile.AddComponent<RadialForce>();
-            bfgProjectile.GetComponent<RadialForce>().radius = 18;
-            bfgProjectile.GetComponent<RadialForce>().damping = 0.5f;
-            bfgProjectile.GetComponent<RadialForce>().forceMagnitude = -1500;
-            bfgProjectile.GetComponent<RadialForce>().forceCoefficientAtEdge = 0.5f;
-            bfgProjectile.AddComponent<ProjectileImpactExplosion>();
-            bfgProjectile.GetComponent<ProjectileImpactExplosion>().impactEffect = LegacyResourcesAPI.Load<GameObject>("Prefabs/Effects/BeamSphereExplosion");
-            bfgProjectile.GetComponent<ProjectileImpactExplosion>().destroyOnEnemy = true;
-            bfgProjectile.GetComponent<ProjectileImpactExplosion>().destroyOnWorld = true;
-            bfgProjectile.GetComponent<ProjectileImpactExplosion>().timerAfterImpact = false;
-            bfgProjectile.GetComponent<ProjectileImpactExplosion>().falloffModel = BlastAttack.FalloffModel.SweetSpot;
-            bfgProjectile.GetComponent<ProjectileImpactExplosion>().lifetime = 3;
-            bfgProjectile.GetComponent<ProjectileImpactExplosion>().lifetimeAfterImpact = 0;
-            bfgProjectile.GetComponent<ProjectileImpactExplosion>().lifetimeRandomOffset = 0;
-            bfgProjectile.GetComponent<ProjectileImpactExplosion>().blastRadius = 20;
-            bfgProjectile.GetComponent<ProjectileImpactExplosion>().blastDamageCoefficient = 12f;
-            bfgProjectile.GetComponent<ProjectileImpactExplosion>().blastProcCoefficient = 1;
-            bfgProjectile.GetComponent<ProjectileImpactExplosion>().blastAttackerFiltering = AttackerFiltering.Default;
-            bfgProjectile.GetComponent<ProjectileOverlapAttack>().enabled = false;
-
-            //bfgProjectile.GetComponent<ProjectileProximityBeamController>().enabled = false;
-
-            chirrPylon = PrefabAPI.InstantiateClone(LegacyResourcesAPI.Load<GameObject>("Prefabs/Projectiles/EngiGrenadeProjectile"), "Prefabs/Projectiles/ChirrTPPylon", true);
-
-            GameObject ghost = AssetsCore.mainAssetBundle.LoadAsset<GameObject>("chirrTeleGhost2");
-            ghost.AddComponent<ProjectileGhostController>();
-            chirrPylon.GetComponent<ProjectileController>().ghostPrefab = ghost;
-            chirrPylon.GetComponent<ProjectileSimple>().lifetime = 2147483646;
-            chirrPylon.GetComponent<ProjectileImpactExplosion>().lifetime = 2147483646;
-            chirrPylon.GetComponent<ProjectileImpactExplosion>().lifetimeAfterImpact = 2147483646;
-            chirrPylon.GetComponent<ProjectileImpactExplosion>().destroyOnEnemy = false;
-            //chirrPylon.GetComponent<ProjectileImpactExplosion>().falloffModel = BlastAttack.FalloffModel.SweetSpot;
-            chirrPylon.GetComponent<Rigidbody>().drag = 2;
-            chirrPylon.GetComponent<Rigidbody>().angularDrag = 2f;
-            chirrPylon.AddComponent<AntiGravityForce>();
-            chirrPylon.GetComponent<AntiGravityForce>().rb = chirrPylon.GetComponent<Rigidbody>();
-            chirrPylon.GetComponent<AntiGravityForce>().antiGravityCoefficient = 1;
-
-            // register it for networking
-            if (bfgProjectile) PrefabAPI.RegisterNetworkPrefab(bfgProjectile);*/
             if (chirrDart) PrefabAPI.RegisterNetworkPrefab(chirrDart);
 
             chirrTargetIndicator = PrefabAPI.InstantiateClone(LegacyResourcesAPI.Load<GameObject>("Prefabs/WoodSpriteIndicator"), "ChirrTargetIndicator", true);
@@ -201,7 +149,7 @@ namespace Starstorm2.Survivors.Chirr
             LanguageAPI.Add("CHIRR_DARTS_DESCRIPTION", $"Fire a barrage of thorns for <style=cIsDamage> 3x{dmg}% damage</style>. <style=cIsDamage>Marking</style>.");
 
             SkillDef primaryDef1 = ScriptableObject.CreateInstance<SkillDef>();
-            primaryDef1.activationState = new EntityStates.SerializableEntityStateType(typeof(ChirrFireDarts));
+            primaryDef1.activationState = new SerializableEntityStateType(typeof(ChirrFireDarts));
             primaryDef1.activationStateMachineName = "Weapon";
             primaryDef1.skillName = "CHIRR_DARTS_NAME";
             primaryDef1.skillNameToken = "CHIRR_DARTS_NAME";
@@ -212,7 +160,7 @@ namespace Starstorm2.Survivors.Chirr
             primaryDef1.beginSkillCooldownOnSkillEnd = false;
             primaryDef1.canceledFromSprinting = false;
             primaryDef1.fullRestockOnAssign = true;
-            primaryDef1.interruptPriority = EntityStates.InterruptPriority.Any;
+            primaryDef1.interruptPriority = InterruptPriority.Any;
             primaryDef1.isCombatSkill = true;
             primaryDef1.mustKeyPress = false;
             primaryDef1.cancelSprintingOnActivation = true;
@@ -234,11 +182,10 @@ namespace Starstorm2.Survivors.Chirr
             SkillLocator skill = chirrPrefab.GetComponent<SkillLocator>();
 
             LanguageAPI.Add("CHIRR_HEADBUTT_NAME", "Headbutt");
-            //LanguageAPI.Add("CYBORG_SECONDARY_CHARGERIFLE_DESCRIPTION", $"Quickly fire three seeking shots at contenders in front for <style=cIsDamage>3x{dmg}% damage</style>. <style=cKeywordName>Stunning</style><style=cSub>.");
             LanguageAPI.Add("CHIRR_HEADBUTT_DESCRIPTION", $"Headbutt enemies in front of you for <style=cIsDamage>{dmg}% damage</style>. <style=cIsDamage>Stunning</style>.");
 
             SkillDef secondaryDef1 = ScriptableObject.CreateInstance<SkillDef>();
-            secondaryDef1.activationState = new EntityStates.SerializableEntityStateType(typeof(ChirrHeadbutt));
+            secondaryDef1.activationState = new SerializableEntityStateType(typeof(ChirrHeadbutt));
             secondaryDef1.activationStateMachineName = "Weapon";
             secondaryDef1.skillName = "CHIRR_HEADBUTT_NAME";
             secondaryDef1.skillNameToken = "CHIRR_HEADBUTT_NAME";
@@ -249,7 +196,7 @@ namespace Starstorm2.Survivors.Chirr
             secondaryDef1.beginSkillCooldownOnSkillEnd = false;
             secondaryDef1.canceledFromSprinting = false;
             secondaryDef1.fullRestockOnAssign = true;
-            secondaryDef1.interruptPriority = EntityStates.InterruptPriority.Skill;
+            secondaryDef1.interruptPriority = InterruptPriority.Skill;
             secondaryDef1.isCombatSkill = true;
             secondaryDef1.mustKeyPress = false;
             secondaryDef1.cancelSprintingOnActivation = true;
@@ -266,18 +213,13 @@ namespace Starstorm2.Survivors.Chirr
         
         private void SetUpUtilities(SkillLocator skillLocator)
         {
-
-            
-
-            //var dur = ExecutionerDash.debuffDuration;
-
             SkillLocator skill = chirrPrefab.GetComponent<SkillLocator>();
 
             LanguageAPI.Add("CHIRR_HEAL_NAME", "Sanative Aura");
-            LanguageAPI.Add("CHIRR_HEAL_DESCRIPTION", "Heal yourself and nearby allies for <style=cIsHealing>15%</style> of their total health and <style=cIsHealing>20%</style> over time.");
+            LanguageAPI.Add("CHIRR_HEAL_DESCRIPTION", "Heal yourself and nearby allies for <style=cIsHealing>25%</style> of their total health. Allies gain <style=cIsHealing>increased health regeneration</style> for 6 seconds.");
 
             SkillDef utilityDef1 = ScriptableObject.CreateInstance<SkillDef>();
-            utilityDef1.activationState = new EntityStates.SerializableEntityStateType(typeof(ChirrHeal));
+            utilityDef1.activationState = new SerializableEntityStateType(typeof(ChirrHeal));
             utilityDef1.activationStateMachineName = "Weapon";
             utilityDef1.skillName = "CHIRR_HEAL_NAME";
             utilityDef1.skillNameToken = "CHIRR_HEAL_NAME";
@@ -288,7 +230,7 @@ namespace Starstorm2.Survivors.Chirr
             utilityDef1.beginSkillCooldownOnSkillEnd = false;
             utilityDef1.canceledFromSprinting = false;
             utilityDef1.fullRestockOnAssign = true;
-            utilityDef1.interruptPriority = EntityStates.InterruptPriority.Skill;
+            utilityDef1.interruptPriority = InterruptPriority.Skill;
             utilityDef1.isCombatSkill = true;
             utilityDef1.mustKeyPress = false;
             utilityDef1.cancelSprintingOnActivation = false;
@@ -309,7 +251,7 @@ namespace Starstorm2.Survivors.Chirr
             LanguageAPI.Add("CHIRR_BEFRIEND_NAME", "Natural Link");
             LanguageAPI.Add("CHIRR_BEFRIEND_DESCRIPTION", "Befriend an enemy under 50% health. Befriended enemies inherit items.");
             specialDef1 = ScriptableObject.CreateInstance<SkillDef>();
-            specialDef1.activationState = new EntityStates.SerializableEntityStateType(typeof(ChirrBefriend));
+            specialDef1.activationState = new SerializableEntityStateType(typeof(ChirrBefriend));
             specialDef1.activationStateMachineName = "Weapon";
             specialDef1.skillName = "CHIRR_BEFRIEND_NAME";
             specialDef1.skillNameToken = "CHIRR_BEFRIEND_NAME";
@@ -320,7 +262,7 @@ namespace Starstorm2.Survivors.Chirr
             specialDef1.beginSkillCooldownOnSkillEnd = false;
             specialDef1.canceledFromSprinting = false;
             specialDef1.fullRestockOnAssign = true;
-            specialDef1.interruptPriority = EntityStates.InterruptPriority.Skill;
+            specialDef1.interruptPriority = InterruptPriority.Skill;
             specialDef1.isCombatSkill = false;
             specialDef1.mustKeyPress = false;
             specialDef1.cancelSprintingOnActivation = false;
@@ -336,7 +278,7 @@ namespace Starstorm2.Survivors.Chirr
             LanguageAPI.Add("CHIRR_LEASH_NAME", "Natural Sync");
             LanguageAPI.Add("CHIRR_LEASH_DESCRIPTION", "Tap to being your ally to you. Hold to <style=cIsDamage>share damage taken</style> with your friend.");
             specialDef2 = ScriptableObject.CreateInstance<SkillDef>();
-            specialDef2.activationState = new EntityStates.SerializableEntityStateType(typeof(ChirrLeash));
+            specialDef2.activationState = new SerializableEntityStateType(typeof(ChirrLeash));
             specialDef2.activationStateMachineName = "Weapon";
             specialDef2.skillName = "CHIRR_LEASH_NAME";
             specialDef2.skillNameToken = "CHIRR_LEASH_NAME";
@@ -347,7 +289,7 @@ namespace Starstorm2.Survivors.Chirr
             specialDef2.beginSkillCooldownOnSkillEnd = false;
             specialDef2.canceledFromSprinting = false;
             specialDef2.fullRestockOnAssign = true;
-            specialDef2.interruptPriority = EntityStates.InterruptPriority.Skill;
+            specialDef2.interruptPriority = InterruptPriority.Skill;
             specialDef2.isCombatSkill = false;
             specialDef2.mustKeyPress = false;
             specialDef2.cancelSprintingOnActivation = false;
@@ -381,11 +323,11 @@ namespace Starstorm2.Survivors.Chirr
                 bodyColor = new Color32(129, 167, 98, 255),
                 crosshair = LegacyResourcesAPI.Load<GameObject>("Prefabs/Crosshair/StandardCrosshair"),
                 damage = 12f,
-                healthGrowth = 33f,
-                healthRegen = 1.5f,
+                healthGrowth = 30f,
+                healthRegen = 1f,
                 jumpCount = 1,
-                jumpPower = 22.5f,
-                maxHealth = 110f,
+                jumpPower = 30f,    //15f is standard
+                maxHealth = 100f,
                 subtitleNameToken = "CHIRR_SUBTITLE",
                 podPrefab = LegacyResourcesAPI.Load<GameObject>("Prefabs/NetworkedObjects/SurvivorPod")
             });
@@ -406,6 +348,17 @@ namespace Starstorm2.Survivors.Chirr
             ChildLocator childLocator = model.GetComponent<ChildLocator>();
 
             Cores.PrefabCore.SetupHitbox(model, childLocator.FindChild("HeadbuttHitbox"), "HeadbuttHitbox");
+
+            EntityStateMachine jetpackStateMachine = chirrPrefab.AddComponent<EntityStateMachine>();
+            jetpackStateMachine.customName = "Jetpack";
+            jetpackStateMachine.initialStateType = new SerializableEntityStateType(typeof(EntityStates.Idle));
+            jetpackStateMachine.mainStateType = new SerializableEntityStateType(typeof(EntityStates.Idle));
+            NetworkStateMachine nsm = chirrPrefab.GetComponent<NetworkStateMachine>();
+            nsm.stateMachines = nsm.stateMachines.Append(jetpackStateMachine).ToArray();
+
+            //This makes the Jetpack get shut off when frozen
+            SetStateOnHurt ssoh = chirrPrefab.GetComponent<SetStateOnHurt>();
+            ssoh.idleStateMachine.Append(jetpackStateMachine);
 
             return chirrPrefab;
         }

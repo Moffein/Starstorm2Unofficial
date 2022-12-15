@@ -5,7 +5,7 @@ namespace Starstorm2.Modules
     internal class ContentPacks : IContentPackProvider
     {
         internal ContentPack contentPack = new ContentPack();
-        public string identifier => Starstorm.guid;
+        public string identifier => StarstormPlugin.guid;
 
         public void Initialize()
         {

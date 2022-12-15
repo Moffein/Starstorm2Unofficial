@@ -150,9 +150,9 @@ namespace Starstorm2.Survivors.Executioner
             RegisterStates();
 
             #region Primary
-            //Modules.Skills.AddPrimarySkill(bodyPrefab, Modules.Skills.CreatePrimarySkillDef(new EntityStates.SerializableEntityStateType(typeof(EntityStates.Starstorm2States.Executioner.ExecutionerPistol)), "Weapon", "EXECUTIONER_PISTOL_NAME", "EXECUTIONER_PISTOL_DESCRIPTION", Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("texExecutionerPrimary"), false));
-            Modules.Skills.AddPrimarySkill(bodyPrefab, Modules.Skills.CreatePrimarySkillDef(new EntityStates.SerializableEntityStateType(typeof(EntityStates.SS2UStates.Executioner.ExecutionerBurstPistol)), "Weapon", "EXECUTIONER_PISTOL_NAME", "EXECUTIONER_PISTOL_DESCRIPTION", Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("texExecutionerPrimary"), false));
-            //if (Modules.Config.ss_test.Value) Modules.Skills.AddPrimarySkill(bodyPrefab, Modules.Skills.CreatePrimarySkillDef(new EntityStates.SerializableEntityStateType(typeof(EntityStates.Starstorm2States.Executioner.ExecutionerTaser)), "Weapon", "EXECUTIONER_TASER_NAME", "EXECUTIONER_TASER_DESCRIPTION", Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("texExecutionerPrimary"), false));
+            //Modules.Skills.AddPrimarySkill(bodyPrefab, Modules.Skills.CreatePrimarySkillDef(new SerializableEntityStateType(typeof(EntityStates.Starstorm2States.Executioner.ExecutionerPistol)), "Weapon", "EXECUTIONER_PISTOL_NAME", "EXECUTIONER_PISTOL_DESCRIPTION", Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("texExecutionerPrimary"), false));
+            Modules.Skills.AddPrimarySkill(bodyPrefab, Modules.Skills.CreatePrimarySkillDef(new SerializableEntityStateType(typeof(EntityStates.SS2UStates.Executioner.ExecutionerBurstPistol)), "Weapon", "EXECUTIONER_PISTOL_NAME", "EXECUTIONER_PISTOL_DESCRIPTION", Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("texExecutionerPrimary"), false));
+            //if (Modules.Config.ss_test.Value) Modules.Skills.AddPrimarySkill(bodyPrefab, Modules.Skills.CreatePrimarySkillDef(new SerializableEntityStateType(typeof(EntityStates.Starstorm2States.Executioner.ExecutionerTaser)), "Weapon", "EXECUTIONER_TASER_NAME", "EXECUTIONER_TASER_DESCRIPTION", Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("texExecutionerPrimary"), false));
             #endregion
 
             #region Secondary
@@ -162,7 +162,7 @@ namespace Starstorm2.Survivors.Executioner
                 skillNameToken = "EXECUTIONER_IONGUN_NAME",
                 skillDescriptionToken = "EXECUTIONER_IONGUN_DESCRIPTION",
                 skillIcon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("texExecutionerSecondary"),
-                activationState = new EntityStates.SerializableEntityStateType(typeof(ExecutionerIonGun)),
+                activationState = new SerializableEntityStateType(typeof(ExecutionerIonGun)),
                 activationStateMachineName = "Weapon",
                 baseMaxStock = 10,
                 baseRechargeInterval = 0f,
@@ -191,7 +191,7 @@ namespace Starstorm2.Survivors.Executioner
                 skillNameToken = "EXECUTIONER_DASH_NAME",
                 skillDescriptionToken = "EXECUTIONER_DASH_DESCRIPTION",
                 skillIcon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("texExecutionerUtility"),
-                activationState = new EntityStates.SerializableEntityStateType(typeof(EntityStates.SS2UStates.Executioner.ExecutionerDash)),
+                activationState = new SerializableEntityStateType(typeof(EntityStates.SS2UStates.Executioner.ExecutionerDash)),
                 activationStateMachineName = "Slide",
                 baseMaxStock = 1,
                 baseRechargeInterval = 5f,
@@ -223,7 +223,7 @@ namespace Starstorm2.Survivors.Executioner
                 skillNameToken = "EXECUTIONER_AXE_NAME",
                 skillDescriptionToken = "EXECUTIONER_AXE_DESCRIPTION",
                 skillIcon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("texExecutionerSpecial"),
-                activationState = new EntityStates.SerializableEntityStateType(typeof(ExecutionerAxe)),
+                activationState = new SerializableEntityStateType(typeof(ExecutionerAxe)),
                 activationStateMachineName = "Weapon",
                 baseMaxStock = 1,
                 baseRechargeInterval = 8f,
@@ -252,7 +252,7 @@ namespace Starstorm2.Survivors.Executioner
                 skillNameToken = "EXECUTIONER_AXE_SCEPTER_NAME",
                 skillDescriptionToken = "EXECUTIONER_AXE_SCEPTER_DESCRIPTION",
                 skillIcon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("texExecutionerSpecialScepter"),
-                activationState = new EntityStates.SerializableEntityStateType(typeof(ExecutionerAxeScepter)),
+                activationState = new SerializableEntityStateType(typeof(ExecutionerAxeScepter)),
                 activationStateMachineName = "Weapon",
                 baseMaxStock = 1,
                 baseRechargeInterval = 8f,
@@ -271,11 +271,11 @@ namespace Starstorm2.Survivors.Executioner
                 keywordTokens = new string[] { "KEYWORD_SLAYER", "KEYWORD_SS2U_FEAR" }
             });
             specialScepterDef = scepterSkillDef;
-            if (Starstorm.scepterPluginLoaded)
+            if (StarstormPlugin.scepterPluginLoaded)
             {
                 ScepterSetup();
             }
-            if (Starstorm.classicItemsLoaded)
+            if (StarstormPlugin.classicItemsLoaded)
             {
                 ClassicScepterSetup();
             }

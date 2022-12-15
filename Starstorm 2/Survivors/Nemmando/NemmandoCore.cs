@@ -159,7 +159,7 @@ namespace Starstorm2.Survivors.Nemmando
             DamageAPI.ModdedDamageTypeHolderComponent moddedDamage = swordBeam.AddComponent<DamageAPI.ModdedDamageTypeHolderComponent>();
             moddedDamage.Add(Cores.DamageTypeCore.ModdedDamageTypes.GougeOnHit);
 
-            Starstorm.Destroy(swordBeam.transform.Find("SweetSpotBehavior").gameObject);
+            StarstormPlugin.Destroy(swordBeam.transform.Find("SweetSpotBehavior").gameObject);
 
             Modules.Prefabs.projectilePrefabs.Add(swordBeam);
 
@@ -425,11 +425,11 @@ namespace Starstorm2.Survivors.Nemmando
             #endregion
 
             SetupScepterSkills();
-            if (Starstorm.scepterPluginLoaded)
+            if (StarstormPlugin.scepterPluginLoaded)
             {
                 ScepterSetup();
             }
-            if (Starstorm.classicItemsLoaded)
+            if (StarstormPlugin.classicItemsLoaded)
             {
                 ClassicScepterSetup();
             }

@@ -140,13 +140,13 @@ namespace Starstorm2
         // helper for ez item stat config
         internal static float ItemStatConfigValue(string itemName, string configName, string desc, float defaultValue)
         {
-            ConfigEntry<float> config = Starstorm.instance.Config.Bind<float>("Starstorm 2 :: Items :: " + itemName, configName, defaultValue, new ConfigDescription(desc));
+            ConfigEntry<float> config = StarstormPlugin.instance.Config.Bind<float>("Starstorm 2 :: Items :: " + itemName, configName, defaultValue, new ConfigDescription(desc));
             return config.Value;
         }
 
         internal static float ItemStatStupidConfigValue(string itemName, string configName, string desc, int defaultValue)
         {
-            ConfigEntry<float> config = Starstorm.instance.Config.Bind<float>("Starstorm 2 :: Items :: " + itemName, configName, defaultValue, new ConfigDescription(desc));
+            ConfigEntry<float> config = StarstormPlugin.instance.Config.Bind<float>("Starstorm 2 :: Items :: " + itemName, configName, defaultValue, new ConfigDescription(desc));
             return config.Value;
         }
 

@@ -226,9 +226,9 @@ namespace Starstorm2.Cores
 
         private static GameObject CreateModel(GameObject main, string modelName)
         {
-            Starstorm.DestroyImmediate(main.transform.Find("ModelBase").gameObject);
-            Starstorm.DestroyImmediate(main.transform.Find("CameraPivot").gameObject);
-            Starstorm.DestroyImmediate(main.transform.Find("AimOrigin").gameObject);
+            StarstormPlugin.DestroyImmediate(main.transform.Find("ModelBase").gameObject);
+            StarstormPlugin.DestroyImmediate(main.transform.Find("CameraPivot").gameObject);
+            StarstormPlugin.DestroyImmediate(main.transform.Find("AimOrigin").gameObject);
 
             return Modules.Assets.mainAssetBundle.LoadAsset<GameObject>(modelName);
         }

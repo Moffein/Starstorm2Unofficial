@@ -15,28 +15,13 @@ namespace EntityStates.SS2UStates.Chirr
 {
     public class ChirrMain : GenericCharacterMain
     {
-        private float hoverVelocity = -1.1f;
-        private float hoverAcceleration = 25f;
+        private float hoverVelocity = -1f;
+        private float hoverAcceleration = 60f;
         private Indicator targetIndicator;
         private Indicator befriendIndicator;
 
-        public void OnInventoryChanged()
-        {
-            //Chat.AddMessage("inventory changed test");
-            if (characterBody.GetComponent<ChirrInfoComponent>().friend && NetworkServer.active)
-            {
-                CharacterBody newFriend = characterBody.GetComponent<ChirrInfoComponent>().friend;
-                newFriend.master.inventory.CopyItemsFrom(characterBody.GetComponent<ChirrInfoComponent>().baseInventory);
-                newFriend.master.inventory.AddItemsFrom(base.characterBody.inventory);
-                newFriend.master.inventory.ResetItem(RoR2Content.Items.WardOnLevel.itemIndex);
-                newFriend.master.inventory.ResetItem(RoR2Content.Items.BeetleGland.itemIndex);
-                newFriend.master.inventory.ResetItem(RoR2Content.Items.CrippleWardOnLevel.itemIndex);
-                newFriend.master.inventory.ResetItem(RoR2Content.Items.TPHealingNova.itemIndex);
-                newFriend.master.inventory.ResetItem(RoR2Content.Items.FocusConvergence.itemIndex);
-                newFriend.master.inventory.ResetItem(RoR2Content.Items.TitanGoldDuringTP.itemIndex);
-                newFriend.master.inventory.ResetItem(RoR2Content.Items.ExtraLife.itemIndex);
-            }
-        }
+        private bool inJetpackState = false;
+        private EntityStateMachine jetpackStateMachine;
 
         public void PingerController_SetCurrentPing(On.RoR2.PingerController.orig_SetCurrentPing orig, PingerController self, PingerController.PingInfo ping)
         {
@@ -110,6 +95,7 @@ namespace EntityStates.SS2UStates.Chirr
         public override void OnEnter()
         {
             base.OnEnter();
+            jetpackStateMachine = EntityStateMachine.FindByCustomName(base.gameObject, "Jetpack");
             On.RoR2.Stage.Start += (orig, self) =>
             {
                 orig(self);
@@ -117,33 +103,16 @@ namespace EntityStates.SS2UStates.Chirr
                 characterBody.GetComponent<ChirrInfoComponent>().friendState = false;
             };
             On.RoR2.PingerController.SetCurrentPing += PingerController_SetCurrentPing;
-            this.characterBody.master.inventory.onInventoryChanged += OnInventoryChanged;
 
             this.targetIndicator = new Indicator(base.gameObject, null);
             this.targetIndicator.visualizerPrefab = ChirrCore.chirrTargetIndicator;
             this.befriendIndicator = new Indicator(base.gameObject, null);
             this.befriendIndicator.visualizerPrefab = ChirrCore.chirrBefriendIndicator;
-            /*base.characterBody.master.OnInventoryChanged += (orig, self) =>
-            {
-                Chat.AddMessage("inventory changed test");
-                if (characterBody.GetComponent<ChirrInfoComponent>().friend)
-                {
-                    CharacterBody newFriend = characterBody.GetComponent<ChirrInfoComponent>().friend;
-                    newFriend.master.inventory.CopyItemsFrom(base.characterBody.inventory);
-                    newFriend.master.inventory.ResetItem(ItemIndex.WardOnLevel);
-                    newFriend.master.inventory.ResetItem(ItemIndex.BeetleGland);
-                    newFriend.master.inventory.ResetItem(ItemIndex.CrippleWardOnLevel);
-                    newFriend.master.inventory.ResetItem(ItemIndex.TPHealingNova);
-                    newFriend.master.inventory.ResetItem(ItemIndex.FocusConvergence);
-                    newFriend.master.inventory.ResetItem(ItemIndex.TitanGoldDuringTP);
-                }
-            };*/
         }
 
         public override void OnExit()
         {
             On.RoR2.PingerController.SetCurrentPing -= PingerController_SetCurrentPing;
-            this.characterBody.master.inventory.onInventoryChanged -= OnInventoryChanged;
 
             this.targetIndicator.active = false;
 
@@ -153,15 +122,17 @@ namespace EntityStates.SS2UStates.Chirr
         public override void ProcessJump()
         {
             base.ProcessJump();
+            inJetpackState = this.jetpackStateMachine.state.GetType() == typeof(JetpackOn);
             if (this.hasCharacterMotor && this.hasInputBank && base.isAuthority)
             {
-                bool hoverInput = base.inputBank.jump.down && base.characterMotor.velocity.y < 0f && !base.characterMotor.isGrounded;
-
-                if (base.isAuthority && hoverInput)
+                bool inputPressed = base.inputBank.jump.down && base.characterMotor.velocity.y < 0f && !base.characterMotor.isGrounded;
+                if (inputPressed && !inJetpackState)
                 {
-                    float num = base.characterMotor.velocity.y;
-                    num = Mathf.MoveTowards(num, hoverVelocity, hoverAcceleration * Time.fixedDeltaTime);
-                    base.characterMotor.velocity = new Vector3(base.characterMotor.velocity.x, num, base.characterMotor.velocity.z);
+                    this.jetpackStateMachine.SetNextState(new JetpackOn());
+                }
+                if (inJetpackState && !inputPressed)
+                {
+                    this.jetpackStateMachine.SetNextState(new Idle());
                 }
             }
         }
@@ -256,29 +227,6 @@ namespace EntityStates.SS2UStates.Chirr
                 this.targetIndicator.active = false;
                 characterBody.GetComponent<ChirrInfoComponent>().futureFriend = GetBefriendTarget();
             }
-
-            // rest idle!!
-            //if (this.animator) this.animator.SetBool("inCombat", (!base.characterBody.outOfCombat || !base.characterBody.outOfDanger));
-        }
-
-        public override void Update()
-        {
-            base.Update();
-
-            /*if (base.isAuthority && base.characterMotor.isGrounded)
-            {
-                if (Input.GetKeyDown(Starstorm.restKeybind))
-                {
-                    this.outer.SetInterruptState(EntityState.Instantiate(new SerializableEntityStateType(typeof(Emotes.RestEmote))), InterruptPriority.Any);
-                    return;
-                }
-                else if (Input.GetKeyDown(Starstorm.tauntKeybind))
-                {
-                    this.outer.SetInterruptState(EntityState.Instantiate(new SerializableEntityStateType(typeof(Emotes.TauntEmote))), InterruptPriority.Any);
-                    return;
-                }
-            }*/
-            // I ll need those eventually
         }
     }
 }

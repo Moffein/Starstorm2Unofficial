@@ -16,7 +16,7 @@ namespace Starstorm2.Modules
         {
             foreach (GenericSkill obj in targetPrefab.GetComponentsInChildren<GenericSkill>())
             {
-                Starstorm.DestroyImmediate(obj);
+                StarstormPlugin.DestroyImmediate(obj);
             }
 
             SkillLocator skillLocator = targetPrefab.GetComponent<SkillLocator>();

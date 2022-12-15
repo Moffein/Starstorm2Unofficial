@@ -20,7 +20,7 @@ namespace Starstorm2.Cores
         private void Setup()
         {
             pyroPrefab = PrefabCore.pyroPrefab;
-            //pyroPrefab.GetComponent<EntityStateMachine>().mainStateType = new EntityStates.SerializableEntityStateType(typeof(PyroMain));
+            //pyroPrefab.GetComponent<EntityStateMachine>().mainStateType = new SerializableEntityStateType(typeof(PyroMain));
 
             ItemDisplays.PyroItemDisplays.RegisterDisplays();
             CreateDoppelganger();

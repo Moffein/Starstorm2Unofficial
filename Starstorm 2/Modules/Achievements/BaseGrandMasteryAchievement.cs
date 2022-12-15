@@ -34,7 +34,7 @@ namespace Starstorm2.Modules.Achievements
 				DifficultyDef difficultyDef = DifficultyCatalog.GetDifficultyDef(difficultyIndex);
 				if (difficultyDef != null)
 				{
-					DifficultyDef infernoDef = Starstorm.GetInfernoDef();
+					DifficultyDef infernoDef = StarstormPlugin.GetInfernoDef();
 					bool isInferno = infernoDef != null && difficultyDef == infernoDef;
 					bool isEclipse = (difficultyIndex >= DifficultyIndex.Eclipse1 && difficultyIndex <= DifficultyIndex.Eclipse8);
 					bool isTyphoon = difficultyDef.scalingValue >= 3.5f;//hardcoded number to be consistent with other mods

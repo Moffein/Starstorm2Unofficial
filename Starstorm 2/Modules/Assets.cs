@@ -179,7 +179,7 @@ namespace Starstorm2.Modules
 
         private static void RemoveEffect(Transform transformToKill)
         {
-            if (transformToKill) Starstorm.DestroyImmediate(transformToKill.gameObject);
+            if (transformToKill) StarstormPlugin.DestroyImmediate(transformToKill.gameObject);
         }
 
         internal static void LoadExecutionerEffects()
@@ -230,7 +230,7 @@ namespace Starstorm2.Modules
 
             exeIonOrb = PrefabAPI.InstantiateClone(LegacyResourcesAPI.Load<GameObject>("Prefabs/Effects/OrbEffects/InfusionOrbEffect"), "ExecutionerIonOrbEffect", true);
             if (!exeIonOrb.GetComponent<NetworkIdentity>()) exeIonOrb.AddComponent<NetworkIdentity>();
-            Starstorm.DestroyImmediate(exeIonOrb.GetComponent<AkEvent>());
+            StarstormPlugin.DestroyImmediate(exeIonOrb.GetComponent<AkEvent>());
 
             //Material titanPredictionEffect = LegacyResourcesAPI.Load<GameObject>("Prefabs/Projectiles/TitanPreFistProjectile").transform.Find("TeamAreaIndicator, GroundOnly").GetComponent<TeamAreaIndicator>().teamMaterialPairs[0].sharedMaterial;
             //Material globMat = new EntityStates.TitanMonster.FireMegaLaser().laserPrefab.transform.Find("End").Find("EndEffect").Find("Particles").Find("Glob").GetComponent<ParticleSystemRenderer>().material;
@@ -246,7 +246,7 @@ namespace Starstorm2.Modules
 
             exeIonSuperOrb = PrefabAPI.InstantiateClone(LegacyResourcesAPI.Load<GameObject>("Prefabs/Effects/OrbEffects/InfusionOrbEffect"), "ExecutionerIonSuperOrbEffect", true);
             if (!exeIonSuperOrb.GetComponent<NetworkIdentity>()) exeIonSuperOrb.AddComponent<NetworkIdentity>();
-            Starstorm.DestroyImmediate(exeIonSuperOrb.GetComponent<AkEvent>());
+            StarstormPlugin.DestroyImmediate(exeIonSuperOrb.GetComponent<AkEvent>());
 
             exeIonSuperOrb.transform.Find("TrailParent").Find("Trail").GetComponent<TrailRenderer>().widthMultiplier = 1.5f;
             exeIonSuperOrb.transform.Find("TrailParent").Find("Trail").GetComponent<TrailRenderer>().material = matBlueLightningLong;
@@ -295,9 +295,9 @@ namespace Starstorm2.Modules
 
             nemDashEffect = PrefabAPI.InstantiateClone(LegacyResourcesAPI.Load<GameObject>("Prefabs/Effects/OrbEffects/InfusionOrbEffect"), "NemmandoDashOrbEffect", true);
             if (!nemDashEffect.GetComponent<NetworkIdentity>()) nemDashEffect.AddComponent<NetworkIdentity>();
-            Starstorm.DestroyImmediate(nemDashEffect.GetComponent<AkEvent>());
-            Starstorm.DestroyImmediate(nemDashEffect.transform.Find("TrailParent").gameObject);
-            Starstorm.DestroyImmediate(nemDashEffect.transform.Find("VFX").gameObject);
+            StarstormPlugin.DestroyImmediate(nemDashEffect.GetComponent<AkEvent>());
+            StarstormPlugin.DestroyImmediate(nemDashEffect.transform.Find("TrailParent").gameObject);
+            StarstormPlugin.DestroyImmediate(nemDashEffect.transform.Find("VFX").gameObject);
 
             GameObject dashEffect = UnityEngine.Object.Instantiate<GameObject>(mainAssetBundle.LoadAsset<GameObject>("NemmandoDashEffect"));
             dashEffect.transform.parent = nemDashEffect.transform;

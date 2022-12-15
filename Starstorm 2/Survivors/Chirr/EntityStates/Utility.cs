@@ -28,7 +28,8 @@ namespace EntityStates.SS2UStates.Chirr
         public float baseDuration = 1f;
         public float recoil = 1f;
         public float radius = 30f;
-        public float healFraction = .15f;
+        public float healFraction = .25f;
+        public float regenDuration = 6f;
 
         private float duration;
         private float fireDuration;
@@ -38,10 +39,9 @@ namespace EntityStates.SS2UStates.Chirr
         public override void OnEnter()
         {
             base.OnEnter();
+            Util.PlaySound("Play_voidman_R_activate", base.gameObject);
             this.duration = this.baseDuration / this.attackSpeedStat;
             this.fireDuration = 0.5f * this.duration;
-            base.characterBody.SetAimTimer(2f);
-
 
             base.PlayAnimation("Gesture, Override", "Utility", "Utility.playbackRate", this.duration);
             base.PlayAnimation("Gesture, Additive", "Utility", "Utility.playbackRate", this.duration);
@@ -52,16 +52,16 @@ namespace EntityStates.SS2UStates.Chirr
             base.OnExit();
         }
 
-        private void FireBFG()
+        private void FireHeal()
         {
             if (!this.hasFired)
             {
-                GameObject ptr = UnityEngine.Object.Instantiate<GameObject>(LegacyResourcesAPI.Load<GameObject>("prefabs/effects/TPHealNovaEffect"), base.transform);
-                //ptr.GetComponent<TeamFilter>().teamIndex = teamIndex;
-                NetworkServer.Spawn(ptr);
+                Util.PlaySound("Play_voidman_R_pop", base.gameObject);
                 hasFired = true;
                 if (NetworkServer.active)
                 {
+                    GameObject vfx = UnityEngine.Object.Instantiate<GameObject>(LegacyResourcesAPI.Load<GameObject>("prefabs/effects/TPHealNovaEffect"), base.transform);
+                    NetworkServer.Spawn(vfx);
                     ReadOnlyCollection<TeamComponent> teamMembers = TeamComponent.GetTeamMembers(teamComponent.teamIndex);
                     float num = this.radius * this.radius;
                     Vector3 position = base.transform.position;
@@ -76,8 +76,8 @@ namespace EntityStates.SS2UStates.Chirr
                                 if (num2 > 0f)
                                 {
                                     component.Heal(num2, default(ProcChainMask), true);
-                                    if (component.body)
-                                        component.body.AddTimedBuff(RoR2Content.Buffs.CrocoRegen, 1);
+                                    if (component.body && component.body != base.characterBody)
+                                        component.body.AddTimedBuff(RoR2Content.Buffs.CrocoRegen, regenDuration);
                                 }
                             }
                         }
@@ -92,10 +92,10 @@ namespace EntityStates.SS2UStates.Chirr
 
             if (base.fixedAge >= this.fireDuration)
             {
-                FireBFG();
+                FireHeal();
             }
 
-            if (base.fixedAge >= this.duration && base.isAuthority)
+            if (base.isAuthority && base.fixedAge >= this.duration)
             {
                 this.outer.SetNextStateToMain();
             }

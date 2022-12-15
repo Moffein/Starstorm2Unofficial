@@ -39,24 +39,6 @@ namespace Starstorm2.Survivors.Cyborg
         private void Setup()
         {
             cybPrefab = CreateCyborgPrefab();
-            cybPrefab.GetComponent<EntityStateMachine>().mainStateType = new EntityStates.SerializableEntityStateType(typeof(CyborgMain));
-
-            EntityStateMachine jetpackStateMachine = cybPrefab.AddComponent<EntityStateMachine>();
-            jetpackStateMachine.customName = "Jetpack";
-            jetpackStateMachine.initialStateType = new SerializableEntityStateType(typeof(EntityStates.Idle));
-            jetpackStateMachine.mainStateType = new SerializableEntityStateType(typeof(EntityStates.Idle));
-            NetworkStateMachine nsm = cybPrefab.GetComponent<NetworkStateMachine>();
-            nsm.stateMachines = nsm.stateMachines.Append(jetpackStateMachine).ToArray();
-
-            //This makes the Jetpack get shut off when frozen
-            SetStateOnHurt ssoh = cybPrefab.GetComponent<SetStateOnHurt>();
-            ssoh.idleStateMachine.Append(jetpackStateMachine);
-
-            EntityStateMachine teleStateMachine = cybPrefab.AddComponent<EntityStateMachine>();
-            teleStateMachine.customName = "Teleporter";
-            teleStateMachine.initialStateType = new SerializableEntityStateType(typeof(EntityStates.Idle));
-            teleStateMachine.mainStateType = new SerializableEntityStateType(typeof(EntityStates.Idle));
-            nsm.stateMachines = nsm.stateMachines.Append(teleStateMachine).ToArray();
 
             GameObject tracerEffectPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Junk/Mage/TracerMageIceLaser.prefab").WaitForCompletion().InstantiateClone("SS2UCyborgTracer", false);
             tracerEffectPrefab.AddComponent<DestroyOnTimer>().duration = 0.3f;
@@ -76,7 +58,7 @@ namespace Starstorm2.Survivors.Cyborg
             CyborgSkins.RegisterSkins();
             CreateDoppelganger();
 
-            Modules.Prefabs.RegisterNewSurvivor(cybPrefab, PrefabCore.CreateDisplayPrefab("CyborgDisplay", cybPrefab), Color.blue, "CYBORG");
+            Modules.Prefabs.RegisterNewSurvivor(cybPrefab, PrefabCore.CreateDisplayPrefab("CyborgDisplay", cybPrefab), Color.blue, "CYBORG", 40.1f);
             RoR2.RoR2Application.onLoad += SetBodyIndex;
         }
 
@@ -258,7 +240,7 @@ namespace Starstorm2.Survivors.Cyborg
             LanguageAPI.Add("CYBORG_PRIMARY_GUN_DESCRIPTION", $"Fire a <style=cIsUtility>slowing</style> beam at contenders for <style=cIsDamage>{dmg}% damage</style>.");
 
             SteppedSkillDef primaryDef1 = ScriptableObject.CreateInstance<SteppedSkillDef>();
-            primaryDef1.activationState = new EntityStates.SerializableEntityStateType(typeof(PrimaryLaser));
+            primaryDef1.activationState = new SerializableEntityStateType(typeof(PrimaryLaser));
             primaryDef1.activationStateMachineName = "Weapon";
             primaryDef1.skillName = "CYBORG_PRIMARY_GUN_NAME";
             primaryDef1.skillNameToken = "CYBORG_PRIMARY_GUN_NAME";
@@ -296,7 +278,7 @@ namespace Starstorm2.Survivors.Cyborg
             LanguageAPI.Add("CYBORG_SECONDARY_CHARGERIFLE_DESCRIPTION", $"<style=cIsDamage>Stunning</style>. Charge up a piercing beam that deals <style=cIsDamage>400%-800% damage</style>. Deals <style=cIsDamage>+50% damage</style> when <style=cIsDamage>perfectly charged</style>.");
 
             SkillDef secondaryDef1 = ScriptableObject.CreateInstance<SkillDef>();
-            secondaryDef1.activationState = new EntityStates.SerializableEntityStateType(typeof(ChargeBeam));
+            secondaryDef1.activationState = new SerializableEntityStateType(typeof(ChargeBeam));
             secondaryDef1.activationStateMachineName = "Weapon";
             secondaryDef1.skillName = "CYBORG_SECONDARY_CHARGERIFLE_NAME";
             secondaryDef1.skillNameToken = "CYBORG_SECONDARY_CHARGERIFLE_NAME";
@@ -338,7 +320,7 @@ namespace Starstorm2.Survivors.Cyborg
             LanguageAPI.Add("CYBORG_UTILITY_SCEPTER_DESCRIPTION", $"<style=cIsUtility>Blast yourself backwards</style>, firing a greater energy bullet that deals a maximum of <style=cIsDamage>{zapDmg}% damage per second</style>.");
 
             SkillDef utilityDef1 = ScriptableObject.CreateInstance<SkillDef>();
-            utilityDef1.activationState = new EntityStates.SerializableEntityStateType(typeof(CyborgFireOverheat));
+            utilityDef1.activationState = new SerializableEntityStateType(typeof(CyborgFireOverheat));
             utilityDef1.activationStateMachineName = "Weapon";
             utilityDef1.skillName = "CYBORG_UTILITY_NAME";
             utilityDef1.skillNameToken = "CYBORG_UTILITY_NAME";
@@ -364,7 +346,7 @@ namespace Starstorm2.Survivors.Cyborg
             skillLocator.utility = Utils.RegisterSkillsToFamily(cybPrefab, utilityVariant1);
 
             SkillDef utilityScepterDef1 = ScriptableObject.CreateInstance<SkillDef>();
-            utilityScepterDef1.activationState = new EntityStates.SerializableEntityStateType(typeof(OverheatScepter));
+            utilityScepterDef1.activationState = new SerializableEntityStateType(typeof(OverheatScepter));
             utilityScepterDef1.activationStateMachineName = "Weapon";
             utilityScepterDef1.skillName = "CYBORG_UTILITY_SCEPTER_NAME";
             utilityScepterDef1.skillNameToken = "CYBORG_UTILITY_SCEPTER_NAME";
@@ -386,11 +368,11 @@ namespace Starstorm2.Survivors.Cyborg
             overheatScepterDef = utilityScepterDef1;
             Modules.Skills.FixSkillName(utilityScepterDef1);
 
-            if (Starstorm.scepterPluginLoaded)
+            if (StarstormPlugin.scepterPluginLoaded)
             {
                 ScepterSetup();
             }
-            if (Starstorm.classicItemsLoaded)
+            if (StarstormPlugin.classicItemsLoaded)
             {
                 ClassicScepterSetup();
             }
@@ -416,7 +398,7 @@ namespace Starstorm2.Survivors.Cyborg
             LanguageAPI.Add("CYBORG_SPECIAL_TELEPORT_NAME", "Recall");
             LanguageAPI.Add("CYBORG_SPECIAL_TELEPORT_DESCRIPTION", "<style=cIsDamage>Shocking</style>. Create a <style=cIsUtility>warp point</style>. Reactivate to <style=cIsUtility>teleport to its location</style> and deal <style=cIsDamage>1200% damage</style>.");
             SkillDef specialDeploy = ScriptableObject.CreateInstance<SkillDef>();
-            specialDeploy.activationState = new EntityStates.SerializableEntityStateType(typeof(DeployTeleporter));
+            specialDeploy.activationState = new SerializableEntityStateType(typeof(DeployTeleporter));
             specialDeploy.activationStateMachineName = "Teleporter";
             specialDeploy.skillName = "CYBORG_SPECIAL_TELEPORT_NAME";
             specialDeploy.skillNameToken = "CYBORG_SPECIAL_TELEPORT_NAME";
@@ -441,7 +423,7 @@ namespace Starstorm2.Survivors.Cyborg
             skillLocator.special = Utils.RegisterSkillsToFamily(cybPrefab, specialVariant1);
 
             CyborgTeleSkillDef specialTeleport = ScriptableObject.CreateInstance<CyborgTeleSkillDef>();
-            specialTeleport.activationState = new EntityStates.SerializableEntityStateType(typeof(UseTeleporter));
+            specialTeleport.activationState = new SerializableEntityStateType(typeof(UseTeleporter));
             specialTeleport.activationStateMachineName = "Teleporter";
             specialTeleport.skillName = "CYBORG_SPECIAL_TELEPORT_NAME";
             specialTeleport.skillNameToken = "CYBORG_SPECIAL_TELEPORT_NAME";
@@ -506,6 +488,25 @@ namespace Starstorm2.Survivors.Cyborg
 
             cyborgPrefab.AddComponent<CyborgController>();
             cyborgPrefab.AddComponent<CyborgTeleportTracker>();
+
+            cyborgPrefab.GetComponent<EntityStateMachine>().mainStateType = new SerializableEntityStateType(typeof(CyborgMain));
+
+            EntityStateMachine jetpackStateMachine = cyborgPrefab.AddComponent<EntityStateMachine>();
+            jetpackStateMachine.customName = "Jetpack";
+            jetpackStateMachine.initialStateType = new SerializableEntityStateType(typeof(EntityStates.Idle));
+            jetpackStateMachine.mainStateType = new SerializableEntityStateType(typeof(EntityStates.Idle));
+            NetworkStateMachine nsm = cyborgPrefab.GetComponent<NetworkStateMachine>();
+            nsm.stateMachines = nsm.stateMachines.Append(jetpackStateMachine).ToArray();
+
+            //This makes the Jetpack get shut off when frozen
+            SetStateOnHurt ssoh = cyborgPrefab.GetComponent<SetStateOnHurt>();
+            ssoh.idleStateMachine.Append(jetpackStateMachine);
+
+            EntityStateMachine teleStateMachine = cyborgPrefab.AddComponent<EntityStateMachine>();
+            teleStateMachine.customName = "Teleporter";
+            teleStateMachine.initialStateType = new SerializableEntityStateType(typeof(EntityStates.Idle));
+            teleStateMachine.mainStateType = new SerializableEntityStateType(typeof(EntityStates.Idle));
+            nsm.stateMachines = nsm.stateMachines.Append(teleStateMachine).ToArray();
 
             return cyborgPrefab;
         }

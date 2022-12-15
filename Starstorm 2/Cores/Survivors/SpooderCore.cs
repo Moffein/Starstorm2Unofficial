@@ -12,7 +12,7 @@ namespace Starstorm2.Cores
         {
             bodyPrefab = PrefabCore.spooderPrefab;
             //insert custom spawn state here
-            //bodyPrefab.GetComponent<EntityStateMachine>().initialStateType = new EntityStates.SerializableEntityStateType(typeof(SpooderMain));
+            //bodyPrefab.GetComponent<EntityStateMachine>().initialStateType = new SerializableEntityStateType(typeof(SpooderMain));
         }
     }
 }

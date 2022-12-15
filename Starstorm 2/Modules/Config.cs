@@ -40,7 +40,7 @@ namespace Starstorm2.Modules
                             false,
                             "Enables Starstorm 2's work-in-progress content. May be unstable so enable at your own risk.");*/
             cursed =
-                Starstorm.instance.Config.Bind("Starstorm 2 :: Cursed",
+                StarstormPlugin.instance.Config.Bind("Starstorm 2 :: Cursed",
                             "Enabled",
                             false,
                             "Enables Starstorm 2's lesser serious features, featuring content ranging from skins that slightly clash with lore to high quality shitposts - here be dragons!.");
@@ -67,34 +67,34 @@ namespace Starstorm2.Modules
                             "Enables gameplay changes related to the Void Fields hidden realm. Set to false to make Void Fields behave as it does in vanilla RoR2. Note that some unlocks will be unavailable if this is disabled.");
              */
             EnableTyphoon =
-                Starstorm.instance.Config.Bind("Starstorm 2 :: Typhoon",
+                StarstormPlugin.instance.Config.Bind("Starstorm 2 :: Typhoon",
                             "Enabled",
                             true,
                             "Enables Starstorm 2's Typhoon difficulty. Set to false to prevent Typhoon from appearing in difficulty selection.");
 
             TyphoonIncreaseSpawnCap =
-                Starstorm.instance.Config.Bind("Starstorm 2 :: Typhoon",
+                StarstormPlugin.instance.Config.Bind("Starstorm 2 :: Typhoon",
                             "Increase Spawn Limit",
                             true,
                             "Increases the enemy spawn limit when Typhoon difficulty is selected. May cause bugs or performance issues. Disable to use the default spawn limit.");
 
             EnableEvents =
-                Starstorm.instance.Config.Bind("Starstorm 2 :: Events",
+                StarstormPlugin.instance.Config.Bind("Starstorm 2 :: Events",
                             "Enabled",
                             true,
                             "Enables Starstorm 2's random events, including storms. Set to false to disable events.");
             stormCreditCost =
-                Starstorm.instance.Config.Bind("Starstorm 2 :: Events",
+                StarstormPlugin.instance.Config.Bind("Starstorm 2 :: Events",
                             "Storm Credit Cost",
                             150,
                             "Credit cost to begin a storm. Increase this value to make storms less frequent.");
             enableOptimizedStormVisuals =
-                Starstorm.instance.Config.Bind("Starstorm 2 :: Events",
+                StarstormPlugin.instance.Config.Bind("Starstorm 2 :: Events",
                             "Enable Optimized Storm Visuals",
                             false,
                             "Changes storm visuals like rain and snow to have far fewer particles to improve performance");
             disableStormVisuals =
-                Starstorm.instance.Config.Bind("Starstorm 2 :: Events",
+                StarstormPlugin.instance.Config.Bind("Starstorm 2 :: Events",
                             "Disable Storm Visuals",
                             false,
                             "Removes storm particle effects entirely if they're still hurting your computer. Doesn't disable environment fog/filter");
@@ -109,13 +109,13 @@ namespace Starstorm2.Modules
             //EnableEnemies = Config.Bind("Starstorm 2 :: Enemies", "Enabled", true, "Enables Starstorm 2's enemies. Set to false to disable all enemies added by Starstorm 2.");
 
             //emotes
-            RestKeybind = Starstorm.instance.Config.Bind("Starstorm 2 :: Keybinds", "Rest Emote", KeyCode.Alpha1, "Keybind used for the Rest emote.");
+            RestKeybind = StarstormPlugin.instance.Config.Bind("Starstorm 2 :: Keybinds", "Rest Emote", KeyCode.Alpha1, "Keybind used for the Rest emote.");
             restKeybind = RestKeybind.Value;// cache it for performance
 
-            TauntKeybind = Starstorm.instance.Config.Bind("Starstorm 2 :: Keybinds", "Taunt Emote", KeyCode.Alpha2, "Keybind used for the Taunt emote.");
+            TauntKeybind = StarstormPlugin.instance.Config.Bind("Starstorm 2 :: Keybinds", "Taunt Emote", KeyCode.Alpha2, "Keybind used for the Taunt emote.");
             tauntKeybind = TauntKeybind.Value;// cache it for performance
 
-            if (Starstorm.riskOfOptionsLoaded)
+            if (StarstormPlugin.riskOfOptionsLoaded)
             {
                 RiskOfOptionsCompat();
             }
@@ -128,7 +128,7 @@ namespace Starstorm2.Modules
 
         internal static ConfigEntry<bool> CharacterEnableConfig(string characterName, string fullName)
         {
-            return Starstorm.instance.Config.Bind<bool>(new ConfigDefinition("Starstorm 2 :: " + characterName, "Enabled"), true, new ConfigDescription("Enables Starstorm 2's " + fullName + " survivor. Set to false to disable Starstorm 2's " + fullName + " survivor."));
+            return StarstormPlugin.instance.Config.Bind<bool>(new ConfigDefinition("Starstorm 2 :: " + characterName, "Enabled"), true, new ConfigDescription("Enables Starstorm 2's " + fullName + " survivor. Set to false to disable Starstorm 2's " + fullName + " survivor."));
         }
 
         [MethodImpl(MethodImplOptions.NoInlining | MethodImplOptions.NoOptimization)]
