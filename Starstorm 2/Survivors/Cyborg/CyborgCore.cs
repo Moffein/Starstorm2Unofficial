@@ -207,6 +207,8 @@ namespace Starstorm2.Survivors.Cyborg
             bfgProjectile.AddComponent<OverheatReduceTickrateOverTime>();
             bfgProjectile.AddComponent<LightningSoundComponent>();
 
+            Modules.Prefabs.projectilePrefabs.Add(bfgProjectile);
+
             return bfgProjectile;
         }
 
