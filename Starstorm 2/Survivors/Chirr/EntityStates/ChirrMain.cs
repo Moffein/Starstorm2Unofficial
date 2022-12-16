@@ -29,7 +29,12 @@ namespace EntityStates.SS2UStates.Chirr
         {
             base.OnEnter();
             jetpackStateMachine = EntityStateMachine.FindByCustomName(base.gameObject, "Jetpack");
+
             friendController = base.GetComponent<ChirrFriendController>();
+            if (NetworkServer.active && friendController)
+            {
+                friendController.TryGetSavedMaster();
+            }
         }
 
         public override void ProcessJump()

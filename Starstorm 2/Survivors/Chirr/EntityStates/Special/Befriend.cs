@@ -23,7 +23,7 @@ namespace EntityStates.SS2UStates.Chirr.Special
             base.OnEnter();
             Util.PlaySound("ChirrSpecial", base.gameObject);
             friendController = base.GetComponent<ChirrFriendController>();
-            if (NetworkServer.active && friendController)
+            if (NetworkServer.active && friendController && !friendController.HasFriend())
             {
                 friendController.BefriendServer(base.GetTeam());
             }

@@ -12,9 +12,9 @@ using UnityEngine.Networking;
 
 namespace Starstorm2.Survivors.Chirr.Components
 {
+    [RequireComponent(typeof(CharacterBody))]
     public class ChirrFriendController : NetworkBehaviour
     {
-
         public static float befriendHealthFraction = 0.5f;
         public static float befriendChampionHealthFraction = 0.3f;
 
@@ -37,6 +37,7 @@ namespace Starstorm2.Survivors.Chirr.Components
         private CharacterBody ownerBody;
         private CharacterMaster ownerMaster;
         private TeamComponent teamComponent;
+        private MasterFriendController masterFriendController;
 
         //[SyncVar]//Uncomment this if min leash distance is going to be a thing again.
         private bool _canLeash = false;
@@ -55,7 +56,7 @@ namespace Starstorm2.Survivors.Chirr.Components
 
         public float trackerUpdateFrequency = 4f;
         public float maxTrackingDistance = 90f;
-        public float maxTrackingAngle = 60f;
+        public float maxTrackingAngle = 90f;
         public bool canBefriendChampion = false;
 
         public static void BlacklistBody(BodyIndex bodyIndex)
@@ -63,13 +64,14 @@ namespace Starstorm2.Survivors.Chirr.Components
             if (bodyIndex != BodyIndex.None) blacklistedBodies.Add(bodyIndex);
         }
 
+
+        private bool HasLunarTrinket()
+        {
+            return ownerMaster && ownerMaster.inventory && ownerMaster.inventory.GetItemCount(RoR2Content.Items.LunarTrinket) > 0;
+        }
+
         public bool HasFriend() { return _hasFriend; }
         public bool CanBefriend() { return _canBefriendTarget; }
-
-        private void Start()
-        {
-            if (ownerBody) ownerMaster = ownerBody.master;
-        }
 
         private void Awake()
         {
@@ -77,13 +79,71 @@ namespace Starstorm2.Survivors.Chirr.Components
             teamComponent = base.GetComponent<TeamComponent>();
             inputBank = base.GetComponent<InputBankTest>();
 
-            this.indicatorCannotBefriend = new Indicator(base.gameObject, indicatorCannotBefriendPrefab);
-            this.indicatorReadyToBefriend = new Indicator(base.gameObject, indicatorReadyToBefriendPrefab);
-            this.indicatorFriend = new Indicator(base.gameObject, indicatorFriendPrefab);
-
             trackerUpdateStopwatch = 0f;
             RoR2.Inventory.onServerItemGiven += UpdateMinionInventory;//Is there a better way with onInventoryChangedGlobal?
             On.RoR2.PingerController.SetCurrentPing += MinionPingRetarget;
+
+            this.indicatorCannotBefriend = new Indicator(base.gameObject, indicatorCannotBefriendPrefab);
+            this.indicatorReadyToBefriend = new Indicator(base.gameObject, indicatorReadyToBefriendPrefab);
+            this.indicatorFriend = new Indicator(base.gameObject, indicatorFriendPrefab);
+        }
+
+        private void Start()
+        {
+            if (ownerBody) ownerMaster = ownerBody.master;
+            /*if (ownerMaster)
+            {
+                if (NetworkServer.active)
+                {
+                    masterFriendController = ownerMaster.GetComponent<MasterFriendController>();
+                    if (!masterFriendController) masterFriendController = ownerMaster.AddComponent<MasterFriendController>();
+                    if (masterFriendController.masterNetID != NetworkInstanceId.Invalid.Value)
+                    {
+                        _trackingTargetMasterNetID = masterFriendController.masterNetID;
+                        ResolveTargetMaster();
+                        if (targetBody)
+                        {
+                            trackingTarget = targetBody.mainHurtBox;
+
+                            if (!ownerBody.HasBuff(BuffCore.chirrSelfBuff))
+                            {
+                                ownerBody.AddBuff(BuffCore.chirrSelfBuff);
+                            }
+                            targetBody.AddBuff(BuffCore.chirrFriendBuff);
+                        }
+                    }
+                }
+            }*/
+        }
+
+        [Server]
+        public void TryGetSavedMaster()
+        {
+            if (!NetworkServer.active) return;
+            if (ownerMaster)
+            {
+                masterFriendController = ownerMaster.GetComponent<MasterFriendController>();
+                if (!masterFriendController) masterFriendController = ownerMaster.AddComponent<MasterFriendController>();
+                if (masterFriendController.masterNetID != NetworkInstanceId.Invalid.Value)
+                {
+                    _trackingTargetMasterNetID = masterFriendController.masterNetID;
+                    bool hasMaster = ResolveTargetMaster();
+                    if (hasMaster)
+                    {
+                        _hasFriend = true;
+                        _canBefriendTarget = false;
+                        if (!ownerBody.HasBuff(BuffCore.chirrSelfBuff))
+                        {
+                            ownerBody.AddBuff(BuffCore.chirrSelfBuff);
+                        }
+                        if (targetBody)
+                        {
+                            trackingTarget = targetBody.mainHurtBox;
+                            targetBody.AddBuff(BuffCore.chirrFriendBuff);
+                        }
+                    }
+                }
+            }
         }
 
         private void OnDestroy()
@@ -142,10 +202,12 @@ namespace Starstorm2.Survivors.Chirr.Components
             }
 
             //Client tries to figure out what the server wants it to target.
-            ResolveTargetOnClient();
+            ResolveTargetAndUpdateIndicators();
         }
-
-        private void ResolveTargetOnClient()
+        
+        //Returns true if master is found
+        //Does not guarantee body is found
+        private bool ResolveTargetMaster()
         {
             bool hasValidTarget = false;
 
@@ -157,47 +219,54 @@ namespace Starstorm2.Survivors.Chirr.Components
                     targetMaster = networkMasterObject.GetComponent<CharacterMaster>();
                     if (targetMaster)
                     {
+                        hasValidTarget = true;
                         targetBody = targetMaster.GetBody();
-                        if (targetBody)
-                        {
-                            hasValidTarget = true;
-                        }
                     }
                 }
             }
+            return hasValidTarget;
+        }
 
-            if (hasValidTarget)
+        private void ResolveTargetAndUpdateIndicators()
+        {
+            bool hasValidTarget = ResolveTargetMaster();
+
+            if (hasValidTarget && targetBody)
             {
-                this.indicatorCannotBefriend.targetTransform = targetBody.transform;
-                this.indicatorReadyToBefriend.targetTransform = targetBody.transform;
-                this.indicatorFriend.targetTransform = targetBody.transform;
+                Transform targetTransform = targetBody.mainHurtBox ? targetBody.mainHurtBox.transform : targetBody.transform;
+                if (targetTransform)
+                {
+                    this.indicatorCannotBefriend.targetTransform = targetTransform;
+                    this.indicatorReadyToBefriend.targetTransform = targetTransform;
+                    this.indicatorFriend.targetTransform = targetTransform;
 
-                if (this._hasFriend)
-                {
-                    this.indicatorFriend.active = true;
-                    this.indicatorCannotBefriend.active = false;
-                    this.indicatorReadyToBefriend.active = false;
-                }
-                else
-                {
-                    if (this._canBefriendTarget)
+                    if (this._hasFriend)
                     {
-                        this.indicatorReadyToBefriend.active = true;
-                        this.indicatorFriend.active = false;
+                        this.indicatorFriend.active = true;
                         this.indicatorCannotBefriend.active = false;
+                        this.indicatorReadyToBefriend.active = false;
                     }
                     else
                     {
-                        this.indicatorCannotBefriend.active = true;
-                        this.indicatorFriend.active = false;
-                        this.indicatorReadyToBefriend.active = false;
+                        if (this._canBefriendTarget)
+                        {
+                            this.indicatorReadyToBefriend.active = true;
+                            this.indicatorFriend.active = false;
+                            this.indicatorCannotBefriend.active = false;
+                        }
+                        else
+                        {
+                            this.indicatorCannotBefriend.active = true;
+                            this.indicatorFriend.active = false;
+                            this.indicatorReadyToBefriend.active = false;
+                        }
                     }
                 }
             }
             else
             {
-                targetMaster = null;
-                targetBody = null;
+                /*targetMaster = null;
+                targetBody = null;*/
 
                 this.indicatorCannotBefriend.active = false;
                 this.indicatorFriend.active = false;
@@ -238,14 +307,17 @@ namespace Starstorm2.Survivors.Chirr.Components
         [Server]
         private void CheckTargetAliveServer()
         {
-            if (trackingTarget && trackingTarget.healthComponent && trackingTarget.healthComponent.alive && targetMaster)
+            if (targetMaster && !targetMaster.IsDeadAndOutOfLivesServer())
             {
                 UpdateCanBefriendServer();
             }
             else
             {
                 trackingTarget = null;
-                if (_hasFriend) _hasFriend = false;
+                if (_hasFriend)
+                {
+                    _hasFriend = false;
+                }
                 _trackingTargetMasterNetID = NetworkInstanceId.Invalid.Value;
             }
         }
@@ -299,8 +371,9 @@ namespace Starstorm2.Survivors.Chirr.Components
                         bool isBoss = hbBody.isBoss;
                         bool isChampion = hbBody.isChampion;
                         bool isBlacklisted = blacklistedBodies.Contains(hbBody.bodyIndex);
+                        bool isDecay = hbBody.inventory && hbBody.inventory.GetItemCount(RoR2Content.Items.HealthDecay) > 0;
 
-                        if (!isPlayerControlled && (((!isChampion && !isBoss) || canBefriendChampion) || hbBody.bodyIndex == EnemyCore.brotherHurtIndex) && !isBlacklisted)
+                        if (!isPlayerControlled && !isDecay && (((!isChampion && !isBoss) || canBefriendChampion) || (hbBody.bodyIndex == EnemyCore.brotherHurtIndex && (canBefriendChampion || HasLunarTrinket()))) && !isBlacklisted)
                         {
                             validTargets.Add(hb);
                         }
@@ -317,6 +390,10 @@ namespace Starstorm2.Survivors.Chirr.Components
             if (!NetworkServer.active) return;
             if (CanBefriend() && targetMaster && targetBody)
             {
+                _canBefriendTarget = false;
+                _hasFriend = true;
+
+                //Make sure Mithrix returns your items
                 ItemStealController isc = targetBody.GetComponent<ItemStealController>();
                 if (isc)
                 {
@@ -347,6 +424,7 @@ namespace Starstorm2.Survivors.Chirr.Components
                     targetMaster.inventory.RemoveItem(RoR2Content.Items.UseAmbientLevel, targetMaster.inventory.GetItemCount(RoR2Content.Items.UseAmbientLevel));
                 }
 
+                //Reset AI targeting
                 if (targetMaster.aiComponents != null)
                 {
                     for (int i = 0; i < targetMaster.aiComponents.Length; i++)
@@ -355,6 +433,7 @@ namespace Starstorm2.Survivors.Chirr.Components
                     }
                 }
 
+                //Prevent Chirr from softlocking the teleporter and other kill objectives.
                 List<CombatSquad> combatSquads = InstanceTracker.GetInstancesList<CombatSquad>();
                 foreach (CombatSquad cs in combatSquads)
                 {
@@ -369,9 +448,7 @@ namespace Starstorm2.Survivors.Chirr.Components
                     }
                 }
 
-                _canBefriendTarget = false;
-                _hasFriend = true;
-
+                //Soul
                 if (targetBody.bodyIndex == EnemyCore.brotherHurtIndex)
                 {
                     if (EnemyCore.IsMoon())
@@ -382,6 +459,15 @@ namespace Starstorm2.Survivors.Chirr.Components
 
                         EnemyCore.FakeMithrixChatMessageServer("BROTHERHURT_CHIRR_BEFRIEND_1");
                     }
+                }
+
+                //Ally persists between stages
+                DontDestroyOnLoad(targetMaster.gameObject);
+
+                //Save ally netID so it can be remembered next stage.
+                if (masterFriendController)
+                {
+                    masterFriendController.masterNetID = targetMaster.netId.Value;
                 }
             }
             else

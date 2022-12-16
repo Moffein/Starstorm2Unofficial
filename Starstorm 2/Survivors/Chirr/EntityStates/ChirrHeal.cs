@@ -12,6 +12,8 @@ using RoR2.Orbs;
 
 namespace EntityStates.SS2UStates.Chirr
 {
+    //On stage start there seems to be a nullref related to RoR2.Indicator.SetVisibleInternal (called by RoR2.Indicator+IndicatorManager.OnPreRenderUI)
+    //Seems to be harmless, but would be good to fix.
     public class ChirrHeal : BaseSkillState
     {
         public static GameObject healEffectPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/DLC1/EliteEarth/AffixEarthHealExplosion.prefab").WaitForCompletion();
@@ -67,7 +69,7 @@ namespace EntityStates.SS2UStates.Chirr
                             hcList.Add(hurtBox.healthComponent);
                             if (hurtBox.healthComponent.body.teamComponent && hurtBox.healthComponent.body.teamComponent.teamIndex == base.GetTeam())
                             {
-                                float healAmount = hurtBox.healthComponent.fullHealth * healFraction;
+                                float healAmount = hurtBox.healthComponent.fullCombinedHealth * healFraction;   //was fullHealth, makes it bad when healing Vanilla Overloading
                                 /*if (component.body.mainHurtBox && !component.body.disablingHurtBoxes)
                                 {
                                     HealOrb healOrb = new HealOrb();
