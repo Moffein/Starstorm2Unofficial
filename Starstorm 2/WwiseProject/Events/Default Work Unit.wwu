@@ -1042,6 +1042,48 @@
 						</Action>
 					</ChildrenList>
 				</Event>
+				<Event Name="ChirrPrimary" ID="{15DEF0F6-AEC1-4399-BE54-827B8D0B35DD}">
+					<ChildrenList>
+						<Action Name="" ID="{C67E790A-7408-4A7C-A5E5-1F8199139BB8}" ShortID="111759634">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="1"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="ChirrPrimary" ID="{DD09D156-1308-4202-98E6-077066B26985}" WorkUnitID="{3D683E44-DAC0-4717-B7E2-3D4C4555FE6A}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="ChirrHealStart" ID="{46705C7E-D5CD-413B-945E-2BF9EEC91D97}">
+					<ChildrenList>
+						<Action Name="" ID="{9F1B43B9-1FDC-4970-A099-BEFC0A3C3ADE}" ShortID="285854011">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="1"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="ChirrHealStart" ID="{698F176D-836D-41AC-8C6F-DE79FFCE1418}" WorkUnitID="{3D683E44-DAC0-4717-B7E2-3D4C4555FE6A}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="ChirrHealTrigger" ID="{1925FA66-71A3-4B39-9E16-C94E371631A7}">
+					<ChildrenList>
+						<Action Name="" ID="{2E568F2A-1028-41EC-B09D-BB38CA74E1DF}" ShortID="694254133">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="1"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="ChirrHealTrigger" ID="{FBB634A3-1AD4-436B-8E08-189FE4A6CD2D}" WorkUnitID="{3D683E44-DAC0-4717-B7E2-3D4C4555FE6A}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
 			</ChildrenList>
 		</WorkUnit>
 	</Events>

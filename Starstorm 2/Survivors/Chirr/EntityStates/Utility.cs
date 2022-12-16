@@ -3,33 +3,21 @@ using System.Reflection;
 using System.Linq;
 using System.Collections.Generic;
 using BepInEx;
-using R2API;
-using R2API.Utils;
-using EntityStates;
 using RoR2;
-using RoR2.Skills;
-using RoR2.Projectile;
 using UnityEngine;
-using Starstorm2.Cores;
 using UnityEngine.Networking;
-using KinematicCharacterController;
-using JetBrains.Annotations;
-using RoR2.Networking;
 using System.Collections.ObjectModel;
-
-//FIXME: ion gun doesn't build charges in mp if player is not host
-//FIXME: ion burst stocks do not carry over between stages (may leave this as feature)
 
 namespace EntityStates.SS2UStates.Chirr
 {
     public class ChirrHeal : BaseSkillState
     {
-        public float damageCoefficient = 1.85f;
-        public float baseDuration = 1f;
-        public float recoil = 1f;
-        public float radius = 30f;
-        public float healFraction = .25f;
-        public float regenDuration = 6f;
+        public static float baseDuration = 1.5f;
+        public static float baseFireDuration = 1.3f;
+        public static float recoil = 1f;
+        public static float radius = 30f;
+        public static float healFraction = .25f;
+        public static float regenDuration = 6f;
 
         private float duration;
         private float fireDuration;
@@ -39,9 +27,9 @@ namespace EntityStates.SS2UStates.Chirr
         public override void OnEnter()
         {
             base.OnEnter();
-            Util.PlaySound("Play_voidman_R_activate", base.gameObject);
-            this.duration = this.baseDuration / this.attackSpeedStat;
-            this.fireDuration = 0.5f * this.duration;
+            this.duration = baseDuration / this.attackSpeedStat;
+            this.fireDuration = baseFireDuration / this.attackSpeedStat;
+            Util.PlayAttackSpeedSound("ChirrHealStart", base.gameObject, this.attackSpeedStat);
 
             base.PlayAnimation("Gesture, Additive", "Utility", "Utility.playbackRate", this.duration);
         }
@@ -55,14 +43,14 @@ namespace EntityStates.SS2UStates.Chirr
         {
             if (!this.hasFired)
             {
-                Util.PlaySound("Play_voidman_R_pop", base.gameObject);
+                Util.PlaySound("ChirrHealTrigger", base.gameObject);
                 hasFired = true;
                 if (NetworkServer.active)
                 {
                     GameObject vfx = UnityEngine.Object.Instantiate<GameObject>(LegacyResourcesAPI.Load<GameObject>("prefabs/effects/TPHealNovaEffect"), base.transform);
                     NetworkServer.Spawn(vfx);
                     ReadOnlyCollection<TeamComponent> teamMembers = TeamComponent.GetTeamMembers(teamComponent.teamIndex);
-                    float num = this.radius * this.radius;
+                    float num = radius * radius;
                     Vector3 position = base.transform.position;
                     for (int i = 0; i < teamMembers.Count; i++)
                     {
@@ -71,7 +59,7 @@ namespace EntityStates.SS2UStates.Chirr
                             HealthComponent component = teamMembers[i].GetComponent<HealthComponent>();
                             if (component)
                             {
-                                float num2 = component.fullHealth * this.healFraction;
+                                float num2 = component.fullHealth * healFraction;
                                 if (num2 > 0f)
                                 {
                                     component.Heal(num2, default(ProcChainMask), true);

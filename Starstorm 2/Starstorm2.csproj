@@ -80,7 +80,7 @@
     <Compile Include="API\Utils.cs" />
     <Compile Include="Modules\EntityStates\BaseMeleeAttack.cs" />
     <Compile Include="Survivors\Chirr\ChirrSkins.cs" />
-    <Compile Include="Survivors\Chirr\EntityStates\DartSpread.cs" />
+    <Compile Include="Survivors\Chirr\EntityStates\ChirrPrimary.cs" />
     <Compile Include="Survivors\Chirr\EntityStates\Headbutt.cs" />
     <Compile Include="Survivors\Chirr\EntityStates\JetpackOn.cs" />
     <Compile Include="Survivors\Chirr\EntityStates\TriDart.cs" />

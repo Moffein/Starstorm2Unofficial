@@ -8,6 +8,7 @@ using EntityStates.SS2UStates.Chirr;
 using EntityStates;
 using System.Linq;
 using UnityEngine.AddressableAssets;
+using RoR2.Projectile;
 
 namespace Starstorm2.Survivors.Chirr
 {
@@ -16,10 +17,6 @@ namespace Starstorm2.Survivors.Chirr
         public static GameObject chirrPrefab;
         public static GameObject doppelganger;
 
-        public static SkillDef specialDef1;
-        public static SkillDef specialDef2;
-
-        public static GameObject chirrDart;
         public static GameObject chirrHeal;
         public static GameObject chirrTargetIndicator;
         public static GameObject chirrBefriendIndicator;
@@ -59,15 +56,13 @@ namespace Starstorm2.Survivors.Chirr
             Modules.States.AddSkill(typeof(JetpackOn));
             Modules.States.AddSkill(typeof(ChirrMain));
 
-            Modules.States.AddSkill(typeof(DartSpread));
+            Modules.States.AddSkill(typeof(ChirrPrimary));
             Modules.States.AddSkill(typeof(Headbutt));
             Modules.States.AddSkill(typeof(ChirrHeal));
         }
 
         private void RegisterProjectiles()
         {
-            chirrDart = PrefabAPI.InstantiateClone(LegacyResourcesAPI.Load<GameObject>("prefabs/projectiles/SyringeProjectile"), "Prefabs/Projectiles/ChirrDart", true);
-            if (chirrDart) PrefabAPI.RegisterNetworkPrefab(chirrDart);
 
             chirrTargetIndicator = PrefabAPI.InstantiateClone(LegacyResourcesAPI.Load<GameObject>("Prefabs/WoodSpriteIndicator"), "ChirrTargetIndicator", true);
             chirrTargetIndicator.AddComponent<NetworkIdentity>();
@@ -83,10 +78,18 @@ namespace Starstorm2.Survivors.Chirr
             chirrBefriendIndicator.GetComponentInChildren<Rewired.ComponentControls.Effects.RotateAroundAxis>().enabled = false;
             chirrBefriendIndicator.GetComponentInChildren<RoR2.InputBindingDisplayController>().actionName = "SpecialSkill";
 
-
-
-            // add it to the projectile catalog or it won't work in multiplayer
+            //RoR2/Base/Treebot/SeedpodMortarGhost.prefab
+            //"RoR2/Base/Treebot/SyringeProjectile.prefab"
+            /*GameObject chirrDart = PrefabAPI.InstantiateClone(Addressables.LoadAssetAsync<GameObject>("RoR2/Base/ElitePoison/UrchinSeekingProjectile.prefab").WaitForCompletion(), "SS2UChirrDartProjectile", true);
             Modules.Prefabs.projectilePrefabs.Add(chirrDart);
+            ChirrPrimary.projectilePrefab = chirrDart;*/
+
+           /*GameObject chirrDartCenter = PrefabAPI.InstantiateClone(Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Treebot/SyringeProjectileHealing.prefab").WaitForCompletion(), "SS2UChirrDartCenterProjectile", true);
+            UnityEngine.Object.Destroy(chirrDartCenter.GetComponent<RoR2.Projectile.ProjectileHealOwnerOnDamageInflicted>());
+            ProjectileDamage dartCenterDamage = chirrDartCenter.GetComponent<ProjectileDamage>();
+            dartCenterDamage.damageType = DamageType.Generic;
+            Modules.Prefabs.projectilePrefabs.Add(chirrDartCenter);
+            ChirrPrimary.centerProjectilePrefab = chirrDartCenter;*/
         }
 
         private void SetUpSkills()
@@ -120,14 +123,14 @@ namespace Starstorm2.Survivors.Chirr
 
         private void SetUpPrimaries(SkillLocator skillLocator)
         {
-            var dmg = DartSpread.damageCoefficient * 100f;
-            var dartCount = DartSpread.totalProjectiles;
+            var dmg = ChirrPrimary.damageCoefficient * 100f;
+            var dartCount = ChirrPrimary.baseShotCount;
 
             LanguageAPI.Add("CHIRR_DARTS_NAME", "Life Thorns");
             LanguageAPI.Add("CHIRR_DARTS_DESCRIPTION", $"Fire a barrage of thorns for <style=cIsDamage> {dartCount}x{dmg}% damage</style>.");
 
             SkillDef primaryDef1 = ScriptableObject.CreateInstance<SkillDef>();
-            primaryDef1.activationState = new SerializableEntityStateType(typeof(DartSpread));
+            primaryDef1.activationState = new SerializableEntityStateType(typeof(ChirrPrimary));
             primaryDef1.activationStateMachineName = "Weapon";
             primaryDef1.skillName = "CHIRR_DARTS_NAME";
             primaryDef1.skillNameToken = "CHIRR_DARTS_NAME";
@@ -305,7 +308,7 @@ namespace Starstorm2.Survivors.Chirr
                 healthGrowth = 30f,
                 healthRegen = 1f,
                 jumpCount = 1,
-                jumpPower = 30f,    //15f is standard
+                jumpPower = 22.5f,    //15f is standard
                 maxHealth = 100f,
                 subtitleNameToken = "CHIRR_SUBTITLE",
                 podPrefab = LegacyResourcesAPI.Load<GameObject>("Prefabs/NetworkedObjects/SurvivorPod")
