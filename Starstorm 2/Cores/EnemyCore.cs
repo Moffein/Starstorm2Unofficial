@@ -13,14 +13,47 @@ using static R2API.DirectorAPI;
 using R2API.Utils;
 using RoR2.CharacterAI;
 using KinematicCharacterController;
+using UnityEngine.AddressableAssets;
 
 namespace Starstorm2.Cores
 {
-    class EnemyCore
+    public class EnemyCore
     {
         public static GameObject wayfarerPrefab;
         public static GameObject masterPrefab;
         public static GameObject wayfarerBuffWardPrefab;
+
+        public static BodyIndex brotherHurtIndex;
+        public static BodyIndex brotherIndex;
+
+        private static SceneDef sceneMoon = Addressables.LoadAssetAsync<SceneDef>("RoR2/Base/moon/moon.asset").WaitForCompletion();
+        private static SceneDef sceneMoon2 = Addressables.LoadAssetAsync<SceneDef>("RoR2/Base/moon2/moon2.asset").WaitForCompletion();
+
+        public static bool IsMoon()
+        {
+            SceneDef sd = SceneCatalog.GetSceneDefForCurrentScene();
+            return sd && (sd == sceneMoon || sd == sceneMoon2);
+        }
+
+        public static void StoreBodyIndexes()
+        {
+            brotherHurtIndex = BodyCatalog.FindBodyIndex("BrotherHurtBody");
+            brotherIndex = BodyCatalog.FindBodyIndex("BrotherBody");
+        }
+
+        //Super bootleg code.
+        public static void FakeMithrixChatMessageServer(string token)
+        {
+            string fullMessage = "<color=#c6d5ff>";
+            fullMessage += Language.GetString("BROTHER_BODY_NAME");
+            fullMessage += ":";
+            fullMessage += Language.GetString(token);
+            fullMessage += "</color>";
+            Chat.SendBroadcastChat(new Chat.SimpleChatMessage
+            {
+                baseToken = fullMessage
+            });
+        }
 
         public EnemyCore()
         {

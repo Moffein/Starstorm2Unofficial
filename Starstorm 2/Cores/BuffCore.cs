@@ -158,6 +158,7 @@ namespace Starstorm2.Cores
         {
             On.RoR2.HealthComponent.TakeDamage += HealthComponent_TakeDamage;
             On.RoR2.CharacterBody.OnClientBuffsChanged += CharacterBody_OnClientBuffsChanged;
+            On.RoR2.CharacterBody.RecalculateStats += CharacterBody_RecalculateStats;
             RecalculateStatsAPI.GetStatCoefficients += RecalculateStatsAPI_GetStatCoefficients;
 
             //Prevent Infestors from infesting chirr friends
@@ -175,6 +176,28 @@ namespace Starstorm2.Cores
             };
         }
 
+        private void CharacterBody_RecalculateStats(On.RoR2.CharacterBody.orig_RecalculateStats orig, CharacterBody self)
+        {
+            orig(self);
+            if (self.skillLocator)
+            {
+                if (self.HasBuff(greaterBannerBuff))
+                {
+                    if(self.skillLocator.primary) self.skillLocator.primary.cooldownScale *= 0.5f;
+                    if (self.skillLocator.secondary) self.skillLocator.secondary.cooldownScale *= 0.5f;
+                    if (self.skillLocator.utility) self.skillLocator.utility.cooldownScale *= 0.5f;
+                    if (self.skillLocator.special) self.skillLocator.special.cooldownScale *= 0.5f;
+                }
+                if (self.HasBuff(chirrFriendBuff))
+                {
+                    if (self.skillLocator.primary) self.skillLocator.primary.cooldownScale *= 0.66f;
+                    if (self.skillLocator.secondary) self.skillLocator.secondary.cooldownScale *= 0.66f;
+                    if (self.skillLocator.utility) self.skillLocator.utility.cooldownScale *= 0.66f;
+                    if (self.skillLocator.special) self.skillLocator.special.cooldownScale *= 0.66f;
+                }
+            }
+        }
+
         private void HealthComponent_TakeDamage(On.RoR2.HealthComponent.orig_TakeDamage orig, HealthComponent self, DamageInfo damageInfo)
         {
             if (NetworkServer.active)
@@ -184,8 +207,8 @@ namespace Starstorm2.Cores
                     ChirrFriendController friendController = self.GetComponent<ChirrFriendController>();
                     if (friendController && friendController.HasFriend())
                     {
-                        float minionDamage = damageInfo.damage * 0.25f;
-                        damageInfo.damage *= 0.75f;
+                        float minionDamage = damageInfo.damage * 0.3f;
+                        damageInfo.damage *= 0.7f;
 
                         DamageInfo minionDamageInfo = new DamageInfo
                         {
@@ -213,7 +236,7 @@ namespace Starstorm2.Cores
         {
             if (sender.HasBuff(greaterBannerBuff))
             {
-                args.cooldownMultAdd *= 0.5f;
+                //args.cooldownMultAdd *= 0.5f; //handle in recalculatestats since I don't think this works
                 args.critAdd += 20f;
                 args.regenMultAdd += 0.5f;
             }
@@ -234,7 +257,7 @@ namespace Starstorm2.Cores
             {
                 args.damageMultAdd += 2f;
                 args.healthMultAdd += 2f;
-                args.cooldownMultAdd *= 0.5f;
+                //args.cooldownMultAdd *= 0.5f; //handle in recalculatestats since I don't think this works
             }
         }
 

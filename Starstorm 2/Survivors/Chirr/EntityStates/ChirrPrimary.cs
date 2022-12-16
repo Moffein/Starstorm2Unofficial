@@ -8,7 +8,7 @@ namespace EntityStates.SS2UStates.Chirr
 {
     public class ChirrPrimary : BaseState
     {
-        public static float damageCoefficient = 0.6f;
+        public static float damageCoefficient = 0.9f;
         public static float force = 100f;
         public static float baseDuration = 0.5f;
         public static float baseShotDuration = 0.1f;

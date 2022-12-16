@@ -156,7 +156,10 @@ namespace Starstorm2
                 AddEquipmentIfEnabled(new PressurizedCanister(), EquipmentCore.instance.equipment);
                 EquipmentCore.instance.InitEquipment();
             }*/
+
             //enemyCore = new EnemyCore();
+            RoR2.RoR2Application.onLoad += EnemyCore.StoreBodyIndexes;
+
             /*if (Modules.Config.EnableItems.Value)
             {
                 itemCore = new ItemCore();

@@ -18,7 +18,7 @@ namespace Starstorm2.Modules
         internal static List<GameObject> masterPrefabs = new List<GameObject>();
         internal static List<GameObject> projectilePrefabs = new List<GameObject>();
 
-        internal static void RegisterNewSurvivor(GameObject bodyPrefab, GameObject displayPrefab, Color charColor, string namePrefix, UnlockableDef unlockableDef, float sortPosition)
+        internal static SurvivorDef RegisterNewSurvivor(GameObject bodyPrefab, GameObject displayPrefab, Color charColor, string namePrefix, UnlockableDef unlockableDef, float sortPosition)
         {
             string fullNameString = namePrefix + "_NAME";
             string fullDescString = namePrefix + "_DESCRIPTION";
@@ -37,13 +37,14 @@ namespace Starstorm2.Modules
             survivorDef.unlockableDef = unlockableDef;
 
             survivorDefinitions.Add(survivorDef);
+            return survivorDef;
         }
 
-        internal static void RegisterNewSurvivor(GameObject bodyPrefab, GameObject displayPrefab, Color charColor, string namePrefix) { RegisterNewSurvivor(bodyPrefab, displayPrefab, charColor, namePrefix, null, 100f); }
+        internal static SurvivorDef RegisterNewSurvivor(GameObject bodyPrefab, GameObject displayPrefab, Color charColor, string namePrefix) { return RegisterNewSurvivor(bodyPrefab, displayPrefab, charColor, namePrefix, null, 100f); }
 
-        internal static void RegisterNewSurvivor(GameObject bodyPrefab, GameObject displayPrefab, Color charColor, string namePrefix, float sortPosition) { RegisterNewSurvivor(bodyPrefab, displayPrefab, charColor, namePrefix, null, sortPosition); }
+        internal static SurvivorDef RegisterNewSurvivor(GameObject bodyPrefab, GameObject displayPrefab, Color charColor, string namePrefix, float sortPosition) { return RegisterNewSurvivor(bodyPrefab, displayPrefab, charColor, namePrefix, null, sortPosition); }
 
-        internal static void RegisterNewSurvivor(GameObject bodyPrefab, GameObject displayPrefab, Color charColor, string namePrefix, UnlockableDef unlockableDef) { RegisterNewSurvivor(bodyPrefab, displayPrefab, charColor, namePrefix, unlockableDef, 80f); }
+        internal static SurvivorDef RegisterNewSurvivor(GameObject bodyPrefab, GameObject displayPrefab, Color charColor, string namePrefix, UnlockableDef unlockableDef) { return RegisterNewSurvivor(bodyPrefab, displayPrefab, charColor, namePrefix, unlockableDef, 80f); }
 
         internal static GameObject CreateDisplayPrefab(string modelName, GameObject prefab, StarstormBodyInfo bodyInfo)
         {

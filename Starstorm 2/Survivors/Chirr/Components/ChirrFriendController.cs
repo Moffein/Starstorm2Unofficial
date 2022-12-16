@@ -1,4 +1,6 @@
-﻿using RoR2;
+﻿using R2API;
+using RoR2;
+using RoR2.CharacterAI;
 using RoR2.Navigation;
 using Starstorm2.Cores;
 using System;
@@ -12,7 +14,9 @@ namespace Starstorm2.Survivors.Chirr.Components
 {
     public class ChirrFriendController : NetworkBehaviour
     {
+
         public static float befriendHealthFraction = 0.5f;
+        public static float befriendChampionHealthFraction = 0.3f;
 
         public static GameObject teleportHelperPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Common/DirectorSpawnProbeHelperPrefab.prefab").WaitForCompletion();
         public static GameObject indicatorCannotBefriendPrefab;
@@ -62,6 +66,10 @@ namespace Starstorm2.Survivors.Chirr.Components
         public bool HasFriend() { return _hasFriend; }
         public bool CanBefriend() { return _canBefriendTarget; }
 
+        private void Start()
+        {
+            if (ownerBody) ownerMaster = ownerBody.master;
+        }
 
         private void Awake()
         {
@@ -74,19 +82,14 @@ namespace Starstorm2.Survivors.Chirr.Components
             this.indicatorFriend = new Indicator(base.gameObject, indicatorFriendPrefab);
 
             trackerUpdateStopwatch = 0f;
-
-            //Is there a better way with onInventoryChangedGlobal?
-            RoR2.Inventory.onServerItemGiven += UpdateMinionInventory;
-        }
-
-        private void Start()
-        {
-            if (ownerBody) ownerMaster = ownerBody.master;
+            RoR2.Inventory.onServerItemGiven += UpdateMinionInventory;//Is there a better way with onInventoryChangedGlobal?
+            On.RoR2.PingerController.SetCurrentPing += MinionPingRetarget;
         }
 
         private void OnDestroy()
         {
             RoR2.Inventory.onServerItemGiven -= UpdateMinionInventory;
+            On.RoR2.PingerController.SetCurrentPing -= MinionPingRetarget;
         }
 
         private void UpdateMinionInventory(Inventory inventory, ItemIndex itemIndex, int count)
@@ -100,6 +103,31 @@ namespace Starstorm2.Survivors.Chirr.Components
                     if (!item.tags.Contains(ItemTag.CannotCopy))
                     {
                         targetMaster.inventory.GiveItem(itemIndex, count);
+                    }
+                }
+            }
+        }
+        public void MinionPingRetarget(On.RoR2.PingerController.orig_SetCurrentPing orig, PingerController self, PingerController.PingInfo ping)
+        {
+            orig(self, ping);
+            if (NetworkServer.active)
+            {
+                if (ping.targetGameObject && _hasFriend && targetMaster && targetMaster.aiComponents != null)
+                {
+                    TeamIndex ownerTeam = TeamIndex.None;
+                    if (ownerBody && ownerBody.teamComponent) ownerTeam = ownerBody.teamComponent.teamIndex;
+                    CharacterBody pingBody = ping.targetGameObject.GetComponent<CharacterBody>();
+                    if (pingBody && pingBody.teamComponent && pingBody.teamComponent.teamIndex != ownerTeam)
+                    {
+                        for (int i = 0; i < targetMaster.aiComponents.Length; i++)
+                        {
+                            BaseAI ai = targetMaster.aiComponents[i];
+                            ai.currentEnemy.gameObject = pingBody.gameObject;
+                            ai.currentEnemy.bestHurtBox = pingBody.mainHurtBox;
+                            ai.enemyAttention = ai.enemyAttentionDuration;
+                            ai.targetRefreshTimer = 5f;
+                            ai.BeginSkillDriver(ai.EvaluateSkillDrivers());
+                        }
                     }
                 }
             }
@@ -242,7 +270,7 @@ namespace Starstorm2.Survivors.Chirr.Components
         {
             if (trackingTarget && trackingTarget.healthComponent)
             {
-                bool befriendStatus = trackingTarget.healthComponent.combinedHealthFraction <= ChirrFriendController.befriendHealthFraction;
+                bool befriendStatus = trackingTarget.healthComponent.combinedHealthFraction <= ((trackingTarget.healthComponent.body && trackingTarget.healthComponent.body.isChampion) ? ChirrFriendController.befriendChampionHealthFraction : ChirrFriendController.befriendHealthFraction);
                 if (befriendStatus != _canBefriendTarget) _canBefriendTarget = befriendStatus;
             }
         }
@@ -272,7 +300,7 @@ namespace Starstorm2.Survivors.Chirr.Components
                         bool isChampion = hbBody.isChampion;
                         bool isBlacklisted = blacklistedBodies.Contains(hbBody.bodyIndex);
 
-                        if (!isPlayerControlled && (((!isChampion && !isBoss) || canBefriendChampion) || hbBody.bodyIndex == ChirrCore.brotherHurtIndex) && !isBlacklisted)
+                        if (!isPlayerControlled && (((!isChampion && !isBoss) || canBefriendChampion) || hbBody.bodyIndex == EnemyCore.brotherHurtIndex) && !isBlacklisted)
                         {
                             validTargets.Add(hb);
                         }
@@ -289,6 +317,12 @@ namespace Starstorm2.Survivors.Chirr.Components
             if (!NetworkServer.active) return;
             if (CanBefriend() && targetMaster && targetBody)
             {
+                ItemStealController isc = targetBody.GetComponent<ItemStealController>();
+                if (isc)
+                {
+                    isc.ForceReclaimAllItemsImmediately();
+                }
+
                 targetMaster.teamIndex = teamIndex;
                 if (targetBody.teamComponent) targetBody.teamComponent.teamIndex = teamIndex;
 
@@ -315,7 +349,7 @@ namespace Starstorm2.Survivors.Chirr.Components
 
                 if (targetMaster.aiComponents != null)
                 {
-                    for (int i = 0; i< targetMaster.aiComponents.Length; i++)
+                    for (int i = 0; i < targetMaster.aiComponents.Length; i++)
                     {
                         targetMaster.aiComponents[i].currentEnemy.Reset();
                     }
@@ -337,11 +371,29 @@ namespace Starstorm2.Survivors.Chirr.Components
 
                 _canBefriendTarget = false;
                 _hasFriend = true;
+
+                if (targetBody.bodyIndex == EnemyCore.brotherHurtIndex)
+                {
+                    if (EnemyCore.IsMoon())
+                    {
+                        targetMaster.bodyPrefab = BodyCatalog.FindBodyPrefab("BrotherBody");
+                        targetMaster.Respawn(targetBody.transform.position, targetBody.transform.rotation);
+                        RpcSetMithrixConverted();
+
+                        EnemyCore.FakeMithrixChatMessageServer("BROTHERHURT_CHIRR_BEFRIEND_1");
+                    }
+                }
             }
             else
             {
                 Debug.LogError("ChirrFriendController: Befriend called without valid target.");
             }
+        }
+
+        [ClientRpc]
+        private void RpcSetMithrixConverted()
+        {
+            ChirrCore.survivorDef.outroFlavorToken = "CHIRR_OUTRO_BROTHER_EASTEREGG";
         }
 
         [Server]
