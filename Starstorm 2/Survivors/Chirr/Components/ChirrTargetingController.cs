@@ -1,4 +1,5 @@
 ﻿using RoR2;
+using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.Networking;
@@ -7,9 +8,13 @@ namespace Starstorm2.Survivors.Chirr.Components
 {
     public class ChirrTargetingController : NetworkBehaviour
     {
+        public static float befriendHealthFraction = 0.5f;
+
         public static GameObject indicatorCannotBefriendPrefab;
         public static GameObject indicatorReadyToBefriendPrefab;
         public static GameObject indicatorFriendPrefab;
+
+        public static HashSet<BodyIndex> blacklistedBodies = new HashSet<BodyIndex>();
 
         private Indicator indicatorCannotBefriend;
         private Indicator indicatorReadyToBefriend;
@@ -23,10 +28,6 @@ namespace Starstorm2.Survivors.Chirr.Components
         private CharacterBody characterBody;
         private TeamComponent teamComponent;
 
-        public float trackerUpdateFrequency = 4f;
-        public float maxTrackingDistance = 90f;
-        public float maxTrackingAngle = 60f;
-
         [SyncVar]
         private bool _canBefriendTarget = false;
 
@@ -38,6 +39,17 @@ namespace Starstorm2.Survivors.Chirr.Components
 
         private CharacterBody targetBody;
         private CharacterMaster targetMaster;
+
+        public float trackerUpdateFrequency = 4f;
+        public float maxTrackingDistance = 90f;
+        public float maxTrackingAngle = 60f;
+        public bool canBefriendChampion = false;
+
+        public static void BlacklistBody(BodyIndex bodyIndex)
+        {
+            if (bodyIndex != BodyIndex.None) blacklistedBodies.Add(bodyIndex);
+        }
+
 
         private void Awake()
         {
@@ -77,7 +89,7 @@ namespace Starstorm2.Survivors.Chirr.Components
                     if (targetMaster)
                     {
                         targetBody = targetMaster.GetBody();
-                        if (targetBody && targetBody.mainHurtBox)
+                        if (targetBody)
                         {
                             hasValidTarget = true;
                         }
@@ -87,9 +99,9 @@ namespace Starstorm2.Survivors.Chirr.Components
 
             if (hasValidTarget)
             {
-                this.indicatorCannotBefriend.targetTransform = targetBody.mainHurtBox.transform;
-                this.indicatorReadyToBefriend.targetTransform = targetBody.mainHurtBox.transform;
-                this.indicatorFriend.targetTransform = targetBody.mainHurtBox.transform;
+                this.indicatorCannotBefriend.targetTransform = targetBody.transform;
+                this.indicatorReadyToBefriend.targetTransform = targetBody.transform;
+                this.indicatorFriend.targetTransform = targetBody.transform;
 
                 if (this._hasFriend)
                 {
@@ -146,7 +158,11 @@ namespace Starstorm2.Survivors.Chirr.Components
         [Server]
         private void CheckTargetAliveServer()
         {
-            if (!trackingTarget || !(trackingTarget.healthComponent && trackingTarget.healthComponent.alive))
+            if (trackingTarget && trackingTarget.healthComponent && trackingTarget.healthComponent.alive)
+            {
+                UpdateCanBefriendServer();
+            }
+            else
             {
                 trackingTarget = null;
                 if (_hasFriend) _hasFriend = false;
@@ -164,7 +180,18 @@ namespace Starstorm2.Survivors.Chirr.Components
                 {
                     _trackingTargetMasterNetID = newID;
                     trackingTarget = newHurtbox;
+                    UpdateCanBefriendServer();
                 }
+            }
+        }
+
+        [Server]
+        private void UpdateCanBefriendServer()
+        {
+            if (trackingTarget && trackingTarget.healthComponent)
+            {
+                bool befriendStatus = trackingTarget.healthComponent.combinedHealthFraction <= ChirrTargetingController.befriendHealthFraction;
+                if (befriendStatus != _canBefriendTarget) _canBefriendTarget = befriendStatus;
             }
         }
 
@@ -179,7 +206,29 @@ namespace Starstorm2.Survivors.Chirr.Components
             this.search.maxAngleFilter = this.maxTrackingAngle;
             this.search.RefreshCandidates();
             this.search.FilterOutGameObject(base.gameObject);
-            return this.search.GetResults().FirstOrDefault<HurtBox>();
+            IEnumerable<HurtBox> targets = this.search.GetResults();
+            List<HurtBox> validTargets = new List<HurtBox>();
+            foreach (HurtBox hb in targets)
+            {
+                if (hb.healthComponent)
+                {
+                    CharacterBody hbBody = hb.healthComponent.body;
+                    if (hbBody)
+                    {
+                        bool isPlayerControlled = hbBody.isPlayerControlled;
+                        bool isBoss = hbBody.isBoss;
+                        bool isChampion = hbBody.isChampion;
+                        bool isBlacklisted = blacklistedBodies.Contains(hbBody.bodyIndex);
+
+                        if (!isPlayerControlled && !isBoss && (!isChampion || canBefriendChampion) && !isBlacklisted)
+                        {
+                            validTargets.Add(hb);
+                        }
+                    }
+                }
+            }
+
+            return validTargets.FirstOrDefault<HurtBox>();
         }
     }
 }

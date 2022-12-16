@@ -29,6 +29,11 @@ namespace Starstorm2.Survivors.Chirr
         private void SetBodyIndex()
         {
             bodyIndex = BodyCatalog.FindBodyIndex("ChirrBody");
+
+            ChirrTargetingController.BlacklistBody(BodyCatalog.FindBodyIndex("VoidRaidCrabBody"));
+            ChirrTargetingController.BlacklistBody(BodyCatalog.FindBodyIndex("BrotherBody"));
+            ChirrTargetingController.BlacklistBody(BodyCatalog.FindBodyIndex("UrchinTurretBody"));
+            ChirrTargetingController.BlacklistBody(BodyCatalog.FindBodyIndex("WispSoulBody"));
         }
         private void Setup()
         {
@@ -163,7 +168,7 @@ namespace Starstorm2.Survivors.Chirr
             var dartCount = ChirrPrimary.baseShotCount;
 
             LanguageAPI.Add("CHIRR_DARTS_NAME", "Life Thorns");
-            LanguageAPI.Add("CHIRR_DARTS_DESCRIPTION", $"<style=cIsDamage>Weakening</style>. Fire a barrage of <style=cIsDamage>tracking thorns</style> for <style=cIsDamage> {dartCount}x{dmg}% damage</style>.");
+            LanguageAPI.Add("CHIRR_DARTS_DESCRIPTION", $"<style=cIsDamage>Weakening</style>. Fire a barrage of <style=cIsUtility>tracking thorns</style> for <style=cIsDamage> {dartCount}x{dmg}% damage</style>.");
 
             SkillDef primaryDef1 = ScriptableObject.CreateInstance<SkillDef>();
             primaryDef1.activationState = new SerializableEntityStateType(typeof(ChirrPrimary));
@@ -184,7 +189,7 @@ namespace Starstorm2.Survivors.Chirr
             primaryDef1.rechargeStock = 1;
             primaryDef1.requiredStock = 1;
             primaryDef1.stockToConsume = 1;
-            primaryDef1.keywordTokens = new string[] { "KEYWORD_WEAKEN" };
+            primaryDef1.keywordTokens = new string[] { "KEYWORD_WEAK" };
             Modules.Skills.FixSkillName(primaryDef1);
 
             Modules.Skills.skillDefs.Add(primaryDef1);
