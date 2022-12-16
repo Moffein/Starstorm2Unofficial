@@ -9,11 +9,14 @@ using EntityStates;
 using System.Linq;
 using UnityEngine.AddressableAssets;
 using RoR2.Projectile;
+using Starstorm2.Survivors.Chirr.Components;
 
 namespace Starstorm2.Survivors.Chirr
 {
     public class ChirrCore
     {
+        public static BodyIndex bodyIndex;
+
         public static GameObject chirrPrefab;
         public static GameObject doppelganger;
 
@@ -23,6 +26,10 @@ namespace Starstorm2.Survivors.Chirr
 
         public ChirrCore() => Setup();
 
+        private void SetBodyIndex()
+        {
+            bodyIndex = BodyCatalog.FindBodyIndex("ChirrBody");
+        }
         private void Setup()
         {
             chirrPrefab = CreateChirrPrefab();
@@ -50,6 +57,7 @@ namespace Starstorm2.Survivors.Chirr
             Modules.Prefabs.RegisterNewSurvivor(chirrPrefab, Cores.PrefabCore.CreateDisplayPrefab("ChirrDisplay", chirrPrefab), Color.green, "CHIRR", 40.2f);
 
             ChirrSkins.RegisterSkins();
+            RoR2.RoR2Application.onLoad += SetBodyIndex;
         }
 
         private void RegisterStates()
@@ -65,7 +73,7 @@ namespace Starstorm2.Survivors.Chirr
         private void RegisterProjectiles()
         {
 
-            chirrTargetIndicator = PrefabAPI.InstantiateClone(LegacyResourcesAPI.Load<GameObject>("Prefabs/WoodSpriteIndicator"), "ChirrTargetIndicator", true);
+            chirrTargetIndicator = PrefabAPI.InstantiateClone(LegacyResourcesAPI.Load<GameObject>("Prefabs/WoodSpriteIndicator"), "ChirrTargetIndicator", false);
             chirrTargetIndicator.AddComponent<NetworkIdentity>();
             chirrTargetIndicator.GetComponentInChildren<UnityEngine.SpriteRenderer>().sprite = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("texChirrTargetCrosshair");
             chirrTargetIndicator.transform.localScale = new Vector3(.04f,.04f,.04f);
@@ -73,11 +81,15 @@ namespace Starstorm2.Survivors.Chirr
             chirrTargetIndicator.GetComponentInChildren<Rewired.ComponentControls.Effects.RotateAroundAxis>().enabled = false;
             chirrTargetIndicator.GetComponentInChildren<TextMeshPro>().enabled = false;
 
-            chirrBefriendIndicator = PrefabAPI.InstantiateClone(LegacyResourcesAPI.Load<GameObject>("Prefabs/WoodSpriteIndicator"), "ChirrTargetIndicator", true);
+            chirrBefriendIndicator = PrefabAPI.InstantiateClone(LegacyResourcesAPI.Load<GameObject>("Prefabs/WoodSpriteIndicator"), "ChirrTargetIndicator", false);
             chirrBefriendIndicator.GetComponentInChildren<UnityEngine.SpriteRenderer>().sprite = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("texChirrBefriendCrosshair");
             chirrBefriendIndicator.GetComponentInChildren<UnityEngine.SpriteRenderer>().transform.rotation = Quaternion.Euler(0, 0, 0);
             chirrBefriendIndicator.GetComponentInChildren<Rewired.ComponentControls.Effects.RotateAroundAxis>().enabled = false;
             chirrBefriendIndicator.GetComponentInChildren<RoR2.InputBindingDisplayController>().actionName = "SpecialSkill";
+
+            ChirrTargetingController.indicatorCannotBefriendPrefab = chirrTargetIndicator;
+            ChirrTargetingController.indicatorReadyToBefriendPrefab = chirrBefriendIndicator;
+            ChirrTargetingController.indicatorFriendPrefab = chirrBefriendIndicator;
 
             //RoR2/Base/Treebot/SeedpodMortarGhost.prefab
             //"RoR2/Base/Treebot/SyringeProjectile.prefab"
@@ -101,14 +113,14 @@ namespace Starstorm2.Survivors.Chirr
             ps.lifetime = 5f;
 
             ProjectileSteerTowardTarget pst = projectilePrefab.GetComponent<ProjectileSteerTowardTarget>();
-            pst.rotationSpeed = 12f;
+            pst.rotationSpeed = 20f;
 
             ProjectileController pc = projectilePrefab.GetComponent<ProjectileController>();
             pc.allowPrediction = false;
 
             ProjectileDirectionalTargetFinder pdtf = projectilePrefab.GetComponent<ProjectileDirectionalTargetFinder>();
-            pdtf.lookRange = 40f;
-            pdtf.lookCone = 15f;
+            pdtf.lookRange = 45f;
+            pdtf.lookCone = 12f;
             pdtf.targetSearchInterval = 0.1f;
 
             ProjectileDamage pd = projectilePrefab.GetComponent<ProjectileDamage>();
@@ -173,6 +185,7 @@ namespace Starstorm2.Survivors.Chirr
             primaryDef1.requiredStock = 1;
             primaryDef1.stockToConsume = 1;
             primaryDef1.keywordTokens = new string[] { "KEYWORD_WEAKEN" };
+            Modules.Skills.FixSkillName(primaryDef1);
 
             Modules.Skills.skillDefs.Add(primaryDef1);
             SkillFamily.Variant primaryVariant1 = Utils.RegisterSkillVariant(primaryDef1);
@@ -209,6 +222,7 @@ namespace Starstorm2.Survivors.Chirr
             secondaryDef1.requiredStock = 1;
             secondaryDef1.stockToConsume = 1;
             secondaryDef1.keywordTokens = new string[] { "KEYWORD_STUNNING" };
+            Modules.Skills.FixSkillName(secondaryDef1);
 
             Modules.Skills.skillDefs.Add(secondaryDef1);
             SkillFamily.Variant secondaryVariant1 = Utils.RegisterSkillVariant(secondaryDef1);
@@ -242,6 +256,7 @@ namespace Starstorm2.Survivors.Chirr
             utilityDef1.rechargeStock = 1;
             utilityDef1.requiredStock = 1;
             utilityDef1.stockToConsume = 1;
+            Modules.Skills.FixSkillName(utilityDef1);
 
             Modules.Skills.skillDefs.Add(utilityDef1);
             SkillFamily.Variant utilityVariant1 = Utils.RegisterSkillVariant(utilityDef1);
@@ -354,6 +369,8 @@ namespace Starstorm2.Survivors.Chirr
 
             Cores.PrefabCore.SetupHitbox(model, childLocator.FindChild("HeadbuttHitbox"), "HeadbuttHitbox");
 
+            NetworkStateMachine nsm = chirrPrefab.GetComponent<NetworkStateMachine>();
+
             bool hadSlide = true;
             EntityStateMachine jetpackStateMachine = EntityStateMachine.FindByCustomName(chirrPrefab, "Slide");
             if (!jetpackStateMachine)
@@ -364,7 +381,6 @@ namespace Starstorm2.Survivors.Chirr
             jetpackStateMachine.customName = "Jetpack";
             jetpackStateMachine.initialStateType = new SerializableEntityStateType(typeof(EntityStates.Idle));
             jetpackStateMachine.mainStateType = new SerializableEntityStateType(typeof(EntityStates.Idle));
-            NetworkStateMachine nsm = chirrPrefab.GetComponent<NetworkStateMachine>();
             nsm.stateMachines = nsm.stateMachines.Append(jetpackStateMachine).ToArray();
 
             //This makes the Jetpack get shut off when frozen
@@ -373,6 +389,13 @@ namespace Starstorm2.Survivors.Chirr
                 SetStateOnHurt ssoh = chirrPrefab.GetComponent<SetStateOnHurt>();
                 ssoh.idleStateMachine.Append(jetpackStateMachine);
             }
+
+            chirrPrefab.AddComponent<ChirrTargetingController>();
+            EntityStateMachine befriendStateMachine = chirrPrefab.AddComponent<EntityStateMachine>();
+            befriendStateMachine.customName = "Befriend";
+            befriendStateMachine.initialStateType = new SerializableEntityStateType(typeof(EntityStates.Idle));
+            befriendStateMachine.mainStateType = new SerializableEntityStateType(typeof(EntityStates.Idle));
+            nsm.stateMachines = nsm.stateMachines.Append(befriendStateMachine).ToArray();
 
             return chirrPrefab;
         }

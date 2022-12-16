@@ -8,6 +8,7 @@ using UnityEngine;
 using UnityEngine.Networking;
 using System.Collections.ObjectModel;
 using UnityEngine.AddressableAssets;
+using RoR2.Orbs;
 
 namespace EntityStates.SS2UStates.Chirr
 {
@@ -62,15 +63,27 @@ namespace EntityStates.SS2UStates.Chirr
                         if ((teamMembers[i].transform.position - position).sqrMagnitude <= num)
                         {
                             HealthComponent component = teamMembers[i].GetComponent<HealthComponent>();
-                            if (component)
+                            if (component && component.body)
                             {
-                                float num2 = component.fullHealth * healFraction;
-                                if (num2 > 0f)
+                                float healAmount = component.fullHealth * healFraction;
+                                if (healAmount > 0f)
                                 {
-                                    component.Heal(num2, default(ProcChainMask), true);
-                                    if (component.body && component.body != base.characterBody)
-                                        component.body.AddTimedBuff(RoR2Content.Buffs.CrocoRegen, regenDuration);
+                                    if (component.body.mainHurtBox && !component.body.disablingHurtBoxes)
+                                    {
+                                        HealOrb healOrb = new HealOrb();
+                                        healOrb.origin = base.transform.position;
+                                        healOrb.target = component.body.mainHurtBox;
+                                        healOrb.healValue = healAmount;
+                                        healOrb.overrideDuration = 0.3f;
+                                        OrbManager.instance.AddOrb(healOrb);
+                                    }
+                                    else
+                                    {
+                                        component.Heal(healAmount, default(ProcChainMask), true);
+                                    }
                                 }
+
+                                if (component.body != base.characterBody) component.body.AddTimedBuff(RoR2Content.Buffs.CrocoRegen, regenDuration);
                             }
                         }
                     }

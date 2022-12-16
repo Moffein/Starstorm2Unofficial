@@ -80,6 +80,7 @@
     <Compile Include="API\Utils.cs" />
     <Compile Include="Modules\EntityStates\BaseMeleeAttack.cs" />
     <Compile Include="Survivors\Chirr\ChirrSkins.cs" />
+    <Compile Include="Survivors\Chirr\Components\ChirrTargetingController.cs" />
     <Compile Include="Survivors\Chirr\EntityStates\ChirrPrimary.cs" />
     <Compile Include="Survivors\Chirr\EntityStates\Headbutt.cs" />
     <Compile Include="Survivors\Chirr\EntityStates\JetpackOn.cs" />
@@ -254,7 +255,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Cores\Enemies\" />
-    <Folder Include="Survivors\Chirr\Components\" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="0Harmony">
