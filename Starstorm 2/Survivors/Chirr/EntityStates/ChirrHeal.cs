@@ -55,35 +55,30 @@ namespace EntityStates.SS2UStates.Chirr
                         scale = ChirrHeal.radius,
                         rootObject = base.gameObject
                     }, true);
-                    ReadOnlyCollection<TeamComponent> teamMembers = TeamComponent.GetTeamMembers(teamComponent.teamIndex);
-                    float num = radius * radius;
-                    Vector3 position = base.transform.position;
-                    for (int i = 0; i < teamMembers.Count; i++)
-                    {
-                        if ((teamMembers[i].transform.position - position).sqrMagnitude <= num)
-                        {
-                            HealthComponent component = teamMembers[i].GetComponent<HealthComponent>();
-                            if (component && component.body)
-                            {
-                                float healAmount = component.fullHealth * healFraction;
-                                if (healAmount > 0f)
-                                {
-                                    if (component.body.mainHurtBox && !component.body.disablingHurtBoxes)
-                                    {
-                                        HealOrb healOrb = new HealOrb();
-                                        healOrb.origin = base.transform.position;
-                                        healOrb.target = component.body.mainHurtBox;
-                                        healOrb.healValue = healAmount;
-                                        healOrb.overrideDuration = 0.3f;
-                                        OrbManager.instance.AddOrb(healOrb);
-                                    }
-                                    else
-                                    {
-                                        component.Heal(healAmount, default(ProcChainMask), true);
-                                    }
-                                }
 
-                                if (component.body != base.characterBody) component.body.AddTimedBuff(RoR2Content.Buffs.CrocoRegen, regenDuration);
+
+                    List<HealthComponent> hcList = new List<HealthComponent>();
+                    Collider[] array = Physics.OverlapSphere(base.transform.position, radius, LayerIndex.entityPrecise.mask);
+                    for (int i = 0; i < array.Length; i++)
+                    {
+                        HurtBox hurtBox = array[i].GetComponent<HurtBox>();
+                        if (hurtBox && hurtBox.healthComponent && !hcList.Contains(hurtBox.healthComponent))
+                        {
+                            hcList.Add(hurtBox.healthComponent);
+                            if (hurtBox.healthComponent.body.teamComponent && hurtBox.healthComponent.body.teamComponent.teamIndex == base.GetTeam())
+                            {
+                                float healAmount = hurtBox.healthComponent.fullHealth * healFraction;
+                                /*if (component.body.mainHurtBox && !component.body.disablingHurtBoxes)
+                                {
+                                    HealOrb healOrb = new HealOrb();
+                                    healOrb.origin = base.transform.position;
+                                    healOrb.target = component.body.mainHurtBox;
+                                    healOrb.healValue = healAmount;
+                                    healOrb.overrideDuration = 0.3f;
+                                    OrbManager.instance.AddOrb(healOrb);
+                                }*/
+                                hurtBox.healthComponent.Heal(healAmount, default(ProcChainMask), true);
+                                if (hurtBox.healthComponent.body != base.characterBody) hurtBox.healthComponent.body.AddTimedBuff(RoR2Content.Buffs.CrocoRegen, regenDuration);
                             }
                         }
                     }
