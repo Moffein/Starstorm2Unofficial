@@ -156,7 +156,7 @@
     <Compile Include="Cores\Survivors\SpooderCore.cs" />
     <Compile Include="Cores\Starstorm2ItemManager.cs" />
     <Compile Include="Survivors\Chirr\EntityStates\ChirrMain.cs" />
-    <Compile Include="Survivors\Chirr\EntityStates\Utility.cs" />
+    <Compile Include="Survivors\Chirr\EntityStates\ChirrHeal.cs" />
     <Compile Include="Survivors\Cyborg\EntityStates\CyborgMain.cs" />
     <Compile Include="Survivors\Cyborg\EntityStates\Secondary.cs" />
     <Compile Include="Survivors\Cyborg\EntityStates\CyborgFireOverheat.cs" />

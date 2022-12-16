@@ -7,11 +7,13 @@ using RoR2;
 using UnityEngine;
 using UnityEngine.Networking;
 using System.Collections.ObjectModel;
+using UnityEngine.AddressableAssets;
 
 namespace EntityStates.SS2UStates.Chirr
 {
     public class ChirrHeal : BaseSkillState
     {
+        public static GameObject healEffectPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/DLC1/EliteEarth/AffixEarthHealExplosion.prefab").WaitForCompletion();
         public static float baseDuration = 1.5f;
         public static float baseFireDuration = 1.3f;
         public static float recoil = 1f;
@@ -22,8 +24,6 @@ namespace EntityStates.SS2UStates.Chirr
         private float duration;
         private float fireDuration;
         private bool hasFired;
-
-        GameObject novaVFX;
 
         public override void OnEnter()
         {
@@ -37,10 +37,6 @@ namespace EntityStates.SS2UStates.Chirr
 
         public override void OnExit()
         {
-            if (NetworkServer.active && novaVFX)
-            {
-                Destroy(novaVFX);
-            }
             base.OnExit();
         }
 
@@ -52,8 +48,12 @@ namespace EntityStates.SS2UStates.Chirr
                 hasFired = true;
                 if (NetworkServer.active)
                 {
-                    novaVFX = UnityEngine.Object.Instantiate<GameObject>(LegacyResourcesAPI.Load<GameObject>("prefabs/effects/TPHealNovaEffect"), base.transform);
-                    NetworkServer.Spawn(novaVFX);
+                    EffectManager.SpawnEffect(healEffectPrefab, new EffectData
+                    {
+                        origin = base.transform.position,
+                        scale = ChirrHeal.radius,
+                        rootObject = base.gameObject
+                    }, true);
                     ReadOnlyCollection<TeamComponent> teamMembers = TeamComponent.GetTeamMembers(teamComponent.teamIndex);
                     float num = radius * radius;
                     Vector3 position = base.transform.position;
