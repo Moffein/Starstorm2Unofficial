@@ -60,7 +60,6 @@ namespace Starstorm2.Survivors.Chirr
             Modules.States.AddSkill(typeof(JetpackOn));
             Modules.States.AddSkill(typeof(ChirrMain));
             Modules.States.AddSkill(typeof(ChirrFireDarts));
-            Modules.States.AddSkill(typeof(ChirrHeadbutt));
             Modules.States.AddSkill(typeof(ChirrHeal));
             Modules.States.AddSkill(typeof(ChirrBefriend));
             Modules.States.AddSkill(typeof(ChirrLeash));
@@ -184,7 +183,7 @@ namespace Starstorm2.Survivors.Chirr
             SkillLocator skill = chirrPrefab.GetComponent<SkillLocator>();
 
             LanguageAPI.Add("CHIRR_HEADBUTT_NAME", "Headbutt");
-            LanguageAPI.Add("CHIRR_HEADBUTT_DESCRIPTION", $"Headbutt enemies in front of you for <style=cIsDamage>{dmg}% damage</style>. <style=cIsDamage>Stunning</style>.");
+            LanguageAPI.Add("CHIRR_HEADBUTT_DESCRIPTION", $"<style=cIsDamage>Stunning</style>. Lunge forward and headbutt enemies for <style=cIsDamage>{dmg}% damage</style>.");
 
             SkillDef secondaryDef1 = ScriptableObject.CreateInstance<SkillDef>();
             secondaryDef1.activationState = new SerializableEntityStateType(typeof(Headbutt));
@@ -201,13 +200,13 @@ namespace Starstorm2.Survivors.Chirr
             secondaryDef1.interruptPriority = InterruptPriority.Skill;
             secondaryDef1.isCombatSkill = true;
             secondaryDef1.mustKeyPress = false;
-            secondaryDef1.cancelSprintingOnActivation = true;
+            secondaryDef1.cancelSprintingOnActivation = false;
             secondaryDef1.rechargeStock = 1;
             secondaryDef1.requiredStock = 1;
             secondaryDef1.stockToConsume = 1;
             secondaryDef1.keywordTokens = new string[] { "KEYWORD_STUNNING" };
 
-            Utils.RegisterSkillDef(secondaryDef1, typeof(ChirrHeadbutt));
+            Modules.Skills.skillDefs.Add(secondaryDef1);
             SkillFamily.Variant secondaryVariant1 = Utils.RegisterSkillVariant(secondaryDef1);
 
             skillLocator.secondary = Utils.RegisterSkillsToFamily(chirrPrefab, secondaryVariant1);
@@ -240,7 +239,7 @@ namespace Starstorm2.Survivors.Chirr
             utilityDef1.requiredStock = 1;
             utilityDef1.stockToConsume = 1;
 
-            Utils.RegisterSkillDef(utilityDef1, typeof(ChirrHeal));
+            Modules.Skills.skillDefs.Add(utilityDef1);
             SkillFamily.Variant utilityVariant1 = Utils.RegisterSkillVariant(utilityDef1);
 
             skillLocator.utility = Utils.RegisterSkillsToFamily(chirrPrefab, utilityVariant1);

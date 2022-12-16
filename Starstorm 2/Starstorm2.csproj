@@ -156,7 +156,6 @@
     <Compile Include="Cores\Survivors\SpooderCore.cs" />
     <Compile Include="Cores\Starstorm2ItemManager.cs" />
     <Compile Include="Survivors\Chirr\EntityStates\ChirrMain.cs" />
-    <Compile Include="Survivors\Chirr\EntityStates\Secondary.cs" />
     <Compile Include="Survivors\Chirr\EntityStates\Primary.cs" />
     <Compile Include="Survivors\Chirr\EntityStates\Special.cs" />
     <Compile Include="Survivors\Chirr\EntityStates\Utility.cs" />

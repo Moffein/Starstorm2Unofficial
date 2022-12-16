@@ -34,7 +34,6 @@ namespace EntityStates.SS2UStates.Common
         protected string muzzleString = "SwingCenter";
         protected GameObject swingEffectPrefab;
         protected GameObject hitEffectPrefab;
-        protected NetworkSoundEventIndex impactSound;
 
         protected bool scaleHitHopWithAttackSpeed = false;
         public float duration;
@@ -83,7 +82,6 @@ namespace EntityStates.SS2UStates.Common
             this.attack.pushAwayForce = this.pushForce;
             this.attack.hitBoxGroup = hitBoxGroup;
             this.attack.isCrit = base.RollCrit();
-            this.attack.impactSound = this.impactSound;
         }
 
         protected virtual void PlayAttackAnimation()

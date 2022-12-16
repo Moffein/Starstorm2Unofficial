@@ -43,7 +43,6 @@ namespace EntityStates.SS2UStates.Chirr
             this.duration = this.baseDuration / this.attackSpeedStat;
             this.fireDuration = 0.5f * this.duration;
 
-            base.PlayAnimation("Gesture, Override", "Utility", "Utility.playbackRate", this.duration);
             base.PlayAnimation("Gesture, Additive", "Utility", "Utility.playbackRate", this.duration);
         }
 

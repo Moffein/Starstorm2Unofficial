@@ -14,6 +14,7 @@ namespace Starstorm2.Cores
 
         public static class ModdedDamageTypes
         {
+            public static DamageAPI.ModdedDamageType ScaleForceToMass;
             public static DamageAPI.ModdedDamageType GougeOnHit;
             public static DamageAPI.ModdedDamageType ExtendFear;
             public static DamageAPI.ModdedDamageType GuaranteedFearOnHit;   //Used for Exe Scepter
@@ -28,6 +29,7 @@ namespace Starstorm2.Cores
         {
             instance = this;
 
+            ModdedDamageTypes.ScaleForceToMass = DamageAPI.ReserveDamageType();
             ModdedDamageTypes.GougeOnHit = DamageAPI.ReserveDamageType();
             ModdedDamageTypes.ExtendFear = DamageAPI.ReserveDamageType();
             ModdedDamageTypes.GuaranteedFearOnHit = DamageAPI.ReserveDamageType();
@@ -92,6 +94,36 @@ namespace Starstorm2.Cores
                 if (damageInfo.HasModdedDamageType(ModdedDamageTypes.GuaranteedFearOnHit))
                 {
                     self.body.AddTimedBuff(BuffCore.fearDebuff, EntityStates.SS2UStates.Executioner.ExecutionerDash.debuffDuration);
+                }
+
+                if (damageInfo.HasModdedDamageType(ModdedDamageTypes.ScaleForceToMass))
+                {
+                    CharacterBody cb = self.body;
+                    if (!cb.isFlying && cb.characterMotor != null)
+                    {
+                        if (!cb.characterMotor.isGrounded)    //Multiply launched enemy force
+                        {
+                            if (cb.isChampion)
+                            {
+                                damageInfo.force.x *= 0.7f;
+                                damageInfo.force.z *= 0.7f;
+                            }
+                        }
+                        else
+                        {
+                            if (cb.isChampion) //deal less knockback against bosses if they're on the ground
+                            {
+                                damageInfo.force.x *= 0.5f;
+                                damageInfo.force.z *= 0.5f;
+                            }
+                        }
+                    }
+
+                    if (cb.rigidbody)
+                    {
+                        float forceMult = Mathf.Max(cb.rigidbody.mass / 100f, 1f);
+                        damageInfo.force *= forceMult;
+                    }
                 }
             }
 
