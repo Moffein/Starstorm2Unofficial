@@ -43,7 +43,7 @@ namespace Starstorm2.Survivors.Chirr
 
             LanguageAPI.Add("CHIRR_DEFAULT_SKIN_NAME", "Default");
             SkinDef defaultSkin = SkinsCore.CreateSkinDef("CHIRR_DEFAULT_SKIN_NAME",
-                                                          Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("ChirrPrimary"),
+                                                          Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("ChirrPassive"),
                                                           defaultRenderers,
                                                           mainRenderer,
                                                           model,

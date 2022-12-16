@@ -23,6 +23,7 @@ namespace EntityStates.SS2UStates.Chirr
         private float fireDuration;
         private bool hasFired;
 
+        GameObject novaVFX;
 
         public override void OnEnter()
         {
@@ -36,6 +37,10 @@ namespace EntityStates.SS2UStates.Chirr
 
         public override void OnExit()
         {
+            if (NetworkServer.active && novaVFX)
+            {
+                Destroy(novaVFX);
+            }
             base.OnExit();
         }
 
@@ -47,8 +52,8 @@ namespace EntityStates.SS2UStates.Chirr
                 hasFired = true;
                 if (NetworkServer.active)
                 {
-                    GameObject vfx = UnityEngine.Object.Instantiate<GameObject>(LegacyResourcesAPI.Load<GameObject>("prefabs/effects/TPHealNovaEffect"), base.transform);
-                    NetworkServer.Spawn(vfx);
+                    novaVFX = UnityEngine.Object.Instantiate<GameObject>(LegacyResourcesAPI.Load<GameObject>("prefabs/effects/TPHealNovaEffect"), base.transform);
+                    NetworkServer.Spawn(novaVFX);
                     ReadOnlyCollection<TeamComponent> teamMembers = TeamComponent.GetTeamMembers(teamComponent.teamIndex);
                     float num = radius * radius;
                     Vector3 position = base.transform.position;
@@ -90,7 +95,7 @@ namespace EntityStates.SS2UStates.Chirr
 
         public override InterruptPriority GetMinimumInterruptPriority()
         {
-            return InterruptPriority.Pain;
+            return InterruptPriority.PrioritySkill;
         }
     }
 }

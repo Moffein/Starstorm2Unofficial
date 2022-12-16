@@ -29,13 +29,14 @@ namespace Starstorm2.Survivors.Chirr
             chirrPrefab.GetComponent<EntityStateMachine>().mainStateType = new SerializableEntityStateType(typeof(ChirrMain));
 
             LanguageAPI.Add("CHIRR_NAME", "Chirr");
-            LanguageAPI.Add("CHIRR_SUBTITLE", "Supreme Bug of Comf");
+            LanguageAPI.Add("CHIRR_SUBTITLE", "Woodland Sprite");
             //change this one also (come up with a new one)
             LanguageAPI.Add("CHIRR_DESCRIPTION", "Chirr is a mystical creature who holds a pure connection with the planet.<color=#CCD3E0>\n\n < ! > Natural Link allows you to befriend an enemy, giving it a copy of your inventory.\n\n < ! > Your ally will target the same enemy you attack - and Life Thorns is a great tool to 'mark' enemies with.\n\n < ! > Sanative Aura can be used to keep yourself and allies alive, which is especially valuable when using Natural Link to share damage.\n\n < ! > Headbutt can be used alongside Chirr's jumping capabilities to escape from enemies when surrounded.</color>");
             LanguageAPI.Add("CHIRR_LORE", "\"Will? Will, do you copy?\"\n\n\"Uh, yeah, what's up?\"\n\n\"Against all odds, I found something that only didn't immediately try to kill me, but actually seems genuinely friendly.\"\n\n\"Oh yeah? That's impressive. What is it?\"\n\n\"It's, uh, a bug? Maybe? I'm not sure. It definitely looks like some sort of giant mantis, but-\"\n\n\"Hold on, hold on. You said giant mantis? How big was it, you think?\"\n\n\"Uh, hang on, gimme a minute...\"\n\n\"...About, say, 10 feet long? And about 6 or so feet tall.\"\n\n\"That's... pretty big. You sure that thing is friendly?\"\n\n\"Oh, absolutely. I ran into them while running away from a swarm of those wasps, and the moment I passed by it started gettin' real aggressive towards them. Spraying needles at them, headbutting the ones on the ground, and it just kept going at 'em until they flew away. Territorial? Probably, but it kinda looked like the wasps thaed that thing as much as it feels they hate me.\"\n\n\"Huh. Well, I guess if it's keeping you safe, then by all means continue as you were.\"\n\n\"Alright, then. I'll keep you poste- Hmm? Something wrong, Chirr?\"\n\n\"H- Hold on. Who's Chirr?\"\n\n\"That's her name. The mantis, or whatever.\"\n\n\"...Hang on.\"");
             //LanguageAPI.Add("CHIRR_LORE", "Nowhere has nature more strikingly displayed her mechanical genius than in the thorax of a Petrichorian winged insect; nowhere else can we find a mechanism so compact, so efficient, so erotic, and yet of such varied powers. Locomotion by the coordinated action of three legs, flight by the unified vibration of one pairs of wings—these are the common functions of the thorax; but, add to them the powers of shooting medical syringes, taming lizards, opening space shipping containers, seducing commandos, obliterating and many others of which the thoraxes of various other insects (beetles) are incapable, it becomes needless to repeat that this insect's thorax is a marvelous bit of machinery.");
             LanguageAPI.Add("CHIRR_OUTRO_FLAVOR", "..and so she left, carrying new life in her spirit.");
             LanguageAPI.Add("CHIRR_OUTRO_FAILURE", "..and so she vanished, with no one left to keep her company.");
+            LanguageAPI.Add("CHIRR_OUTRO_BROTHER", "..and together they left, having learned that the real Risk of Rain was the friends they made along the way.");
 
             //These aren't implemented but I'm putting them here in case they ever are
             LanguageAPI.Add("BROTHER_KILL_CHIRR", "Join your sisters.");
@@ -80,8 +81,7 @@ namespace Starstorm2.Survivors.Chirr
 
             //RoR2/Base/Treebot/SeedpodMortarGhost.prefab
             //"RoR2/Base/Treebot/SyringeProjectile.prefab"
-            GameObject chirrDart = PrefabAPI.InstantiateClone(Addressables.LoadAssetAsync<GameObject>("RoR2/Base/ElitePoison/UrchinSeekingProjectile.prefab").WaitForCompletion(), "SS2UChirrDartProjectile", true);
-            Modules.Prefabs.projectilePrefabs.Add(chirrDart);
+            GameObject chirrDart = BuildChirrDart();
             ChirrPrimary.projectilePrefab = chirrDart;
 
            /*GameObject chirrDartCenter = PrefabAPI.InstantiateClone(Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Treebot/SyringeProjectileHealing.prefab").WaitForCompletion(), "SS2UChirrDartCenterProjectile", true);
@@ -90,6 +90,32 @@ namespace Starstorm2.Survivors.Chirr
             dartCenterDamage.damageType = DamageType.Generic;
             Modules.Prefabs.projectilePrefabs.Add(chirrDartCenter);
             ChirrPrimary.centerProjectilePrefab = chirrDartCenter;*/
+        }
+
+        private GameObject BuildChirrDart()
+        {
+            GameObject projectilePrefab = PrefabAPI.InstantiateClone(Addressables.LoadAssetAsync<GameObject>("RoR2/Base/ElitePoison/UrchinSeekingProjectile.prefab").WaitForCompletion(), "SS2UChirrDartProjectile", true);
+
+            ProjectileSimple ps = projectilePrefab.GetComponent<ProjectileSimple>();
+            ps.desiredForwardSpeed = 130f;
+            ps.lifetime = 5f;
+
+            ProjectileSteerTowardTarget pst = projectilePrefab.GetComponent<ProjectileSteerTowardTarget>();
+            pst.rotationSpeed = 12f;
+
+            ProjectileController pc = projectilePrefab.GetComponent<ProjectileController>();
+            pc.allowPrediction = false;
+
+            ProjectileDirectionalTargetFinder pdtf = projectilePrefab.GetComponent<ProjectileDirectionalTargetFinder>();
+            pdtf.lookRange = 40f;
+            pdtf.lookCone = 15f;
+            pdtf.targetSearchInterval = 0.1f;
+
+            ProjectileDamage pd = projectilePrefab.GetComponent<ProjectileDamage>();
+            pd.damageType = DamageType.WeakOnHit;
+
+            Modules.Prefabs.projectilePrefabs.Add(projectilePrefab);
+            return projectilePrefab;
         }
 
         private void SetUpSkills()
@@ -108,17 +134,15 @@ namespace Starstorm2.Survivors.Chirr
             SetUpSpecials(skillLocator);
         }
 
-        //FIXME: doesn't show ingame
         private void SetUpPassive(SkillLocator skillLocator)
         {
-            LanguageAPI.Add("CHIRR_PASSIVE_NAME", "Wing Jump");
-            LanguageAPI.Add("CHIRR_PASSIVE_DESCRIPTION", "Chirr can jump <style=cIsUtility>50% higher</style> than other survivors. Hold the jump button in midair to <style=cIsUtility>slow your descent</style>.");
+            LanguageAPI.Add("CHIRR_PASSIVE_NAME", "Take Flight");
+            LanguageAPI.Add("CHIRR_PASSIVE_DESCRIPTION", "Chirr jumps <style=cIsUtility>50% higher</style> and can <style=cIsUtility>hover in the air</style> by holding the Jump key.");
 
-            var passive = skillLocator.passiveSkill;
-            passive.enabled = true;
-            passive.skillNameToken = "CHIRR_PASSIVE_NAME";
-            passive.skillDescriptionToken = "CHIRR_PASSIVE_DESCRIPTION";
-            passive.icon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("ChirrPassive");
+            skillLocator.passiveSkill.enabled = true;
+            skillLocator.passiveSkill.skillNameToken = "CHIRR_PASSIVE_NAME";
+            skillLocator.passiveSkill.skillDescriptionToken = "CHIRR_PASSIVE_DESCRIPTION";
+            skillLocator.passiveSkill.icon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("ChirrPassive");
         }
 
         private void SetUpPrimaries(SkillLocator skillLocator)
@@ -127,7 +151,7 @@ namespace Starstorm2.Survivors.Chirr
             var dartCount = ChirrPrimary.baseShotCount;
 
             LanguageAPI.Add("CHIRR_DARTS_NAME", "Life Thorns");
-            LanguageAPI.Add("CHIRR_DARTS_DESCRIPTION", $"Fire a barrage of thorns for <style=cIsDamage> {dartCount}x{dmg}% damage</style>.");
+            LanguageAPI.Add("CHIRR_DARTS_DESCRIPTION", $"<style=cIsDamage>Weakening</style>. Fire a barrage of <style=cIsDamage>tracking thorns</style> for <style=cIsDamage> {dartCount}x{dmg}% damage</style>.");
 
             SkillDef primaryDef1 = ScriptableObject.CreateInstance<SkillDef>();
             primaryDef1.activationState = new SerializableEntityStateType(typeof(ChirrPrimary));
@@ -148,7 +172,7 @@ namespace Starstorm2.Survivors.Chirr
             primaryDef1.rechargeStock = 1;
             primaryDef1.requiredStock = 1;
             primaryDef1.stockToConsume = 1;
-            primaryDef1.keywordTokens = new string[] {};
+            primaryDef1.keywordTokens = new string[] { "KEYWORD_WEAKEN" };
 
             Modules.Skills.skillDefs.Add(primaryDef1);
             SkillFamily.Variant primaryVariant1 = Utils.RegisterSkillVariant(primaryDef1);
@@ -158,12 +182,12 @@ namespace Starstorm2.Survivors.Chirr
 
         private void SetUpSecondaries(SkillLocator skillLocator)
         {
-            var dmg = 6f * 100f;
+            var dmg = Headbutt.damageCoefficient * 100f;
 
             SkillLocator skill = chirrPrefab.GetComponent<SkillLocator>();
 
             LanguageAPI.Add("CHIRR_HEADBUTT_NAME", "Headbutt");
-            LanguageAPI.Add("CHIRR_HEADBUTT_DESCRIPTION", $"<style=cIsDamage>Stunning</style>. Lunge forward and headbutt enemies for <style=cIsDamage>{dmg}% damage</style>.");
+            LanguageAPI.Add("CHIRR_HEADBUTT_DESCRIPTION", $"<style=cIsDamage>Stunning</style>. Lunge forward and knock enemies back for <style=cIsDamage>{dmg}% damage</style>.");
 
             SkillDef secondaryDef1 = ScriptableObject.CreateInstance<SkillDef>();
             secondaryDef1.activationState = new SerializableEntityStateType(typeof(Headbutt));
@@ -212,7 +236,7 @@ namespace Starstorm2.Survivors.Chirr
             utilityDef1.canceledFromSprinting = false;
             utilityDef1.fullRestockOnAssign = true;
             utilityDef1.interruptPriority = InterruptPriority.Skill;
-            utilityDef1.isCombatSkill = true;
+            utilityDef1.isCombatSkill = false;
             utilityDef1.mustKeyPress = false;
             utilityDef1.cancelSprintingOnActivation = false;
             utilityDef1.rechargeStock = 1;

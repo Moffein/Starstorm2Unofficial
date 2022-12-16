@@ -12,12 +12,14 @@ namespace EntityStates.SS2UStates.Chirr
     {
         public static GameObject swingEffect = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Lemurian/LemurianBiteTrail.prefab").WaitForCompletion();
         //public static GameObject hitEffect = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Common/VFX/OmniImpactVFX.prefab").WaitForCompletion();    //Why does this play sounds?
-        
+
+        public static new float damageCoefficient = 5f;
         public static float momentumStartPercent = 0.3f;
         public static float momentumFadePercent = 0.6f;
         public static float momentumEndPercent = 0.8f;
         public static float forwardSpeed = 30f;
-        public static float knockbackForce = 2800f;
+        public static float knockbackForce = 2400f;
+        public static float yForce = 1000f;
 
         private Vector3 attackDirection;
         private float momentumStartTime;
@@ -36,7 +38,7 @@ namespace EntityStates.SS2UStates.Chirr
             this.hitSoundString = "Play_acrid_m1_hit";
             this.swingSoundString = "Play_acrid_m1_bigSlash";
             this.hitboxName = "HeadbuttHitbox";
-            this.damageCoefficient = 6f;
+            base.damageCoefficient = Headbutt.damageCoefficient;
             this.procCoefficient = 1f;
             this.baseDuration = 0.7f;
             this.attackStartTime = 0.3f;
@@ -66,7 +68,7 @@ namespace EntityStates.SS2UStates.Chirr
                 attackDirection.y = 0;
                 attackDirection.Normalize();
                 this.attack.forceVector = attackDirection * Headbutt.knockbackForce;
-                this.attack.forceVector.y += 1000f;
+                this.attack.forceVector.y += Headbutt.yForce;
             }
         }
 
@@ -85,7 +87,7 @@ namespace EntityStates.SS2UStates.Chirr
                 if (this.attack != null)
                 {
                     this.attack.forceVector = attackDirection * Headbutt.knockbackForce;
-                    this.attack.forceVector.y += 1200f;
+                    this.attack.forceVector.y += Headbutt.yForce;
                 }
 
                 this.startedSkillStationary = base.inputBank && base.inputBank.moveVector == Vector3.zero;

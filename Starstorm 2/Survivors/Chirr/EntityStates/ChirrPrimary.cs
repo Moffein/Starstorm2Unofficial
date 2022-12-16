@@ -8,7 +8,7 @@ namespace EntityStates.SS2UStates.Chirr
 {
     public class ChirrPrimary : BaseState
     {
-        public static float damageCoefficient = 1.5f;
+        public static float damageCoefficient = 0.6f;
         public static float force = 100f;
         public static float baseDuration = 0.5f;
         public static float baseShotDuration = 0.1f;
@@ -40,10 +40,11 @@ namespace EntityStates.SS2UStates.Chirr
                 base.characterBody.SetAimTimer(2f);
             }
 
-            base.PlayCrossfade("Gesture, Override", "Primary", "Primary.playbackRate", this.duration, 0.2f);
-            base.PlayCrossfade("Gesture, Additive", "Primary", "Primary.playbackRate", this.duration, 0.2f);
             EffectManager.SimpleMuzzleFlash(muzzleflashEffectPrefab, base.gameObject, "MuzzleWingL", false);
             EffectManager.SimpleMuzzleFlash(muzzleflashEffectPrefab, base.gameObject, "MuzzleWingR", false);
+
+            base.PlayCrossfade("Gesture, Override", "Primary", "Primary.playbackRate", this.duration, 0.1f);
+            base.PlayCrossfade("Gesture, Additive", "Primary", "Primary.playbackRate", this.duration, 0.1f);
 
             FireBullet();
         }
