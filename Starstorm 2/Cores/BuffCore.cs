@@ -1,9 +1,13 @@
-﻿using R2API;
+﻿using Mono.Cecil.Cil;
+using MonoMod.Cil;
+using R2API;
 using RoR2;
 using Starstorm2.Survivors.Chirr.Components;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
+using Object = UnityEngine.Object;
 
 namespace Starstorm2.Cores
 {
@@ -112,8 +116,8 @@ namespace Starstorm2.Cores
             watchMetronomeBuff.buffColor = Color.cyan;
             buffDefs.Add(watchMetronomeBuff);
 
-            chirrFriendBuff = CreateBuffDef("ChirrFriendBuff", false, false, false, new Color32(255, 136, 206, 255), Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("buffChirrSoulLink"));
-            chirrSelfBuff = CreateBuffDef("ChirrSelfBuff", false, false, false, new Color32(255, 136, 206, 255), Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("buffChirrSoulLink"));
+            chirrFriendBuff = CreateBuffDef("ChirrFriendBuff", false, false, false, new Color32(245, 123, 145, 255), Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("buffChirrSoulLink"));
+            chirrSelfBuff = CreateBuffDef("ChirrSelfBuff", false, false, false, new Color32(245, 123, 145, 255), Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("buffChirrSoulLink"));
 
             #region Executioner
             fearDebuff = ScriptableObject.CreateInstance<BuffDef>();
@@ -155,6 +159,20 @@ namespace Starstorm2.Cores
             On.RoR2.HealthComponent.TakeDamage += HealthComponent_TakeDamage;
             On.RoR2.CharacterBody.OnClientBuffsChanged += CharacterBody_OnClientBuffsChanged;
             RecalculateStatsAPI.GetStatCoefficients += RecalculateStatsAPI_GetStatCoefficients;
+
+            //Prevent Infestors from infesting chirr friends
+            IL.EntityStates.VoidInfestor.Infest.FixedUpdate += (il) =>
+            {
+                ILCursor c = new ILCursor(il);
+                c.GotoNext(MoveType.After,
+                     x => x.MatchCallvirt<CharacterBody>("get_isPlayerControlled")
+                    );
+                c.Emit(OpCodes.Ldloc_3);
+                c.EmitDelegate<Func<bool, CharacterBody, bool>>((playerControlled, body) =>
+                {
+                    return playerControlled || body.HasBuff(chirrFriendBuff) || body.HasBuff(chirrSelfBuff);
+                });
+            };
         }
 
         private void HealthComponent_TakeDamage(On.RoR2.HealthComponent.orig_TakeDamage orig, HealthComponent self, DamageInfo damageInfo)

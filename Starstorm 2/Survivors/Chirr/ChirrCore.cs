@@ -17,19 +17,19 @@ namespace Starstorm2.Survivors.Chirr
     public class ChirrCore
     {
         public static BodyIndex bodyIndex;
+        public static BodyIndex brotherHurtIndex;
 
         public static GameObject chirrPrefab;
         public static GameObject doppelganger;
 
         public static GameObject chirrHeal;
-        public static GameObject chirrTargetIndicator;
-        public static GameObject chirrBefriendIndicator;
 
         public ChirrCore() => Setup();
 
         private void SetBodyIndex()
         {
             bodyIndex = BodyCatalog.FindBodyIndex("ChirrBody");
+            brotherHurtIndex = BodyCatalog.FindBodyIndex("BrotherHurtBody");
 
             ChirrFriendController.BlacklistBody(BodyCatalog.FindBodyIndex("VoidRaidCrabBody"));
             ChirrFriendController.BlacklistBody(BodyCatalog.FindBodyIndex("BrotherBody"));
@@ -83,23 +83,37 @@ namespace Starstorm2.Survivors.Chirr
         private void RegisterProjectiles()
         {
 
-            chirrTargetIndicator = PrefabAPI.InstantiateClone(LegacyResourcesAPI.Load<GameObject>("Prefabs/WoodSpriteIndicator"), "ChirrTargetIndicator", false);
+            GameObject chirrTargetIndicator = PrefabAPI.InstantiateClone(LegacyResourcesAPI.Load<GameObject>("Prefabs/WoodSpriteIndicator"), "ChirrTargetIndicator", false);
             chirrTargetIndicator.AddComponent<NetworkIdentity>();
             chirrTargetIndicator.GetComponentInChildren<UnityEngine.SpriteRenderer>().sprite = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("texChirrTargetCrosshair");
             chirrTargetIndicator.transform.localScale = new Vector3(.04f,.04f,.04f);
             chirrTargetIndicator.GetComponentInChildren<RoR2.UI.MPEventSystemProvider>().transform.rotation = Quaternion.Euler(0,0,-45);
             chirrTargetIndicator.GetComponentInChildren<Rewired.ComponentControls.Effects.RotateAroundAxis>().enabled = false;
             chirrTargetIndicator.GetComponentInChildren<TextMeshPro>().enabled = false;
+            SpriteRenderer sr = chirrTargetIndicator.GetComponentInChildren<SpriteRenderer>();
+            sr.color = Color.white;
 
-            chirrBefriendIndicator = PrefabAPI.InstantiateClone(LegacyResourcesAPI.Load<GameObject>("Prefabs/WoodSpriteIndicator"), "ChirrTargetIndicator", false);
+            GameObject chirrBefriendIndicator = PrefabAPI.InstantiateClone(LegacyResourcesAPI.Load<GameObject>("Prefabs/WoodSpriteIndicator"), "ChirrTargetIndicator", false);
             chirrBefriendIndicator.GetComponentInChildren<UnityEngine.SpriteRenderer>().sprite = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("texChirrBefriendCrosshair");
             chirrBefriendIndicator.GetComponentInChildren<UnityEngine.SpriteRenderer>().transform.rotation = Quaternion.Euler(0, 0, 0);
             chirrBefriendIndicator.GetComponentInChildren<Rewired.ComponentControls.Effects.RotateAroundAxis>().enabled = false;
             chirrBefriendIndicator.GetComponentInChildren<RoR2.InputBindingDisplayController>().actionName = "SpecialSkill";
+            sr = chirrBefriendIndicator.GetComponentInChildren<SpriteRenderer>();
+            sr.color = Color.white;
+
+            GameObject chirrFriendIndicator = PrefabAPI.InstantiateClone(LegacyResourcesAPI.Load<GameObject>("Prefabs/WoodSpriteIndicator"), "ChirrFriendIndicator", false);
+            chirrFriendIndicator.AddComponent<NetworkIdentity>();
+            chirrFriendIndicator.GetComponentInChildren<UnityEngine.SpriteRenderer>().sprite = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("texChirrFriendCrosshair");
+            chirrFriendIndicator.transform.localScale = new Vector3(.04f, .04f, .04f);
+            chirrFriendIndicator.GetComponentInChildren<RoR2.UI.MPEventSystemProvider>().transform.rotation = Quaternion.Euler(0, 0, -45);
+            chirrFriendIndicator.GetComponentInChildren<Rewired.ComponentControls.Effects.RotateAroundAxis>().enabled = false;
+            chirrFriendIndicator.GetComponentInChildren<TextMeshPro>().enabled = false;
+            sr = chirrFriendIndicator.GetComponentInChildren<SpriteRenderer>();
+            sr.color = Color.white;
 
             ChirrFriendController.indicatorCannotBefriendPrefab = chirrTargetIndicator;
             ChirrFriendController.indicatorReadyToBefriendPrefab = chirrBefriendIndicator;
-            ChirrFriendController.indicatorFriendPrefab = chirrBefriendIndicator;
+            ChirrFriendController.indicatorFriendPrefab = chirrFriendIndicator;
 
             //RoR2/Base/Treebot/SeedpodMortarGhost.prefab
             //"RoR2/Base/Treebot/SyringeProjectile.prefab"
@@ -304,8 +318,8 @@ namespace Starstorm2.Survivors.Chirr
             SkillFamily.Variant specialVariant1 = Utils.RegisterSkillVariant(specialDef1);
             skillLocator.special = Utils.RegisterSkillsToFamily(chirrPrefab, specialVariant1);
 
-            LanguageAPI.Add("CHIRR_LEASH_NAME", "Natural Sync");
-            LanguageAPI.Add("CHIRR_LEASH_DESCRIPTION", "Bring your friend closer to you.");
+            LanguageAPI.Add("CHIRR_LEASH_NAME", "Unbreakable Bond");
+            LanguageAPI.Add("CHIRR_LEASH_DESCRIPTION", "Attempt to teleport your friend closer to you.");
             FriendLeashSkillDef specialDef2 = ScriptableObject.CreateInstance<FriendLeashSkillDef>();
             specialDef2.activationState = new SerializableEntityStateType(typeof(Leash));
             specialDef2.activationStateMachineName = "Leash";

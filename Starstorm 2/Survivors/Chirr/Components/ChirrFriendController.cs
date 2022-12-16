@@ -268,11 +268,11 @@ namespace Starstorm2.Survivors.Chirr.Components
                     if (hbBody)
                     {
                         bool isPlayerControlled = hbBody.isPlayerControlled;
-                        //bool isBoss = hbBody.isBoss;  //No need for this, seems CombatSquad code fixes the softlock problems.
+                        bool isBoss = hbBody.isBoss;
                         bool isChampion = hbBody.isChampion;
                         bool isBlacklisted = blacklistedBodies.Contains(hbBody.bodyIndex);
 
-                        if (!isPlayerControlled && (!isChampion || canBefriendChampion) && !isBlacklisted)// && !isBoss
+                        if (!isPlayerControlled && (((!isChampion && !isBoss) || canBefriendChampion) || hbBody.bodyIndex == ChirrCore.brotherHurtIndex) && !isBlacklisted)
                         {
                             validTargets.Add(hb);
                         }
@@ -291,6 +291,8 @@ namespace Starstorm2.Survivors.Chirr.Components
             {
                 targetMaster.teamIndex = teamIndex;
                 if (targetBody.teamComponent) targetBody.teamComponent.teamIndex = teamIndex;
+
+                Util.CleanseBody(targetBody, true, false, true, true, true, false);
 
                 targetBody.AddBuff(BuffCore.chirrFriendBuff);
                 if (!ownerBody.HasBuff(BuffCore.chirrSelfBuff))
@@ -324,7 +326,7 @@ namespace Starstorm2.Survivors.Chirr.Components
                 {
                     if (cs.membersList.Contains(targetMaster))
                     {
-                        //What about onMemberDeathServer?
+                        //This doesn't call OnMemberDeathServer. Where is that used?
                         cs.RemoveMember(targetMaster);
                         if (!cs.defeatedServer && cs.membersList.Count == 0)
                         {

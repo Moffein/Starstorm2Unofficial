@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 141157822
+CRC: 2038012902
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 8cd8a2f7f51ebb7fb00f434e6d35888a
+    Hash: 0503143761a889720c90530e1fc9b714
   TypeTreeHash:
     serializedVersion: 2
     Hash: 7aec747c424dad58343d1828cf4a71ef
@@ -673,6 +673,7 @@ Assets:
 - Assets/AssetBundle/FX/Dust.mat
 - Assets/AssetBundle/Nemmando/VFX/ImpactNemmandoSlash.prefab
 - Assets/AssetBundle/Items/RelicOfMass/Material_Base_Color.png
+- Assets/AssetBundle/Chirr/texChirrFriendCrosshair.png
 - Assets/AssetBundle/Executioner/VFX/matExeLightningFade.mat
 - Assets/AssetBundle/Nemmando/Mesh/meshNemmandoSword.mesh
 - Assets/AssetBundle/Chirr/Animations/WalkLFT.anim

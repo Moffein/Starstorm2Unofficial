@@ -396,7 +396,7 @@ namespace Starstorm2.Survivors.Cyborg
             SkillLocator skill = cybPrefab.GetComponent<SkillLocator>();
 
             LanguageAPI.Add("CYBORG_SPECIAL_TELEPORT_NAME", "Recall");
-            LanguageAPI.Add("CYBORG_SPECIAL_TELEPORT_DESCRIPTION", "<style=cIsDamage>Shocking</style>. Create a <style=cIsUtility>warp point</style>. Reactivate to <style=cIsUtility>teleport to its location</style> and deal <style=cIsDamage>1200% damage</style>.");
+            LanguageAPI.Add("CYBORG_SPECIAL_TELEPORT_DESCRIPTION", "<style=cIsDamage>Shocking</style>. Create a <style=cIsUtility>warp point</style>. Reactivate to <style=cIsUtility>teleport to its location</style> and deal <style=cIsDamage>1200% damage</style>. Hold to remove existing warp points.");
             SkillDef specialDeploy = ScriptableObject.CreateInstance<SkillDef>();
             specialDeploy.activationState = new SerializableEntityStateType(typeof(DeployTeleporter));
             specialDeploy.activationStateMachineName = "Teleporter";
