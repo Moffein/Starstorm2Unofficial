@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 2038012902
+CRC: 2511785094
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 0503143761a889720c90530e1fc9b714
+    Hash: 81caeeb03b31bfa36b3d90afebd2256d
   TypeTreeHash:
     serializedVersion: 2
     Hash: 7aec747c424dad58343d1828cf4a71ef
@@ -624,6 +624,7 @@ Assets:
 - Assets/AssetBundle/Cyborg/Animations/Tele/animCyTP2_Closed.anim
 - Assets/AssetBundle/Nucleator/Icons/texNucleatorPrimary.png
 - Assets/AssetBundle/Nemmando/Textures/texNemmandoMGS.png
+- Assets/AssetBundle/Chirr/ChirrSpecialScepter.png
 - Assets/AssetBundle/Items/HuntersSigil/sigiltex.png
 - Assets/AssetBundle/Executioner/VFX/AxeSlamEffect.prefab
 - Assets/AssetBundle/Skins/Textures/texCommandoClassic.png

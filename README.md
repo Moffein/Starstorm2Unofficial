@@ -6,7 +6,7 @@ This mod is incompatible with the official version of SS2, so make sure you're n
 
 I've gotten permission to work on this project and host it here, but do not have permission to upload this to Thunderstore.
 
-The SS2 team is free to use any of the new code from this mod as long as this repo is allowed to stay up.
+The SS2 team is free to use any of the new code from this mod as long as this repo is allowed to stay up and credit is given.
 
 ## Features
 

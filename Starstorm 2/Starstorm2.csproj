@@ -86,6 +86,7 @@
     <Compile Include="Survivors\Chirr\EntityStates\Headbutt.cs" />
     <Compile Include="Survivors\Chirr\EntityStates\JetpackOn.cs" />
     <Compile Include="Survivors\Chirr\EntityStates\Special\Befriend.cs" />
+    <Compile Include="Survivors\Chirr\EntityStates\Special\BefriendScepter.cs" />
     <Compile Include="Survivors\Chirr\EntityStates\Special\Leash.cs" />
     <Compile Include="Survivors\Chirr\EntityStates\TriDart.cs" />
     <Compile Include="Survivors\Chirr\FriendLeashSkillDef.cs" />

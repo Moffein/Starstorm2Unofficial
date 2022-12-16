@@ -382,13 +382,13 @@ namespace Starstorm2.Survivors.Cyborg
         private void ScepterSetup()
         {
 
-            AncientScepter.AncientScepterItem.instance.RegisterScepterSkill(overheatScepterDef, "CyborgBody", SkillSlot.Special, 0);
+            AncientScepter.AncientScepterItem.instance.RegisterScepterSkill(overheatScepterDef, "CyborgBody", SkillSlot.Utility, 0);
         }
 
         [MethodImpl(MethodImplOptions.NoInlining | MethodImplOptions.NoOptimization)]
         private void ClassicScepterSetup()
         {
-            ThinkInvisible.ClassicItems.Scepter.instance.RegisterScepterSkill(overheatScepterDef, "CyborgBody", SkillSlot.Special, overheatDef);
+            ThinkInvisible.ClassicItems.Scepter.instance.RegisterScepterSkill(overheatScepterDef, "CyborgBody", SkillSlot.Utility, overheatDef);
         }
 
         private void SetUpSpecials(SkillLocator skillLocator)

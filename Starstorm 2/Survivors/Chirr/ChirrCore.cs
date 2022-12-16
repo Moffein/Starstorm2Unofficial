@@ -11,6 +11,7 @@ using UnityEngine.AddressableAssets;
 using RoR2.Projectile;
 using Starstorm2.Survivors.Chirr.Components;
 using EntityStates.SS2UStates.Chirr.Special;
+using System.Runtime.CompilerServices;
 
 namespace Starstorm2.Survivors.Chirr
 {
@@ -23,6 +24,9 @@ namespace Starstorm2.Survivors.Chirr
         public static GameObject doppelganger;
 
         public static GameObject chirrHeal;
+
+        public static SkillDef specialDef;
+        public static SkillDef specialScepterDef;
 
         public ChirrCore() => Setup();
 
@@ -295,52 +299,100 @@ namespace Starstorm2.Survivors.Chirr
             LanguageAPI.Add("CHIRR_BEFRIEND_NAME", "Natural Link");
             LanguageAPI.Add("CHIRR_BEFRIEND_DESCRIPTION", "<style=cIsUtility>Befriend</style> the targeted enemy if it's below <style=cIsHealth>50% health</style>. Friends <style=cIsUtility>inherit all your items</style> and absorb <style=cIsUtility>25% of damage taken</style>.");
 
-            BefriendSkillDef specialDef1 = ScriptableObject.CreateInstance<BefriendSkillDef>();
-            specialDef1.activationState = new SerializableEntityStateType(typeof(Befriend));
-            specialDef1.activationStateMachineName = "Befriend";
-            specialDef1.skillName = "CHIRR_BEFRIEND_NAME";
-            specialDef1.skillNameToken = "CHIRR_BEFRIEND_NAME";
-            specialDef1.skillDescriptionToken = "CHIRR_BEFRIEND_DESCRIPTION";
-            specialDef1.icon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("ChirrSpecial1");
-            specialDef1.baseMaxStock = 1;
-            specialDef1.baseRechargeInterval = 3f;
-            specialDef1.beginSkillCooldownOnSkillEnd = false;
-            specialDef1.canceledFromSprinting = false;
-            specialDef1.fullRestockOnAssign = true;
-            specialDef1.interruptPriority = InterruptPriority.Any;
-            specialDef1.isCombatSkill = false;
-            specialDef1.mustKeyPress = true;
-            specialDef1.cancelSprintingOnActivation = false;
-            specialDef1.rechargeStock = 1;
-            specialDef1.requiredStock = 1;
-            specialDef1.stockToConsume = 1;
-            Modules.Skills.skillDefs.Add(specialDef1);
-            SkillFamily.Variant specialVariant1 = Utils.RegisterSkillVariant(specialDef1);
+            BefriendSkillDef befriendDef = ScriptableObject.CreateInstance<BefriendSkillDef>();
+            befriendDef.activationState = new SerializableEntityStateType(typeof(Befriend));
+            befriendDef.activationStateMachineName = "Befriend";
+            befriendDef.skillName = "CHIRR_BEFRIEND_NAME";
+            befriendDef.skillNameToken = "CHIRR_BEFRIEND_NAME";
+            befriendDef.skillDescriptionToken = "CHIRR_BEFRIEND_DESCRIPTION";
+            befriendDef.icon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("ChirrSpecial1");
+            befriendDef.baseMaxStock = 1;
+            befriendDef.baseRechargeInterval = 3f;
+            befriendDef.beginSkillCooldownOnSkillEnd = false;
+            befriendDef.canceledFromSprinting = false;
+            befriendDef.fullRestockOnAssign = true;
+            befriendDef.interruptPriority = InterruptPriority.Any;
+            befriendDef.isCombatSkill = false;
+            befriendDef.mustKeyPress = true;
+            befriendDef.cancelSprintingOnActivation = false;
+            befriendDef.rechargeStock = 1;
+            befriendDef.requiredStock = 1;
+            befriendDef.stockToConsume = 1;
+            Modules.Skills.skillDefs.Add(befriendDef);
+            ChirrCore.specialDef = befriendDef;
+            SkillFamily.Variant specialVariant1 = Utils.RegisterSkillVariant(befriendDef);
             skillLocator.special = Utils.RegisterSkillsToFamily(chirrPrefab, specialVariant1);
+            Modules.Skills.FixSkillName(befriendDef);
 
             LanguageAPI.Add("CHIRR_LEASH_NAME", "Unbreakable Bond");
             LanguageAPI.Add("CHIRR_LEASH_DESCRIPTION", "Attempt to teleport your friend closer to you.");
-            FriendLeashSkillDef specialDef2 = ScriptableObject.CreateInstance<FriendLeashSkillDef>();
-            specialDef2.activationState = new SerializableEntityStateType(typeof(Leash));
-            specialDef2.activationStateMachineName = "Leash";
-            specialDef2.skillName = "CHIRR_LEASH_NAME";
-            specialDef2.skillNameToken = "CHIRR_LEASH_NAME";
-            specialDef2.skillDescriptionToken = "CHIRR_LEASH_DESCRIPTION";
-            specialDef2.icon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("ChirrSpecial2");
-            specialDef2.baseMaxStock = 1;
-            specialDef2.baseRechargeInterval = 3f;
-            specialDef2.beginSkillCooldownOnSkillEnd = false;
-            specialDef2.canceledFromSprinting = false;
-            specialDef2.fullRestockOnAssign = true;
-            specialDef2.interruptPriority = InterruptPriority.Skill;
-            specialDef2.isCombatSkill = false;
-            specialDef2.mustKeyPress = true;
-            specialDef2.cancelSprintingOnActivation = false;
-            specialDef2.rechargeStock = 1;
-            specialDef2.requiredStock = 1;
-            specialDef2.stockToConsume = 1;
-            Modules.Skills.skillDefs.Add(specialDef2);
-            Befriend.leashOverrideSkillDef = specialDef2;
+            FriendLeashSkillDef leashDef = ScriptableObject.CreateInstance<FriendLeashSkillDef>();
+            leashDef.activationState = new SerializableEntityStateType(typeof(Leash));
+            leashDef.activationStateMachineName = "Leash";
+            leashDef.skillName = "CHIRR_LEASH_NAME";
+            leashDef.skillNameToken = "CHIRR_LEASH_NAME";
+            leashDef.skillDescriptionToken = "CHIRR_LEASH_DESCRIPTION";
+            leashDef.icon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("ChirrSpecial2");
+            leashDef.baseMaxStock = 1;
+            leashDef.baseRechargeInterval = 3f;
+            leashDef.beginSkillCooldownOnSkillEnd = false;
+            leashDef.canceledFromSprinting = false;
+            leashDef.fullRestockOnAssign = true;
+            leashDef.interruptPriority = InterruptPriority.Skill;
+            leashDef.isCombatSkill = false;
+            leashDef.mustKeyPress = true;
+            leashDef.cancelSprintingOnActivation = false;
+            leashDef.rechargeStock = 1;
+            leashDef.requiredStock = 1;
+            leashDef.stockToConsume = 1;
+            Modules.Skills.skillDefs.Add(leashDef);
+            Befriend.leashOverrideSkillDef = leashDef;
+            Modules.Skills.FixSkillName(leashDef);
+
+            BefriendSkillDef befriendScepterDef = ScriptableObject.CreateInstance<BefriendSkillDef>();
+            befriendScepterDef.activationState = new SerializableEntityStateType(typeof(BefriendScepter));
+            befriendScepterDef.activationStateMachineName = "Befriend";
+            befriendScepterDef.skillName = "CHIRR_BEFRIEND_SCEPTER_NAME";
+            befriendScepterDef.skillNameToken = "CHIRR_BEFRIEND_SCEPTER_NAME";
+            befriendScepterDef.skillDescriptionToken = "CHIRR_BEFRIEND_SCEPTER_DESCRIPTION";
+            befriendScepterDef.icon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("ChirrSpecialScepter");
+            befriendScepterDef.baseMaxStock = 1;
+            befriendScepterDef.baseRechargeInterval = 3f;
+            befriendScepterDef.beginSkillCooldownOnSkillEnd = false;
+            befriendScepterDef.canceledFromSprinting = false;
+            befriendScepterDef.fullRestockOnAssign = true;
+            befriendScepterDef.interruptPriority = InterruptPriority.Any;
+            befriendScepterDef.isCombatSkill = false;
+            befriendScepterDef.mustKeyPress = true;
+            befriendScepterDef.cancelSprintingOnActivation = false;
+            befriendScepterDef.rechargeStock = 1;
+            befriendScepterDef.requiredStock = 1;
+            befriendScepterDef.stockToConsume = 1;
+            Modules.Skills.skillDefs.Add(befriendScepterDef);
+            ChirrCore.specialScepterDef = befriendScepterDef;
+            Modules.Skills.FixSkillName(befriendScepterDef);
+
+            if (StarstormPlugin.scepterPluginLoaded)
+            {
+                ScepterSetup();
+            }
+            if (StarstormPlugin.classicItemsLoaded)
+            {
+                ClassicScepterSetup();
+            }
+        }
+
+        [MethodImpl(MethodImplOptions.NoInlining | MethodImplOptions.NoOptimization)]
+        private void ScepterSetup()
+        {
+
+            AncientScepter.AncientScepterItem.instance.RegisterScepterSkill(specialScepterDef, "ChirrBody", SkillSlot.Special, 0);
+        }
+
+        [MethodImpl(MethodImplOptions.NoInlining | MethodImplOptions.NoOptimization)]
+        private void ClassicScepterSetup()
+        {
+            ThinkInvisible.ClassicItems.Scepter.instance.RegisterScepterSkill(specialScepterDef, "ChirrBody", SkillSlot.Special, specialDef);
         }
 
         public static void CreateDoppelganger()
