@@ -848,14 +848,15 @@ namespace Starstorm2.Survivors.Nemmando
                 }
             };
 
-            commandoSkin.projectileGhostReplacements = new SkinDef.ProjectileGhostReplacement[]
+            //Causes console errors
+            /*commandoSkin.projectileGhostReplacements = new SkinDef.ProjectileGhostReplacement[]
                 {
                     new SkinDef.ProjectileGhostReplacement
                     {
                         projectilePrefab = FireSwordBeam.projectilePrefab,
                         projectileGhostReplacementPrefab = LegacyResourcesAPI.Load<GameObject>("Prefabs/ProjectileGhosts/EvisProjectileGhost")
                     }
-                };
+                };*/
 
             commandoSkin.gameObjectActivations = defaultActivations;
 
@@ -941,14 +942,15 @@ namespace Starstorm2.Survivors.Nemmando
 
                 vergilSkin.gameObjectActivations = coatActivations;
 
-                vergilSkin.projectileGhostReplacements = new SkinDef.ProjectileGhostReplacement[]
+                //Causes console errors
+                /*vergilSkin.projectileGhostReplacements = new SkinDef.ProjectileGhostReplacement[]
                 {
                     new SkinDef.ProjectileGhostReplacement
                     {
                         projectilePrefab = FireSwordBeam.projectilePrefab,
                         projectileGhostReplacementPrefab = LegacyResourcesAPI.Load<GameObject>("Prefabs/ProjectileGhosts/EvisProjectileGhost")
                     }
-                };
+                };*/
 
                 skins.Add(vergilSkin);
                 #endregion
