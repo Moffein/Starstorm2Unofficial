@@ -5,11 +5,11 @@ using Starstorm2.Survivors.Chirr.Components;
 
 namespace Starstorm2.Survivors.Chirr
 {
-	public class LeashSkillDef : SkillDef
+	public class FriendLeashSkillDef : SkillDef
 	{
 		public override SkillDef.BaseSkillInstanceData OnAssigned([NotNull] GenericSkill skillSlot)
 		{
-			return new LeashSkillDef.InstanceData
+			return new FriendLeashSkillDef.InstanceData
 			{
 				targetingController = skillSlot.GetComponent<ChirrFriendController>()
 			};
@@ -17,12 +17,12 @@ namespace Starstorm2.Survivors.Chirr
 
 		public override bool CanExecute([NotNull] GenericSkill skillSlot)
 		{
-			return LeashSkillDef.HasFriend(skillSlot) && base.CanExecute(skillSlot);
+			return FriendLeashSkillDef.CanLeash(skillSlot) && base.CanExecute(skillSlot);
 		}
 
 		public override bool IsReady([NotNull] GenericSkill skillSlot)
 		{
-			return base.IsReady(skillSlot) && LeashSkillDef.HasFriend(skillSlot);
+			return base.IsReady(skillSlot) && FriendLeashSkillDef.CanLeash(skillSlot);
 		}
 
 		protected class InstanceData : SkillDef.BaseSkillInstanceData
@@ -30,12 +30,12 @@ namespace Starstorm2.Survivors.Chirr
 			public ChirrFriendController targetingController;
 		}
 
-		private static bool HasFriend([NotNull] GenericSkill skillSlot)
+		private static bool CanLeash([NotNull] GenericSkill skillSlot)
 		{
-			ChirrFriendController targetingController = ((LeashSkillDef.InstanceData)skillSlot.skillInstanceData).targetingController;
+			ChirrFriendController targetingController = ((FriendLeashSkillDef.InstanceData)skillSlot.skillInstanceData).targetingController;
 			if (targetingController != null)
 			{
-				return targetingController.HasFriend();
+				return targetingController.CanLeash();
 			}
 			return false;
 		}

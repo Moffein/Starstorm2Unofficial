@@ -1,13 +1,8 @@
-﻿using Mono.Cecil.Cil;
-using MonoMod.Cil;
-using R2API;
-using R2API.Utils;
+﻿using R2API;
 using RoR2;
-using RoR2.ContentManagement;
 using Starstorm2.Survivors.Chirr.Components;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.AddressableAssets;
 using UnityEngine.Networking;
 
 namespace Starstorm2.Cores
@@ -166,14 +161,30 @@ namespace Starstorm2.Cores
         {
             if (NetworkServer.active)
             {
-                if (self.body.HasBuff(BuffCore.chirrSelfBuff) && !(damageInfo.damageType.HasFlag(DamageType.BypassArmor) || damageInfo.damageType.HasFlag(DamageType.BypassBlock) || damageInfo.damageType.HasFlag(DamageType.BypassOneShotProtection)))
+                if (self.body.HasBuff(BuffCore.chirrSelfBuff) && !damageInfo.rejected && !(damageInfo.damageType.HasFlag(DamageType.BypassArmor) || damageInfo.damageType.HasFlag(DamageType.BypassBlock) || damageInfo.damageType.HasFlag(DamageType.BypassOneShotProtection)))
                 {
                     ChirrFriendController friendController = self.GetComponent<ChirrFriendController>();
                     if (friendController && friendController.HasFriend())
                     {
-                        float halfDamage = damageInfo.damage * 0.5f;
-                        damageInfo.damage = halfDamage;
-                        friendController.HurtFriend(damageInfo);
+                        float minionDamage = damageInfo.damage * 0.25f;
+                        damageInfo.damage *= 0.75f;
+
+                        DamageInfo minionDamageInfo = new DamageInfo
+                        {
+                            damage = minionDamage,
+                            procCoefficient = 0f,
+                            procChainMask = damageInfo.procChainMask,
+                            position = damageInfo.position,
+                            attacker = damageInfo.attacker,
+                            inflictor = damageInfo.inflictor,
+                            canRejectForce = true,
+                            crit = damageInfo.crit,
+                            damageColorIndex = damageInfo.damageColorIndex,
+                            damageType = damageInfo.damageType,
+                            dotIndex = damageInfo.dotIndex,
+                            force = Vector3.zero
+                        };
+                        friendController.HurtFriend(minionDamageInfo);
                     }
                 }
             }

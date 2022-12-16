@@ -31,23 +31,6 @@ namespace EntityStates.SS2UStates.Cyborg.Special
             foundTeleporter = false;
 
             FireTeleportProjectile();
-
-            if (!appliedSkillOverride)
-            {
-                if (base.skillLocator)
-                {
-                    GenericSkill specialSlot = base.skillLocator.special;
-                    if (specialSlot)
-                    {
-                        origSpecialStock = specialSlot.stock;
-                        origSpecialRechargeStopwatch = specialSlot.rechargeStopwatch;
-
-                        appliedSkillOverride = true;
-                        specialSlot.SetSkillOverride(this, teleportSkillDef, GenericSkill.SkillOverridePriority.Contextual);
-                        specialSlot.stock = 1;
-                    }
-                }
-            }
         }
 
         private void FireTeleportProjectile()
@@ -82,6 +65,25 @@ namespace EntityStates.SS2UStates.Cyborg.Special
                 if (!foundTeleporter)
                 {
                     foundTeleporter = teleTracker && teleTracker.GetTeleportCoordinates() != null;
+                    if (foundTeleporter)
+                    {
+                        if (!appliedSkillOverride)
+                        {
+                            if (base.skillLocator)
+                            {
+                                GenericSkill specialSlot = base.skillLocator.special;
+                                if (specialSlot)
+                                {
+                                    origSpecialStock = specialSlot.stock;
+                                    origSpecialRechargeStopwatch = specialSlot.rechargeStopwatch;
+
+                                    appliedSkillOverride = true;
+                                    specialSlot.SetSkillOverride(this, teleportSkillDef, GenericSkill.SkillOverridePriority.Contextual);
+                                    specialSlot.stock = 1;
+                                }
+                            }
+                        }
+                    }
                 }
 
                 bool timeout = !foundTeleporter && base.fixedAge >= timeoutDuration;

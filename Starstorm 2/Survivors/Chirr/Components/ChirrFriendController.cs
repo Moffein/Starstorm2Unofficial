@@ -1,9 +1,11 @@
 ﻿using RoR2;
+using RoR2.Navigation;
 using Starstorm2.Cores;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
 using UnityEngine.Networking;
 
 namespace Starstorm2.Survivors.Chirr.Components
@@ -12,6 +14,7 @@ namespace Starstorm2.Survivors.Chirr.Components
     {
         public static float befriendHealthFraction = 0.5f;
 
+        public static GameObject teleportHelperPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Common/DirectorSpawnProbeHelperPrefab.prefab").WaitForCompletion();
         public static GameObject indicatorCannotBefriendPrefab;
         public static GameObject indicatorReadyToBefriendPrefab;
         public static GameObject indicatorFriendPrefab;
@@ -30,6 +33,9 @@ namespace Starstorm2.Survivors.Chirr.Components
         private CharacterBody ownerBody;
         private CharacterMaster ownerMaster;
         private TeamComponent teamComponent;
+
+        [SyncVar]
+        private bool _canLeash = false;
 
         [SyncVar]
         private bool _canBefriendTarget = false;
@@ -85,7 +91,7 @@ namespace Starstorm2.Survivors.Chirr.Components
 
         private void UpdateMinionInventory(Inventory inventory, ItemIndex itemIndex, int count)
         {
-            if (this._hasFriend && this.targetMaster && this.targetMaster.inventory)
+            if (ownerMaster && this._hasFriend && this.targetMaster && this.targetMaster.inventory)
             {
                 CharacterMaster cm = inventory.GetComponent<CharacterMaster>();
                 if (cm == ownerMaster)
@@ -193,6 +199,11 @@ namespace Starstorm2.Survivors.Chirr.Components
                     }
                 }
                 UpdateCanBefriendServer();
+            }
+            else
+            {
+                bool newCanLeash = CanLeashServer();
+                if (newCanLeash != _canLeash) _canLeash = newCanLeash;
             }
         }
 
@@ -337,6 +348,48 @@ namespace Starstorm2.Survivors.Chirr.Components
             if (targetBody)
             {
                 targetBody.healthComponent.TakeDamage(damageInfo);
+            }
+        }
+
+        public bool CanLeash()
+        {
+            return _canLeash;
+        }
+
+        private bool CanLeashServer()
+        {
+            return _hasFriend && targetBody && (targetBody.corePosition - ownerBody.corePosition).sqrMagnitude > 40f * 40f;
+        }
+
+        //Copied from minionLeash
+        [Server]
+        public void LeashFriend(Vector3 newPos)
+        {
+            if (CanLeash())
+            {
+                SpawnCard spawnCard = ScriptableObject.CreateInstance<SpawnCard>();
+                spawnCard.hullSize = targetBody.hullClassification;
+                spawnCard.nodeGraphType = (targetBody.isFlying ? MapNodeGroup.GraphType.Air : MapNodeGroup.GraphType.Ground);
+                spawnCard.prefab = ChirrFriendController.teleportHelperPrefab;
+                GameObject gameObject = DirectorCore.instance.TrySpawnObject(new DirectorSpawnRequest(spawnCard, new DirectorPlacementRule
+                {
+                    placementMode = DirectorPlacementRule.PlacementMode.Approximate,
+                    position = newPos,
+                    minDistance = 5f,
+                    maxDistance = 40f
+                }, RoR2Application.rng));
+
+                if (gameObject)
+                {
+                    Vector3 position = gameObject.transform.position;
+                    TeleportHelper.TeleportBody(targetBody, position);
+                    GameObject teleportEffectPrefab = Run.instance.GetTeleportEffectPrefab(targetBody.gameObject);
+                    if (teleportEffectPrefab)
+                    {
+                        EffectManager.SimpleEffect(teleportEffectPrefab, position, Quaternion.identity, true);
+                    }
+                    UnityEngine.Object.Destroy(gameObject);
+                }
             }
         }
     }

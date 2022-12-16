@@ -75,6 +75,9 @@ namespace Starstorm2.Survivors.Chirr
             Modules.States.AddSkill(typeof(ChirrPrimary));
             Modules.States.AddSkill(typeof(Headbutt));
             Modules.States.AddSkill(typeof(ChirrHeal));
+
+            Modules.States.AddSkill(typeof(Befriend));
+            Modules.States.AddSkill(typeof(Leash));
         }
 
         private void RegisterProjectiles()
@@ -252,7 +255,7 @@ namespace Starstorm2.Survivors.Chirr
             utilityDef1.skillDescriptionToken = "CHIRR_HEAL_DESCRIPTION";
             utilityDef1.icon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("ChirrUtility");
             utilityDef1.baseMaxStock = 1;
-            utilityDef1.baseRechargeInterval = 14f;
+            utilityDef1.baseRechargeInterval = 15f;
             utilityDef1.beginSkillCooldownOnSkillEnd = true;
             utilityDef1.canceledFromSprinting = false;
             utilityDef1.fullRestockOnAssign = true;
@@ -276,7 +279,7 @@ namespace Starstorm2.Survivors.Chirr
             SkillLocator skill = chirrPrefab.GetComponent<SkillLocator>();
 
             LanguageAPI.Add("CHIRR_BEFRIEND_NAME", "Natural Link");
-            LanguageAPI.Add("CHIRR_BEFRIEND_DESCRIPTION", "<style=cIsUtility>Befriend</style> the targeted enemy if it's below <style=cIsHealth>50% health</style>. Friends <style=cIsUtility>inherit all your items</style>.");
+            LanguageAPI.Add("CHIRR_BEFRIEND_DESCRIPTION", "<style=cIsUtility>Befriend</style> the targeted enemy if it's below <style=cIsHealth>50% health</style>. Friends <style=cIsUtility>inherit all your items</style> and absorb <style=cIsUtility>25% of damage taken</style>.");
 
             BefriendSkillDef specialDef1 = ScriptableObject.CreateInstance<BefriendSkillDef>();
             specialDef1.activationState = new SerializableEntityStateType(typeof(Befriend));
@@ -301,13 +304,11 @@ namespace Starstorm2.Survivors.Chirr
             SkillFamily.Variant specialVariant1 = Utils.RegisterSkillVariant(specialDef1);
             skillLocator.special = Utils.RegisterSkillsToFamily(chirrPrefab, specialVariant1);
 
-            /*SkillLocator skill2 = chirrPrefab.GetComponent<SkillLocator>();
-
             LanguageAPI.Add("CHIRR_LEASH_NAME", "Natural Sync");
-            LanguageAPI.Add("CHIRR_LEASH_DESCRIPTION", "Tap to being your ally to you. Hold to <style=cIsDamage>share damage taken</style> with your friend.");
-            specialDef2 = ScriptableObject.CreateInstance<SkillDef>();
-            specialDef2.activationState = new SerializableEntityStateType(typeof(ChirrLeash));
-            specialDef2.activationStateMachineName = "Weapon";
+            LanguageAPI.Add("CHIRR_LEASH_DESCRIPTION", "Bring your friend closer to you.");
+            FriendLeashSkillDef specialDef2 = ScriptableObject.CreateInstance<FriendLeashSkillDef>();
+            specialDef2.activationState = new SerializableEntityStateType(typeof(Leash));
+            specialDef2.activationStateMachineName = "Leash";
             specialDef2.skillName = "CHIRR_LEASH_NAME";
             specialDef2.skillNameToken = "CHIRR_LEASH_NAME";
             specialDef2.skillDescriptionToken = "CHIRR_LEASH_DESCRIPTION";
@@ -319,15 +320,13 @@ namespace Starstorm2.Survivors.Chirr
             specialDef2.fullRestockOnAssign = true;
             specialDef2.interruptPriority = InterruptPriority.Skill;
             specialDef2.isCombatSkill = false;
-            specialDef2.mustKeyPress = false;
+            specialDef2.mustKeyPress = true;
             specialDef2.cancelSprintingOnActivation = false;
             specialDef2.rechargeStock = 1;
             specialDef2.requiredStock = 1;
             specialDef2.stockToConsume = 1;
-
-            Utils.RegisterSkillDef(specialDef2, typeof(ChirrLeash));
-            SkillFamily.Variant specialVariant2 = Utils.RegisterSkillVariant(specialDef2);*/
-
+            Modules.Skills.skillDefs.Add(specialDef2);
+            Befriend.leashOverrideSkillDef = specialDef2;
         }
 
         public static void CreateDoppelganger()
@@ -402,6 +401,12 @@ namespace Starstorm2.Survivors.Chirr
             befriendStateMachine.initialStateType = new SerializableEntityStateType(typeof(EntityStates.Idle));
             befriendStateMachine.mainStateType = new SerializableEntityStateType(typeof(EntityStates.Idle));
             nsm.stateMachines = nsm.stateMachines.Append(befriendStateMachine).ToArray();
+
+            EntityStateMachine leashStateMachine = chirrPrefab.AddComponent<EntityStateMachine>();
+            leashStateMachine.customName = "Leash";
+            leashStateMachine.initialStateType = new SerializableEntityStateType(typeof(EntityStates.Idle));
+            leashStateMachine.mainStateType = new SerializableEntityStateType(typeof(EntityStates.Idle));
+            nsm.stateMachines = nsm.stateMachines.Append(leashStateMachine).ToArray();
 
             return chirrPrefab;
         }
