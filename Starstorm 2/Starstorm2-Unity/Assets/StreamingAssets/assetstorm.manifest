@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 1488643867
+CRC: 141157822
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 92f59649869dab5ab43d09cab9239fc4
+    Hash: 8cd8a2f7f51ebb7fb00f434e6d35888a
   TypeTreeHash:
     serializedVersion: 2
     Hash: 7aec747c424dad58343d1828cf4a71ef
@@ -690,6 +690,7 @@ Assets:
 - Assets/AssetBundle/Enemies/Wayfarer/WayfarerIcon.png
 - Assets/AssetBundle/Nemmando/VFX/PreImpactScepterStrike.prefab
 - Assets/AssetBundle/Executioner/Animations/Idle.anim
+- Assets/AssetBundle/BuffIcons/buffChirrSoulLink.png
 - Assets/AssetBundle/NemmandoCameraCover.prefab
 - Assets/AssetBundle/FX/SigilEffect.prefab
 - Assets/AssetBundle/Items/HottestSauce/MDLHottestSauce.prefab

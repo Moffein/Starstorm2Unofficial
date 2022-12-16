@@ -79,12 +79,16 @@
     <Compile Include="API\LogCore.cs" />
     <Compile Include="API\Utils.cs" />
     <Compile Include="Modules\EntityStates\BaseMeleeAttack.cs" />
+    <Compile Include="Survivors\Chirr\BefriendSkillDef.cs" />
     <Compile Include="Survivors\Chirr\ChirrSkins.cs" />
-    <Compile Include="Survivors\Chirr\Components\ChirrTargetingController.cs" />
+    <Compile Include="Survivors\Chirr\Components\ChirrFriendController.cs" />
     <Compile Include="Survivors\Chirr\EntityStates\ChirrPrimary.cs" />
     <Compile Include="Survivors\Chirr\EntityStates\Headbutt.cs" />
     <Compile Include="Survivors\Chirr\EntityStates\JetpackOn.cs" />
+    <Compile Include="Survivors\Chirr\EntityStates\Special\Befriend.cs" />
+    <Compile Include="Survivors\Chirr\EntityStates\Special\Leash.cs" />
     <Compile Include="Survivors\Chirr\EntityStates\TriDart.cs" />
+    <Compile Include="Survivors\Chirr\LeashSkillDef.cs" />
     <Compile Include="Survivors\Cyborg\Achievements\CyborgGrandMasteryAchievement.cs" />
     <Compile Include="Survivors\Cyborg\Achievements\CyborgMasteryAchievement.cs" />
     <Compile Include="Survivors\Cyborg\Components\CyborgController.cs" />

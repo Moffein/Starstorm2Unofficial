@@ -4,6 +4,7 @@ using R2API;
 using R2API.Utils;
 using RoR2;
 using RoR2.ContentManagement;
+using Starstorm2.Survivors.Chirr.Components;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
@@ -22,11 +23,12 @@ namespace Starstorm2.Cores
         public static BuffDef watchMetronomeBuff;
         public static BuffDef fearDebuff;
         public static BuffDef gougeBuff;
-        public static BuffDef awarenessBuff;
 
         public static BuffDef exeSuperchargedBuff;
-        public static BuffDef exeAssistBuff;
         public static BuffDef nucleatorSpecialBuff;
+
+        public static BuffDef chirrFriendBuff;
+        public static BuffDef chirrSelfBuff;
 
         private GameObject greenChocPrefab;
         private GameObject greenChocEffect;
@@ -40,12 +42,30 @@ namespace Starstorm2.Cores
             Hook();
         }
 
+
+        /*
+
+        // simple helper method
+        internal static BuffDef AddNewBuff(string buffName, Sprite buffIcon, Color buffColor, bool canStack, bool isDebuff)
+        {
+            BuffDef buffDef = ScriptableObject.CreateInstance<BuffDef>();
+            buffDef.name = buffName;
+            buffDef.buffColor = buffColor;
+            buffDef.canStack = canStack;
+            buffDef.isDebuff = isDebuff;
+            buffDef.eliteDef = null;
+            buffDef.iconSprite = buffIcon;
+
+            buffDefs.Add(buffDef);
+
+            return buffDef;
+        }*/
+
         protected void RegisterBuffs()
         {
             //LogCore.LogInfo("Initializing Core: " + base.ToString());
-            exeAssistBuff = AddNewBuff("ExecutionerAssistBuff", LegacyResourcesAPI.Load<Sprite>("Textures/BuffIcons/texBuffPowerIcon"), Color.white, false, false);
-            exeSuperchargedBuff = AddNewBuff("ExecutionerSuperchargedBuff", LegacyResourcesAPI.Load<Sprite>("Textures/BuffIcons/texBuffNullifiedIcon"), new Color(72 / 255, 1, 1), false, false);
-            nucleatorSpecialBuff = AddNewBuff("NucleatorSpecialBuff", LegacyResourcesAPI.Load<Sprite>("Textures/BuffIcons/texBuffOverheat"), Color.green, false, false);
+            exeSuperchargedBuff = CreateBuffDef("ExecutionerSuperchargedBuff", false, false, false, new Color(72 / 255, 1, 1), LegacyResourcesAPI.Load<Sprite>("Textures/BuffIcons/texBuffNullifiedIcon"));
+            nucleatorSpecialBuff = CreateBuffDef("NucleatorSpecialBuff", false, false, false, Color.green, LegacyResourcesAPI.Load<Sprite>("Textures/BuffIcons/texBuffOverheat"));
 
             detritiveBuff = ScriptableObject.CreateInstance<BuffDef>();
             detritiveBuff.buffColor = Color.white;
@@ -97,6 +117,9 @@ namespace Starstorm2.Cores
             watchMetronomeBuff.buffColor = Color.cyan;
             buffDefs.Add(watchMetronomeBuff);
 
+            chirrFriendBuff = CreateBuffDef("ChirrFriendBuff", false, false, false, new Color32(255, 136, 206, 255), Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("buffChirrSoulLink"));
+            chirrSelfBuff = CreateBuffDef("ChirrSelfBuff", false, false, false, new Color32(255, 136, 206, 255), Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("buffChirrSoulLink"));
+
             #region Executioner
             fearDebuff = ScriptableObject.CreateInstance<BuffDef>();
             fearDebuff.canStack = false;
@@ -115,14 +138,6 @@ namespace Starstorm2.Cores
             gougeBuff.isDebuff = true;
             gougeBuff.buffColor = Color.red;
             buffDefs.Add(gougeBuff);
-
-            awarenessBuff = ScriptableObject.CreateInstance<BuffDef>();
-            awarenessBuff.canStack = true;
-            awarenessBuff.iconSprite = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("Status_Awareness");
-            awarenessBuff.name = "Awareness";
-            awarenessBuff.isDebuff = false;
-            awarenessBuff.buffColor = Color.green;
-            buffDefs.Add(awarenessBuff);
             #endregion
         }
 
@@ -142,8 +157,27 @@ namespace Starstorm2.Cores
 
         private void Hook()
         {
+            On.RoR2.HealthComponent.TakeDamage += HealthComponent_TakeDamage;
             On.RoR2.CharacterBody.OnClientBuffsChanged += CharacterBody_OnClientBuffsChanged;
             RecalculateStatsAPI.GetStatCoefficients += RecalculateStatsAPI_GetStatCoefficients;
+        }
+
+        private void HealthComponent_TakeDamage(On.RoR2.HealthComponent.orig_TakeDamage orig, HealthComponent self, DamageInfo damageInfo)
+        {
+            if (NetworkServer.active)
+            {
+                if (self.body.HasBuff(BuffCore.chirrSelfBuff) && !(damageInfo.damageType.HasFlag(DamageType.BypassArmor) || damageInfo.damageType.HasFlag(DamageType.BypassBlock) || damageInfo.damageType.HasFlag(DamageType.BypassOneShotProtection)))
+                {
+                    ChirrFriendController friendController = self.GetComponent<ChirrFriendController>();
+                    if (friendController && friendController.HasFriend())
+                    {
+                        float halfDamage = damageInfo.damage * 0.5f;
+                        damageInfo.damage = halfDamage;
+                        friendController.HurtFriend(damageInfo);
+                    }
+                }
+            }
+            orig(self, damageInfo);
         }
 
         private void RecalculateStatsAPI_GetStatCoefficients(CharacterBody sender, RecalculateStatsAPI.StatHookEventArgs args)
@@ -166,6 +200,13 @@ namespace Starstorm2.Cores
             {
                 args.moveSpeedReductionMultAdd += 0.5f;
             }
+
+            if (sender.HasBuff(BuffCore.chirrFriendBuff))
+            {
+                args.damageMultAdd += 2f;
+                args.healthMultAdd += 2f;
+                args.cooldownMultAdd *= 0.5f;
+            }
         }
 
         private void CharacterBody_OnClientBuffsChanged(On.RoR2.CharacterBody.orig_OnClientBuffsChanged orig, CharacterBody self)
@@ -182,7 +223,7 @@ namespace Starstorm2.Cores
                     effectData.start = transform.position;
                     EffectManager.SpawnEffect(greenChocPrefab, effectData, true);
                     */
-                    greenChocEffect = Object.Instantiate(greenChocPrefab, transform.position, Quaternion.identity, transform);
+        greenChocEffect = Object.Instantiate(greenChocPrefab, transform.position, Quaternion.identity, transform);
                 }
             }
             if (!self.HasBuff(greenChocBuff) && greenChocEffect)
@@ -191,20 +232,19 @@ namespace Starstorm2.Cores
             }
         }
 
-        // simple helper method
-        internal static BuffDef AddNewBuff(string buffName, Sprite buffIcon, Color buffColor, bool canStack, bool isDebuff)
+        public static BuffDef CreateBuffDef(string name, bool canStack, bool isCooldown, bool isDebuff, Color color, Sprite iconSprite)
         {
-            BuffDef buffDef = ScriptableObject.CreateInstance<BuffDef>();
-            buffDef.name = buffName;
-            buffDef.buffColor = buffColor;
-            buffDef.canStack = canStack;
-            buffDef.isDebuff = isDebuff;
-            buffDef.eliteDef = null;
-            buffDef.iconSprite = buffIcon;
+            BuffDef bd = ScriptableObject.CreateInstance<BuffDef>();
+            bd.name = name;
+            bd.canStack = canStack;
+            bd.isCooldown = isCooldown;
+            bd.isDebuff = isDebuff;
+            bd.buffColor = color;
+            bd.iconSprite = iconSprite;
+            buffDefs.Add(bd);
 
-            buffDefs.Add(buffDef);
-
-            return buffDef;
+            (bd as UnityEngine.Object).name = bd.name;
+            return bd;
         }
     }
 }

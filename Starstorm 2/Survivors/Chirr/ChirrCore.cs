@@ -10,6 +10,7 @@ using System.Linq;
 using UnityEngine.AddressableAssets;
 using RoR2.Projectile;
 using Starstorm2.Survivors.Chirr.Components;
+using EntityStates.SS2UStates.Chirr.Special;
 
 namespace Starstorm2.Survivors.Chirr
 {
@@ -30,10 +31,11 @@ namespace Starstorm2.Survivors.Chirr
         {
             bodyIndex = BodyCatalog.FindBodyIndex("ChirrBody");
 
-            ChirrTargetingController.BlacklistBody(BodyCatalog.FindBodyIndex("VoidRaidCrabBody"));
-            ChirrTargetingController.BlacklistBody(BodyCatalog.FindBodyIndex("BrotherBody"));
-            ChirrTargetingController.BlacklistBody(BodyCatalog.FindBodyIndex("UrchinTurretBody"));
-            ChirrTargetingController.BlacklistBody(BodyCatalog.FindBodyIndex("WispSoulBody"));
+            ChirrFriendController.BlacklistBody(BodyCatalog.FindBodyIndex("VoidRaidCrabBody"));
+            ChirrFriendController.BlacklistBody(BodyCatalog.FindBodyIndex("BrotherBody"));
+            ChirrFriendController.BlacklistBody(BodyCatalog.FindBodyIndex("UrchinTurretBody"));
+            ChirrFriendController.BlacklistBody(BodyCatalog.FindBodyIndex("WispSoulBody"));
+            ChirrFriendController.BlacklistBody(BodyCatalog.FindBodyIndex("ChirrBody"));
         }
         private void Setup()
         {
@@ -92,9 +94,9 @@ namespace Starstorm2.Survivors.Chirr
             chirrBefriendIndicator.GetComponentInChildren<Rewired.ComponentControls.Effects.RotateAroundAxis>().enabled = false;
             chirrBefriendIndicator.GetComponentInChildren<RoR2.InputBindingDisplayController>().actionName = "SpecialSkill";
 
-            ChirrTargetingController.indicatorCannotBefriendPrefab = chirrTargetIndicator;
-            ChirrTargetingController.indicatorReadyToBefriendPrefab = chirrBefriendIndicator;
-            ChirrTargetingController.indicatorFriendPrefab = chirrBefriendIndicator;
+            ChirrFriendController.indicatorCannotBefriendPrefab = chirrTargetIndicator;
+            ChirrFriendController.indicatorReadyToBefriendPrefab = chirrBefriendIndicator;
+            ChirrFriendController.indicatorFriendPrefab = chirrBefriendIndicator;
 
             //RoR2/Base/Treebot/SeedpodMortarGhost.prefab
             //"RoR2/Base/Treebot/SyringeProjectile.prefab"
@@ -273,11 +275,12 @@ namespace Starstorm2.Survivors.Chirr
         {
             SkillLocator skill = chirrPrefab.GetComponent<SkillLocator>();
 
-            /*LanguageAPI.Add("CHIRR_BEFRIEND_NAME", "Natural Link");
-            LanguageAPI.Add("CHIRR_BEFRIEND_DESCRIPTION", "Befriend an enemy under 50% health. Befriended enemies inherit items.");
-            specialDef1 = ScriptableObject.CreateInstance<SkillDef>();
-            specialDef1.activationState = new SerializableEntityStateType(typeof(ChirrBefriend));
-            specialDef1.activationStateMachineName = "Weapon";
+            LanguageAPI.Add("CHIRR_BEFRIEND_NAME", "Natural Link");
+            LanguageAPI.Add("CHIRR_BEFRIEND_DESCRIPTION", "<style=cIsUtility>Befriend</style> the targeted enemy if it's below <style=cIsHealth>50% health</style>. Friends <style=cIsUtility>inherit all your items</style>.");
+
+            BefriendSkillDef specialDef1 = ScriptableObject.CreateInstance<BefriendSkillDef>();
+            specialDef1.activationState = new SerializableEntityStateType(typeof(Befriend));
+            specialDef1.activationStateMachineName = "Befriend";
             specialDef1.skillName = "CHIRR_BEFRIEND_NAME";
             specialDef1.skillNameToken = "CHIRR_BEFRIEND_NAME";
             specialDef1.skillDescriptionToken = "CHIRR_BEFRIEND_DESCRIPTION";
@@ -287,18 +290,18 @@ namespace Starstorm2.Survivors.Chirr
             specialDef1.beginSkillCooldownOnSkillEnd = false;
             specialDef1.canceledFromSprinting = false;
             specialDef1.fullRestockOnAssign = true;
-            specialDef1.interruptPriority = InterruptPriority.Skill;
+            specialDef1.interruptPriority = InterruptPriority.Any;
             specialDef1.isCombatSkill = false;
-            specialDef1.mustKeyPress = false;
+            specialDef1.mustKeyPress = true;
             specialDef1.cancelSprintingOnActivation = false;
             specialDef1.rechargeStock = 1;
             specialDef1.requiredStock = 1;
             specialDef1.stockToConsume = 1;
-
-            Utils.RegisterSkillDef(specialDef1, typeof(ChirrBefriend));
+            Modules.Skills.skillDefs.Add(specialDef1);
             SkillFamily.Variant specialVariant1 = Utils.RegisterSkillVariant(specialDef1);
+            skillLocator.special = Utils.RegisterSkillsToFamily(chirrPrefab, specialVariant1);
 
-            SkillLocator skill2 = chirrPrefab.GetComponent<SkillLocator>();
+            /*SkillLocator skill2 = chirrPrefab.GetComponent<SkillLocator>();
 
             LanguageAPI.Add("CHIRR_LEASH_NAME", "Natural Sync");
             LanguageAPI.Add("CHIRR_LEASH_DESCRIPTION", "Tap to being your ally to you. Hold to <style=cIsDamage>share damage taken</style> with your friend.");
@@ -325,8 +328,6 @@ namespace Starstorm2.Survivors.Chirr
             Utils.RegisterSkillDef(specialDef2, typeof(ChirrLeash));
             SkillFamily.Variant specialVariant2 = Utils.RegisterSkillVariant(specialDef2);*/
 
-            SkillFamily.Variant specialVariant1 = Utils.RegisterSkillVariant(Addressables.LoadAssetAsync<SkillDef>("RoR2/Base/Heretic/HereticDefaultAbility.asset").WaitForCompletion());
-            skillLocator.special = Utils.RegisterSkillsToFamily(chirrPrefab, specialVariant1);
         }
 
         public static void CreateDoppelganger()
@@ -395,7 +396,7 @@ namespace Starstorm2.Survivors.Chirr
                 ssoh.idleStateMachine.Append(jetpackStateMachine);
             }
 
-            chirrPrefab.AddComponent<ChirrTargetingController>();
+            chirrPrefab.AddComponent<ChirrFriendController>();
             EntityStateMachine befriendStateMachine = chirrPrefab.AddComponent<EntityStateMachine>();
             befriendStateMachine.customName = "Befriend";
             befriendStateMachine.initialStateType = new SerializableEntityStateType(typeof(EntityStates.Idle));
