@@ -412,7 +412,7 @@ namespace Starstorm2.Survivors.Chirr.Components
 
         private bool CanLeashServer()
         {
-            return _hasFriend && targetBody && (targetBody.corePosition - ownerBody.corePosition).sqrMagnitude > 40f * 40f;
+            return _hasFriend && targetBody && (targetBody.corePosition - ownerBody.corePosition).sqrMagnitude > 5f * 5f;
         }
 
         //Copied from minionLeash
@@ -425,9 +425,10 @@ namespace Starstorm2.Survivors.Chirr.Components
                 spawnCard.hullSize = targetBody.hullClassification;
                 spawnCard.nodeGraphType = (targetBody.isFlying ? MapNodeGroup.GraphType.Air : MapNodeGroup.GraphType.Ground);
                 spawnCard.prefab = ChirrFriendController.teleportHelperPrefab;
+
                 GameObject gameObject = DirectorCore.instance.TrySpawnObject(new DirectorSpawnRequest(spawnCard, new DirectorPlacementRule
                 {
-                    placementMode = DirectorPlacementRule.PlacementMode.Approximate,
+                    placementMode = DirectorPlacementRule.PlacementMode.NearestNode,
                     position = newPos,
                     minDistance = 5f,
                     maxDistance = 40f
