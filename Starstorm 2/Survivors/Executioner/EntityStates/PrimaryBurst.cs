@@ -57,7 +57,7 @@ namespace EntityStates.SS2UStates.Executioner
             }
             else
             {
-                if (base.isAuthority && base.fixedAge >= this.duration)
+                if (base.isAuthority && base.fixedAge >= this.duration && shotCount >= ExecutionerBurstPistol.baseShotCount)
                 {
                     this.outer.SetNextStateToMain();
                     return;

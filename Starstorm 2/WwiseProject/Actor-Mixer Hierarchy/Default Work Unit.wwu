@@ -1666,7 +1666,7 @@
 										</Property>
 										<Property Name="Volume" Type="Real64">
 											<ValueList>
-												<Value>-3</Value>
+												<Value>-6</Value>
 											</ValueList>
 										</Property>
 									</PropertyList>
@@ -1713,7 +1713,7 @@
 										</Property>
 										<Property Name="Volume" Type="Real64">
 											<ValueList>
-												<Value>-1</Value>
+												<Value>-6</Value>
 											</ValueList>
 										</Property>
 									</PropertyList>
@@ -1760,7 +1760,7 @@
 										</Property>
 										<Property Name="Volume" Type="Real64">
 											<ValueList>
-												<Value>-2</Value>
+												<Value>-7</Value>
 											</ValueList>
 										</Property>
 									</PropertyList>
@@ -1854,7 +1854,7 @@
 										</Property>
 										<Property Name="Volume" Type="Real64">
 											<ValueList>
-												<Value>-3</Value>
+												<Value>-6</Value>
 											</ValueList>
 										</Property>
 									</PropertyList>
@@ -1904,7 +1904,7 @@
 										</Property>
 										<Property Name="Volume" Type="Real64">
 											<ValueList>
-												<Value>-4</Value>
+												<Value>-5</Value>
 											</ValueList>
 										</Property>
 									</PropertyList>
@@ -1951,7 +1951,7 @@
 										</Property>
 										<Property Name="Volume" Type="Real64">
 											<ValueList>
-												<Value>1</Value>
+												<Value>-2</Value>
 											</ValueList>
 										</Property>
 									</PropertyList>
@@ -2054,7 +2054,7 @@
 										</Property>
 										<Property Name="Volume" Type="Real64">
 											<ValueList>
-												<Value>2</Value>
+												<Value>-2</Value>
 											</ValueList>
 										</Property>
 									</PropertyList>
@@ -2354,6 +2354,8 @@
 								</Sound>
 								<Sound Name="ExecutionerPrimaryClassic" ID="{975D095A-EA2A-4EDA-870D-763780B2B596}" ShortID="294457538">
 									<PropertyList>
+										<Property Name="3DSpatialization" Type="int16" Value="1"/>
+										<Property Name="OverridePositioning" Type="bool" Value="True"/>
 										<Property Name="Pitch" Type="int32">
 											<ModifierList>
 												<ModifierInfo>
@@ -2369,11 +2371,14 @@
 										</Property>
 										<Property Name="Volume" Type="Real64">
 											<ValueList>
-												<Value>1</Value>
+												<Value>-2.5</Value>
 											</ValueList>
 										</Property>
 									</PropertyList>
 									<ReferenceList>
+										<Reference Name="Attenuation">
+											<ObjectRef Name="SurvivorAttenuation" ID="{A986EB11-7B06-4BE3-9630-2DEB2646D5C4}" WorkUnitID="{01E36904-BE25-433F-9547-3A046044CA56}"/>
+										</Reference>
 										<Reference Name="Conversion">
 											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{94E9A332-4F75-42A2-884C-469412070470}"/>
 										</Reference>
@@ -2402,6 +2407,8 @@
 								</Sound>
 								<Sound Name="ExecutionerSecondaryClassic" ID="{E4C38D3A-DD18-4D9D-AF59-87DF77CEF494}" ShortID="493065658">
 									<PropertyList>
+										<Property Name="3DSpatialization" Type="int16" Value="1"/>
+										<Property Name="OverridePositioning" Type="bool" Value="True"/>
 										<Property Name="Pitch" Type="int32">
 											<ModifierList>
 												<ModifierInfo>
@@ -2417,11 +2424,14 @@
 										</Property>
 										<Property Name="Volume" Type="Real64">
 											<ValueList>
-												<Value>-1</Value>
+												<Value>-3</Value>
 											</ValueList>
 										</Property>
 									</PropertyList>
 									<ReferenceList>
+										<Reference Name="Attenuation">
+											<ObjectRef Name="SurvivorAttenuation" ID="{A986EB11-7B06-4BE3-9630-2DEB2646D5C4}" WorkUnitID="{01E36904-BE25-433F-9547-3A046044CA56}"/>
+										</Reference>
 										<Reference Name="Conversion">
 											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{94E9A332-4F75-42A2-884C-469412070470}"/>
 										</Reference>
@@ -3479,6 +3489,11 @@
 												</ModifierInfo>
 											</ModifierList>
 										</Property>
+										<Property Name="Volume" Type="Real64">
+											<ValueList>
+												<Value>-5</Value>
+											</ValueList>
+										</Property>
 									</PropertyList>
 									<ReferenceList>
 										<Reference Name="Attenuation">
@@ -3522,6 +3537,9 @@
 											</ModifierList>
 										</Property>
 										<Property Name="Volume" Type="Real64">
+											<ValueList>
+												<Value>-6</Value>
+											</ValueList>
 											<ModifierList>
 												<ModifierInfo>
 													<Modifier Name="" ID="{15782C58-E512-487C-8040-2859FCD4AB8E}">
@@ -3698,7 +3716,7 @@
 										<Property Name="OverridePositioning" Type="bool" Value="True"/>
 										<Property Name="Volume" Type="Real64">
 											<ValueList>
-												<Value>-6</Value>
+												<Value>-12</Value>
 											</ValueList>
 										</Property>
 									</PropertyList>
@@ -3732,7 +3750,7 @@
 										<Property Name="OverridePositioning" Type="bool" Value="True"/>
 										<Property Name="Volume" Type="Real64">
 											<ValueList>
-												<Value>-10</Value>
+												<Value>-18</Value>
 											</ValueList>
 										</Property>
 									</PropertyList>
@@ -3945,7 +3963,7 @@
 										<Property Name="PlayMechanismStepOrContinuous" Type="int16" Value="0"/>
 										<Property Name="Volume" Type="Real64">
 											<ValueList>
-												<Value>-12</Value>
+												<Value>-18</Value>
 											</ValueList>
 										</Property>
 									</PropertyList>
@@ -4074,7 +4092,14 @@
 									</ChildrenList>
 								</RandomSequenceContainer>
 								<Sound Name="ChirrHealStart" ID="{698F176D-836D-41AC-8C6F-DE79FFCE1418}" ShortID="1053272650">
+									<PropertyList>
+										<Property Name="3DSpatialization" Type="int16" Value="1"/>
+										<Property Name="OverridePositioning" Type="bool" Value="True"/>
+									</PropertyList>
 									<ReferenceList>
+										<Reference Name="Attenuation">
+											<ObjectRef Name="SurvivorAttenuation" ID="{A986EB11-7B06-4BE3-9630-2DEB2646D5C4}" WorkUnitID="{01E36904-BE25-433F-9547-3A046044CA56}"/>
+										</Reference>
 										<Reference Name="Conversion">
 											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{94E9A332-4F75-42A2-884C-469412070470}"/>
 										</Reference>
@@ -4102,7 +4127,14 @@
 									</ActiveSourceList>
 								</Sound>
 								<Sound Name="ChirrHealTrigger" ID="{FBB634A3-1AD4-436B-8E08-189FE4A6CD2D}" ShortID="976911374">
+									<PropertyList>
+										<Property Name="3DSpatialization" Type="int16" Value="1"/>
+										<Property Name="OverridePositioning" Type="bool" Value="True"/>
+									</PropertyList>
 									<ReferenceList>
+										<Reference Name="Attenuation">
+											<ObjectRef Name="SurvivorAttenuation" ID="{A986EB11-7B06-4BE3-9630-2DEB2646D5C4}" WorkUnitID="{01E36904-BE25-433F-9547-3A046044CA56}"/>
+										</Reference>
 										<Reference Name="Conversion">
 											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{94E9A332-4F75-42A2-884C-469412070470}"/>
 										</Reference>
@@ -4130,7 +4162,32 @@
 									</ActiveSourceList>
 								</Sound>
 								<Sound Name="ChirrPrimary" ID="{DD09D156-1308-4202-98E6-077066B26985}" ShortID="807599989">
+									<PropertyList>
+										<Property Name="3DSpatialization" Type="int16" Value="1"/>
+										<Property Name="OverridePositioning" Type="bool" Value="True"/>
+										<Property Name="Pitch" Type="int32">
+											<ModifierList>
+												<ModifierInfo>
+													<Modifier Name="" ID="{75928B0A-AC00-40ED-B155-8DF979125EC2}">
+														<PropertyList>
+															<Property Name="Enabled" Type="bool" Value="True"/>
+															<Property Name="Max" Type="Real64" Value="150"/>
+															<Property Name="Min" Type="Real64" Value="-150"/>
+														</PropertyList>
+													</Modifier>
+												</ModifierInfo>
+											</ModifierList>
+										</Property>
+										<Property Name="Volume" Type="Real64">
+											<ValueList>
+												<Value>-15</Value>
+											</ValueList>
+										</Property>
+									</PropertyList>
 									<ReferenceList>
+										<Reference Name="Attenuation">
+											<ObjectRef Name="SurvivorAttenuation" ID="{A986EB11-7B06-4BE3-9630-2DEB2646D5C4}" WorkUnitID="{01E36904-BE25-433F-9547-3A046044CA56}"/>
+										</Reference>
 										<Reference Name="Conversion">
 											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{94E9A332-4F75-42A2-884C-469412070470}"/>
 										</Reference>
@@ -4155,6 +4212,41 @@
 									</ChildrenList>
 									<ActiveSourceList>
 										<ActiveSource Name="ChirrPrimary" ID="{D841F0C8-59A2-4A2B-ABA8-9B803F855300}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="ChirrSpecial" ID="{ED90F0FE-E8B7-44A0-A420-B3BEB8744CBF}" ShortID="962072208">
+									<PropertyList>
+										<Property Name="3DSpatialization" Type="int16" Value="1"/>
+										<Property Name="OverridePositioning" Type="bool" Value="True"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Attenuation">
+											<ObjectRef Name="SurvivorAttenuation" ID="{A986EB11-7B06-4BE3-9630-2DEB2646D5C4}" WorkUnitID="{01E36904-BE25-433F-9547-3A046044CA56}"/>
+										</Reference>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{94E9A332-4F75-42A2-884C-469412070470}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{8B449195-16F5-41A2-9626-CB3E0D2C3C12}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="ChirrSpecial" ID="{2752F676-562F-40A1-98CD-E64E3EC6C94D}">
+											<PropertyList>
+												<Property Name="LoopBegin" Type="Real64" Value="-0.001"/>
+												<Property Name="LoopEnd" Type="Real64" Value="-0.001"/>
+												<Property Name="TrimBegin" Type="Real64" Value="-0.001"/>
+												<Property Name="TrimEnd" Type="Real64" Value="-0.001"/>
+											</PropertyList>
+											<Language>SFX</Language>
+											<AudioFile>ChirrSpecial.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="55114581"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="ChirrSpecial" ID="{2752F676-562F-40A1-98CD-E64E3EC6C94D}" Platform="Linked"/>
 									</ActiveSourceList>
 								</Sound>
 							</ChildrenList>
@@ -4662,7 +4754,19 @@
 							</ChildrenList>
 						</Folder>
 						<Sound Name="wChainLightning" ID="{ACDEB48B-F5F2-4187-BBF4-ED9BB377405F}" ShortID="918746608">
+							<PropertyList>
+								<Property Name="3DSpatialization" Type="int16" Value="1"/>
+								<Property Name="OverridePositioning" Type="bool" Value="True"/>
+								<Property Name="Volume" Type="Real64">
+									<ValueList>
+										<Value>-3</Value>
+									</ValueList>
+								</Property>
+							</PropertyList>
 							<ReferenceList>
+								<Reference Name="Attenuation">
+									<ObjectRef Name="SurvivorAttenuation" ID="{A986EB11-7B06-4BE3-9630-2DEB2646D5C4}" WorkUnitID="{01E36904-BE25-433F-9547-3A046044CA56}"/>
+								</Reference>
 								<Reference Name="Conversion">
 									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{94E9A332-4F75-42A2-884C-469412070470}"/>
 								</Reference>

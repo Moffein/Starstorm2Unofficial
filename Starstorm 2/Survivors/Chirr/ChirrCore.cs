@@ -80,9 +80,9 @@ namespace Starstorm2.Survivors.Chirr
 
             //RoR2/Base/Treebot/SeedpodMortarGhost.prefab
             //"RoR2/Base/Treebot/SyringeProjectile.prefab"
-            /*GameObject chirrDart = PrefabAPI.InstantiateClone(Addressables.LoadAssetAsync<GameObject>("RoR2/Base/ElitePoison/UrchinSeekingProjectile.prefab").WaitForCompletion(), "SS2UChirrDartProjectile", true);
+            GameObject chirrDart = PrefabAPI.InstantiateClone(Addressables.LoadAssetAsync<GameObject>("RoR2/Base/ElitePoison/UrchinSeekingProjectile.prefab").WaitForCompletion(), "SS2UChirrDartProjectile", true);
             Modules.Prefabs.projectilePrefabs.Add(chirrDart);
-            ChirrPrimary.projectilePrefab = chirrDart;*/
+            ChirrPrimary.projectilePrefab = chirrDart;
 
            /*GameObject chirrDartCenter = PrefabAPI.InstantiateClone(Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Treebot/SyringeProjectileHealing.prefab").WaitForCompletion(), "SS2UChirrDartCenterProjectile", true);
             UnityEngine.Object.Destroy(chirrDartCenter.GetComponent<RoR2.Projectile.ProjectileHealOwnerOnDamageInflicted>());
@@ -197,7 +197,7 @@ namespace Starstorm2.Survivors.Chirr
             SkillLocator skill = chirrPrefab.GetComponent<SkillLocator>();
 
             LanguageAPI.Add("CHIRR_HEAL_NAME", "Sanative Aura");
-            LanguageAPI.Add("CHIRR_HEAL_DESCRIPTION", "Heal yourself and nearby allies for <style=cIsHealing>25%</style> of their total health. Allies gain <style=cIsHealing>increased health regeneration</style> for 6 seconds.");
+            LanguageAPI.Add("CHIRR_HEAL_DESCRIPTION", "Heal yourself and nearby allies for <style=cIsHealing>25%</style> of their total health. Allies gain <style=cIsHealing>increased health regeneration</style> for 3 seconds.");
 
             SkillDef utilityDef1 = ScriptableObject.CreateInstance<SkillDef>();
             utilityDef1.activationState = new SerializableEntityStateType(typeof(ChirrHeal));
@@ -208,7 +208,7 @@ namespace Starstorm2.Survivors.Chirr
             utilityDef1.icon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("ChirrUtility");
             utilityDef1.baseMaxStock = 1;
             utilityDef1.baseRechargeInterval = 14f;
-            utilityDef1.beginSkillCooldownOnSkillEnd = false;
+            utilityDef1.beginSkillCooldownOnSkillEnd = true;
             utilityDef1.canceledFromSprinting = false;
             utilityDef1.fullRestockOnAssign = true;
             utilityDef1.interruptPriority = InterruptPriority.Skill;

@@ -159,7 +159,7 @@
     <Compile Include="Survivors\Chirr\EntityStates\Utility.cs" />
     <Compile Include="Survivors\Cyborg\EntityStates\CyborgMain.cs" />
     <Compile Include="Survivors\Cyborg\EntityStates\Secondary.cs" />
-    <Compile Include="Survivors\Cyborg\EntityStates\Utility.cs" />
+    <Compile Include="Survivors\Cyborg\EntityStates\CyborgFireOverheat.cs" />
     <Compile Include="Modules\EntityStates\Emotes\BaseEmote.cs" />
     <Compile Include="Modules\EntityStates\Emotes\RestEmote.cs" />
     <Compile Include="Modules\EntityStates\Emotes\TauntEmote.cs" />

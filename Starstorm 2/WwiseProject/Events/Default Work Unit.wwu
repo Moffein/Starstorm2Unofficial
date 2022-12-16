@@ -1084,6 +1084,20 @@
 						</Action>
 					</ChildrenList>
 				</Event>
+				<Event Name="ChirrSpecial" ID="{3C8C2453-34F3-40A4-86F7-DC1008C3A501}">
+					<ChildrenList>
+						<Action Name="" ID="{758DE8AF-6CD6-4AF1-920F-BE5F9270A84C}" ShortID="705090906">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="1"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="ChirrSpecial" ID="{ED90F0FE-E8B7-44A0-A420-B3BEB8744CBF}" WorkUnitID="{3D683E44-DAC0-4717-B7E2-3D4C4555FE6A}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
 			</ChildrenList>
 		</WorkUnit>
 	</Events>

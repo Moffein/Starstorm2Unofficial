@@ -1,5 +1,6 @@
 ﻿using EntityStates;
 using RoR2;
+using RoR2.Projectile;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 
@@ -16,8 +17,8 @@ namespace EntityStates.SS2UStates.Chirr
         public static float spreadBloom = 0.4f;
         public static float recoil = 1f;
 
-        public static GameObject tracerEffectPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Commando/TracerCommandoDefault.prefab").WaitForCompletion();
-        public static GameObject hitEffectPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Commando/HitsparkCommando.prefab").WaitForCompletion();
+        public static GameObject projectilePrefab;
+        public static GameObject muzzleflashEffectPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Croco/MuzzleflashCroco.prefab").WaitForCompletion();
 
         private int shotCount;
         private float duration;
@@ -39,8 +40,10 @@ namespace EntityStates.SS2UStates.Chirr
                 base.characterBody.SetAimTimer(2f);
             }
 
-            base.PlayAnimation("Gesture, Override", "Primary", "Primary.playbackRate", this.duration);
-            base.PlayAnimation("Gesture, Additive", "Primary", "Primary.playbackRate", this.duration);
+            base.PlayCrossfade("Gesture, Override", "Primary", "Primary.playbackRate", this.duration, 0.2f);
+            base.PlayCrossfade("Gesture, Additive", "Primary", "Primary.playbackRate", this.duration, 0.2f);
+            EffectManager.SimpleMuzzleFlash(muzzleflashEffectPrefab, base.gameObject, "MuzzleWingL", false);
+            EffectManager.SimpleMuzzleFlash(muzzleflashEffectPrefab, base.gameObject, "MuzzleWingR", false);
 
             FireBullet();
         }
@@ -58,7 +61,7 @@ namespace EntityStates.SS2UStates.Chirr
             }
             else
             {
-                if (base.isAuthority && base.fixedAge >= this.duration)
+                if (base.isAuthority && base.fixedAge >= this.duration && shotCount >= ChirrPrimary.baseShotCount)
                 {
                     this.outer.SetNextStateToMain();
                     return;
@@ -80,37 +83,17 @@ namespace EntityStates.SS2UStates.Chirr
             shotStopwatch = 0f;
             shotCount++;
             Util.PlaySound(ChirrPrimary.attackSoundString, base.gameObject);
-            EffectManager.SimpleMuzzleFlash(Commando.CommandoWeapon.FirePistol2.muzzleEffectPrefab, base.gameObject, "WingLEnd", false);
-            EffectManager.SimpleMuzzleFlash(Commando.CommandoWeapon.FirePistol2.muzzleEffectPrefab, base.gameObject, "WingREnd", false);
 
             if (base.isAuthority)
             {
-                float dmg = ChirrPrimary.damageCoefficient * this.damageStat;
-                Ray r = base.GetAimRay();
-                BulletAttack bullet = new BulletAttack
-                {
-                    aimVector = r.direction,
-                    origin = r.origin,
-                    damage = damageCoefficient * damageStat,
-                    damageType = DamageType.Generic,
-                    damageColorIndex = DamageColorIndex.Default,
-                    minSpread = 0f,
-                    maxSpread = 0f,
-                    falloffModel = BulletAttack.FalloffModel.DefaultBullet,
-                    force = ChirrPrimary.force,
-                    isCrit = this.crit,
-                    owner = base.gameObject,
-                    muzzleName = (shotCount % 2 == 0 ? "WingLEnd" : "WingREnd"),
-                    smartCollision = true,
-                    procChainMask = default(ProcChainMask),
-                    procCoefficient = 1f,
-                    radius = 0.3f,
-                    weapon = base.gameObject,
-                    tracerEffectPrefab = tracerEffectPrefab,
-                    hitEffectPrefab = hitEffectPrefab,
-                    maxDistance = 200f
-                };
-                bullet.Fire();
+                Ray aimRay = base.GetAimRay();
+
+                ProjectileManager.instance.FireProjectile(projectilePrefab,
+                    aimRay.origin, Util.QuaternionSafeLookRotation(aimRay.direction),
+                    base.gameObject, base.damageStat * damageCoefficient,
+                    0f,
+                    crit,
+                    DamageColorIndex.Default, null, -1f);
             }
             base.AddRecoil(-0.4f * recoil, -0.8f * recoil, -0.3f * recoil, 0.3f * recoil);
             if (base.characterBody) base.characterBody.AddSpreadBloom(spreadBloom); //Spread is cosmetic. Skill is always perfectly accurate.
