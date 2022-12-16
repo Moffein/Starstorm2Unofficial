@@ -14,7 +14,7 @@ namespace EntityStates.SS2UStates.Chirr.Special
             if (NetworkServer.active)
             {
                 ChirrFriendController friendController = base.GetComponent<ChirrFriendController>();
-                if (friendController && friendController.CanLeash())
+                if (friendController)// && friendController.CanLeash()
                 {
                     friendController.LeashFriend(base.transform.position);
                 }

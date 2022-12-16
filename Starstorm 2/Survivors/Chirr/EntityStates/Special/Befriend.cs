@@ -1,4 +1,5 @@
 ﻿using RoR2;
+using RoR2.Skills;
 using Starstorm2.Survivors.Chirr;
 using Starstorm2.Survivors.Chirr.Components;
 using UnityEngine;
@@ -8,7 +9,7 @@ namespace EntityStates.SS2UStates.Chirr.Special
 {
     public class Befriend : BaseState
     {
-        public static FriendLeashSkillDef leashOverrideSkillDef;
+        public static SkillDef leashOverrideSkillDef;
         public static float timeoutDuration = 10f;  //Cancels skill if it can't find friend within 10s.
 
         private ChirrFriendController friendController;

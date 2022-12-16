@@ -38,7 +38,7 @@ namespace Starstorm2.Survivors.Chirr.Components
         private CharacterMaster ownerMaster;
         private TeamComponent teamComponent;
 
-        [SyncVar]
+        //[SyncVar]//Uncomment this if min leash distance is going to be a thing again.
         private bool _canLeash = false;
 
         [SyncVar]
@@ -419,32 +419,30 @@ namespace Starstorm2.Survivors.Chirr.Components
         [Server]
         public void LeashFriend(Vector3 newPos)
         {
-            if (CanLeash())
+            //if (CanLeash())
+            SpawnCard spawnCard = ScriptableObject.CreateInstance<SpawnCard>();
+            spawnCard.hullSize = targetBody.hullClassification;
+            spawnCard.nodeGraphType = (targetBody.isFlying ? MapNodeGroup.GraphType.Air : MapNodeGroup.GraphType.Ground);
+            spawnCard.prefab = ChirrFriendController.teleportHelperPrefab;
+
+            GameObject gameObject = DirectorCore.instance.TrySpawnObject(new DirectorSpawnRequest(spawnCard, new DirectorPlacementRule
             {
-                SpawnCard spawnCard = ScriptableObject.CreateInstance<SpawnCard>();
-                spawnCard.hullSize = targetBody.hullClassification;
-                spawnCard.nodeGraphType = (targetBody.isFlying ? MapNodeGroup.GraphType.Air : MapNodeGroup.GraphType.Ground);
-                spawnCard.prefab = ChirrFriendController.teleportHelperPrefab;
+                placementMode = DirectorPlacementRule.PlacementMode.NearestNode,
+                position = newPos,
+                minDistance = 5f,
+                maxDistance = 45f
+            }, RoR2Application.rng));
 
-                GameObject gameObject = DirectorCore.instance.TrySpawnObject(new DirectorSpawnRequest(spawnCard, new DirectorPlacementRule
+            if (gameObject)
+            {
+                Vector3 position = gameObject.transform.position;
+                TeleportHelper.TeleportBody(targetBody, position);
+                GameObject teleportEffectPrefab = Run.instance.GetTeleportEffectPrefab(targetBody.gameObject);
+                if (teleportEffectPrefab)
                 {
-                    placementMode = DirectorPlacementRule.PlacementMode.NearestNode,
-                    position = newPos,
-                    minDistance = 5f,
-                    maxDistance = 40f
-                }, RoR2Application.rng));
-
-                if (gameObject)
-                {
-                    Vector3 position = gameObject.transform.position;
-                    TeleportHelper.TeleportBody(targetBody, position);
-                    GameObject teleportEffectPrefab = Run.instance.GetTeleportEffectPrefab(targetBody.gameObject);
-                    if (teleportEffectPrefab)
-                    {
-                        EffectManager.SimpleEffect(teleportEffectPrefab, position, Quaternion.identity, true);
-                    }
-                    UnityEngine.Object.Destroy(gameObject);
+                    EffectManager.SimpleEffect(teleportEffectPrefab, position, Quaternion.identity, true);
                 }
+                UnityEngine.Object.Destroy(gameObject);
             }
         }
     }
