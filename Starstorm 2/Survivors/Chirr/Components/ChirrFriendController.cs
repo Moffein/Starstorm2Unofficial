@@ -28,6 +28,7 @@ namespace Starstorm2.Survivors.Chirr.Components
 
         private InputBankTest inputBank;
         private CharacterBody ownerBody;
+        private CharacterMaster ownerMaster;
         private TeamComponent teamComponent;
 
         [SyncVar]
@@ -67,6 +68,35 @@ namespace Starstorm2.Survivors.Chirr.Components
             this.indicatorFriend = new Indicator(base.gameObject, indicatorFriendPrefab);
 
             trackerUpdateStopwatch = 0f;
+
+            //Is there a better way with onInventoryChangedGlobal?
+            RoR2.Inventory.onServerItemGiven += UpdateMinionInventory;
+        }
+
+        private void Start()
+        {
+            if (ownerBody) ownerMaster = ownerBody.master;
+        }
+
+        private void OnDestroy()
+        {
+            RoR2.Inventory.onServerItemGiven -= UpdateMinionInventory;
+        }
+
+        private void UpdateMinionInventory(Inventory inventory, ItemIndex itemIndex, int count)
+        {
+            if (this._hasFriend && this.targetMaster && this.targetMaster.inventory)
+            {
+                CharacterMaster cm = inventory.GetComponent<CharacterMaster>();
+                if (cm == ownerMaster)
+                {
+                    ItemDef item = ItemCatalog.GetItemDef(itemIndex);
+                    if (!item.tags.Contains(ItemTag.CannotCopy))
+                    {
+                        targetMaster.inventory.GiveItem(itemIndex, count);
+                    }
+                }
+            }
         }
 
         private void FixedUpdate()
@@ -227,11 +257,11 @@ namespace Starstorm2.Survivors.Chirr.Components
                     if (hbBody)
                     {
                         bool isPlayerControlled = hbBody.isPlayerControlled;
-                        bool isBoss = hbBody.isBoss;
+                        //bool isBoss = hbBody.isBoss;  //No need for this, seems CombatSquad code fixes the softlock problems.
                         bool isChampion = hbBody.isChampion;
                         bool isBlacklisted = blacklistedBodies.Contains(hbBody.bodyIndex);
 
-                        if (!isPlayerControlled && !isBoss && (!isChampion || canBefriendChampion) && !isBlacklisted)
+                        if (!isPlayerControlled && (!isChampion || canBefriendChampion) && !isBlacklisted)// && !isBoss
                         {
                             validTargets.Add(hb);
                         }
