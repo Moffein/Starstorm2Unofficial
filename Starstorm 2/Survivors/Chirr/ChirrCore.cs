@@ -4,10 +4,10 @@ using RoR2.Skills;
 using UnityEngine;
 using UnityEngine.Networking;
 using TMPro;
-using Starstorm2.Survivors.Chirr.Components;
 using EntityStates.SS2UStates.Chirr;
 using EntityStates;
 using System.Linq;
+using UnityEngine.AddressableAssets;
 
 namespace Starstorm2.Survivors.Chirr
 {
@@ -47,7 +47,6 @@ namespace Starstorm2.Survivors.Chirr
             RegisterProjectiles();
             RegisterStates();
             SetUpSkills();
-            RegisterHooks();
             CreateDoppelganger();
 
             Modules.Prefabs.RegisterNewSurvivor(chirrPrefab, Cores.PrefabCore.CreateDisplayPrefab("ChirrDisplay", chirrPrefab), Color.green, "CHIRR", 40.2f);
@@ -59,33 +58,10 @@ namespace Starstorm2.Survivors.Chirr
         {
             Modules.States.AddSkill(typeof(JetpackOn));
             Modules.States.AddSkill(typeof(ChirrMain));
-            Modules.States.AddSkill(typeof(ChirrFireDarts));
-            Modules.States.AddSkill(typeof(ChirrHeal));
-            Modules.States.AddSkill(typeof(ChirrBefriend));
-            Modules.States.AddSkill(typeof(ChirrLeash));
 
+            Modules.States.AddSkill(typeof(DartSpread));
             Modules.States.AddSkill(typeof(Headbutt));
-        }
-
-        private void RegisterHooks()
-        {
-            On.RoR2.HealthComponent.TakeDamage += (orig, self, damageInfo) =>
-            {
-                if (self.body.GetComponent<ChirrInfoComponent>())
-                {
-                    if (damageInfo.damage != 0 && self.body.GetComponent<ChirrInfoComponent>().friend && self.body.GetComponent<ChirrInfoComponent>().sharing)
-                    {
-                        damageInfo.damage *= .75f;
-                        self.body.GetComponent<ChirrInfoComponent>().friend.healthComponent.TakeDamage(damageInfo);
-                        damageInfo.damage /= 3f;
-                        orig(self, damageInfo);
-                    }
-                    else
-                        orig(self, damageInfo);
-                }
-                else
-                    orig(self, damageInfo);
-            };
+            Modules.States.AddSkill(typeof(ChirrHeal));
         }
 
         private void RegisterProjectiles()
@@ -144,13 +120,14 @@ namespace Starstorm2.Survivors.Chirr
 
         private void SetUpPrimaries(SkillLocator skillLocator)
         {
-            var dmg = ChirrFireDarts.damageCoefficient * 100f;
+            var dmg = DartSpread.damageCoefficient * 100f;
+            var dartCount = DartSpread.totalProjectiles;
 
             LanguageAPI.Add("CHIRR_DARTS_NAME", "Life Thorns");
-            LanguageAPI.Add("CHIRR_DARTS_DESCRIPTION", $"Fire a barrage of thorns for <style=cIsDamage> 3x{dmg}% damage</style>. <style=cIsDamage>Marking</style>.");
+            LanguageAPI.Add("CHIRR_DARTS_DESCRIPTION", $"Fire a barrage of thorns for <style=cIsDamage> {dartCount}x{dmg}% damage</style>.");
 
             SkillDef primaryDef1 = ScriptableObject.CreateInstance<SkillDef>();
-            primaryDef1.activationState = new SerializableEntityStateType(typeof(ChirrFireDarts));
+            primaryDef1.activationState = new SerializableEntityStateType(typeof(DartSpread));
             primaryDef1.activationStateMachineName = "Weapon";
             primaryDef1.skillName = "CHIRR_DARTS_NAME";
             primaryDef1.skillNameToken = "CHIRR_DARTS_NAME";
@@ -168,9 +145,9 @@ namespace Starstorm2.Survivors.Chirr
             primaryDef1.rechargeStock = 1;
             primaryDef1.requiredStock = 1;
             primaryDef1.stockToConsume = 1;
-            primaryDef1.keywordTokens = new string[] { "KEYWORD_MARKING" };
+            primaryDef1.keywordTokens = new string[] {};
 
-            Utils.RegisterSkillDef(primaryDef1, typeof(ChirrFireDarts));
+            Modules.Skills.skillDefs.Add(primaryDef1);
             SkillFamily.Variant primaryVariant1 = Utils.RegisterSkillVariant(primaryDef1);
 
             skillLocator.primary = Utils.RegisterSkillsToFamily(chirrPrefab, primaryVariant1);
@@ -249,7 +226,7 @@ namespace Starstorm2.Survivors.Chirr
         {
             SkillLocator skill = chirrPrefab.GetComponent<SkillLocator>();
 
-            LanguageAPI.Add("CHIRR_BEFRIEND_NAME", "Natural Link");
+            /*LanguageAPI.Add("CHIRR_BEFRIEND_NAME", "Natural Link");
             LanguageAPI.Add("CHIRR_BEFRIEND_DESCRIPTION", "Befriend an enemy under 50% health. Befriended enemies inherit items.");
             specialDef1 = ScriptableObject.CreateInstance<SkillDef>();
             specialDef1.activationState = new SerializableEntityStateType(typeof(ChirrBefriend));
@@ -299,8 +276,9 @@ namespace Starstorm2.Survivors.Chirr
             specialDef2.stockToConsume = 1;
 
             Utils.RegisterSkillDef(specialDef2, typeof(ChirrLeash));
-            SkillFamily.Variant specialVariant2 = Utils.RegisterSkillVariant(specialDef2);
+            SkillFamily.Variant specialVariant2 = Utils.RegisterSkillVariant(specialDef2);*/
 
+            SkillFamily.Variant specialVariant1 = Utils.RegisterSkillVariant(Addressables.LoadAssetAsync<SkillDef>("RoR2/Base/Heretic/HereticDefaultAbility.asset").WaitForCompletion());
             skillLocator.special = Utils.RegisterSkillsToFamily(chirrPrefab, specialVariant1);
         }
 
@@ -342,7 +320,6 @@ namespace Starstorm2.Survivors.Chirr
                 }
             }, 0);
 
-            chirrPrefab.AddComponent<ChirrInfoComponent>();
             // create hitboxes
 
             GameObject model = chirrPrefab.GetComponent<ModelLocator>().modelTransform.gameObject;

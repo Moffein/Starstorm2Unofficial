@@ -80,7 +80,7 @@
     <Compile Include="API\Utils.cs" />
     <Compile Include="Modules\EntityStates\BaseMeleeAttack.cs" />
     <Compile Include="Survivors\Chirr\ChirrSkins.cs" />
-    <Compile Include="Survivors\Chirr\Components\ChirrInfoComponent.cs" />
+    <Compile Include="Survivors\Chirr\EntityStates\DartSpread.cs" />
     <Compile Include="Survivors\Chirr\EntityStates\Headbutt.cs" />
     <Compile Include="Survivors\Chirr\EntityStates\JetpackOn.cs" />
     <Compile Include="Survivors\Chirr\EntityStates\TriDart.cs" />
@@ -156,8 +156,6 @@
     <Compile Include="Cores\Survivors\SpooderCore.cs" />
     <Compile Include="Cores\Starstorm2ItemManager.cs" />
     <Compile Include="Survivors\Chirr\EntityStates\ChirrMain.cs" />
-    <Compile Include="Survivors\Chirr\EntityStates\Primary.cs" />
-    <Compile Include="Survivors\Chirr\EntityStates\Special.cs" />
     <Compile Include="Survivors\Chirr\EntityStates\Utility.cs" />
     <Compile Include="Survivors\Cyborg\EntityStates\CyborgMain.cs" />
     <Compile Include="Survivors\Cyborg\EntityStates\Secondary.cs" />
@@ -256,6 +254,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Cores\Enemies\" />
+    <Folder Include="Survivors\Chirr\Components\" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="0Harmony">
