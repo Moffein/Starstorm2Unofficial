@@ -551,7 +551,7 @@ namespace Starstorm2.Survivors.Chirr
                 bodyNameToken = "CHIRR_NAME",
                 characterPortrait = Modules.Assets.mainAssetBundle.LoadAsset<Texture2D>("ChirrIcon"),
                 bodyColor = new Color32(129, 167, 98, 255),
-                crosshair = LegacyResourcesAPI.Load<GameObject>("Prefabs/Crosshair/StandardCrosshair"),
+                crosshair = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Treebot/TreebotCrosshair.prefab").WaitForCompletion(),
                 damage = 12f,
                 healthGrowth = 30f,
                 healthRegen = 1f,
@@ -612,6 +612,13 @@ namespace Starstorm2.Survivors.Chirr
             leashStateMachine.initialStateType = new SerializableEntityStateType(typeof(EntityStates.Idle));
             leashStateMachine.mainStateType = new SerializableEntityStateType(typeof(EntityStates.Idle));
             nsm.stateMachines = nsm.stateMachines.Append(leashStateMachine).ToArray();
+
+            CameraTargetParams ctp = chirrPrefab.GetComponent<CameraTargetParams>();
+            if (ctp && ctp.cameraPivotTransform)
+            {
+                Debug.Log(ctp.cameraPivotTransform.localPosition);
+                ctp.cameraPivotTransform.localPosition = new Vector3(0f, 1.8f, 0f); //was (0f, 1.6f, 0f)
+            }
 
             return chirrPrefab;
         }
