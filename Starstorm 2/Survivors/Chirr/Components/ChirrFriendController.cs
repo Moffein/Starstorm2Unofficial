@@ -23,6 +23,8 @@ namespace Starstorm2.Survivors.Chirr.Components
         public static GameObject indicatorReadyToBefriendPrefab;
         public static GameObject indicatorFriendPrefab;
 
+        private bool hadBeads = false;
+
         public static HashSet<BodyIndex> blacklistedBodies = new HashSet<BodyIndex>();
 
         private Indicator indicatorCannotBefriend;
@@ -67,7 +69,8 @@ namespace Starstorm2.Survivors.Chirr.Components
 
         private bool HasLunarTrinket()
         {
-            return ownerMaster && ownerMaster.inventory && ownerMaster.inventory.GetItemCount(RoR2Content.Items.LunarTrinket) > 0;
+            if (!hadBeads) hadBeads = ownerMaster && ownerMaster.inventory && ownerMaster.inventory.GetItemCount(RoR2Content.Items.LunarTrinket) > 0;
+            return hadBeads;
         }
 
         public bool HasFriend() { return _hasFriend; }
