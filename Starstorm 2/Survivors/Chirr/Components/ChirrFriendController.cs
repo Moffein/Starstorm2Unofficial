@@ -42,6 +42,7 @@ namespace Starstorm2.Survivors.Chirr.Components
             //"Thorns",
             "FreeChest",
             "TreasureCache",
+            "TreasureCacheVoid",
             //"ShockNearby",
             //"Icicle",
             //"SiphonOnLowHealth"
