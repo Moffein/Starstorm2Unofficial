@@ -175,6 +175,21 @@ namespace Starstorm2.Cores
                     return playerControlled || body.HasBuff(chirrFriendBuff) || body.HasBuff(chirrSelfBuff);
                 });
             };
+
+            //Steal vanilla overlay effects
+            IL.RoR2.CharacterModel.UpdateOverlays += (il) =>
+            {
+                ILCursor c = new ILCursor(il);
+                c.GotoNext(
+                     x => x.MatchLdsfld(typeof(RoR2Content.Buffs), "Weak")
+                    );
+                c.Index += 2;
+                c.Emit(OpCodes.Ldarg_0);
+                c.EmitDelegate<Func<bool, CharacterModel, bool>>((hasBuff, self) =>
+                {
+                    return hasBuff || (self.body.HasBuff(chirrFriendBuff));
+                });
+            };
         }
 
         private void BaseState_OnEnter(On.EntityStates.BaseState.orig_OnEnter orig, EntityStates.BaseState self)
@@ -184,7 +199,18 @@ namespace Starstorm2.Cores
             {
                 if (self.characterBody.HasBuff(BuffCore.chirrFriendBuff))
                 {
-                    self.damageStat *= 3f;
+                    float damageMult;
+                    if (ChirrFriendController.bodyDamageValueOverrides.TryGetValue(self.characterBody.bodyIndex, out float value))
+                    {
+                        damageMult = value;
+                    }
+                    else
+                    {
+                        float minHealth = 100f;
+                        float maxHealth = 1000f;
+                        damageMult = Mathf.Lerp(4f, 2f, ((self.characterBody.baseMaxHealth - minHealth) / (maxHealth - minHealth)));
+                    }
+                    self.damageStat *= damageMult;
                 }
             }
         }
@@ -269,7 +295,22 @@ namespace Starstorm2.Cores
             if (sender.HasBuff(BuffCore.chirrFriendBuff))
             {
                 //args.damageMultAdd += 2f; //affects too many things, hook BaseState instead
-                args.healthMultAdd += 2f;
+                //args.healthMultAdd += 2f;
+
+                if (sender.baseMaxHealth * 1.5f < 600f)
+                {
+                    args.baseHealthAdd += (600f - sender.baseMaxHealth);
+                    if (sender.levelMaxHealth < 180f)//600 * 0.3
+                    {
+                        float levelMult = sender.level - 1f;
+                        args.baseHealthAdd += levelMult * (180f - sender.levelMaxHealth);
+                    }
+                }
+                else
+                {
+                    args.healthMultAdd += 0.5f;
+                }
+
                 //args.cooldownMultAdd *= 0.5f; //handle in recalculatestats since I don't think this works
             }
         }

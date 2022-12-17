@@ -26,6 +26,17 @@ namespace Starstorm2.Survivors.Chirr.Components
         public static GameObject indicatorReadyToBefriendPrefab;
         public static GameObject indicatorFriendPrefab;
 
+        public static Dictionary<BodyIndex, float> bodyDamageValueOverrides = new Dictionary<BodyIndex, float>();
+
+        public static void AddBodyDamageValueOverride(BodyIndex bodyIndex, float value)
+        {
+            if (bodyIndex != BodyIndex.None)
+            {
+                bodyDamageValueOverrides.Remove(bodyIndex);
+                bodyDamageValueOverrides.Add(bodyIndex, value);
+            }
+        }
+
         public static List<string> itemCopyBlacklist = new List<string>
         {
             //"Thorns",
@@ -424,6 +435,7 @@ namespace Starstorm2.Survivors.Chirr.Components
                 if (targetBody.teamComponent) targetBody.teamComponent.teamIndex = teamIndex;
 
                 Util.CleanseBody(targetBody, true, false, true, true, true, false);
+                targetBody.AddTimedBuff(RoR2Content.Buffs.HiddenInvincibility, 3f);
 
                 targetBody.AddBuff(BuffCore.chirrFriendBuff);
                 if (!ownerBody.HasBuff(BuffCore.chirrSelfBuff))

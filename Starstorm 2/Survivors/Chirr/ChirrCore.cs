@@ -42,12 +42,18 @@ namespace Starstorm2.Survivors.Chirr
         {
             bodyIndex = BodyCatalog.FindBodyIndex("ChirrBody");
 
+            BodyIndex brotherBodyIndex = BodyCatalog.FindBodyIndex("BrotherBody");
             ChirrFriendController.BlacklistBody(BodyCatalog.FindBodyIndex("VoidRaidCrabBody"));
-            ChirrFriendController.BlacklistBody(BodyCatalog.FindBodyIndex("BrotherBody"));
+            ChirrFriendController.BlacklistBody(brotherBodyIndex);
             ChirrFriendController.BlacklistBody(BodyCatalog.FindBodyIndex("UrchinTurretBody"));
             ChirrFriendController.BlacklistBody(BodyCatalog.FindBodyIndex("WispSoulBody"));
             ChirrFriendController.BlacklistBody(BodyCatalog.FindBodyIndex("ChirrBody"));
             ChirrFriendController.BlacklistBody(BodyCatalog.FindBodyIndex("ShopkeeperBody"));
+            ChirrFriendController.BlacklistBody(BodyCatalog.FindBodyIndex("VoidInfestorBody"));
+
+            ChirrFriendController.bodyDamageValueOverrides.Add(BodyCatalog.FindBodyIndex("ClayBruiserBody"), 1f);
+            ChirrFriendController.bodyDamageValueOverrides.Add(brotherBodyIndex, 4f);
+            ChirrFriendController.bodyDamageValueOverrides.Add(BodyCatalog.FindBodyIndex("BrotherHurtBody"), 4f);
         }
         private void Setup()
         {
