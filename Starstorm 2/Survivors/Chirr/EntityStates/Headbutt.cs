@@ -19,7 +19,7 @@ namespace EntityStates.SS2UStates.Chirr
         public static float momentumEndPercent = 0.8f;
         public static float forwardSpeed = 30f;
         public static float knockbackForce = 2400f;
-        public static float yForce = 1000f;
+        public static float yForce = 1200f;
 
         private Vector3 attackDirection;
         private float momentumStartTime;
