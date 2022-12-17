@@ -43,7 +43,7 @@ namespace Starstorm2
     {
         internal const string guid = "com.ChirrLover.Starstorm2Unofficial";
         internal const string modName = "Starstorm 2 Unofficial";
-        internal const string version = "0.5.2";
+        internal const string version = "0.5.3";
 
         public static StarstormPlugin instance;
 
