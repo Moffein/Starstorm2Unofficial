@@ -16,7 +16,7 @@ namespace Starstorm2.Survivors.Cyborg.Components
         private GameObject teleportObject;
         public static GameObject teleportDestroyEffect = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Engi/OmniExplosionVFXEngiTurretDeath.prefab").WaitForCompletion();
 
-        public void FixedUpdate()
+        private void FixedUpdate()
         {
             if (NetworkServer.active)
             {
@@ -36,6 +36,11 @@ namespace Starstorm2.Survivors.Cyborg.Components
                     }
                 }
             }
+        }
+
+        private void OnDestroy()
+        {
+            if (NetworkServer.active) DestroyTeleporterServer();
         }
 
         public Vector3? GetTeleportCoordinates()
@@ -75,5 +80,7 @@ namespace Starstorm2.Survivors.Cyborg.Components
         {
             if (NetworkServer.active) DestroyTeleporterServer();
         }
+
+
     }
 }
