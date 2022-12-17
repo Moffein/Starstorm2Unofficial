@@ -112,8 +112,8 @@ namespace Starstorm2.Survivors.Cyborg
             overheatGhost.AddComponent<BFGGhostReduceSizeOverTime>();
 
             LightningSoundComponent.lightningSound = Modules.Assets.CreateNetworkSoundEventDef("Play_SS2U_RoR1Lightning");
-            CyborgFireOverheat.projectilePrefab = CreateOverheatProjectile("SS2UCyborgOverheatProjectile", overheatGhost, 1, -300f);
-            OverheatScepter.projectileOverride = CreateOverheatProjectile("SS2UCyborgOverheatScepterProjectile", overheatGhost, 3, -600f);
+            CyborgFireOverheat.projectilePrefab = CreateOverheatProjectile("SS2UCyborgOverheatProjectile", overheatGhost, 0, -300f);
+            OverheatScepter.projectileOverride = CreateOverheatProjectile("SS2UCyborgOverheatScepterProjectile", overheatGhost, 2, -900f);
 
             GameObject cyborgPylon = PrefabAPI.InstantiateClone(LegacyResourcesAPI.Load<GameObject>("Prefabs/Projectiles/EngiGrenadeProjectile"), "Prefabs/Projectiles/CyborgTPPylon", true);
 
@@ -173,7 +173,7 @@ namespace Starstorm2.Survivors.Cyborg
             bfgProjectileSimple.lifetime = 3f;
 
             ProjectileProximityBeamController bfgPbc = bfgProjectile.AddComponent<ProjectileProximityBeamController>();
-            bfgPbc.attackRange = 15f;
+            bfgPbc.attackRange = 12f;
             bfgPbc.listClearInterval = 1f / 5f;
             bfgPbc.attackInterval = bfgPbc.listClearInterval;
             bfgPbc.damageCoefficient = 1f * bfgPbc.listClearInterval;

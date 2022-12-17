@@ -7,7 +7,7 @@ namespace EntityStates.SS2UStates.Cyborg
 {
     public class PrimaryLaser : BaseSkillState, SteppedSkillDef.IStepSetter
     {
-        public static float damageCoefficient = 3f;
+        public static float damageCoefficient = 2.7f;
         public static float baseDuration = 0.5f;
         public static float recoil = 1f;
         public static GameObject tracerEffectPrefab;//Prefabs/Effects/Tracers/TracerHuntressSnipe
