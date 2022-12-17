@@ -119,7 +119,10 @@ namespace Starstorm2.Survivors.Chirr.Components
         }
 
         public bool HasFriend() { return _hasFriend; }
-        public bool CanBefriend() { return _canBefriendTarget; }
+        public bool CanBefriend()
+        {
+            return _canBefriendTarget && targetBody && !targetBody.HasBuff(BuffCore.chirrFriendBuff) && !targetBody.HasBuff(BuffCore.chirrSelfBuff);
+        }
 
         private void Awake()
         {
