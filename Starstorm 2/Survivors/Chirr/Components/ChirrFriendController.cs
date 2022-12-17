@@ -28,11 +28,11 @@ namespace Starstorm2.Survivors.Chirr.Components
 
         public static List<string> itemCopyBlacklist = new List<string>
         {
-            "Thorns",
+            //"Thorns",
             "FreeChest",
-            "ShockNearby",
-            "Icicle",
-            "SiphonOnLowHealth"
+            //"ShockNearby",
+            //"Icicle",
+            //"SiphonOnLowHealth"
         };
 
         private void RemoveBlacklistedItems(Inventory inventory)
@@ -123,7 +123,6 @@ namespace Starstorm2.Survivors.Chirr.Components
             this.indicatorReadyToBefriend = new Indicator(base.gameObject, indicatorReadyToBefriendPrefab);
             this.indicatorFriend = new Indicator(base.gameObject, indicatorFriendPrefab);
         }
-
         private void Start()
         {
             if (ownerBody) ownerMaster = ownerBody.master;

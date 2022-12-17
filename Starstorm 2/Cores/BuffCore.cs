@@ -159,6 +159,7 @@ namespace Starstorm2.Cores
             On.RoR2.HealthComponent.TakeDamage += HealthComponent_TakeDamage;
             On.RoR2.CharacterBody.OnClientBuffsChanged += CharacterBody_OnClientBuffsChanged;
             On.RoR2.CharacterBody.RecalculateStats += CharacterBody_RecalculateStats;
+            On.EntityStates.BaseState.OnEnter += BaseState_OnEnter;
             RecalculateStatsAPI.GetStatCoefficients += RecalculateStatsAPI_GetStatCoefficients;
 
             //Prevent Infestors from infesting chirr friends
@@ -174,6 +175,18 @@ namespace Starstorm2.Cores
                     return playerControlled || body.HasBuff(chirrFriendBuff) || body.HasBuff(chirrSelfBuff);
                 });
             };
+        }
+
+        private void BaseState_OnEnter(On.EntityStates.BaseState.orig_OnEnter orig, EntityStates.BaseState self)
+        {
+            orig(self);
+            if (self.characterBody)
+            {
+                if (self.characterBody.HasBuff(BuffCore.chirrFriendBuff))
+                {
+                    self.damageStat *= 3f;
+                }
+            }
         }
 
         private void CharacterBody_RecalculateStats(On.RoR2.CharacterBody.orig_RecalculateStats orig, CharacterBody self)
@@ -255,7 +268,7 @@ namespace Starstorm2.Cores
 
             if (sender.HasBuff(BuffCore.chirrFriendBuff))
             {
-                args.damageMultAdd += 2f;
+                //args.damageMultAdd += 2f; //affects too many things, hook BaseState instead
                 args.healthMultAdd += 2f;
                 //args.cooldownMultAdd *= 0.5f; //handle in recalculatestats since I don't think this works
             }
