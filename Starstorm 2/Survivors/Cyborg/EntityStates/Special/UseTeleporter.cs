@@ -71,6 +71,12 @@ namespace EntityStates.SS2UStates.Cyborg.Special
                 origin = position,
                 scale = UseTeleporter.radius
             }, true);
+
+            GameObject teleportEffectPrefab = Run.instance.GetTeleportEffectPrefab(base.gameObject);
+            if (teleportEffectPrefab)
+            {
+                EffectManager.SimpleEffect(teleportEffectPrefab, position, Quaternion.identity, true);
+            }
         }
 
         public override void FixedUpdate()
