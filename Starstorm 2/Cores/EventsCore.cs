@@ -369,7 +369,7 @@ namespace Starstorm2.Cores
 
         private void FixedUpdate()
         {
-            if (NetworkServer.active && Run.instance)
+            if (NetworkServer.active && Run.instance && !StarstormPlugin.kingArenaActive)
             {
                 if (!Run.instance.isRunStopwatchPaused)
                 {

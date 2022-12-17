@@ -21,6 +21,8 @@ namespace Starstorm2
     [BepInDependency("com.rune580.riskofoptions", BepInDependency.DependencyFlags.SoftDependency)]
     [BepInDependency("com.niwith.DropInMultiplayer", BepInDependency.DependencyFlags.SoftDependency)]
     [BepInDependency("com.DestroyedClone.AncientScepter", BepInDependency.DependencyFlags.SoftDependency)]
+    [BepInDependency("com.ThinkInvisible.ClassicItems", BepInDependency.DependencyFlags.SoftDependency)]
+    [BepInDependency("com.Kingpinush.KingKombatArena", BepInDependency.DependencyFlags.SoftDependency)]
     [NetworkCompatibility(CompatibilityLevel.EveryoneMustHaveMod, VersionStrictness.EveryoneNeedSameModVersion)]
     [BepInPlugin(guid, modName, version)]
     [R2APISubmoduleDependency(new string[]
@@ -50,6 +52,9 @@ namespace Starstorm2
         public static bool riskOfOptionsLoaded = false;
         public static bool scepterPluginLoaded = false;
         public static bool classicItemsLoaded = false;
+        public static bool kingArenaLoaded = false;
+
+        public static bool kingArenaActive = false;
 
         LogCore logCore;
         PrefabCore prefabCore;
@@ -80,6 +85,12 @@ namespace Starstorm2
             }
             scepterPluginLoaded = BepInEx.Bootstrap.Chainloader.PluginInfos.ContainsKey("com.DestroyedClone.AncientScepter");
             classicItemsLoaded = BepInEx.Bootstrap.Chainloader.PluginInfos.ContainsKey("com.ThinkInvisible.ClassicItems");
+            kingArenaLoaded = BepInEx.Bootstrap.Chainloader.PluginInfos.ContainsKey("com.Kingpinush.KingKombatArena");
+
+            if (kingArenaLoaded)
+            {
+                Stage.onStageStartGlobal += SetArena;
+            }
 
             instance = this;
             LogCore.logger = Logger;
@@ -92,6 +103,13 @@ namespace Starstorm2
             CommandHelper.AddToConsoleWhenReady();
 
             new Modules.ContentPacks().Initialize();
+        }
+
+
+        [MethodImpl(MethodImplOptions.NoInlining | MethodImplOptions.NoOptimization)]
+        private static void SetArena(Stage obj)
+        {
+            StarstormPlugin.kingArenaActive = NS_KingKombatArena.KingKombatArenaMainPlugin.s_GAME_MODE_ACTIVE;
         }
 
         private void InitializeSurvivors()
