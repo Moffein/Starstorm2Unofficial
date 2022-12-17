@@ -23,6 +23,37 @@ namespace Starstorm2.Survivors.Chirr.Components
         public static GameObject indicatorReadyToBefriendPrefab;
         public static GameObject indicatorFriendPrefab;
 
+        public static List<string> itemCopyBlacklist = new List<string>
+        {
+            "Thorns",
+            "FreeChest",
+            "ShockNearby",
+            "Icicle",
+            "SiphonOnLowHealth"
+        };
+
+        private void RemoveBlacklistedItems(Inventory inventory)
+        {
+            foreach (string str in itemCopyBlacklist)
+            {
+                ItemIndex blacklistItem = ItemCatalog.FindItemIndex(str);
+                if (blacklistItem != ItemIndex.None)
+                {
+                    inventory.RemoveItem(blacklistItem, inventory.GetItemCount(blacklistItem));
+                }
+            }
+        }
+
+        private bool IsBlacklistedItem(ItemIndex item)
+        {
+            foreach (string str in itemCopyBlacklist)
+            {
+                ItemIndex blacklistItem = ItemCatalog.FindItemIndex(str);
+                if (blacklistItem == item) return true;
+            }
+            return false;
+        }
+
         private bool hadBeads = false;
 
         public static HashSet<BodyIndex> blacklistedBodies = new HashSet<BodyIndex>();
@@ -66,7 +97,6 @@ namespace Starstorm2.Survivors.Chirr.Components
             if (bodyIndex != BodyIndex.None) blacklistedBodies.Add(bodyIndex);
         }
 
-
         private bool HasLunarTrinket()
         {
             if (!hadBeads) hadBeads = ownerMaster && ownerMaster.inventory && ownerMaster.inventory.GetItemCount(RoR2Content.Items.LunarTrinket) > 0;
@@ -94,29 +124,6 @@ namespace Starstorm2.Survivors.Chirr.Components
         private void Start()
         {
             if (ownerBody) ownerMaster = ownerBody.master;
-            /*if (ownerMaster)
-            {
-                if (NetworkServer.active)
-                {
-                    masterFriendController = ownerMaster.GetComponent<MasterFriendController>();
-                    if (!masterFriendController) masterFriendController = ownerMaster.AddComponent<MasterFriendController>();
-                    if (masterFriendController.masterNetID != NetworkInstanceId.Invalid.Value)
-                    {
-                        _trackingTargetMasterNetID = masterFriendController.masterNetID;
-                        ResolveTargetMaster();
-                        if (targetBody)
-                        {
-                            trackingTarget = targetBody.mainHurtBox;
-
-                            if (!ownerBody.HasBuff(BuffCore.chirrSelfBuff))
-                            {
-                                ownerBody.AddBuff(BuffCore.chirrSelfBuff);
-                            }
-                            targetBody.AddBuff(BuffCore.chirrFriendBuff);
-                        }
-                    }
-                }
-            }*/
         }
 
         [Server]
@@ -143,6 +150,11 @@ namespace Starstorm2.Survivors.Chirr.Components
                         {
                             trackingTarget = targetBody.mainHurtBox;
                             targetBody.AddBuff(BuffCore.chirrFriendBuff);
+
+                            if (targetBody.bodyIndex == EnemyCore.brotherHurtIndex || targetBody.bodyIndex == EnemyCore.brotherIndex)
+                            {
+                                targetBody.AddBuff(RoR2Content.Buffs.HiddenInvincibility);
+                            }
                         }
                     }
                 }
@@ -157,7 +169,7 @@ namespace Starstorm2.Survivors.Chirr.Components
 
         private void UpdateMinionInventory(Inventory inventory, ItemIndex itemIndex, int count)
         {
-            if (ownerMaster && this._hasFriend && this.targetMaster && this.targetMaster.inventory)
+            if (ownerMaster && this._hasFriend && this.targetMaster && this.targetMaster.inventory && !IsBlacklistedItem(itemIndex))
             {
                 CharacterMaster cm = inventory.GetComponent<CharacterMaster>();
                 if (cm == ownerMaster)
@@ -170,6 +182,7 @@ namespace Starstorm2.Survivors.Chirr.Components
                 }
             }
         }
+
         public void MinionPingRetarget(On.RoR2.PingerController.orig_SetCurrentPing orig, PingerController self, PingerController.PingInfo ping)
         {
             orig(self, ping);
@@ -421,6 +434,7 @@ namespace Starstorm2.Survivors.Chirr.Components
                     targetBody.healthComponent.shield = targetBody.healthComponent.fullShield;
 
                     targetMaster.inventory.CopyItemsFrom(ownerBody.inventory, Inventory.defaultItemCopyFilterDelegate);
+                    RemoveBlacklistedItems(targetMaster.inventory);
                 }
 
                 if (targetMaster.inventory)
@@ -453,12 +467,14 @@ namespace Starstorm2.Survivors.Chirr.Components
                 }
 
                 //Soul
-                if (targetBody.bodyIndex == EnemyCore.brotherHurtIndex)
+                if (targetBody.bodyIndex == EnemyCore.brotherHurtIndex || targetBody.bodyIndex == EnemyCore.brotherIndex)
                 {
+                    targetBody.AddBuff(RoR2Content.Buffs.HiddenInvincibility);
                     if (EnemyCore.IsMoon())
                     {
-                        targetMaster.bodyPrefab = BodyCatalog.FindBodyPrefab("BrotherBody");
-                        targetMaster.Respawn(targetBody.transform.position, targetBody.transform.rotation);
+                        //He still uses Phase 4 AI if you do this.
+                        //targetMaster.bodyPrefab = BodyCatalog.FindBodyPrefab("BrotherBody");
+                        //targetMaster.Respawn(targetBody.transform.position, targetBody.transform.rotation);
                         RpcSetMithrixConverted();
 
                         EnemyCore.FakeMithrixChatMessageServer("BROTHERHURT_CHIRR_BEFRIEND_1");
@@ -478,6 +494,31 @@ namespace Starstorm2.Survivors.Chirr.Components
             {
                 Debug.LogError("ChirrFriendController: Befriend called without valid target.");
             }
+        }
+
+        [Client]
+        public void RemoveFriendClient()
+        {
+            CmdRemoveFriend();
+        }
+
+        [Command]
+        private void CmdRemoveFriend()
+        {
+            if (NetworkServer.active)
+            {
+                if (HasFriend() && !(targetBody && targetBody.bodyIndex == EnemyCore.brotherHurtIndex))
+                {
+                    RpcSetTargetBodyGlass();
+                    targetMaster.TrueKill();
+                }
+            }
+        }
+
+        [ClientRpc]
+        private void RpcSetTargetBodyGlass()
+        {
+            if (targetBody) targetBody.isGlass = true;
         }
 
         //Re-evaluate the netID again here to be double sure that it's going to be the right thing getting set.
@@ -516,9 +557,14 @@ namespace Starstorm2.Survivors.Chirr.Components
             return _hasFriend && targetBody && (targetBody.corePosition - ownerBody.corePosition).sqrMagnitude > 5f * 5f;
         }
 
-        //Copied from minionLeash
-        [Server]
-        public void LeashFriend(Vector3 newPos)
+        [Client]
+        public void LeashFriendClient(Vector3 newPos)
+        {
+            CmdLeashFriend(newPos);
+        }
+
+        [Command]
+        private void CmdLeashFriend(Vector3 newPos)
         {
             //if (CanLeash())
             SpawnCard spawnCard = ScriptableObject.CreateInstance<SpawnCard>();

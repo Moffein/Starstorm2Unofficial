@@ -7,24 +7,47 @@ namespace EntityStates.SS2UStates.Chirr.Special
 {
     public class Leash : BaseState
     {
-        public static float baseDuration = 0.5f;
+        public static float baseDuration = 1f;
+
+        private ChirrFriendController friendController;
+        private bool leashed = false;
         public override void OnEnter()
         {
             base.OnEnter();
-            if (NetworkServer.active)
-            {
-                ChirrFriendController friendController = base.GetComponent<ChirrFriendController>();
-                if (friendController)// && friendController.CanLeash()
-                {
-                    friendController.LeashFriend(base.transform.position);
-                }
-            }
+            friendController = base.GetComponent<ChirrFriendController>();
         }
 
 
         public override void FixedUpdate()
         {
             base.FixedUpdate();
+
+
+            if (base.isAuthority)
+            {
+                if (!base.inputBank.skill4.down)
+                {
+                    if (!leashed && base.fixedAge <= baseDuration)
+                    {
+                        leashed = true;
+                        if (friendController)// && friendController.CanLeash()
+                        {
+                            friendController.LeashFriendClient(base.transform.position);
+                        }
+                    }
+                }
+
+                if (base.fixedAge >= Leash.baseDuration)
+                {
+                    if (!leashed)
+                    {
+                        friendController.RemoveFriendClient();
+                    }
+
+                    this.outer.SetNextStateToMain();
+                    return;
+                }
+            }
             if (base.isAuthority && base.fixedAge >= baseDuration)
             {
                 this.outer.SetNextStateToMain();

@@ -11,8 +11,7 @@ namespace EntityStates.SS2UStates.Cyborg.Special
         public static GameObject explosionEffectPrefab;
         public static float damageCoefficient = 12f;
         public static float radius = 14f;
-        public static float baseDuration = 0.6f;
-        public static float tapDuration = 0.3f;
+        public static float baseDuration = 1f;
         private CyborgTeleportTracker teleTracker;
         private bool teleported;
         private float stopwatch;
@@ -87,7 +86,7 @@ namespace EntityStates.SS2UStates.Cyborg.Special
             {
                 if (!base.inputBank.skill4.down)
                 {
-                    if (!teleported && base.fixedAge <= UseTeleporter.tapDuration)
+                    if (!teleported && base.fixedAge <= UseTeleporter.baseDuration)
                     {
                         Teleport();
                     }

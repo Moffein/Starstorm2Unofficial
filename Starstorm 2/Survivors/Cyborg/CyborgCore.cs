@@ -41,6 +41,11 @@ namespace Starstorm2.Survivors.Cyborg
         {
             cybPrefab = CreateCyborgPrefab();
 
+            JetpackOn.activationEffectPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Engi/EngiHarpoonExplosion.prefab").WaitForCompletion().InstantiateClone("SS2UCyborgJetpackEffect", false);
+            EffectComponent jetpackEC = JetpackOn.activationEffectPrefab.GetComponent<EffectComponent>();
+            jetpackEC.soundName = "";
+            Modules.Assets.effectDefs.Add(new EffectDef(JetpackOn.activationEffectPrefab));
+
             GameObject tracerEffectPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Junk/Mage/TracerMageIceLaser.prefab").WaitForCompletion().InstantiateClone("SS2UCyborgTracer", false);
             tracerEffectPrefab.AddComponent<DestroyOnTimer>().duration = 0.3f;
             Modules.Assets.effectDefs.Add(new EffectDef(tracerEffectPrefab));
@@ -433,8 +438,8 @@ namespace Starstorm2.Survivors.Cyborg
             specialTeleport.skillDescriptionToken = "CYBORG_SPECIAL_TELEPORT_DESCRIPTION";
             specialTeleport.icon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("cyborgspecial2");
             specialTeleport.baseMaxStock = 1;
-            specialTeleport.baseRechargeInterval = 0f;
-            specialTeleport.beginSkillCooldownOnSkillEnd = false;
+            specialTeleport.baseRechargeInterval = 3f;
+            specialTeleport.beginSkillCooldownOnSkillEnd = true;
             specialTeleport.canceledFromSprinting = false;
             specialTeleport.fullRestockOnAssign = true;
             specialTeleport.interruptPriority = EntityStates.InterruptPriority.Skill;

@@ -66,7 +66,7 @@ namespace Starstorm2.Survivors.Chirr
             //Add space at the start intentionally because the way of doing this is really bootleg
             LanguageAPI.Add("BROTHER_KILL_CHIRR1", " Join your sisters.");
             LanguageAPI.Add("BROTHER_KILL_CHIRR2", " Extinct at last.");
-            LanguageAPI.Add("BROTHERHURT_CHIRR_BEFRIEND_1", " YOU... REACH OUT YOUR ARM... TO ME, VERMIN...?");
+            LanguageAPI.Add("BROTHERHURT_CHIRR_BEFRIEND_1", " YOU... REACH OUT... TO ME, VERMIN...?");
             brotherKillChirrTokens.Add("BROTHER_KILL_CHIRR1");
             brotherKillChirrTokens.Add("BROTHER_KILL_CHIRR2");
             /*
@@ -398,7 +398,7 @@ namespace Starstorm2.Survivors.Chirr
             befriendScepterDef.icon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("ChirrSpecialScepter");
             befriendScepterDef.baseMaxStock = 1;
             befriendScepterDef.baseRechargeInterval = 3f;
-            befriendScepterDef.beginSkillCooldownOnSkillEnd = false;
+            befriendScepterDef.beginSkillCooldownOnSkillEnd = true;
             befriendScepterDef.canceledFromSprinting = false;
             befriendScepterDef.fullRestockOnAssign = true;
             befriendScepterDef.interruptPriority = InterruptPriority.Any;
