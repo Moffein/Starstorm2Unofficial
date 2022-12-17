@@ -362,7 +362,7 @@ namespace Starstorm2.Survivors.Chirr
             Modules.Skills.FixSkillName(befriendDef);
 
             LanguageAPI.Add("CHIRR_LEASH_NAME", "Unbreakable Bond");
-            LanguageAPI.Add("CHIRR_LEASH_DESCRIPTION", "Attempt to teleport your friend closer to you.");
+            LanguageAPI.Add("CHIRR_LEASH_DESCRIPTION", "Teleport your friend closer to you. Hold to part ways with your friend.");
             SkillDef leashDef = ScriptableObject.CreateInstance<SkillDef>();    //FriendLeashSkillDef   //Don't need the min leash distance.
             leashDef.activationState = new SerializableEntityStateType(typeof(Leash));
             leashDef.activationStateMachineName = "Leash";
