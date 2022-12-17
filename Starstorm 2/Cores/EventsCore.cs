@@ -11,12 +11,14 @@ using UnityEngine.Rendering.PostProcessing;
 using R2API;
 using R2API.Networking.Interfaces;
 using R2API.Networking;
+using UnityEngine.AddressableAssets;
 //TODO: event selection weight
 
 namespace Starstorm2.Cores
 {
-    class EventsCore
+    public class EventsCore
     {
+
         public static EventsCore instance;
         public static float stormDuration = 90;
         //public static float stormDuration = 10;
@@ -127,19 +129,19 @@ namespace Starstorm2.Cores
 
                 int particleIndex = 0;
 
-                if (newScene.name == "frozenwall") {
+                if (newScene.name == "frozenwall" || newScene.name == "itfrozenwall") {
                     particleIndex = 1;
                 }
 
-                if (newScene.name == "goolake") {
+                if (newScene.name == "goolake" || newScene.name == "itgoolake") {
                     particleIndex = 2;
                 }
 
-                if (newScene.name == "skymeadow") {
+                if (newScene.name == "skymeadow" || newScene.name == "itskymeadow") {
                     particleIndex = 3;
                 }
 
-                if (newScene.name == "dampcavesimple") {
+                if (newScene.name == "dampcavesimple" || newScene.name == "itdampcavesimple") {
                     particleIndex = 4;
                 }
 
@@ -217,7 +219,7 @@ namespace Starstorm2.Cores
                 Chat.SendBroadcastChat(new Chat.SimpleChatMessage() { baseToken = "(Storm started.)" });
             }
             //activate stat buffs
-            On.RoR2.CharacterBody.RecalculateStats += CharacterBody_RecalculateStats;
+            RecalculateStatsAPI.GetStatCoefficients += StormStats;
             On.RoR2.DeathRewards.OnKilledServer += DeathRewards_OnKilledServer;
             foreach (TeamComponent tc in new List<TeamComponent>(TeamComponent.GetTeamMembers(TeamIndex.Monster)))
             {
@@ -238,7 +240,7 @@ namespace Starstorm2.Cores
                 Chat.SendBroadcastChat(new Chat.SimpleChatMessage() { baseToken = "(Storm ended.)" });
             }
             showStormFX(false);
-            On.RoR2.CharacterBody.RecalculateStats -= CharacterBody_RecalculateStats;
+            RecalculateStatsAPI.GetStatCoefficients -= StormStats;
             On.RoR2.DeathRewards.OnKilledServer -= DeathRewards_OnKilledServer;
             foreach (TeamComponent tc in new List<TeamComponent>(TeamComponent.GetTeamMembers(TeamIndex.Monster))) {
                 if (tc)
@@ -252,6 +254,18 @@ namespace Starstorm2.Cores
              */
         }
 
+        private void StormStats(CharacterBody sender, RecalculateStatsAPI.StatHookEventArgs args)
+        {
+            if (sender.teamComponent && sender.teamComponent.teamIndex != TeamIndex.Player)
+            {
+                args.armorAdd += 50f;
+                //args.critAdd += 10f;
+                args.attackSpeedMultAdd += 0.5f;
+                args.damageMultAdd += 0.5f;
+                args.moveSpeedMultAdd += 0.5f;
+            }
+        }
+
         private void showStormFX(bool shouldshow) {
             stormFXObj.SetActive(shouldshow);
 
@@ -261,20 +275,6 @@ namespace Starstorm2.Cores
                 new SyncStorms(runIdentity.netId, shouldshow).Send(NetworkDestination.Clients); ;
             } else {
                 LogCore.LogInfo("currentRun networkidentity not found");
-            }
-        }
-
-        private void CharacterBody_RecalculateStats(On.RoR2.CharacterBody.orig_RecalculateStats orig, CharacterBody self)
-        {
-            orig(self);
-            if (self.teamComponent?.teamIndex == TeamIndex.Monster)
-            {
-                var levelAdd = self.level - 1;
-                self.armor = (self.baseArmor + self.levelArmor * levelAdd) + 50;
-                self.crit = (self.baseCrit + self.levelCrit * levelAdd) + 10;
-                self.attackSpeed = (self.baseAttackSpeed + self.levelAttackSpeed * levelAdd) * 1.5f;
-                self.damage = (self.baseDamage + self.levelDamage * levelAdd) * 1.5f;
-                self.moveSpeed = (self.baseMoveSpeed + self.levelMoveSpeed * levelAdd) * 1.5f;
             }
         }
 
@@ -498,7 +498,7 @@ namespace Starstorm2.Cores
             }
         }
         */
-    }
+            }
 
     public class SyncStorms : INetMessage {
 
