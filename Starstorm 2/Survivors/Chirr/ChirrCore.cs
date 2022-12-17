@@ -47,6 +47,7 @@ namespace Starstorm2.Survivors.Chirr
             ChirrFriendController.BlacklistBody(BodyCatalog.FindBodyIndex("UrchinTurretBody"));
             ChirrFriendController.BlacklistBody(BodyCatalog.FindBodyIndex("WispSoulBody"));
             ChirrFriendController.BlacklistBody(BodyCatalog.FindBodyIndex("ChirrBody"));
+            ChirrFriendController.BlacklistBody(BodyCatalog.FindBodyIndex("ShopkeeperBody"));
         }
         private void Setup()
         {
