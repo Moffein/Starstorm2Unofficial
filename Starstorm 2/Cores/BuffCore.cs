@@ -166,29 +166,55 @@ namespace Starstorm2.Cores
             IL.EntityStates.VoidInfestor.Infest.FixedUpdate += (il) =>
             {
                 ILCursor c = new ILCursor(il);
-                c.GotoNext(MoveType.After,
+                if (c.TryGotoNext(MoveType.After,
                      x => x.MatchCallvirt<CharacterBody>("get_isPlayerControlled")
-                    );
-                c.Emit(OpCodes.Ldloc_3);
-                c.EmitDelegate<Func<bool, CharacterBody, bool>>((playerControlled, body) =>
+                    ))
                 {
-                    return playerControlled || body.HasBuff(chirrFriendBuff) || body.HasBuff(chirrSelfBuff);
-                });
+                    c.Emit(OpCodes.Ldloc_3);
+                    c.EmitDelegate<Func<bool, CharacterBody, bool>>((playerControlled, body) =>
+                    {
+                        return playerControlled || body.HasBuff(chirrFriendBuff) || body.HasBuff(chirrSelfBuff);
+                    });
+                }
+                else
+                {
+                    Debug.LogError("Starstorm 2 Unofficial: Failed to set up Chirr anti-Void Infestor IL Hook.");
+                }
             };
 
             //Steal vanilla overlay effects
             IL.RoR2.CharacterModel.UpdateOverlays += (il) =>
             {
                 ILCursor c = new ILCursor(il);
-                c.GotoNext(
+                if (c.TryGotoNext(
                      x => x.MatchLdsfld(typeof(RoR2Content.Buffs), "Weak")
-                    );
-                c.Index += 2;
-                c.Emit(OpCodes.Ldarg_0);
-                c.EmitDelegate<Func<bool, CharacterModel, bool>>((hasBuff, self) =>
+                    ))
                 {
-                    return hasBuff || (self.body.HasBuff(chirrFriendBuff));
-                });
+                    c.Index += 2;
+                    c.Emit(OpCodes.Ldarg_0);
+                    c.EmitDelegate<Func<bool, CharacterModel, bool>>((hasBuff, self) =>
+                    {
+                        return hasBuff || (self.body.HasBuff(chirrFriendBuff));
+                    });
+                }
+                else
+                {
+                    Debug.LogError("Starstorm 2 Unofficial: Failed to set up Chirr Friend Buff overlay IL Hook.");
+                }
+            };
+
+            //Prevent befriended Gups/Geeps from splitting.
+            On.EntityStates.Gup.BaseSplitDeath.OnEnter += (orig, self) =>
+            {
+                orig(self);
+                if (self.characterBody && self.characterBody.HasBuff(BuffCore.chirrFriendBuff))
+                {
+                    if (NetworkServer.active)
+                    {
+                        self.spawnCount = 0;
+                        self.DestroyBodyAsapServer();
+                    }
+                }
             };
         }
 
