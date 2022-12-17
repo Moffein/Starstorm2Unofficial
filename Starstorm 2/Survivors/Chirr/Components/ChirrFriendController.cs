@@ -372,8 +372,9 @@ namespace Starstorm2.Survivors.Chirr.Components
                         bool isChampion = hbBody.isChampion;
                         bool isBlacklisted = blacklistedBodies.Contains(hbBody.bodyIndex);
                         bool isDecay = hbBody.inventory && hbBody.inventory.GetItemCount(RoR2Content.Items.HealthDecay) > 0;
+                        bool isDestroy = (hbBody.GetComponent<DestroyOnTimer>() != null) || (hbBody.master && hbBody.master.GetComponent<DestroyOnTimer> () != null);
 
-                        if (!isPlayerControlled && !isDecay && (((!isChampion && !isBoss) || canBefriendChampion) || (hbBody.bodyIndex == EnemyCore.brotherHurtIndex && (canBefriendChampion || HasLunarTrinket()))) && !isBlacklisted)
+                        if (!isPlayerControlled && !isDecay && !isDestroy && (((!isChampion && !isBoss) || canBefriendChampion) || (hbBody.bodyIndex == EnemyCore.brotherHurtIndex && (canBefriendChampion || HasLunarTrinket()))) && !isBlacklisted)
                         {
                             validTargets.Add(hb);
                         }

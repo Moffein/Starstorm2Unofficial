@@ -5,6 +5,7 @@ using Mono.Cecil.Cil;
 using MonoMod.Cil;
 using R2API;
 using RoR2;
+using RoR2.CharacterAI;
 using RoR2.Orbs;
 using RoR2.Skills;
 using Starstorm2.Cores;
@@ -920,6 +921,129 @@ namespace Starstorm2.Survivors.Executioner
                 hbv.cullFraction += 0.15f;//(self.body && self.body.isChampion) ? 0.15f : 0.3f; //might stack too crazy if it's 30% like Freeze
             }
             return hbv;
+        }
+
+        internal override void InitializeDoppelganger()
+        {
+            GameObject doppelganger = PrefabAPI.InstantiateClone(LegacyResourcesAPI.Load<GameObject>("Prefabs/CharacterMasters/CommandoMonsterMaster"), bodyName + "MonsterMaster", true);
+            doppelganger.GetComponent<CharacterMaster>().bodyPrefab = bodyPrefab;
+            Modules.Prefabs.RemoveAISkillDrivers(doppelganger);
+
+            Modules.Prefabs.AddAISkillDriver(doppelganger, "Execute", SkillSlot.Special, null,
+                true, false,
+                Mathf.NegativeInfinity, Mathf.Infinity,
+                Mathf.NegativeInfinity, Mathf.Infinity,
+                0f, 15f,
+                false, false, false, -1,
+                AISkillDriver.TargetType.CurrentEnemy,
+                false, false, false,
+                AISkillDriver.MovementType.ChaseMoveTarget, 1f,
+                AISkillDriver.AimType.AtMoveTarget,
+                false,
+                false,
+                false,
+                AISkillDriver.ButtonPressType.Hold,
+                -1,
+                false,
+                false,
+                null);
+
+            Modules.Prefabs.AddAISkillDriver(doppelganger, "DashCloser", SkillSlot.Utility, null,
+                true, false,
+                Mathf.NegativeInfinity, Mathf.Infinity,
+                Mathf.NegativeInfinity, Mathf.Infinity,
+                0f, 40f,
+                false, false, false, -1,
+                AISkillDriver.TargetType.CurrentEnemy,
+                false, false, false,
+                AISkillDriver.MovementType.ChaseMoveTarget, 1f,
+                AISkillDriver.AimType.AtMoveTarget,
+                false,
+                false,
+                false,
+                AISkillDriver.ButtonPressType.Hold,
+                -1,
+                false,
+                false,
+                null);
+
+            Modules.Prefabs.AddAISkillDriver(doppelganger, "Secondary", SkillSlot.Secondary, null,
+                true, false,
+                Mathf.NegativeInfinity, Mathf.Infinity,
+                Mathf.NegativeInfinity, Mathf.Infinity,
+                0f, 30f,
+                true, false, true, -1,
+                AISkillDriver.TargetType.CurrentEnemy,
+                true, true, true,
+                AISkillDriver.MovementType.StrafeMovetarget, 1f,
+                AISkillDriver.AimType.AtCurrentEnemy,
+                false,
+                false,
+                false,
+                AISkillDriver.ButtonPressType.Hold,
+                -1,
+                false,
+                false,
+                null);
+
+            Modules.Prefabs.AddAISkillDriver(doppelganger, "Primary", SkillSlot.Primary, null,
+                true, false,
+                Mathf.NegativeInfinity, Mathf.Infinity,
+                Mathf.NegativeInfinity, Mathf.Infinity,
+                0f, 40f,
+                true, false, true, -1,
+                AISkillDriver.TargetType.CurrentEnemy,
+                true, true, true,
+                AISkillDriver.MovementType.StrafeMovetarget, 1f,
+                AISkillDriver.AimType.AtCurrentEnemy,
+                false,
+                false,
+                false,
+                AISkillDriver.ButtonPressType.Hold,
+                -1,
+                false,
+                false,
+                null);
+
+            Modules.Prefabs.AddAISkillDriver(doppelganger, "Strafe", SkillSlot.None, null,
+                false, false,
+                Mathf.NegativeInfinity, Mathf.Infinity,
+                Mathf.NegativeInfinity, Mathf.Infinity,
+                0f, 30f,
+                false, false, false, -1,
+                AISkillDriver.TargetType.CurrentEnemy,
+                false, false, false,
+                AISkillDriver.MovementType.StrafeMovetarget, 1f,
+                AISkillDriver.AimType.AtCurrentEnemy,
+                false,
+                true,
+                false,
+                AISkillDriver.ButtonPressType.Abstain,
+                -1,
+                false,
+                false,
+                null);
+
+            Modules.Prefabs.AddAISkillDriver(doppelganger, "Chase", SkillSlot.None, null,
+                false, false,
+                Mathf.NegativeInfinity, Mathf.Infinity,
+                Mathf.NegativeInfinity, Mathf.Infinity,
+                30f, Mathf.Infinity,
+                false, false, false, -1,
+                AISkillDriver.TargetType.CurrentEnemy,
+                false, false, false,
+                AISkillDriver.MovementType.ChaseMoveTarget, 1f,
+                AISkillDriver.AimType.AtCurrentEnemy,
+                false,
+                true,
+                false,
+                AISkillDriver.ButtonPressType.Abstain,
+                -1,
+                false,
+                false,
+                null);
+
+            Modules.Prefabs.masterPrefabs.Add(doppelganger);
         }
     }
 }

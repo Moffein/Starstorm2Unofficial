@@ -79,7 +79,7 @@ namespace EntityStates.SS2UStates.Chirr
                                     healOrb.overrideDuration = 0.3f;
                                     OrbManager.instance.AddOrb(healOrb);
                                 }*/
-                                hurtBox.healthComponent.Heal(healAmount, default(ProcChainMask), true);
+                                hurtBox.healthComponent.HealFraction(healFraction, default);
                                 if (hurtBox.healthComponent.body != base.characterBody) hurtBox.healthComponent.body.AddTimedBuff(RoR2Content.Buffs.CrocoRegen, regenDuration);
                             }
                         }
