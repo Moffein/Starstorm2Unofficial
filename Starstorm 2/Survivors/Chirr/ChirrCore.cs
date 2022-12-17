@@ -330,6 +330,8 @@ namespace Starstorm2.Survivors.Chirr
         {
             SkillLocator skill = chirrPrefab.GetComponent<SkillLocator>();
 
+            LanguageAPI.Add("KEYWORD_SS2U_CHIRR_PING", "<style=cKeywordName>Ping Command</style><style=cSub>Your friend will attempt to attack pinged enemies.</style>");
+
             LanguageAPI.Add("CHIRR_BEFRIEND_NAME", "Natural Link");
             LanguageAPI.Add("CHIRR_BEFRIEND_DESCRIPTION", "<style=cIsUtility>Befriend</style> the targeted enemy if it's below <style=cIsHealth>50% health</style>. Friends <style=cIsUtility>inherit all your items</style> and absorb <style=cIsUtility>30% of damage taken</style>.");
 
@@ -383,7 +385,7 @@ namespace Starstorm2.Survivors.Chirr
             Befriend.leashOverrideSkillDef = leashDef;
             Modules.Skills.FixSkillName(leashDef);
 
-            LanguageAPI.Add("CHIRR_BEFRIEND_SCEPTER_NAME", "PrimeNatural Link");
+            LanguageAPI.Add("CHIRR_BEFRIEND_SCEPTER_NAME", "Prime Natural Link");
             LanguageAPI.Add("CHIRR_BEFRIEND_SCEPTER_DESCRIPTION", "<style=cIsUtility>Befriend</style> the targeted enemy if it's below <style=cIsHealth>50% health</style>, or below <style=cIsHealth>30% health</style> if it's a boss. Friends <style=cIsUtility>inherit all your items</style> and absorb <style=cIsUtility>30% of damage taken</style>.");
 
             BefriendSkillDef befriendScepterDef = ScriptableObject.CreateInstance<BefriendSkillDef>();
@@ -499,6 +501,7 @@ namespace Starstorm2.Survivors.Chirr
             }
 
             chirrPrefab.AddComponent<ChirrFriendController>();
+            chirrPrefab.AddComponent<ChirrLeashSkillOverrideController>();
             EntityStateMachine befriendStateMachine = chirrPrefab.AddComponent<EntityStateMachine>();
             befriendStateMachine.customName = "Befriend";
             befriendStateMachine.initialStateType = new SerializableEntityStateType(typeof(EntityStates.Idle));

@@ -462,7 +462,7 @@ namespace Starstorm2.Survivors.Chirr.Components
                 }
 
                 //Ally persists between stages
-                DontDestroyOnLoad(targetMaster.gameObject);
+                RpcDontDestroyOnLoad(_trackingTargetMasterNetID);
 
                 //Save ally netID so it can be remembered next stage.
                 if (masterFriendController)
@@ -473,6 +473,17 @@ namespace Starstorm2.Survivors.Chirr.Components
             else
             {
                 Debug.LogError("ChirrFriendController: Befriend called without valid target.");
+            }
+        }
+
+        //Re-evaluate the netID again here to be double sure that it's going to be the right thing getting set.
+        [ClientRpc]
+        private void RpcDontDestroyOnLoad(uint netID)
+        {
+            GameObject networkMasterObject = Util.FindNetworkObject(new NetworkInstanceId(netID));
+            if (networkMasterObject)
+            {
+                DontDestroyOnLoad(networkMasterObject);
             }
         }
 
