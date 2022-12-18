@@ -17,7 +17,7 @@ namespace EntityStates.SS2UStates.Nemmando
         public static float procCoefficient = 0.5f;
         public static uint bulletCountPerShot = 4;
         public static float range = 128f;
-        public static float maxSpread = 8f;
+        public static float maxSpread = 12f;
         public static int minBulletCount = 2;
         public static int maxBulletCount = 5;
 
