@@ -25,6 +25,7 @@ namespace Starstorm2.Cores
 
         public static BodyIndex brotherHurtIndex;
         public static BodyIndex brotherIndex;
+        public static BodyIndex scavLunar1Index, scavLunar2Index, scavLunar3Index, scavLunar4Index;
 
         private static SceneDef sceneMoon = Addressables.LoadAssetAsync<SceneDef>("RoR2/Base/moon/moon.asset").WaitForCompletion();
         private static SceneDef sceneMoon2 = Addressables.LoadAssetAsync<SceneDef>("RoR2/Base/moon2/moon2.asset").WaitForCompletion();
@@ -39,6 +40,11 @@ namespace Starstorm2.Cores
         {
             brotherHurtIndex = BodyCatalog.FindBodyIndex("BrotherHurtBody");
             brotherIndex = BodyCatalog.FindBodyIndex("BrotherBody");
+
+            scavLunar1Index = BodyCatalog.FindBodyIndex("ScavLunar1Body");
+            scavLunar2Index = BodyCatalog.FindBodyIndex("ScavLunar2Body");
+            scavLunar3Index = BodyCatalog.FindBodyIndex("ScavLunar3Body");
+            scavLunar4Index = BodyCatalog.FindBodyIndex("ScavLunar4Body");
         }
 
         //Super bootleg code.

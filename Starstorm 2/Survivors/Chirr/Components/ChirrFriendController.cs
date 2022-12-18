@@ -500,6 +500,15 @@ namespace Starstorm2.Survivors.Chirr.Components
                         EnemyCore.FakeMithrixChatMessageServer("BROTHERHURT_CHIRR_BEFRIEND_1");
                     }
                 }
+                else if (targetBody.bodyIndex == EnemyCore.scavLunar1Index || targetBody.bodyIndex == EnemyCore.scavLunar2Index || targetBody.bodyIndex == EnemyCore.scavLunar3Index || targetBody.bodyIndex == EnemyCore.scavLunar4Index)
+                {
+                    NetworkUser networkUser = Util.LookUpBodyNetworkUser(ownerBody);
+                    if (networkUser)
+                    {
+                        networkUser.AwardLunarCoins(10);
+                        return;
+                    }
+                }
 
                 //Ally persists between stages
                 RpcDontDestroyOnLoad(_trackingTargetMasterNetID);
