@@ -267,7 +267,7 @@ namespace Starstorm2.Cores
         {
             if (NetworkServer.active)
             {
-                if (self.body.HasBuff(BuffCore.chirrSelfBuff) && !damageInfo.rejected && !(damageInfo.damageType.HasFlag(DamageType.BypassArmor) || damageInfo.damageType.HasFlag(DamageType.BypassBlock) || damageInfo.damageType.HasFlag(DamageType.BypassOneShotProtection)))
+                if (self.body.HasBuff(BuffCore.chirrSelfBuff) && !damageInfo.rejected && damageInfo.attacker && !(damageInfo.damageType.HasFlag(DamageType.BypassArmor) || damageInfo.damageType.HasFlag(DamageType.BypassBlock) || damageInfo.damageType.HasFlag(DamageType.BypassOneShotProtection)))
                 {
                     ChirrFriendController friendController = self.GetComponent<ChirrFriendController>();
                     if (friendController && friendController.HasFriend())
@@ -291,6 +291,18 @@ namespace Starstorm2.Cores
                             force = Vector3.zero
                         };
                         friendController.HurtFriend(minionDamageInfo);
+                    }
+                }
+
+                //Chirr Friends dont take void fog damage
+                if (self.body.HasBuff(BuffCore.chirrFriendBuff))
+                {
+                    if (!damageInfo.attacker && !damageInfo.inflictor
+                        && damageInfo.damageColorIndex == DamageColorIndex.Void
+                        && damageInfo.damageType == (DamageType.BypassArmor | DamageType.BypassBlock))
+                    {
+                        damageInfo.damage = 0f;
+                        damageInfo.rejected = true;
                     }
                 }
             }
