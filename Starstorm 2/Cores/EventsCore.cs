@@ -127,22 +127,30 @@ namespace Starstorm2.Cores
                 if (Modules.Config.disableStormVisuals.Value)
                     return;
 
-                int particleIndex = 0;
-
-                if (newScene.name == "frozenwall" || newScene.name == "itfrozenwall") {
-                    particleIndex = 1;
-                }
-
-                if (newScene.name == "goolake" || newScene.name == "itgoolake") {
-                    particleIndex = 2;
-                }
-
-                if (newScene.name == "skymeadow" || newScene.name == "itskymeadow") {
-                    particleIndex = 3;
-                }
-
-                if (newScene.name == "dampcavesimple" || newScene.name == "itdampcavesimple") {
-                    particleIndex = 4;
+                int particleIndex;
+                switch (newScene.name)
+                {
+                    case "frozenwall":
+                    case "itfrozenwall":
+                        particleIndex = 1;
+                        break;
+                    case "goolake":
+                    case "itgoolake":
+                    case "drybasin":
+                        particleIndex = 2;
+                        break;
+                    case "skymeadow":
+                    case "itskymeadow":
+                    case "slumberingsatellite":
+                        particleIndex = 3;
+                        break;
+                    case "dampcavesimple":
+                    case "itdampcavesimple":
+                        particleIndex = 4;
+                        break;
+                    default:
+                        particleIndex = 0;
+                        break;
                 }
 
                 for (int i = 0; i < stormFXObj.transform.childCount; i++) {
