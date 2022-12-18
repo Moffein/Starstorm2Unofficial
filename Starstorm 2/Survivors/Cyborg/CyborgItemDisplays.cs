@@ -211,7 +211,7 @@ namespace Starstorm2.Survivors.Cyborg
 
             ItemDisplayRuleSet.KeyAssetRuleGroup[] item = itemRules.ToArray();
             itemDisplayRuleSet.keyAssetRuleGroups = item;
-            itemDisplayRuleSet.GenerateRuntimeValues();
+            //itemDisplayRuleSet.GenerateRuntimeValues();
 
             characterModel.itemDisplayRuleSet = itemDisplayRuleSet;
         }
