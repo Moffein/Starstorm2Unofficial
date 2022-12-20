@@ -103,6 +103,20 @@ namespace Starstorm2
             CommandHelper.AddToConsoleWhenReady();
 
             new Modules.ContentPacks().Initialize();
+
+            FixItemDisplays();
+        }
+
+        private static void FixItemDisplays() {
+            string[] bods = new string[]
+            {
+                "ExecutionerBody",
+                "NemmandoBody"
+            };
+
+            for (int i = 0; i < bods.Length; i++) {
+                R2API.ItemAPI.DoNotAutoIDRSFor(bods[i]);
+            }
         }
 
 
