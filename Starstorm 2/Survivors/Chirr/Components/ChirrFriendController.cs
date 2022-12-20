@@ -439,6 +439,27 @@ namespace Starstorm2.Survivors.Chirr.Components
                 targetMaster.teamIndex = teamIndex;
                 if (targetBody.teamComponent) targetBody.teamComponent.teamIndex = teamIndex;
 
+                //Set Chirr as owner
+                //Copied from MasterSummon
+                if (ownerMaster)
+                {
+                    if (targetMaster.minionOwnership)
+                    {
+                        targetMaster.minionOwnership.SetOwner(ownerMaster);
+                    }
+                    AIOwnership targetAIOwnership = targetMaster.GetComponent<AIOwnership>();
+                    if (targetAIOwnership)
+                    {
+                        targetAIOwnership.ownerMaster = ownerMaster;
+                    }
+
+                    BaseAI baseAI = targetMaster.GetComponent<BaseAI>();
+                    if (baseAI)
+                    {
+                        baseAI.leader.gameObject = base.gameObject;
+                    }
+                }
+
                 Util.CleanseBody(targetBody, true, false, true, true, true, false);
                 targetBody.AddTimedBuff(RoR2Content.Buffs.HiddenInvincibility, 3f);
 
