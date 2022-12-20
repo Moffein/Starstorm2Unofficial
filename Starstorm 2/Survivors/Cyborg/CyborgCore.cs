@@ -169,7 +169,7 @@ namespace Starstorm2.Survivors.Cyborg
             bfgDamage.damageColorIndex = DamageColorIndex.Default;
 
             ProjectileSimple bfgProjectileSimple = bfgProjectile.GetComponent<ProjectileSimple>();
-            bfgProjectileSimple.desiredForwardSpeed = 12f;
+            bfgProjectileSimple.desiredForwardSpeed = 15f;
             bfgProjectileSimple.lifetime = 3f;
 
             ProjectileProximityBeamController bfgPbc = bfgProjectile.AddComponent<ProjectileProximityBeamController>();
@@ -413,7 +413,7 @@ namespace Starstorm2.Survivors.Cyborg
             specialDeploy.skillDescriptionToken = "CYBORG_SPECIAL_TELEPORT_DESCRIPTION";
             specialDeploy.icon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("cyborgspecial");
             specialDeploy.baseMaxStock = 1;
-            specialDeploy.baseRechargeInterval = 20f;
+            specialDeploy.baseRechargeInterval = 15f;
             specialDeploy.beginSkillCooldownOnSkillEnd = true;
             specialDeploy.canceledFromSprinting = false;
             specialDeploy.fullRestockOnAssign = true;
