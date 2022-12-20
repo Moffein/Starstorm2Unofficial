@@ -3062,7 +3062,7 @@ localScale = new Vector3(0.1233F, 0.1233F, 0.1233F),
             #endregion
 
             itemDisplayRuleSet.keyAssetRuleGroups = instance.itemDisplayRules.ToArray();
-            itemDisplayRuleSet.GenerateRuntimeValues();
+            //itemDisplayRuleSet.GenerateRuntimeValues();
         }
 
         private static CharacterModel.RendererInfo[] SkinRendererInfos(CharacterModel.RendererInfo[] defaultRenderers, Material[] materials)

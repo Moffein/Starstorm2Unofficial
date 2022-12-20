@@ -36,7 +36,7 @@ namespace Starstorm2.Survivors.Chirr
             SkinnedMeshRenderer mainRenderer = Reflection.GetFieldValue<SkinnedMeshRenderer>(characterModel, "mainSkinnedMeshRenderer");
 
             List<SkinDef> skinDefs = new List<SkinDef>();
-
+            
             #region DefaultSkin
 
             CharacterModel.RendererInfo[] defaultRenderers = characterModel.baseRendererInfos;

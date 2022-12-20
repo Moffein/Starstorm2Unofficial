@@ -774,7 +774,7 @@ namespace Starstorm2.Survivors.Executioner
             #endregion
 
             itemDisplayRuleSet.keyAssetRuleGroups = instance.itemDisplayRules.ToArray();
-            itemDisplayRuleSet.GenerateRuntimeValues();
+            //itemDisplayRuleSet.GenerateRuntimeValues();
         }
 
         private static CharacterModel.RendererInfo[] SkinRendererInfos(CharacterModel.RendererInfo[] defaultRenderers, Material[] materials)
