@@ -43,6 +43,7 @@ namespace Starstorm2.Survivors.Chirr.Components
             "FreeChest",
             "TreasureCache",
             "TreasureCacheVoid",
+            "ITEM_BLUELEMURIAN"
             //"ShockNearby",
             //"Icicle",
             //"SiphonOnLowHealth"
@@ -436,6 +437,24 @@ namespace Starstorm2.Survivors.Chirr.Components
                     isc.ForceReclaimAllItemsImmediately();
                 }
 
+                //Prevent Chirr from softlocking the teleporter and other kill objectives.
+                if (Run.instance)
+                {
+                    List<CombatSquad> combatSquads = InstanceTracker.GetInstancesList<CombatSquad>();
+                    foreach (CombatSquad cs in combatSquads)
+                    {
+                        if (cs != null && cs.membersList != null && cs.membersList.Contains(targetMaster))
+                        {
+                            //This doesn't call OnMemberDeathServer. Where is that used?
+                            cs.RemoveMember(targetMaster);
+                            if (!cs.defeatedServer && cs.membersList.Count <= 0)
+                            {
+                                cs.TriggerDefeat();
+                            }
+                        }
+                    }
+                }
+
                 targetMaster.teamIndex = teamIndex;
                 if (targetBody.teamComponent) targetBody.teamComponent.teamIndex = teamIndex;
 
@@ -489,21 +508,6 @@ namespace Starstorm2.Survivors.Chirr.Components
                     for (int i = 0; i < targetMaster.aiComponents.Length; i++)
                     {
                         targetMaster.aiComponents[i].currentEnemy.Reset();
-                    }
-                }
-
-                //Prevent Chirr from softlocking the teleporter and other kill objectives.
-                List<CombatSquad> combatSquads = InstanceTracker.GetInstancesList<CombatSquad>();
-                foreach (CombatSquad cs in combatSquads)
-                {
-                    if (cs.membersList.Contains(targetMaster))
-                    {
-                        //This doesn't call OnMemberDeathServer. Where is that used?
-                        cs.RemoveMember(targetMaster);
-                        if (!cs.defeatedServer && cs.membersList.Count == 0)
-                        {
-                            cs.TriggerDefeat();
-                        }
                     }
                 }
 
