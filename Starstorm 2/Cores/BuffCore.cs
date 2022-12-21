@@ -5,6 +5,7 @@ using RoR2;
 using Starstorm2.Survivors.Chirr.Components;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.Networking;
 using Object = UnityEngine.Object;
@@ -41,24 +42,41 @@ namespace Starstorm2.Cores
             Hook();
         }
 
-
-        /*
-
-        // simple helper method
-        internal static BuffDef AddNewBuff(string buffName, Sprite buffIcon, Color buffColor, bool canStack, bool isDebuff)
+        public static bool IsNotT1Elite(EquipmentIndex equipmentIndex)
         {
-            BuffDef buffDef = ScriptableObject.CreateInstance<BuffDef>();
-            buffDef.name = buffName;
-            buffDef.buffColor = buffColor;
-            buffDef.canStack = canStack;
-            buffDef.isDebuff = isDebuff;
-            buffDef.eliteDef = null;
-            buffDef.iconSprite = buffIcon;
+            if (equipmentIndex != EquipmentIndex.None)
+            {
+                return IsNotT1Elite(EquipmentCatalog.GetEquipmentDef(equipmentIndex));
+            }
+            return false;
+        }
 
-            buffDefs.Add(buffDef);
+        public static bool IsNotT1Elite(EquipmentDef equipmentDef)
+        {
+            if (equipmentDef && equipmentDef.passiveBuffDef && equipmentDef.passiveBuffDef.isElite && equipmentDef.passiveBuffDef.eliteDef)
+            {
+                if (!TierHasEliteDef(equipmentDef.passiveBuffDef.eliteDef, EliteAPI.VanillaFirstTierDef) && !TierHasEliteDef(equipmentDef.passiveBuffDef.eliteDef, EliteAPI.VanillaEliteOnlyFirstTierDef))
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
 
-            return buffDef;
-        }*/
+        private static bool TierHasEliteDef(EliteDef eliteDef, CombatDirector.EliteTierDef tierDef)
+        {
+            if (tierDef != null && tierDef.eliteTypes != null)
+            {
+                for (int i = 0; i < tierDef.eliteTypes.Length; i++)
+                {
+                    if (tierDef.eliteTypes[i] == eliteDef)
+                    {
+                        return true;
+                    }
+                }
+            }
+            return false;
+        }
 
         protected void RegisterBuffs()
         {
@@ -237,6 +255,19 @@ namespace Starstorm2.Cores
                         damageMult = Mathf.Lerp(4f, 2f, ((self.characterBody.baseMaxHealth - minHealth) / (maxHealth - minHealth)));
                     }
                     self.damageStat *= damageMult;
+
+
+                    if (self.characterBody.isElite)
+                    {
+                        if (self.characterBody.equipmentSlot && IsNotT1Elite(self.characterBody.equipmentSlot.equipmentIndex))
+                        {
+                            self.damageStat *= 2f;
+                        }
+                        else
+                        {
+                            self.damageStat *= 1.5f;
+                        }
+                    }
                 }
             }
         }
@@ -347,6 +378,17 @@ namespace Starstorm2.Cores
                 else
                 {
                     args.healthMultAdd += 0.5f;
+                    if (sender.isElite)
+                    {
+                        if (sender.equipmentSlot && IsNotT1Elite(sender.equipmentSlot.equipmentIndex))
+                        {
+                            args.healthMultAdd += 1f;
+                        }
+                        else
+                        {
+                            args.healthMultAdd += 0.5f;
+                        }
+                    }
                 }
 
                 //args.cooldownMultAdd *= 0.5f; //handle in recalculatestats since I don't think this works

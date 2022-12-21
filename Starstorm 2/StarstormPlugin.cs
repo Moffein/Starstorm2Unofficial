@@ -36,14 +36,15 @@ namespace Starstorm2
         "CommandHelper",
         "DamageAPI",
         "RecalculateStatsAPI",
-        "ContentAddition"
+        "ContentAddition",
+        "EliteAPI"
     })]
 
     public class StarstormPlugin : BaseUnityPlugin
     {
         internal const string guid = "com.ChirrLover.Starstorm2Unofficial";
         internal const string modName = "Starstorm 2 Unofficial";
-        internal const string version = "0.5.9";
+        internal const string version = "0.5.10";
 
         public static StarstormPlugin instance;
 

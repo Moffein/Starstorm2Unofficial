@@ -500,6 +500,13 @@ namespace Starstorm2.Survivors.Chirr.Components
                 if (targetMaster.inventory)
                 {
                     targetMaster.inventory.RemoveItem(RoR2Content.Items.UseAmbientLevel, targetMaster.inventory.GetItemCount(RoR2Content.Items.UseAmbientLevel));
+
+                    //Remove Elite stat items. Friend buff will handle elite stat bonuses.
+                    if (targetBody.isElite)
+                    {
+                        targetMaster.inventory.RemoveItem(RoR2Content.Items.BoostDamage, targetMaster.inventory.GetItemCount(RoR2Content.Items.BoostDamage));
+                        targetMaster.inventory.RemoveItem(RoR2Content.Items.BoostHp, targetMaster.inventory.GetItemCount(RoR2Content.Items.BoostHp));
+                    }
                 }
 
                 //Reset AI targeting
