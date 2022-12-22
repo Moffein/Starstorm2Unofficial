@@ -123,6 +123,7 @@ namespace Starstorm2.Survivors.Chirr
             Modules.States.AddSkill(typeof(ChirrHeal));
 
             Modules.States.AddSkill(typeof(Befriend));
+            Modules.States.AddSkill(typeof(BefriendScepter));
             Modules.States.AddSkill(typeof(Leash));
         }
 
