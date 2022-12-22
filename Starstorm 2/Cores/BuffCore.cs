@@ -252,14 +252,14 @@ namespace Starstorm2.Cores
                     {
                         float minHealth = 100f;
                         float maxHealth = 1000f;
-                        damageMult = Mathf.Lerp(4f, 2f, ((self.characterBody.baseMaxHealth - minHealth) / (maxHealth - minHealth)));
+                        damageMult = Mathf.Lerp(5f, 2f, ((self.characterBody.baseMaxHealth - minHealth) / (maxHealth - minHealth)));
                     }
                     self.damageStat *= damageMult;
 
 
                     if (self.characterBody.isElite)
                     {
-                        if (self.characterBody.equipmentSlot && IsNotT1Elite(self.characterBody.equipmentSlot.equipmentIndex))
+                        if (!self.characterBody.HasBuff(DLC1Content.Buffs.EliteVoid) && self.characterBody.equipmentSlot && IsNotT1Elite(self.characterBody.equipmentSlot.equipmentIndex))
                         {
                             self.damageStat *= 2f;
                         }
@@ -366,13 +366,13 @@ namespace Starstorm2.Cores
                 //args.damageMultAdd += 2f; //affects too many things, hook BaseState instead
                 //args.healthMultAdd += 2f;
 
-                if (sender.baseMaxHealth * 1.5f < 600f)
+                if (sender.baseMaxHealth * 1.5f < 720f)
                 {
-                    args.baseHealthAdd += (600f - sender.baseMaxHealth);
-                    if (sender.levelMaxHealth < 180f)//600 * 0.3
+                    args.baseHealthAdd += (720f - sender.baseMaxHealth);
+                    if (sender.levelMaxHealth < 216f)//720 * 0.3
                     {
                         float levelMult = sender.level - 1f;
-                        args.baseHealthAdd += levelMult * (180f - sender.levelMaxHealth);
+                        args.baseHealthAdd += levelMult * (216f - sender.levelMaxHealth);
                     }
                 }
                 else
@@ -380,7 +380,7 @@ namespace Starstorm2.Cores
                     args.healthMultAdd += 0.5f;
                     if (sender.isElite)
                     {
-                        if (sender.equipmentSlot && IsNotT1Elite(sender.equipmentSlot.equipmentIndex))
+                        if (!sender.HasBuff(DLC1Content.Buffs.EliteVoid) && sender.equipmentSlot && IsNotT1Elite(sender.equipmentSlot.equipmentIndex))
                         {
                             args.healthMultAdd += 1f;
                         }
@@ -389,6 +389,13 @@ namespace Starstorm2.Cores
                             args.healthMultAdd += 0.5f;
                         }
                     }
+                }
+
+                if (Run.instance)
+                {
+                    float currentHPCoeff = 0.7f + 0.3f * sender.level;
+                    float ambientHPCoeff = Mathf.Max(currentHPCoeff, 0.85f + 0.15f * Mathf.Floor(Run.instance.ambientLevel));
+                    args.armorAdd += 100f * ((ambientHPCoeff / currentHPCoeff) - 1f);
                 }
 
                 //args.cooldownMultAdd *= 0.5f; //handle in recalculatestats since I don't think this works

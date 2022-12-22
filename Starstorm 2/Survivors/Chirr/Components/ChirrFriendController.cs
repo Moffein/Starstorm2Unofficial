@@ -13,8 +13,7 @@ using UnityEngine.Networking;
 namespace Starstorm2.Survivors.Chirr.Components
 {
     //I went overboard with the amount of nullchecks in this class, there's a lot of redundant ones.
-    //Don't like how it's ambiguous whether targetMaster/targetBody/trackingTarget/_trackingTargetMasterNetID is used to identify valid targets.
-    //Should have a clear-cut hierarchy instead.
+    //Don't like how it's ambiguous whether targetMaster/targetBody/trackingTarget/_trackingTargetMasterNetID is used to identify valid targets. Should have a clear-cut hierarchy instead.
     [RequireComponent(typeof(CharacterBody))]
     public class ChirrFriendController : NetworkBehaviour
     {
@@ -377,7 +376,7 @@ namespace Starstorm2.Survivors.Chirr.Components
         {
             if (trackingTarget && trackingTarget.healthComponent)
             {
-                bool befriendStatus = trackingTarget.healthComponent.combinedHealthFraction <= ((trackingTarget.healthComponent.body && trackingTarget.healthComponent.body.isChampion) ? ChirrFriendController.befriendChampionHealthFraction : ChirrFriendController.befriendHealthFraction);
+                bool befriendStatus = trackingTarget.healthComponent.combinedHealthFraction <= ((trackingTarget.healthComponent.body && trackingTarget.healthComponent.body.isChampion && trackingTarget.healthComponent.body.bodyIndex == EnemyCore.brotherHurtIndex) ? ChirrFriendController.befriendChampionHealthFraction : ChirrFriendController.befriendHealthFraction);
                 if (befriendStatus != _canBefriendTarget) _canBefriendTarget = befriendStatus;
             }
         }
