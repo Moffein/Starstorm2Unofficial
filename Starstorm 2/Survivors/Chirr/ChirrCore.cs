@@ -181,7 +181,7 @@ namespace Starstorm2.Survivors.Chirr
 
             ProjectileSimple ps = projectilePrefab.GetComponent<ProjectileSimple>();
             ps.desiredForwardSpeed = 130f;
-            ps.lifetime = 5f;
+            ps.lifetime = 2f;
 
             ProjectileSteerTowardTarget pst = projectilePrefab.GetComponent<ProjectileSteerTowardTarget>();
             pst.rotationSpeed = 20f;
