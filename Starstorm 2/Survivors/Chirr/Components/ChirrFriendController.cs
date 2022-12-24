@@ -133,12 +133,27 @@ namespace Starstorm2.Survivors.Chirr.Components
 
             trackerUpdateStopwatch = 0f;
             RoR2.Inventory.onServerItemGiven += UpdateMinionInventory;//Is there a better way with onInventoryChangedGlobal?
+            On.RoR2.Inventory.RemoveItem_ItemIndex_int += UpdateMinionInventoryItemRemoved;
             On.RoR2.PingerController.SetCurrentPing += MinionPingRetarget;
 
             this.indicatorCannotBefriend = new Indicator(base.gameObject, indicatorCannotBefriendPrefab);
             this.indicatorReadyToBefriend = new Indicator(base.gameObject, indicatorReadyToBefriendPrefab);
             this.indicatorFriend = new Indicator(base.gameObject, indicatorFriendPrefab);
         }
+
+        private void UpdateMinionInventoryItemRemoved(On.RoR2.Inventory.orig_RemoveItem_ItemIndex_int orig, Inventory self, ItemIndex itemIndex, int count)
+        {
+            orig(self, itemIndex, count);
+            if (NetworkServer.active && ownerMaster && this._hasFriend && this.targetMaster && this.targetMaster.inventory && ownerMaster != this.targetMaster) //last case prevents a recursive loop
+            {
+                CharacterMaster cm = self.GetComponent<CharacterMaster>();
+                if (cm == ownerMaster)
+                {
+                    this.targetMaster.inventory.RemoveItem(itemIndex, count);
+                }
+            }
+        }
+
         private void Start()
         {
             if (ownerBody) ownerMaster = ownerBody.master;
@@ -183,11 +198,12 @@ namespace Starstorm2.Survivors.Chirr.Components
         {
             RoR2.Inventory.onServerItemGiven -= UpdateMinionInventory;
             On.RoR2.PingerController.SetCurrentPing -= MinionPingRetarget;
+            On.RoR2.Inventory.RemoveItem_ItemIndex_int -= UpdateMinionInventoryItemRemoved;
         }
 
         private void UpdateMinionInventory(Inventory inventory, ItemIndex itemIndex, int count)
         {
-            if (ownerMaster && this._hasFriend && this.targetMaster && this.targetMaster.inventory && !IsBlacklistedItem(itemIndex))
+            if (count > 0 && ownerMaster && this._hasFriend && this.targetMaster && this.targetMaster.inventory && !IsBlacklistedItem(itemIndex) && ownerMaster != this.targetMaster)
             {
                 CharacterMaster cm = inventory.GetComponent<CharacterMaster>();
                 if (cm == ownerMaster)

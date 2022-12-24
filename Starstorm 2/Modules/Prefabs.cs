@@ -117,6 +117,8 @@ namespace Starstorm2.Modules
             survivorDef.desiredSortPosition = sortPosition;
             survivorDef.unlockableDef = unlockableDef;
 
+            survivorDef.cachedName = namePrefix;
+
             survivorDefinitions.Add(survivorDef);
             return survivorDef;
         }
