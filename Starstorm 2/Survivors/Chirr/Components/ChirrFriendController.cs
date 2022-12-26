@@ -234,11 +234,7 @@ namespace Starstorm2.Survivors.Chirr.Components
         {
             if (this._hasFriend && this.targetMaster && this.targetMaster.inventory && ownerMaster && ownerMaster.inventory)
             {
-                foreach (ItemIndex i in ItemCatalog.allItems)
-                {
-                    this.targetMaster.inventory.ResetItem(i);
-                }
-
+                //CopyItemsFromInventory resets inventory
                 targetMaster.inventory.CopyItemsFrom(ownerMaster.inventory, Inventory.defaultItemCopyFilterDelegate);
 
                 if (masterFriendController && masterFriendController.masterItemStacks != null)

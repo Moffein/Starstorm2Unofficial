@@ -545,7 +545,7 @@ namespace Starstorm2.Survivors.Nemmando
             string gougeDamage = $"<style=cIsDamage>{gougeDuration * DamageTypeCore.gougeDamageCoefficient * 100}%</style> base damage";
             string bladeDamage = $"<style=cIsDamage>{BladeOfCessation2.damageCoefficient * 100}% damage</style>";
 
-            LanguageAPI.Add("KEYWORD_GOUGE", $"<style=cKeywordName>Gouge</style><style=cSub>Deal {gougeDamage} over {gougeDuration}s. <i>Capable of critical hits.</i>");
+            LanguageAPI.Add("KEYWORD_GOUGE", $"<style=cKeywordName>Gouge</style><style=cSub>Deal {gougeDamage} over {gougeDuration}s. <i>Capable of triggering item effects.</i>");
 
             LanguageAPI.Add("NEMMANDO_PRIMARY_BLADE_NAME", "Blade of Cessation");
             LanguageAPI.Add("NEMMANDO_PRIMARY_BLADE_DESCRIPTION", $@"<style=cIsHealth>Gouging</style>. <style=cIsUtility>Agile.</style> Slice enemies for {bladeDamage}.");
