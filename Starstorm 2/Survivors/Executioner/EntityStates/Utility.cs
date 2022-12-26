@@ -13,12 +13,12 @@ namespace EntityStates.SS2UStates.Executioner
     {
         public static float baseDuration = 0.6f;
         public static float speedMultiplier = 3.3333333333f;
-        public static float debuffRadius = 12f;
+        public static float debuffRadius = 14f;
         public static float debuffDuration = 3f;
         public static float debuffCheckInterval = 0.0333333333f;
 
         private float debuffCheckStopwatch;
-        private Vector3 initialDirection;
+        //private Vector3 initialDirection;
         private float initialSpeed;
         private float duration;
         private SphereSearch fearSearch;
@@ -38,7 +38,7 @@ namespace EntityStates.SS2UStates.Executioner
                 initialSpeed *= Mathf.Sqrt(base.moveSpeedStat / 10.15f);
             }*/
 
-            if (base.inputBank)
+            /*if (base.inputBank)
             {
                 initialDirection = base.inputBank.moveVector;
             }
@@ -46,7 +46,7 @@ namespace EntityStates.SS2UStates.Executioner
             {
                 initialDirection = base.GetAimRay().direction;
             }
-            initialDirection.y = 0f;
+            initialDirection.y = 0f;*/
 
             if (base.characterMotor)
             {
@@ -150,7 +150,8 @@ namespace EntityStates.SS2UStates.Executioner
 
             if (base.characterMotor)
             {
-                base.characterMotor.rootMotion += (initialDirection * initialSpeed * speedMultiplier) * Time.fixedDeltaTime;
+                //base.characterMotor.rootMotion += (initialDirection * initialSpeed * speedMultiplier) * Time.fixedDeltaTime;
+                base.characterMotor.rootMotion += (base.characterDirection.forward * initialSpeed * speedMultiplier) * Time.fixedDeltaTime;
                 if (base.characterMotor.velocity.y < 0f)
                 {
                     base.characterMotor.velocity.y = 0f;

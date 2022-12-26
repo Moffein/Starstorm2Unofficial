@@ -226,7 +226,8 @@ namespace EntityStates.SS2UStates.Executioner
                     damageColorIndex = DamageColorIndex.Default,
                     falloffModel = BlastAttack.FalloffModel.None,
                     attackerFiltering = AttackerFiltering.NeverHitSelf,
-                    damageType = DamageType.BonusToLowHealth
+                    damageType = DamageType.BonusToLowHealth,
+                    bonusForce = Vector3.down * 4000f
                 };
                 blast = ModifyBlastAttack(blast);
                 blast.Fire();

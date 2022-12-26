@@ -133,25 +133,32 @@ namespace Starstorm2.Survivors.Chirr.Components
 
             trackerUpdateStopwatch = 0f;
             RoR2.Inventory.onServerItemGiven += UpdateMinionInventory;//Is there a better way with onInventoryChangedGlobal?
-            On.RoR2.Inventory.RemoveItem_ItemIndex_int += UpdateMinionInventoryItemRemoved;
             On.RoR2.PingerController.SetCurrentPing += MinionPingRetarget;
+
+            RoR2.Stage.onServerStageComplete += SyncInventoryOnStageTransition;
+            On.EntityStates.Missions.BrotherEncounter.Phase1.OnEnter += BrotherEncounterActions;
 
             this.indicatorCannotBefriend = new Indicator(base.gameObject, indicatorCannotBefriendPrefab);
             this.indicatorReadyToBefriend = new Indicator(base.gameObject, indicatorReadyToBefriendPrefab);
             this.indicatorFriend = new Indicator(base.gameObject, indicatorFriendPrefab);
         }
 
-        private void UpdateMinionInventoryItemRemoved(On.RoR2.Inventory.orig_RemoveItem_ItemIndex_int orig, Inventory self, ItemIndex itemIndex, int count)
+        private void BrotherEncounterActions(On.EntityStates.Missions.BrotherEncounter.Phase1.orig_OnEnter orig, EntityStates.Missions.BrotherEncounter.Phase1 self)
         {
-            orig(self, itemIndex, count);
-            if (NetworkServer.active && ownerMaster && this._hasFriend && this.targetMaster && this.targetMaster.inventory && ownerMaster != this.targetMaster) //last case prevents a recursive loop
+            orig(self);
+            if (NetworkServer.active)
             {
-                CharacterMaster cm = self.GetComponent<CharacterMaster>();
-                if (cm == ownerMaster)
+                SyncInventory();
+                if (this._hasFriend)
                 {
-                    this.targetMaster.inventory.RemoveItem(itemIndex, count);
+                    LeashFriendServer(base.transform.position);
                 }
             }
+        }
+
+        private void SyncInventoryOnStageTransition(Stage obj)
+        {
+            if (NetworkServer.active) SyncInventory();
         }
 
         private void Start()
@@ -198,7 +205,9 @@ namespace Starstorm2.Survivors.Chirr.Components
         {
             RoR2.Inventory.onServerItemGiven -= UpdateMinionInventory;
             On.RoR2.PingerController.SetCurrentPing -= MinionPingRetarget;
-            On.RoR2.Inventory.RemoveItem_ItemIndex_int -= UpdateMinionInventoryItemRemoved;
+
+            RoR2.Stage.onServerStageComplete -= SyncInventoryOnStageTransition;
+            On.EntityStates.Missions.BrotherEncounter.Phase1.OnEnter -= BrotherEncounterActions;
         }
 
         private void UpdateMinionInventory(Inventory inventory, ItemIndex itemIndex, int count)
@@ -214,6 +223,19 @@ namespace Starstorm2.Survivors.Chirr.Components
                         targetMaster.inventory.GiveItem(itemIndex, count);
                     }
                 }
+            }
+        }
+
+        private void SyncInventory()
+        {
+            if (this._hasFriend && this.targetMaster && this.targetMaster.inventory)
+            {
+                foreach (ItemIndex i in ItemCatalog.allItems)
+                {
+                    this.targetMaster.inventory.ResetItem(i);
+                }
+                targetMaster.inventory.CopyItemsFrom(ownerBody.inventory, Inventory.defaultItemCopyFilterDelegate);
+                RemoveBlacklistedItems(targetMaster.inventory);
             }
         }
 
@@ -508,6 +530,10 @@ namespace Starstorm2.Survivors.Chirr.Components
                     targetBody.healthComponent.health = targetBody.healthComponent.fullHealth;
                     targetBody.healthComponent.shield = targetBody.healthComponent.fullShield;
 
+                    foreach (ItemIndex i in ItemCatalog.allItems)
+                    {
+                        this.targetMaster.inventory.ResetItem(i);
+                    }
                     targetMaster.inventory.CopyItemsFrom(ownerBody.inventory, Inventory.defaultItemCopyFilterDelegate);
                     RemoveBlacklistedItems(targetMaster.inventory);
                 }
@@ -642,6 +668,12 @@ namespace Starstorm2.Survivors.Chirr.Components
         [Command]
         private void CmdLeashFriend(Vector3 newPos)
         {
+            LeashFriendServer(newPos);
+        }
+
+        [Server]
+        public void LeashFriendServer(Vector3 newPos)
+        {
             //if (CanLeash())
             SpawnCard spawnCard = ScriptableObject.CreateInstance<SpawnCard>();
             spawnCard.hullSize = targetBody.hullClassification;
@@ -653,7 +685,7 @@ namespace Starstorm2.Survivors.Chirr.Components
                 placementMode = DirectorPlacementRule.PlacementMode.NearestNode,
                 position = newPos,
                 minDistance = 5f,
-                maxDistance = 45f
+                maxDistance = 60f
             }, RoR2Application.rng));
 
             if (gameObject)
