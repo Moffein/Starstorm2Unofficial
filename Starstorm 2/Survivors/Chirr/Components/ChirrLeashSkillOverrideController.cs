@@ -9,6 +9,7 @@ namespace Starstorm2.Survivors.Chirr.Components
     public class ChirrLeashSkillOverrideController : MonoBehaviour
     {
         private ChirrFriendController friendController;
+        private SkillLocator skillLocator;
         private GenericSkill specialSlot;
         private EntityStateMachine befriendMachine;
 
@@ -17,7 +18,7 @@ namespace Starstorm2.Survivors.Chirr.Components
         public void Awake()
         {
             friendController = base.GetComponent<ChirrFriendController>();
-            SkillLocator skillLocator = base.GetComponent<SkillLocator>();
+            skillLocator = base.GetComponent<SkillLocator>();
             if (skillLocator && skillLocator.special) specialSlot = skillLocator.special;
             befriendMachine = EntityStateMachine.FindByCustomName(base.gameObject, "Befriend");
             if (!befriendMachine || !friendController || !specialSlot)

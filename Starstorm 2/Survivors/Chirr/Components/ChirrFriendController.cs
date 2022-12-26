@@ -164,6 +164,7 @@ namespace Starstorm2.Survivors.Chirr.Components
         private void Start()
         {
             if (ownerBody) ownerMaster = ownerBody.master;
+            if (NetworkServer.active) TryGetSavedMaster();
         }
 
         [Server]
@@ -208,6 +209,9 @@ namespace Starstorm2.Survivors.Chirr.Components
 
             RoR2.Stage.onServerStageComplete -= SyncInventoryOnStageTransition;
             On.EntityStates.Missions.BrotherEncounter.Phase1.OnEnter -= BrotherEncounterActions;
+            if (this.indicatorCannotBefriend != null) this.indicatorCannotBefriend.DestroyVisualizer();
+            if (this.indicatorReadyToBefriend != null) this.indicatorReadyToBefriend.DestroyVisualizer();
+            if (this.indicatorFriend != null) this.indicatorFriend.DestroyVisualizer();
         }
 
         private void UpdateMinionInventory(Inventory inventory, ItemIndex itemIndex, int count)
