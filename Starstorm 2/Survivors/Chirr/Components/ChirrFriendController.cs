@@ -148,9 +148,9 @@ namespace Starstorm2.Survivors.Chirr.Components
             orig(self);
             if (NetworkServer.active)
             {
-                SyncInventory();
                 if (this._hasFriend)
                 {
+                    SyncInventory();
                     LeashFriendServer(base.transform.position);
                 }
             }
@@ -228,13 +228,13 @@ namespace Starstorm2.Survivors.Chirr.Components
 
         private void SyncInventory()
         {
-            if (this._hasFriend && this.targetMaster && this.targetMaster.inventory)
+            if (this._hasFriend && this.targetMaster && this.targetMaster.inventory && ownerMaster && ownerMaster.inventory)
             {
                 foreach (ItemIndex i in ItemCatalog.allItems)
                 {
                     this.targetMaster.inventory.ResetItem(i);
                 }
-                targetMaster.inventory.CopyItemsFrom(ownerBody.inventory, Inventory.defaultItemCopyFilterDelegate);
+                targetMaster.inventory.CopyItemsFrom(ownerMaster.inventory, Inventory.defaultItemCopyFilterDelegate);
                 RemoveBlacklistedItems(targetMaster.inventory);
             }
         }
@@ -529,25 +529,20 @@ namespace Starstorm2.Survivors.Chirr.Components
                 {
                     targetBody.healthComponent.health = targetBody.healthComponent.fullHealth;
                     targetBody.healthComponent.shield = targetBody.healthComponent.fullShield;
-
-                    foreach (ItemIndex i in ItemCatalog.allItems)
-                    {
-                        this.targetMaster.inventory.ResetItem(i);
-                    }
-                    targetMaster.inventory.CopyItemsFrom(ownerBody.inventory, Inventory.defaultItemCopyFilterDelegate);
-                    RemoveBlacklistedItems(targetMaster.inventory);
                 }
 
                 if (targetMaster.inventory)
                 {
-                    targetMaster.inventory.RemoveItem(RoR2Content.Items.UseAmbientLevel, targetMaster.inventory.GetItemCount(RoR2Content.Items.UseAmbientLevel));
-
+                    //Redundant due to invntory reset
                     //Remove Elite stat items. Friend buff will handle elite stat bonuses.
+                    targetMaster.inventory.RemoveItem(RoR2Content.Items.UseAmbientLevel, targetMaster.inventory.GetItemCount(RoR2Content.Items.UseAmbientLevel));
                     if (targetBody.isElite)
                     {
                         targetMaster.inventory.RemoveItem(RoR2Content.Items.BoostDamage, targetMaster.inventory.GetItemCount(RoR2Content.Items.BoostDamage));
                         targetMaster.inventory.RemoveItem(RoR2Content.Items.BoostHp, targetMaster.inventory.GetItemCount(RoR2Content.Items.BoostHp));
                     }
+
+                    SyncInventory();
                 }
 
                 //Reset AI targeting
