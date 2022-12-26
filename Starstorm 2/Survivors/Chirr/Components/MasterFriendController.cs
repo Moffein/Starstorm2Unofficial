@@ -8,5 +8,6 @@ namespace Starstorm2.Survivors.Chirr.Components
     public class MasterFriendController : MonoBehaviour
     {
         public uint masterNetID = NetworkInstanceId.Invalid.Value;
+        public int[] masterItemStacks;
     }
 }

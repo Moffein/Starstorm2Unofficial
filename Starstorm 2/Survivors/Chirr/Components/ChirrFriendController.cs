@@ -238,7 +238,13 @@ namespace Starstorm2.Survivors.Chirr.Components
                 {
                     this.targetMaster.inventory.ResetItem(i);
                 }
+
                 targetMaster.inventory.CopyItemsFrom(ownerMaster.inventory, Inventory.defaultItemCopyFilterDelegate);
+
+                if (masterFriendController && masterFriendController.masterItemStacks != null)
+                {
+                    this.targetMaster.inventory.AddItemsFrom(masterFriendController.masterItemStacks, x => x != ItemIndex.None);
+                }
                 RemoveBlacklistedItems(targetMaster.inventory);
             }
         }
@@ -518,6 +524,12 @@ namespace Starstorm2.Survivors.Chirr.Components
                     {
                         baseAI.leader.gameObject = base.gameObject;
                     }
+
+                    if (!masterFriendController)
+                    {
+                        masterFriendController = ownerMaster.GetComponent<MasterFriendController>();
+                        if (!masterFriendController) masterFriendController = ownerMaster.AddComponent<MasterFriendController>();
+                    }
                 }
 
                 Util.CleanseBody(targetBody, true, false, true, true, true, false);
@@ -535,15 +547,31 @@ namespace Starstorm2.Survivors.Chirr.Components
                     targetBody.healthComponent.shield = targetBody.healthComponent.fullShield;
                 }
 
+                //Ally persists between stages
+                RpcDontDestroyOnLoad(_trackingTargetMasterNetID);
+
+                //Save ally netID so it can be remembered next stage.
+                if (masterFriendController)
+                {
+                    masterFriendController.masterNetID = targetMaster.netId.Value;
+                    masterFriendController.masterItemStacks = ItemCatalog.RequestItemStackArray();
+                }
+
                 if (targetMaster.inventory)
                 {
-                    //Redundant due to invntory reset
+                    //Redundant due to inventory reset
                     //Remove Elite stat items. Friend buff will handle elite stat bonuses.
                     targetMaster.inventory.RemoveItem(RoR2Content.Items.UseAmbientLevel, targetMaster.inventory.GetItemCount(RoR2Content.Items.UseAmbientLevel));
                     if (targetBody.isElite)
                     {
                         targetMaster.inventory.RemoveItem(RoR2Content.Items.BoostDamage, targetMaster.inventory.GetItemCount(RoR2Content.Items.BoostDamage));
                         targetMaster.inventory.RemoveItem(RoR2Content.Items.BoostHp, targetMaster.inventory.GetItemCount(RoR2Content.Items.BoostHp));
+                    }
+
+                    //Save the original inventory
+                    if (masterFriendController && masterFriendController.masterItemStacks != null && targetMaster.inventory.itemStacks != null)
+                    {
+                        targetMaster.inventory.itemStacks.CopyTo(masterFriendController.masterItemStacks, 0);
                     }
 
                     SyncInventory();
@@ -580,15 +608,6 @@ namespace Starstorm2.Survivors.Chirr.Components
                         networkUser.AwardLunarCoins(10);
                         return;
                     }
-                }
-
-                //Ally persists between stages
-                RpcDontDestroyOnLoad(_trackingTargetMasterNetID);
-
-                //Save ally netID so it can be remembered next stage.
-                if (masterFriendController)
-                {
-                    masterFriendController.masterNetID = targetMaster.netId.Value;
                 }
             }
             else
