@@ -1098,6 +1098,20 @@
 						</Action>
 					</ChildrenList>
 				</Event>
+				<Event Name="Play_SS2U_NemesisTheme" ID="{5EE5992A-5CE2-4285-ABFC-D269AFBE4E85}">
+					<ChildrenList>
+						<Action Name="" ID="{A57596F3-4816-4E11-8D16-6F6B4837E3DA}" ShortID="19347751">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="1"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Canticum_Vitae_Main" ID="{7785E4D6-0318-4882-8732-856AF0F50CE3}" WorkUnitID="{F233C913-3B4E-4D63-9074-90CE5295641F}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
 			</ChildrenList>
 		</WorkUnit>
 	</Events>

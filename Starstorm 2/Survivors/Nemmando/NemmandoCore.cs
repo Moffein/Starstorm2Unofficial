@@ -8,6 +8,7 @@ using RoR2.CharacterAI;
 using RoR2.Projectile;
 using RoR2.Skills;
 using Starstorm2.Cores;
+using Starstorm2.Cores.NemesisInvasion;
 using Starstorm2.Modules;
 using Starstorm2.Modules.Survivors;
 using System;
@@ -104,6 +105,12 @@ namespace Starstorm2.Survivors.Nemmando
         private void SetBodyIndex()
         {
             bodyIndex = BodyCatalog.FindBodyIndex("NemmandoBody");
+
+            BodyIndex monsterBodyIndex = BodyCatalog.FindBodyIndex("NemmandoMonsterBody");
+            if (monsterBodyIndex != BodyIndex.None)
+            {
+                NemesisInvasionCore.prioritizePlayersList.Add(monsterBodyIndex);
+            }
         }
         internal override void InitializeCharacter()
         {
@@ -192,12 +199,18 @@ namespace Starstorm2.Survivors.Nemmando
             bossBodyPrefab = PrefabAPI.InstantiateClone(bodyPrefab, "NemmandoMonsterBody", true);
 
             var body = bossBodyPrefab.GetComponent<CharacterBody>();
-            body.baseMaxHealth = 1000;
-            body.levelMaxHealth = 300;
+            body.baseMaxHealth = 3200f;
+            body.levelMaxHealth =  960f;
             body.baseRegen = 0;
             body.levelRegen = 0;
-            body.baseDamage = 10;
-            body.levelDamage = 2;
+            body.baseDamage = 3f;
+            body.levelDamage = 0.6f;
+
+            ModelLocator ml = bossBodyPrefab.GetComponent<ModelLocator>();
+            if (ml && ml.modelTransform)
+            {
+                ml.modelTransform.localScale *= 2f;
+            }
 
             bossMasterPrefab = PrefabAPI.InstantiateClone(LegacyResourcesAPI.Load<GameObject>("Prefabs/CharacterMasters/MercMonsterMaster"), "NemmandoBossMaster", true);
             bossMasterPrefab.GetComponent<CharacterMaster>().bodyPrefab = bossBodyPrefab;
@@ -209,27 +222,110 @@ namespace Starstorm2.Survivors.Nemmando
             bossEffect.transform.localScale = Vector3.one * 2f;
             bossEffect.transform.GetChild(0).localScale = Vector3.one * 2f;
 
-            // make sprint
-            foreach (AISkillDriver i in bossMasterPrefab.GetComponents<AISkillDriver>())
-            {
-                if (i)
-                {
-                    i.shouldSprint = true;
-
-                    //hmm
-                    if (i.skillSlot == SkillSlot.Special)
-                    {
-                        i.driverUpdateTimerOverride = 3f;
-                    }
-                }
-            }
-
             bossBodyPrefab.AddComponent<Components.NemmandoUnlockComponent>();
             bossBodyPrefab.AddComponent<Components.NemmandoSpecialSwapComponent>();
             bossBodyPrefab.AddComponent<Starstorm2.Components.NemesisBossComponent>();
 
             Modules.Prefabs.bodyPrefabs.Add(bossBodyPrefab);
             Modules.Prefabs.masterPrefabs.Add(bossMasterPrefab);
+
+            Modules.Prefabs.RemoveAISkillDrivers(bossMasterPrefab);
+            Modules.Prefabs.AddAISkillDriver(bossMasterPrefab, "Special", SkillSlot.Special, null,
+                  true, false,
+                  Mathf.NegativeInfinity, Mathf.Infinity,
+                  Mathf.NegativeInfinity, Mathf.Infinity,
+                  0f, 30f,
+                  true, false, false, -1,
+                  AISkillDriver.TargetType.CurrentEnemy,
+                  true, false, false,
+                  AISkillDriver.MovementType.Stop, 1f,
+                  AISkillDriver.AimType.AtCurrentEnemy,
+                  true,
+                  false,
+                  false,
+                  AISkillDriver.ButtonPressType.Hold,
+                  3f,
+                  false,
+                  true,
+                  null);
+
+            Modules.Prefabs.AddAISkillDriver(bossMasterPrefab, "Secondary", SkillSlot.Secondary, null,
+                 true, false,
+                 Mathf.NegativeInfinity, Mathf.Infinity,
+                 Mathf.NegativeInfinity, Mathf.Infinity,
+                 10f, 40f,
+                 true, false, true, -1,
+                 AISkillDriver.TargetType.CurrentEnemy,
+                 true, true, true,
+                 AISkillDriver.MovementType.ChaseMoveTarget, 1f,
+                 AISkillDriver.AimType.AtCurrentEnemy,
+                 false,
+                 true,
+                 false,
+                 AISkillDriver.ButtonPressType.Hold,
+                 1f,
+                 false,
+                 false,
+                 null);
+
+            Modules.Prefabs.AddAISkillDriver(bossMasterPrefab, "Roll", SkillSlot.Utility, null,
+                false, false,
+                Mathf.NegativeInfinity, Mathf.Infinity,
+                Mathf.NegativeInfinity, Mathf.Infinity,
+                15f, Mathf.Infinity,
+                false, false, false, -1,
+                AISkillDriver.TargetType.CurrentEnemy,
+                false, false, false,
+                AISkillDriver.MovementType.ChaseMoveTarget, 1f,
+                AISkillDriver.AimType.AtCurrentEnemy,
+                false,
+                true,
+                false,
+                AISkillDriver.ButtonPressType.Hold,
+                0.5f,
+                false,
+                true,
+                null);
+
+            Modules.Prefabs.AddAISkillDriver(bossMasterPrefab, "Primary", SkillSlot.Primary, null,
+                true, false,
+                Mathf.NegativeInfinity, Mathf.Infinity,
+                Mathf.NegativeInfinity, Mathf.Infinity,
+                0f, 12f,
+                true, false, false, -1,
+                AISkillDriver.TargetType.CurrentEnemy,
+                true, false, false,
+                AISkillDriver.MovementType.ChaseMoveTarget, 1f,
+                AISkillDriver.AimType.AtCurrentEnemy,
+                false,
+                true,
+                false,
+                AISkillDriver.ButtonPressType.Hold,
+                -1f,
+                false,
+                false,
+                null);
+
+            Modules.Prefabs.AddAISkillDriver(bossMasterPrefab, "Chase", SkillSlot.None, null,
+                false, false,
+                Mathf.NegativeInfinity, Mathf.Infinity,
+                Mathf.NegativeInfinity, Mathf.Infinity,
+                0f, Mathf.Infinity,
+                false, false, false, -1,
+                AISkillDriver.TargetType.CurrentEnemy,
+                false, false, false,
+                AISkillDriver.MovementType.ChaseMoveTarget, 1f,
+                AISkillDriver.AimType.AtCurrentEnemy,
+                false,
+                true,
+                false,
+                AISkillDriver.ButtonPressType.Abstain,
+                -1,
+                false,
+                false,
+                null);
+
+            NemesisInvasionCore.AddNemesisBoss(bossMasterPrefab, null, "ShinyPearl", true, true); //Replace if Stirring Soul ever gets fixed
         }
 
         internal override void InitializeUnlockables()
@@ -253,7 +349,104 @@ namespace Starstorm2.Survivors.Nemmando
 
         internal override void InitializeDoppelganger()
         {
-            base.InitializeDoppelganger();
+            GameObject masterPrefab = PrefabAPI.InstantiateClone(LegacyResourcesAPI.Load<GameObject>("Prefabs/CharacterMasters/CommandoMonsterMaster"), "NemmandoMonsterMaster", true);
+            masterPrefab.GetComponent<CharacterMaster>().bodyPrefab = bodyPrefab;
+
+            Modules.Prefabs.RemoveAISkillDrivers(masterPrefab);
+            Modules.Prefabs.AddAISkillDriver(masterPrefab, "Special", SkillSlot.Special, null,
+                  true, false,
+                  Mathf.NegativeInfinity, Mathf.Infinity,
+                  Mathf.NegativeInfinity, Mathf.Infinity,
+                  0f, 30f,
+                  true, false, false, -1,
+                  AISkillDriver.TargetType.CurrentEnemy,
+                  true, false, false,
+                  AISkillDriver.MovementType.Stop, 1f,
+                  AISkillDriver.AimType.AtCurrentEnemy,
+                  true,
+                  false,
+                  false,
+                  AISkillDriver.ButtonPressType.Hold,
+                  3f,
+                  false,
+                  true,
+                  null);
+
+            Modules.Prefabs.AddAISkillDriver(masterPrefab, "Secondary", SkillSlot.Secondary, null,
+                 true, false,
+                 Mathf.NegativeInfinity, Mathf.Infinity,
+                 Mathf.NegativeInfinity, Mathf.Infinity,
+                 10f, 40f,
+                 true, false, true, -1,
+                 AISkillDriver.TargetType.CurrentEnemy,
+                 true, true, true,
+                 AISkillDriver.MovementType.ChaseMoveTarget, 1f,
+                 AISkillDriver.AimType.AtCurrentEnemy,
+                 false,
+                 true,
+                 false,
+                 AISkillDriver.ButtonPressType.Hold,
+                 1f,
+                 false,
+                 false,
+                 null);
+
+            Modules.Prefabs.AddAISkillDriver(masterPrefab, "Roll", SkillSlot.Utility, null,
+                false, false,
+                Mathf.NegativeInfinity, Mathf.Infinity,
+                Mathf.NegativeInfinity, Mathf.Infinity,
+                15f, Mathf.Infinity,
+                false, false, false, -1,
+                AISkillDriver.TargetType.CurrentEnemy,
+                false, false, false,
+                AISkillDriver.MovementType.ChaseMoveTarget, 1f,
+                AISkillDriver.AimType.AtCurrentEnemy,
+                false,
+                true,
+                false,
+                AISkillDriver.ButtonPressType.Hold,
+                0.5f,
+                false,
+                true,
+                null);
+
+            Modules.Prefabs.AddAISkillDriver(masterPrefab, "Primary", SkillSlot.Primary, null,
+                true, false,
+                Mathf.NegativeInfinity, Mathf.Infinity,
+                Mathf.NegativeInfinity, Mathf.Infinity,
+                0f, 12f,
+                true, false, false, -1,
+                AISkillDriver.TargetType.CurrentEnemy,
+                true, false, false,
+                AISkillDriver.MovementType.ChaseMoveTarget, 1f,
+                AISkillDriver.AimType.AtCurrentEnemy,
+                false,
+                true,
+                false,
+                AISkillDriver.ButtonPressType.Hold,
+                -1f,
+                false,
+                false,
+                null);
+
+            Modules.Prefabs.AddAISkillDriver(masterPrefab, "Chase", SkillSlot.None, null,
+                false, false,
+                Mathf.NegativeInfinity, Mathf.Infinity,
+                Mathf.NegativeInfinity, Mathf.Infinity,
+                0f, Mathf.Infinity,
+                false, false, false, -1,
+                AISkillDriver.TargetType.CurrentEnemy,
+                false, false, false,
+                AISkillDriver.MovementType.ChaseMoveTarget, 1f,
+                AISkillDriver.AimType.AtCurrentEnemy,
+                false,
+                true,
+                false,
+                AISkillDriver.ButtonPressType.Abstain,
+                -1,
+                false,
+                false,
+                null);
         }
 
         internal override void InitializeHitboxes()

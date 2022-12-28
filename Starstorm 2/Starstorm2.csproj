@@ -78,6 +78,9 @@
     <Compile Include="API\ComponentHelpers.cs" />
     <Compile Include="API\LogCore.cs" />
     <Compile Include="API\Utils.cs" />
+    <Compile Include="Cores\NemesisInvasion\Components\Body\NemesisDropItemOnDeath.cs" />
+    <Compile Include="Cores\NemesisInvasion\Components\NemesisInvasionManager.cs" />
+    <Compile Include="Cores\NemesisInvasion\NemesisInvasionCore.cs" />
     <Compile Include="Modules\EntityStates\BaseMeleeAttack.cs" />
     <Compile Include="Survivors\Chirr\BefriendSkillDef.cs" />
     <Compile Include="Survivors\Chirr\ChirrSkins.cs" />
@@ -226,7 +229,7 @@
     <Compile Include="Cores\Unlockables\Achievements\Vanilla\VanillaGrandMasteryAchievements.cs" />
     <Compile Include="Modules\Achievements\BaseGrandMasteryAchievement.cs" />
     <Compile Include="Cores\Unlockables\VanillaSurvivorUnlockables.cs" />
-    <Compile Include="Cores\VoidCore.cs" />
+    <Compile Include="Cores\NemesisInvasion\VoidCore_old.cs" />
     <Compile Include="FUCKACCESSMODIFIERS.cs" />
     <Compile Include="Modules\Assets.cs" />
     <Compile Include="Modules\CameraParams.cs" />

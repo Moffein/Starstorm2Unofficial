@@ -636,112 +636,79 @@ ModelImporter:
     rigImportErrors: 
     rigImportWarnings: 
     animationImportErrors: 
-    animationImportWarnings: "\nClip 'ArmatureModified|Ascending' has import animation
-      warnings that might lower retargeting quality:\nNote: Activate translation
-      DOF on avatar to improve retargeting quality.\n\t'BackLeg1' is inbetween humanoid
-      transforms and has rotation animation that will be discarded.\n\nClip 'ArmatureModified|Bugged'
-      has import animation warnings that might lower retargeting quality:\nNote:
-      Activate translation DOF on avatar to improve retargeting quality.\n\t'Body3'
-      is inbetween humanoid transforms and has rotation animation that will be discarded.\n\t'BackLeg1'
-      is inbetween humanoid transforms and has rotation animation that will be discarded.\n\nClip
-      'ArmatureModified|CameraAction' has import animation warnings that might lower
-      retargeting quality:\nNote: Activate translation DOF on avatar to improve retargeting
-      quality.\n\t'BackLeg1' is inbetween humanoid transforms and has rotation animation
-      that will be discarded.\n\nClip 'ArmatureModified|CharSelect' has import animation
+    animationImportWarnings: "\nClip 'ArmatureModified|Bugged' has import animation
       warnings that might lower retargeting quality:\nNote: Activate translation
       DOF on avatar to improve retargeting quality.\n\t'Body3' is inbetween humanoid
-      transforms and has rotation animation that will be discarded.\n\t'Lowerbody'
-      is inbetween humanoid transforms and has rotation animation that will be discarded.\n\t'BackLeg1'
+      transforms and has rotation animation that will be discarded.\n\nClip 'ArmatureModified|CharSelect'
+      has import animation warnings that might lower retargeting quality:\nNote:
+      Activate translation DOF on avatar to improve retargeting quality.\n\t'Body3'
+      is inbetween humanoid transforms and has rotation animation that will be discarded.\n\t'Lowerbody'
       is inbetween humanoid transforms and has rotation animation that will be discarded.\n\nClip
       'ArmatureModified|CharSelectIdle' has import animation warnings that might
       lower retargeting quality:\nNote: Activate translation DOF on avatar to improve
       retargeting quality.\n\t'Body3' is inbetween humanoid transforms and has rotation
       animation that will be discarded.\n\t'Lowerbody' is inbetween humanoid transforms
-      and has rotation animation that will be discarded.\n\t'BackLeg1' is inbetween
-      humanoid transforms and has rotation animation that will be discarded.\n\nClip
-      'ArmatureModified|Descending ' has import animation warnings that might lower
-      retargeting quality:\nNote: Activate translation DOF on avatar to improve retargeting
-      quality.\n\t'Body3' is inbetween humanoid transforms and has rotation animation
-      that will be discarded.\n\t'BackLeg1' is inbetween humanoid transforms and
-      has rotation animation that will be discarded.\n\nClip 'ArmatureModified|Flying'
-      has import animation warnings that might lower retargeting quality:\nNote:
+      and has rotation animation that will be discarded.\n\nClip 'ArmatureModified|Descending
+      ' has import animation warnings that might lower retargeting quality:\nNote:
       Activate translation DOF on avatar to improve retargeting quality.\n\t'Body3'
-      is inbetween humanoid transforms and has rotation animation that will be discarded.\n\t'Lowerbody'
-      is inbetween humanoid transforms and has rotation animation that will be discarded.\n\t'BackLeg1'
       is inbetween humanoid transforms and has rotation animation that will be discarded.\n\nClip
-      'ArmatureModified|HitStun' has import animation warnings that might lower retargeting
-      quality:\nNote: Activate translation DOF on avatar to improve retargeting quality.\n\t'BackLeg1'
+      'ArmatureModified|Flying' has import animation warnings that might lower retargeting
+      quality:\nNote: Activate translation DOF on avatar to improve retargeting quality.\n\t'Body3'
+      is inbetween humanoid transforms and has rotation animation that will be discarded.\n\t'Lowerbody'
       is inbetween humanoid transforms and has rotation animation that will be discarded.\n\nClip
       'ArmatureModified|Idle' has import animation warnings that might lower retargeting
       quality:\nNote: Activate translation DOF on avatar to improve retargeting quality.\n\t'Body3'
-      is inbetween humanoid transforms and has rotation animation that will be discarded.\n\t'BackLeg1'
       is inbetween humanoid transforms and has rotation animation that will be discarded.\n\nClip
       'ArmatureModified|Idle-Rest' has import animation warnings that might lower
       retargeting quality:\nNote: Activate translation DOF on avatar to improve retargeting
       quality.\n\t'Body3' is inbetween humanoid transforms and has rotation animation
-      that will be discarded.\n\t'BackLeg1' is inbetween humanoid transforms and
-      has rotation animation that will be discarded.\n\nClip 'ArmatureModified|Jumping'
+      that will be discarded.\n\nClip 'ArmatureModified|Jumping' has import animation
+      warnings that might lower retargeting quality:\nNote: Activate translation
+      DOF on avatar to improve retargeting quality.\n\t'Body3' is inbetween humanoid
+      transforms and has rotation animation that will be discarded.\n\nClip 'ArmatureModified|Landing'
       has import animation warnings that might lower retargeting quality:\nNote:
       Activate translation DOF on avatar to improve retargeting quality.\n\t'Body3'
-      is inbetween humanoid transforms and has rotation animation that will be discarded.\n\t'BackLeg1'
-      is inbetween humanoid transforms and has rotation animation that will be discarded.\n\nClip
-      'ArmatureModified|Landing' has import animation warnings that might lower retargeting
-      quality:\nNote: Activate translation DOF on avatar to improve retargeting quality.\n\t'Body3'
-      is inbetween humanoid transforms and has rotation animation that will be discarded.\n\t'BackLeg1'
       is inbetween humanoid transforms and has rotation animation that will be discarded.\n\nClip
       'ArmatureModified|Primary' has import animation warnings that might lower retargeting
       quality:\nNote: Activate translation DOF on avatar to improve retargeting quality.\n\t'Body3'
-      is inbetween humanoid transforms and has rotation animation that will be discarded.\n\t'BackLeg1'
       is inbetween humanoid transforms and has rotation animation that will be discarded.\n\nClip
       'ArmatureModified|Rest-Idle' has import animation warnings that might lower
       retargeting quality:\nNote: Activate translation DOF on avatar to improve retargeting
       quality.\n\t'Body3' is inbetween humanoid transforms and has rotation animation
-      that will be discarded.\n\t'BackLeg1' is inbetween humanoid transforms and
-      has rotation animation that will be discarded.\n\nClip 'ArmatureModified|RestLoop'
+      that will be discarded.\n\nClip 'ArmatureModified|RestLoop' has import animation
+      warnings that might lower retargeting quality:\nNote: Activate translation
+      DOF on avatar to improve retargeting quality.\n\t'Body3' is inbetween humanoid
+      transforms and has rotation animation that will be discarded.\n\nClip 'ArmatureModified|Secondary'
       has import animation warnings that might lower retargeting quality:\nNote:
       Activate translation DOF on avatar to improve retargeting quality.\n\t'Body3'
-      is inbetween humanoid transforms and has rotation animation that will be discarded.\n\t'BackLeg1'
+      is inbetween humanoid transforms and has rotation animation that will be discarded.\n\t'Lowerbody'
       is inbetween humanoid transforms and has rotation animation that will be discarded.\n\nClip
-      'ArmatureModified|Secondary' has import animation warnings that might lower
-      retargeting quality:\nNote: Activate translation DOF on avatar to improve retargeting
-      quality.\n\t'Body3' is inbetween humanoid transforms and has rotation animation
-      that will be discarded.\n\t'Lowerbody' is inbetween humanoid transforms and
-      has rotation animation that will be discarded.\n\t'BackLeg1' is inbetween humanoid
-      transforms and has rotation animation that will be discarded.\n\nClip 'ArmatureModified|Special'
-      has import animation warnings that might lower retargeting quality:\nNote:
-      Activate translation DOF on avatar to improve retargeting quality.\n\t'Body3'
-      is inbetween humanoid transforms and has rotation animation that will be discarded.\n\t'BackLeg1'
+      'ArmatureModified|Special' has import animation warnings that might lower retargeting
+      quality:\nNote: Activate translation DOF on avatar to improve retargeting quality.\n\t'Body3'
       is inbetween humanoid transforms and has rotation animation that will be discarded.\n\nClip
       'ArmatureModified|Sprint' has import animation warnings that might lower retargeting
       quality:\nNote: Activate translation DOF on avatar to improve retargeting quality.\n\t'Body3'
       is inbetween humanoid transforms and has rotation animation that will be discarded.\n\t'Lowerbody'
-      is inbetween humanoid transforms and has rotation animation that will be discarded.\n\t'BackLeg1'
       is inbetween humanoid transforms and has rotation animation that will be discarded.\n\nClip
       'ArmatureModified|Utility' has import animation warnings that might lower retargeting
       quality:\nNote: Activate translation DOF on avatar to improve retargeting quality.\n\t'Body3'
       is inbetween humanoid transforms and has rotation animation that will be discarded.\n\t'Lowerbody'
-      is inbetween humanoid transforms and has rotation animation that will be discarded.\n\t'BackLeg1'
       is inbetween humanoid transforms and has rotation animation that will be discarded.\n\nClip
       'ArmatureModified|Walk-Idle' has import animation warnings that might lower
       retargeting quality:\nNote: Activate translation DOF on avatar to improve retargeting
       quality.\n\t'Body3' is inbetween humanoid transforms and has rotation animation
-      that will be discarded.\n\t'BackLeg1' is inbetween humanoid transforms and
-      has rotation animation that will be discarded.\n\nClip 'ArmatureModified|WalkBWD'
+      that will be discarded.\n\nClip 'ArmatureModified|WalkBWD' has import animation
+      warnings that might lower retargeting quality:\nNote: Activate translation
+      DOF on avatar to improve retargeting quality.\n\t'Body3' is inbetween humanoid
+      transforms and has rotation animation that will be discarded.\n\nClip 'ArmatureModified|WalkFWD'
       has import animation warnings that might lower retargeting quality:\nNote:
       Activate translation DOF on avatar to improve retargeting quality.\n\t'Body3'
-      is inbetween humanoid transforms and has rotation animation that will be discarded.\n\t'BackLeg1'
-      is inbetween humanoid transforms and has rotation animation that will be discarded.\n\nClip
-      'ArmatureModified|WalkFWD' has import animation warnings that might lower retargeting
-      quality:\nNote: Activate translation DOF on avatar to improve retargeting quality.\n\t'Body3'
-      is inbetween humanoid transforms and has rotation animation that will be discarded.\n\t'BackLeg1'
       is inbetween humanoid transforms and has rotation animation that will be discarded.\n\nClip
       'ArmatureModified|WalkLFT' has import animation warnings that might lower retargeting
       quality:\nNote: Activate translation DOF on avatar to improve retargeting quality.\n\t'Lowerbody'
-      is inbetween humanoid transforms and has rotation animation that will be discarded.\n\t'BackLeg1'
       is inbetween humanoid transforms and has rotation animation that will be discarded.\n\nClip
       'ArmatureModified|WalkRHT' has import animation warnings that might lower retargeting
       quality:\nNote: Activate translation DOF on avatar to improve retargeting quality.\n\t'Lowerbody'
-      is inbetween humanoid transforms and has rotation animation that will be discarded.\n\t'BackLeg1'
       is inbetween humanoid transforms and has rotation animation that will be discarded.\n"
     animationRetargetingWarnings: 
     animationDoRetargetingWarnings: 0
@@ -869,7 +836,7 @@ ModelImporter:
         value: {x: 0, y: 0, z: 0}
         length: 0
         modified: 0
-    - boneName: Leg1.L
+    - boneName: Leg2.L
       humanName: LeftUpperArm
       limit:
         min: {x: 0, y: 0, z: 0}
@@ -885,7 +852,7 @@ ModelImporter:
         value: {x: 0, y: 0, z: 0}
         length: 0
         modified: 0
-    - boneName: Leg2.L
+    - boneName: Leg3.L
       humanName: LeftLowerArm
       limit:
         min: {x: 0, y: 0, z: 0}
@@ -901,7 +868,7 @@ ModelImporter:
         value: {x: 0, y: 0, z: 0}
         length: 0
         modified: 0
-    - boneName: Leg3.L
+    - boneName: Leg4.L
       humanName: LeftHand
       limit:
         min: {x: 0, y: 0, z: 0}
@@ -959,6 +926,14 @@ ModelImporter:
         modified: 0
     - boneName: R.MaidChirrSkirt.001_end
       humanName: RightFoot
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Leg1.L
+      humanName: LeftShoulder
       limit:
         min: {x: 0, y: 0, z: 0}
         max: {x: 0, y: 0, z: 0}
@@ -1038,8 +1013,8 @@ ModelImporter:
       scale: {x: 1, y: 1, z: 1}
     - name: Root
       parentName: ArmatureModified
-      position: {x: -0.43260604, y: 0.92270875, z: 2.161911}
-      rotation: {x: -0.9910791, y: -0.12425491, z: -0.019179095, w: 0.0442172}
+      position: {x: -0.27950764, y: 1.0103843, z: 1.7498969}
+      rotation: {x: -0.9981628, y: -0.026028054, z: 0.054650936, w: 0.002616227}
       scale: {x: 1, y: 0.99999994, z: 0.99999994}
     - name: Body1
       parentName: Root
@@ -1049,7 +1024,7 @@ ModelImporter:
     - name: Body2
       parentName: Body1
       position: {x: 2.5219204e-13, y: 0.6192743, z: -0.00000014994293}
-      rotation: {x: -0.070241444, y: -0.0036178338, z: -0.006014993, w: 0.9975054}
+      rotation: {x: -0.04861536, y: 0.004492083, z: 0.0074760783, w: 0.9987795}
       scale: {x: 1, y: 1, z: 1.0000001}
     - name: Body3
       parentName: Body2
@@ -1059,7 +1034,7 @@ ModelImporter:
     - name: Neck
       parentName: Body3
       position: {x: 9.688349e-15, y: 0.55435586, z: -0.00000011920929}
-      rotation: {x: -0.013179749, y: 0.933245, z: -0.35899323, w: -0.0020044055}
+      rotation: {x: 0.024877438, y: 0.9352539, z: -0.35308194, w: 0.003783003}
       scale: {x: 1, y: 1.0000002, z: 1}
     - name: Head
       parentName: Neck
@@ -1239,17 +1214,17 @@ ModelImporter:
     - name: Leg1.L
       parentName: Body2
       position: {x: -0.5115578, y: 0.71045464, z: -0.16288607}
-      rotation: {x: 0.54758006, y: -0.68003505, z: 0.39346433, w: 0.28791347}
+      rotation: {x: 0.5985763, y: -0.6704151, z: 0.27094612, w: 0.34472916}
       scale: {x: 0.9999999, y: 0.9999995, z: 0.99999976}
     - name: Leg2.L
       parentName: Leg1.L
       position: {x: -0.00000040233135, y: 1.0495749, z: -0.000000059604645}
-      rotation: {x: -0.022738935, y: 0.9127471, z: -0.0026407542, w: -0.40788332}
+      rotation: {x: -0.046571907, y: 0.8876032, z: 0.12654243, w: -0.44043002}
       scale: {x: 0.9999995, y: 1.000001, z: 1.0000001}
     - name: Leg3.L
       parentName: Leg2.L
       position: {x: 0.00000008940697, y: 0.5163067, z: -0.000000230968}
-      rotation: {x: 0.33585715, y: -0.5361448, z: -0.22435415, w: -0.74122465}
+      rotation: {x: -0.007890214, y: -0.9212262, z: 0.017055066, w: 0.3885731}
       scale: {x: 0.9999999, y: 0.9999993, z: 1.0000001}
     - name: Leg4.L
       parentName: Leg3.L
@@ -1264,17 +1239,17 @@ ModelImporter:
     - name: Leg1.R
       parentName: Body2
       position: {x: 0.51155806, y: 0.71045464, z: -0.16288532}
-      rotation: {x: 0.63090616, y: 0.6512608, z: -0.15422562, w: 0.3924682}
+      rotation: {x: 0.5357507, y: 0.71231645, z: -0.17973092, w: 0.41626117}
       scale: {x: 0.9999997, y: 0.9999998, z: 0.9999996}
     - name: Leg2.R
       parentName: Leg1.R
       position: {x: -0.000000044703484, y: 1.0495751, z: -0.000000059604645}
-      rotation: {x: -0.006213084, y: 0.8938744, z: 0.13643637, w: 0.42700717}
+      rotation: {x: 0.040900797, y: 0.8869359, z: 0.13399461, w: 0.44013345}
       scale: {x: 0.9999995, y: 0.99999994, z: 1.0000004}
     - name: Leg3.R
       parentName: Leg2.R
       position: {x: -0.0000003874302, y: 0.5163062, z: 0.00000009685755}
-      rotation: {x: 0.0057806117, y: -0.91939557, z: 0.01630961, w: -0.39295346}
+      rotation: {x: 0.0076429397, y: -0.9208696, z: 0.016690083, w: -0.38943842}
       scale: {x: 0.99999964, y: 1.0000002, z: 1.0000001}
     - name: Leg4.R
       parentName: Leg3.R
@@ -1324,22 +1299,22 @@ ModelImporter:
     - name: BackLeg1
       parentName: Lowerbody
       position: {x: -1.4630757e-23, y: 0.5695741, z: -0.00000048428774}
-      rotation: {x: 0.0265795, y: -0.033858515, z: 0.064164, w: 0.9970106}
+      rotation: {x: 0.1094944, y: 0.024663819, z: -0.023778977, w: 0.9933969}
       scale: {x: 1, y: 0.9999999, z: 0.9999999}
     - name: BackLeg2
       parentName: BackLeg1
       position: {x: -0.0000000018626451, y: 1.0309231, z: 0.000000101164915}
-      rotation: {x: -0.08486079, y: 0.00022866952, z: -0.013492031, w: -0.9963014}
+      rotation: {x: 0.14370883, y: 0.014577735, z: 0.0070664156, w: -0.98948747}
       scale: {x: 1, y: 0.99999994, z: 1.0000004}
     - name: BackLeg3
       parentName: BackLeg2
       position: {x: -0.0000000023283064, y: 0.83839744, z: 0.0000001838198}
-      rotation: {x: -0.2094765, y: 0.07340991, z: 0.015566303, w: 0.97492987}
+      rotation: {x: -0.68981874, y: -0.039002184, z: 0.015068963, w: 0.72277385}
       scale: {x: 0.9999998, y: 0.9999997, z: 1}
     - name: BackLeg4
       parentName: BackLeg3
       position: {x: 0.0000000037252903, y: 0.70551956, z: 0.00000023056054}
-      rotation: {x: -0.82744145, y: 0.062710114, z: -0.06579769, w: 0.5541469}
+      rotation: {x: -0.28575614, y: 4.0999762e-10, z: 8.1999557e-10, w: 0.9583024}
       scale: {x: 0.9999999, y: 0.9999997, z: 1.0000001}
     - name: BackLeg4_end
       parentName: BackLeg4
@@ -1394,7 +1369,7 @@ ModelImporter:
     - name: R.MaidChirrSkirt.000
       parentName: Lowerbody
       position: {x: 0.47536325, y: -0.39533213, z: -0.103908725}
-      rotation: {x: -0.022662612, y: 0.0075776177, z: -0.06629114, w: 0.9975141}
+      rotation: {x: 0.005606771, y: 0.00086087, z: -0.20070376, w: 0.9796356}
       scale: {x: 0.99999994, y: 1, z: 0.99999994}
     - name: R.MaidChirrSkirt.001
       parentName: R.MaidChirrSkirt.000
@@ -1404,7 +1379,7 @@ ModelImporter:
     - name: R.MaidChirrSkirt.001_end
       parentName: R.MaidChirrSkirt.001
       position: {x: -0, y: 0.5262167, z: 0}
-      rotation: {x: 0.04257066, y: -0.041373212, z: -0.1727665, w: 0.9831723}
+      rotation: {x: 0.0029939637, y: -0.009489223, z: -0.044708595, w: 0.9989506}
       scale: {x: 1, y: 1, z: 1}
     - name: ChirrMesh
       parentName: Chirr_emoteskeleton(Clone)

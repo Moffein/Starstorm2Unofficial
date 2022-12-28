@@ -30,6 +30,7 @@ namespace Starstorm2.Modules
         internal static ConfigEntry<bool> disableStormVisuals;
 
         internal static ConfigEntry<bool> EnableUnlockAll;
+        internal static ConfigEntry<bool> EnableVoid;
         #endregion
 
         internal static void Initialize()
@@ -59,13 +60,15 @@ namespace Starstorm2.Modules
                             "Pressurized Canister No Jump Control",
                             false,
                             "Set to true to disable jump control on Pressurized Canister - activating the equipment will apply constant upward force regardless of whether you hold the jump button. This may lead to Funny and Memorable (tm) moments, especially if you like picking up Gestures of the Drowned.");
-            
+             */
+
+
             EnableVoid =
-                Starstorm.instance.Config.Bind("Starstorm 2 :: Void Fields changes",
+                StarstormPlugin.instance.Config.Bind("Starstorm 2 :: Void Fields changes",
                             "Enabled",
                             true,
                             "Enables gameplay changes related to the Void Fields hidden realm. Set to false to make Void Fields behave as it does in vanilla RoR2. Note that some unlocks will be unavailable if this is disabled.");
-             */
+
             EnableTyphoon =
                 StarstormPlugin.instance.Config.Bind("Starstorm 2 :: Typhoon",
                             "Enabled",

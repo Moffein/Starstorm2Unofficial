@@ -41,6 +41,7 @@
 						<ObjectRef Name="Canticum_Vitae_Loop_B" ID="{6B259F6E-8CFC-417D-B2AE-71A5643EFCF4}" WorkUnitID="{F233C913-3B4E-4D63-9074-90CE5295641F}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Canticum_Vitae_Loop_A" ID="{E3EAD861-93E6-424A-8D1B-4D1E5FC47239}" WorkUnitID="{F233C913-3B4E-4D63-9074-90CE5295641F}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Canticum_Vitae_Start_B" ID="{0FD4DAF6-CAD9-4252-AC0E-7BA8DA93B69E}" WorkUnitID="{F233C913-3B4E-4D63-9074-90CE5295641F}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Play_SS2U_NemesisTheme" ID="{5EE5992A-5CE2-4285-ABFC-D269AFBE4E85}" WorkUnitID="{39C9FF65-90F2-4516-9F65-D552D7641167}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Canticum_Vitae_Start_B" ID="{18CA27B5-6308-42AE-B87F-5F56F25A8078}" WorkUnitID="{F233C913-3B4E-4D63-9074-90CE5295641F}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Canticum_Vitae_Transition_A" ID="{02F5B1B0-C0E2-4321-8A2C-C6FC5A82E99D}" WorkUnitID="{F233C913-3B4E-4D63-9074-90CE5295641F}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Canticum_Vitae_Loop_A" ID="{72E0C779-AE96-43B5-A098-A1C8C2A37852}" WorkUnitID="{F233C913-3B4E-4D63-9074-90CE5295641F}" Origin="Manual" Filter="7"/>

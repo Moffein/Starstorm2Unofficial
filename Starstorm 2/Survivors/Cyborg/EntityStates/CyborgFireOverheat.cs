@@ -38,7 +38,7 @@ namespace EntityStates.SS2UStates.Cyborg
 
             FireBFG();
 
-            if (base.isAuthority && base.characterBody && base.characterMotor)
+            if (base.isAuthority && base.characterBody && base.characterMotor && !base.characterMotor.isGrounded)
             {
                 if (base.characterMotor.velocity.y < 0f) base.characterMotor.velocity.y = 0f;
                 base.characterMotor.ApplyForce(-2400f * base.GetAimRay().direction, true, false);

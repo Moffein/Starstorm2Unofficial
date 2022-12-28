@@ -5,6 +5,7 @@ using RoR2;
 using Starstorm2.Cores;
 using Starstorm2.Cores.Equipment;
 using Starstorm2.Cores.Items;
+using Starstorm2.Cores.NemesisInvasion;
 using Starstorm2.Survivors.Chirr;
 using Starstorm2.Survivors.Cyborg;
 using System;
@@ -45,7 +46,7 @@ namespace Starstorm2
     {
         internal const string guid = "com.ChirrLover.Starstorm2Unofficial";
         internal const string modName = "Starstorm 2 Unofficial";
-        internal const string version = "0.5.18";
+        internal const string version = "0.6.0";
 
         public static StarstormPlugin instance;
 
@@ -69,7 +70,7 @@ namespace Starstorm2
         //EtherealCore etherealCore;
         EventsCore eventsCore;
         DamageTypeCore damageTypeCore;
-        public static VoidCore voidCore;
+        public static NemesisInvasionCore nemesisInvasionCore;
         ItemDisplayCore itemDisplayCore;
         SkinsCore skinsCore;
 
@@ -225,10 +226,10 @@ namespace Starstorm2
             {
                 typhoonCore = new TyphoonCore();
             }
-            /*if (Modules.Config.EnableVoid.Value)
+            if (Modules.Config.EnableVoid.Value)
             {
-                voidCore = new VoidCore();
-            }*/
+                nemesisInvasionCore = new NemesisInvasionCore();
+            }
             if (Modules.Config.EnableEvents.Value)
             {
                 eventsCore = new EventsCore();
