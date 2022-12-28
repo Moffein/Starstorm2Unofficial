@@ -290,6 +290,9 @@ namespace Starstorm2.Cores
                     if (self.skillLocator.secondary) self.skillLocator.secondary.cooldownScale *= 0.66f;
                     if (self.skillLocator.utility) self.skillLocator.utility.cooldownScale *= 0.66f;
                     if (self.skillLocator.special) self.skillLocator.special.cooldownScale *= 0.66f;
+
+                    if (!self.bodyFlags.HasFlag(CharacterBody.BodyFlags.ImmuneToVoidDeath)) self.bodyFlags |= CharacterBody.BodyFlags.ImmuneToVoidDeath;
+                    if (!self.bodyFlags.HasFlag(CharacterBody.BodyFlags.ImmuneToExecutes)) self.bodyFlags |= CharacterBody.BodyFlags.ImmuneToExecutes;
                 }
             }
         }

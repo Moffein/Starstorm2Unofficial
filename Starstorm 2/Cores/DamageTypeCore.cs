@@ -23,7 +23,7 @@ namespace Starstorm2.Cores
         //public static DamageType
         //OnHit;
 
-        public static float gougeDamageCoefficient = 1.5f;    //gouge DPS
+        public static float gougeDamageCoefficient = 2f;    //gouge DPS
 
         public DamageTypeCore()
         {

@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 1803927563
+CRC: 3500648319
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 33f3d6e4871c568f23da6b292ed35587
+    Hash: a937a24f4fbb85919309c8684aed4e1a
   TypeTreeHash:
     serializedVersion: 2
     Hash: 7aec747c424dad58343d1828cf4a71ef
@@ -310,7 +310,6 @@ Assets:
 - Assets/AssetBundle/Cyborg/Animations/CharSelect.anim
 - Assets/AssetBundle/Nemmando/VFX/Materials/matSlash01.mat
 - Assets/AssetBundle/Nemmando/Animations/SprintRHT.anim
-- Assets/THE FUCKING TRASH CAN/skill2icon.png
 - Assets/AssetBundle/Items/NkotasHeritage/matNkotas.mat
 - Assets/AssetBundle/Nemmando/Textures/texNemmandoClassicEmission.png
 - Assets/AssetBundle/Cyborg/mdlCyborg.prefab
@@ -327,12 +326,12 @@ Assets:
 - Assets/AssetBundle/Nemmando/VFX/NemmandoSwingEffectOld.prefab
 - Assets/AssetBundle/Cyborg/Meshes/meshCyborgSteam.mesh
 - Assets/AssetBundle/Cyborg/Animations/ascend.anim
+- Assets/AssetBundle/Cyborg/animCyborg1Emote.prefab
 - Assets/AssetBundle/Enemies/Wayfarer/LampBoss.png
 - Assets/AssetBundle/Items/JetBoots/jet_boots.png
 - Assets/AssetBundle/Cyborg/Animations/animCyTP_Death.anim
 - Assets/AssetBundle/Nucleator/Animations/Clips/RunR.anim
 - Assets/AssetBundle/Executioner/Animations/animExecutioner.controller
-- Assets/THE FUCKING TRASH CAN/skill3icon.png
 - Assets/AssetBundle/Cyborg/VFX/matCyborgSprintEffect.mat
 - Assets/AssetBundle/Nemmando/Animations/Utility.BackLeft.anim
 - Assets/AssetBundle/Nemmando/Materials/matVergil.mat
@@ -498,7 +497,6 @@ Assets:
 - Assets/AssetBundle/Chirr/Animations/animChirr.controller
 - Assets/AssetBundle/Nemmando/Mesh/meshVergil.mesh
 - Assets/AssetBundle/Executioner/Animations/maskExeAimYaw.mask
-- Assets/THE FUCKING TRASH CAN/skill4icon.png
 - Assets/AssetBundle/Nemmando/Textures/texNemmandoClassic.png
 - Assets/AssetBundle/Executioner/VFX/Exe trail.png
 - Assets/AssetBundle/Executioner/Icons/texExecutionerSecondary.png
@@ -556,7 +554,6 @@ Assets:
 - Assets/AssetBundle/Cyborg/cyborgpassive.png
 - Assets/AssetBundle/Nemmando/Animations/SprintRToRest.anim
 - Assets/AssetBundle/Executioner/Icons/texExecutionerIconUnlock.png
-- Assets/THE FUCKING TRASH CAN/skill1icon.png
 - Assets/AssetBundle/Nemmando/Icons/texVergilSkin.png
 - Assets/AssetBundle/Nucleator/Icons/texNucleatorIconUnlock.png
 - Assets/AssetBundle/Nemmando/mdlNemmando.prefab

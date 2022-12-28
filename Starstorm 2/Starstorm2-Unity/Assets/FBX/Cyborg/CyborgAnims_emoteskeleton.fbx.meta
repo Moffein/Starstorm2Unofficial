@@ -1,0 +1,685 @@
+fileFormatVersion: 2
+guid: 6a857b97018f3bd43b49c3319f818bde
+ModelImporter:
+  serializedVersion: 19301
+  internalIDToNameTable:
+  - first:
+      1: 100000
+    second: Armature
+  - first:
+      1: 100002
+    second: Camera
+  - first:
+      1: 100004
+    second: Chest
+  - first:
+      1: 100006
+    second: Collar.L
+  - first:
+      1: 100008
+    second: Collar.R
+  - first:
+      1: 100010
+    second: //RootNode
+  - first:
+      1: 100012
+    second: head
+  - first:
+      1: 100014
+    second: head_end
+  - first:
+      1: 100016
+    second: Legs.001
+  - first:
+      1: 100018
+    second: Light
+  - first:
+      1: 100020
+    second: Lowerarm.L
+  - first:
+      1: 100022
+    second: Lowerarm.L_end
+  - first:
+      1: 100024
+    second: Lowerarm.R
+  - first:
+      1: 100026
+    second: Lowerarm.R_end
+  - first:
+      1: 100028
+    second: lowerleg.L
+  - first:
+      1: 100030
+    second: lowerleg.L_end
+  - first:
+      1: 100032
+    second: lowerleg.R
+  - first:
+      1: 100034
+    second: lowerleg.R_end
+  - first:
+      1: 100036
+    second: Upperarm.L
+  - first:
+      1: 100038
+    second: Upperarm.R
+  - first:
+      1: 100040
+    second: Upperleg.L
+  - first:
+      1: 100042
+    second: Upperleg.R
+  - first:
+      1: 100044
+    second: Waist
+  - first:
+      4: 400000
+    second: Armature
+  - first:
+      4: 400002
+    second: Camera
+  - first:
+      4: 400004
+    second: Chest
+  - first:
+      4: 400006
+    second: Collar.L
+  - first:
+      4: 400008
+    second: Collar.R
+  - first:
+      4: 400010
+    second: //RootNode
+  - first:
+      4: 400012
+    second: head
+  - first:
+      4: 400014
+    second: head_end
+  - first:
+      4: 400016
+    second: Legs.001
+  - first:
+      4: 400018
+    second: Light
+  - first:
+      4: 400020
+    second: Lowerarm.L
+  - first:
+      4: 400022
+    second: Lowerarm.L_end
+  - first:
+      4: 400024
+    second: Lowerarm.R
+  - first:
+      4: 400026
+    second: Lowerarm.R_end
+  - first:
+      4: 400028
+    second: lowerleg.L
+  - first:
+      4: 400030
+    second: lowerleg.L_end
+  - first:
+      4: 400032
+    second: lowerleg.R
+  - first:
+      4: 400034
+    second: lowerleg.R_end
+  - first:
+      4: 400036
+    second: Upperarm.L
+  - first:
+      4: 400038
+    second: Upperarm.R
+  - first:
+      4: 400040
+    second: Upperleg.L
+  - first:
+      4: 400042
+    second: Upperleg.R
+  - first:
+      4: 400044
+    second: Waist
+  - first:
+      20: 2000000
+    second: Camera
+  - first:
+      21: 2100000
+    second: lambert1.001
+  - first:
+      43: 4300000
+    second: Legs.001
+  - first:
+      74: 7400000
+    second: Armature|ascend
+  - first:
+      74: 7400002
+    second: Armature|CharSelect
+  - first:
+      74: 7400004
+    second: Armature|CharSelectIdle
+  - first:
+      74: 7400006
+    second: Armature|CyborgDEAD
+  - first:
+      74: 7400008
+    second: Armature|CyborgDEAD-Alive
+  - first:
+      74: 7400010
+    second: Armature|default
+  - first:
+      74: 7400012
+    second: Armature|Fall
+  - first:
+      74: 7400014
+    second: Armature|Hitstun
+  - first:
+      74: 7400016
+    second: Armature|Idle
+  - first:
+      74: 7400018
+    second: Armature|Idle-Primary
+  - first:
+      74: 7400020
+    second: Armature|jump
+  - first:
+      74: 7400022
+    second: Armature|jump.001
+  - first:
+      74: 7400024
+    second: Armature|Landing
+  - first:
+      74: 7400026
+    second: Armature|LegsAction.001
+  - first:
+      74: 7400028
+    second: Armature|PitchYAW
+  - first:
+      74: 7400030
+    second: Armature|Primary1
+  - first:
+      74: 7400032
+    second: Armature|Primary2
+  - first:
+      74: 7400034
+    second: Armature|RestIdle
+  - first:
+      74: 7400036
+    second: Armature|Secondary
+  - first:
+      74: 7400038
+    second: Armature|Special11
+  - first:
+      74: 7400040
+    second: Armature|Special12
+  - first:
+      74: 7400042
+    second: Armature|Special2
+  - first:
+      74: 7400044
+    second: Armature|SprintFWD
+  - first:
+      74: 7400046
+    second: Armature|Utility
+  - first:
+      74: 7400048
+    second: Armature|Walk-Idle
+  - first:
+      74: 7400050
+    second: Armature|WalkBWD
+  - first:
+      74: 7400052
+    second: Armature|WalkFWD
+  - first:
+      74: 7400054
+    second: Armature|WalkLFT
+  - first:
+      74: 7400056
+    second: Armature|WalkRHT
+  - first:
+      74: 7400058
+    second: Legs.001|jump.001
+  - first:
+      74: 7400060
+    second: Legs.001|LegsAction.001
+  - first:
+      95: 9500000
+    second: //RootNode
+  - first:
+      108: 10800000
+    second: Light
+  - first:
+      137: 13700000
+    second: Legs.001
+  externalObjects: {}
+  materials:
+    materialImportMode: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: "\nClip 'Armature|CharSelect' has import animation warnings
+      that might lower retargeting quality:\nNote: Activate translation DOF on avatar
+      to improve retargeting quality.\n\t'Upperleg.L' has translation animation that
+      will be discarded.\n\t'Upperleg.R' has translation animation that will be discarded.\n\nClip
+      'Armature|CharSelectIdle' has import animation warnings that might lower retargeting
+      quality:\nNote: Activate translation DOF on avatar to improve retargeting quality.\n\t'Upperarm.L'
+      has translation animation that will be discarded.\n\t'Upperarm.R' has translation
+      animation that will be discarded.\n\t'Upperleg.L' has translation animation
+      that will be discarded.\n\t'Upperleg.R' has translation animation that will
+      be discarded.\n\nClip 'Armature|CyborgDEAD-Alive' has import animation warnings
+      that might lower retargeting quality:\nNote: Activate translation DOF on avatar
+      to improve retargeting quality.\n\t'Upperarm.L' has translation animation that
+      will be discarded.\n\t'Upperarm.R' has translation animation that will be discarded.\n\t'Upperleg.L'
+      has translation animation that will be discarded.\n\t'Upperleg.R' has translation
+      animation that will be discarded.\n\nClip 'Armature|Hitstun' has import animation
+      warnings that might lower retargeting quality:\nNote: Activate translation
+      DOF on avatar to improve retargeting quality.\n\t'Upperarm.L' has translation
+      animation that will be discarded.\n\t'Upperarm.R' has translation animation
+      that will be discarded.\n\nClip 'Armature|Idle-Primary' has import animation
+      warnings that might lower retargeting quality:\nNote: Activate translation
+      DOF on avatar to improve retargeting quality.\n\t'Upperarm.L' has translation
+      animation that will be discarded.\n\t'Upperarm.R' has translation animation
+      that will be discarded.\n\nClip 'Armature|jump.001' has import animation warnings
+      that might lower retargeting quality:\nNote: Activate translation DOF on avatar
+      to improve retargeting quality.\n\t'Upperleg.L' has translation animation that
+      will be discarded.\n\t'Upperleg.R' has translation animation that will be discarded.\n\nClip
+      'Armature|Landing' has import animation warnings that might lower retargeting
+      quality:\nNote: Activate translation DOF on avatar to improve retargeting quality.\n\t'Upperarm.L'
+      has translation animation that will be discarded.\n\t'Upperarm.R' has translation
+      animation that will be discarded.\n\t'Upperleg.L' has translation animation
+      that will be discarded.\n\t'Upperleg.R' has translation animation that will
+      be discarded.\n\nClip 'Armature|PitchYAW' has import animation warnings that
+      might lower retargeting quality:\nNote: Activate translation DOF on avatar
+      to improve retargeting quality.\n\t'Upperarm.L' has translation animation that
+      will be discarded.\n\t'Upperarm.R' has translation animation that will be discarded.\n\nClip
+      'Armature|Primary1' has import animation warnings that might lower retargeting
+      quality:\nNote: Activate translation DOF on avatar to improve retargeting quality.\n\t'Upperarm.R'
+      has translation animation that will be discarded.\n\t'Upperleg.L' has translation
+      animation that will be discarded.\n\t'Upperleg.R' has translation animation
+      that will be discarded.\n\nClip 'Armature|Primary2' has import animation warnings
+      that might lower retargeting quality:\nNote: Activate translation DOF on avatar
+      to improve retargeting quality.\n\t'Upperarm.L' has translation animation that
+      will be discarded.\n\t'Upperarm.R' has translation animation that will be discarded.\n\t'Upperleg.L'
+      has translation animation that will be discarded.\n\t'Upperleg.R' has translation
+      animation that will be discarded.\n\nClip 'Armature|RestIdle' has import animation
+      warnings that might lower retargeting quality:\nNote: Activate translation
+      DOF on avatar to improve retargeting quality.\n\t'Upperarm.L' has translation
+      animation that will be discarded.\n\t'Upperarm.R' has translation animation
+      that will be discarded.\n\nClip 'Armature|Secondary' has import animation warnings
+      that might lower retargeting quality:\nNote: Activate translation DOF on avatar
+      to improve retargeting quality.\n\t'Upperarm.L' has translation animation that
+      will be discarded.\n\t'Upperleg.L' has translation animation that will be discarded.\n\t'Upperleg.R'
+      has translation animation that will be discarded.\n\nClip 'Armature|Special11'
+      has import animation warnings that might lower retargeting quality:\nNote:
+      Activate translation DOF on avatar to improve retargeting quality.\n\t'Upperarm.L'
+      has translation animation that will be discarded.\n\t'Upperarm.R' has translation
+      animation that will be discarded.\n\t'Upperleg.L' has translation animation
+      that will be discarded.\n\t'Upperleg.R' has translation animation that will
+      be discarded.\n\nClip 'Armature|Special12' has import animation warnings that
+      might lower retargeting quality:\nNote: Activate translation DOF on avatar
+      to improve retargeting quality.\n\t'Upperleg.L' has translation animation that
+      will be discarded.\n\t'Upperleg.R' has translation animation that will be discarded.\n\nClip
+      'Armature|Special2' has import animation warnings that might lower retargeting
+      quality:\nNote: Activate translation DOF on avatar to improve retargeting quality.\n\t'Upperarm.L'
+      has translation animation that will be discarded.\n\t'Upperarm.R' has translation
+      animation that will be discarded.\n\t'Upperleg.L' has translation animation
+      that will be discarded.\n\t'Upperleg.R' has translation animation that will
+      be discarded.\n\nClip 'Armature|Utility' has import animation warnings that
+      might lower retargeting quality:\nNote: Activate translation DOF on avatar
+      to improve retargeting quality.\n\t'Collar.L' has translation animation that
+      will be discarded.\n\t'Collar.R' has translation animation that will be discarded.\n\t'Upperleg.L'
+      has translation animation that will be discarded.\n\t'Upperleg.R' has translation
+      animation that will be discarded.\n\nClip 'Armature|Walk-Idle' has import animation
+      warnings that might lower retargeting quality:\nNote: Activate translation
+      DOF on avatar to improve retargeting quality.\n\t'Upperarm.L' has translation
+      animation that will be discarded.\n\t'Upperarm.R' has translation animation
+      that will be discarded.\n\t'Upperleg.L' has translation animation that will
+      be discarded.\n\t'Upperleg.R' has translation animation that will be discarded.\n\nClip
+      'Armature|WalkBWD' has import animation warnings that might lower retargeting
+      quality:\nNote: Activate translation DOF on avatar to improve retargeting quality.\n\t'Upperarm.L'
+      has translation animation that will be discarded.\n\t'Upperarm.R' has translation
+      animation that will be discarded.\n\nClip 'Armature|WalkLFT' has import animation
+      warnings that might lower retargeting quality:\nNote: Activate translation
+      DOF on avatar to improve retargeting quality.\n\t'Upperleg.L' has translation
+      animation that will be discarded.\n\t'Upperleg.R' has translation animation
+      that will be discarded.\n\nClip 'Armature|WalkRHT' has import animation warnings
+      that might lower retargeting quality:\nNote: Activate translation DOF on avatar
+      to improve retargeting quality.\n\t'Upperleg.L' has translation animation that
+      will be discarded.\n\t'Upperleg.R' has translation animation that will be discarded.\n"
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 3
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    sortHierarchyByName: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    fileIdsGeneration: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    skinWeightsMode: 0
+    maxBonesPerVertex: 4
+    minBoneWeight: 0.001
+    meshOptimizationFlags: -1
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 0
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  referencedClips: []
+  importAnimation: 1
+  humanDescription:
+    serializedVersion: 3
+    human:
+    - boneName: Waist
+      humanName: Hips
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Upperleg.L
+      humanName: LeftUpperLeg
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Upperleg.R
+      humanName: RightUpperLeg
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: lowerleg.L
+      humanName: LeftLowerLeg
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: lowerleg.R
+      humanName: RightLowerLeg
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Chest
+      humanName: Spine
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: head
+      humanName: Head
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Collar.L
+      humanName: LeftShoulder
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Collar.R
+      humanName: RightShoulder
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Upperarm.L
+      humanName: LeftUpperArm
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Upperarm.R
+      humanName: RightUpperArm
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Lowerarm.L
+      humanName: LeftLowerArm
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Lowerarm.R
+      humanName: RightLowerArm
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: lowerleg.L_end
+      humanName: LeftFoot
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: lowerleg.R_end
+      humanName: RightFoot
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Lowerarm.L_end
+      humanName: LeftHand
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Lowerarm.R_end
+      humanName: RightHand
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    skeleton:
+    - name: CyborgAnims_emoteskeleton(Clone)
+      parentName: 
+      position: {x: 0, y: 0, z: 0}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Armature
+      parentName: CyborgAnims_emoteskeleton(Clone)
+      position: {x: -0, y: 0.99269164, z: -0.012468699}
+      rotation: {x: -0.6787512, y: -0.004734459, z: -0.0004903743, w: 0.73435295}
+      scale: {x: 1, y: 0.99999994, z: 0.99999994}
+    - name: Waist
+      parentName: Armature
+      position: {x: 0.0004027365, y: -0.01699805, z: 0.04472578}
+      rotation: {x: 0.71285015, y: -0.00041876966, z: 0.00041873986, w: 0.7013161}
+      scale: {x: 1, y: 1.0000001, z: 1.0000002}
+    - name: Chest
+      parentName: Waist
+      position: {x: -4.9387605e-11, y: 0.22762066, z: 2.1733904e-10}
+      rotation: {x: -0.10074556, y: 0.00020296776, z: -0.003047948, w: 0.9949076}
+      scale: {x: 0.99999994, y: 0.9999999, z: 0.9999999}
+    - name: Collar.L
+      parentName: Chest
+      position: {x: -0.19564377, y: 0.28712368, z: -0.0028781986}
+      rotation: {x: -0.007785498, y: 0.0044453717, z: 0.66174114, w: 0.74967885}
+      scale: {x: 1.0000004, y: 1.0000002, z: 1}
+    - name: Upperarm.L
+      parentName: Collar.L
+      position: {x: -0.1047207, y: 0.2171226, z: 0.0077367146}
+      rotation: {x: -0.000111148656, y: 0.0072561395, z: 0.07603334, w: 0.99707896}
+      scale: {x: 1.0000005, y: 1.0000006, z: 0.9999998}
+    - name: Lowerarm.L
+      parentName: Upperarm.L
+      position: {x: -0.000000046624336, y: 0.25820616, z: -9.313226e-10}
+      rotation: {x: -0.01323306, y: 0.0005949694, z: -0.0007650092, w: 0.999912}
+      scale: {x: 0.99999994, y: 0.99999994, z: 1.0000002}
+    - name: Lowerarm.L_end
+      parentName: Lowerarm.L
+      position: {x: -0, y: 0.48587716, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Collar.R
+      parentName: Chest
+      position: {x: 0.19307438, y: 0.28901348, z: -0.0025711085}
+      rotation: {x: -0.007008461, y: -0.00505052, z: -0.66241, w: 0.7490917}
+      scale: {x: 1.0000004, y: 0.9999999, z: 0.9999999}
+    - name: Upperarm.R
+      parentName: Collar.R
+      position: {x: 0.104720734, y: 0.21712261, z: 0.0077367406}
+      rotation: {x: 0.0013336395, y: 0.006324732, z: 0.075879805, w: -0.99709606}
+      scale: {x: 0.99999976, y: 0.9999997, z: 0.9999999}
+    - name: Lowerarm.R
+      parentName: Upperarm.R
+      position: {x: 0.000000025494955, y: 0.2582061, z: -0.0000000027939677}
+      rotation: {x: -0.013233201, y: -0.00059492956, z: 0.000764857, w: 0.999912}
+      scale: {x: 1, y: 0.9999999, z: 1}
+    - name: Lowerarm.R_end
+      parentName: Lowerarm.R
+      position: {x: -0, y: 0.48587716, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: head
+      parentName: Chest
+      position: {x: -6.082246e-11, y: 0.32744476, z: 6.633627e-10}
+      rotation: {x: 0.05339849, y: 0.000000049782095, z: -0.0003948619, w: 0.99857324}
+      scale: {x: 0.9999999, y: 1.0000002, z: 1}
+    - name: head_end
+      parentName: head
+      position: {x: -0, y: 0.3702703, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Upperleg.L
+      parentName: Waist
+      position: {x: -0.18241967, y: 0.0011899939, z: 0.0014915109}
+      rotation: {x: -0.036084276, y: 0.065750726, z: 0.99718297, w: 0.00093042734}
+      scale: {x: 0.9999998, y: 0.9999985, z: 0.99999714}
+    - name: lowerleg.L
+      parentName: Upperleg.L
+      position: {x: 0.000000026251655, y: 0.4266846, z: -0.000000011175871}
+      rotation: {x: -0.01816936, y: 0.0000022132954, z: -0.0014544154, w: 0.99983394}
+      scale: {x: 1.0000007, y: 1.0000005, z: 1.0000007}
+    - name: lowerleg.L_end
+      parentName: lowerleg.L
+      position: {x: -0, y: 0.49131432, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Upperleg.R
+      parentName: Waist
+      position: {x: 0.18211061, y: 0.0011468023, z: 0.0010785678}
+      rotation: {x: 0.036155216, y: 0.065707974, z: 0.9971837, w: 0.000251441}
+      scale: {x: 0.9999995, y: 0.99999976, z: 1.0000008}
+    - name: lowerleg.R
+      parentName: Upperleg.R
+      position: {x: -0.0000000055879354, y: 0.42668456, z: 0.000000013038516}
+      rotation: {x: -0.018169403, y: 0.0000007016024, z: 0.0014544551, w: 0.99983394}
+      scale: {x: 1.0000001, y: 1.0000005, z: 0.9999997}
+    - name: lowerleg.R_end
+      parentName: lowerleg.R
+      position: {x: -0, y: 0.49131432, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Camera
+      parentName: CyborgAnims_emoteskeleton(Clone)
+      position: {x: -7.3588915, y: 4.958309, z: 6.925791}
+      rotation: {x: 0.09062847, y: 0.89379627, z: -0.20997298, w: 0.3857799}
+      scale: {x: 0.99999994, y: 1, z: 1}
+    - name: Legs.001
+      parentName: CyborgAnims_emoteskeleton(Clone)
+      position: {x: -5.820766e-10, y: 0.13025492, z: 0.0000000035834091}
+      rotation: {x: 0.000000082949455, y: 4.2064124e-10, z: -4.5474735e-11, w: 1}
+      scale: {x: 0.010000002, y: 0.010000001, z: 0.010000002}
+    - name: Light
+      parentName: CyborgAnims_emoteskeleton(Clone)
+      position: {x: -4.0762453, y: 5.903862, z: 4.1891327}
+      rotation: {x: 0.52327543, y: -0.34203392, z: 0.72694236, w: 0.28416628}
+      scale: {x: 1, y: 0.99999994, z: 1}
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    globalScale: 1
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 1
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  autoGenerateAvatarMappingIfUnspecified: 1
+  animationType: 3
+  humanoidOversampling: 1
+  avatarSetup: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

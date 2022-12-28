@@ -292,6 +292,9 @@
     <Reference Include="com.unity.multiplayer-hlapi.Runtime">
       <HintPath>libs\com.unity.multiplayer-hlapi.Runtime.dll</HintPath>
     </Reference>
+    <Reference Include="CustomEmotesAPI">
+      <HintPath>libs\SoftDependencies\CustomEmotesAPI.dll</HintPath>
+    </Reference>
     <Reference Include="Decalicious">
       <HintPath>libs\Decalicious.dll</HintPath>
     </Reference>

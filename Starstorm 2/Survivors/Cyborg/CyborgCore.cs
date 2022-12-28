@@ -51,11 +51,11 @@ namespace Starstorm2.Survivors.Cyborg
             Modules.Assets.effectDefs.Add(new EffectDef(tracerEffectPrefab));
             PrimaryLaser.tracerEffectPrefab = tracerEffectPrefab;
 
-            LanguageAPI.Add("CYBORG_NAME", "CYBORG");
+            LanguageAPI.Add("CYBORG_NAME", "Cyborg");
             LanguageAPI.Add("CYBORG_SUBTITLE", "Man Made Monstrosity");
             LanguageAPI.Add("CYBORG_OUTRO_FLAVOR", "..and so it left, programming releasing excess serotonin.");
             LanguageAPI.Add("CYBORG_OUTRO_FAILURE", "..and so it vanished, teleportation beacon left with no signal.");
-            LanguageAPI.Add("CYBORG_DESCRIPTION", "The CYBORG is a versatile and highly-efficient fusion of man and machine.\r\n\r\n< ! > Unmaker and Rising Star deal consistent damage at all ranges.\r\n\r\n< ! > Overheat Redress fizzles out over distance, so use it up close to deal the most damage!\r\n\r\n< ! > Use Recall to place warp points to return to while exploring a stage.\r\n\r\n< ! > Hold down the Recall button to destroy unwanted warp points.\r\n\r\n");
+            LanguageAPI.Add("CYBORG_DESCRIPTION", "Technology was to reach its moral bounds when the Cyborg was created. It's hard to know how much humanity is left inside them.\r\n\r\n< ! > Unmaker and Rising Star deal consistent damage at all ranges.\r\n\r\n< ! > Overheat Redress fizzles out over distance, so use it up close to deal the most damage!\r\n\r\n< ! > Use Recall to place warp points to return to while exploring a stage.\r\n\r\n< ! > Hold down the Recall button to destroy unwanted warp points.\r\n\r\n");
 
             RegisterProjectiles();
             RegisterStates();
@@ -66,6 +66,30 @@ namespace Starstorm2.Survivors.Cyborg
 
             Modules.Prefabs.RegisterNewSurvivor(cybPrefab, PrefabCore.CreateDisplayPrefab("CyborgDisplay", cybPrefab), Color.blue, "CYBORG", 40.1f);
             RoR2.RoR2Application.onLoad += SetBodyIndex;
+
+            if (StarstormPlugin.emoteAPILoaded) EmoteAPICompat();
+        }
+
+        [MethodImpl(MethodImplOptions.NoInlining | MethodImplOptions.NoOptimization)]
+        private void EmoteAPICompat()
+        {
+            On.RoR2.SurvivorCatalog.Init += (orig) =>
+            {
+                orig();
+
+                foreach (var item in SurvivorCatalog.allSurvivorDefs)
+                {
+                    Debug.Log(item.bodyPrefab.name);
+                    if (item.bodyPrefab.name == "CyborgBody")
+                    {
+                        var skele = Modules.Assets.mainAssetBundle.LoadAsset<UnityEngine.GameObject>("animCyborg1Emote.prefab");
+
+                        EmotesAPI.CustomEmotesAPI.ImportArmature(item.bodyPrefab, skele);
+                        skele.GetComponentInChildren<BoneMapper>().scale = 1.5f;
+                        break;
+                    }
+                }
+            };
         }
 
         private void LateSetup(HG.ReadOnlyArray<RoR2.ContentManagement.ReadOnlyContentPack> obj)

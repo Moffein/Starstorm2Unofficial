@@ -314,7 +314,7 @@ namespace Starstorm2.Survivors.Executioner
         {
             LanguageAPI.Add("EXECUTIONER_NAME", "Executioner");
             LanguageAPI.Add("EXECUTIONER_SUBTITLE", "Dreaded Guillotine");
-            LanguageAPI.Add("EXECUTIONER_DESCRIPTION", "The Executioner is a mobile fighter who specializes in counting heads.\r\n\r\n" +
+            LanguageAPI.Add("EXECUTIONER_DESCRIPTION", "The Executioner's goal is to spill as much blood as possible in the shortest amount of time. Bullets loaded, ion manipulators charged.\r\n\r\n" +
                 " < ! > Ion Burst deals massive damage, but does not regenerate stocks over time.\r\n\r\n" +
                 " < ! > Crowd Disperion interrupts enemy attacks, providing you with a window of opportunity.\r\n\r\n" +
                 " < ! > Feared enemies give extra Ion Burst charges when killed.\r\n\r\n" +

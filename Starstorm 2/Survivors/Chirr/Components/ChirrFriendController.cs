@@ -216,7 +216,7 @@ namespace Starstorm2.Survivors.Chirr.Components
 
         private void UpdateMinionInventory(Inventory inventory, ItemIndex itemIndex, int count)
         {
-            if (count > 0 && ownerMaster && this._hasFriend && this.targetMaster && this.targetMaster.inventory && !IsBlacklistedItem(itemIndex) && ownerMaster != this.targetMaster)
+            if (NetworkServer.active && count > 0 && ownerMaster && this._hasFriend && this.targetMaster && this.targetMaster.inventory && !IsBlacklistedItem(itemIndex) && ownerMaster != this.targetMaster)
             {
                 CharacterMaster cm = inventory.GetComponent<CharacterMaster>();
                 if (cm == ownerMaster)

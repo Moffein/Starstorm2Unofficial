@@ -76,14 +76,6 @@ namespace Starstorm2.Survivors.Chirr
             LanguageAPI.Add("BROTHERHURT_CHIRR_BEFRIEND_1", " YOU... REACH OUT... TO ME, VERMIN...?");
             brotherKillChirrTokens.Add("BROTHER_KILL_CHIRR1");
             brotherKillChirrTokens.Add("BROTHER_KILL_CHIRR2");
-            /*
-             "BROTHERHURT_DEATH_1": "NO... NOT NOW...",
-		"BROTHERHURT_DEATH_2": "WHY... WHY NOW...?",
-		"BROTHERHURT_DEATH_3": "NO... NO...!",
-		"BROTHERHURT_DEATH_4": "BROTHER... HELP ME...!",
-		"BROTHERHURT_DEATH_5": "THIS PLANE GROWS DARK... BROTHER... I CANNOT SEE YOU... WHERE ARE YOU...?",
-		"BROTHERHURT_DEATH_6": "BROTHER... PERHAPS... WE WILL GET IT RIGHT... NEXT TIME...",
-             */
 
             RegisterProjectiles();
             RegisterStates();

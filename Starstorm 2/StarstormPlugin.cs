@@ -23,6 +23,7 @@ namespace Starstorm2
     [BepInDependency("com.DestroyedClone.AncientScepter", BepInDependency.DependencyFlags.SoftDependency)]
     [BepInDependency("com.ThinkInvisible.ClassicItems", BepInDependency.DependencyFlags.SoftDependency)]
     [BepInDependency("com.Kingpinush.KingKombatArena", BepInDependency.DependencyFlags.SoftDependency)]
+    [BepInDependency("com.weliveinasociety.CustomEmotesAPI", BepInDependency.DependencyFlags.SoftDependency)]
     [NetworkCompatibility(CompatibilityLevel.EveryoneMustHaveMod, VersionStrictness.EveryoneNeedSameModVersion)]
     [BepInPlugin(guid, modName, version)]
     [R2APISubmoduleDependency(new string[]
@@ -44,7 +45,7 @@ namespace Starstorm2
     {
         internal const string guid = "com.ChirrLover.Starstorm2Unofficial";
         internal const string modName = "Starstorm 2 Unofficial";
-        internal const string version = "0.5.17";
+        internal const string version = "0.5.18";
 
         public static StarstormPlugin instance;
 
@@ -54,6 +55,7 @@ namespace Starstorm2
         public static bool scepterPluginLoaded = false;
         public static bool classicItemsLoaded = false;
         public static bool kingArenaLoaded = false;
+        public static bool emoteAPILoaded = false;
 
         public static bool kingArenaActive = false;
 
@@ -87,6 +89,8 @@ namespace Starstorm2
             scepterPluginLoaded = BepInEx.Bootstrap.Chainloader.PluginInfos.ContainsKey("com.DestroyedClone.AncientScepter");
             classicItemsLoaded = BepInEx.Bootstrap.Chainloader.PluginInfos.ContainsKey("com.ThinkInvisible.ClassicItems");
             kingArenaLoaded = BepInEx.Bootstrap.Chainloader.PluginInfos.ContainsKey("com.Kingpinush.KingKombatArena");
+            emoteAPILoaded = BepInEx.Bootstrap.Chainloader.PluginInfos.ContainsKey("com.weliveinasociety.CustomEmotesAPI");
+            riskOfOptionsLoaded = BepInEx.Bootstrap.Chainloader.PluginInfos.ContainsKey("com.rune580.riskofoptions");
 
             if (kingArenaLoaded)
             {
@@ -151,7 +155,6 @@ namespace Starstorm2
         private void Initialize()
         {
             infernoPluginLoaded = BepInEx.Bootstrap.Chainloader.PluginInfos.ContainsKey("HIFU.Inferno");
-            riskOfOptionsLoaded = BepInEx.Bootstrap.Chainloader.PluginInfos.ContainsKey("com.rune580.riskofoptions");
 
             //MAKE SURE DAMAGETYPES INITIALIZE FIRST
             damageTypeCore = new DamageTypeCore();
