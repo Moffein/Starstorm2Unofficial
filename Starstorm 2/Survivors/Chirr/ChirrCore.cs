@@ -51,6 +51,12 @@ namespace Starstorm2.Survivors.Chirr
             ChirrFriendController.BlacklistBody(BodyCatalog.FindBodyIndex("ShopkeeperBody"));
             ChirrFriendController.BlacklistBody(BodyCatalog.FindBodyIndex("VoidInfestorBody"));
 
+            ChirrFriendController.BlacklistBody(BodyCatalog.FindBodyIndex("MiniVoidRaidCrabBodyBase"));
+            ChirrFriendController.BlacklistBody(BodyCatalog.FindBodyIndex("MiniVoidRaidCrabBodyPhase1"));
+            ChirrFriendController.BlacklistBody(BodyCatalog.FindBodyIndex("MiniVoidRaidCrabBodyPhase2"));
+            ChirrFriendController.BlacklistBody(BodyCatalog.FindBodyIndex("MiniVoidRaidCrabBodyPhase3"));
+            ChirrFriendController.BlacklistBody(BodyCatalog.FindBodyIndex("MiniVoidRaidCrabBodyPhase4"));
+
             ChirrFriendController.bodyDamageValueOverrides.Add(BodyCatalog.FindBodyIndex("ClayBruiserBody"), 1f);
             ChirrFriendController.bodyDamageValueOverrides.Add(brotherBodyIndex, 4f);
             ChirrFriendController.bodyDamageValueOverrides.Add(BodyCatalog.FindBodyIndex("BrotherHurtBody"), 4f);
@@ -88,7 +94,31 @@ namespace Starstorm2.Survivors.Chirr
             RoR2.RoR2Application.onLoad += SetBodyIndex;
             if (brotherKillChirrTokens.Count > 0) RoR2.GlobalEventManager.onCharacterDeathGlobal += GlobalEventManager_onCharacterDeathGlobal;
             RoR2.Run.onRunStartGlobal += ResetMithrixConvertedTracker;
-            
+
+
+            if (StarstormPlugin.emoteAPILoaded) EmoteAPICompat();
+        }
+
+        [MethodImpl(MethodImplOptions.NoInlining | MethodImplOptions.NoOptimization)]
+        private void EmoteAPICompat()
+        {
+            On.RoR2.SurvivorCatalog.Init += (orig) =>
+            {
+                orig();
+
+                foreach (var item in SurvivorCatalog.allSurvivorDefs)
+                {
+                    Debug.Log(item.bodyPrefab.name);
+                    if (item.bodyPrefab.name == "ChirrBody")
+                    {
+                        var skele = Modules.Assets.mainAssetBundle.LoadAsset<UnityEngine.GameObject>("animChirrEmote.prefab");
+
+                        EmotesAPI.CustomEmotesAPI.ImportArmature(item.bodyPrefab, skele);
+                        skele.GetComponentInChildren<BoneMapper>().scale = 1.5f;
+                        break;
+                    }
+                }
+            };
         }
 
         private void GlobalEventManager_onCharacterDeathGlobal(DamageReport report)

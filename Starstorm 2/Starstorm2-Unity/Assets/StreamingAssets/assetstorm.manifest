@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 3500648319
+CRC: 3859626801
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: a937a24f4fbb85919309c8684aed4e1a
+    Hash: 60cd1e6e82489000cad67e5131740f73
   TypeTreeHash:
     serializedVersion: 2
     Hash: 7aec747c424dad58343d1828cf4a71ef
@@ -97,6 +97,7 @@ Assets:
 - Assets/AssetBundle/Items/MoltenCoin/Molten_Coin_EmissionMask.png
 - Assets/AssetBundle/Cyborg/Animations/Fall.anim
 - Assets/AssetBundle/Items/ShackledLamp/LampItem.png
+- Assets/AssetBundle/Chirr/animChirrEmote.prefab
 - Assets/AssetBundle/Nemmando/Materials/matHitboxPreview.mat
 - Assets/AssetBundle/Nemmando/VFX/Textures/Slash2.tga
 - Assets/AssetBundle/Nemmando/Materials/matNemmandoMGS.mat
@@ -349,6 +350,7 @@ Assets:
 - Assets/AssetBundle/Cyborg/Animations/animCyborgMenu.controller
 - Assets/AssetBundle/Enemies/Wayfarer/mdlWayfarer.prefab
 - Assets/AssetBundle/Items/ErraticGadget/gadgettex.png
+- Assets/AssetBundle/Chirr/Chirr_emoteskeleton.fbx
 - Assets/AssetBundle/Items/MoltenCoin/MoltenCoinDiffuse2.png
 - Assets/AssetBundle/Items/HuntersSigil/HuntersSigil_Icon.png
 - Assets/AssetBundle/Items/ErraticGadget/matErraticGadget.mat

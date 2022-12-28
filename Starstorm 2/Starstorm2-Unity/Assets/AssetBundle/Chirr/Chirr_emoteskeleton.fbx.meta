@@ -1,0 +1,1434 @@
+fileFormatVersion: 2
+guid: 985576d637ff7a443bf0eefe27404c49
+ModelImporter:
+  serializedVersion: 19301
+  internalIDToNameTable:
+  - first:
+      1: 100000
+    second: ArmatureModified
+  - first:
+      1: 100002
+    second: BackLeg1
+  - first:
+      1: 100004
+    second: BackLeg2
+  - first:
+      1: 100006
+    second: BackLeg3
+  - first:
+      1: 100008
+    second: BackLeg4
+  - first:
+      1: 100010
+    second: BackLeg4_end
+  - first:
+      1: 100012
+    second: Body1
+  - first:
+      1: 100014
+    second: Body2
+  - first:
+      1: 100016
+    second: Body3
+  - first:
+      1: 100018
+    second: C.MaidChirrSkirtBottom.000
+  - first:
+      1: 100020
+    second: C.MaidChirrSkirtBottom.001
+  - first:
+      1: 100022
+    second: C.MaidChirrSkirtBottom.001_end
+  - first:
+      1: 100024
+    second: C.MaidChirrSkirtTop.000
+  - first:
+      1: 100026
+    second: C.MaidChirrSkirtTop.001
+  - first:
+      1: 100028
+    second: C.MaidChirrSkirtTop.001_end
+  - first:
+      1: 100030
+    second: //RootNode
+  - first:
+      1: 100032
+    second: ChirrMesh
+  - first:
+      1: 100034
+    second: FrontJiggleBone.L
+  - first:
+      1: 100036
+    second: FrontJiggleBone.L_end
+  - first:
+      1: 100038
+    second: FrontJiggleBone.R
+  - first:
+      1: 100040
+    second: FrontJiggleBone.R_end
+  - first:
+      1: 100042
+    second: Head
+  - first:
+      1: 100044
+    second: Ik-BackLeg
+  - first:
+      1: 100046
+    second: Ik-BackLeg_end
+  - first:
+      1: 100048
+    second: Ik-Leg.L
+  - first:
+      1: 100050
+    second: Ik-Leg.L_end
+  - first:
+      1: 100052
+    second: Ik-Leg.R
+  - first:
+      1: 100054
+    second: Ik-Leg.R_end
+  - first:
+      1: 100056
+    second: Knee.L
+  - first:
+      1: 100058
+    second: Knee.L_end
+  - first:
+      1: 100060
+    second: Knee.R
+  - first:
+      1: 100062
+    second: Knee.R_end
+  - first:
+      1: 100064
+    second: KneeBack
+  - first:
+      1: 100066
+    second: KneeBack_end
+  - first:
+      1: 100068
+    second: L.BunnyChirrEar.000
+  - first:
+      1: 100070
+    second: L.BunnyChirrEar.001
+  - first:
+      1: 100072
+    second: L.BunnyChirrEar.002
+  - first:
+      1: 100074
+    second: L.BunnyChirrEar.002_end
+  - first:
+      1: 100076
+    second: L.MaidChirrRibbon.000
+  - first:
+      1: 100078
+    second: L.MaidChirrRibbon.001
+  - first:
+      1: 100080
+    second: L.MaidChirrRibbon.001_end
+  - first:
+      1: 100082
+    second: L.MaidChirrSkirt.000
+  - first:
+      1: 100084
+    second: L.MaidChirrSkirt.001
+  - first:
+      1: 100086
+    second: L.MaidChirrSkirt.001_end
+  - first:
+      1: 100088
+    second: LeftEyelash
+  - first:
+      1: 100090
+    second: LeftEyelash_end
+  - first:
+      1: 100092
+    second: LeftEyeLid
+  - first:
+      1: 100094
+    second: LeftEyeLid_end
+  - first:
+      1: 100096
+    second: LeftMandible
+  - first:
+      1: 100098
+    second: LeftMandible.001
+  - first:
+      1: 100100
+    second: LeftMandible.002
+  - first:
+      1: 100102
+    second: LeftMandible.002_end
+  - first:
+      1: 100104
+    second: Leg1.L
+  - first:
+      1: 100106
+    second: Leg1.R
+  - first:
+      1: 100108
+    second: Leg2.L
+  - first:
+      1: 100110
+    second: Leg2.R
+  - first:
+      1: 100112
+    second: Leg3.L
+  - first:
+      1: 100114
+    second: Leg3.R
+  - first:
+      1: 100116
+    second: Leg4.L
+  - first:
+      1: 100118
+    second: Leg4.L_end
+  - first:
+      1: 100120
+    second: Leg4.R
+  - first:
+      1: 100122
+    second: Leg4.R_end
+  - first:
+      1: 100124
+    second: Lowerbody
+  - first:
+      1: 100126
+    second: Neck
+  - first:
+      1: 100128
+    second: R.BunnyChirrEar.000
+  - first:
+      1: 100130
+    second: R.BunnyChirrEar.001
+  - first:
+      1: 100132
+    second: R.BunnyChirrEar.002
+  - first:
+      1: 100134
+    second: R.BunnyChirrEar.002_end
+  - first:
+      1: 100136
+    second: R.MaidChirrRibbon.000
+  - first:
+      1: 100138
+    second: R.MaidChirrRibbon.001
+  - first:
+      1: 100140
+    second: R.MaidChirrRibbon.001_end
+  - first:
+      1: 100142
+    second: R.MaidChirrSkirt.000
+  - first:
+      1: 100144
+    second: R.MaidChirrSkirt.001
+  - first:
+      1: 100146
+    second: R.MaidChirrSkirt.001_end
+  - first:
+      1: 100148
+    second: RightEyelash
+  - first:
+      1: 100150
+    second: RightEyelash_end
+  - first:
+      1: 100152
+    second: RightEyeLid
+  - first:
+      1: 100154
+    second: RightEyeLid_end
+  - first:
+      1: 100156
+    second: RightMandible
+  - first:
+      1: 100158
+    second: RightMandible.001
+  - first:
+      1: 100160
+    second: RightMandible.002
+  - first:
+      1: 100162
+    second: RightMandible.002_end
+  - first:
+      1: 100164
+    second: Root
+  - first:
+      1: 100166
+    second: Wing1.L
+  - first:
+      1: 100168
+    second: Wing1.R
+  - first:
+      1: 100170
+    second: Wing2.L
+  - first:
+      1: 100172
+    second: Wing2.L_end
+  - first:
+      1: 100174
+    second: Wing2.R
+  - first:
+      1: 100176
+    second: Wing2.R_end
+  - first:
+      4: 400000
+    second: ArmatureModified
+  - first:
+      4: 400002
+    second: BackLeg1
+  - first:
+      4: 400004
+    second: BackLeg2
+  - first:
+      4: 400006
+    second: BackLeg3
+  - first:
+      4: 400008
+    second: BackLeg4
+  - first:
+      4: 400010
+    second: BackLeg4_end
+  - first:
+      4: 400012
+    second: Body1
+  - first:
+      4: 400014
+    second: Body2
+  - first:
+      4: 400016
+    second: Body3
+  - first:
+      4: 400018
+    second: C.MaidChirrSkirtBottom.000
+  - first:
+      4: 400020
+    second: C.MaidChirrSkirtBottom.001
+  - first:
+      4: 400022
+    second: C.MaidChirrSkirtBottom.001_end
+  - first:
+      4: 400024
+    second: C.MaidChirrSkirtTop.000
+  - first:
+      4: 400026
+    second: C.MaidChirrSkirtTop.001
+  - first:
+      4: 400028
+    second: C.MaidChirrSkirtTop.001_end
+  - first:
+      4: 400030
+    second: //RootNode
+  - first:
+      4: 400032
+    second: ChirrMesh
+  - first:
+      4: 400034
+    second: FrontJiggleBone.L
+  - first:
+      4: 400036
+    second: FrontJiggleBone.L_end
+  - first:
+      4: 400038
+    second: FrontJiggleBone.R
+  - first:
+      4: 400040
+    second: FrontJiggleBone.R_end
+  - first:
+      4: 400042
+    second: Head
+  - first:
+      4: 400044
+    second: Ik-BackLeg
+  - first:
+      4: 400046
+    second: Ik-BackLeg_end
+  - first:
+      4: 400048
+    second: Ik-Leg.L
+  - first:
+      4: 400050
+    second: Ik-Leg.L_end
+  - first:
+      4: 400052
+    second: Ik-Leg.R
+  - first:
+      4: 400054
+    second: Ik-Leg.R_end
+  - first:
+      4: 400056
+    second: Knee.L
+  - first:
+      4: 400058
+    second: Knee.L_end
+  - first:
+      4: 400060
+    second: Knee.R
+  - first:
+      4: 400062
+    second: Knee.R_end
+  - first:
+      4: 400064
+    second: KneeBack
+  - first:
+      4: 400066
+    second: KneeBack_end
+  - first:
+      4: 400068
+    second: L.BunnyChirrEar.000
+  - first:
+      4: 400070
+    second: L.BunnyChirrEar.001
+  - first:
+      4: 400072
+    second: L.BunnyChirrEar.002
+  - first:
+      4: 400074
+    second: L.BunnyChirrEar.002_end
+  - first:
+      4: 400076
+    second: L.MaidChirrRibbon.000
+  - first:
+      4: 400078
+    second: L.MaidChirrRibbon.001
+  - first:
+      4: 400080
+    second: L.MaidChirrRibbon.001_end
+  - first:
+      4: 400082
+    second: L.MaidChirrSkirt.000
+  - first:
+      4: 400084
+    second: L.MaidChirrSkirt.001
+  - first:
+      4: 400086
+    second: L.MaidChirrSkirt.001_end
+  - first:
+      4: 400088
+    second: LeftEyelash
+  - first:
+      4: 400090
+    second: LeftEyelash_end
+  - first:
+      4: 400092
+    second: LeftEyeLid
+  - first:
+      4: 400094
+    second: LeftEyeLid_end
+  - first:
+      4: 400096
+    second: LeftMandible
+  - first:
+      4: 400098
+    second: LeftMandible.001
+  - first:
+      4: 400100
+    second: LeftMandible.002
+  - first:
+      4: 400102
+    second: LeftMandible.002_end
+  - first:
+      4: 400104
+    second: Leg1.L
+  - first:
+      4: 400106
+    second: Leg1.R
+  - first:
+      4: 400108
+    second: Leg2.L
+  - first:
+      4: 400110
+    second: Leg2.R
+  - first:
+      4: 400112
+    second: Leg3.L
+  - first:
+      4: 400114
+    second: Leg3.R
+  - first:
+      4: 400116
+    second: Leg4.L
+  - first:
+      4: 400118
+    second: Leg4.L_end
+  - first:
+      4: 400120
+    second: Leg4.R
+  - first:
+      4: 400122
+    second: Leg4.R_end
+  - first:
+      4: 400124
+    second: Lowerbody
+  - first:
+      4: 400126
+    second: Neck
+  - first:
+      4: 400128
+    second: R.BunnyChirrEar.000
+  - first:
+      4: 400130
+    second: R.BunnyChirrEar.001
+  - first:
+      4: 400132
+    second: R.BunnyChirrEar.002
+  - first:
+      4: 400134
+    second: R.BunnyChirrEar.002_end
+  - first:
+      4: 400136
+    second: R.MaidChirrRibbon.000
+  - first:
+      4: 400138
+    second: R.MaidChirrRibbon.001
+  - first:
+      4: 400140
+    second: R.MaidChirrRibbon.001_end
+  - first:
+      4: 400142
+    second: R.MaidChirrSkirt.000
+  - first:
+      4: 400144
+    second: R.MaidChirrSkirt.001
+  - first:
+      4: 400146
+    second: R.MaidChirrSkirt.001_end
+  - first:
+      4: 400148
+    second: RightEyelash
+  - first:
+      4: 400150
+    second: RightEyelash_end
+  - first:
+      4: 400152
+    second: RightEyeLid
+  - first:
+      4: 400154
+    second: RightEyeLid_end
+  - first:
+      4: 400156
+    second: RightMandible
+  - first:
+      4: 400158
+    second: RightMandible.001
+  - first:
+      4: 400160
+    second: RightMandible.002
+  - first:
+      4: 400162
+    second: RightMandible.002_end
+  - first:
+      4: 400164
+    second: Root
+  - first:
+      4: 400166
+    second: Wing1.L
+  - first:
+      4: 400168
+    second: Wing1.R
+  - first:
+      4: 400170
+    second: Wing2.L
+  - first:
+      4: 400172
+    second: Wing2.L_end
+  - first:
+      4: 400174
+    second: Wing2.R
+  - first:
+      4: 400176
+    second: Wing2.R_end
+  - first:
+      21: 2100000
+    second: ChirrMaterial
+  - first:
+      43: 4300000
+    second: ChirrMesh
+  - first:
+      74: 7400000
+    second: ArmatureModified|Ascending
+  - first:
+      74: 7400002
+    second: ArmatureModified|Bugged
+  - first:
+      74: 7400004
+    second: ArmatureModified|CharSelect
+  - first:
+      74: 7400006
+    second: ArmatureModified|CharSelectIdle
+  - first:
+      74: 7400008
+    second: 'ArmatureModified|Descending '
+  - first:
+      74: 7400010
+    second: ArmatureModified|Flying
+  - first:
+      74: 7400012
+    second: ArmatureModified|HitStun
+  - first:
+      74: 7400014
+    second: ArmatureModified|Idle
+  - first:
+      74: 7400016
+    second: ArmatureModified|Idle-Rest
+  - first:
+      74: 7400018
+    second: ArmatureModified|Jumping
+  - first:
+      74: 7400020
+    second: ArmatureModified|Landing
+  - first:
+      74: 7400022
+    second: ArmatureModified|Primary
+  - first:
+      74: 7400024
+    second: ArmatureModified|Rest-Idle
+  - first:
+      74: 7400026
+    second: ArmatureModified|RestLoop
+  - first:
+      74: 7400028
+    second: ArmatureModified|Secondary
+  - first:
+      74: 7400030
+    second: ArmatureModified|Special
+  - first:
+      74: 7400032
+    second: ArmatureModified|Sprint
+  - first:
+      74: 7400034
+    second: ArmatureModified|Utility
+  - first:
+      74: 7400036
+    second: ArmatureModified|Walk-Idle
+  - first:
+      74: 7400038
+    second: ArmatureModified|WalkBWD
+  - first:
+      74: 7400040
+    second: ArmatureModified|WalkFWD
+  - first:
+      74: 7400042
+    second: ArmatureModified|WalkLFT
+  - first:
+      74: 7400044
+    second: ArmatureModified|WalkRHT
+  - first:
+      74: 7400046
+    second: ArmatureModified|CameraAction
+  - first:
+      95: 9500000
+    second: //RootNode
+  - first:
+      137: 13700000
+    second: ChirrMesh
+  externalObjects: {}
+  materials:
+    materialImportMode: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: "\nClip 'ArmatureModified|Ascending' has import animation
+      warnings that might lower retargeting quality:\nNote: Activate translation
+      DOF on avatar to improve retargeting quality.\n\t'BackLeg1' is inbetween humanoid
+      transforms and has rotation animation that will be discarded.\n\nClip 'ArmatureModified|Bugged'
+      has import animation warnings that might lower retargeting quality:\nNote:
+      Activate translation DOF on avatar to improve retargeting quality.\n\t'Body3'
+      is inbetween humanoid transforms and has rotation animation that will be discarded.\n\t'BackLeg1'
+      is inbetween humanoid transforms and has rotation animation that will be discarded.\n\nClip
+      'ArmatureModified|CameraAction' has import animation warnings that might lower
+      retargeting quality:\nNote: Activate translation DOF on avatar to improve retargeting
+      quality.\n\t'BackLeg1' is inbetween humanoid transforms and has rotation animation
+      that will be discarded.\n\nClip 'ArmatureModified|CharSelect' has import animation
+      warnings that might lower retargeting quality:\nNote: Activate translation
+      DOF on avatar to improve retargeting quality.\n\t'Body3' is inbetween humanoid
+      transforms and has rotation animation that will be discarded.\n\t'Lowerbody'
+      is inbetween humanoid transforms and has rotation animation that will be discarded.\n\t'BackLeg1'
+      is inbetween humanoid transforms and has rotation animation that will be discarded.\n\nClip
+      'ArmatureModified|CharSelectIdle' has import animation warnings that might
+      lower retargeting quality:\nNote: Activate translation DOF on avatar to improve
+      retargeting quality.\n\t'Body3' is inbetween humanoid transforms and has rotation
+      animation that will be discarded.\n\t'Lowerbody' is inbetween humanoid transforms
+      and has rotation animation that will be discarded.\n\t'BackLeg1' is inbetween
+      humanoid transforms and has rotation animation that will be discarded.\n\nClip
+      'ArmatureModified|Descending ' has import animation warnings that might lower
+      retargeting quality:\nNote: Activate translation DOF on avatar to improve retargeting
+      quality.\n\t'Body3' is inbetween humanoid transforms and has rotation animation
+      that will be discarded.\n\t'BackLeg1' is inbetween humanoid transforms and
+      has rotation animation that will be discarded.\n\nClip 'ArmatureModified|Flying'
+      has import animation warnings that might lower retargeting quality:\nNote:
+      Activate translation DOF on avatar to improve retargeting quality.\n\t'Body3'
+      is inbetween humanoid transforms and has rotation animation that will be discarded.\n\t'Lowerbody'
+      is inbetween humanoid transforms and has rotation animation that will be discarded.\n\t'BackLeg1'
+      is inbetween humanoid transforms and has rotation animation that will be discarded.\n\nClip
+      'ArmatureModified|HitStun' has import animation warnings that might lower retargeting
+      quality:\nNote: Activate translation DOF on avatar to improve retargeting quality.\n\t'BackLeg1'
+      is inbetween humanoid transforms and has rotation animation that will be discarded.\n\nClip
+      'ArmatureModified|Idle' has import animation warnings that might lower retargeting
+      quality:\nNote: Activate translation DOF on avatar to improve retargeting quality.\n\t'Body3'
+      is inbetween humanoid transforms and has rotation animation that will be discarded.\n\t'BackLeg1'
+      is inbetween humanoid transforms and has rotation animation that will be discarded.\n\nClip
+      'ArmatureModified|Idle-Rest' has import animation warnings that might lower
+      retargeting quality:\nNote: Activate translation DOF on avatar to improve retargeting
+      quality.\n\t'Body3' is inbetween humanoid transforms and has rotation animation
+      that will be discarded.\n\t'BackLeg1' is inbetween humanoid transforms and
+      has rotation animation that will be discarded.\n\nClip 'ArmatureModified|Jumping'
+      has import animation warnings that might lower retargeting quality:\nNote:
+      Activate translation DOF on avatar to improve retargeting quality.\n\t'Body3'
+      is inbetween humanoid transforms and has rotation animation that will be discarded.\n\t'BackLeg1'
+      is inbetween humanoid transforms and has rotation animation that will be discarded.\n\nClip
+      'ArmatureModified|Landing' has import animation warnings that might lower retargeting
+      quality:\nNote: Activate translation DOF on avatar to improve retargeting quality.\n\t'Body3'
+      is inbetween humanoid transforms and has rotation animation that will be discarded.\n\t'BackLeg1'
+      is inbetween humanoid transforms and has rotation animation that will be discarded.\n\nClip
+      'ArmatureModified|Primary' has import animation warnings that might lower retargeting
+      quality:\nNote: Activate translation DOF on avatar to improve retargeting quality.\n\t'Body3'
+      is inbetween humanoid transforms and has rotation animation that will be discarded.\n\t'BackLeg1'
+      is inbetween humanoid transforms and has rotation animation that will be discarded.\n\nClip
+      'ArmatureModified|Rest-Idle' has import animation warnings that might lower
+      retargeting quality:\nNote: Activate translation DOF on avatar to improve retargeting
+      quality.\n\t'Body3' is inbetween humanoid transforms and has rotation animation
+      that will be discarded.\n\t'BackLeg1' is inbetween humanoid transforms and
+      has rotation animation that will be discarded.\n\nClip 'ArmatureModified|RestLoop'
+      has import animation warnings that might lower retargeting quality:\nNote:
+      Activate translation DOF on avatar to improve retargeting quality.\n\t'Body3'
+      is inbetween humanoid transforms and has rotation animation that will be discarded.\n\t'BackLeg1'
+      is inbetween humanoid transforms and has rotation animation that will be discarded.\n\nClip
+      'ArmatureModified|Secondary' has import animation warnings that might lower
+      retargeting quality:\nNote: Activate translation DOF on avatar to improve retargeting
+      quality.\n\t'Body3' is inbetween humanoid transforms and has rotation animation
+      that will be discarded.\n\t'Lowerbody' is inbetween humanoid transforms and
+      has rotation animation that will be discarded.\n\t'BackLeg1' is inbetween humanoid
+      transforms and has rotation animation that will be discarded.\n\nClip 'ArmatureModified|Special'
+      has import animation warnings that might lower retargeting quality:\nNote:
+      Activate translation DOF on avatar to improve retargeting quality.\n\t'Body3'
+      is inbetween humanoid transforms and has rotation animation that will be discarded.\n\t'BackLeg1'
+      is inbetween humanoid transforms and has rotation animation that will be discarded.\n\nClip
+      'ArmatureModified|Sprint' has import animation warnings that might lower retargeting
+      quality:\nNote: Activate translation DOF on avatar to improve retargeting quality.\n\t'Body3'
+      is inbetween humanoid transforms and has rotation animation that will be discarded.\n\t'Lowerbody'
+      is inbetween humanoid transforms and has rotation animation that will be discarded.\n\t'BackLeg1'
+      is inbetween humanoid transforms and has rotation animation that will be discarded.\n\nClip
+      'ArmatureModified|Utility' has import animation warnings that might lower retargeting
+      quality:\nNote: Activate translation DOF on avatar to improve retargeting quality.\n\t'Body3'
+      is inbetween humanoid transforms and has rotation animation that will be discarded.\n\t'Lowerbody'
+      is inbetween humanoid transforms and has rotation animation that will be discarded.\n\t'BackLeg1'
+      is inbetween humanoid transforms and has rotation animation that will be discarded.\n\nClip
+      'ArmatureModified|Walk-Idle' has import animation warnings that might lower
+      retargeting quality:\nNote: Activate translation DOF on avatar to improve retargeting
+      quality.\n\t'Body3' is inbetween humanoid transforms and has rotation animation
+      that will be discarded.\n\t'BackLeg1' is inbetween humanoid transforms and
+      has rotation animation that will be discarded.\n\nClip 'ArmatureModified|WalkBWD'
+      has import animation warnings that might lower retargeting quality:\nNote:
+      Activate translation DOF on avatar to improve retargeting quality.\n\t'Body3'
+      is inbetween humanoid transforms and has rotation animation that will be discarded.\n\t'BackLeg1'
+      is inbetween humanoid transforms and has rotation animation that will be discarded.\n\nClip
+      'ArmatureModified|WalkFWD' has import animation warnings that might lower retargeting
+      quality:\nNote: Activate translation DOF on avatar to improve retargeting quality.\n\t'Body3'
+      is inbetween humanoid transforms and has rotation animation that will be discarded.\n\t'BackLeg1'
+      is inbetween humanoid transforms and has rotation animation that will be discarded.\n\nClip
+      'ArmatureModified|WalkLFT' has import animation warnings that might lower retargeting
+      quality:\nNote: Activate translation DOF on avatar to improve retargeting quality.\n\t'Lowerbody'
+      is inbetween humanoid transforms and has rotation animation that will be discarded.\n\t'BackLeg1'
+      is inbetween humanoid transforms and has rotation animation that will be discarded.\n\nClip
+      'ArmatureModified|WalkRHT' has import animation warnings that might lower retargeting
+      quality:\nNote: Activate translation DOF on avatar to improve retargeting quality.\n\t'Lowerbody'
+      is inbetween humanoid transforms and has rotation animation that will be discarded.\n\t'BackLeg1'
+      is inbetween humanoid transforms and has rotation animation that will be discarded.\n"
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 3
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    sortHierarchyByName: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    fileIdsGeneration: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    skinWeightsMode: 0
+    maxBonesPerVertex: 4
+    minBoneWeight: 0.001
+    meshOptimizationFlags: -1
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 0
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  referencedClips: []
+  importAnimation: 1
+  humanDescription:
+    serializedVersion: 3
+    human:
+    - boneName: Root
+      humanName: Hips
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: BackLeg1
+      humanName: LeftUpperLeg
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: BackLeg2
+      humanName: LeftLowerLeg
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: BackLeg3
+      humanName: LeftFoot
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Body1
+      humanName: Spine
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Body2
+      humanName: Chest
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Neck
+      humanName: Neck
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Head
+      humanName: Head
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Leg1.R
+      humanName: RightShoulder
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Leg1.L
+      humanName: LeftUpperArm
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Leg2.R
+      humanName: RightUpperArm
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Leg2.L
+      humanName: LeftLowerArm
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Leg3.R
+      humanName: RightLowerArm
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Leg3.L
+      humanName: LeftHand
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Leg4.R
+      humanName: RightHand
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: BackLeg4
+      humanName: LeftToes
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: RightEyeLid
+      humanName: RightEye
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: LeftEyeLid
+      humanName: LeftEye
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: R.MaidChirrSkirt.000
+      humanName: RightUpperLeg
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: R.MaidChirrSkirt.001
+      humanName: RightLowerLeg
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: R.MaidChirrSkirt.001_end
+      humanName: RightFoot
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    skeleton:
+    - name: Chirr_emoteskeleton(Clone)
+      parentName: 
+      position: {x: 0, y: 0, z: 0}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: ArmatureModified
+      parentName: Chirr_emoteskeleton(Clone)
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Ik-BackLeg
+      parentName: ArmatureModified
+      position: {x: -2.3760743e-16, y: 0.84893656, z: 1.0907122}
+      rotation: {x: 0, y: 0, z: 1, w: -6.123234e-17}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Ik-BackLeg_end
+      parentName: Ik-BackLeg
+      position: {x: -0, y: 0.6616677, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Ik-Leg.L
+      parentName: ArmatureModified
+      position: {x: -1.0435793, y: -1.349551, z: 1.084453}
+      rotation: {x: 0.000000004688325, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Ik-Leg.L_end
+      parentName: Ik-Leg.L
+      position: {x: -0, y: 0.7945888, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Ik-Leg.R
+      parentName: ArmatureModified
+      position: {x: 1.0435793, y: -1.349551, z: 1.084453}
+      rotation: {x: 0.000000004688325, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Ik-Leg.R_end
+      parentName: Ik-Leg.R
+      position: {x: -0, y: 0.7945888, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Knee.L
+      parentName: ArmatureModified
+      position: {x: -1.2163749, y: -3.010055, z: 1.8107821}
+      rotation: {x: 0, y: 0, z: 1, w: -6.123234e-17}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Knee.L_end
+      parentName: Knee.L
+      position: {x: -0, y: 0.6223464, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Knee.R
+      parentName: ArmatureModified
+      position: {x: 1.2163749, y: -3.010055, z: 1.8107821}
+      rotation: {x: 0, y: 0, z: 1, w: -6.123234e-17}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Knee.R_end
+      parentName: Knee.R
+      position: {x: -0, y: 0.6223464, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: KneeBack
+      parentName: ArmatureModified
+      position: {x: 0.08418387, y: -1.5699072, z: 3.1208885}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: KneeBack_end
+      parentName: KneeBack
+      position: {x: -0, y: 0.82518697, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Root
+      parentName: ArmatureModified
+      position: {x: -0.43260604, y: 0.92270875, z: 2.161911}
+      rotation: {x: -0.9910791, y: -0.12425491, z: -0.019179095, w: 0.0442172}
+      scale: {x: 1, y: 0.99999994, z: 0.99999994}
+    - name: Body1
+      parentName: Root
+      position: {x: -6.0212932e-24, y: 0.97023463, z: 0.0000000037252903}
+      rotation: {x: -0.6889357, y: 0.0000018146421, z: -0.0000017247974, w: 0.72482246}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Body2
+      parentName: Body1
+      position: {x: 2.5219204e-13, y: 0.6192743, z: -0.00000014994293}
+      rotation: {x: -0.070241444, y: -0.0036178338, z: -0.006014993, w: 0.9975054}
+      scale: {x: 1, y: 1, z: 1.0000001}
+    - name: Body3
+      parentName: Body2
+      position: {x: -1.610662e-13, y: 0.8347686, z: -0.00000017881393}
+      rotation: {x: 0.00000016141146, y: 0.8357987, z: -0.549036, w: 0.00000037192385}
+      scale: {x: 1, y: 0.9999999, z: 1}
+    - name: Neck
+      parentName: Body3
+      position: {x: 9.688349e-15, y: 0.55435586, z: -0.00000011920929}
+      rotation: {x: -0.013179749, y: 0.933245, z: -0.35899323, w: -0.0020044055}
+      scale: {x: 1, y: 1.0000002, z: 1}
+    - name: Head
+      parentName: Neck
+      position: {x: -8.809143e-19, y: 0.49693388, z: 0}
+      rotation: {x: 0.0020267633, y: 2.9632978e-12, z: -3.1483872e-14, w: 0.999998}
+      scale: {x: 1, y: 1, z: 1.0000001}
+    - name: L.BunnyChirrEar.000
+      parentName: Head
+      position: {x: -0.46079874, y: 0.55500144, z: -0.35925186}
+      rotation: {x: -0.31821933, y: 0.63151306, z: -0.084315434, w: 0.70201045}
+      scale: {x: 1.0000001, y: 1.0000001, z: 1}
+    - name: L.BunnyChirrEar.001
+      parentName: L.BunnyChirrEar.000
+      position: {x: -0.00000010430813, y: 0.3131093, z: 0.00000014901161}
+      rotation: {x: 0.09879578, y: -0.6521988, z: 0.06494302, w: 0.74877137}
+      scale: {x: 0.99999994, y: 1, z: 0.99999994}
+    - name: L.BunnyChirrEar.002
+      parentName: L.BunnyChirrEar.001
+      position: {x: -0.000000067055225, y: 0.3284548, z: -0.00000017089769}
+      rotation: {x: 0.14684033, y: 0.0039570522, z: 0.022648495, w: 0.988893}
+      scale: {x: 1.0000001, y: 1.0000001, z: 1.0000001}
+    - name: L.BunnyChirrEar.002_end
+      parentName: L.BunnyChirrEar.002
+      position: {x: -0, y: 0.37311786, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: L.MaidChirrRibbon.000
+      parentName: Head
+      position: {x: -0.94283485, y: 0.24736947, z: 0.039983988}
+      rotation: {x: 0.6974679, y: 0.16211936, z: 0.68827164, w: 0.11635316}
+      scale: {x: 1, y: 1.0000001, z: 1.0000007}
+    - name: L.MaidChirrRibbon.001
+      parentName: L.MaidChirrRibbon.000
+      position: {x: 0.000000022066502, y: 0.51720434, z: 0.000000013038516}
+      rotation: {x: -0.010039196, y: -0.7070355, z: 0.010039196, w: 0.70703554}
+      scale: {x: 1, y: 0.9999998, z: 0.99999994}
+    - name: L.MaidChirrRibbon.001_end
+      parentName: L.MaidChirrRibbon.001
+      position: {x: -0, y: 0.5101969, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: LeftEyelash
+      parentName: Head
+      position: {x: -0.38503975, y: 0.27404702, z: 0.47779584}
+      rotation: {x: -0.5291018, y: 0.58940285, z: 0.33900568, w: 0.5076719}
+      scale: {x: 1, y: 0.99999994, z: 1}
+    - name: LeftEyelash_end
+      parentName: LeftEyelash
+      position: {x: -0, y: 0.10144971, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: LeftEyeLid
+      parentName: Head
+      position: {x: -0.43459862, y: 0.27445543, z: 0.5091765}
+      rotation: {x: -0.16877067, y: 0.9181012, z: 0.34944227, w: 0.08060308}
+      scale: {x: 1, y: 0.99999976, z: 1}
+    - name: LeftEyeLid_end
+      parentName: LeftEyeLid
+      position: {x: -0, y: 0.13038354, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: LeftMandible
+      parentName: Head
+      position: {x: -0.5931752, y: 0.17798376, z: 0.33189464}
+      rotation: {x: 0.24091971, y: 0.5175636, z: 0.77728, w: -0.2644268}
+      scale: {x: 1.0000001, y: 1, z: 1.0000001}
+    - name: LeftMandible.001
+      parentName: LeftMandible
+      position: {x: 0.00000016391277, y: 0.25693095, z: 0.00000027939677}
+      rotation: {x: 0.07270188, y: -0.08494002, z: 0.25502446, w: 0.960449}
+      scale: {x: 0.99999994, y: 0.9999999, z: 0.99999994}
+    - name: LeftMandible.002
+      parentName: LeftMandible.001
+      position: {x: 0.00000009313226, y: 0.2324671, z: -0.00000018905848}
+      rotation: {x: 0.03802047, y: -0.21489261, z: 0.057865072, w: 0.9741803}
+      scale: {x: 1.0000001, y: 1.0000001, z: 1}
+    - name: LeftMandible.002_end
+      parentName: LeftMandible.002
+      position: {x: -0, y: 0.14806546, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: R.BunnyChirrEar.000
+      parentName: Head
+      position: {x: 0.46079874, y: 0.55500144, z: -0.35925186}
+      rotation: {x: -0.31821933, y: -0.63151306, z: 0.084315434, w: 0.70201045}
+      scale: {x: 1.0000001, y: 1.0000001, z: 1}
+    - name: R.BunnyChirrEar.001
+      parentName: R.BunnyChirrEar.000
+      position: {x: 0.00000010430813, y: 0.3131093, z: 0.00000014901161}
+      rotation: {x: 0.09879578, y: 0.6521988, z: -0.06494302, w: 0.74877137}
+      scale: {x: 0.99999994, y: 1, z: 0.99999994}
+    - name: R.BunnyChirrEar.002
+      parentName: R.BunnyChirrEar.001
+      position: {x: 0.000000067055225, y: 0.3284548, z: -0.00000017089769}
+      rotation: {x: 0.14684033, y: -0.0039570522, z: -0.022648495, w: 0.988893}
+      scale: {x: 1.0000001, y: 1.0000001, z: 1.0000001}
+    - name: R.BunnyChirrEar.002_end
+      parentName: R.BunnyChirrEar.002
+      position: {x: -0, y: 0.37311786, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: R.MaidChirrRibbon.000
+      parentName: Head
+      position: {x: 0.94283485, y: 0.24736947, z: 0.039983988}
+      rotation: {x: 0.697468, y: -0.1621194, z: -0.6882716, w: 0.11635312}
+      scale: {x: 1, y: 1.0000002, z: 1.0000007}
+    - name: R.MaidChirrRibbon.001
+      parentName: R.MaidChirrRibbon.000
+      position: {x: -0.000000022066502, y: 0.51720434, z: 0.000000013038516}
+      rotation: {x: -0.010039196, y: 0.7070355, z: -0.010039196, w: 0.70703554}
+      scale: {x: 1, y: 0.9999998, z: 0.99999994}
+    - name: R.MaidChirrRibbon.001_end
+      parentName: R.MaidChirrRibbon.001
+      position: {x: -0, y: 0.5101969, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: RightEyelash
+      parentName: Head
+      position: {x: 0.38503975, y: 0.27404702, z: 0.47779584}
+      rotation: {x: -0.5291018, y: -0.58940285, z: -0.33900568, w: 0.5076719}
+      scale: {x: 1, y: 0.99999994, z: 1}
+    - name: RightEyelash_end
+      parentName: RightEyelash
+      position: {x: -0, y: 0.10144971, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: RightEyeLid
+      parentName: Head
+      position: {x: 0.43459862, y: 0.27445543, z: 0.5091765}
+      rotation: {x: 0.16877061, y: 0.91810125, z: 0.34944206, w: -0.08060311}
+      scale: {x: 1, y: 0.99999976, z: 1}
+    - name: RightEyeLid_end
+      parentName: RightEyeLid
+      position: {x: -0, y: 0.13038354, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: RightMandible
+      parentName: Head
+      position: {x: 0.5931752, y: 0.17798376, z: 0.33189464}
+      rotation: {x: -0.24091971, y: 0.5175635, z: 0.77728, w: 0.2644268}
+      scale: {x: 1.0000001, y: 0.99999994, z: 1.0000001}
+    - name: RightMandible.001
+      parentName: RightMandible
+      position: {x: -0.00000016391277, y: 0.25693095, z: 0.00000027939677}
+      rotation: {x: 0.07270188, y: 0.08494002, z: -0.25502446, w: 0.960449}
+      scale: {x: 0.99999994, y: 0.9999999, z: 0.99999994}
+    - name: RightMandible.002
+      parentName: RightMandible.001
+      position: {x: -0.00000009313226, y: 0.2324671, z: -0.00000018905848}
+      rotation: {x: 0.03802047, y: 0.21489261, z: -0.057865072, w: 0.9741803}
+      scale: {x: 1.0000001, y: 1.0000001, z: 1}
+    - name: RightMandible.002_end
+      parentName: RightMandible.002
+      position: {x: -0, y: 0.14806546, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: FrontJiggleBone.L
+      parentName: Body2
+      position: {x: -0.22056869, y: 0.9323625, z: -0.12735039}
+      rotation: {x: 0.46893275, y: -0.3977389, z: -0.045825426, w: 0.7872776}
+      scale: {x: 0.99999994, y: 1, z: 1}
+    - name: FrontJiggleBone.L_end
+      parentName: FrontJiggleBone.L
+      position: {x: -0, y: 0.7474306, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: FrontJiggleBone.R
+      parentName: Body2
+      position: {x: 0.22056887, y: 0.9323625, z: -0.1273503}
+      rotation: {x: 0.46893266, y: 0.39773837, z: 0.045825798, w: 0.7872778}
+      scale: {x: 1, y: 1.0000002, z: 1.0000001}
+    - name: FrontJiggleBone.R_end
+      parentName: FrontJiggleBone.R
+      position: {x: -0, y: 0.7474306, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Leg1.L
+      parentName: Body2
+      position: {x: -0.5115578, y: 0.71045464, z: -0.16288607}
+      rotation: {x: 0.54758006, y: -0.68003505, z: 0.39346433, w: 0.28791347}
+      scale: {x: 0.9999999, y: 0.9999995, z: 0.99999976}
+    - name: Leg2.L
+      parentName: Leg1.L
+      position: {x: -0.00000040233135, y: 1.0495749, z: -0.000000059604645}
+      rotation: {x: -0.022738935, y: 0.9127471, z: -0.0026407542, w: -0.40788332}
+      scale: {x: 0.9999995, y: 1.000001, z: 1.0000001}
+    - name: Leg3.L
+      parentName: Leg2.L
+      position: {x: 0.00000008940697, y: 0.5163067, z: -0.000000230968}
+      rotation: {x: 0.33585715, y: -0.5361448, z: -0.22435415, w: -0.74122465}
+      scale: {x: 0.9999999, y: 0.9999993, z: 1.0000001}
+    - name: Leg4.L
+      parentName: Leg3.L
+      position: {x: -0.000000033527613, y: 0.81896937, z: 0.00000010430813}
+      rotation: {x: 0.18459909, y: 0.00032530676, z: -0.114266634, w: 0.97614866}
+      scale: {x: 0.9999999, y: 0.9999998, z: 1.0000001}
+    - name: Leg4.L_end
+      parentName: Leg4.L
+      position: {x: -0, y: 0.99941945, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Leg1.R
+      parentName: Body2
+      position: {x: 0.51155806, y: 0.71045464, z: -0.16288532}
+      rotation: {x: 0.63090616, y: 0.6512608, z: -0.15422562, w: 0.3924682}
+      scale: {x: 0.9999997, y: 0.9999998, z: 0.9999996}
+    - name: Leg2.R
+      parentName: Leg1.R
+      position: {x: -0.000000044703484, y: 1.0495751, z: -0.000000059604645}
+      rotation: {x: -0.006213084, y: 0.8938744, z: 0.13643637, w: 0.42700717}
+      scale: {x: 0.9999995, y: 0.99999994, z: 1.0000004}
+    - name: Leg3.R
+      parentName: Leg2.R
+      position: {x: -0.0000003874302, y: 0.5163062, z: 0.00000009685755}
+      rotation: {x: 0.0057806117, y: -0.91939557, z: 0.01630961, w: -0.39295346}
+      scale: {x: 0.99999964, y: 1.0000002, z: 1.0000001}
+    - name: Leg4.R
+      parentName: Leg3.R
+      position: {x: 0.00000008568168, y: 0.81896955, z: 0.00000017881393}
+      rotation: {x: 0.18459913, y: -0.00032531994, z: 0.11426658, w: 0.9761487}
+      scale: {x: 1, y: 0.9999995, z: 0.99999994}
+    - name: Leg4.R_end
+      parentName: Leg4.R
+      position: {x: -0, y: 0.99941945, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Wing1.L
+      parentName: Body2
+      position: {x: -0.09656029, y: 0.5453802, z: -0.60921913}
+      rotation: {x: -0.37843043, y: 0.58509886, z: 0.59558916, w: 0.39965394}
+      scale: {x: 1.0000001, y: 1, z: 0.99999994}
+    - name: Wing2.L
+      parentName: Wing1.L
+      position: {x: -0.00000017881393, y: 1.7961948, z: -0.00000008754432}
+      rotation: {x: -0.14974566, y: 0.018876519, z: -0.072244704, w: 0.98590094}
+      scale: {x: 1, y: 1, z: 0.9999999}
+    - name: Wing2.L_end
+      parentName: Wing2.L
+      position: {x: -0, y: 1.9319727, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Wing1.R
+      parentName: Body2
+      position: {x: 0.096561156, y: 0.5453801, z: -0.6092188}
+      rotation: {x: 0.37843007, y: 0.5850992, z: 0.5955894, w: -0.3996534}
+      scale: {x: 1, y: 1, z: 0.99999994}
+    - name: Wing2.R
+      parentName: Wing1.R
+      position: {x: -0, y: 1.7961947, z: -0.000000031664968}
+      rotation: {x: -0.14469829, y: -0.018888997, z: 0.078286074, w: 0.9861932}
+      scale: {x: 1, y: 1, z: 0.99999994}
+    - name: Wing2.R_end
+      parentName: Wing2.R
+      position: {x: -0, y: 1.9319727, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Lowerbody
+      parentName: Root
+      position: {x: -6.0212932e-24, y: 0.97023463, z: 0.0000000037252903}
+      rotation: {x: 0.69797164, y: -8.967648e-26, z: -3.118936e-25, w: 0.71612537}
+      scale: {x: 1, y: 0.99999994, z: 0.99999994}
+    - name: BackLeg1
+      parentName: Lowerbody
+      position: {x: -1.4630757e-23, y: 0.5695741, z: -0.00000048428774}
+      rotation: {x: 0.0265795, y: -0.033858515, z: 0.064164, w: 0.9970106}
+      scale: {x: 1, y: 0.9999999, z: 0.9999999}
+    - name: BackLeg2
+      parentName: BackLeg1
+      position: {x: -0.0000000018626451, y: 1.0309231, z: 0.000000101164915}
+      rotation: {x: -0.08486079, y: 0.00022866952, z: -0.013492031, w: -0.9963014}
+      scale: {x: 1, y: 0.99999994, z: 1.0000004}
+    - name: BackLeg3
+      parentName: BackLeg2
+      position: {x: -0.0000000023283064, y: 0.83839744, z: 0.0000001838198}
+      rotation: {x: -0.2094765, y: 0.07340991, z: 0.015566303, w: 0.97492987}
+      scale: {x: 0.9999998, y: 0.9999997, z: 1}
+    - name: BackLeg4
+      parentName: BackLeg3
+      position: {x: 0.0000000037252903, y: 0.70551956, z: 0.00000023056054}
+      rotation: {x: -0.82744145, y: 0.062710114, z: -0.06579769, w: 0.5541469}
+      scale: {x: 0.9999999, y: 0.9999997, z: 1.0000001}
+    - name: BackLeg4_end
+      parentName: BackLeg4
+      position: {x: -0, y: 0.92005867, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: C.MaidChirrSkirtBottom.000
+      parentName: Lowerbody
+      position: {x: -2.941403e-16, y: -0.46424177, z: -0.53174734}
+      rotation: {x: -0.07761225, y: 1.21515e-18, z: -9.465401e-17, w: 0.99698365}
+      scale: {x: 1, y: 1, z: 1}
+    - name: C.MaidChirrSkirtBottom.001
+      parentName: C.MaidChirrSkirtBottom.000
+      position: {x: 3.3087225e-24, y: 0.5434393, z: 0.00000008195639}
+      rotation: {x: 0.039271813, y: -3.8206393e-18, z: 8.321031e-17, w: 0.9992286}
+      scale: {x: 1, y: 0.9999999, z: 0.99999994}
+    - name: C.MaidChirrSkirtBottom.001_end
+      parentName: C.MaidChirrSkirtBottom.001
+      position: {x: -0, y: 0.6063851, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: C.MaidChirrSkirtTop.000
+      parentName: Lowerbody
+      position: {x: -4.869319e-16, y: -0.34529787, z: 0.33984935}
+      rotation: {x: 0.26081252, y: 5.1495085e-19, z: -4.0112072e-17, w: 0.9653895}
+      scale: {x: 1, y: 0.99999994, z: 1}
+    - name: C.MaidChirrSkirtTop.001
+      parentName: C.MaidChirrSkirtTop.000
+      position: {x: -6.2865727e-23, y: 0.4374289, z: -0.000000014901161}
+      rotation: {x: 0.061518256, y: 0.000000118983486, z: 0.0000000073335467, w: 0.998106}
+      scale: {x: 1, y: 0.99999994, z: 0.99999994}
+    - name: C.MaidChirrSkirtTop.001_end
+      parentName: C.MaidChirrSkirtTop.001
+      position: {x: -0, y: 0.43558335, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: L.MaidChirrSkirt.000
+      parentName: Lowerbody
+      position: {x: -0.47536325, y: -0.39533213, z: -0.103908725}
+      rotation: {x: 0.0049263425, y: -0.0012468584, z: 0.24535784, w: 0.9694193}
+      scale: {x: 0.99999994, y: 1, z: 0.99999994}
+    - name: L.MaidChirrSkirt.001
+      parentName: L.MaidChirrSkirt.000
+      position: {x: -0.00000011175871, y: 0.5595273, z: 0.00000013716529}
+      rotation: {x: 0.10224199, y: -0.04681357, z: -0.065934494, w: 0.9914675}
+      scale: {x: 0.9999999, y: 0.9999999, z: 0.9999999}
+    - name: L.MaidChirrSkirt.001_end
+      parentName: L.MaidChirrSkirt.001
+      position: {x: -0, y: 0.5262167, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: R.MaidChirrSkirt.000
+      parentName: Lowerbody
+      position: {x: 0.47536325, y: -0.39533213, z: -0.103908725}
+      rotation: {x: -0.022662612, y: 0.0075776177, z: -0.06629114, w: 0.9975141}
+      scale: {x: 0.99999994, y: 1, z: 0.99999994}
+    - name: R.MaidChirrSkirt.001
+      parentName: R.MaidChirrSkirt.000
+      position: {x: 0.00000011175871, y: 0.5595273, z: 0.00000013716529}
+      rotation: {x: 0.10224199, y: 0.04681357, z: 0.065934494, w: 0.9914675}
+      scale: {x: 0.9999999, y: 0.9999999, z: 0.9999999}
+    - name: R.MaidChirrSkirt.001_end
+      parentName: R.MaidChirrSkirt.001
+      position: {x: -0, y: 0.5262167, z: 0}
+      rotation: {x: 0.04257066, y: -0.041373212, z: -0.1727665, w: 0.9831723}
+      scale: {x: 1, y: 1, z: 1}
+    - name: ChirrMesh
+      parentName: Chirr_emoteskeleton(Clone)
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
+      scale: {x: 1, y: 1, z: 1}
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    globalScale: 1
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 1
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  autoGenerateAvatarMappingIfUnspecified: 1
+  animationType: 3
+  humanoidOversampling: 1
+  avatarSetup: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
