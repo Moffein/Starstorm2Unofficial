@@ -209,7 +209,7 @@ namespace Starstorm2.Survivors.Nemmando
             ModelLocator ml = bossBodyPrefab.GetComponent<ModelLocator>();
             if (ml && ml.modelTransform)
             {
-                ml.modelTransform.localScale *= 2f;
+                ml.modelTransform.localScale *= 2.5f;
             }
 
             bossMasterPrefab = PrefabAPI.InstantiateClone(LegacyResourcesAPI.Load<GameObject>("Prefabs/CharacterMasters/MercMonsterMaster"), "NemmandoBossMaster", true);
