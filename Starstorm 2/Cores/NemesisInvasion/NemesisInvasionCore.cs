@@ -31,6 +31,9 @@ namespace Starstorm2.Cores.NemesisInvasion
 
         private void BlacklistItemsFromNemesisInvader()
         {
+            NemesisInvasionManager.BlacklistItem("IceRing");
+            NemesisInvasionManager.BlacklistItem("FireRing");
+            NemesisInvasionManager.BlacklistItem("ElementalRingVoid");
             NemesisInvasionManager.BlacklistItem("FlatHealth");
             NemesisInvasionManager.BlacklistItem("PersonalShield");
             NemesisInvasionManager.BlacklistItem("ArmorPlate");
