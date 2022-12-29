@@ -813,12 +813,12 @@ namespace Starstorm2.Survivors.Executioner
                             //if (damageReport.damageInfo.damageType.HasFlag(DamageType.BypassOneShotProtection)) orbCount *= 2;    //Was used to make exe axe give double charges on kill. Unnecessary.
 
                             for (int i = 0; i < orbCount; i++)
-                        {
-                            Modules.Orbs.ExecutionerIonOrb ionOrb = new Modules.Orbs.ExecutionerIonOrb();
-                            ionOrb.origin = victimBody.corePosition;
-                            ionOrb.target = Util.FindBodyMainHurtBox(damageReport.attackerBody);
-                            OrbManager.instance.AddOrb(ionOrb);
-                        }
+                            {
+                                Modules.Orbs.ExecutionerIonOrb ionOrb = new Modules.Orbs.ExecutionerIonOrb();
+                                ionOrb.origin = victimBody.corePosition;
+                                ionOrb.target = Util.FindBodyMainHurtBox(damageReport.attackerBody);
+                                OrbManager.instance.AddOrb(ionOrb);
+                            }
 
                         //These aren't used anymore because the hardcoded Ion Burst value list was ridiculous.
                         /*if (orbCount >= 50 && orbCount < 110)

@@ -88,6 +88,9 @@ namespace Starstorm2.Cores.NemesisInvasion
             NemesisInvasionManager.BlacklistItem("Icicle");
             NemesisInvasionManager.BlacklistItem("ImmuneToDebuff");
             NemesisInvasionManager.BlacklistItem("CaptainDefenseMatrix");
+            NemesisInvasionManager.BlacklistItem("ExtraLife");
+            NemesisInvasionManager.BlacklistItem("ExtraLifeVoid");
+            NemesisInvasionManager.BlacklistItem("ExplodeOnDeathVoid");
         }
 
         public static void AddNemesisBoss(GameObject masterPrefab, int[] itemStacks, string itemDropName, bool shouldGrantRandomItems, bool autoMusicSetup)

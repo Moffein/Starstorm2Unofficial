@@ -16,6 +16,7 @@ using System;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
 
 namespace Starstorm2.Survivors.Nemmando
 {
@@ -86,28 +87,38 @@ namespace Starstorm2.Survivors.Nemmando
 
         internal override UnlockableDef characterUnlockableDef { get; set; } = CreateUnlockableDef();
         public static UnlockableDef survivorUnlock;
+        public static UnlockableDef killSelfUnlockableDef;
+
+        private static void CreateKillSelfUnlockable()
+        {
+            if (!NemmandoCore.killSelfUnlockableDef)
+            {
+                NemmandoCore.killSelfUnlockableDef = ScriptableObject.CreateInstance<UnlockableDef>();
+                NemmandoCore.killSelfUnlockableDef.cachedName = "Skins.SS2UNemmando.Commando";
+                NemmandoCore.killSelfUnlockableDef.nameToken = "ACHIEVEMENT_SS2UNEMMANDOKILLSELF_NAME";
+                NemmandoCore.killSelfUnlockableDef.achievementIcon = Assets.mainAssetBundle.LoadAsset<Sprite>("texSingleTapUnlockIcon");
+
+                SkinDef sd = Addressables.LoadAssetAsync<SkinDef>("RoR2/Base/Commando/skinCommandoDefault.asset").WaitForCompletion();
+                if (sd && sd.icon) NemmandoCore.killSelfUnlockableDef.achievementIcon = sd.icon;
+
+                Modules.Unlockables.unlockableDefs.Add(NemmandoCore.killSelfUnlockableDef);
+            }
+        }
 
         private static UnlockableDef CreateUnlockableDef()
         {
-            Debug.Log("1");
             if (!survivorUnlock)
             {
-                Debug.Log("2");
                 survivorUnlock = ScriptableObject.CreateInstance<UnlockableDef>();
                 survivorUnlock.cachedName = "Characters.SS2UNemmando";
                 survivorUnlock.nameToken = "ACHIEVEMENT_SS2UNEMMANDOUNLOCK_NAME";
-
-                Debug.Log("3");
                 survivorUnlock.achievementIcon = Assets.mainAssetBundle.LoadAsset<Sprite>("texNemmandoIconUnlock");
 
-                Debug.Log("4");
                 Modules.Unlockables.unlockableDefs.Add(survivorUnlock);
             }
 
-            Debug.Log("5");
             if (Modules.Config.EnableUnlockAll.Value || !Modules.Config.EnableVoid.Value) return null;
 
-            Debug.Log("6");
             return survivorUnlock;
         }
 
@@ -810,9 +821,8 @@ namespace Starstorm2.Survivors.Nemmando
             LanguageAPI.Add("ACHIEVEMENT_SS2UNEMMANDOCLEARGAMETYPHOON_NAME", "Nemesis Commando: Grand Mastery");
             LanguageAPI.Add("ACHIEVEMENT_SS2UNEMMANDOCLEARGAMETYPHOON_DESCRIPTION", "As Nemesis Commando, beat the game or obliterate on Typhoon.");
 
-            LanguageAPI.Add("NEMMANDO_SINGLETAPUNLOCKABLE_ACHIEVEMENT_NAME", "Nemesis Commando: Nemesis Nemesis");
-            LanguageAPI.Add("NEMMANDO_SINGLETAPUNLOCKABLE_ACHIEVEMENT_DESC", "As Nemesis Commando, defeat Commando's vestige.");
-            LanguageAPI.Add("NEMMANDO_SINGLETAPUNLOCKABLE_UNLOCKABLE_NAME", "Nemesis Commando: Nemesis Nemesis");
+            LanguageAPI.Add("ACHIEVEMENT_SS2UNEMMANDOKILLSELF_NAME", "Nemesis Commando: Nemesis Nemesis");
+            LanguageAPI.Add("ACHIEVEMENT_SS2UNEMMANDOKILLSELF_DESCRIPTION", "As Nemesis Commando, defeat Commando's vestige.");
 
             LanguageAPI.Add("NEMMANDO_EPICUNLOCKABLE_ACHIEVEMENT_NAME", "Nemesis Commando: Zandatsu");
             LanguageAPI.Add("NEMMANDO_EPICUNLOCKABLE_ACHIEVEMENT_DESC", "As Nemesis Commando, inflict 50 stacks of Gouge on one enemy.");
@@ -1041,12 +1051,14 @@ namespace Starstorm2.Survivors.Nemmando
                 Modules.Assets.commandoMat
             });
 
+            CreateKillSelfUnlockable();
+
             SkinDef commandoSkin = Modules.Skins.CreateSkinDef("NEMMANDO_COMMANDO_SKIN_NAME",
                 LegacyResourcesAPI.Load<GameObject>("Prefabs/CharacterBodies/CommandoBody").GetComponentInChildren<ModelSkinController>().skins[0].icon,
                 commandoRendererInfos,
                 mainRenderer,
                 model,
-                singleTapUnlockableDef);
+                Modules.Config.EnableVoid.Value ? NemmandoCore.killSelfUnlockableDef : null);
 
             commandoSkin.meshReplacements = new SkinDef.MeshReplacement[]
             {
