@@ -389,6 +389,7 @@ namespace Starstorm2.Survivors.Nemmando
         {
             GameObject masterPrefab = PrefabAPI.InstantiateClone(LegacyResourcesAPI.Load<GameObject>("Prefabs/CharacterMasters/CommandoMonsterMaster"), "NemmandoMonsterMaster", true);
             masterPrefab.GetComponent<CharacterMaster>().bodyPrefab = bodyPrefab;
+            Modules.Prefabs.masterPrefabs.Add(masterPrefab);
 
             Modules.Prefabs.RemoveAISkillDrivers(masterPrefab);
             Modules.Prefabs.AddAISkillDriver(masterPrefab, "Special", SkillSlot.Special, null,
