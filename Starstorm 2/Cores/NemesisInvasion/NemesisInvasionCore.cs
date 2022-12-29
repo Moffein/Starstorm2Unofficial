@@ -25,8 +25,42 @@ namespace Starstorm2.Cores.NemesisInvasion
             LanguageAPI.Add("NEMESIS_MODE_ACTIVE_WARNING", "<style=cIsHealth>An unnatural force emanates from the void...</style>");
             LanguageAPI.Add("NEMESIS_MODE_DEACTIVATED", "<style=cWorldEvent>The void's influence fades...</style>");
 
+            RoR2.RoR2Application.onLoad += NemforcerMinibossCompat;
             RoR2.RoR2Application.onLoad += BlacklistItemsFromNemesisInvader;
             On.RoR2.CharacterAI.BaseAI.UpdateTargets += NemesisInvasionCore.AttemptTargetPlayer;
+        }
+
+        private void NemforcerMinibossCompat()
+        {
+            GameObject masterPrefab = MasterCatalog.FindMasterPrefab("NemesisEnforcerMiniBossMaster");  //This is mislabeled as requiring BodyName instead of MasterName. HOPOOOOOOOOOOOOOOOOOOOO
+            if (masterPrefab)
+            {
+                Debug.Log("Starstorm 2 Unofficial: Adding Nemforcer Miniboss to Nemesis invader list.");
+                AddNemesisBoss(masterPrefab, null, "ShinyPearl", true, true);
+
+                CharacterMaster cm = masterPrefab.GetComponent<CharacterMaster>();
+                if (cm && cm.bodyPrefab)
+                {
+                    CharacterBody cb = cm.bodyPrefab.GetComponent<CharacterBody>();
+                    if (cb)
+                    {
+                        cb.baseMaxHealth = 3200f;
+                        cb.levelMaxHealth = 960f;
+
+                        cb.baseDamage = 3f;
+                        cb.levelDamage = 0.6f;
+
+                        cb.baseRegen = 0f;
+                        cb.levelRegen = 0f;
+
+                        BodyIndex bi = BodyCatalog.FindBodyIndex(cb);
+                        if (bi != BodyIndex.None)
+                        {
+                            prioritizePlayersList.Add(bi);
+                        }
+                    }
+                }
+            }
         }
 
         private void BlacklistItemsFromNemesisInvader()

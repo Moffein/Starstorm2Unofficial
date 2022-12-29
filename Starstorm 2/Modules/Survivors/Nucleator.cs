@@ -29,8 +29,6 @@ namespace Starstorm2.Modules.Survivors
 
         internal override float sortPosition { get; set; } = 5.002f;
 
-        internal override ConfigEntry<bool> characterEnabled { get; set; }
-
         internal override StarstormBodyInfo bodyInfo { get; set; } = new StarstormBodyInfo
         {
             armor = 30f,
@@ -78,13 +76,10 @@ namespace Starstorm2.Modules.Survivors
 
             base.InitializeCharacter();
 
-            if (characterEnabled.Value)
-            {
-                bodyPrefab.AddComponent<CustomEffectComponent>();
+            bodyPrefab.AddComponent<CustomEffectComponent>();
 
-                CreateUiChargeWidget();
-                CreatePrimaryProjectile();
-            }
+            CreateUiChargeWidget();
+            CreatePrimaryProjectile();
         }
 
         internal override void InitializeUnlockables()

@@ -19,8 +19,6 @@ namespace Starstorm2.Modules.Survivors
 
         internal string fullBodyName => bodyName + "Body";
 
-        internal abstract ConfigEntry<bool> characterEnabled { get; set; }
-
         internal abstract UnlockableDef characterUnlockableDef { get; set; }
 
         internal abstract StarstormBodyInfo bodyInfo { get; set; }
@@ -38,7 +36,7 @@ namespace Starstorm2.Modules.Survivors
             instance = this;
             InitializeCharacter();
 
-            if (characterEnabled.Value) RoR2.ContentManagement.ContentManager.onContentPacksAssigned += LateSetup;
+            RoR2.ContentManagement.ContentManager.onContentPacksAssigned += LateSetup;
         }
 
         private void LateSetup(HG.ReadOnlyArray<RoR2.ContentManagement.ReadOnlyContentPack> obj)
@@ -49,9 +47,9 @@ namespace Starstorm2.Modules.Survivors
         internal virtual void InitializeCharacter()
         {
             // this creates a config option to enable the character- feel free to remove if the character is the only thing in your mod
-            characterEnabled = Modules.Config.CharacterEnableConfig(bodyName);
+            //characterEnabled = Modules.Config.CharacterEnableConfig(bodyName);
 
-            if (characterEnabled.Value)
+            if (true)//characterEnabled.Value
             {
                 InitializeUnlockables();
 

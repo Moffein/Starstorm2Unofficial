@@ -11,6 +11,7 @@ using Starstorm2.Cores;
 using Starstorm2.Cores.NemesisInvasion;
 using Starstorm2.Modules;
 using Starstorm2.Modules.Survivors;
+using Starstorm2.Survivors.Nemmando.Components;
 using System;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
@@ -31,8 +32,6 @@ namespace Starstorm2.Survivors.Nemmando
         internal GameObject bossBodyPrefab { get; set; }
 
         internal override float sortPosition { get; set; } = 1.001f;
-
-        internal override ConfigEntry<bool> characterEnabled { get; set; }
 
         internal override StarstormBodyInfo bodyInfo { get; set; } = new StarstormBodyInfo
         {
@@ -85,7 +84,33 @@ namespace Starstorm2.Survivors.Nemmando
         internal override ItemDisplayRuleSet itemDisplayRuleSet { get; set; }
         internal override List<ItemDisplayRuleSet.KeyAssetRuleGroup> itemDisplayRules { get; set; }
 
-        internal override UnlockableDef characterUnlockableDef { get; set; }// = Modules.Unlockables.AddUnlockable<Cores.Unlockables.Achievements.NemmandoUnlockAchievement>(true);
+        internal override UnlockableDef characterUnlockableDef { get; set; } = CreateUnlockableDef();
+        public static UnlockableDef survivorUnlock;
+
+        private static UnlockableDef CreateUnlockableDef()
+        {
+            Debug.Log("1");
+            if (!survivorUnlock)
+            {
+                Debug.Log("2");
+                survivorUnlock = ScriptableObject.CreateInstance<UnlockableDef>();
+                survivorUnlock.cachedName = "Characters.SS2UNemmando";
+                survivorUnlock.nameToken = "ACHIEVEMENT_SS2UNEMMANDOUNLOCK_NAME";
+
+                Debug.Log("3");
+                survivorUnlock.achievementIcon = Assets.mainAssetBundle.LoadAsset<Sprite>("texNemmandoIconUnlock");
+
+                Debug.Log("4");
+                Modules.Unlockables.unlockableDefs.Add(survivorUnlock);
+            }
+
+            Debug.Log("5");
+            if (Modules.Config.EnableUnlockAll.Value || !Modules.Config.EnableVoid.Value) return null;
+
+            Debug.Log("6");
+            return survivorUnlock;
+        }
+
         private static UnlockableDef masterySkinUnlockableDef;
         private static UnlockableDef grandMasterySkinUnlockableDef;
 
@@ -120,20 +145,17 @@ namespace Starstorm2.Survivors.Nemmando
             SetupLaserTracer();
 
             RoR2.RoR2Application.onLoad += SetBodyIndex;
-            if (characterEnabled.Value)
-            {
-                Modules.Assets.LoadNemmandoEffects();
+            Modules.Assets.LoadNemmandoEffects();
 
-                bodyPrefab.AddComponent<Components.NemmandoController>();
-                bodyPrefab.GetComponent<EntityStateMachine>().initialStateType = new SerializableEntityStateType(typeof(EntityStates.SS2UStates.Common.NemmandoSpawnState));
-                bodyPrefab.AddComponent<CustomEffectComponent>();
+            bodyPrefab.AddComponent<Components.NemmandoController>();
+            bodyPrefab.GetComponent<EntityStateMachine>().initialStateType = new SerializableEntityStateType(typeof(EntityStates.SS2UStates.Common.NemmandoSpawnState));
+            bodyPrefab.AddComponent<CustomEffectComponent>();
 
-                bodyPrefab.GetComponent<ModelLocator>().modelTransform.gameObject.AddComponent<Components.SS2CharacterAnimationEvents>();
+            bodyPrefab.GetComponent<ModelLocator>().modelTransform.gameObject.AddComponent<Components.SS2CharacterAnimationEvents>();
 
-                bodyPrefab.GetComponentInChildren<ChildLocator>().FindChild("GunReloadEffect").GetChild(0).GetComponent<ParticleSystemRenderer>().material = Modules.Assets.CreateMaterial("matAmmo");
+            bodyPrefab.GetComponentInChildren<ChildLocator>().FindChild("GunReloadEffect").GetChild(0).GetComponent<ParticleSystemRenderer>().material = Modules.Assets.CreateMaterial("matAmmo");
 
-                InitializeBoss();
-            }
+            InitializeBoss();
         }
 
         private void SetupSwordProjectile()
@@ -206,10 +228,15 @@ namespace Starstorm2.Survivors.Nemmando
             body.baseDamage = 3f;
             body.levelDamage = 0.6f;
 
+            if (body.mainHurtBox)
+            {
+                (body.mainHurtBox.collider as CapsuleCollider).radius *= 1.5f;
+            }
+
             ModelLocator ml = bossBodyPrefab.GetComponent<ModelLocator>();
             if (ml && ml.modelTransform)
             {
-                ml.modelTransform.localScale *= 2.5f;
+                ml.modelTransform.localScale *= 2f;
             }
 
             bossMasterPrefab = PrefabAPI.InstantiateClone(LegacyResourcesAPI.Load<GameObject>("Prefabs/CharacterMasters/MercMonsterMaster"), "NemmandoBossMaster", true);
@@ -776,10 +803,6 @@ namespace Starstorm2.Survivors.Nemmando
             LanguageAPI.Add("NEMMANDO_SPECIAL_SCEPEPIC_NAME", "Judgement Cut End");
             LanguageAPI.Add("NEMMANDO_SPECIAL_SCEPEPIC_DESCRIPTION", desc);
 
-            LanguageAPI.Add("NEMMANDO_UNLOCKUNLOCKABLE_ACHIEVEMENT_NAME", "???");
-            LanguageAPI.Add("NEMMANDO_UNLOCKUNLOCKABLE_ACHIEVEMENT_DESC", "Defeat Commando's vestige.");
-            LanguageAPI.Add("NEMMANDO_UNLOCKUNLOCKABLE_UNLOCKABLE_NAME", "???");
-
             // todo: make a base class for mastery achievements and simply inherit from it for each character 
             LanguageAPI.Add("ACHIEVEMENT_SS2UNEMMANDOCLEARGAMEMONSOON_NAME", "Nemesis Commando: Mastery");
             LanguageAPI.Add("ACHIEVEMENT_SS2UNEMMANDOCLEARGAMEMONSOON_DESCRIPTION", "As Nemesis Commando, beat the game or obliterate on Monsoon.");
@@ -794,6 +817,9 @@ namespace Starstorm2.Survivors.Nemmando
             LanguageAPI.Add("NEMMANDO_EPICUNLOCKABLE_ACHIEVEMENT_NAME", "Nemesis Commando: Zandatsu");
             LanguageAPI.Add("NEMMANDO_EPICUNLOCKABLE_ACHIEVEMENT_DESC", "As Nemesis Commando, inflict 50 stacks of Gouge on one enemy.");
             LanguageAPI.Add("NEMMANDO_EPICUNLOCKABLE_UNLOCKABLE_NAME", "Nemesis Commando: Zandatsu");
+
+            LanguageAPI.Add("ACHIEVEMENT_SS2UNEMMANDOUNLOCK_NAME", "???");
+            LanguageAPI.Add("ACHIEVEMENT_SS2UNEMMANDOUNLOCK_DESCRIPTION", "Defeat Commando's vestige.");
         }
 
         #region Hooks

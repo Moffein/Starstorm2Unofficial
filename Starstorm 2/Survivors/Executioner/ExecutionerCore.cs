@@ -33,8 +33,6 @@ namespace Starstorm2.Survivors.Executioner
 
         internal override float sortPosition { get; set; } = 40f;
 
-        internal override ConfigEntry<bool> characterEnabled { get; set; }
-
         internal override StarstormBodyInfo bodyInfo { get; set; } = new StarstormBodyInfo
         {
             armor = 0f,
@@ -97,30 +95,27 @@ namespace Starstorm2.Survivors.Executioner
 
             RoR2.RoR2Application.onLoad += SetBodyIndex;
 
-            if (characterEnabled.Value)
-            {
-                Modules.Assets.LoadExecutionerEffects();
+            Modules.Assets.LoadExecutionerEffects();
 
-                bodyPrefab.AddComponent<IonGunChargeComponent>();
-                bodyPrefab.AddComponent<Components.ExecutionerController>();
-                bodyPrefab.AddComponent<CustomEffectComponent>();
+            bodyPrefab.AddComponent<IonGunChargeComponent>();
+            bodyPrefab.AddComponent<Components.ExecutionerController>();
+            bodyPrefab.AddComponent<CustomEffectComponent>();
 
-                // hate that i have to do this but it works so whatever
-                ChildLocator childLocator = bodyPrefab.GetComponentInChildren<ChildLocator>();
-                childLocator.FindChild("AxeSpawnEffect").Find("Lightning").GetComponent<ParticleSystemRenderer>().trailMaterial = Modules.Assets.matJellyfishLightningLarge;
+            // hate that i have to do this but it works so whatever
+            ChildLocator childLocator = bodyPrefab.GetComponentInChildren<ChildLocator>();
+            childLocator.FindChild("AxeSpawnEffect").Find("Lightning").GetComponent<ParticleSystemRenderer>().trailMaterial = Modules.Assets.matJellyfishLightningLarge;
 
-                childLocator.FindChild("DashEffect").Find("DashSkull").Find("Lightning").GetComponent<ParticleSystemRenderer>().trailMaterial = Modules.Assets.matMageMatrixDirectionalLightning;
-                childLocator.FindChild("DashEffect").Find("DashSkull").Find("LightningRound").GetComponent<ParticleSystemRenderer>().trailMaterial = Modules.Assets.matJellyfishLightningLarge;
-                childLocator.FindChild("DashEffect").Find("DashSkull").Find("EffectRadius").gameObject.SetActive(false);//GetComponent<ParticleSystemRenderer>().material = Modules.Assets.matMoonbatteryCrippleRadius;
+            childLocator.FindChild("DashEffect").Find("DashSkull").Find("Lightning").GetComponent<ParticleSystemRenderer>().trailMaterial = Modules.Assets.matMageMatrixDirectionalLightning;
+            childLocator.FindChild("DashEffect").Find("DashSkull").Find("LightningRound").GetComponent<ParticleSystemRenderer>().trailMaterial = Modules.Assets.matJellyfishLightningLarge;
+            childLocator.FindChild("DashEffect").Find("DashSkull").Find("EffectRadius").gameObject.SetActive(false);//GetComponent<ParticleSystemRenderer>().material = Modules.Assets.matMoonbatteryCrippleRadius;
 
-                childLocator.FindChild("SuperchargePassiveEffect").Find("Lightning").GetComponent<ParticleSystemRenderer>().trailMaterial = Modules.Assets.matBlueLightningLong;
-                childLocator.FindChild("SuperchargePassiveEffect").Find("Lightning").Find("LightningRound").GetComponent<ParticleSystemRenderer>().trailMaterial = Modules.Assets.matBlueLightningLong;
-                childLocator.FindChild("SuperchargePassiveEffect").Find("Lightning").Find("LightningRound").Find("LightningRound (1)").GetComponent<ParticleSystemRenderer>().trailMaterial = Modules.Assets.matBlueLightningLong;
+            childLocator.FindChild("SuperchargePassiveEffect").Find("Lightning").GetComponent<ParticleSystemRenderer>().trailMaterial = Modules.Assets.matBlueLightningLong;
+            childLocator.FindChild("SuperchargePassiveEffect").Find("Lightning").Find("LightningRound").GetComponent<ParticleSystemRenderer>().trailMaterial = Modules.Assets.matBlueLightningLong;
+            childLocator.FindChild("SuperchargePassiveEffect").Find("Lightning").Find("LightningRound").Find("LightningRound (1)").GetComponent<ParticleSystemRenderer>().trailMaterial = Modules.Assets.matBlueLightningLong;
 
-                childLocator.FindChild("MaxChargeEffect").Find("Lightning").GetComponent<ParticleSystemRenderer>().trailMaterial = Modules.Assets.matJellyfishLightningLarge;
+            childLocator.FindChild("MaxChargeEffect").Find("Lightning").GetComponent<ParticleSystemRenderer>().trailMaterial = Modules.Assets.matJellyfishLightningLarge;
 
-                childLocator.FindChild("SuperchargeEffect").Find("Lightning").GetComponent<ParticleSystemRenderer>().trailMaterial = Modules.Assets.matJellyfishLightningLarge;
-            }
+            childLocator.FindChild("SuperchargeEffect").Find("Lightning").GetComponent<ParticleSystemRenderer>().trailMaterial = Modules.Assets.matJellyfishLightningLarge;
         }
 
         internal override void InitializeUnlockables()

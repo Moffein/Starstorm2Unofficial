@@ -113,7 +113,7 @@ namespace Starstorm2.Cores.NemesisInvasion.Components
 
         IEnumerator VoidEventEndChat()
         {
-            yield return new WaitForSeconds(5f);
+            yield return new WaitForSeconds(3f);
             if (!NetworkServer.active) yield return null;
             playedEventEndChatMessage = true;
             Chat.SendBroadcastChat(new Chat.SimpleChatMessage
@@ -127,7 +127,7 @@ namespace Starstorm2.Cores.NemesisInvasion.Components
         {
             if (!NetworkServer.active) yield return null;
 
-            yield return new WaitForSeconds(5f);
+            yield return new WaitForSeconds(3f);
             if (!playedEventStartChatMessage)
             {
                 playedEventStartChatMessage = true;
@@ -136,7 +136,7 @@ namespace Starstorm2.Cores.NemesisInvasion.Components
                     baseToken = "NEMESIS_MODE_ACTIVE_WARNING"
                 });
             }
-            yield return new WaitForSeconds(15f);
+            yield return new WaitForSeconds(12f);
 
             Transform spawnOnTarget = null;
             DirectorCore.MonsterSpawnDistance input = DirectorCore.MonsterSpawnDistance.Far;

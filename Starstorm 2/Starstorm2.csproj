@@ -117,6 +117,7 @@
     <Compile Include="Components\NemesisMusicComponent.cs" />
     <Compile Include="Components\NemesisMusicComponentMaster.cs" />
     <Compile Include="Survivors\Executioner\EntityStates\SpecialScepter.cs" />
+    <Compile Include="Survivors\Nemmando\Achievements\NemmandoUnlockAchievement.cs" />
     <Compile Include="Survivors\Nemmando\Components\NemmandoAnimationEvents.cs" />
     <Compile Include="Survivors\Nemmando\Components\NemmandoController.cs" />
     <Compile Include="Survivors\Nemmando\Components\NemmandoSpecialSwapComponent.cs" />

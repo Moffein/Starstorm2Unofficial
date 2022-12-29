@@ -40,6 +40,12 @@ namespace Starstorm2.Modules
                             "Enabled",
                             false,
                             "Enables Starstorm 2's work-in-progress content. May be unstable so enable at your own risk.");*/
+
+            EnableUnlockAll = StarstormPlugin.instance.Config.Bind("Starstorm 2 :: Unlock All",
+                            "Enabled",
+                            false,
+                            "Automatically unlock all survivors and alt skills.");
+
             cursed =
                 StarstormPlugin.instance.Config.Bind("Starstorm 2 :: Cursed",
                             "Enabled",
