@@ -59,7 +59,7 @@ namespace Starstorm2.Survivors.Executioner.Components
                             OrbManager.instance.AddOrb(ionOrb);
                         }
 
-                        if (orbCount >= 50 && orbCount < 80)
+                        /*if (orbCount >= 50 && orbCount < 80)
                         {
                             Modules.Orbs.ExecutionerIonTempSuperOrb tempSuperIonOrb = new Modules.Orbs.ExecutionerIonTempSuperOrb();
                             tempSuperIonOrb.origin = this.transform.position;
@@ -73,7 +73,7 @@ namespace Starstorm2.Survivors.Executioner.Components
                             superIonOrb.origin = this.transform.position;
                             superIonOrb.target = Util.FindBodyMainHurtBox(b.body);
                             OrbManager.instance.AddOrb(superIonOrb);
-                        }
+                        }*/
                     }
                 }
             }
