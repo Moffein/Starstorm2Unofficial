@@ -480,7 +480,7 @@ namespace Starstorm2.Survivors.Executioner
                 masteryRendererInfos,
                 mainRenderer,
                 model,
-                masterySkinUnlockableDef);
+                Modules.Config.ForceUnlockSkins.Value ? null : masterySkinUnlockableDef);
 
             masterySkin.meshReplacements = new SkinDef.MeshReplacement[]
             {
@@ -512,7 +512,7 @@ namespace Starstorm2.Survivors.Executioner
                 grandMasteryRendererInfos,
                 mainRenderer,
                 model,
-                grandMasterySkinUnlockableDef);
+                Modules.Config.ForceUnlockSkins.Value ? null : grandMasterySkinUnlockableDef);
 
             grandMasterySkin.meshReplacements = new SkinDef.MeshReplacement[]
             {
@@ -544,7 +544,7 @@ namespace Starstorm2.Survivors.Executioner
                 wastelanderRendererInfos,
                 mainRenderer,
                 model,
-                wastelanderSkinUnlockableDef);
+                Modules.Config.ForceUnlockSkins.Value ? null : wastelanderSkinUnlockableDef);
 
             wastelanderSkin.meshReplacements = new SkinDef.MeshReplacement[]
             {

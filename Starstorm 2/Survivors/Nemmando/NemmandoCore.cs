@@ -979,7 +979,7 @@ namespace Starstorm2.Survivors.Nemmando
                 masteryRendererInfos,
                 mainRenderer,
                 model,
-                masterySkinUnlockableDef);
+                Modules.Config.ForceUnlockSkins.Value ? null : masterySkinUnlockableDef);
 
             masterySkin.meshReplacements = new SkinDef.MeshReplacement[]
             {
@@ -1018,7 +1018,7 @@ namespace Starstorm2.Survivors.Nemmando
                 grandMasteryRendererInfos,
                 mainRenderer,
                 model,
-                grandMasterySkinUnlockableDef);
+                Modules.Config.ForceUnlockSkins.Value ? null : grandMasterySkinUnlockableDef);
 
             grandMasterySkin.meshReplacements = new SkinDef.MeshReplacement[]
             {
@@ -1059,7 +1059,7 @@ namespace Starstorm2.Survivors.Nemmando
                 commandoRendererInfos,
                 mainRenderer,
                 model,
-                Modules.Config.EnableVoid.Value ? NemmandoCore.killSelfUnlockableDef : null);
+                (Modules.Config.EnableVoid.Value && !Modules.Config.ForceUnlockSkins.Value) ? NemmandoCore.killSelfUnlockableDef : null);
 
             commandoSkin.meshReplacements = new SkinDef.MeshReplacement[]
             {
@@ -1112,7 +1112,7 @@ namespace Starstorm2.Survivors.Nemmando
                     commandoJokeRendererInfos,
                     mainRenderer,
                     model,
-                    singleTapUnlockableDef);
+                    (Modules.Config.EnableVoid.Value && !Modules.Config.ForceUnlockSkins.Value) ? NemmandoCore.killSelfUnlockableDef : null);
 
                 commandoJokeSkin.meshReplacements = new SkinDef.MeshReplacement[]
                 {

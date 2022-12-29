@@ -87,7 +87,7 @@ namespace Starstorm2.Survivors.Cyborg
                                                           masteryRendererInfos, 
                                                           mainRenderer, 
                                                           model,
-                                                          masterySkinUnlockableDef);
+                                                          Modules.Config.ForceUnlockSkins.Value ? null : masterySkinUnlockableDef);
 
             masterySkin.meshReplacements = CreateMeshReplacements(masteryRendererInfos, 
                                                                   meshCyborgSteam);
@@ -120,7 +120,7 @@ namespace Starstorm2.Survivors.Cyborg
                                                           grandMasteryRendererInfos,
                                                           mainRenderer,
                                                           model,
-                                                          grandmasterySkinUnlockableDef);
+                                                          Modules.Config.ForceUnlockSkins.Value ? null : grandmasterySkinUnlockableDef);
 
             grandMasterySkin.meshReplacements = CreateMeshReplacements(grandMasteryRendererInfos,
                                                                   meshCyborgRock);
