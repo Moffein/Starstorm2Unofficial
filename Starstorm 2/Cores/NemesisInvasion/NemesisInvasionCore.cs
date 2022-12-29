@@ -53,6 +53,8 @@ namespace Starstorm2.Cores.NemesisInvasion
                         cb.baseRegen = 0f;
                         cb.levelRegen = 0f;
 
+                        cb.isChampion = true;
+
                         BodyIndex bi = BodyCatalog.FindBodyIndex(cb);
                         if (bi != BodyIndex.None)
                         {

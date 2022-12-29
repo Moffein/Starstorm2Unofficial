@@ -238,7 +238,9 @@ namespace Starstorm2.Survivors.Nemmando
             body.levelRegen = 0;
             body.baseDamage = 3f;
             body.levelDamage = 0.6f;
+            body.isChampion = true;
 
+            //does this even work?
             if (body.mainHurtBox)
             {
                 (body.mainHurtBox.collider as CapsuleCollider).radius *= 1.5f;
