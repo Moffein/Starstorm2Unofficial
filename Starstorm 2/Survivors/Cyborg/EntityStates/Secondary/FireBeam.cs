@@ -2,6 +2,7 @@
 using RoR2;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
+using Starstorm2.Survivors.Cyborg.Components;
 
 namespace EntityStates.SS2UStates.Cyborg.Secondary
 {
@@ -24,12 +25,19 @@ namespace EntityStates.SS2UStates.Cyborg.Secondary
         public float charge;
         public bool perfectCharge;
         private CrosshairUtils.OverrideRequest crosshairOverrideRequest;
+        private CyborgChargeComponent chargeComponent;
 
         private float duration;
         
         public override void OnEnter()
         {
             base.OnEnter();
+            chargeComponent = base.GetComponent<CyborgChargeComponent>();
+            if (chargeComponent)
+            {
+                chargeComponent.chargeFraction = this.charge;
+                chargeComponent.perfectCharge = this.perfectCharge;
+            }
             duration = FireBeam.baseDuration / this.attackSpeedStat;
             base.PlayAnimation("Gesture, Override", "FireM2", "FireArrow.playbackRate", this.duration);
             if (crosshairPrefab)
@@ -83,6 +91,10 @@ namespace EntityStates.SS2UStates.Cyborg.Secondary
 
         public override void OnExit()
         {
+            if (this.chargeComponent)
+            {
+                chargeComponent.ResetCharge();
+            }
             if (this.crosshairOverrideRequest != null)
             {
                 this.crosshairOverrideRequest.Dispose();

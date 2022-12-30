@@ -17,6 +17,8 @@ using Starstorm2.Survivors.Cyborg.Components.OverheatProjectile;
 using System.Runtime.CompilerServices;
 using EntityStates.SS2UStates.Cyborg.Secondary;
 using RoR2.CharacterAI;
+using RoR2.UI;
+using Starstorm2.Survivors.Cyborg.Components.Crosshair;
 
 namespace Starstorm2.Survivors.Cyborg
 {
@@ -68,6 +70,19 @@ namespace Starstorm2.Survivors.Cyborg
             RoR2.RoR2Application.onLoad += SetBodyIndex;
 
             if (StarstormPlugin.emoteAPILoaded) EmoteAPICompat();
+        }
+
+        private static GameObject BuildCrosshair()
+        {
+            GameObject crosshairPrefab = Modules.Assets.mainAssetBundle.LoadAsset<UnityEngine.GameObject>("crosshairCyborgChargeRifle.prefab");
+            crosshairPrefab.AddComponent<HudElement>();
+
+            CrosshairController cc = crosshairPrefab.AddComponent<CrosshairController>();
+            cc.maxSpreadAngle = 0f;
+
+            crosshairPrefab.AddComponent<CyborgCrosshairChargeController>();
+
+            return crosshairPrefab;
         }
 
         [MethodImpl(MethodImplOptions.NoInlining | MethodImplOptions.NoOptimization)]
@@ -614,7 +629,7 @@ namespace Starstorm2.Survivors.Cyborg
                 bodyNameToken = "CYBORG_NAME",
                 characterPortrait = Modules.Assets.mainAssetBundle.LoadAsset<Texture2D>("cyborgicon"),
                 bodyColor = new Color32(138, 183, 168, 255),
-                crosshair = LegacyResourcesAPI.Load<GameObject>("Prefabs/Crosshair/StandardCrosshair"),
+                crosshair = BuildCrosshair(),
                 damage = 12f,
                 healthGrowth = 33f,
                 healthRegen = 1f,
@@ -636,6 +651,7 @@ namespace Starstorm2.Survivors.Cyborg
 
             cyborgPrefab.AddComponent<CyborgController>();
             cyborgPrefab.AddComponent<CyborgTeleportTracker>();
+            cyborgPrefab.AddComponent<CyborgChargeComponent>();
 
             cyborgPrefab.GetComponent<EntityStateMachine>().mainStateType = new SerializableEntityStateType(typeof(CyborgMain));
 

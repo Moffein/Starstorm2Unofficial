@@ -1,5 +1,6 @@
 ﻿using RoR2;
 using RoR2.UI;
+using Starstorm2.Survivors.Cyborg.Components;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 
@@ -11,7 +12,6 @@ namespace EntityStates.SS2UStates.Cyborg.Secondary
         public static string fullChargeSound = "Play_item_proc_crit_cooldown";
         public static string beginChargeSound = "Play_MULT_m1_snipe_charge";
         public static string endChargeSound = "Play_MULT_m1_snipe_charge_end";
-        public static GameObject chargeCrosshairPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/UI/StandardCrosshairSmall.prefab").WaitForCompletion();
         public static GameObject chargeupVfxPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Junk/Toolbot/SpearChargeUpVFX.prefab").WaitForCompletion();
         public static GameObject holdChargeVfxPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Captain/SpearChargedVFX.prefab").WaitForCompletion();
 
@@ -19,12 +19,13 @@ namespace EntityStates.SS2UStates.Cyborg.Secondary
         public static float baseDuration = 1f;
         public static float perfectChargeDuration = 0.3f;   //dont scale this with attack speed
 
-        private CrosshairUtils.OverrideRequest crosshairOverrideRequest;
         private float duration;
         public float charge;
         private GameObject chargeupVfxGameObject;
         private GameObject holdChargeVfxGameObject;
         private Transform muzzleTransform;
+        private bool setNextState = false;
+        private CyborgChargeComponent chargeComponent;
 
         public override void OnEnter()
         {
@@ -33,11 +34,9 @@ namespace EntityStates.SS2UStates.Cyborg.Secondary
             charge = 0f;
 
             Util.PlaySound(ChargeBeam.beginChargeSound, base.gameObject);
-            if (ChargeBeam.chargeCrosshairPrefab)
-            {
-                this.crosshairOverrideRequest = CrosshairUtils.RequestOverrideForBody(base.characterBody, ChargeBeam.chargeCrosshairPrefab, CrosshairUtils.OverridePriority.Skill);
-            }
             base.characterBody.SetAimTimer(3f);
+
+            chargeComponent = base.GetComponent<CyborgChargeComponent>();
 
             ChildLocator cl = base.GetModelChildLocator();
             if (cl)
@@ -75,6 +74,12 @@ namespace EntityStates.SS2UStates.Cyborg.Secondary
                 }
             }
 
+            bool perfectCharge = base.fixedAge >= this.duration && base.fixedAge <= this.duration + ChargeBeam.perfectChargeDuration;
+            if (this.chargeComponent)
+            {
+                chargeComponent.chargeFraction = charge;
+                chargeComponent.perfectCharge = perfectCharge;
+            }
 
             if (base.isAuthority)
             {
@@ -82,14 +87,9 @@ namespace EntityStates.SS2UStates.Cyborg.Secondary
                 {
                     FireBeam fireBeam = new FireBeam()
                     {
-                        perfectCharge = base.fixedAge >= this.duration && base.fixedAge <= this.duration + ChargeBeam.perfectChargeDuration,
-                        charge = this.charge,
-                        crosshairPrefab = null
+                        perfectCharge = perfectCharge,
+                        charge = this.charge
                     };
-                    if (this.crosshairOverrideRequest != null)
-                    {
-                        fireBeam.crosshairPrefab = this.crosshairOverrideRequest.prefab;
-                    }
                     this.outer.SetNextState(fireBeam);
                     return;
                 }
@@ -101,9 +101,9 @@ namespace EntityStates.SS2UStates.Cyborg.Secondary
 
         public override void OnExit()
         {
-            if (this.crosshairOverrideRequest != null)
+            if (chargeComponent)
             {
-                this.crosshairOverrideRequest.Dispose();
+                chargeComponent.ResetCharge();
             }
             if (this.chargeupVfxGameObject)
             {

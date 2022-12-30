@@ -1,12 +1,12 @@
 ManifestFileVersion: 0
-CRC: 2948360351
+CRC: 536449171
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 032b3ea5610b62e8cf207f19493df5d6
+    Hash: 360ceab8d3c4bd2f2552c709512d0a0e
   TypeTreeHash:
     serializedVersion: 2
-    Hash: 7aec747c424dad58343d1828cf4a71ef
+    Hash: ec020e9a92ce2a5539ac153a9054ec96
 HashAppended: 0
 ClassTypes:
 - Class: 1
@@ -44,6 +44,8 @@ ClassTypes:
 - Class: 114
   Script: {fileID: 11500000, guid: d0203090a5cc68345977ed2206b1f42d, type: 3}
 - Class: 114
+  Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+- Class: 114
   Script: {fileID: 11500000, guid: da178bd6941be6d4299f99ed3486707d, type: 3}
 - Class: 114
   Script: {fileID: 11500000, guid: 10276f4c15347d549a11822bba5cf3ce, type: 3}
@@ -70,6 +72,10 @@ ClassTypes:
 - Class: 199
   Script: {instanceID: 0}
 - Class: 213
+  Script: {instanceID: 0}
+- Class: 222
+  Script: {instanceID: 0}
+- Class: 224
   Script: {instanceID: 0}
 - Class: 319
   Script: {instanceID: 0}
@@ -197,6 +203,7 @@ Assets:
 - Assets/AssetBundle/Cyborg/Materials/T_Cyborg_Color.png
 - Assets/AssetBundle/Cyborg/Animations/Hitstun.anim
 - Assets/AssetBundle/Chirr/Animations/Sprint.anim
+- Assets/AssetBundle/Cyborg/UI/crosshairCyborgChargeRifle.prefab
 - Assets/AssetBundle/Cyborg/Materials/No Name.mat
 - Assets/AssetBundle/Items/StirringSoul/StirlingSoul.prefab
 - Assets/AssetBundle/Cyborg/Animations/CyborgDEAD-Alive.anim
@@ -350,6 +357,7 @@ Assets:
 - Assets/AssetBundle/Cyborg/Animations/animCyborgMenu.controller
 - Assets/AssetBundle/Enemies/Wayfarer/mdlWayfarer.prefab
 - Assets/AssetBundle/Items/ErraticGadget/gadgettex.png
+- Assets/AssetBundle/Cyborg/UI/texCrosshairChargeRifleBase_Subtracted.png
 - Assets/AssetBundle/Chirr/Chirr_emoteskeleton.fbx
 - Assets/AssetBundle/Items/MoltenCoin/MoltenCoinDiffuse2.png
 - Assets/AssetBundle/Items/HuntersSigil/HuntersSigil_Icon.png
@@ -377,6 +385,7 @@ Assets:
 - Assets/AssetBundle/BuffIcons/Status_Sigil.png
 - Assets/AssetBundle/Nemmando/VFX/Materials/metNemmandoCharge.mat
 - Assets/AssetBundle/Executioner/Mesh/meshExecutionerGun.mesh
+- Assets/AssetBundle/Cyborg/UI/texCrosshairChargeRifleCharge.png
 - Assets/AssetBundle/Cyborg/Animations/Primary2.anim
 - Assets/AssetBundle/Chirr/ChirrPassive.png
 - Assets/AssetBundle/Nemmando/Animations/NemmandoBodyUpper.mask
@@ -680,6 +689,7 @@ Assets:
 - Assets/AssetBundle/Executioner/Materials/matWastelanderAxe.mat
 - Assets/AssetBundle/Executioner/Animations/LightImpact.anim
 - Assets/AssetBundle/Items/HottestSauce/HottestSauceTEmission.png
+- Assets/AssetBundle/Cyborg/UI/texCrosshairChargeRifleBase.png
 - Assets/AssetBundle/Executioner/Animations/Rest.anim
 - Assets/AssetBundle/Items/Malice/T_Malice.png
 - Assets/AssetBundle/Chirr/Animations/ChirrAvatar.asset

@@ -97,6 +97,8 @@
     <Compile Include="Survivors\Chirr\FriendLeashSkillDef.cs" />
     <Compile Include="Survivors\Cyborg\Achievements\CyborgGrandMasteryAchievement.cs" />
     <Compile Include="Survivors\Cyborg\Achievements\CyborgMasteryAchievement.cs" />
+    <Compile Include="Survivors\Cyborg\Components\CyborgChargeComponent.cs" />
+    <Compile Include="Survivors\Cyborg\Components\Crosshair\CyborgCrosshairChargeController.cs" />
     <Compile Include="Survivors\Cyborg\Components\CyborgController.cs" />
     <Compile Include="Survivors\Cyborg\Components\CyborgTeleportTracker.cs" />
     <Compile Include="Survivors\Cyborg\Components\OverheatProjectile\BFGGhostReduceSizeOverTime.cs" />

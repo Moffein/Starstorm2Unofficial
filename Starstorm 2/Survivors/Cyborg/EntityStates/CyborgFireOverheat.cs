@@ -37,9 +37,19 @@ namespace EntityStates.SS2UStates.Cyborg
             OverrideStats();
 
             FireBFG();
+            ApplySelfKnockback();
+        }
 
+        public void ApplySelfKnockback()
+        {
             if (base.isAuthority && base.characterBody && base.characterMotor && !base.characterMotor.isGrounded)
             {
+                EntityStateMachine jetMachine = EntityStateMachine.FindByCustomName(base.gameObject, "Jetpack");
+                if (!(jetMachine && jetMachine.state.GetType() == typeof(JetpackOn)))
+                {
+                    return;
+                }
+
                 if (base.characterMotor.velocity.y < 0f) base.characterMotor.velocity.y = 0f;
                 base.characterMotor.ApplyForce(-2400f * base.GetAimRay().direction, true, false);
             }
