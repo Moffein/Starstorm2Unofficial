@@ -15,6 +15,7 @@ namespace EntityStates.SS2UStates.Cyborg.Secondary
         private BoxCollider matrixCollider;
         private Transform matrixRootTransform;
         private GameObject matrixInstance;
+        private Transform laserVisuals;
         private float tickDuration;
         private float tickStopwatch;
         private float blinkStopwatch;
@@ -53,12 +54,25 @@ namespace EntityStates.SS2UStates.Cyborg.Secondary
                     matrixRootTransform = cl.FindChild("DefenseMatrixRoot");
                     if (matrixRootTransform)
                     {
-                        matrixInstance = UnityEngine.Object.Instantiate(matrixPrefab, matrixRootTransform);
-                        matrixCollider = matrixInstance.GetComponentInChildren<BoxCollider>();
-                        if (matrixCollider)
+                        matrixInstance = UnityEngine.Object.Instantiate(matrixPrefab);//, matrixRootTransform   //causes it to jerk around
+                        matrixInstance.transform.position = matrixRootTransform.position;
+                        matrixInstance.transform.rotation = Util.QuaternionSafeLookRotation(base.GetAimRay().direction);
+
+                        ChildLocator laserCL = matrixInstance.GetComponent<ChildLocator>();
+                        if (laserCL)
                         {
-                            inputTeamIndex = base.GetTeam();
-                            DefenseMatrixManager.AddMatrix(matrixCollider, inputTeamIndex);
+                            Transform hitboxTransform = laserCL.FindChild("Hitbox");
+                            if (hitboxTransform)
+                            {
+                                matrixCollider = matrixInstance.GetComponentInChildren<BoxCollider>();
+                                if (matrixCollider)
+                                {
+                                    inputTeamIndex = base.GetTeam();
+                                    DefenseMatrixManager.AddMatrix(matrixCollider, inputTeamIndex);
+                                }
+                            }
+
+                            laserVisuals = laserCL.FindChild("LaserVisuals");
                         }
                     }
                 }
@@ -134,12 +148,6 @@ namespace EntityStates.SS2UStates.Cyborg.Secondary
         {
             base.FixedUpdate();
 
-            if (matrixRootTransform)
-            {
-                Ray aimRay = base.GetAimRay();
-                matrixRootTransform.rotation = Util.QuaternionSafeLookRotation(aimRay.direction);
-            }
-
             if (NetworkServer.active)
             {
                 tickStopwatch += Time.fixedDeltaTime;
@@ -157,9 +165,9 @@ namespace EntityStates.SS2UStates.Cyborg.Secondary
                 if (blinkStopwatch >= blinkToggleDuration)
                 {
                     blinkStopwatch -= blinkToggleDuration;
-                    if (matrixInstance)
+                    if (laserVisuals)
                     {
-                        matrixInstance.SetActive(!matrixInstance.activeSelf);
+                        laserVisuals.gameObject.SetActive(!laserVisuals.gameObject.activeSelf);
                     }
                 }
             }
@@ -168,6 +176,17 @@ namespace EntityStates.SS2UStates.Cyborg.Secondary
             {
                 this.outer.SetNextStateToMain();
                 return;
+            }
+        }
+
+        public override void Update()
+        {
+            base.Update();
+
+            if (matrixInstance)
+            {
+                matrixInstance.transform.rotation = Util.QuaternionSafeLookRotation(base.GetAimRay().direction);
+                if (matrixRootTransform) matrixInstance.transform.position = matrixRootTransform.position;
             }
         }
 

@@ -47,8 +47,8 @@ namespace Starstorm2.Cores.NemesisInvasion
                         cb.baseMaxHealth = 3200f;
                         cb.levelMaxHealth = 960f;
 
-                        cb.baseDamage = 3f;
-                        cb.levelDamage = 0.6f;
+                        cb.baseDamage = 2f;
+                        cb.levelDamage = 0.4f;
 
                         cb.baseRegen = 0f;
                         cb.levelRegen = 0f;

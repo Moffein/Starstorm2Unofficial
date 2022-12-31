@@ -11,7 +11,7 @@ namespace EntityStates.SS2UStates.Cyborg.Secondary
         public static string muzzleString = "Lowerarm.L_end";
         public static string fullChargeSound = "CyborgPerfectCharge";
         public static string beginChargeSound = "Play_mage_m2_charge";
-        public static GameObject chargeupVfxPrefab = null;//Addressables.LoadAssetAsync<GameObject>("RoR2/Junk/Toolbot/SpearChargeUpVFX.prefab").WaitForCompletion();
+        public static GameObject chargeupVfxPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Loader/ChargeLoaderFist.prefab").WaitForCompletion();
         public static GameObject holdChargeVfxPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Captain/SpearChargedVFX.prefab").WaitForCompletion();
 
         public static GameObject fullChargeEffectPrefab;
@@ -126,7 +126,7 @@ namespace EntityStates.SS2UStates.Cyborg.Secondary
 
         public override InterruptPriority GetMinimumInterruptPriority()
         {
-            return InterruptPriority.PrioritySkill;
+            return InterruptPriority.Skill;
         }
     }
 }

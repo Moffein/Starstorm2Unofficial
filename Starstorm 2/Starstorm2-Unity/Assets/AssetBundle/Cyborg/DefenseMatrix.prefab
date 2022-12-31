@@ -59,7 +59,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 555727698442179172}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 3.333}
+  m_LocalPosition: {x: 0, y: 0, z: 5}
   m_LocalScale: {x: 1.533, y: 1.26666, z: 0}
   m_Children: []
   m_Father: {fileID: 4431110889379415218}
@@ -138,7 +138,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1380204850304033806}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 10}
+  m_LocalPosition: {x: 0, y: 0, z: 15}
   m_LocalScale: {x: 4.6, y: 3.8, z: 0}
   m_Children: []
   m_Father: {fileID: 4431110889379415218}
@@ -216,7 +216,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2598710052011777471}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.518, z: 7.5}
+  m_LocalPosition: {x: 0, y: 0, z: 11}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 5991975844263463799}
@@ -233,7 +233,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 0
   serializedVersion: 2
-  m_Size: {x: 7, y: 7, z: 15}
+  m_Size: {x: 7, y: 7, z: 24}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &2672816581915260980
 GameObject:
@@ -307,7 +307,7 @@ LineRenderer:
   m_SortingOrder: 0
   m_Positions:
   - {x: 0, y: 0, z: 0}
-  - {x: 2.2, y: -1.8, z: 10}
+  - {x: 2.2, y: -1.8, z: 15}
   m_Parameters:
     serializedVersion: 3
     widthMultiplier: 0.05
@@ -435,7 +435,7 @@ LineRenderer:
   m_SortingOrder: 0
   m_Positions:
   - {x: 0, y: 0, z: 0}
-  - {x: -2.2, y: 1.8, z: 10}
+  - {x: -2.2, y: 1.8, z: 15}
   m_Parameters:
     serializedVersion: 3
     widthMultiplier: 0.05
@@ -563,7 +563,7 @@ LineRenderer:
   m_SortingOrder: 0
   m_Positions:
   - {x: 0, y: 0, z: 0}
-  - {x: 2.2, y: 1.8, z: 10}
+  - {x: 2.2, y: 1.8, z: 15}
   m_Parameters:
     serializedVersion: 3
     widthMultiplier: 0.05
@@ -629,7 +629,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4709583316223708738}
   m_Layer: 0
-  m_Name: DefenseLasers
+  m_Name: LaserVisuals
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -677,7 +677,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6246764391874217838}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 6.666}
+  m_LocalPosition: {x: 0, y: 0, z: 10}
   m_LocalScale: {x: 3.066, y: 2.508, z: 0}
   m_Children: []
   m_Father: {fileID: 4431110889379415218}
@@ -836,7 +836,7 @@ LineRenderer:
   m_SortingOrder: 0
   m_Positions:
   - {x: 0, y: 0, z: 0}
-  - {x: -2.2, y: -1.8, z: 10}
+  - {x: -2.2, y: -1.8, z: 15}
   m_Parameters:
     serializedVersion: 3
     widthMultiplier: 0.05
@@ -901,7 +901,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5991975844263463799}
-  - component: {fileID: 6817054271834156931}
+  - component: {fileID: 1047841634671722164}
   m_Layer: 0
   m_Name: DefenseMatrix
   m_TagString: Untagged
@@ -925,42 +925,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!23 &6817054271834156931
-MeshRenderer:
+--- !u!114 &1047841634671722164
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8253035714974414989}
   m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 0}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 10276f4c15347d549a11822bba5cf3ce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  transformPairs:
+  - name: Hitbox
+    transform: {fileID: 3109055410179548357}
+  - name: LaserVisuals
+    transform: {fileID: 4709583316223708738}

@@ -5,6 +5,7 @@ using UnityEngine.Networking;
 
 namespace Starstorm2.Survivors.Cyborg
 {
+    //Allows Defense Matrix to block enemy hitscan without blocking friendly hitscan/projectiles
     public static class DefenseMatrixManager
     {
         private static List<DefenseMatrixInfo> activeDefenseMatrices = new List<DefenseMatrixInfo>();
@@ -22,7 +23,7 @@ namespace Starstorm2.Survivors.Cyborg
             On.EntityStates.EngiTurret.EngiTurretWeapon.FireBeam.GetBeamEndPoint += Hooks.FireBeam_GetBeamEndPoint;
         }
 
-        public static void DeInitialize()
+        /*public static void DeInitialize()
         {
             if (!initialized) return;
             initialized = false;
@@ -32,7 +33,7 @@ namespace Starstorm2.Survivors.Cyborg
             On.EntityStates.GolemMonster.ChargeLaser.Update -= Hooks.ChargeLaser_Update;
             On.EntityStates.TitanMonster.FireMegaLaser.FixedUpdate -= Hooks.FireMegaLaser_FixedUpdate;
             On.EntityStates.EngiTurret.EngiTurretWeapon.FireBeam.GetBeamEndPoint -= Hooks.FireBeam_GetBeamEndPoint;
-        }
+        }*/
 
         public static void ClearList()
         {

@@ -11,7 +11,7 @@ namespace Starstorm2.Survivors.Cyborg.Components.Crosshair
         private const float maxFill = 1f;
 
         public static Color chargeColor = Color.white;
-        public static Color perfectChargeColor = new Color32(244, 243, 183, 255);
+        public static Color perfectChargeColor = new Color32(139, 237, 227, 255);
 
         private CyborgChargeComponent chargeComponent;
         private HudElement hudElement;

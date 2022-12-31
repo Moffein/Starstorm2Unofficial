@@ -89,7 +89,7 @@ namespace Starstorm2.Survivors.Cyborg
 
         private static GameObject BuildCrosshair()
         {
-            GameObject crosshairPrefab = Modules.Assets.mainAssetBundle.LoadAsset<UnityEngine.GameObject>("crosshairCyborgChargeRifle.prefab");
+            GameObject crosshairPrefab = Modules.Assets.mainAssetBundle.LoadAsset<UnityEngine.GameObject>("crosshairCyborgChargeRifle.prefab").InstantiateClone("SS2UCyborgCrosshair", false);
             crosshairPrefab.AddComponent<HudElement>();
 
             CrosshairController cc = crosshairPrefab.AddComponent<CrosshairController>();
@@ -282,7 +282,7 @@ namespace Starstorm2.Survivors.Cyborg
             SkillLocator skillLocator = cybPrefab.GetComponent<SkillLocator>();
 
             LanguageAPI.Add("CYBORG_PASSIVE_NAME", "Thrusters");
-            LanguageAPI.Add("CYBORG_PASSIVE_DESCRIPTION", "Holding the Jump key causes the CYBORG to <style=cIsUtility>hover in the air</style>.");
+            LanguageAPI.Add("CYBORG_PASSIVE_DESCRIPTION", "Holding the Jump key causes the Cyborg to <style=cIsUtility>hover in the air</style>.");
             skillLocator.passiveSkill.enabled = true;
             skillLocator.passiveSkill.skillNameToken = "CYBORG_PASSIVE_NAME";
             skillLocator.passiveSkill.skillDescriptionToken = "CYBORG_PASSIVE_DESCRIPTION";
@@ -300,7 +300,7 @@ namespace Starstorm2.Survivors.Cyborg
 
             LanguageAPI.Add("CYBORG_PRIMARY_GUN_NAME", "Unmaker");
             //LanguageAPI.Add("CYBORG_PRIMARY_GUN_DESCRIPTION", $"Fire a <style=cIsUtility>slowing</style> beam at contenders for <style=cIsDamage>{dmg}% damage</style>.");
-            LanguageAPI.Add("CYBORG_PRIMARY_GUN_DESCRIPTION", $"Charge up a piercing beam that deals <style=cIsDamage>300%-900% damage</style>. Deals <style=cIsDamage>+30% damage</style> when <style=cIsDamage>perfectly charged</style>.");
+            LanguageAPI.Add("CYBORG_PRIMARY_GUN_DESCRIPTION", $"Charge up a beam that deals <style=cIsDamage>250%-750% damage</style>. Deals <style=cIsDamage>+33% damage</style> when <style=cIsDamage>perfectly charged</style>.");
 
             SteppedSkillDef primaryDef1 = ScriptableObject.CreateInstance<SteppedSkillDef>();
             primaryDef1.activationState = new SerializableEntityStateType(typeof(ChargeBeam));
@@ -378,7 +378,7 @@ namespace Starstorm2.Survivors.Cyborg
              defenseMatrixDef.beginSkillCooldownOnSkillEnd = true;
              defenseMatrixDef.canceledFromSprinting = false;
              defenseMatrixDef.fullRestockOnAssign = true;
-             defenseMatrixDef.interruptPriority = EntityStates.InterruptPriority.Skill;
+             defenseMatrixDef.interruptPriority = EntityStates.InterruptPriority.Any;
              defenseMatrixDef.isCombatSkill = true;
              defenseMatrixDef.mustKeyPress = false;
              defenseMatrixDef.cancelSprintingOnActivation = true;
@@ -663,6 +663,8 @@ namespace Starstorm2.Survivors.Cyborg
 
         internal static GameObject CreateCyborgPrefab()
         {
+            GameObject crosshair = BuildCrosshair();
+
             GameObject cyborgPrefab = PrefabCore.CreatePrefab("CyborgBody", "mdlCyborg", new BodyInfo
             {
                 armor = 0f,
@@ -671,7 +673,7 @@ namespace Starstorm2.Survivors.Cyborg
                 bodyNameToken = "CYBORG_NAME",
                 characterPortrait = Modules.Assets.mainAssetBundle.LoadAsset<Texture2D>("cyborgicon"),
                 bodyColor = new Color32(138, 183, 168, 255),
-                crosshair = BuildCrosshair(),
+                crosshair = crosshair,
                 damage = 12f,
                 healthGrowth = 33f,
                 healthRegen = 1f,

@@ -236,8 +236,8 @@ namespace Starstorm2.Survivors.Nemmando
             body.levelMaxHealth =  960f;
             body.baseRegen = 0;
             body.levelRegen = 0;
-            body.baseDamage = 3f;
-            body.levelDamage = 0.6f;
+            body.baseDamage = 2f;
+            body.levelDamage = 0.4f;
             body.isChampion = true;
 
             //does this even work?

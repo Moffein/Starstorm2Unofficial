@@ -21,7 +21,6 @@ namespace EntityStates.SS2UStates.Cyborg.Special
             base.OnEnter();
             teleported = false;
             teleTracker = base.GetComponent<CyborgTeleportTracker>();
-            base.PlayAnimation("Gesture, Override", "UseTP", "FireM1.playbackRate", UseTeleporter.baseDuration);
         }
 
         private void Teleport()
@@ -39,6 +38,7 @@ namespace EntityStates.SS2UStates.Cyborg.Special
                     TelefragExplosionAuthority((Vector3)teleportLocation);
                     teleported = true;
                     teleTracker.CmdDestroyTeleporter();
+                    base.PlayAnimation("Gesture, Override", "UseTP", "FireM1.playbackRate", UseTeleporter.baseDuration);
                 }
             }
         }

@@ -9,11 +9,11 @@ namespace EntityStates.SS2UStates.Cyborg.Secondary
     public class FireBeam : BaseState
     {
         public static string muzzleString = "Lowerarm.L_end";
-        public static float perfectChargeDamageMultiplier = 1.3f;
-        public static float minDamageCoefficient = 3f;
-        public static float maxDamageCoefficient = 9f;
+        public static float perfectChargeDamageMultiplier = 1.333334f;
+        public static float minDamageCoefficient = 2.5f;
+        public static float maxDamageCoefficient = 7.5f;
         public static float minForce = 1000f;
-        public static float maxForce = 3000f;
+        public static float maxForce = 2000f;
         public static float baseDuration = 0.5f;
         public static GameObject hitEffectPrefab = LegacyResourcesAPI.Load<GameObject>("prefabs/effects/impacteffects/HitsparkCommandoShotgun");
         public static GameObject tracerEffectPrefab;
@@ -21,7 +21,8 @@ namespace EntityStates.SS2UStates.Cyborg.Secondary
         public static GameObject muzzleflashEffectPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Mage/MuzzleflashMageLightning.prefab").WaitForCompletion();
 
         public static string attackSoundString = "CyborgPrimary";
-        public static string perfectSoundString = "CyborgSecondary";
+        public static string fullSoundString = "CyborgSecondary";
+        public static string perfectSoundString = "CyborgUtility";
 
         public GameObject crosshairPrefab;
         public float charge;
@@ -44,9 +45,20 @@ namespace EntityStates.SS2UStates.Cyborg.Secondary
             base.PlayAnimation("Gesture, Override", "FireM2", "FireArrow.playbackRate", this.duration);
             if (crosshairPrefab)
             {
-                this.crosshairOverrideRequest = CrosshairUtils.RequestOverrideForBody(base.characterBody, crosshairPrefab, CrosshairUtils.OverridePriority.Skill);
+                this.crosshairOverrideRequest = CrosshairUtils.RequestOverrideForBody(base.characterBody, crosshairPrefab, CrosshairUtils.OverridePriority.Sprint);
             }
-            Util.PlaySound(perfectCharge ? FireBeam.perfectSoundString : FireBeam.attackSoundString, base.gameObject);
+
+            string sound = FireBeam.attackSoundString;
+            if (perfectCharge)
+            {
+                sound = FireBeam.perfectSoundString;
+            }
+            else if (charge >= 1f)
+            {
+                sound = FireBeam.fullSoundString;
+            }
+            Util.PlaySound(sound, base.gameObject);
+
             if (base.isAuthority)
             {
                 float dmg = Mathf.Lerp(FireBeam.minDamageCoefficient, FireBeam.maxDamageCoefficient, charge) * this.damageStat * (perfectCharge ? FireBeam.perfectChargeDamageMultiplier : 1f);
@@ -73,9 +85,9 @@ namespace EntityStates.SS2UStates.Cyborg.Secondary
                     radius = Mathf.Lerp(1f, 2f, charge),
                     weapon = base.gameObject,
                     tracerEffectPrefab = perfectCharge ? FireBeam.perfectTracerEffectPrefab : FireBeam.tracerEffectPrefab,
-                    hitEffectPrefab = FireBeam.hitEffectPrefab,
-                    stopperMask = LayerIndex.world.mask
+                    hitEffectPrefab = FireBeam.hitEffectPrefab
                 };
+                if (perfectCharge) bullet.stopperMask = LayerIndex.world.mask;
                 bullet.Fire();
             }
             base.characterBody.AddSpreadBloom(2f);
@@ -106,7 +118,7 @@ namespace EntityStates.SS2UStates.Cyborg.Secondary
 
         public override InterruptPriority GetMinimumInterruptPriority()
         {
-            return InterruptPriority.PrioritySkill;
+            return InterruptPriority.Skill;
         }
     }
 }
