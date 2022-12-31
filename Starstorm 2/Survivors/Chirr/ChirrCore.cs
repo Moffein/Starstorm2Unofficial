@@ -108,7 +108,6 @@ namespace Starstorm2.Survivors.Chirr
 
                 foreach (var item in SurvivorCatalog.allSurvivorDefs)
                 {
-                    Debug.Log(item.bodyPrefab.name);
                     if (item.bodyPrefab.name == "ChirrBody")
                     {
                         var skele = Modules.Assets.mainAssetBundle.LoadAsset<UnityEngine.GameObject>("animChirrEmote.prefab");
@@ -646,7 +645,6 @@ namespace Starstorm2.Survivors.Chirr
             CameraTargetParams ctp = chirrPrefab.GetComponent<CameraTargetParams>();
             if (ctp && ctp.cameraPivotTransform)
             {
-                Debug.Log(ctp.cameraPivotTransform.localPosition);
                 ctp.cameraPivotTransform.localPosition = new Vector3(0f, 1.8f, 0f); //was (0f, 1.6f, 0f)
             }
 

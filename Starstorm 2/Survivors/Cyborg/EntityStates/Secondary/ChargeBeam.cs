@@ -26,6 +26,7 @@ namespace EntityStates.SS2UStates.Cyborg.Secondary
         private Transform muzzleTransform;
         private bool setNextState = false;
         private CyborgChargeComponent chargeComponent;
+        private bool isAutoFire = false;
 
         public override void OnEnter()
         {
@@ -83,7 +84,7 @@ namespace EntityStates.SS2UStates.Cyborg.Secondary
 
             if (base.isAuthority)
             {
-                if (!base.inputBank || (base.inputBank && !base.inputBank.skill2.down))
+                if (isAutoFire || !(base.inputBank && base.inputBank.skill2.down))
                 {
                     FireBeam fireBeam = new FireBeam()
                     {

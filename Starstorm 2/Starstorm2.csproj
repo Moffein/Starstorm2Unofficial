@@ -109,6 +109,7 @@
     <Compile Include="Survivors\Cyborg\EntityStates\OverheatScepter.cs" />
     <Compile Include="Survivors\Cyborg\EntityStates\PrimaryLaser.cs" />
     <Compile Include="Survivors\Cyborg\EntityStates\Secondary\ChargeBeam.cs" />
+    <Compile Include="Survivors\Cyborg\EntityStates\Secondary\DefenseMatrix.cs" />
     <Compile Include="Survivors\Cyborg\EntityStates\Secondary\FireBeam.cs" />
     <Compile Include="Survivors\Cyborg\EntityStates\Special\DeployTeleporter.cs" />
     <Compile Include="Survivors\Cyborg\EntityStates\Special\UseTeleporter.cs" />

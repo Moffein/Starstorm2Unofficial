@@ -68,7 +68,7 @@ namespace EntityStates.SS2UStates.Cyborg.Secondary
                     smartCollision = true,
                     procChainMask = default(ProcChainMask),
                     procCoefficient = 1f,
-                    radius = 2f,
+                    radius = Mathf.Lerp(1f, 2f, charge),
                     weapon = base.gameObject,
                     tracerEffectPrefab = perfectCharge ? FireBeam.perfectTracerEffectPrefab : FireBeam.tracerEffectPrefab,
                     hitEffectPrefab = FireBeam.hitEffectPrefab,

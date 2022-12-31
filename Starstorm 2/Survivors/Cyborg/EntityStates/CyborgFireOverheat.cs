@@ -45,7 +45,7 @@ namespace EntityStates.SS2UStates.Cyborg
             if (base.isAuthority && base.characterBody && base.characterMotor && !base.characterMotor.isGrounded)
             {
                 EntityStateMachine jetMachine = EntityStateMachine.FindByCustomName(base.gameObject, "Jetpack");
-                if (!(jetMachine && jetMachine.state.GetType() == typeof(JetpackOn)))
+                if (!(jetMachine && jetMachine.state.GetType() == typeof(EntityStates.Idle)))
                 {
                     return;
                 }
