@@ -19,7 +19,7 @@ namespace EntityStates.SS2UStates.Cyborg.Secondary
 
         public static float baseDuration = 2f;
         public static string attackSoundString = "";
-        public static GameObject projectileDeletionEffectPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Commando/OmniExplosionVFXFMJ.prefab").WaitForCompletion();
+        public static GameObject projectileDeletionEffectPrefab;
         public static GameObject matrixPrefab;
         public static float ticksPerSecond = 30;
 
@@ -52,7 +52,8 @@ namespace EntityStates.SS2UStates.Cyborg.Secondary
             if (matrixCollider)
             {
                 List<ProjectileController> deletionList = new List<ProjectileController>();
-                Collider[] colliders = Physics.OverlapBox(matrixCollider.center, matrixCollider.size * 0.5f, matrixCollider.transform.rotation, LayerIndex.projectile.mask);
+
+                Collider[] colliders = Physics.OverlapBox(matrixCollider.transform.position, matrixCollider.size * 0.5f, matrixCollider.transform.rotation, LayerIndex.projectile.mask);
                 foreach (Collider c in colliders)
                 {
                     ProjectileController pc = c.GetComponentInParent<ProjectileController>();

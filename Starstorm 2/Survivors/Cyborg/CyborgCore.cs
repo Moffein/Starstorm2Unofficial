@@ -69,7 +69,13 @@ namespace Starstorm2.Survivors.Cyborg
             Modules.Prefabs.RegisterNewSurvivor(cybPrefab, PrefabCore.CreateDisplayPrefab("CyborgDisplay", cybPrefab), Color.blue, "CYBORG", 40.1f);
             RoR2.RoR2Application.onLoad += SetBodyIndex;
 
-            EntityStates.SS2UStates.Cyborg.Secondary.DefenseMatrix.matrixPrefab = Modules.Assets.mainAssetBundle.LoadAsset<UnityEngine.GameObject>("DefenseMatrix.prefab");
+            DefenseMatrix.matrixPrefab = Modules.Assets.mainAssetBundle.LoadAsset<UnityEngine.GameObject>("DefenseMatrix.prefab");
+
+            GameObject projectileDeletionEffect = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Mage/OmniImpactVFXLightningMage.prefab").WaitForCompletion().InstantiateClone("SS2UCyborgDeleteProjectileEffect", false);
+            EffectComponent ec = projectileDeletionEffect.GetComponent<EffectComponent>();
+            ec.soundName = "Play_captain_drone_zap";
+            Modules.Assets.effectDefs.Add(new EffectDef(projectileDeletionEffect));
+            DefenseMatrix.projectileDeletionEffectPrefab = projectileDeletionEffect;
 
             if (StarstormPlugin.emoteAPILoaded) EmoteAPICompat();
         }
