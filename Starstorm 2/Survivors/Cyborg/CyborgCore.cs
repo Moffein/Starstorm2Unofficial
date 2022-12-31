@@ -228,9 +228,9 @@ namespace Starstorm2.Survivors.Cyborg
 
             ProjectileProximityBeamController bfgPbc = bfgProjectile.AddComponent<ProjectileProximityBeamController>();
             bfgPbc.attackRange = 12f;
-            bfgPbc.listClearInterval = 1f / 5f;
+            bfgPbc.listClearInterval = 0.2f;
             bfgPbc.attackInterval = bfgPbc.listClearInterval;
-            bfgPbc.damageCoefficient = 1f * bfgPbc.listClearInterval;
+            bfgPbc.damageCoefficient = 0.2f;
             bfgPbc.procCoefficient = 1f;
             bfgPbc.inheritDamageType = true;
             bfgPbc.bounces = bounceCount;
@@ -387,6 +387,62 @@ namespace Starstorm2.Survivors.Cyborg
 
         private void SetUpUtilities(SkillLocator skillLocator)
         {
+            SkillLocator skill = cybPrefab.GetComponent<SkillLocator>();
+
+            LanguageAPI.Add("CYBORG_TELEPORT_NAME", "Recall");
+            LanguageAPI.Add("CYBORG_TELEPORT_DESCRIPTION", "<style=cIsDamage>Shocking</style>. Create a <style=cIsUtility>warp point</style>. Reactivate to <style=cIsUtility>teleport to its location</style> and deal <style=cIsDamage>1200% damage</style>. Hold to remove existing warp points.");
+            SkillDef teleDeploy = ScriptableObject.CreateInstance<SkillDef>();
+            teleDeploy.activationState = new SerializableEntityStateType(typeof(DeployTeleporter));
+            teleDeploy.activationStateMachineName = "Teleporter";
+            teleDeploy.skillName = "CYBORG_TELEPORT_NAME";
+            teleDeploy.skillNameToken = "CYBORG_TELEPORT_NAME";
+            teleDeploy.skillDescriptionToken = "CYBORG_TELEPORT_DESCRIPTION";
+            teleDeploy.icon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("cyborgspecial");
+            teleDeploy.baseMaxStock = 1;
+            teleDeploy.baseRechargeInterval = 15f;
+            teleDeploy.beginSkillCooldownOnSkillEnd = true;
+            teleDeploy.canceledFromSprinting = false;
+            teleDeploy.fullRestockOnAssign = true;
+            teleDeploy.interruptPriority = EntityStates.InterruptPriority.Any;
+            teleDeploy.isCombatSkill = false;
+            teleDeploy.mustKeyPress = true;
+            teleDeploy.cancelSprintingOnActivation = false;
+            teleDeploy.rechargeStock = 1;
+            teleDeploy.requiredStock = 1;
+            teleDeploy.stockToConsume = 1;
+            teleDeploy.keywordTokens = new string[] { "KEYWORD_SHOCKING" };
+            Modules.Skills.skillDefs.Add(teleDeploy);
+            Modules.Skills.FixSkillName(teleDeploy);
+            SkillFamily.Variant variant1 = Utils.RegisterSkillVariant(teleDeploy);
+            skillLocator.utility = Utils.RegisterSkillsToFamily(cybPrefab, variant1);
+
+            CyborgTeleSkillDef teleActivate = ScriptableObject.CreateInstance<CyborgTeleSkillDef>();
+            teleActivate.activationState = new SerializableEntityStateType(typeof(UseTeleporter));
+            teleActivate.activationStateMachineName = "Teleporter";
+            teleActivate.skillName = "CYBORG_TELEPORT_NAME";
+            teleActivate.skillNameToken = "CYBORG_TELEPORT_NAME";
+            teleActivate.skillDescriptionToken = "CYBORG_TELEPORT_DESCRIPTION";
+            teleActivate.icon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("cyborgspecial2");
+            teleActivate.baseMaxStock = 1;
+            teleActivate.baseRechargeInterval = 3f;
+            teleActivate.beginSkillCooldownOnSkillEnd = true;
+            teleActivate.canceledFromSprinting = false;
+            teleActivate.fullRestockOnAssign = true;
+            teleActivate.interruptPriority = EntityStates.InterruptPriority.Skill;
+            teleActivate.isCombatSkill = false;
+            teleActivate.mustKeyPress = true;
+            teleActivate.cancelSprintingOnActivation = false;
+            teleActivate.rechargeStock = 0;
+            teleActivate.requiredStock = 1;
+            teleActivate.stockToConsume = 1;
+            teleActivate.keywordTokens = new string[] { };
+            Modules.Skills.FixSkillName(teleActivate);
+            Modules.Skills.skillDefs.Add(teleActivate);
+            DeployTeleporter.teleportSkillDef = teleActivate;
+        }
+
+        private void SetUpSpecials(SkillLocator skillLocator)
+        {
             var zapDmg = CyborgFireOverheat.damageCoefficient * 100f;
 
             //var dur = ExecutionerDash.debuffDuration;
@@ -400,54 +456,54 @@ namespace Starstorm2.Survivors.Cyborg
             LanguageAPI.Add("CYBORG_OVERHEAT_SCEPTER_NAME", "Gamma Overheat Redress");
             LanguageAPI.Add("CYBORG_OVERHEAT_SCEPTER_DESCRIPTION", $"<style=cIsUtility>Blast yourself backwards</style>, firing a greater energy bullet that deals a maximum of <style=cIsDamage>{zapDmg}% damage per second</style>.");
 
-            SkillDef utilityDef1 = ScriptableObject.CreateInstance<SkillDef>();
-            utilityDef1.activationState = new SerializableEntityStateType(typeof(CyborgFireOverheat));
-            utilityDef1.activationStateMachineName = "Weapon";
-            utilityDef1.skillName = "CYBORG_OVERHEAT_NAME";
-            utilityDef1.skillNameToken = "CYBORG_OVERHEAT_NAME";
-            utilityDef1.skillDescriptionToken = "CYBORG_OVERHEAT_DESCRIPTION";
-            utilityDef1.icon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("cyborgutility");
-            utilityDef1.baseMaxStock = 1;
-            utilityDef1.baseRechargeInterval = 10f;
-            utilityDef1.beginSkillCooldownOnSkillEnd = false;
-            utilityDef1.canceledFromSprinting = false;
-            utilityDef1.fullRestockOnAssign = true;
-            utilityDef1.interruptPriority = EntityStates.InterruptPriority.Skill;
-            utilityDef1.isCombatSkill = true;
-            utilityDef1.mustKeyPress = false;
-            utilityDef1.cancelSprintingOnActivation = false;
-            utilityDef1.rechargeStock = 1;
-            utilityDef1.requiredStock = 1;
-            utilityDef1.stockToConsume = 1;
-            overheatDef = utilityDef1;
-            Modules.Skills.skillDefs.Add(utilityDef1);
-            Modules.Skills.FixSkillName(utilityDef1);
-            SkillFamily.Variant utilityVariant1 = Utils.RegisterSkillVariant(utilityDef1);
+            SkillDef overheat = ScriptableObject.CreateInstance<SkillDef>();
+            overheat.activationState = new SerializableEntityStateType(typeof(CyborgFireOverheat));
+            overheat.activationStateMachineName = "Weapon";
+            overheat.skillName = "CYBORG_OVERHEAT_NAME";
+            overheat.skillNameToken = "CYBORG_OVERHEAT_NAME";
+            overheat.skillDescriptionToken = "CYBORG_OVERHEAT_DESCRIPTION";
+            overheat.icon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("cyborgutility");
+            overheat.baseMaxStock = 1;
+            overheat.baseRechargeInterval = 10f;
+            overheat.beginSkillCooldownOnSkillEnd = false;
+            overheat.canceledFromSprinting = false;
+            overheat.fullRestockOnAssign = true;
+            overheat.interruptPriority = EntityStates.InterruptPriority.Skill;
+            overheat.isCombatSkill = true;
+            overheat.mustKeyPress = false;
+            overheat.cancelSprintingOnActivation = false;
+            overheat.rechargeStock = 1;
+            overheat.requiredStock = 1;
+            overheat.stockToConsume = 1;
+            overheatDef = overheat;
+            Modules.Skills.skillDefs.Add(overheat);
+            Modules.Skills.FixSkillName(overheat);
+            SkillFamily.Variant specialVariant = Utils.RegisterSkillVariant(overheat);
 
-            skillLocator.utility = Utils.RegisterSkillsToFamily(cybPrefab, utilityVariant1);
+            skillLocator.special = Utils.RegisterSkillsToFamily(cybPrefab, specialVariant);
 
-            SkillDef utilityScepterDef1 = ScriptableObject.CreateInstance<SkillDef>();
-            utilityScepterDef1.activationState = new SerializableEntityStateType(typeof(OverheatScepter));
-            utilityScepterDef1.activationStateMachineName = "Weapon";
-            utilityScepterDef1.skillName = "CYBORG_OVERHEAT_SCEPTER_NAME";
-            utilityScepterDef1.skillNameToken = "CYBORG_OVERHEAT_SCEPTER_NAME";
-            utilityScepterDef1.skillDescriptionToken = "CYBORG_OVERHEAT_SCEPTER_DESCRIPTION";
-            utilityScepterDef1.icon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("cyborgutilityscepter");
-            utilityScepterDef1.baseMaxStock = 1;
-            utilityScepterDef1.baseRechargeInterval = 10f;
-            utilityScepterDef1.beginSkillCooldownOnSkillEnd = false;
-            utilityScepterDef1.canceledFromSprinting = false;
-            utilityScepterDef1.fullRestockOnAssign = true;
-            utilityScepterDef1.interruptPriority = EntityStates.InterruptPriority.Skill;
-            utilityScepterDef1.isCombatSkill = true;
-            utilityScepterDef1.mustKeyPress = false;
-            utilityScepterDef1.cancelSprintingOnActivation = false;
-            utilityScepterDef1.rechargeStock = 1;
-            utilityScepterDef1.requiredStock = 1;
-            utilityScepterDef1.stockToConsume = 1;
-            Modules.Skills.skillDefs.Add(utilityScepterDef1);
-            overheatScepterDef = utilityScepterDef1;
-            Modules.Skills.FixSkillName(utilityScepterDef1);
+            SkillDef scepterDef = ScriptableObject.CreateInstance<SkillDef>();
+            scepterDef.activationState = new SerializableEntityStateType(typeof(OverheatScepter));
+            scepterDef.activationStateMachineName = "Weapon";
+            scepterDef.skillName = "CYBORG_OVERHEAT_SCEPTER_NAME";
+            scepterDef.skillNameToken = "CYBORG_OVERHEAT_SCEPTER_NAME";
+            scepterDef.skillDescriptionToken = "CYBORG_OVERHEAT_SCEPTER_DESCRIPTION";
+            scepterDef.icon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("cyborgutilityscepter");
+            scepterDef.baseMaxStock = 1;
+            scepterDef.baseRechargeInterval = 10f;
+            scepterDef.beginSkillCooldownOnSkillEnd = false;
+            scepterDef.canceledFromSprinting = false;
+            scepterDef.fullRestockOnAssign = true;
+            scepterDef.interruptPriority = EntityStates.InterruptPriority.Skill;
+            scepterDef.isCombatSkill = true;
+            scepterDef.mustKeyPress = false;
+            scepterDef.cancelSprintingOnActivation = false;
+            scepterDef.rechargeStock = 1;
+            scepterDef.requiredStock = 1;
+            scepterDef.stockToConsume = 1;
+            Modules.Skills.skillDefs.Add(scepterDef);
+            overheatScepterDef = scepterDef;
+            Modules.Skills.FixSkillName(scepterDef);
 
             if (StarstormPlugin.scepterPluginLoaded)
             {
@@ -463,69 +519,13 @@ namespace Starstorm2.Survivors.Cyborg
         private void ScepterSetup()
         {
 
-            AncientScepter.AncientScepterItem.instance.RegisterScepterSkill(overheatScepterDef, "CyborgBody", SkillSlot.Utility, 0);
+            AncientScepter.AncientScepterItem.instance.RegisterScepterSkill(overheatScepterDef, "CyborgBody", SkillSlot.Special, 0);
         }
 
         [MethodImpl(MethodImplOptions.NoInlining | MethodImplOptions.NoOptimization)]
         private void ClassicScepterSetup()
         {
-            ThinkInvisible.ClassicItems.Scepter.instance.RegisterScepterSkill(overheatScepterDef, "CyborgBody", SkillSlot.Utility, overheatDef);
-        }
-
-        private void SetUpSpecials(SkillLocator skillLocator)
-        {
-            SkillLocator skill = cybPrefab.GetComponent<SkillLocator>();
-
-            LanguageAPI.Add("CYBORG_TELEPORT_NAME", "Recall");
-            LanguageAPI.Add("CYBORG_TELEPORT_DESCRIPTION", "<style=cIsDamage>Shocking</style>. Create a <style=cIsUtility>warp point</style>. Reactivate to <style=cIsUtility>teleport to its location</style> and deal <style=cIsDamage>1200% damage</style>. Hold to remove existing warp points.");
-            SkillDef specialDeploy = ScriptableObject.CreateInstance<SkillDef>();
-            specialDeploy.activationState = new SerializableEntityStateType(typeof(DeployTeleporter));
-            specialDeploy.activationStateMachineName = "Teleporter";
-            specialDeploy.skillName = "CYBORG_TELEPORT_NAME";
-            specialDeploy.skillNameToken = "CYBORG_TELEPORT_NAME";
-            specialDeploy.skillDescriptionToken = "CYBORG_TELEPORT_DESCRIPTION";
-            specialDeploy.icon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("cyborgspecial");
-            specialDeploy.baseMaxStock = 1;
-            specialDeploy.baseRechargeInterval = 15f;
-            specialDeploy.beginSkillCooldownOnSkillEnd = true;
-            specialDeploy.canceledFromSprinting = false;
-            specialDeploy.fullRestockOnAssign = true;
-            specialDeploy.interruptPriority = EntityStates.InterruptPriority.Any;
-            specialDeploy.isCombatSkill = false;
-            specialDeploy.mustKeyPress = true;
-            specialDeploy.cancelSprintingOnActivation = false;
-            specialDeploy.rechargeStock = 1;
-            specialDeploy.requiredStock = 1;
-            specialDeploy.stockToConsume = 1;
-            specialDeploy.keywordTokens = new string[] { "KEYWORD_SHOCKING" };
-            Modules.Skills.skillDefs.Add(specialDeploy);
-            Modules.Skills.FixSkillName(specialDeploy);
-            SkillFamily.Variant specialVariant1 = Utils.RegisterSkillVariant(specialDeploy);
-            skillLocator.special = Utils.RegisterSkillsToFamily(cybPrefab, specialVariant1);
-
-            CyborgTeleSkillDef specialTeleport = ScriptableObject.CreateInstance<CyborgTeleSkillDef>();
-            specialTeleport.activationState = new SerializableEntityStateType(typeof(UseTeleporter));
-            specialTeleport.activationStateMachineName = "Teleporter";
-            specialTeleport.skillName = "CYBORG_TELEPORT_NAME";
-            specialTeleport.skillNameToken = "CYBORG_TELEPORT_NAME";
-            specialTeleport.skillDescriptionToken = "CYBORG_TELEPORT_DESCRIPTION";
-            specialTeleport.icon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("cyborgspecial2");
-            specialTeleport.baseMaxStock = 1;
-            specialTeleport.baseRechargeInterval = 3f;
-            specialTeleport.beginSkillCooldownOnSkillEnd = true;
-            specialTeleport.canceledFromSprinting = false;
-            specialTeleport.fullRestockOnAssign = true;
-            specialTeleport.interruptPriority = EntityStates.InterruptPriority.Skill;
-            specialTeleport.isCombatSkill = false;
-            specialTeleport.mustKeyPress = true;
-            specialTeleport.cancelSprintingOnActivation = false;
-            specialTeleport.rechargeStock = 0;
-            specialTeleport.requiredStock = 1;
-            specialTeleport.stockToConsume = 1;
-            specialTeleport.keywordTokens = new string[] { };
-            Modules.Skills.FixSkillName(specialTeleport);
-            Modules.Skills.skillDefs.Add(specialTeleport);
-            DeployTeleporter.teleportSkillDef = specialTeleport;
+            ThinkInvisible.ClassicItems.Scepter.instance.RegisterScepterSkill(overheatScepterDef, "CyborgBody", SkillSlot.Special, overheatDef);
         }
 
         internal static void CreateDoppelganger()
@@ -534,7 +534,7 @@ namespace Starstorm2.Survivors.Cyborg
             doppelganger.GetComponent<CharacterMaster>().bodyPrefab = cybPrefab;
             Modules.Prefabs.RemoveAISkillDrivers(doppelganger);
 
-            Modules.Prefabs.AddAISkillDriver(doppelganger, "Overheat", SkillSlot.Utility, null,
+            Modules.Prefabs.AddAISkillDriver(doppelganger, "Overheat", SkillSlot.Special, null,
                 true, false,
                 Mathf.NegativeInfinity, Mathf.Infinity,
                 Mathf.NegativeInfinity, Mathf.Infinity,
@@ -554,7 +554,7 @@ namespace Starstorm2.Survivors.Cyborg
                 null);
 
 
-            Modules.Prefabs.AddAISkillDriver(doppelganger, "Teleport", SkillSlot.Special, null,
+            Modules.Prefabs.AddAISkillDriver(doppelganger, "Teleport", SkillSlot.Utility, null,
                  true, false,
                  Mathf.NegativeInfinity, Mathf.Infinity,
                  Mathf.NegativeInfinity, Mathf.Infinity,

@@ -54,7 +54,7 @@ namespace EntityStates.SS2UStates.Cyborg
                     maxSpread = 0,
                     damage = PrimaryLaser.damageCoefficient * this.damageStat,
                     force = 1000f,
-                    radius = 0.5f,
+                    radius = 1f,
                     smartCollision = true,
                     tracerEffectPrefab = tracerEffectPrefab,
                     muzzleName = muzzleString,

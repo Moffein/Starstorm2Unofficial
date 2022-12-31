@@ -71,15 +71,15 @@ namespace EntityStates.SS2UStates.Cyborg.Special
                         {
                             if (base.skillLocator)
                             {
-                                GenericSkill specialSlot = base.skillLocator.special;
-                                if (specialSlot)
+                                GenericSkill skillSlot = base.skillLocator.utility;
+                                if (skillSlot)
                                 {
-                                    origSpecialStock = specialSlot.stock;
-                                    origSpecialRechargeStopwatch = specialSlot.rechargeStopwatch;
+                                    origSpecialStock = skillSlot.stock;
+                                    origSpecialRechargeStopwatch = skillSlot.rechargeStopwatch;
 
                                     appliedSkillOverride = true;
-                                    specialSlot.SetSkillOverride(this, teleportSkillDef, GenericSkill.SkillOverridePriority.Contextual);
-                                    specialSlot.stock = 1;
+                                    skillSlot.SetSkillOverride(this, teleportSkillDef, GenericSkill.SkillOverridePriority.Contextual);
+                                    skillSlot.stock = 1;
                                 }
                             }
                         }
@@ -104,12 +104,12 @@ namespace EntityStates.SS2UStates.Cyborg.Special
                 {
                     if (base.skillLocator)
                     {
-                        GenericSkill specialSlot = base.skillLocator.special;
-                        if (specialSlot)
+                        GenericSkill skillSlot = base.skillLocator.utility;
+                        if (skillSlot)
                         {
-                            specialSlot.UnsetSkillOverride(this, teleportSkillDef, GenericSkill.SkillOverridePriority.Contextual);
-                            specialSlot.rechargeStopwatch = origSpecialRechargeStopwatch;
-                            specialSlot.stock = origSpecialStock;
+                            skillSlot.UnsetSkillOverride(this, teleportSkillDef, GenericSkill.SkillOverridePriority.Contextual);
+                            skillSlot.rechargeStopwatch = origSpecialRechargeStopwatch;
+                            skillSlot.stock = origSpecialStock;
                         }
                     }
                 }

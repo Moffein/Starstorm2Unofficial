@@ -84,7 +84,7 @@ namespace EntityStates.SS2UStates.Cyborg.Special
 
             if (base.isAuthority)
             {
-                if (!base.inputBank.skill4.down)
+                if (!base.inputBank.skill3.down)
                 {
                     if (!teleported && base.fixedAge <= UseTeleporter.baseDuration)
                     {
