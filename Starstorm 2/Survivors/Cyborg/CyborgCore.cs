@@ -71,7 +71,7 @@ namespace Starstorm2.Survivors.Cyborg
 
             DefenseMatrix.matrixPrefab = Modules.Assets.mainAssetBundle.LoadAsset<UnityEngine.GameObject>("DefenseMatrix.prefab");
 
-            GameObject projectileDeletionEffect = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Mage/OmniImpactVFXLightningMage.prefab").WaitForCompletion().InstantiateClone("SS2UCyborgDeleteProjectileEffect", false);
+            GameObject projectileDeletionEffect = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Commando/HitsparkCommandoShotgun.prefab").WaitForCompletion().InstantiateClone("SS2UCyborgDeleteProjectileEffect", false);
             EffectComponent ec = projectileDeletionEffect.GetComponent<EffectComponent>();
             ec.soundName = "Play_captain_drone_zap";
             Modules.Assets.effectDefs.Add(new EffectDef(projectileDeletionEffect));
@@ -357,7 +357,7 @@ namespace Starstorm2.Survivors.Cyborg
 
 
              LanguageAPI.Add("CYBORG_SECONDARY_DEFENSEMATRIX_NAME", "Defense Matrix");
-             LanguageAPI.Add("CYBORG_SECONDARY_DEFENSEMATRIX_DESCRIPTION", $"Project an energy field that <style=cIsUtility>neutralizes enemy projectiles</style>.");
+             LanguageAPI.Add("CYBORG_SECONDARY_DEFENSEMATRIX_DESCRIPTION", $"Project an energy field that <style=cIsUtility>neutralizes ranged attacks</style>. Each <style=cIsUtility>projectile</style> neutralized <style=cIsUtility>reduces</style> skill cooldowns by <style=cIsUtility>1s</style>.");
              SkillDef defenseMatrixDef = ScriptableObject.CreateInstance<SkillDef>();
              defenseMatrixDef.activationState = new SerializableEntityStateType(typeof(DefenseMatrix));
              defenseMatrixDef.activationStateMachineName = "DefenseMatrix";
@@ -366,7 +366,7 @@ namespace Starstorm2.Survivors.Cyborg
              defenseMatrixDef.skillDescriptionToken = "CYBORG_SECONDARY_DEFENSEMATRIX_DESCRIPTION";
              defenseMatrixDef.icon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("cyborgsecondary");
              defenseMatrixDef.baseMaxStock = 1;
-             defenseMatrixDef.baseRechargeInterval = 4f;
+             defenseMatrixDef.baseRechargeInterval = 6f;
              defenseMatrixDef.beginSkillCooldownOnSkillEnd = true;
              defenseMatrixDef.canceledFromSprinting = false;
              defenseMatrixDef.fullRestockOnAssign = true;

@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 691528590
+CRC: 1662995465
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: d695d3c1b678c8a82e9b7f5a3f65609a
+    Hash: 4718622b7fdcfa69c44648bb85cdcd4c
   TypeTreeHash:
     serializedVersion: 2
     Hash: e085efc3cec39229c22603e1a47b8115
@@ -350,6 +350,7 @@ Assets:
 - Assets/AssetBundle/Nucleator/Animations/Clips/UtilityCharge.anim
 - Assets/AssetBundle/Enemies/Spooder/Animations/WalkL.anim
 - Assets/AssetBundle/Items/GreaterWarbanner/MDLGreaterWarbannerWard.prefab
+- Assets/AssetBundle/Cyborg/Materials/matCyborgDefenseMatrixFace.mat
 - Assets/AssetBundle/Nemmando/Icons/texNemmandoIconUnlock.png
 - Assets/AssetBundle/Items/Fork/MDLFork.prefab
 - Assets/AssetBundle/Pyro/Animations/Idle.anim
@@ -504,6 +505,7 @@ Assets:
 - Assets/AssetBundle/Chirr/Animations/Rest-Idle.anim
 - Assets/AssetBundle/Pyro/Animations/Descend.anim
 - Assets/AssetBundle/Nemmando/VFX/NemmandoSwingEffectSaber.prefab
+- Assets/AssetBundle/Cyborg/Materials/texCyborgDefenseMatrixFace.png
 - Assets/AssetBundle/Items/RelicOfMass/mass_em.png
 - Assets/AssetBundle/Cyborg/Meshes/meshCyborg.mesh
 - Assets/AssetBundle/Chirr/Animations/ChirrGestureAdd.mask
