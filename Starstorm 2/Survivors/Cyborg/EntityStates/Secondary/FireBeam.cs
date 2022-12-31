@@ -9,17 +9,19 @@ namespace EntityStates.SS2UStates.Cyborg.Secondary
     public class FireBeam : BaseState
     {
         public static string muzzleString = "Lowerarm.L_end";
-        public static float perfectChargeDamageMultiplier = 1.5f;
-        public static float minDamageCoefficient = 4f;
-        public static float maxDamageCoefficient = 8f;
-        public static float minForce = 2000f;
-        public static float maxForce = 4000f;
+        public static float perfectChargeDamageMultiplier = 1.3f;
+        public static float minDamageCoefficient = 3f;
+        public static float maxDamageCoefficient = 9f;
+        public static float minForce = 1000f;
+        public static float maxForce = 3000f;
         public static float baseDuration = 0.5f;
-        public static GameObject hitEffectPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Loader/ImpactLoaderFistSmall.prefab").WaitForCompletion();
-        public static GameObject tracerEffectPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Huntress/TracerHuntressSnipe.prefab").WaitForCompletion();
-        public static GameObject perfectTracerEffectPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Toolbot/TracerToolbotRebar.prefab").WaitForCompletion();
-        public static string attackSoundString = "CyborgSecondary";
-        public static string perfectSoundString = "Play_MULT_m1_snipe_shoot";
+        public static GameObject hitEffectPrefab = LegacyResourcesAPI.Load<GameObject>("prefabs/effects/impacteffects/HitsparkCommandoShotgun");
+        public static GameObject tracerEffectPrefab;
+        public static GameObject perfectTracerEffectPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Huntress/TracerHuntressSnipe.prefab").WaitForCompletion();
+        public static GameObject muzzleflashEffectPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Mage/MuzzleflashMageLightning.prefab").WaitForCompletion();
+
+        public static string attackSoundString = "CyborgPrimary";
+        public static string perfectSoundString = "CyborgSecondary";
 
         public GameObject crosshairPrefab;
         public float charge;
@@ -56,7 +58,7 @@ namespace EntityStates.SS2UStates.Cyborg.Secondary
                     aimVector = r.direction,
                     origin = r.origin,
                     damage = dmg,
-                    damageType = DamageType.Stun1s,
+                    damageType = DamageType.Generic,
                     damageColorIndex = DamageColorIndex.Default,
                     minSpread = 0f,
                     maxSpread = 0f,

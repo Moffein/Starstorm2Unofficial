@@ -3702,6 +3702,41 @@
 										<ActiveSource Name="CyborgUtility" ID="{9023A499-B325-49CC-B0A2-406883858283}" Platform="Linked"/>
 									</ActiveSourceList>
 								</Sound>
+								<Sound Name="recharged" ID="{16C4B05A-3064-44DF-8967-60366AED3D06}" ShortID="701440628">
+									<PropertyList>
+										<Property Name="Volume" Type="Real64">
+											<ValueList>
+												<Value>-4</Value>
+											</ValueList>
+										</Property>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{94E9A332-4F75-42A2-884C-469412070470}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{8B449195-16F5-41A2-9626-CB3E0D2C3C12}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="recharged" ID="{C72BD49A-8FCB-400F-AD0C-3607748056F5}">
+											<PropertyList>
+												<Property Name="LoopBegin" Type="Real64" Value="-0.001"/>
+												<Property Name="LoopEnd" Type="Real64" Value="-0.001"/>
+												<Property Name="TrimBegin" Type="Real64" Value="-0.001"/>
+												<Property Name="TrimEnd" Type="Real64" Value="-0.001"/>
+											</PropertyList>
+											<Language>SFX</Language>
+											<AudioFile>recharged.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="147367706"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="recharged" ID="{C72BD49A-8FCB-400F-AD0C-3607748056F5}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
 							</ChildrenList>
 						</Folder>
 						<Folder Name="Chirr" ID="{337C9B10-4306-4074-BD3A-938F672875B0}" ShortID="341575810">

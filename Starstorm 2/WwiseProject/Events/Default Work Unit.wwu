@@ -1112,6 +1112,20 @@
 						</Action>
 					</ChildrenList>
 				</Event>
+				<Event Name="CyborgPerfectCharge" ID="{554998A9-FBF1-46C6-876B-922EA4BCDC68}">
+					<ChildrenList>
+						<Action Name="" ID="{46FB8101-D49A-4DD2-9A05-E6F2D22289B6}" ShortID="5894233">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="1"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="recharged" ID="{16C4B05A-3064-44DF-8967-60366AED3D06}" WorkUnitID="{3D683E44-DAC0-4717-B7E2-3D4C4555FE6A}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
 			</ChildrenList>
 		</WorkUnit>
 	</Events>

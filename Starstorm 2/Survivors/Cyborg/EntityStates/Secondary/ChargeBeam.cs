@@ -9,16 +9,16 @@ namespace EntityStates.SS2UStates.Cyborg.Secondary
     public class ChargeBeam : BaseState
     {
         public static string muzzleString = "Lowerarm.L_end";
-        public static string fullChargeSound = "Play_item_proc_crit_cooldown";
-        public static string beginChargeSound = "Play_MULT_m1_snipe_charge";
-        public static string endChargeSound = "Play_MULT_m1_snipe_charge_end";
-        public static GameObject chargeupVfxPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Junk/Toolbot/SpearChargeUpVFX.prefab").WaitForCompletion();
+        public static string fullChargeSound = "CyborgPerfectCharge";
+        public static string beginChargeSound = "Play_mage_m2_charge";
+        public static GameObject chargeupVfxPrefab = null;//Addressables.LoadAssetAsync<GameObject>("RoR2/Junk/Toolbot/SpearChargeUpVFX.prefab").WaitForCompletion();
         public static GameObject holdChargeVfxPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Captain/SpearChargedVFX.prefab").WaitForCompletion();
 
         public static GameObject fullChargeEffectPrefab;
         public static float baseDuration = 1f;
         public static float perfectChargeDuration = 0.3f;   //dont scale this with attack speed
 
+        private uint loopSoundInstanceId = uint.MaxValue;
         private float duration;
         public float charge;
         private GameObject chargeupVfxGameObject;
@@ -34,7 +34,7 @@ namespace EntityStates.SS2UStates.Cyborg.Secondary
             duration = ChargeBeam.baseDuration / this.attackSpeedStat;
             charge = 0f;
 
-            Util.PlaySound(ChargeBeam.beginChargeSound, base.gameObject);
+            this.loopSoundInstanceId = Util.PlayAttackSpeedSound(ChargeBeam.beginChargeSound, base.gameObject, this.attackSpeedStat);
             base.characterBody.SetAimTimer(3f);
 
             chargeComponent = base.GetComponent<CyborgChargeComponent>();
@@ -60,7 +60,11 @@ namespace EntityStates.SS2UStates.Cyborg.Secondary
                 charge = base.fixedAge / duration;
                 if (charge >= 1f)
                 {
-                    Util.PlaySound(ChargeBeam.endChargeSound, base.gameObject);
+                    if (loopSoundInstanceId != uint.MaxValue)
+                    {
+                        AkSoundEngine.StopPlayingID(this.loopSoundInstanceId);
+                        loopSoundInstanceId = uint.MaxValue;
+                    }
                     if (base.isAuthority) Util.PlaySound(ChargeBeam.fullChargeSound, base.gameObject);
 
                     if (this.chargeupVfxGameObject)
@@ -84,7 +88,7 @@ namespace EntityStates.SS2UStates.Cyborg.Secondary
 
             if (base.isAuthority)
             {
-                if (isAutoFire || !(base.inputBank && base.inputBank.skill2.down))
+                if (isAutoFire || !(base.inputBank && base.inputBank.skill1.down))
                 {
                     FireBeam fireBeam = new FireBeam()
                     {
@@ -102,6 +106,7 @@ namespace EntityStates.SS2UStates.Cyborg.Secondary
 
         public override void OnExit()
         {
+            if (loopSoundInstanceId != uint.MaxValue) AkSoundEngine.StopPlayingID(this.loopSoundInstanceId);
             if (chargeComponent)
             {
                 chargeComponent.ResetCharge();

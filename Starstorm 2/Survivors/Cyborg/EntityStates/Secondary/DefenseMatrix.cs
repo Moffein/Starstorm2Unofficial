@@ -1,6 +1,7 @@
 ﻿using RoR2;
 using RoR2.Projectile;
 using RoR2.UI;
+using Starstorm2.Survivors.Cyborg;
 using Starstorm2.Survivors.Cyborg.Components;
 using System.Collections.Generic;
 using UnityEngine;
@@ -19,6 +20,7 @@ namespace EntityStates.SS2UStates.Cyborg.Secondary
         private float blinkStopwatch;
         private float blinkToggleDuration;
         private float blinkStartTime;
+        private TeamIndex inputTeamIndex;
 
         public static float baseDuration = 3f;
         public static string attackSoundString = "CyborgSpecialTeleport";
@@ -53,6 +55,11 @@ namespace EntityStates.SS2UStates.Cyborg.Secondary
                     {
                         matrixInstance = UnityEngine.Object.Instantiate(matrixPrefab, matrixRootTransform);
                         matrixCollider = matrixInstance.GetComponentInChildren<BoxCollider>();
+                        if (matrixCollider)
+                        {
+                            inputTeamIndex = base.GetTeam();
+                            DefenseMatrixManager.AddMatrix(matrixCollider, inputTeamIndex);
+                        }
                     }
                 }
             }
@@ -166,6 +173,11 @@ namespace EntityStates.SS2UStates.Cyborg.Secondary
 
         public override void OnExit()
         {
+            if (matrixCollider)
+            {
+                DefenseMatrixManager.RemoveMatrix(matrixCollider, inputTeamIndex);
+            }
+
             if (matrixInstance)
             {
                 EntityState.Destroy(matrixInstance);

@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4431110889379415218}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Blocks
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -44,7 +44,7 @@ GameObject:
   - component: {fileID: 5453726371994715773}
   - component: {fileID: 3878906026764643926}
   - component: {fileID: 6146370371369414835}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -123,7 +123,7 @@ GameObject:
   - component: {fileID: 5406734571790579249}
   - component: {fileID: 4768989858345816989}
   - component: {fileID: 4863946348888118288}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -201,7 +201,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3109055410179548357}
   - component: {fileID: 2521611533542172468}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Hitbox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -662,7 +662,7 @@ GameObject:
   - component: {fileID: 8404874452312511065}
   - component: {fileID: 6813608385583670194}
   - component: {fileID: 5890846356619409655}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}

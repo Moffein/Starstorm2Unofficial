@@ -52,6 +52,7 @@ namespace Starstorm2.Survivors.Cyborg
             tracerEffectPrefab.AddComponent<DestroyOnTimer>().duration = 0.3f;
             Modules.Assets.effectDefs.Add(new EffectDef(tracerEffectPrefab));
             PrimaryLaser.tracerEffectPrefab = tracerEffectPrefab;
+            FireBeam.tracerEffectPrefab = tracerEffectPrefab;
 
             LanguageAPI.Add("CYBORG_NAME", "Cyborg");
             LanguageAPI.Add("CYBORG_SUBTITLE", "Man Made Monstrosity");
@@ -68,7 +69,13 @@ namespace Starstorm2.Survivors.Cyborg
 
             Modules.Prefabs.RegisterNewSurvivor(cybPrefab, PrefabCore.CreateDisplayPrefab("CyborgDisplay", cybPrefab), Color.blue, "CYBORG", 40.1f);
             RoR2.RoR2Application.onLoad += SetBodyIndex;
+            SetupDefenseMatrix();
 
+            if (StarstormPlugin.emoteAPILoaded) EmoteAPICompat();
+        }
+
+        private void SetupDefenseMatrix()
+        {
             DefenseMatrix.matrixPrefab = Modules.Assets.mainAssetBundle.LoadAsset<UnityEngine.GameObject>("DefenseMatrix.prefab");
 
             GameObject projectileDeletionEffect = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Commando/HitsparkCommandoShotgun.prefab").WaitForCompletion().InstantiateClone("SS2UCyborgDeleteProjectileEffect", false);
@@ -77,7 +84,7 @@ namespace Starstorm2.Survivors.Cyborg
             Modules.Assets.effectDefs.Add(new EffectDef(projectileDeletionEffect));
             DefenseMatrix.projectileDeletionEffectPrefab = projectileDeletionEffect;
 
-            if (StarstormPlugin.emoteAPILoaded) EmoteAPICompat();
+            DefenseMatrixManager.Initialize();
         }
 
         private static GameObject BuildCrosshair()
@@ -292,10 +299,11 @@ namespace Starstorm2.Survivors.Cyborg
             var dmg = PrimaryLaser.damageCoefficient * 100f;
 
             LanguageAPI.Add("CYBORG_PRIMARY_GUN_NAME", "Unmaker");
-            LanguageAPI.Add("CYBORG_PRIMARY_GUN_DESCRIPTION", $"Fire a <style=cIsUtility>slowing</style> beam at contenders for <style=cIsDamage>{dmg}% damage</style>.");
+            //LanguageAPI.Add("CYBORG_PRIMARY_GUN_DESCRIPTION", $"Fire a <style=cIsUtility>slowing</style> beam at contenders for <style=cIsDamage>{dmg}% damage</style>.");
+            LanguageAPI.Add("CYBORG_PRIMARY_GUN_DESCRIPTION", $"Charge up a piercing beam that deals <style=cIsDamage>300%-900% damage</style>. Deals <style=cIsDamage>+30% damage</style> when <style=cIsDamage>perfectly charged</style>.");
 
             SteppedSkillDef primaryDef1 = ScriptableObject.CreateInstance<SteppedSkillDef>();
-            primaryDef1.activationState = new SerializableEntityStateType(typeof(PrimaryLaser));
+            primaryDef1.activationState = new SerializableEntityStateType(typeof(ChargeBeam));
             primaryDef1.activationStateMachineName = "Weapon";
             primaryDef1.skillName = "CYBORG_PRIMARY_GUN_NAME";
             primaryDef1.skillNameToken = "CYBORG_PRIMARY_GUN_NAME";
@@ -328,7 +336,7 @@ namespace Starstorm2.Survivors.Cyborg
 
             SkillLocator skill = cybPrefab.GetComponent<SkillLocator>();
 
-            LanguageAPI.Add("CYBORG_SECONDARY_CHARGERIFLE_NAME", "Rising Star");
+            /*LanguageAPI.Add("CYBORG_SECONDARY_CHARGERIFLE_NAME", "Rising Star");
             LanguageAPI.Add("CYBORG_SECONDARY_CHARGERIFLE_DESCRIPTION", $"<style=cIsDamage>Stunning</style>. Charge up a piercing beam that deals <style=cIsDamage>400%-800% damage</style>. Deals <style=cIsDamage>+50% damage</style> when <style=cIsDamage>perfectly charged</style>.");
 
             SkillDef secondaryDef1 = ScriptableObject.CreateInstance<SkillDef>();
@@ -353,11 +361,11 @@ namespace Starstorm2.Survivors.Cyborg
             secondaryDef1.keywordTokens = new string[] { "KEYWORD_STUNNING" };
             Modules.Skills.FixSkillName(secondaryDef1);
             Utils.RegisterSkillDef(secondaryDef1);
-            SkillFamily.Variant secondaryVariant1 = Utils.RegisterSkillVariant(secondaryDef1);
+            SkillFamily.Variant secondaryVariant1 = Utils.RegisterSkillVariant(secondaryDef1);*/
 
 
              LanguageAPI.Add("CYBORG_SECONDARY_DEFENSEMATRIX_NAME", "Defense Matrix");
-             LanguageAPI.Add("CYBORG_SECONDARY_DEFENSEMATRIX_DESCRIPTION", $"Project an energy field that <style=cIsUtility>neutralizes ranged attacks</style>. Each <style=cIsUtility>projectile</style> neutralized <style=cIsUtility>reduces</style> skill cooldowns by <style=cIsUtility>1s</style>.");
+             LanguageAPI.Add("CYBORG_SECONDARY_DEFENSEMATRIX_DESCRIPTION", $"Project an energy field that <style=cIsUtility>neutralizes ranged attacks</style>.");
              SkillDef defenseMatrixDef = ScriptableObject.CreateInstance<SkillDef>();
              defenseMatrixDef.activationState = new SerializableEntityStateType(typeof(DefenseMatrix));
              defenseMatrixDef.activationStateMachineName = "DefenseMatrix";
@@ -382,7 +390,7 @@ namespace Starstorm2.Survivors.Cyborg
              Utils.RegisterSkillDef(defenseMatrixDef);
              SkillFamily.Variant secondaryVariant2 = Utils.RegisterSkillVariant(defenseMatrixDef);
 
-            skillLocator.secondary = Utils.RegisterSkillsToFamily(cybPrefab, new SkillFamily.Variant[] { secondaryVariant1, secondaryVariant2 });
+            skillLocator.secondary = Utils.RegisterSkillsToFamily(cybPrefab, new SkillFamily.Variant[] { secondaryVariant2 });
         }
 
         private void SetUpUtilities(SkillLocator skillLocator)
