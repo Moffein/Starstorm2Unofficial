@@ -1,4 +1,5 @@
-﻿using RoR2;
+﻿using JetBrains.Annotations;
+using RoR2;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
@@ -40,26 +41,24 @@ namespace Starstorm2.Survivors.Cyborg
             activeDefenseMatrices.Clear();
         }
 
-        public static void AddMatrix(Collider collider, TeamIndex teamIndex)
+        public static DefenseMatrixInfo AddMatrix(DefenseMatrixInfo defenseMatrixInfo)
         {
-            activeDefenseMatrices.Add(new DefenseMatrixInfo(collider, teamIndex));
+            if (defenseMatrixInfo != null && defenseMatrixInfo.colliders != null && defenseMatrixInfo.colliders.Length > 0)
+            {
+                activeDefenseMatrices.Add(defenseMatrixInfo);
+                return defenseMatrixInfo;
+            }
+            return null;
         }
 
-        public static void RemoveMatrix(Collider collider, TeamIndex teamIndex)
+        public static DefenseMatrixInfo AddMatrix(Collider[] colliders, TeamIndex teamIndex)
         {
-            List<DefenseMatrixInfo> toRemove = new List<DefenseMatrixInfo>();
-            foreach (DefenseMatrixInfo dmi in activeDefenseMatrices)
-            {
-                if (dmi.collider == collider && dmi.teamIndex == teamIndex)
-                {
-                    toRemove.Add(dmi);
-                }
-            }
+            return AddMatrix(new DefenseMatrixInfo(colliders, teamIndex));
+        }
 
-            foreach (DefenseMatrixInfo dmi in toRemove)
-            {
-                activeDefenseMatrices.Remove(dmi);
-            }
+        public static void RemoveMatrix(DefenseMatrixInfo defenseMatrixInfo)
+        {
+            activeDefenseMatrices.Remove(defenseMatrixInfo);
         }
 
         public static void EnableMatrices(TeamIndex attackerTeam)
@@ -68,7 +67,7 @@ namespace Starstorm2.Survivors.Cyborg
             {
                 if (dmi.teamIndex != attackerTeam)
                 {
-                    dmi.collider.enabled = true;
+                    dmi.EnableColliders();
                 }
             }
         }
@@ -78,20 +77,36 @@ namespace Starstorm2.Survivors.Cyborg
             {
                 if (dmi.teamIndex != attackerTeam)
                 {
-                    dmi.collider.enabled = false;
+                    dmi.DisableColliders();
                 }
             }
         }
 
         public class DefenseMatrixInfo
         {
-            public Collider collider;
+            public Collider[] colliders;
             public TeamIndex teamIndex;
 
-            public DefenseMatrixInfo(Collider collider, TeamIndex teamIndex)
+            public DefenseMatrixInfo(Collider[] colliders, TeamIndex teamIndex)
             {
-                this.collider = collider;
+                this.colliders = colliders;
                 this.teamIndex = teamIndex;
+            }
+
+            public void EnableColliders()
+            {
+                for (int i = 0; i < colliders.Length; i++)
+                {
+                    colliders[i].enabled = true;
+                }
+            }
+
+            public void DisableColliders()
+            {
+                for (int i = 0; i < colliders.Length; i++)
+                {
+                    colliders[i].enabled = false;
+                }
             }
         }
 

@@ -22,6 +22,7 @@ namespace EntityStates.SS2UStates.Cyborg.Secondary
         private float blinkToggleDuration;
         private float blinkStartTime;
         private TeamIndex inputTeamIndex;
+        private DefenseMatrixManager.DefenseMatrixInfo defenseMatrixInfo;
 
         public static float baseDuration = 3f;
         public static string attackSoundString = "CyborgSpecialTeleport";
@@ -64,12 +65,9 @@ namespace EntityStates.SS2UStates.Cyborg.Secondary
                             Transform hitboxTransform = laserCL.FindChild("Hitbox");
                             if (hitboxTransform)
                             {
-                                matrixCollider = matrixInstance.GetComponentInChildren<BoxCollider>();
-                                if (matrixCollider)
-                                {
-                                    inputTeamIndex = base.GetTeam();
-                                    DefenseMatrixManager.AddMatrix(matrixCollider, inputTeamIndex);
-                                }
+                                matrixCollider = hitboxTransform.GetComponent<BoxCollider>();
+                                inputTeamIndex = base.GetTeam();
+                                this.defenseMatrixInfo = DefenseMatrixManager.AddMatrix(hitboxTransform.GetComponentsInChildren<Collider>(), inputTeamIndex);
                             }
 
                             laserVisuals = laserCL.FindChild("LaserVisuals");
@@ -192,9 +190,9 @@ namespace EntityStates.SS2UStates.Cyborg.Secondary
 
         public override void OnExit()
         {
-            if (matrixCollider)
+            if (this.defenseMatrixInfo != null)
             {
-                DefenseMatrixManager.RemoveMatrix(matrixCollider, inputTeamIndex);
+                DefenseMatrixManager.RemoveMatrix(this.defenseMatrixInfo);
             }
 
             if (matrixInstance)

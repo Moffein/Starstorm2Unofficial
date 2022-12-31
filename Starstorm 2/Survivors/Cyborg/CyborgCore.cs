@@ -299,11 +299,10 @@ namespace Starstorm2.Survivors.Cyborg
             var dmg = PrimaryLaser.damageCoefficient * 100f;
 
             LanguageAPI.Add("CYBORG_PRIMARY_GUN_NAME", "Unmaker");
-            //LanguageAPI.Add("CYBORG_PRIMARY_GUN_DESCRIPTION", $"Fire a <style=cIsUtility>slowing</style> beam at contenders for <style=cIsDamage>{dmg}% damage</style>.");
-            LanguageAPI.Add("CYBORG_PRIMARY_GUN_DESCRIPTION", $"Charge up a beam that deals <style=cIsDamage>250%-750% damage</style>. Deals <style=cIsDamage>+33% damage</style> when <style=cIsDamage>perfectly charged</style>.");
+            LanguageAPI.Add("CYBORG_PRIMARY_GUN_DESCRIPTION", $"Fire a <style=cIsUtility>slowing</style> beam at contenders for <style=cIsDamage>{dmg}% damage</style>.");
 
             SteppedSkillDef primaryDef1 = ScriptableObject.CreateInstance<SteppedSkillDef>();
-            primaryDef1.activationState = new SerializableEntityStateType(typeof(ChargeBeam));
+            primaryDef1.activationState = new SerializableEntityStateType(typeof(PrimaryLaser));
             primaryDef1.activationStateMachineName = "Weapon";
             primaryDef1.skillName = "CYBORG_PRIMARY_GUN_NAME";
             primaryDef1.skillNameToken = "CYBORG_PRIMARY_GUN_NAME";
@@ -323,47 +322,40 @@ namespace Starstorm2.Survivors.Cyborg
             primaryDef1.stockToConsume = 1;
             primaryDef1.stepCount = 2;
             Modules.Skills.FixSkillName(primaryDef1);
-
             Modules.Skills.skillDefs.Add(primaryDef1);
             SkillFamily.Variant primaryVariant1 = Utils.RegisterSkillVariant(primaryDef1);
 
-            skillLocator.primary = Utils.RegisterSkillsToFamily(cybPrefab, primaryVariant1);
+            LanguageAPI.Add("CYBORG_PRIMARY_CHARGE_NAME", "Rising Star");
+            LanguageAPI.Add("CYBORG_PRIMARY_CHARGE_DESCRIPTION", $"Charge up a <style=cIsUtility>slowing</style> beam that deals <style=cIsDamage>250%-750% damage</style>. Deals <style=cIsDamage>33%</style> more damage and pierces when <style=cIsDamage>perfectly charged</style>.");
+            SteppedSkillDef primaryDef2 = ScriptableObject.CreateInstance<SteppedSkillDef>();
+            primaryDef2.activationState = new SerializableEntityStateType(typeof(ChargeBeam));
+            primaryDef2.activationStateMachineName = "Weapon";
+            primaryDef2.skillName = "CYBORG_PRIMARY_CHARGE_NAME";
+            primaryDef2.skillNameToken = "CYBORG_PRIMARY_CHARGE_NAME";
+            primaryDef2.skillDescriptionToken = "CYBORG_PRIMARY_CHARGE_DESCRIPTION";
+            primaryDef2.icon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("cyborgprimary");
+            primaryDef2.baseMaxStock = 1;
+            primaryDef2.baseRechargeInterval = 0f;
+            primaryDef2.beginSkillCooldownOnSkillEnd = false;
+            primaryDef2.canceledFromSprinting = false;
+            primaryDef2.fullRestockOnAssign = true;
+            primaryDef2.interruptPriority = EntityStates.InterruptPriority.Any;
+            primaryDef2.isCombatSkill = true;
+            primaryDef2.mustKeyPress = false;
+            primaryDef2.cancelSprintingOnActivation = true;
+            primaryDef2.rechargeStock = 1;
+            primaryDef2.requiredStock = 1;
+            primaryDef2.stockToConsume = 1;
+            primaryDef2.stepCount = 2;
+            Modules.Skills.FixSkillName(primaryDef2);
+            Modules.Skills.skillDefs.Add(primaryDef2);
+            SkillFamily.Variant primaryVariant2 = Utils.RegisterSkillVariant(primaryDef2);
+
+            skillLocator.primary = Utils.RegisterSkillsToFamily(cybPrefab, new SkillFamily.Variant[] { primaryVariant1, primaryVariant2 });
         }
 
         private void SetUpSecondaries(SkillLocator skillLocator)
         {
-            var dmg = CyborgFireTrackshot.damageCoefficient * 100f;
-
-            SkillLocator skill = cybPrefab.GetComponent<SkillLocator>();
-
-            /*LanguageAPI.Add("CYBORG_SECONDARY_CHARGERIFLE_NAME", "Rising Star");
-            LanguageAPI.Add("CYBORG_SECONDARY_CHARGERIFLE_DESCRIPTION", $"<style=cIsDamage>Stunning</style>. Charge up a piercing beam that deals <style=cIsDamage>400%-800% damage</style>. Deals <style=cIsDamage>+50% damage</style> when <style=cIsDamage>perfectly charged</style>.");
-
-            SkillDef secondaryDef1 = ScriptableObject.CreateInstance<SkillDef>();
-            secondaryDef1.activationState = new SerializableEntityStateType(typeof(ChargeBeam));
-            secondaryDef1.activationStateMachineName = "Weapon";
-            secondaryDef1.skillName = "CYBORG_SECONDARY_CHARGERIFLE_NAME";
-            secondaryDef1.skillNameToken = "CYBORG_SECONDARY_CHARGERIFLE_NAME";
-            secondaryDef1.skillDescriptionToken = "CYBORG_SECONDARY_CHARGERIFLE_DESCRIPTION";
-            secondaryDef1.icon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("cyborgsecondary");
-            secondaryDef1.baseMaxStock = 1;
-            secondaryDef1.baseRechargeInterval = 4f;
-            secondaryDef1.beginSkillCooldownOnSkillEnd = true;
-            secondaryDef1.canceledFromSprinting = false;
-            secondaryDef1.fullRestockOnAssign = true;
-            secondaryDef1.interruptPriority = EntityStates.InterruptPriority.Any;
-            secondaryDef1.isCombatSkill = true;
-            secondaryDef1.mustKeyPress = false;
-            secondaryDef1.cancelSprintingOnActivation = true;
-            secondaryDef1.rechargeStock = 1;
-            secondaryDef1.requiredStock = 1;
-            secondaryDef1.stockToConsume = 1;
-            secondaryDef1.keywordTokens = new string[] { "KEYWORD_STUNNING" };
-            Modules.Skills.FixSkillName(secondaryDef1);
-            Utils.RegisterSkillDef(secondaryDef1);
-            SkillFamily.Variant secondaryVariant1 = Utils.RegisterSkillVariant(secondaryDef1);*/
-
-
              LanguageAPI.Add("CYBORG_SECONDARY_DEFENSEMATRIX_NAME", "Defense Matrix");
              LanguageAPI.Add("CYBORG_SECONDARY_DEFENSEMATRIX_DESCRIPTION", $"Project an energy field that <style=cIsUtility>neutralizes ranged attacks</style>.");
              SkillDef defenseMatrixDef = ScriptableObject.CreateInstance<SkillDef>();
@@ -401,19 +393,19 @@ namespace Starstorm2.Survivors.Cyborg
 
             SkillLocator skill = cybPrefab.GetComponent<SkillLocator>();
 
-            LanguageAPI.Add("CYBORG_UTILITY_NAME", "Overheat Redress");
-            LanguageAPI.Add("CYBORG_UTILITY_DESCRIPTION", $"<style=cIsUtility>Blast yourself backwards</style>, firing a greater energy bullet that deals a maximum of <style=cIsDamage>{zapDmg}% damage per second</style>.");
+            LanguageAPI.Add("CYBORG_OVERHEAT_NAME", "Overheat Redress");
+            LanguageAPI.Add("CYBORG_OVERHEAT_DESCRIPTION", $"<style=cIsUtility>Blast yourself backwards</style>, firing a greater energy bullet that deals a maximum of <style=cIsDamage>{zapDmg}% damage per second</style>.");
 
             zapDmg = CyborgFireOverheat.damageCoefficient * 100f * 1.5f;
-            LanguageAPI.Add("CYBORG_UTILITY_SCEPTER_NAME", "Gamma Overheat Redress");
-            LanguageAPI.Add("CYBORG_UTILITY_SCEPTER_DESCRIPTION", $"<style=cIsUtility>Blast yourself backwards</style>, firing a greater energy bullet that deals a maximum of <style=cIsDamage>{zapDmg}% damage per second</style>.");
+            LanguageAPI.Add("CYBORG_OVERHEAT_SCEPTER_NAME", "Gamma Overheat Redress");
+            LanguageAPI.Add("CYBORG_OVERHEAT_SCEPTER_DESCRIPTION", $"<style=cIsUtility>Blast yourself backwards</style>, firing a greater energy bullet that deals a maximum of <style=cIsDamage>{zapDmg}% damage per second</style>.");
 
             SkillDef utilityDef1 = ScriptableObject.CreateInstance<SkillDef>();
             utilityDef1.activationState = new SerializableEntityStateType(typeof(CyborgFireOverheat));
             utilityDef1.activationStateMachineName = "Weapon";
-            utilityDef1.skillName = "CYBORG_UTILITY_NAME";
-            utilityDef1.skillNameToken = "CYBORG_UTILITY_NAME";
-            utilityDef1.skillDescriptionToken = "CYBORG_UTILITY_DESCRIPTION";
+            utilityDef1.skillName = "CYBORG_OVERHEAT_NAME";
+            utilityDef1.skillNameToken = "CYBORG_OVERHEAT_NAME";
+            utilityDef1.skillDescriptionToken = "CYBORG_OVERHEAT_DESCRIPTION";
             utilityDef1.icon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("cyborgutility");
             utilityDef1.baseMaxStock = 1;
             utilityDef1.baseRechargeInterval = 10f;
@@ -437,9 +429,9 @@ namespace Starstorm2.Survivors.Cyborg
             SkillDef utilityScepterDef1 = ScriptableObject.CreateInstance<SkillDef>();
             utilityScepterDef1.activationState = new SerializableEntityStateType(typeof(OverheatScepter));
             utilityScepterDef1.activationStateMachineName = "Weapon";
-            utilityScepterDef1.skillName = "CYBORG_UTILITY_SCEPTER_NAME";
-            utilityScepterDef1.skillNameToken = "CYBORG_UTILITY_SCEPTER_NAME";
-            utilityScepterDef1.skillDescriptionToken = "CYBORG_UTILITY_SCEPTER_DESCRIPTION";
+            utilityScepterDef1.skillName = "CYBORG_OVERHEAT_SCEPTER_NAME";
+            utilityScepterDef1.skillNameToken = "CYBORG_OVERHEAT_SCEPTER_NAME";
+            utilityScepterDef1.skillDescriptionToken = "CYBORG_OVERHEAT_SCEPTER_DESCRIPTION";
             utilityScepterDef1.icon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("cyborgutilityscepter");
             utilityScepterDef1.baseMaxStock = 1;
             utilityScepterDef1.baseRechargeInterval = 10f;
@@ -484,14 +476,14 @@ namespace Starstorm2.Survivors.Cyborg
         {
             SkillLocator skill = cybPrefab.GetComponent<SkillLocator>();
 
-            LanguageAPI.Add("CYBORG_SPECIAL_TELEPORT_NAME", "Recall");
-            LanguageAPI.Add("CYBORG_SPECIAL_TELEPORT_DESCRIPTION", "<style=cIsDamage>Shocking</style>. Create a <style=cIsUtility>warp point</style>. Reactivate to <style=cIsUtility>teleport to its location</style> and deal <style=cIsDamage>1200% damage</style>. Hold to remove existing warp points.");
+            LanguageAPI.Add("CYBORG_TELEPORT_NAME", "Recall");
+            LanguageAPI.Add("CYBORG_TELEPORT_DESCRIPTION", "<style=cIsDamage>Shocking</style>. Create a <style=cIsUtility>warp point</style>. Reactivate to <style=cIsUtility>teleport to its location</style> and deal <style=cIsDamage>1200% damage</style>. Hold to remove existing warp points.");
             SkillDef specialDeploy = ScriptableObject.CreateInstance<SkillDef>();
             specialDeploy.activationState = new SerializableEntityStateType(typeof(DeployTeleporter));
             specialDeploy.activationStateMachineName = "Teleporter";
-            specialDeploy.skillName = "CYBORG_SPECIAL_TELEPORT_NAME";
-            specialDeploy.skillNameToken = "CYBORG_SPECIAL_TELEPORT_NAME";
-            specialDeploy.skillDescriptionToken = "CYBORG_SPECIAL_TELEPORT_DESCRIPTION";
+            specialDeploy.skillName = "CYBORG_TELEPORT_NAME";
+            specialDeploy.skillNameToken = "CYBORG_TELEPORT_NAME";
+            specialDeploy.skillDescriptionToken = "CYBORG_TELEPORT_DESCRIPTION";
             specialDeploy.icon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("cyborgspecial");
             specialDeploy.baseMaxStock = 1;
             specialDeploy.baseRechargeInterval = 15f;
@@ -514,9 +506,9 @@ namespace Starstorm2.Survivors.Cyborg
             CyborgTeleSkillDef specialTeleport = ScriptableObject.CreateInstance<CyborgTeleSkillDef>();
             specialTeleport.activationState = new SerializableEntityStateType(typeof(UseTeleporter));
             specialTeleport.activationStateMachineName = "Teleporter";
-            specialTeleport.skillName = "CYBORG_SPECIAL_TELEPORT_NAME";
-            specialTeleport.skillNameToken = "CYBORG_SPECIAL_TELEPORT_NAME";
-            specialTeleport.skillDescriptionToken = "CYBORG_SPECIAL_TELEPORT_DESCRIPTION";
+            specialTeleport.skillName = "CYBORG_TELEPORT_NAME";
+            specialTeleport.skillNameToken = "CYBORG_TELEPORT_NAME";
+            specialTeleport.skillDescriptionToken = "CYBORG_TELEPORT_DESCRIPTION";
             specialTeleport.icon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("cyborgspecial2");
             specialTeleport.baseMaxStock = 1;
             specialTeleport.baseRechargeInterval = 3f;
@@ -562,7 +554,7 @@ namespace Starstorm2.Survivors.Cyborg
                 null);
 
 
-            Modules.Prefabs.AddAISkillDriver(doppelganger, "Special", SkillSlot.Special, null,
+            Modules.Prefabs.AddAISkillDriver(doppelganger, "Teleport", SkillSlot.Special, null,
                  true, false,
                  Mathf.NegativeInfinity, Mathf.Infinity,
                  Mathf.NegativeInfinity, Mathf.Infinity,
@@ -581,7 +573,7 @@ namespace Starstorm2.Survivors.Cyborg
                  true,
                  null);
 
-            Modules.Prefabs.AddAISkillDriver(doppelganger, "Secondary", SkillSlot.Secondary, null,
+            Modules.Prefabs.AddAISkillDriver(doppelganger, "Shield", SkillSlot.Secondary, null,
                  true, false,
                  Mathf.NegativeInfinity, Mathf.Infinity,
                  Mathf.NegativeInfinity, Mathf.Infinity,
@@ -595,7 +587,7 @@ namespace Starstorm2.Survivors.Cyborg
                  false,
                  false,
                  AISkillDriver.ButtonPressType.Hold,
-                 1f,
+                 -1f,
                  false,
                  true,
                  null);
@@ -614,7 +606,7 @@ namespace Starstorm2.Survivors.Cyborg
                 false,
                 false,
                 AISkillDriver.ButtonPressType.Hold,
-                3,
+                1,
                 false,
                 false,
                 null);

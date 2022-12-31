@@ -39,7 +39,8 @@ namespace Starstorm2
         "DamageAPI",
         "RecalculateStatsAPI",
         "ContentAddition",
-        "EliteAPI"
+        "EliteAPI",
+        "ItemAPI"
     })]
 
     public class StarstormPlugin : BaseUnityPlugin
@@ -117,7 +118,9 @@ namespace Starstorm2
             string[] bods = new string[]
             {
                 "ExecutionerBody",
-                "NemmandoBody"
+                "NemmandoBody",
+                "CyborgBody",
+                "ChirrBody"
             };
 
             for (int i = 0; i < bods.Length; i++) {
