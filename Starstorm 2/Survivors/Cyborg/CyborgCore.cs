@@ -578,7 +578,7 @@ namespace Starstorm2.Survivors.Cyborg
                  true, false,
                  Mathf.NegativeInfinity, Mathf.Infinity,
                  Mathf.NegativeInfinity, Mathf.Infinity,
-                 0f, 200f,
+                 0f, 30f,
                  true, false, true, -1,
                  AISkillDriver.TargetType.CurrentEnemy,
                  true, true, true,
