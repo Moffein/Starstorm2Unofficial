@@ -31,6 +31,7 @@ namespace Starstorm2.Survivors.Cyborg
 
         public static BodyIndex bodyIndex;
 
+        public static SkillDef chargeRifleDef;
         public static SkillDef overheatDef;
         public static SkillDef overheatScepterDef;
 
@@ -43,6 +44,7 @@ namespace Starstorm2.Survivors.Cyborg
         private void Setup()
         {
             cybPrefab = CreateCyborgPrefab();
+            R2API.ItemAPI.DoNotAutoIDRSFor(cybPrefab);
 
             JetpackOn.activationEffectPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Engi/EngiHarpoonExplosion.prefab").WaitForCompletion().InstantiateClone("SS2UCyborgJetpackEffect", false);
             EffectComponent jetpackEC = JetpackOn.activationEffectPrefab.GetComponent<EffectComponent>();
@@ -88,7 +90,7 @@ namespace Starstorm2.Survivors.Cyborg
             DefenseMatrixManager.Initialize();
         }
 
-        private static GameObject BuildCrosshair()
+        private static GameObject BuildChargeRifleCrosshair()
         {
             GameObject crosshairPrefab = Modules.Assets.mainAssetBundle.LoadAsset<UnityEngine.GameObject>("crosshairCyborgChargeRifle.prefab").InstantiateClone("SS2UCyborgCrosshair", false);
             crosshairPrefab.AddComponent<HudElement>();
@@ -352,6 +354,8 @@ namespace Starstorm2.Survivors.Cyborg
             Modules.Skills.skillDefs.Add(primaryDef2);
             SkillFamily.Variant primaryVariant2 = Utils.RegisterSkillVariant(primaryDef2);
 
+            chargeRifleDef = primaryDef2;
+
             skillLocator.primary = Utils.RegisterSkillsToFamily(cybPrefab, new SkillFamily.Variant[] { primaryVariant1, primaryVariant2 });
         }
 
@@ -372,7 +376,7 @@ namespace Starstorm2.Survivors.Cyborg
              defenseMatrixDef.canceledFromSprinting = false;
              defenseMatrixDef.fullRestockOnAssign = true;
              defenseMatrixDef.interruptPriority = EntityStates.InterruptPriority.Any;
-             defenseMatrixDef.isCombatSkill = true;
+             defenseMatrixDef.isCombatSkill = false;
              defenseMatrixDef.mustKeyPress = false;
              defenseMatrixDef.cancelSprintingOnActivation = true;
              defenseMatrixDef.rechargeStock = 1;
@@ -455,7 +459,7 @@ namespace Starstorm2.Survivors.Cyborg
 
             zapDmg = CyborgFireOverheat.damageCoefficient * 100f * 1.5f;
             LanguageAPI.Add("CYBORG_OVERHEAT_SCEPTER_NAME", "Gamma Overheat Redress");
-            LanguageAPI.Add("CYBORG_OVERHEAT_SCEPTER_DESCRIPTION", $"<style=cIsUtility>Blast yourself backwards</style>, firing a greater energy bullet that deals a maximum of <style=cIsDamage>{zapDmg}% damage per second</style>.");
+            LanguageAPI.Add("CYBORG_OVERHEAT_SCEPTER_DESCRIPTION", $"<style=cIsUtility>Blast yourself backwards</style> and fire a greater energy bullet that deals a maximum of <style=cIsDamage>{zapDmg}% damage per second</style>.");
 
             SkillDef overheat = ScriptableObject.CreateInstance<SkillDef>();
             overheat.activationState = new SerializableEntityStateType(typeof(CyborgFireOverheat));
@@ -656,7 +660,8 @@ namespace Starstorm2.Survivors.Cyborg
 
         internal static GameObject CreateCyborgPrefab()
         {
-            GameObject crosshair = BuildCrosshair();
+            GameObject crosshair = BuildChargeRifleCrosshair();
+            CyborgMain.chargeRifleCrosshair = crosshair;
 
             GameObject cyborgPrefab = PrefabCore.CreatePrefab("CyborgBody", "mdlCyborg", new BodyInfo
             {
@@ -666,7 +671,7 @@ namespace Starstorm2.Survivors.Cyborg
                 bodyNameToken = "CYBORG_NAME",
                 characterPortrait = Modules.Assets.mainAssetBundle.LoadAsset<Texture2D>("cyborgicon"),
                 bodyColor = new Color32(138, 183, 168, 255),
-                crosshair = crosshair,
+                crosshair = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/UI/StandardCrosshair.prefab").WaitForCompletion(),
                 damage = 12f,
                 healthGrowth = 33f,
                 healthRegen = 1f,

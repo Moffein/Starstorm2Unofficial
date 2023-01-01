@@ -92,6 +92,7 @@ namespace Starstorm2.Survivors.Executioner
         internal override void InitializeCharacter()
         {
             base.InitializeCharacter();
+            R2API.ItemAPI.DoNotAutoIDRSFor(bodyPrefab);
 
             RoR2.RoR2Application.onLoad += SetBodyIndex;
 

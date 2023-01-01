@@ -64,6 +64,7 @@ namespace Starstorm2.Survivors.Chirr
         private void Setup()
         {
             chirrPrefab = CreateChirrPrefab();
+            R2API.ItemAPI.DoNotAutoIDRSFor(chirrPrefab);
             chirrPrefab.GetComponent<EntityStateMachine>().mainStateType = new SerializableEntityStateType(typeof(ChirrMain));
 
             LanguageAPI.Add("CHIRR_NAME", "Chirr");

@@ -119,29 +119,6 @@ namespace EntityStates.SS2UStates.Cyborg.Secondary
             }
         }
 
-        public void SlowEnemiesServer()
-        {
-            if (matrixCollider)
-            {
-                List<HealthComponent> slowList = new List<HealthComponent>();
-
-                Collider[] colliders = Physics.OverlapBox(matrixCollider.transform.position, matrixCollider.size * 0.5f, matrixCollider.transform.rotation, LayerIndex.entityPrecise.mask);
-                foreach (Collider c in colliders)
-                {
-                    HurtBox hb = c.GetComponent<HurtBox>();
-                    if (hb && hb.healthComponent)
-                    {
-                        HealthComponent hc = hb.healthComponent;
-                        if (hc != base.healthComponent  && hc.body && !(hc.body.teamComponent && hc.body.teamComponent.teamIndex == base.GetTeam()) && !slowList.Contains(hc))
-                        {
-                            slowList.Add(hc);
-                            hc.body.AddTimedBuff(RoR2Content.Buffs.Slow50, 2f);
-                        }
-                    }
-                }
-            }
-        }
-
         public override void FixedUpdate()
         {
             base.FixedUpdate();
@@ -153,7 +130,6 @@ namespace EntityStates.SS2UStates.Cyborg.Secondary
                 {
                     tickStopwatch -= tickDuration;
                     DeleteProjectilesServer();
-                    SlowEnemiesServer();
                 }
             }
 

@@ -112,8 +112,8 @@
     <Compile Include="Survivors\Cyborg\EntityStates\ChargeRifle\ChargeBeam.cs" />
     <Compile Include="Survivors\Cyborg\EntityStates\Secondary\DefenseMatrix.cs" />
     <Compile Include="Survivors\Cyborg\EntityStates\ChargeRifle\FireBeam.cs" />
-    <Compile Include="Survivors\Cyborg\EntityStates\Special\DeployTeleporter.cs" />
-    <Compile Include="Survivors\Cyborg\EntityStates\Special\UseTeleporter.cs" />
+    <Compile Include="Survivors\Cyborg\EntityStates\Teleporter\DeployTeleporter.cs" />
+    <Compile Include="Survivors\Cyborg\EntityStates\Teleporter\UseTeleporter.cs" />
     <Compile Include="Survivors\Executioner\Components\ExecutionerController.cs" />
     <Compile Include="Survivors\Executioner\Components\ExecutionerKillComponent.cs" />
     <Compile Include="Components\MenuSound.cs" />

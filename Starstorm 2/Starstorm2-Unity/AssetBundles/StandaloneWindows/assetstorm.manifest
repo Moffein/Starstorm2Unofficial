@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 4133904220
+CRC: 3107403906
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: e496a0971936e26df1b976f95836fa1c
+    Hash: ca933bc08b24cd15603867405bb79c84
   TypeTreeHash:
     serializedVersion: 2
     Hash: e085efc3cec39229c22603e1a47b8115
@@ -706,6 +706,7 @@ Assets:
 - Assets/AssetBundle/Executioner/Animations/FireGun.anim
 - Assets/AssetBundle/Items/CloakingHeadband/cloakbandem.png
 - Assets/AssetBundle/Enemies/Wayfarer/WayfarerIcon.png
+- Assets/AssetBundle/Nemmando/Icons/texNemmandoCommandoSkin.png
 - Assets/AssetBundle/Nemmando/VFX/PreImpactScepterStrike.prefab
 - Assets/AssetBundle/Executioner/Animations/Idle.anim
 - Assets/AssetBundle/BuffIcons/buffChirrSoulLink.png

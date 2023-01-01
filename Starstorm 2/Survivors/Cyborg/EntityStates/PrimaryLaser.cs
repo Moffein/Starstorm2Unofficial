@@ -68,7 +68,7 @@ namespace EntityStates.SS2UStates.Cyborg
             if (base.characterBody)
             {
                 base.characterBody.SetAimTimer(2f);
-                base.characterBody.AddSpreadBloom(0.35f);
+                base.characterBody.AddSpreadBloom(0.6f/(Mathf.Sqrt(this.attackSpeedStat)));
             }
         }
 

@@ -47,7 +47,7 @@ namespace Starstorm2
     {
         internal const string guid = "com.ChirrLover.Starstorm2Unofficial";
         internal const string modName = "Starstorm 2 Unofficial";
-        internal const string version = "0.6.6";
+        internal const string version = "0.7.0";
 
         public static StarstormPlugin instance;
 
@@ -110,22 +110,6 @@ namespace Starstorm2
             CommandHelper.AddToConsoleWhenReady();
 
             new Modules.ContentPacks().Initialize();
-
-            FixItemDisplays();
-        }
-
-        private static void FixItemDisplays() {
-            string[] bods = new string[]
-            {
-                "ExecutionerBody",
-                "NemmandoBody",
-                "CyborgBody",
-                "ChirrBody"
-            };
-
-            for (int i = 0; i < bods.Length; i++) {
-                R2API.ItemAPI.DoNotAutoIDRSFor(bods[i]);
-            }
         }
 
 

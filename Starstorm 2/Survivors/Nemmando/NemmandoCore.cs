@@ -151,6 +151,7 @@ namespace Starstorm2.Survivors.Nemmando
         internal override void InitializeCharacter()
         {
             base.InitializeCharacter();
+            R2API.ItemAPI.DoNotAutoIDRSFor(bodyPrefab);
 
             SetupSwordProjectile();
             SetupLaserTracer();
@@ -239,6 +240,8 @@ namespace Starstorm2.Survivors.Nemmando
             body.baseDamage = 2f;
             body.levelDamage = 0.4f;
             body.isChampion = true;
+
+            R2API.ItemAPI.DoNotAutoIDRSFor(bossBodyPrefab);
 
             //does this even work?
             if (body.mainHurtBox)
@@ -1057,7 +1060,7 @@ namespace Starstorm2.Survivors.Nemmando
             CreateKillSelfUnlockable();
 
             SkinDef commandoSkin = Modules.Skins.CreateSkinDef("NEMMANDO_COMMANDO_SKIN_NAME",
-                LegacyResourcesAPI.Load<GameObject>("Prefabs/CharacterBodies/CommandoBody").GetComponentInChildren<ModelSkinController>().skins[0].icon,
+                 Assets.mainAssetBundle.LoadAsset<Sprite>("texNemmandoCommandoSkin"),
                 commandoRendererInfos,
                 mainRenderer,
                 model,

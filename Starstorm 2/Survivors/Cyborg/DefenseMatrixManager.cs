@@ -20,6 +20,7 @@ namespace Starstorm2.Survivors.Cyborg
             On.RoR2.BulletAttack.Fire += Hooks.CheckHostileDefenseMatrices;
             On.EntityStates.GolemMonster.FireLaser.OnEnter += Hooks.DefenseMatrixBlockGolemLaserFire;
             On.EntityStates.GolemMonster.ChargeLaser.Update += Hooks.ChargeLaser_Update;
+            On.EntityStates.TitanMonster.ChargeMegaLaser.FixedUpdate += Hooks.ChargeMegaLaser_FixedUpdate;
             On.EntityStates.TitanMonster.FireMegaLaser.FixedUpdate += Hooks.FireMegaLaser_FixedUpdate;
             On.EntityStates.EngiTurret.EngiTurretWeapon.FireBeam.GetBeamEndPoint += Hooks.FireBeam_GetBeamEndPoint;
         }
@@ -119,6 +120,14 @@ namespace Starstorm2.Survivors.Cyborg
                 Vector3 endpoint = orig(self);
                 DefenseMatrixManager.DisableMatrices(teamIndex);
                 return endpoint;
+            }
+
+            public static void ChargeMegaLaser_FixedUpdate(On.EntityStates.TitanMonster.ChargeMegaLaser.orig_FixedUpdate orig, EntityStates.TitanMonster.ChargeMegaLaser self)
+            {
+                TeamIndex teamIndex = self.GetTeam();
+                DefenseMatrixManager.EnableMatrices(teamIndex);
+                orig(self);
+                DefenseMatrixManager.DisableMatrices(teamIndex);
             }
 
             public static void FireMegaLaser_FixedUpdate(On.EntityStates.TitanMonster.FireMegaLaser.orig_FixedUpdate orig, EntityStates.TitanMonster.FireMegaLaser self)
