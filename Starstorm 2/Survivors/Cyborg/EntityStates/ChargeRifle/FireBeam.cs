@@ -3,12 +3,12 @@ using RoR2;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using Starstorm2.Survivors.Cyborg.Components;
+using RoR2.Skills;
 
-namespace EntityStates.SS2UStates.Cyborg.Secondary
+namespace EntityStates.SS2UStates.Cyborg.ChargeRifle
 {
     public class FireBeam : BaseState
     {
-        public static string muzzleString = "Lowerarm.L_end";
         public static float perfectChargeDamageMultiplier = 1.333334f;
         public static float minDamageCoefficient = 2.5f;
         public static float maxDamageCoefficient = 7.5f;
@@ -29,6 +29,9 @@ namespace EntityStates.SS2UStates.Cyborg.Secondary
         public bool perfectCharge;
         private CrosshairUtils.OverrideRequest crosshairOverrideRequest;
         private CyborgChargeComponent chargeComponent;
+        private string muzzleString;
+
+        public int step = 0;
 
         private float duration;
         
@@ -42,7 +45,19 @@ namespace EntityStates.SS2UStates.Cyborg.Secondary
                 chargeComponent.perfectCharge = this.perfectCharge;
             }
             duration = FireBeam.baseDuration / this.attackSpeedStat;
-            base.PlayAnimation("Gesture, Override", "FireM2", "FireArrow.playbackRate", this.duration);
+
+            //base.PlayAnimation("Gesture, Override", "FireM2", "FireArrow.playbackRate", this.duration);
+            if (step == 1)
+            {
+                this.muzzleString = "Lowerarm.L_end";
+                base.PlayCrossfade("Gesture, Override", "FireM1Alt", "FireM1.playbackRate", this.duration, 0.1f);
+            }
+            else
+            {
+                this.muzzleString = "Lowerarm.R_end";
+                base.PlayCrossfade("Gesture, Override", "FireM1", "FireM1.playbackRate", this.duration, 0.1f);
+            }
+
             if (crosshairPrefab)
             {
                 this.crosshairOverrideRequest = CrosshairUtils.RequestOverrideForBody(base.characterBody, crosshairPrefab, CrosshairUtils.OverridePriority.Sprint);

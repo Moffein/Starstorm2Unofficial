@@ -1,14 +1,14 @@
 ﻿using RoR2;
+using RoR2.Skills;
 using RoR2.UI;
 using Starstorm2.Survivors.Cyborg.Components;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 
-namespace EntityStates.SS2UStates.Cyborg.Secondary
+namespace EntityStates.SS2UStates.Cyborg.ChargeRifle
 {
-    public class ChargeBeam : BaseState
+    public class ChargeBeam : BaseState, SteppedSkillDef.IStepSetter
     {
-        public static string muzzleString = "Lowerarm.L_end";
         public static string fullChargeSound = "CyborgPerfectCharge";
         public static string beginChargeSound = "Play_mage_m2_charge";
         public static GameObject chargeupVfxPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Loader/ChargeLoaderFist.prefab").WaitForCompletion();
@@ -24,13 +24,25 @@ namespace EntityStates.SS2UStates.Cyborg.Secondary
         private GameObject chargeupVfxGameObject;
         private GameObject holdChargeVfxGameObject;
         private Transform muzzleTransform;
+        private string muzzleString; //"Lowerarm.L_end"
         private bool setNextState = false;
         private CyborgChargeComponent chargeComponent;
         private bool isAutoFire = false;
+        public int step = 0;
 
         public override void OnEnter()
         {
             base.OnEnter();
+
+            if (step == 1)
+            {
+                this.muzzleString = "Lowerarm.L_end";
+            }
+            else
+            {
+                this.muzzleString = "Lowerarm.R_end";
+            }
+
             duration = ChargeBeam.baseDuration / this.attackSpeedStat;
             charge = 0f;
 
@@ -93,7 +105,8 @@ namespace EntityStates.SS2UStates.Cyborg.Secondary
                     FireBeam fireBeam = new FireBeam()
                     {
                         perfectCharge = perfectCharge,
-                        charge = this.charge
+                        charge = this.charge,
+                        step = this.step
                     };
                     this.outer.SetNextState(fireBeam);
                     return;
@@ -127,6 +140,11 @@ namespace EntityStates.SS2UStates.Cyborg.Secondary
         public override InterruptPriority GetMinimumInterruptPriority()
         {
             return InterruptPriority.Skill;
+        }
+
+        public void SetStep(int i)
+        {
+            step = i;
         }
     }
 }

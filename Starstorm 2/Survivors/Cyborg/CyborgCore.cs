@@ -19,6 +19,7 @@ using EntityStates.SS2UStates.Cyborg.Secondary;
 using RoR2.CharacterAI;
 using RoR2.UI;
 using Starstorm2.Survivors.Cyborg.Components.Crosshair;
+using EntityStates.SS2UStates.Cyborg.ChargeRifle;
 
 namespace Starstorm2.Survivors.Cyborg
 {
