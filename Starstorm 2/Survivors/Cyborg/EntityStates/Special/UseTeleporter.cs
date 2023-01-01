@@ -14,7 +14,6 @@ namespace EntityStates.SS2UStates.Cyborg.Special
         public static float baseDuration = 1f;
         private CyborgTeleportTracker teleTracker;
         private bool teleported;
-        private float stopwatch;
 
         public override void OnEnter()
         {
@@ -108,9 +107,9 @@ namespace EntityStates.SS2UStates.Cyborg.Special
                 {
                     teleTracker.CmdDestroyTeleporter();
                     Util.PlaySound("Play_railgunner_m2_reload_fail", base.gameObject);
-                    if (base.skillLocator)
+                    if (base.skillLocator && base.skillLocator.utility)
                     {
-                        base.skillLocator.special.AddOneStock();
+                        base.skillLocator.utility.AddOneStock();
                     }
                 }
             }
