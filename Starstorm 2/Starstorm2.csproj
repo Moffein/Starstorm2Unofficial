@@ -131,7 +131,7 @@
     <Compile Include="API\SS2Equipment.cs" />
     <Compile Include="API\SS2Item.cs" />
     <Compile Include="Components\StormSoundComponent.cs" />
-    <Compile Include="Survivors\Cyborg\EntityStates\JetpackOn.cs" />
+    <Compile Include="Survivors\Cyborg\EntityStates\Jetpack\JetpackOn.cs" />
     <Compile Include="Survivors\Executioner\Components\IonGunChargeComponent.cs" />
     <Compile Include="Survivors\Executioner\Components\MasterIonStockComponent.cs" />
     <Compile Include="Survivors\Executioner\EntityStates\PrimaryBurst.cs" />

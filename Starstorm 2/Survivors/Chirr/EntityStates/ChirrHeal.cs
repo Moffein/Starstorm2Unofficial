@@ -81,6 +81,8 @@ namespace EntityStates.SS2UStates.Chirr
                                 }*/
                                 hurtBox.healthComponent.HealFraction(healFraction, default);
                                 if (hurtBox.healthComponent.body != base.characterBody) hurtBox.healthComponent.body.AddTimedBuff(RoR2Content.Buffs.CrocoRegen, regenDuration);
+
+                                Util.CleanseBody(hurtBox.healthComponent.body, true, false, false, true, true, false);
                             }
                         }
                     }
