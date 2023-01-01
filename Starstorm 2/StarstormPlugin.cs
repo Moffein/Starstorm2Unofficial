@@ -148,7 +148,6 @@ namespace Starstorm2
             damageTypeCore = new DamageTypeCore();
 
             Modules.Assets.Initialize();
-            Modules.CameraParams.Initialize();
             Modules.States.Initialize();
             Modules.Config.Initialize();
             Modules.Music.Initialize();

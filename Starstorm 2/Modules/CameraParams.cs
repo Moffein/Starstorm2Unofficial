@@ -5,13 +5,6 @@ namespace Starstorm2.Modules
 {
     internal static class CameraParams
     {
-        internal static CharacterCameraParams emoteCameraParams;
-
-        internal static void Initialize()
-        {
-            emoteCameraParams = NewCameraParams("ccpStarstormGenericEmote", 70f, 1.37f, new Vector3(0f, -1.1f, -6.5f));
-        }
-
         internal static CharacterCameraParams NewCameraParams(string name, Vector3 standardPosition)
         {
             return NewCameraParams(name, 70f, 1.37f, standardPosition, 0.1f);

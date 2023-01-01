@@ -81,6 +81,7 @@
     <Compile Include="Cores\NemesisInvasion\Components\Body\NemesisDropItemOnDeath.cs" />
     <Compile Include="Cores\NemesisInvasion\Components\NemesisInvasionManager.cs" />
     <Compile Include="Cores\NemesisInvasion\NemesisInvasionCore.cs" />
+    <Compile Include="Modules\CameraParams.cs" />
     <Compile Include="Modules\EntityStates\BaseMeleeAttack.cs" />
     <Compile Include="Survivors\Chirr\BefriendSkillDef.cs" />
     <Compile Include="Survivors\Chirr\ChirrSkins.cs" />
@@ -238,7 +239,6 @@
     <Compile Include="Cores\NemesisInvasion\VoidCore_old.cs" />
     <Compile Include="FUCKACCESSMODIFIERS.cs" />
     <Compile Include="Modules\Assets.cs" />
-    <Compile Include="Modules\CameraParams.cs" />
     <Compile Include="Modules\Config.cs" />
     <Compile Include="Modules\ContentPacks.cs" />
     <Compile Include="Modules\Effects.cs" />

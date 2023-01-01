@@ -2,6 +2,7 @@
 using RoR2;
 using Starstorm2.Modules;
 using UnityEngine;
+using static RoR2.CameraTargetParams;
 
 namespace EntityStates.SS2UStates.Common.Emotes
 {
@@ -16,7 +17,16 @@ namespace EntityStates.SS2UStates.Common.Emotes
         private uint activePlayID;
         private Animator animator;
         private ChildLocator childLocator;
-        private CharacterCameraParams defaultParams;
+
+        private static CharacterCameraParamsData emoteCameraParams = new CharacterCameraParamsData()
+        {
+            maxPitch = 70,
+            minPitch = -70,
+            pivotVerticalOffset = 1f,
+            idealLocalCameraPos = new Vector3(0, 0.0f, -7.9f),
+            wallCushion = 0.1f,
+        };
+        private CameraParamsOverrideHandle camOverrideHandle;
 
         public override void OnEnter()
         {
@@ -44,8 +54,13 @@ namespace EntityStates.SS2UStates.Common.Emotes
                 }
             }
 
-            this.defaultParams = base.cameraTargetParams.cameraParams;
-            base.cameraTargetParams.cameraParams = Starstorm2.Modules.CameraParams.emoteCameraParams;
+            CameraParamsOverrideRequest request = new CameraParamsOverrideRequest
+            {
+                cameraParamsData = emoteCameraParams,
+                priority = 0,
+            };
+
+            camOverrideHandle = base.cameraTargetParams.AddParamsOverride(request, 0.5f);
         }
 
         public override void OnExit()
@@ -72,7 +87,7 @@ namespace EntityStates.SS2UStates.Common.Emotes
             base.PlayAnimation("FullBody, Override", "BufferEmpty");
             if (this.activePlayID != 0) AkSoundEngine.StopPlayingID(this.activePlayID);
 
-            base.cameraTargetParams.cameraParams = this.defaultParams;
+            base.cameraTargetParams.RemoveParamsOverride(camOverrideHandle, 0.5f);
         }
 
         public override void FixedUpdate()
