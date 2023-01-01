@@ -232,7 +232,7 @@ namespace Starstorm2.Survivors.Cyborg
             bfgPbc.listClearInterval = 0.2f;
             bfgPbc.attackInterval = bfgPbc.listClearInterval;
             bfgPbc.damageCoefficient = 0.2f;
-            bfgPbc.procCoefficient = 1f;
+            bfgPbc.procCoefficient = 0.7f;
             bfgPbc.inheritDamageType = true;
             bfgPbc.bounces = bounceCount;
             bfgPbc.attackFireCount = 30;
@@ -465,7 +465,7 @@ namespace Starstorm2.Survivors.Cyborg
             overheat.skillDescriptionToken = "CYBORG_OVERHEAT_DESCRIPTION";
             overheat.icon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("cyborgutility");
             overheat.baseMaxStock = 1;
-            overheat.baseRechargeInterval = 10f;
+            overheat.baseRechargeInterval = 12f;
             overheat.beginSkillCooldownOnSkillEnd = false;
             overheat.canceledFromSprinting = false;
             overheat.fullRestockOnAssign = true;
@@ -491,7 +491,7 @@ namespace Starstorm2.Survivors.Cyborg
             scepterDef.skillDescriptionToken = "CYBORG_OVERHEAT_SCEPTER_DESCRIPTION";
             scepterDef.icon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("cyborgutilityscepter");
             scepterDef.baseMaxStock = 1;
-            scepterDef.baseRechargeInterval = 10f;
+            scepterDef.baseRechargeInterval = 12f;
             scepterDef.beginSkillCooldownOnSkillEnd = false;
             scepterDef.canceledFromSprinting = false;
             scepterDef.fullRestockOnAssign = true;

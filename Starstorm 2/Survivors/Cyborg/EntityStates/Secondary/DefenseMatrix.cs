@@ -24,14 +24,14 @@ namespace EntityStates.SS2UStates.Cyborg.Secondary
         private TeamIndex inputTeamIndex;
         private DefenseMatrixManager.DefenseMatrixInfo defenseMatrixInfo;
 
-        public static float baseDuration = 3f;
+        public static float baseDuration = 2f;
         public static string attackSoundString = "CyborgSpecialTeleport";
         public static GameObject projectileDeletionEffectPrefab;
         public static GameObject matrixPrefab;
         public static float ticksPerSecond = 30;
 
         public static float blinkTime = 0.5f;
-        public static float blinkFrequency = 16f;
+        public static float blinkFrequency = 20f;
 
         public override void OnEnter()
         {
