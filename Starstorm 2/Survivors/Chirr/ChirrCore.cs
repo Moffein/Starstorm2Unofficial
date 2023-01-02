@@ -137,16 +137,16 @@ namespace Starstorm2.Survivors.Chirr
 
         private void RegisterStates()
         {
-            Modules.States.AddSkill(typeof(JetpackOn));
-            Modules.States.AddSkill(typeof(ChirrMain));
+            Modules.States.AddState(typeof(JetpackOn));
+            Modules.States.AddState(typeof(ChirrMain));
 
-            Modules.States.AddSkill(typeof(ChirrPrimary));
-            Modules.States.AddSkill(typeof(Headbutt));
-            Modules.States.AddSkill(typeof(ChirrHeal));
+            Modules.States.AddState(typeof(ChirrPrimary));
+            Modules.States.AddState(typeof(Headbutt));
+            Modules.States.AddState(typeof(ChirrHeal));
 
-            Modules.States.AddSkill(typeof(Befriend));
-            Modules.States.AddSkill(typeof(BefriendScepter));
-            Modules.States.AddSkill(typeof(Leash));
+            Modules.States.AddState(typeof(Befriend));
+            Modules.States.AddState(typeof(BefriendScepter));
+            Modules.States.AddState(typeof(Leash));
         }
 
         private void RegisterProjectiles()

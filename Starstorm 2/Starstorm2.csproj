@@ -108,6 +108,7 @@
     <Compile Include="Survivors\Cyborg\Components\TeleportProjectile\AssignToTeleportTracker.cs" />
     <Compile Include="Survivors\Cyborg\CyborgTeleSkillDef.cs" />
     <Compile Include="Survivors\Cyborg\DefenseMatrixManager.cs" />
+    <Compile Include="Survivors\Cyborg\EntityStates\Jetpack\FlightMode.cs" />
     <Compile Include="Survivors\Cyborg\EntityStates\OverheatScepter.cs" />
     <Compile Include="Survivors\Cyborg\EntityStates\PrimaryLaser.cs" />
     <Compile Include="Survivors\Cyborg\EntityStates\ChargeRifle\ChargeBeam.cs" />

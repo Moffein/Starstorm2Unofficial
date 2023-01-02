@@ -1,4 +1,5 @@
-﻿using RoR2;
+﻿using EntityStates.SS2UStates.Cyborg.Jetpack;
+using RoR2;
 using RoR2.UI;
 using Starstorm2.Survivors.Cyborg.Components;
 using UnityEngine;
@@ -52,17 +53,21 @@ namespace EntityStates.SS2UStates.Cyborg
         public override void ProcessJump()
         {
             base.ProcessJump();
-            inJetpackState = this.jetpackStateMachine.state.GetType() == typeof(JetpackOn);
-            if (this.hasCharacterMotor && this.hasInputBank && base.isAuthority)
+            inJetpackState = this.jetpackStateMachine.state.GetType() != typeof(Idle);
+
+            if (this.jetpackStateMachine.state.GetType() == typeof(Idle) || this.jetpackStateMachine.state.GetType() == typeof(JetpackOn))
             {
-                bool inputPressed = base.inputBank.jump.down && base.characterMotor.velocity.y < 0f && !base.characterMotor.isGrounded;
-                if (inputPressed && !inJetpackState && cyborgController.allowJetpack)
+                if (this.hasCharacterMotor && this.hasInputBank && base.isAuthority)
                 {
-                    this.jetpackStateMachine.SetNextState(new JetpackOn());
-                }
-                if (inJetpackState &&(!inputPressed || !cyborgController.allowJetpack))
-                {
-                    this.jetpackStateMachine.SetNextState(new Idle());
+                    bool inputPressed = base.inputBank.jump.down && base.characterMotor.velocity.y < 0f && !base.characterMotor.isGrounded;
+                    if (inputPressed && !inJetpackState && cyborgController.allowJetpack)
+                    {
+                        this.jetpackStateMachine.SetNextState(new JetpackOn());
+                    }
+                    if (inJetpackState && (!inputPressed || !cyborgController.allowJetpack))
+                    {
+                        this.jetpackStateMachine.SetNextState(new Idle());
+                    }
                 }
             }
         }
@@ -71,7 +76,7 @@ namespace EntityStates.SS2UStates.Cyborg
         {
             base.FixedUpdate();
 
-            inJetpackState = this.jetpackStateMachine.state.GetType() == typeof(JetpackOn);
+            inJetpackState = this.jetpackStateMachine.state.GetType() != typeof(Idle);
 
             //Need separate effect intensity for Jetpack/Sprint, or else it doesn't look good.
             bool shouldShowThruster = inJetpackState;//(inJetpackState || (base.characterBody && base.characterBody.isSprinting));

@@ -11,27 +11,27 @@ namespace Starstorm2.Modules
 
         internal static void Initialize()
         {
-            AddSkill(typeof(BaseEmote));
-            AddSkill(typeof(RestEmote));
-            AddSkill(typeof(TauntEmote));
+            AddState(typeof(BaseEmote));
+            AddState(typeof(RestEmote));
+            AddState(typeof(TauntEmote));
 
-            AddSkill(typeof(NemesisSpawnState));
+            AddState(typeof(NemesisSpawnState));
 
-            AddSkill(typeof(BaseCustomMainState));
-            AddSkill(typeof(BaseCustomSkillState));
-            AddSkill(typeof(BaseMeleeAttack));
+            AddState(typeof(BaseCustomMainState));
+            AddState(typeof(BaseCustomSkillState));
+            AddState(typeof(BaseMeleeAttack));
 
-            AddSkill(typeof(Cores.States.Nucleator.ApplyRadionuclideSurge));
-            AddSkill(typeof(Cores.States.Nucleator.ChargeFissionImpulse));
-            AddSkill(typeof(Cores.States.Nucleator.ChargeIrradiate));
-            AddSkill(typeof(Cores.States.Nucleator.ChargeQuarantine));
-            AddSkill(typeof(Cores.States.Nucleator.FireFissionImpulse));
-            AddSkill(typeof(Cores.States.Nucleator.FireIrradiate));
-            AddSkill(typeof(Cores.States.Nucleator.FireQuarantine));
-            AddSkill(typeof(Cores.States.Nucleator.NucleatorSkillStateBase));
+            AddState(typeof(Cores.States.Nucleator.ApplyRadionuclideSurge));
+            AddState(typeof(Cores.States.Nucleator.ChargeFissionImpulse));
+            AddState(typeof(Cores.States.Nucleator.ChargeIrradiate));
+            AddState(typeof(Cores.States.Nucleator.ChargeQuarantine));
+            AddState(typeof(Cores.States.Nucleator.FireFissionImpulse));
+            AddState(typeof(Cores.States.Nucleator.FireIrradiate));
+            AddState(typeof(Cores.States.Nucleator.FireQuarantine));
+            AddState(typeof(Cores.States.Nucleator.NucleatorSkillStateBase));
         }
 
-        internal static void AddSkill(Type t)
+        internal static void AddState(Type t)
         {
             entityStates.Add(t);
         }

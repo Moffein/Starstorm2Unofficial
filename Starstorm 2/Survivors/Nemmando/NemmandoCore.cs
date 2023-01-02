@@ -674,18 +674,18 @@ namespace Starstorm2.Survivors.Nemmando
 
         private void RegisterStates()
         {
-            Modules.States.AddSkill(typeof(EntityStates.SS2UStates.Common.NemmandoSpawnState));
-            Modules.States.AddSkill(typeof(NemmandoMain));
-            Modules.States.AddSkill(typeof(BladeOfCessation2));
-            Modules.States.AddSkill(typeof(ChargeSwordBeam));
-            Modules.States.AddSkill(typeof(DodgeState));
-            Modules.States.AddSkill(typeof(Submission));
-            Modules.States.AddSkill(typeof(ChargedSlashCharge));
-            Modules.States.AddSkill(typeof(ScepterSlashCharge));
-            Modules.States.AddSkill(typeof(ScepterSlashEntry));
-            Modules.States.AddSkill(typeof(ScepterSlashAttack));
-            Modules.States.AddSkill(typeof(ScepterBarrageCharge));
-            Modules.States.AddSkill(typeof(ScepterBarrageFire));
+            Modules.States.AddState(typeof(EntityStates.SS2UStates.Common.NemmandoSpawnState));
+            Modules.States.AddState(typeof(NemmandoMain));
+            Modules.States.AddState(typeof(BladeOfCessation2));
+            Modules.States.AddState(typeof(ChargeSwordBeam));
+            Modules.States.AddState(typeof(DodgeState));
+            Modules.States.AddState(typeof(Submission));
+            Modules.States.AddState(typeof(ChargedSlashCharge));
+            Modules.States.AddState(typeof(ScepterSlashCharge));
+            Modules.States.AddState(typeof(ScepterSlashEntry));
+            Modules.States.AddState(typeof(ScepterSlashAttack));
+            Modules.States.AddState(typeof(ScepterBarrageCharge));
+            Modules.States.AddState(typeof(ScepterBarrageFire));
         }
 
         [MethodImpl(MethodImplOptions.NoInlining | MethodImplOptions.NoOptimization)]

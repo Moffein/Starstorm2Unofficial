@@ -132,19 +132,21 @@ namespace Starstorm2.Survivors.Cyborg
 
         private void RegisterStates()
         {
-            Modules.States.AddSkill(typeof(JetpackOn));
-            Modules.States.AddSkill(typeof(CyborgMain));
-            Modules.States.AddSkill(typeof(CyborgFireTrackshot));
-            Modules.States.AddSkill(typeof(CyborgFireOverheat));
-            Modules.States.AddSkill(typeof(OverheatScepter));
+            Modules.States.AddState(typeof(JetpackOn));
+            Modules.States.AddState(typeof(FlightMode));
 
-            Modules.States.AddSkill(typeof(PrimaryLaser));
-            Modules.States.AddSkill(typeof(DeployTeleporter));
-            Modules.States.AddSkill(typeof(UseTeleporter));
+            Modules.States.AddState(typeof(CyborgMain));
+            Modules.States.AddState(typeof(CyborgFireTrackshot));
+            Modules.States.AddState(typeof(CyborgFireOverheat));
+            Modules.States.AddState(typeof(OverheatScepter));
 
-            Modules.States.AddSkill(typeof(ChargeBeam));
-            Modules.States.AddSkill(typeof(FireBeam));
-            Modules.States.AddSkill(typeof(DefenseMatrix));
+            Modules.States.AddState(typeof(PrimaryLaser));
+            Modules.States.AddState(typeof(DeployTeleporter));
+            Modules.States.AddState(typeof(UseTeleporter));
+
+            Modules.States.AddState(typeof(ChargeBeam));
+            Modules.States.AddState(typeof(FireBeam));
+            Modules.States.AddState(typeof(DefenseMatrix));
         }
 
         private void RegisterProjectiles()
@@ -395,17 +397,17 @@ namespace Starstorm2.Survivors.Cyborg
         {
             SkillLocator skill = cybPrefab.GetComponent<SkillLocator>();
 
-            LanguageAPI.Add("CYBORG_TELEPORT_NAME", "Recall");
-            LanguageAPI.Add("CYBORG_TELEPORT_DESCRIPTION", "<style=cIsDamage>Shocking</style>. Create a <style=cIsUtility>warp point</style>. Reactivate to <style=cIsUtility>teleport to its location</style> and deal <style=cIsDamage>1200% damage</style>. Hold to remove existing warp points.");
+            LanguageAPI.Add("CYBORG_UTILITY_TELEPORT_NAME", "Recall");
+            LanguageAPI.Add("CYBORG_UTILITY_TELEPORT_DESCRIPTION", "<style=cIsDamage>Shocking</style>. Create a <style=cIsUtility>warp point</style>. Reactivate to <style=cIsUtility>teleport to its location</style> and deal <style=cIsDamage>1200% damage</style>. Hold to remove existing warp points.");
             SkillDef teleDeploy = ScriptableObject.CreateInstance<SkillDef>();
             teleDeploy.activationState = new SerializableEntityStateType(typeof(DeployTeleporter));
             teleDeploy.activationStateMachineName = "Teleporter";
-            teleDeploy.skillName = "CYBORG_TELEPORT_NAME";
-            teleDeploy.skillNameToken = "CYBORG_TELEPORT_NAME";
-            teleDeploy.skillDescriptionToken = "CYBORG_TELEPORT_DESCRIPTION";
+            teleDeploy.skillName = "CYBORG_UTILITY_TELEPORT_NAME";
+            teleDeploy.skillNameToken = "CYBORG_UTILITY_TELEPORT_NAME";
+            teleDeploy.skillDescriptionToken = "CYBORG_UTILITY_TELEPORT_DESCRIPTION";
             teleDeploy.icon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("cyborgspecial");
             teleDeploy.baseMaxStock = 1;
-            teleDeploy.baseRechargeInterval = 15f;
+            teleDeploy.baseRechargeInterval = 12f;
             teleDeploy.beginSkillCooldownOnSkillEnd = true;
             teleDeploy.canceledFromSprinting = false;
             teleDeploy.fullRestockOnAssign = true;
@@ -420,14 +422,13 @@ namespace Starstorm2.Survivors.Cyborg
             Modules.Skills.skillDefs.Add(teleDeploy);
             Modules.Skills.FixSkillName(teleDeploy);
             SkillFamily.Variant variant1 = Utils.RegisterSkillVariant(teleDeploy);
-            skillLocator.utility = Utils.RegisterSkillsToFamily(cybPrefab, variant1);
 
             CyborgTeleSkillDef teleActivate = ScriptableObject.CreateInstance<CyborgTeleSkillDef>();
             teleActivate.activationState = new SerializableEntityStateType(typeof(UseTeleporter));
             teleActivate.activationStateMachineName = "Teleporter";
-            teleActivate.skillName = "CYBORG_TELEPORT_NAME";
-            teleActivate.skillNameToken = "CYBORG_TELEPORT_NAME";
-            teleActivate.skillDescriptionToken = "CYBORG_TELEPORT_DESCRIPTION";
+            teleActivate.skillName = "CYBORG_UTILITY_TELEPORT_NAME";
+            teleActivate.skillNameToken = "CYBORG_UTILITY_TELEPORT_NAME";
+            teleActivate.skillDescriptionToken = "CYBORG_UTILITY_TELEPORT_DESCRIPTION";
             teleActivate.icon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("cyborgspecial2");
             teleActivate.baseMaxStock = 1;
             teleActivate.baseRechargeInterval = 3f;
@@ -445,6 +446,36 @@ namespace Starstorm2.Survivors.Cyborg
             Modules.Skills.FixSkillName(teleActivate);
             Modules.Skills.skillDefs.Add(teleActivate);
             DeployTeleporter.teleportSkillDef = teleActivate;
+
+
+            LanguageAPI.Add("CYBORG_UTILITY_FLIGHT_NAME", "Flight Mode");
+            LanguageAPI.Add("CYBORG_UTILITY_FLIGHT_DESCRIPTION", "<style=cIsUtility>Heavy</style>. Take flight, gaining <style=cIsUtility>100% movement speed</style>. Deals <style=cIsDamage>400% damage</style> to enemies on impact.");
+            SkillDef flightMode = ScriptableObject.CreateInstance<SkillDef>();
+            flightMode.activationState = new SerializableEntityStateType(typeof(FlightMode));
+            flightMode.activationStateMachineName = "Jetpack";
+            flightMode.skillName = "CYBORG_UTILITY_FLIGHT_NAME";
+            flightMode.skillNameToken = "CYBORG_UTILITY_FLIGHT_NAME";
+            flightMode.skillDescriptionToken = "CYBORG_UTILITY_FLIGHT_DESCRIPTION";
+            flightMode.icon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("cyborgpassive");
+            flightMode.baseMaxStock = 1;
+            flightMode.baseRechargeInterval = 12f;
+            flightMode.beginSkillCooldownOnSkillEnd = true;
+            flightMode.canceledFromSprinting = false;
+            flightMode.fullRestockOnAssign = true;
+            flightMode.interruptPriority = EntityStates.InterruptPriority.Any;
+            flightMode.isCombatSkill = false;
+            flightMode.mustKeyPress = false;
+            flightMode.cancelSprintingOnActivation = false;
+            flightMode.rechargeStock = 1;
+            flightMode.requiredStock = 1;
+            flightMode.stockToConsume = 1;
+            flightMode.forceSprintDuringState = true;
+            flightMode.keywordTokens = new string[] { "KEYWORD_HEAVY" };
+            Modules.Skills.skillDefs.Add(flightMode);
+            Modules.Skills.FixSkillName(flightMode);
+            SkillFamily.Variant variant2 = Utils.RegisterSkillVariant(flightMode);
+
+            skillLocator.utility = Utils.RegisterSkillsToFamily(cybPrefab, new SkillFamily.Variant[] { variant1, variant2 });
         }
 
         private void SetUpSpecials(SkillLocator skillLocator)

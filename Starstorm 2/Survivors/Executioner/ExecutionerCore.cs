@@ -294,16 +294,16 @@ namespace Starstorm2.Survivors.Executioner
 
         private void RegisterStates()
         {
-            Modules.States.AddSkill(typeof(ExecutionerMain));
-            Modules.States.AddSkill(typeof(ExecutionerPistol));
-            Modules.States.AddSkill(typeof(ExecutionerBurstPistol));
-            Modules.States.AddSkill(typeof(ExecutionerTaser));
-            Modules.States.AddSkill(typeof(ExecutionerIonGun));
-            Modules.States.AddSkill(typeof(ExecutionerDash));
-            Modules.States.AddSkill(typeof(ExecutionerAxe));
-            Modules.States.AddSkill(typeof(ExecutionerAxeSlam));
-            Modules.States.AddSkill(typeof(ExecutionerAxeScepter));
-            Modules.States.AddSkill(typeof(ExecutionerAxeSlamScepter));
+            Modules.States.AddState(typeof(ExecutionerMain));
+            Modules.States.AddState(typeof(ExecutionerPistol));
+            Modules.States.AddState(typeof(ExecutionerBurstPistol));
+            Modules.States.AddState(typeof(ExecutionerTaser));
+            Modules.States.AddState(typeof(ExecutionerIonGun));
+            Modules.States.AddState(typeof(ExecutionerDash));
+            Modules.States.AddState(typeof(ExecutionerAxe));
+            Modules.States.AddState(typeof(ExecutionerAxeSlam));
+            Modules.States.AddState(typeof(ExecutionerAxeScepter));
+            Modules.States.AddState(typeof(ExecutionerAxeSlamScepter));
         }
 
         internal override void RegisterTokens()

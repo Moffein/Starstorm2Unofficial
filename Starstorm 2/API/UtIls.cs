@@ -17,7 +17,7 @@ public static class Utils
     /// <param name="skillTypes"></param>
     public static void RegisterSkillDef(SkillDef skillDef, params System.Type[] skillTypes) {
         for (int i = 0; i < skillTypes.Length; i++) {
-            Starstorm2.Modules.States.AddSkill(skillTypes[i]);
+            Starstorm2.Modules.States.AddState(skillTypes[i]);
         }
 
         Starstorm2.Modules.Skills.skillDefs.Add(skillDef);
