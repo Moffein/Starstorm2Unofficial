@@ -10,6 +10,7 @@ namespace EntityStates.SS2UStates.Cyborg.Jetpack
 {
     public class FlightMode : BaseState
     {
+        public static float slowdownDuration = 0.5f;
         public static float baseDuration = 2f;
         public static float speedMultCoefficient = 2f;
         public static float damageCoefficient = 4f;
@@ -24,6 +25,7 @@ namespace EntityStates.SS2UStates.Cyborg.Jetpack
         private Animator animator;
 
         private float stopwatch;
+        private float baseSpeed;
         private float desiredSpeed;
         private OverlapAttack attack;
 
@@ -38,6 +40,7 @@ namespace EntityStates.SS2UStates.Cyborg.Jetpack
             animator = base.GetModelAnimator();
 
             base.StartAimMode(FlightMode.baseDuration + 1f);
+            baseSpeed = this.moveSpeedStat;
             desiredSpeed = this.moveSpeedStat * FlightMode.speedMultCoefficient;
             Util.PlaySound("Play_MULT_shift_start", base.gameObject);
 
@@ -58,7 +61,7 @@ namespace EntityStates.SS2UStates.Cyborg.Jetpack
 
             if (hitBoxGroup)
             {
-                float speedFactor = Mathf.Max(desiredSpeed / (1f * 1.45f * FlightMode.speedMultCoefficient), 1f);
+                float speedFactor = Mathf.Max(desiredSpeed / (7f * 1.45f * FlightMode.speedMultCoefficient), 1f);
 
                 this.attack = new OverlapAttack
                 {
@@ -94,15 +97,6 @@ namespace EntityStates.SS2UStates.Cyborg.Jetpack
             if (base.isAuthority)
             {
                 Ray aimRay = base.GetAimRay();
-                if (this.attack != null)
-                {
-                    this.attack.forceVector = aimRay.direction * FlightMode.force;
-                    if (this.attack.Fire())
-                    {
-                        OnHitEnemyAuthority();
-                    }
-                }
-
                 if (this.hitPauseTimer <= 0f && this.inHitPause)
                 {
                     base.ConsumeHitStopCachedState(this.hitStopCachedState, base.characterMotor, this.animator);
@@ -116,17 +110,37 @@ namespace EntityStates.SS2UStates.Cyborg.Jetpack
                     //if (this.animator) this.animator.SetFloat(animatorParam, 0f);
                 }
 
+                float calcSpeed = this.desiredSpeed;
+                if (stopwatch > FlightMode.baseDuration)
+                {
+                    calcSpeed = Mathf.Lerp(desiredSpeed, baseSpeed, (stopwatch - FlightMode.baseDuration) / (FlightMode.slowdownDuration));
+                }
+
                 if (base.characterMotor)
                 {
                     if (base.characterMotor.isGrounded && base.characterMotor.Motor) base.characterMotor.Motor.ForceUnground();
                     base.characterMotor.velocity = Vector3.zero;
-                    base.characterMotor.rootMotion += Time.fixedDeltaTime * desiredSpeed * aimRay.direction;
+                    base.characterMotor.rootMotion += Time.fixedDeltaTime * calcSpeed * aimRay.direction;
                 }
 
-                if (stopwatch >= FlightMode.baseDuration)
+                if (stopwatch < FlightMode.baseDuration)
                 {
-                    this.outer.SetNextStateToMain();
-                    return;
+                    if (this.attack != null)
+                    {
+                        this.attack.forceVector = aimRay.direction * FlightMode.force;
+                        if (this.attack.Fire())
+                        {
+                            OnHitEnemyAuthority();
+                        }
+                    }
+                }
+                else
+                {
+                    if (stopwatch >= FlightMode.baseDuration + FlightMode.slowdownDuration)
+                    {
+                        this.outer.SetNextStateToMain();
+                        return;
+                    }
                 }
             }
         }
