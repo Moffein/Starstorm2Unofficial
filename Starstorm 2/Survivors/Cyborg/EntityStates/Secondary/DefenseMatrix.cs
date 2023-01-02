@@ -23,12 +23,14 @@ namespace EntityStates.SS2UStates.Cyborg.Secondary
         private float blinkStartTime;
         private TeamIndex inputTeamIndex;
         private DefenseMatrixManager.DefenseMatrixInfo defenseMatrixInfo;
+        private CyborgChargeComponent chargeComponent;
 
         public static float baseDuration = 2f;
         public static string attackSoundString = "CyborgSpecialTeleport";
         public static GameObject projectileDeletionEffectPrefab;
         public static GameObject matrixPrefab;
         public static float ticksPerSecond = 30;
+        public static float cdrPerProjectile = 0.5f;
 
         public static float blinkTime = 0.5f;
         public static float blinkFrequency = 20f;
@@ -36,6 +38,8 @@ namespace EntityStates.SS2UStates.Cyborg.Secondary
         public override void OnEnter()
         {
             base.OnEnter();
+
+            chargeComponent = base.GetComponent<CyborgChargeComponent>();
 
             Util.PlaySound(DefenseMatrix.attackSoundString, base.gameObject);
             base.StartAimMode(DefenseMatrix.baseDuration + 1f);
@@ -82,7 +86,12 @@ namespace EntityStates.SS2UStates.Cyborg.Secondary
             {
                 List<ProjectileController> deletionList = new List<ProjectileController>();
 
-                Collider[] colliders = Physics.OverlapBox(matrixCollider.transform.position, matrixCollider.size * 0.5f, matrixCollider.transform.rotation, LayerIndex.projectile.mask);
+                Vector3 sizeVector = matrixCollider.size * 0.5f;
+                sizeVector.x *= matrixInstance.transform.localScale.x;
+                sizeVector.y *= matrixInstance.transform.localScale.y;
+                sizeVector.z *= matrixInstance.transform.localScale.z;
+
+                Collider[] colliders = Physics.OverlapBox(matrixCollider.transform.position, sizeVector, matrixCollider.transform.rotation, LayerIndex.projectile.mask);
                 foreach (Collider c in colliders)
                 {
                     ProjectileController pc = c.GetComponentInParent<ProjectileController>();
@@ -107,7 +116,8 @@ namespace EntityStates.SS2UStates.Cyborg.Secondary
                     }
                 }
 
-                for (int i = 0; i < deletionList.Count; i++)
+                int projectilesDeleted = deletionList.Count;
+                for (int i = 0; i < projectilesDeleted; i++)
                 {
                     GameObject toDelete = deletionList[i].gameObject;
                     if (toDelete)
@@ -115,6 +125,10 @@ namespace EntityStates.SS2UStates.Cyborg.Secondary
                         if (toDelete.transform) EffectManager.SimpleEffect(DefenseMatrix.projectileDeletionEffectPrefab, toDelete.transform.position, default, true);
                         EntityState.Destroy(toDelete);
                     }
+                }
+                if (chargeComponent && projectilesDeleted > 0)
+                {
+                    chargeComponent.RestoreNonDefenseMatrixCooldownsServer(projectilesDeleted * DefenseMatrix.cdrPerProjectile);
                 }
             }
         }

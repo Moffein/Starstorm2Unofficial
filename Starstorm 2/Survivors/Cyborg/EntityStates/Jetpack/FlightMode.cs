@@ -11,8 +11,8 @@ namespace EntityStates.SS2UStates.Cyborg.Jetpack
     public class FlightMode : BaseState
     {
         public static float slowdownDuration = 0.5f;
-        public static float baseDuration = 2f;
-        public static float speedMultCoefficient = 2f;
+        public static float baseDuration = 0.7f;
+        public static float speedMultCoefficient = 3f;
         public static float damageCoefficient = 4f;
         public static float force = 2400f;
         public static GameObject hitEffectPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Toolbot/ImpactToolbotDashLarge.prefab").WaitForCompletion();

@@ -33,6 +33,7 @@ namespace Starstorm2.Survivors.Cyborg
         public static BodyIndex bodyIndex;
 
         public static SkillDef chargeRifleDef;
+        public static SkillDef defenseMatrixDef;
         public static SkillDef overheatDef;
         public static SkillDef overheatScepterDef;
 
@@ -365,7 +366,7 @@ namespace Starstorm2.Survivors.Cyborg
         private void SetUpSecondaries(SkillLocator skillLocator)
         {
              LanguageAPI.Add("CYBORG_SECONDARY_DEFENSEMATRIX_NAME", "Defense Matrix");
-             LanguageAPI.Add("CYBORG_SECONDARY_DEFENSEMATRIX_DESCRIPTION", $"Project an energy field that <style=cIsUtility>neutralizes ranged attacks</style>.");
+             LanguageAPI.Add("CYBORG_SECONDARY_DEFENSEMATRIX_DESCRIPTION", "Project an energy field that <style=cIsUtility>neutralizes ranged attacks</style>. Reduce skill cooldowns by <style=cIsUtility>0.5s</style> for every <style=cIsUtility>projectile</style> deleted.");
              SkillDef defenseMatrixDef = ScriptableObject.CreateInstance<SkillDef>();
              defenseMatrixDef.activationState = new SerializableEntityStateType(typeof(DefenseMatrix));
              defenseMatrixDef.activationStateMachineName = "DefenseMatrix";
@@ -385,12 +386,14 @@ namespace Starstorm2.Survivors.Cyborg
              defenseMatrixDef.rechargeStock = 1;
              defenseMatrixDef.requiredStock = 1;
              defenseMatrixDef.stockToConsume = 1;
-             defenseMatrixDef.keywordTokens = new string[] { "KEYWORD_STUNNING" };
+             defenseMatrixDef.keywordTokens = new string[] {};
              Modules.Skills.FixSkillName(defenseMatrixDef);
              Utils.RegisterSkillDef(defenseMatrixDef);
              SkillFamily.Variant secondaryVariant2 = Utils.RegisterSkillVariant(defenseMatrixDef);
 
             skillLocator.secondary = Utils.RegisterSkillsToFamily(cybPrefab, new SkillFamily.Variant[] { secondaryVariant2 });
+
+            CyborgCore.defenseMatrixDef = defenseMatrixDef;
         }
 
         private void SetUpUtilities(SkillLocator skillLocator)
@@ -449,7 +452,7 @@ namespace Starstorm2.Survivors.Cyborg
 
 
             LanguageAPI.Add("CYBORG_UTILITY_FLIGHT_NAME", "Flight Mode");
-            LanguageAPI.Add("CYBORG_UTILITY_FLIGHT_DESCRIPTION", "<style=cIsUtility>Heavy</style>. Take flight, gaining <style=cIsUtility>100% movement speed</style>. Deals <style=cIsDamage>400% damage</style> to enemies on impact.");
+            LanguageAPI.Add("CYBORG_UTILITY_FLIGHT_DESCRIPTION", "<style=cIsUtility>Heavy</style>. Take flight, gaining <style=cIsUtility>200% movement speed</style>. Deals <style=cIsDamage>400% damage</style> to enemies on impact.");
             SkillDef flightMode = ScriptableObject.CreateInstance<SkillDef>();
             flightMode.activationState = new SerializableEntityStateType(typeof(FlightMode));
             flightMode.activationStateMachineName = "Jetpack";
