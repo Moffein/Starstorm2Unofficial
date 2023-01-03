@@ -333,7 +333,7 @@ namespace Starstorm2.Survivors.Cyborg
             SkillFamily.Variant primaryVariant1 = Utils.RegisterSkillVariant(primaryDef1);
 
             LanguageAPI.Add("CYBORG_PRIMARY_CHARGE_NAME", "Rising Star");
-            LanguageAPI.Add("CYBORG_PRIMARY_CHARGE_DESCRIPTION", $"Charge up a <style=cIsUtility>slowing</style> beam that deals <style=cIsDamage>250%-750% damage</style>. Deals <style=cIsDamage>33%</style> more damage and pierces when <style=cIsDamage>perfectly charged</style>.");
+            LanguageAPI.Add("CYBORG_PRIMARY_CHARGE_DESCRIPTION", $"Charge up a <style=cIsUtility>slowing</style> beam that pierces for <style=cIsDamage>250%-750% damage</style>. Deals <style=cIsDamage>33%</style> more damage when <style=cIsDamage>perfectly charged</style>.");
             SteppedSkillDef primaryDef2 = ScriptableObject.CreateInstance<SteppedSkillDef>();
             primaryDef2.activationState = new SerializableEntityStateType(typeof(ChargeBeam));
             primaryDef2.activationStateMachineName = "Weapon";
