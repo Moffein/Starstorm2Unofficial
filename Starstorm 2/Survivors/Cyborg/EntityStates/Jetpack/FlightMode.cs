@@ -10,8 +10,7 @@ namespace EntityStates.SS2UStates.Cyborg.Jetpack
 {
     public class FlightMode : BaseState
     {
-        public static float slowdownDuration = 0.5f;
-        public static float baseDuration = 0.7f;
+        public static float baseDuration = 1.5f;
         public static float speedMultCoefficient = 3f;
         public static float damageCoefficient = 4f;
         public static float force = 2400f;
@@ -110,37 +109,25 @@ namespace EntityStates.SS2UStates.Cyborg.Jetpack
                     //if (this.animator) this.animator.SetFloat(animatorParam, 0f);
                 }
 
-                float calcSpeed = this.desiredSpeed;
-                if (stopwatch > FlightMode.baseDuration)
-                {
-                    calcSpeed = Mathf.Lerp(desiredSpeed, baseSpeed, (stopwatch - FlightMode.baseDuration) / (FlightMode.slowdownDuration));
-                }
-
                 if (base.characterMotor)
                 {
                     if (base.characterMotor.isGrounded && base.characterMotor.Motor) base.characterMotor.Motor.ForceUnground();
                     base.characterMotor.velocity = Vector3.zero;
-                    base.characterMotor.rootMotion += Time.fixedDeltaTime * calcSpeed * aimRay.direction;
+                    base.characterMotor.rootMotion += Time.fixedDeltaTime * this.desiredSpeed * aimRay.direction;
+                }
+                if (this.attack != null)
+                {
+                    this.attack.forceVector = aimRay.direction * FlightMode.force;
+                    if (this.attack.Fire())
+                    {
+                        OnHitEnemyAuthority();
+                    }
                 }
 
-                if (stopwatch < FlightMode.baseDuration)
+                if (stopwatch >= FlightMode.baseDuration)
                 {
-                    if (this.attack != null)
-                    {
-                        this.attack.forceVector = aimRay.direction * FlightMode.force;
-                        if (this.attack.Fire())
-                        {
-                            OnHitEnemyAuthority();
-                        }
-                    }
-                }
-                else
-                {
-                    if (stopwatch >= FlightMode.baseDuration + FlightMode.slowdownDuration)
-                    {
-                        this.outer.SetNextStateToMain();
-                        return;
-                    }
+                    this.outer.SetNextStateToMain();
+                    return;
                 }
             }
         }
@@ -160,6 +147,10 @@ namespace EntityStates.SS2UStates.Cyborg.Jetpack
         public override void OnExit()
         {
             Util.PlaySound("Play_MULT_shift_end", base.gameObject);
+            if (base.isAuthority && base.characterMotor && !base.characterMotor.isGrounded)
+            {
+                base.characterMotor.velocity = base.GetAimRay().direction * this.desiredSpeed;
+            }
             base.OnExit();
         }
 

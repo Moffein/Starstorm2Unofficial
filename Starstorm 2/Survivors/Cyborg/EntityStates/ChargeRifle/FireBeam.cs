@@ -15,6 +15,7 @@ namespace EntityStates.SS2UStates.Cyborg.ChargeRifle
         public static float minForce = 1000f;
         public static float maxForce = 2000f;
         public static float baseDuration = 0.5f;
+        public static float recoil = 4f;
         public static GameObject hitEffectPrefab = LegacyResourcesAPI.Load<GameObject>("prefabs/effects/impacteffects/HitsparkCommandoShotgun");
         public static GameObject tracerEffectPrefab;
         public static GameObject perfectTracerEffectPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Huntress/TracerHuntressSnipe.prefab").WaitForCompletion();
@@ -100,11 +101,13 @@ namespace EntityStates.SS2UStates.Cyborg.ChargeRifle
                     radius = Mathf.Lerp(1f, 2f, charge),
                     weapon = base.gameObject,
                     tracerEffectPrefab = perfectCharge ? FireBeam.perfectTracerEffectPrefab : FireBeam.tracerEffectPrefab,
-                    hitEffectPrefab = FireBeam.hitEffectPrefab
+                    hitEffectPrefab = FireBeam.hitEffectPrefab,
+                    maxDistance = 1000f
                 };
-                if (perfectCharge) bullet.stopperMask = LayerIndex.world.mask;
+                if (perfectCharge || charge >= 1f) bullet.stopperMask = LayerIndex.world.mask;
                 bullet.Fire();
             }
+            base.AddRecoil(-0.5f * recoil, -0.8f * recoil, -0.3f * recoil, 0.3f * recoil);
             base.characterBody.AddSpreadBloom(2f);
         }
 
