@@ -238,7 +238,7 @@ namespace Starstorm2.Survivors.Cyborg
             pc.ghostPrefab = ghostPrefab;
 
             ProjectileSimple ps = projectilePrefab.GetComponent<ProjectileSimple>();
-            ps.desiredForwardSpeed = 80;//lightning bomb 40, lightning bolt 80
+            ps.desiredForwardSpeed = 60;//lightning bomb 40, lightning bolt 80
             ps.lifetime = 10f;
 
             ProjectileDamage pd = projectilePrefab.GetComponent<ProjectileDamage>();
