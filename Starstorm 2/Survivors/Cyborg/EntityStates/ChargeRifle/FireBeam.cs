@@ -4,6 +4,8 @@ using UnityEngine;
 using UnityEngine.AddressableAssets;
 using Starstorm2.Survivors.Cyborg.Components;
 using RoR2.Skills;
+using R2API;
+using Starstorm2.Cores;
 
 namespace EntityStates.SS2UStates.Cyborg.ChargeRifle
 {
@@ -86,7 +88,7 @@ namespace EntityStates.SS2UStates.Cyborg.ChargeRifle
                     aimVector = r.direction,
                     origin = r.origin,
                     damage = dmg,
-                    damageType = DamageType.Generic,
+                    damageType = DamageType.SlowOnHit,
                     damageColorIndex = DamageColorIndex.Default,
                     minSpread = 0f,
                     maxSpread = 0f,
@@ -104,6 +106,7 @@ namespace EntityStates.SS2UStates.Cyborg.ChargeRifle
                     hitEffectPrefab = FireBeam.hitEffectPrefab,
                     maxDistance = 1000f
                 };
+                bullet.AddModdedDamageType(DamageTypeCore.ModdedDamageTypes.CyborgPrimary);
                 if (perfectCharge || charge >= 1f) bullet.stopperMask = LayerIndex.world.mask;
                 bullet.Fire();
             }

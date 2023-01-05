@@ -2,6 +2,7 @@
 using BepInEx.Configuration;
 using R2API.Utils;
 using RoR2;
+using Starstorm2.Components.Projectiles;
 using Starstorm2.Cores;
 using Starstorm2.Cores.Equipment;
 using Starstorm2.Cores.Items;
@@ -47,7 +48,7 @@ namespace Starstorm2
     {
         internal const string guid = "com.ChirrLover.Starstorm2Unofficial";
         internal const string modName = "Starstorm 2 Unofficial";
-        internal const string version = "0.7.1";
+        internal const string version = "0.7.2";
 
         public static StarstormPlugin instance;
 
@@ -110,8 +111,10 @@ namespace Starstorm2
             CommandHelper.AddToConsoleWhenReady();
 
             new Modules.ContentPacks().Initialize();
-        }
 
+            //Figure out where to place this later.
+            ShootableProjectileComponent.AddHooks();
+        }
 
         [MethodImpl(MethodImplOptions.NoInlining | MethodImplOptions.NoOptimization)]
         private static void SetArena(Stage obj)

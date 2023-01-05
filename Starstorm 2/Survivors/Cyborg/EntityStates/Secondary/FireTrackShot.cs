@@ -14,7 +14,7 @@ using Starstorm2.Cores;
 using UnityEngine.Networking;
 using KinematicCharacterController;
 
-namespace EntityStates.SS2UStates.Cyborg
+namespace EntityStates.SS2UStates.Cyborg.Secondary
 {
     public class CyborgFireTrackshot : BaseSkillState
     {
@@ -30,6 +30,7 @@ namespace EntityStates.SS2UStates.Cyborg
         private bool firstShot = false;
         private bool secondShot = false;
         private bool thirdShot = false;
+        private bool isCrit = false;
         private Animator animator;
         private string muzzleString;
         private BullseyeSearch search = new BullseyeSearch();
@@ -44,6 +45,7 @@ namespace EntityStates.SS2UStates.Cyborg
             this.animator = base.GetModelAnimator();
             this.muzzleString = "Lowerarm.L_end";
 
+            isCrit = base.RollCrit();
 
             base.PlayAnimation("Gesture, Override", "FireM2", "FireArrow.playbackRate", this.duration);
         }
@@ -84,7 +86,7 @@ namespace EntityStates.SS2UStates.Cyborg
             Util.PlaySound(soundString, base.gameObject);
             if (base.isAuthority)
             {
-                new BulletAttack
+                BulletAttack bullet = new BulletAttack
                 {
                     owner = base.gameObject,
                     weapon = base.gameObject,
@@ -96,10 +98,11 @@ namespace EntityStates.SS2UStates.Cyborg
                     force = 100,
                     tracerEffectPrefab = CyborgFireTrackshot.tracerEffectPrefab,
                     muzzleName = muzzleString,
-                    hitEffectPrefab = (Util.CheckRoll(this.critStat, base.characterBody.master)) ? critEffectPrefab : effectPrefab,
-                    isCrit = Util.CheckRoll(this.critStat, base.characterBody.master),
+                    hitEffectPrefab = isCrit ? critEffectPrefab : effectPrefab,
+                    isCrit = isCrit,
                     damageType = DamageType.Stun1s
-                }.Fire();
+                };
+                bullet.Fire();
                 //ProjectileManager.instance.FireProjectile(ExampleSurvivor.ExampleSurvivor.bfgProjectile, aimRay.origin, Util.QuaternionSafeLookRotation(aimRay.direction), base.gameObject, this.damageCoefficient * this.damageStat, 0f, Util.CheckRoll(this.critStat, base.characterBody.master), DamageColorIndex.Default, null, -1f);
             }
         }

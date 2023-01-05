@@ -105,6 +105,8 @@
     <Compile Include="Survivors\Cyborg\Components\OverheatProjectile\BFGGhostReduceSizeOverTime.cs" />
     <Compile Include="Survivors\Cyborg\Components\OverheatProjectile\LightningSoundComponent.cs" />
     <Compile Include="Survivors\Cyborg\Components\OverheatProjectile\OverheatReduceTickrateOverTime.cs" />
+    <Compile Include="Components\Projectiles\ShootableProjectileComponent.cs" />
+    <Compile Include="Survivors\Cyborg\Components\ShockCoreProjectile\ShootableShockCore.cs" />
     <Compile Include="Survivors\Cyborg\Components\TeleportProjectile\AssignToTeleportTracker.cs" />
     <Compile Include="Survivors\Cyborg\CyborgTeleSkillDef.cs" />
     <Compile Include="Survivors\Cyborg\DefenseMatrixManager.cs" />
@@ -114,6 +116,7 @@
     <Compile Include="Survivors\Cyborg\EntityStates\ChargeRifle\ChargeBeam.cs" />
     <Compile Include="Survivors\Cyborg\EntityStates\Secondary\DefenseMatrix.cs" />
     <Compile Include="Survivors\Cyborg\EntityStates\ChargeRifle\FireBeam.cs" />
+    <Compile Include="Survivors\Cyborg\EntityStates\Secondary\ShockCore.cs" />
     <Compile Include="Survivors\Cyborg\EntityStates\Teleporter\DeployTeleporter.cs" />
     <Compile Include="Survivors\Cyborg\EntityStates\Teleporter\UseTeleporter.cs" />
     <Compile Include="Survivors\Executioner\Components\ExecutionerController.cs" />
@@ -177,7 +180,7 @@
     <Compile Include="Survivors\Chirr\EntityStates\ChirrMain.cs" />
     <Compile Include="Survivors\Chirr\EntityStates\ChirrHeal.cs" />
     <Compile Include="Survivors\Cyborg\EntityStates\CyborgMain.cs" />
-    <Compile Include="Survivors\Cyborg\EntityStates\Secondary.cs" />
+    <Compile Include="Survivors\Cyborg\EntityStates\Secondary\FireTrackShot.cs" />
     <Compile Include="Survivors\Cyborg\EntityStates\CyborgFireOverheat.cs" />
     <Compile Include="Modules\EntityStates\Emotes\BaseEmote.cs" />
     <Compile Include="Modules\EntityStates\Emotes\RestEmote.cs" />

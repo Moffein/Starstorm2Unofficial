@@ -21,6 +21,8 @@ using RoR2.UI;
 using Starstorm2.Survivors.Cyborg.Components.Crosshair;
 using EntityStates.SS2UStates.Cyborg.ChargeRifle;
 using EntityStates.SS2UStates.Cyborg.Jetpack;
+using Starstorm2.Components.Projectiles;
+using Starstorm2.Survivors.Cyborg.Components.ShockCoreProjectile;
 
 namespace Starstorm2.Survivors.Cyborg
 {
@@ -147,7 +149,9 @@ namespace Starstorm2.Survivors.Cyborg
 
             Modules.States.AddState(typeof(ChargeBeam));
             Modules.States.AddState(typeof(FireBeam));
+
             Modules.States.AddState(typeof(DefenseMatrix));
+            Modules.States.AddState(typeof(ShockCore));
         }
 
         private void RegisterProjectiles()
@@ -214,6 +218,107 @@ namespace Starstorm2.Survivors.Cyborg
             ec.soundName = "Play_mage_R_lightningBlast";
             Modules.Assets.effectDefs.Add(new EffectDef(telefragExplosionEffect));
             UseTeleporter.explosionEffectPrefab = telefragExplosionEffect;
+
+            ShockCore.projectilePrefab = CreateShockCoreProjectile();
+            ShootableShockCore.explosionEffectPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Junk/Mage/MageLightningBombExplosion.prefab").WaitForCompletion().InstantiateClone("SS2UShockCoreImplosionEffect", false);
+            EffectComponent ec2 = ShootableShockCore.explosionEffectPrefab.GetComponent<EffectComponent>();
+            ec2.soundName = "Play_mage_m2_impact";
+            Modules.Assets.effectDefs.Add(new EffectDef(ShootableShockCore.explosionEffectPrefab));
+        }
+
+        private GameObject CreateShockCoreProjectile()
+        {
+            GameObject projectilePrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Mage/MageLightningboltBasic.prefab").WaitForCompletion().InstantiateClone("SS2UCyborgShockCoreProjectile", true);
+            //projectilePrefab.transform.localScale = 2f * Vector3.one; //0.1, 0.1, 1.0
+
+            GameObject ghostPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Mage/MageLightningboltGhost.prefab").WaitForCompletion().InstantiateClone("SS2UCyborgShockCoreGhost", false);
+            ghostPrefab.transform.localScale = 2f * Vector3.one;  //vector3.one
+
+            ProjectileController pc = projectilePrefab.GetComponent<ProjectileController>();
+            pc.ghostPrefab = ghostPrefab;
+
+            ProjectileSimple ps = projectilePrefab.GetComponent<ProjectileSimple>();
+            ps.desiredForwardSpeed = 80;//lightning bomb 40, lightning bolt 80
+            ps.lifetime = 10f;
+
+            ProjectileDamage pd = projectilePrefab.GetComponent<ProjectileDamage>();
+            pd.damageType = DamageType.Shock5s;
+
+            ProjectileImpactExplosion pie = projectilePrefab.GetComponent<ProjectileImpactExplosion>();
+            pie.blastRadius = 4f;
+
+            TeamComponent tc = projectilePrefab.AddComponent<TeamComponent>();
+            tc.hideAllyCardDisplay = true;
+
+            projectilePrefab.AddComponent<SkillLocator>();
+            CharacterBody cb = projectilePrefab.AddComponent<CharacterBody>();
+            cb.rootMotionInMainState = false;
+            cb.bodyFlags = CharacterBody.BodyFlags.Masterless;
+            cb.baseMaxHealth = 1f;
+            cb.baseCrit = 0f;
+            cb.baseAcceleration = 0f;
+            cb.baseArmor = 0f;
+            cb.baseAttackSpeed = 0f;
+            cb.baseDamage = 0f;
+            cb.baseJumpCount = 0;
+            cb.baseJumpPower = 0f;
+            cb.baseMoveSpeed = 0f;
+            cb.baseMaxShield = 0f;
+            cb.baseRegen = 0f;
+            cb.autoCalculateLevelStats = true;
+            cb.levelArmor = 0f;
+            cb.levelAttackSpeed = 0f;
+            cb.levelCrit = 0f;
+            cb.levelDamage = 0f;
+            cb.levelJumpPower = 0f;
+            cb.levelMaxHealth = 0f;
+            cb.levelMaxShield = 0f;
+            cb.levelMoveSpeed = 0f;
+            cb.levelRegen = 0f;
+            cb.hullClassification = HullClassification.Human;
+
+            HealthComponent hc = projectilePrefab.AddComponent<HealthComponent>();
+            hc.globalDeathEventChanceCoefficient = 0f;
+            hc.body = cb;
+
+            ShootableShockCore sp = projectilePrefab.AddComponent<ShootableShockCore>();
+            sp.targetDamageType = DamageTypeCore.ModdedDamageTypes.CyborgPrimary;
+
+            AddShockCoreHurtbox(projectilePrefab);
+
+            Modules.Prefabs.projectilePrefabs.Add(projectilePrefab);
+            return projectilePrefab;
+        }
+        private void AddShockCoreHurtbox(GameObject go)
+        {
+            GameObject hbObject = new GameObject();
+            hbObject.transform.parent = go.transform;
+            //GameObject hbObject = go;
+
+            hbObject.layer = LayerIndex.entityPrecise.intVal;
+            SphereCollider goCollider = hbObject.AddComponent<SphereCollider>();
+            goCollider.radius = 1f;
+
+            HurtBoxGroup goHurtBoxGroup = hbObject.AddComponent<HurtBoxGroup>();
+            HurtBox goHurtBox = hbObject.AddComponent<HurtBox>();
+            goHurtBox.isBullseye = false;
+            goHurtBox.healthComponent = go.GetComponent<HealthComponent>();
+            goHurtBox.damageModifier = HurtBox.DamageModifier.Normal;
+            goHurtBox.hurtBoxGroup = goHurtBoxGroup;
+            goHurtBox.indexInGroup = 0;
+
+            HurtBox[] goHurtBoxArray = new HurtBox[]
+            {
+                goHurtBox
+            };
+
+            goHurtBoxGroup.bullseyeCount = 0;
+            goHurtBoxGroup.hurtBoxes = goHurtBoxArray;
+            goHurtBoxGroup.mainHurtBox = goHurtBox;
+
+            DisableCollisionsBetweenColliders dc = go.AddComponent<DisableCollisionsBetweenColliders>();
+            dc.collidersA = go.GetComponentsInChildren<Collider>();
+            dc.collidersB = hbObject.GetComponents<Collider>();
         }
 
         private GameObject CreateOverheatProjectile(string name, GameObject ghostPrefab, int bounceCount, float pullStrength)
@@ -366,7 +471,7 @@ namespace Starstorm2.Survivors.Cyborg
         private void SetUpSecondaries(SkillLocator skillLocator)
         {
              LanguageAPI.Add("CYBORG_SECONDARY_DEFENSEMATRIX_NAME", "Defense Matrix");
-             LanguageAPI.Add("CYBORG_SECONDARY_DEFENSEMATRIX_DESCRIPTION", "Project an energy field that <style=cIsUtility>neutralizes ranged attacks</style>. Reduce skill cooldowns by <style=cIsUtility>0.5s</style> for every <style=cIsUtility>projectile</style> deleted.");
+             LanguageAPI.Add("CYBORG_SECONDARY_DEFENSEMATRIX_DESCRIPTION", "Project an energy field that <style=cIsUtility>neutralizes ranged attacks</style>. Reduce skill cooldowns by <style=cIsUtility>1s</style> for every <style=cIsUtility>projectile</style> deleted.");
              SkillDef defenseMatrixDef = ScriptableObject.CreateInstance<SkillDef>();
              defenseMatrixDef.activationState = new SerializableEntityStateType(typeof(DefenseMatrix));
              defenseMatrixDef.activationStateMachineName = "DefenseMatrix";
@@ -389,11 +494,36 @@ namespace Starstorm2.Survivors.Cyborg
              defenseMatrixDef.keywordTokens = new string[] {};
              Modules.Skills.FixSkillName(defenseMatrixDef);
              Utils.RegisterSkillDef(defenseMatrixDef);
-             SkillFamily.Variant secondaryVariant2 = Utils.RegisterSkillVariant(defenseMatrixDef);
+             SkillFamily.Variant secondaryVariant1 = Utils.RegisterSkillVariant(defenseMatrixDef);
 
-            skillLocator.secondary = Utils.RegisterSkillsToFamily(cybPrefab, new SkillFamily.Variant[] { secondaryVariant2 });
-
+            LanguageAPI.Add("CYBORG_SECONDARY_SHOCKCORE_NAME", "Shock Core");
+            LanguageAPI.Add("CYBORG_SECONDARY_SHOCKCORE_DESCRIPTION", "<style=cIsDamage>Shocking</style>. Fire an energy core for <style=cIsDamage>300% damage</style>. Shoot the core to detonate it for <style=cIsDamage>1200% damage</style>.");
             CyborgCore.defenseMatrixDef = defenseMatrixDef;
+            SkillDef shockCoreDef = ScriptableObject.CreateInstance<SkillDef>();
+            shockCoreDef.activationState = new SerializableEntityStateType(typeof(ShockCore));
+            shockCoreDef.activationStateMachineName = "Weapon";
+            shockCoreDef.skillName = "CYBORG_SECONDARY_SHOCKCORE_NAME";
+            shockCoreDef.skillNameToken = "CYBORG_SECONDARY_SHOCKCORE_NAME";
+            shockCoreDef.skillDescriptionToken = "CYBORG_SECONDARY_SHOCKCORE_DESCRIPTION";
+            shockCoreDef.icon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("cyborgsecondary");
+            shockCoreDef.baseMaxStock = 1;
+            shockCoreDef.baseRechargeInterval = 6f;
+            shockCoreDef.beginSkillCooldownOnSkillEnd = false;
+            shockCoreDef.canceledFromSprinting = false;
+            shockCoreDef.fullRestockOnAssign = true;
+            shockCoreDef.interruptPriority = EntityStates.InterruptPriority.Skill;
+            shockCoreDef.isCombatSkill = true;
+            shockCoreDef.mustKeyPress = true;
+            shockCoreDef.cancelSprintingOnActivation = true;
+            shockCoreDef.rechargeStock = 1;
+            shockCoreDef.requiredStock = 1;
+            shockCoreDef.stockToConsume = 1;
+            shockCoreDef.keywordTokens = new string[] { "KEYWORD_SHOCKING" };
+            Modules.Skills.FixSkillName(shockCoreDef);
+            Utils.RegisterSkillDef(shockCoreDef);
+            SkillFamily.Variant secondaryVariant2 = Utils.RegisterSkillVariant(shockCoreDef);
+
+            skillLocator.secondary = Utils.RegisterSkillsToFamily(cybPrefab, new SkillFamily.Variant[] { secondaryVariant1, secondaryVariant2 });
         }
 
         private void SetUpUtilities(SkillLocator skillLocator)

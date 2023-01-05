@@ -1,5 +1,7 @@
-﻿using RoR2;
+﻿using R2API;
+using RoR2;
 using RoR2.Skills;
+using Starstorm2.Cores;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 
@@ -44,7 +46,7 @@ namespace EntityStates.SS2UStates.Cyborg
 
             if (base.isAuthority)
             {
-                new BulletAttack
+                BulletAttack bullet = new BulletAttack
                 {
                     owner = base.gameObject,
                     weapon = base.gameObject,
@@ -63,7 +65,9 @@ namespace EntityStates.SS2UStates.Cyborg
                     falloffModel = BulletAttack.FalloffModel.None,
                     damageType = DamageType.SlowOnHit,
                     maxDistance = 1000f
-                }.Fire();
+                };
+                bullet.AddModdedDamageType(DamageTypeCore.ModdedDamageTypes.CyborgPrimary);
+                bullet.Fire();
                 base.AddRecoil(-0.5f * recoil, -0.8f * recoil, -0.3f * recoil, 0.3f * recoil);
             }
             if (base.characterBody)

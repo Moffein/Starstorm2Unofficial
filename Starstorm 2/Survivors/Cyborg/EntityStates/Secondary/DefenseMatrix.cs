@@ -30,7 +30,7 @@ namespace EntityStates.SS2UStates.Cyborg.Secondary
         public static GameObject projectileDeletionEffectPrefab;
         public static GameObject matrixPrefab;
         public static float ticksPerSecond = 30;
-        public static float cdrPerProjectile = 0.5f;
+        public static float cdrPerProjectile = 1f;
 
         public static float blinkTime = 0.5f;
         public static float blinkFrequency = 20f;

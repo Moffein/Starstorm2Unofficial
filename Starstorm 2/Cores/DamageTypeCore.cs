@@ -14,6 +14,7 @@ namespace Starstorm2.Cores
 
         public static class ModdedDamageTypes
         {
+            public static DamageAPI.ModdedDamageType CyborgPrimary; //Used for Cyborg Shock Rifle combo
             public static DamageAPI.ModdedDamageType ScaleForceToMass;
             public static DamageAPI.ModdedDamageType GougeOnHit;
             public static DamageAPI.ModdedDamageType ExtendFear;
@@ -29,6 +30,7 @@ namespace Starstorm2.Cores
         {
             instance = this;
 
+            ModdedDamageTypes.CyborgPrimary = DamageAPI.ReserveDamageType();
             ModdedDamageTypes.ScaleForceToMass = DamageAPI.ReserveDamageType();
             ModdedDamageTypes.GougeOnHit = DamageAPI.ReserveDamageType();
             ModdedDamageTypes.ExtendFear = DamageAPI.ReserveDamageType();

@@ -22,6 +22,7 @@ namespace EntityStates.SS2UStates.Cyborg.Jetpack
         private BaseState.HitStopCachedState hitStopCachedState;
         private Vector3 storedVelocity;
         private Animator animator;
+        private float speedDamageFactor;
 
         private float stopwatch;
         private float baseSpeed;
@@ -43,6 +44,8 @@ namespace EntityStates.SS2UStates.Cyborg.Jetpack
             desiredSpeed = this.moveSpeedStat * FlightMode.speedMultCoefficient;
             Util.PlaySound("Play_MULT_shift_start", base.gameObject);
 
+            speedDamageFactor = Mathf.Max(desiredSpeed / (7f * 1.45f * FlightMode.speedMultCoefficient), 1f);
+
             if (base.isAuthority)
             {
                 InitOverlapAttack();
@@ -60,14 +63,12 @@ namespace EntityStates.SS2UStates.Cyborg.Jetpack
 
             if (hitBoxGroup)
             {
-                float speedFactor = Mathf.Max(desiredSpeed / (7f * 1.45f * FlightMode.speedMultCoefficient), 1f);
-
                 this.attack = new OverlapAttack
                 {
                     attacker = base.gameObject,
                     attackerFiltering = AttackerFiltering.NeverHitSelf,
                     pushAwayForce = 0f,
-                    damage = this.damageStat * FlightMode.damageCoefficient * speedFactor,
+                    damage = this.damageStat * FlightMode.damageCoefficient * speedDamageFactor,
                     damageColorIndex = DamageColorIndex.Default,
                     damageType = DamageType.Stun1s,
                     forceVector = Vector3.zero,
