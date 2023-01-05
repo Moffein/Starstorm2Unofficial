@@ -41,7 +41,7 @@ namespace EntityStates.SS2UStates.Cyborg.Secondary
 
         public static GameObject muzzleflashEffectPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Captain/CaptainChargeTazer.prefab").WaitForCompletion();
         public static GameObject projectilePrefab;
-        public static float damageCoefficient = 4f;
+        public static float damageCoefficient = 3f;
         public static float baseDuration = 0.5f;
 
         private float duration;
