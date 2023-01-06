@@ -1,12 +1,12 @@
 ManifestFileVersion: 0
-CRC: 2907465519
+CRC: 385874775
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 3fb9577d26f41da43d6c60de7a0acd68
+    Hash: aa697a059a390cb626478969941e157e
   TypeTreeHash:
     serializedVersion: 2
-    Hash: e085efc3cec39229c22603e1a47b8115
+    Hash: 9b39e8c6fc23523925becd33387f2f7a
 HashAppended: 0
 ClassTypes:
 - Class: 1
@@ -42,9 +42,9 @@ ClassTypes:
 - Class: 108
   Script: {instanceID: 0}
 - Class: 114
-  Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-- Class: 114
   Script: {fileID: 11500000, guid: d0203090a5cc68345977ed2206b1f42d, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
 - Class: 114
   Script: {fileID: 11500000, guid: da178bd6941be6d4299f99ed3486707d, type: 3}
 - Class: 114
@@ -377,6 +377,7 @@ Assets:
 - Assets/AssetBundle/Cyborg/Meshes/meshCyborgOld.mesh
 - Assets/AssetBundle/Nemmando/Animations/NemmandoAnimator.controller
 - Assets/AssetBundle/Nemmando/Animations/SprintRestF.anim
+- Assets/AssetBundle/Cyborg/UI/texCrosshairChargeRifleDot.png
 - Assets/AssetBundle/Nemmando/VFX/Textures/texNemmandoHitSpark.png
 - Assets/AssetBundle/Nemmando/Textures/texGuardianEmission.png
 - Assets/AssetBundle/Skins/Materials/matCommandoClassic.mat
@@ -635,6 +636,7 @@ Assets:
 - Assets/AssetBundle/Nemmando/Icons/texNemmandoSkin.png
 - Assets/AssetBundle/Executioner/Textures/texExecutionerMasteryAlt.png
 - Assets/AssetBundle/Nemmando/Textures/texNemmandoEmission.png
+- Assets/AssetBundle/Cyborg/UI/texCrosshairShieldBar.png
 - Assets/AssetBundle/Enemies/Spooder/Animations/Attack.anim
 - Assets/AssetBundle/Cyborg/Animations/Tele/animCyTP2_Closed.anim
 - Assets/AssetBundle/Nucleator/Icons/texNucleatorPrimary.png

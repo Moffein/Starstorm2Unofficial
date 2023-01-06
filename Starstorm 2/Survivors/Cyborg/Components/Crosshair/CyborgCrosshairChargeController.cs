@@ -6,21 +6,38 @@ namespace Starstorm2.Survivors.Cyborg.Components.Crosshair
 {
     public class CyborgCrosshairChargeController : MonoBehaviour
     {
-        //These are the min/max fill on the sprite in Unity
-        private const float minFill = 0f;
-        private const float maxFill = 1f;
-
         public static Color chargeColor = Color.white;
         public static Color perfectChargeColor = new Color32(139, 237, 227, 255);
 
+        public static Color shieldColor = new Color32(139, 237, 227, 255);
+        public static Color shieldDepleteColor = new Color32(150, 0, 0, 255);
+
         private CyborgChargeComponent chargeComponent;
         private HudElement hudElement;
-        private Image image;
+        private Image chargeBar;
+        private Image chargeBarBackground;
+        private Image shieldBar;
 
         private void Awake()
         {
             this.hudElement = base.GetComponent<HudElement>();
-            this.image = base.GetComponent<Image>();
+            this.chargeBar = base.GetComponent<Image>();
+
+            ChildLocator cl = base.GetComponent<ChildLocator>();
+            if (cl)
+            {
+                Transform shieldBarTransform = cl.FindChild("ShieldBar");
+                if (shieldBarTransform)
+                {
+                    shieldBar = shieldBarTransform.GetComponent<Image>();
+                }
+
+                Transform chargeBackgroundTransform = cl.FindChild("BackgroundImage");
+                if (chargeBackgroundTransform)
+                {
+                    chargeBarBackground = chargeBackgroundTransform.GetComponent<Image>();
+                }
+            }
         }
 
         private void FixedUpdate()
@@ -32,13 +49,39 @@ namespace Starstorm2.Survivors.Cyborg.Components.Crosshair
                     chargeComponent = this.hudElement.targetCharacterBody.GetComponent<CyborgChargeComponent>();
                 }
             }
-            else
+        }
+
+        private void Update()
+        {
+            if (this.chargeComponent)
             {
-                if (this.image)
+                if (this.chargeBarBackground)
                 {
-                    float targetFill = Mathf.Lerp(minFill, maxFill, chargeComponent.chargeFraction);
-                    this.image.fillAmount = targetFill;
-                    this.image.color = this.chargeComponent.perfectCharge ? perfectChargeColor : chargeColor;
+                    if (this.chargeComponent.skillLocator && this.chargeComponent.skillLocator.primary.skillDef == CyborgCore.chargeRifleDef)
+                    {
+                        chargeBarBackground.color = Color.white;
+                    }
+                    else
+                    {
+                        chargeBarBackground.color = Color.clear;
+                    }
+                }
+
+                if (this.chargeBar)
+                {
+                    float targetFill = Mathf.Lerp(0f, 1f, chargeComponent.chargeFraction);
+                    this.chargeBar.fillAmount = targetFill;
+                    this.chargeBar.color = this.chargeComponent.perfectCharge ? perfectChargeColor : chargeColor;
+                }
+
+                if (this.shieldBar)
+                {
+                    float targetFill = Mathf.Lerp(0f, 1f, chargeComponent.remainingShieldDuration / chargeComponent.GetMaxShieldDuration());
+                    Color targetColor = chargeComponent.shieldDepleted ? shieldDepleteColor : shieldColor;
+                    targetColor.a = chargeComponent.shieldActive ? 1f : 0.5f;
+
+                    shieldBar.color = targetColor;
+                    shieldBar.fillAmount = targetFill;
                 }
             }
         }

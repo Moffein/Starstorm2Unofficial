@@ -18,8 +18,6 @@ namespace EntityStates.SS2UStates.Cyborg
         private Transform thrusterEffectR;
         private bool inJetpackState = false;
 
-        private CrosshairUtils.OverrideRequest crosshairOverrideRequest;
-
         private EntityStateMachine jetpackStateMachine;
 
         public override void OnEnter()
@@ -42,11 +40,6 @@ namespace EntityStates.SS2UStates.Cyborg
                 {
                     thrusterEffectR.gameObject.SetActive(false);
                 }
-            }
-
-            if (chargeRifleCrosshair && base.characterBody && base.skillLocator && base.skillLocator.primary.skillDef == Starstorm2.Survivors.Cyborg.CyborgCore.chargeRifleDef)
-            {
-                crosshairOverrideRequest = CrosshairUtils.RequestOverrideForBody(base.characterBody, CyborgMain.chargeRifleCrosshair, CrosshairUtils.OverridePriority.Skill);
             }
         }
 
@@ -107,12 +100,6 @@ namespace EntityStates.SS2UStates.Cyborg
 
             // rest idle!!
             //if (this.animator) this.animator.SetBool("inCombat", (!base.characterBody.outOfCombat || !base.characterBody.outOfDanger));
-        }
-
-        public override void OnExit()
-        {
-            if (crosshairOverrideRequest != null) crosshairOverrideRequest.Dispose();
-            base.OnExit();
         }
     }
 }

@@ -759,7 +759,7 @@ namespace Starstorm2.Survivors.Nemmando
         {
             LanguageAPI.Add("NEMMANDO_NAME", "Nemesis Commando");
             LanguageAPI.Add("NEMMANDO_SUBTITLE", "Lone Echo");
-            LanguageAPI.Add("NEMMANDO_DESCRIPTION", "The Nemesis Commando is a wildcard on the battlefield, capable of turning any situation to his favor.\r\n\r\n" +
+            LanguageAPI.Add("NEMMANDO_DESCRIPTION", "The Nemesis Commando's origins are unknown, but something is clear: he's no longer who he once was.\r\n\r\n" +
                 "< ! > Blade of Cessation is risky but can build up a lot of damage by stacking Gouge.\r\n\r\n" +
                 "< ! > Distant Gash can be used to safely apply stacks of Gouge to groups of enemies - take advantage of its piercing!\r\n\r\n" +
                 "< ! > Proper balance of melee and ranged combat is key, and Tactical Roll grants high armor to help enter and exit battles.\r\n\r\n" +

@@ -65,7 +65,7 @@ namespace Starstorm2.Survivors.Cyborg
             LanguageAPI.Add("CYBORG_SUBTITLE", "Man Made Monstrosity");
             LanguageAPI.Add("CYBORG_OUTRO_FLAVOR", "..and so it left, programming releasing excess serotonin.");
             LanguageAPI.Add("CYBORG_OUTRO_FAILURE", "..and so it vanished, warp beacon left with no signal.");
-            LanguageAPI.Add("CYBORG_DESCRIPTION", "Technology was to reach its moral bounds when the Cyborg was created. It's hard to know how much humanity is left inside them.\r\n\r\n< ! > Unmaker and Rising Star deal consistent damage at all ranges.\r\n\r\n< ! > Overheat Redress fizzles out over distance, so use it up close to deal the most damage!\r\n\r\n< ! > Use Recall to place warp points to return to while exploring a stage.\r\n\r\n< ! > Hold down the Recall button to destroy unwanted warp points.\r\n\r\n");
+            LanguageAPI.Add("CYBORG_DESCRIPTION", "Technology was to reach its moral bounds when the Cyborg was created. It's hard to know how much humanity is left inside them.\r\n\r\n< ! > Unmaker deals consistent damage at all ranges.\r\n\r\n< ! > Strategic use of Defense Matrix will allow you to get around Cyborg's long cooldowns.\r\n\r\n< ! > Overheat Redress fizzles out over distance, so use it up close to deal the most damage!\r\n\r\n< ! > Use Recall to place warp points to return to while exploring a stage.\r\n\r\n");
 
             RegisterProjectiles();
             RegisterStates();
@@ -404,6 +404,21 @@ namespace Starstorm2.Survivors.Cyborg
             SetUpSecondaries(skillLocator);
             SetUpUtilities(skillLocator);
             SetUpSpecials(skillLocator);
+
+            On.RoR2.GenericSkill.ApplyAmmoPack += GenericSkill_ApplyAmmoPack;
+        }
+
+        private void GenericSkill_ApplyAmmoPack(On.RoR2.GenericSkill.orig_ApplyAmmoPack orig, GenericSkill self)
+        {
+            orig(self);
+            if (self.skillDef == CyborgCore.defenseMatrixDef)
+            {
+                CyborgChargeComponent chargeComponent = self.GetComponent<CyborgChargeComponent>();
+                if (chargeComponent)
+                {
+                    chargeComponent.RefreshShield();
+                }
+            }
         }
 
         private void SetUpPrimaries(SkillLocator skillLocator)
@@ -472,7 +487,7 @@ namespace Starstorm2.Survivors.Cyborg
         {
              LanguageAPI.Add("CYBORG_SECONDARY_DEFENSEMATRIX_NAME", "Defense Matrix");
              LanguageAPI.Add("CYBORG_SECONDARY_DEFENSEMATRIX_DESCRIPTION", "Project an energy field that <style=cIsUtility>neutralizes ranged attacks</style>. Reduce skill cooldowns by <style=cIsUtility>1s</style> for every <style=cIsUtility>projectile</style> deleted.");
-             SkillDef defenseMatrixDef = ScriptableObject.CreateInstance<SkillDef>();
+             DefenseMatrixSkillDef defenseMatrixDef = ScriptableObject.CreateInstance<DefenseMatrixSkillDef>();
              defenseMatrixDef.activationState = new SerializableEntityStateType(typeof(DefenseMatrix));
              defenseMatrixDef.activationStateMachineName = "DefenseMatrix";
              defenseMatrixDef.skillName = "CYBORG_SECONDARY_DEFENSEMATRIX_NAME";
@@ -488,9 +503,9 @@ namespace Starstorm2.Survivors.Cyborg
              defenseMatrixDef.isCombatSkill = false;
              defenseMatrixDef.mustKeyPress = false;
              defenseMatrixDef.cancelSprintingOnActivation = true;
-             defenseMatrixDef.rechargeStock = 1;
-             defenseMatrixDef.requiredStock = 1;
-             defenseMatrixDef.stockToConsume = 1;
+             defenseMatrixDef.rechargeStock = 0;
+             defenseMatrixDef.requiredStock = 0;
+             defenseMatrixDef.stockToConsume = 0;
              defenseMatrixDef.keywordTokens = new string[] {};
              Modules.Skills.FixSkillName(defenseMatrixDef);
              Utils.RegisterSkillDef(defenseMatrixDef);
@@ -825,8 +840,7 @@ namespace Starstorm2.Survivors.Cyborg
 
         internal static GameObject CreateCyborgPrefab()
         {
-            GameObject crosshair = BuildChargeRifleCrosshair();
-            CyborgMain.chargeRifleCrosshair = crosshair;
+            GameObject crosshair = BuildChargeRifleCrosshair();//Addressables.LoadAssetAsync<GameObject>("RoR2/Base/UI/StandardCrosshair.prefab").WaitForCompletion()
 
             GameObject cyborgPrefab = PrefabCore.CreatePrefab("CyborgBody", "mdlCyborg", new BodyInfo
             {
@@ -836,7 +850,7 @@ namespace Starstorm2.Survivors.Cyborg
                 bodyNameToken = "CYBORG_NAME",
                 characterPortrait = Modules.Assets.mainAssetBundle.LoadAsset<Texture2D>("cyborgicon"),
                 bodyColor = new Color32(138, 183, 168, 255),
-                crosshair = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/UI/StandardCrosshair.prefab").WaitForCompletion(),
+                crosshair = crosshair,
                 damage = 12f,
                 healthGrowth = 33f,
                 healthRegen = 1f,

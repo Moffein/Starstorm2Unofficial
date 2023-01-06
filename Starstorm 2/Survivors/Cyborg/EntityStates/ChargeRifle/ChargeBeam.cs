@@ -139,7 +139,7 @@ namespace EntityStates.SS2UStates.Cyborg.ChargeRifle
 
         public override InterruptPriority GetMinimumInterruptPriority()
         {
-            return InterruptPriority.Skill;
+            return InterruptPriority.PrioritySkill;
         }
 
         public void SetStep(int i)

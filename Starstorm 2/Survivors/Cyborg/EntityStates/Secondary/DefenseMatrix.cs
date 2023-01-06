@@ -20,12 +20,11 @@ namespace EntityStates.SS2UStates.Cyborg.Secondary
         private float tickStopwatch;
         private float blinkStopwatch;
         private float blinkToggleDuration;
-        private float blinkStartTime;
         private TeamIndex inputTeamIndex;
         private DefenseMatrixManager.DefenseMatrixInfo defenseMatrixInfo;
         private CyborgChargeComponent chargeComponent;
 
-        public static float baseDuration = 2f;
+        public static float minDuration = 0.5f;
         public static string attackSoundString = "CyborgSpecialTeleport";
         public static GameObject projectileDeletionEffectPrefab;
         public static GameObject matrixPrefab;
@@ -40,16 +39,19 @@ namespace EntityStates.SS2UStates.Cyborg.Secondary
             base.OnEnter();
 
             chargeComponent = base.GetComponent<CyborgChargeComponent>();
+            if (chargeComponent)
+            {
+                chargeComponent.shieldActive = true;
+            }
 
             Util.PlaySound(DefenseMatrix.attackSoundString, base.gameObject);
-            base.StartAimMode(DefenseMatrix.baseDuration + 1f);
+            base.StartAimMode(2f);
 
             tickDuration = 1f / DefenseMatrix.ticksPerSecond;
             tickStopwatch = 0f;
 
             blinkStopwatch = 0f;
             blinkToggleDuration = 1f / DefenseMatrix.blinkFrequency;
-            blinkStartTime = DefenseMatrix.baseDuration - DefenseMatrix.blinkTime;
 
             if (DefenseMatrix.matrixPrefab)
             {
@@ -136,6 +138,9 @@ namespace EntityStates.SS2UStates.Cyborg.Secondary
         public override void FixedUpdate()
         {
             base.FixedUpdate();
+            base.StartAimMode(2f);
+
+            if (base.characterBody && base.characterBody.isSprinting) base.characterBody.isSprinting = false;
 
             if (NetworkServer.active)
             {
@@ -147,23 +152,37 @@ namespace EntityStates.SS2UStates.Cyborg.Secondary
                 }
             }
 
-            if (base.fixedAge >= blinkStartTime)
+            bool shieldDepleted = false;
+            if (this.chargeComponent)
             {
-                blinkStopwatch += Time.fixedDeltaTime;
-                if (blinkStopwatch >= blinkToggleDuration)
-                {
-                    blinkStopwatch -= blinkToggleDuration;
-                    if (laserVisuals)
-                    {
-                        laserVisuals.gameObject.SetActive(!laserVisuals.gameObject.activeSelf);
-                    }
-                }
+                this.chargeComponent.ConsumeShield(Time.fixedDeltaTime);
+                shieldDepleted = this.chargeComponent.shieldDepleted;
             }
 
-            if (base.isAuthority && base.fixedAge >= DefenseMatrix.baseDuration)
+            if (base.isAuthority)
             {
-                this.outer.SetNextStateToMain();
-                return;
+                if (this.chargeComponent)
+                {
+                    if (this.chargeComponent.remainingShieldDuration <= 0.5f)
+                    {
+                        blinkStopwatch += Time.fixedDeltaTime;
+                        if (blinkStopwatch >= blinkToggleDuration)
+                        {
+                            blinkStopwatch -= blinkToggleDuration;
+                            if (laserVisuals)
+                            {
+                                laserVisuals.gameObject.SetActive(!laserVisuals.gameObject.activeSelf);
+                            }
+                        }
+                    }
+                }
+
+                bool keyIsDown = base.inputBank && base.inputBank.skill2.down;
+                if ((shieldDepleted || (!keyIsDown && base.fixedAge >= DefenseMatrix.minDuration)))
+                {
+                    this.outer.SetNextStateToMain();
+                    return;
+                }
             }
         }
 
@@ -180,6 +199,11 @@ namespace EntityStates.SS2UStates.Cyborg.Secondary
 
         public override void OnExit()
         {
+            if (chargeComponent)
+            {
+                chargeComponent.shieldActive = false;
+            }
+
             if (this.defenseMatrixInfo != null)
             {
                 DefenseMatrixManager.RemoveMatrix(this.defenseMatrixInfo);

@@ -89,7 +89,7 @@ namespace Starstorm2.Cores
                             damageInfo.crit = Util.CheckRoll(attackerBody.crit, attackerBody.master);
                         }
                     }
-                    damageInfo.procCoefficient = 0.5f;
+                    damageInfo.procCoefficient = 1f;
                     triggerGougeProc = true;
                 }
 
@@ -136,6 +136,7 @@ namespace Starstorm2.Cores
                 if (triggerGougeProc)
                 {
                     GlobalEventManager.instance.OnHitEnemy(damageInfo, self.gameObject);
+                    GlobalEventManager.instance.OnHitAll(damageInfo, self.gameObject);
                 }
             }
         }
