@@ -16,7 +16,6 @@ namespace Starstorm2.Survivors.Cyborg.Components.ShockCoreProjectile
             base.OnShootActions(damageInfo);
 
             damageInfo.crit = true;
-            damageInfo.procCoefficient = 0f;
             damageInfo.force = Vector3.zero;
 
             ProjectileDamage pd = base.gameObject.GetComponent<ProjectileDamage>();

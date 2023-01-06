@@ -41,6 +41,7 @@ namespace Starstorm2.Components.Projectiles
                 ShootableProjectileComponent sp = self.GetComponent<ShootableProjectileComponent>();
                 if (sp)
                 {
+                    damageInfo.procCoefficient = 0f;
                     if (damageInfo.HasModdedDamageType(sp.targetDamageType))
                     {
                         sp.OnShootActionsInternal(damageInfo);
