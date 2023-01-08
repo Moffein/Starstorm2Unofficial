@@ -9,6 +9,7 @@ using Starstorm2.Cores.Items;
 using Starstorm2.Cores.NemesisInvasion;
 using Starstorm2.Survivors.Chirr;
 using Starstorm2.Survivors.Cyborg;
+using Starstorm2.Survivors.Pyro;
 using System;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
@@ -48,7 +49,7 @@ namespace Starstorm2
     {
         internal const string guid = "com.ChirrLover.Starstorm2Unofficial";
         internal const string modName = "Starstorm 2 Unofficial";
-        internal const string version = "0.7.3";
+        internal const string version = "0.8.0";
 
         public static StarstormPlugin instance;
 
@@ -133,14 +134,10 @@ namespace Starstorm2
 
             chirrCore = new ChirrCore();
 
-            if (false)//(Modules.Config.ss_test.Value)
-            {
-                new Modules.Survivors.Nucleator().Initialize();
-            }
-            //
+            //new Modules.Survivors.Nucleator().Initialize();
+            
             //if (EnableNucleator.Value) nucleatorCore = new NucleatorCore();
-            //
-            //if (EnablePyro.Value) pyroCore = new PyroCore();
+            new PyroCore();
         }
 
         private void Initialize()

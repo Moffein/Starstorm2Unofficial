@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 385874775
+CRC: 2041297109
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: aa697a059a390cb626478969941e157e
+    Hash: 5e4c1e18a60965bdef8936c56618da12
   TypeTreeHash:
     serializedVersion: 2
     Hash: 9b39e8c6fc23523925becd33387f2f7a
@@ -140,6 +140,7 @@ Assets:
 - Assets/AssetBundle/Nemmando/Animations/Descending.anim
 - Assets/AssetBundle/Chirr/Textures/T_Chirr_C.png
 - Assets/AssetBundle/Nemmando/Animations/AltSprintF.anim
+- Assets/AssetBundle/Pyro/Meshes/meshpyro.mesh
 - Assets/AssetBundle/Nemmando/Animations/maskNemmandoImpact.mask
 - Assets/AssetBundle/Chirr/Textures/texChirrDiffuse.png
 - Assets/AssetBundle/Nucleator/Icons/texNucleatorUtility.png
@@ -656,6 +657,7 @@ Assets:
 - Assets/AssetBundle/Executioner/Animations/Special2.anim
 - Assets/AssetBundle/Chirr/Animations/WalkBWD.anim
 - Assets/AssetBundle/Nucleator/NucleatorDisplay.prefab
+- Assets/AssetBundle/Pyro/animPyroEmote.prefab
 - Assets/FBX/Nemmando/NemmandoAnims.fbx
 - Assets/AssetBundle/Items/BloodTester/blood_tester.fbx
 - Assets/AssetBundle/FX/ParticleMobile.mat

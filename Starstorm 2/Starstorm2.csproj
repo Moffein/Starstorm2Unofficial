@@ -146,7 +146,6 @@
     <Compile Include="Cores\Items\BabyToys.cs" />
     <Compile Include="Cores\Items\ShackledLamp.cs" />
     <Compile Include="Cores\PrefabCore.cs" />
-    <Compile Include="Cores\Survivors\PyroCore.cs" />
     <Compile Include="Cores\SkinsCore.cs" />
     <Compile Include="Cores\Equipment\CloakingHeadband.cs" />
     <Compile Include="Cores\Equipment\GreaterWarbanner.cs" />
@@ -218,16 +217,6 @@
     <Compile Include="Survivors\Nemmando\EntityStates\Submission.cs" />
     <Compile Include="Survivors\Nemmando\EntityStates\DodgeState.cs" />
     <Compile Include="Survivors\Nemmando\EntityStates\NemmandoMain.cs" />
-    <Compile Include="Cores\States\Nucleator\ChargeController.cs" />
-    <Compile Include="Cores\States\Nucleator\NucleatorProjectile.cs" />
-    <Compile Include="Cores\States\Nucleator\ApplyRadionuclideSurge.cs" />
-    <Compile Include="Cores\States\Nucleator\ChargeStates\ChargeFissionImpulse.cs" />
-    <Compile Include="Cores\States\Nucleator\ChargeStates\ChargeIrradiate.cs" />
-    <Compile Include="Cores\States\Nucleator\ChargeStates\ChargeQuarantine.cs" />
-    <Compile Include="Cores\States\Nucleator\ChargeStates\NucleatorSkillStateBase.cs" />
-    <Compile Include="Cores\States\Nucleator\FireStates\FireFissionImpulse.cs" />
-    <Compile Include="Cores\States\Nucleator\FireStates\FireIrradiate.cs" />
-    <Compile Include="Cores\States\Nucleator\FireStates\FireQuarantine.cs" />
     <Compile Include="Cores\States\Wayfarer\CloakState.cs" />
     <Compile Include="Cores\States\Wayfarer\CreateBuffWard.cs" />
     <Compile Include="Cores\States\Wayfarer\FireChains.cs" />
@@ -261,12 +250,26 @@
     <Compile Include="Modules\States.cs" />
     <Compile Include="Survivors\Executioner\ExecutionerCore.cs" />
     <Compile Include="Survivors\Nemmando\NemmandoCore.cs" />
-    <Compile Include="Modules\Survivors\Nucleator.cs" />
+    <Compile Include="Survivors\Nucleator\EntityStates\ApplyRadionuclideSurge.cs" />
+    <Compile Include="Survivors\Nucleator\EntityStates\ChargeController.cs" />
+    <Compile Include="Survivors\Nucleator\EntityStates\ChargeStates\ChargeFissionImpulse.cs" />
+    <Compile Include="Survivors\Nucleator\EntityStates\ChargeStates\ChargeIrradiate.cs" />
+    <Compile Include="Survivors\Nucleator\EntityStates\ChargeStates\ChargeQuarantine.cs" />
+    <Compile Include="Survivors\Nucleator\EntityStates\ChargeStates\NucleatorSkillStateBase.cs" />
+    <Compile Include="Survivors\Nucleator\EntityStates\FireStates\FireFissionImpulse.cs" />
+    <Compile Include="Survivors\Nucleator\EntityStates\FireStates\FireIrradiate.cs" />
+    <Compile Include="Survivors\Nucleator\EntityStates\FireStates\FireQuarantine.cs" />
+    <Compile Include="Survivors\Nucleator\EntityStates\NucleatorProjectile.cs" />
+    <Compile Include="Survivors\Nucleator\Nucleator.cs" />
     <Compile Include="Modules\Survivors\SurvivorBase.cs" />
     <Compile Include="Modules\Unlockables.cs" />
     <Compile Include="StarstormPlugin.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="StaticValues.cs" />
+    <Compile Include="Survivors\Pyro\Components\FlamethrowerController.cs" />
+    <Compile Include="Survivors\Pyro\Components\HeatController.cs" />
+    <Compile Include="Survivors\Pyro\PyroSkins.cs" />
+    <Compile Include="Survivors\Pyro\PyroCore.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Assets\Starstorm2.bnk" />
