@@ -117,7 +117,7 @@ namespace Starstorm2.Survivors.Pyro
             heatWaveDef.skillDescriptionToken = "SS2UPYRO_SECONDARY_DESCRIPTION";
             heatWaveDef.icon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("pyroSkill2");
             heatWaveDef.baseMaxStock = 1;
-            heatWaveDef.baseRechargeInterval = 0f;
+            heatWaveDef.baseRechargeInterval = 0.5f;
             heatWaveDef.beginSkillCooldownOnSkillEnd = true;
             heatWaveDef.canceledFromSprinting = false;
             heatWaveDef.fullRestockOnAssign = true;

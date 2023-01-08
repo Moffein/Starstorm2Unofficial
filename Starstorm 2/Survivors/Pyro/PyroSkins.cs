@@ -43,7 +43,7 @@ namespace Starstorm2.Survivors.Pyro
 
             LanguageAPI.Add("PYRO_DEFAULT_SKIN_NAME", "Default");
             SkinDef defaultSkin = SkinsCore.CreateSkinDef("PYRO_DEFAULT_SKIN_NAME",
-                                                          LoadoutAPI.CreateSkinIcon(new Color32(255, 255, 255, 255), new Color32(76, 116, 114, 255), new Color32(83, 118, 99, 255), new Color32(120, 147, 90, 255)),
+                                                          LoadoutAPI.CreateSkinIcon(new Color32(247, 247, 181, 255), new Color32(75, 76, 54, 255), new Color32(56, 44, 39, 255), new Color32(117, 115, 78, 255)),
                                                           defaultRenderers,
                                                           mainRenderer,
                                                           model,
