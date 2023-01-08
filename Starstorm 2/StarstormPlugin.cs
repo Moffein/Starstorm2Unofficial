@@ -115,6 +115,7 @@ namespace Starstorm2
 
             //Figure out where to place this later.
             ShootableProjectileComponent.AddHooks();
+            IgnoreSprintCrosshair.Init();
         }
 
         [MethodImpl(MethodImplOptions.NoInlining | MethodImplOptions.NoOptimization)]

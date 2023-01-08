@@ -98,9 +98,9 @@ namespace Starstorm2.Survivors.Pyro
         private void SetUpUtilities(SkillLocator skillLocator)
         {
             LanguageAPI.Add("SS2UPYRO_UTILITY_NAME", "Plan B");
-            LanguageAPI.Add("SS2UPYRO_UTILITY_DESCRIPTION", $"<color=#D78326>Consume heat</color> and <style=cIsUtility>fly forwards</style>.");
+            LanguageAPI.Add("SS2UPYRO_UTILITY_DESCRIPTION", $"<color=#D78326>Consume 25% heat</color> and <style=cIsUtility>fly forwards</style>. Hold the button to fly further.");
 
-            SkillDef utilityDef1 = ScriptableObject.CreateInstance<SkillDef>();
+            HeatSkillDef utilityDef1 = ScriptableObject.CreateInstance<HeatSkillDef>();
             utilityDef1.activationState = new SerializableEntityStateType(typeof(HeatJetpack));
             utilityDef1.activationStateMachineName = "Weapon";
             utilityDef1.skillName = "SS2UPYRO_UTILITY_NAME";
@@ -108,8 +108,8 @@ namespace Starstorm2.Survivors.Pyro
             utilityDef1.skillDescriptionToken = "SS2UPYRO_UTILITY_DESCRIPTION";
             utilityDef1.icon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("pyroSkill3");
             utilityDef1.baseMaxStock = 1;
-            utilityDef1.baseRechargeInterval = 0f;
-            utilityDef1.beginSkillCooldownOnSkillEnd = false;
+            utilityDef1.baseRechargeInterval = 4f;
+            utilityDef1.beginSkillCooldownOnSkillEnd = true;
             utilityDef1.canceledFromSprinting = false;
             utilityDef1.fullRestockOnAssign = true;
             utilityDef1.interruptPriority = EntityStates.InterruptPriority.PrioritySkill;
@@ -120,6 +120,7 @@ namespace Starstorm2.Survivors.Pyro
             utilityDef1.rechargeStock = 1;
             utilityDef1.requiredStock = 1;
             utilityDef1.stockToConsume = 1;
+            utilityDef1.baseHeatRequirement = 0.25f;
             Modules.Skills.FixSkillName(utilityDef1);
             Modules.Skills.skillDefs.Add(utilityDef1);
             SkillFamily.Variant utilityVariant1 = Utils.RegisterSkillVariant(utilityDef1);
@@ -130,6 +131,7 @@ namespace Starstorm2.Survivors.Pyro
         private void SetBodyIndex()
         {
             bodyIndex = BodyCatalog.FindBodyIndex("SS2UPyroBody");
+            if (bodyIndex != BodyIndex.None) IgnoreSprintCrosshair.bodies.Add(bodyIndex);
         }
 
         [MethodImpl(MethodImplOptions.NoInlining | MethodImplOptions.NoOptimization)]

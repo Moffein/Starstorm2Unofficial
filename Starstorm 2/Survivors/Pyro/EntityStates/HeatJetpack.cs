@@ -7,13 +7,15 @@ namespace EntityStates.SS2UStates.Pyro
 {
     public class HeatJetpack : BaseState
     {
-        public static float minDuration = 0.5f;
-        public static float heatConsumptionPerSecond = 0.5f;
-        public static float maxSpeedCoefficient = 3f;
-        public static float minSpeedCoefficient = 1.5f;
+        public static float minDuration = 0.25f;
+        public static float heatConsumptionPerSecond = 1f;
+
+        //Set the same since higher maxSpeed means tapping is more efficient than holding.
+        public static float maxSpeedCoefficient = 4f;
+        public static float minSpeedCoefficient = 4f;
 
         public static GameObject trailPrefab = Resources.Load<GameObject>("prefabs/effects/impacteffects/missileexplosionvfx");
-        public static float trailFrequency = 5f;
+        public static float trailFrequency = 8f;
         private float trailStopwatch;
         private float trailTime;
         private HeatController heatController;
@@ -83,6 +85,7 @@ namespace EntityStates.SS2UStates.Pyro
                 }
                 base.characterMotor.velocity = base.GetAimRay().direction * desiredSpeed;
             }
+            if (base.characterBody) base.characterBody.isSprinting = true;
             base.OnExit();
         }
 

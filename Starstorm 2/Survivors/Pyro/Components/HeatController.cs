@@ -70,7 +70,7 @@ namespace Starstorm2.Survivors.Pyro.Components
 
         public void ConsumeHeat(float heat, int stocks)
         {
-            float heatMult = 1f / (Mathf.Max(1, 1 + stocks));
+            float heatMult = 1f / (Mathf.Max(1f, 0.5f + 0.5f * stocks));
             heatPercent -= heat * heatMult;
             if (heatPercent <= 0f)
             {
