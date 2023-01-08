@@ -37,6 +37,7 @@ namespace Starstorm2.Survivors.Pyro
             RegisterStates();
             SetUpSkills();
             PyroSkins.RegisterSkins();
+            SetUpHeatWave();
             //CreateDoppelganger();
 
             Modules.Prefabs.RegisterNewSurvivor(bodyPrefab, PrefabCore.CreateDisplayPrefab("PyroDisplay", bodyPrefab), Color.red, "SS2UPYRO", 40.3f);
@@ -45,9 +46,16 @@ namespace Starstorm2.Survivors.Pyro
             if (StarstormPlugin.emoteAPILoaded) EmoteAPICompat();
         }
 
+        private void SetUpHeatWave()
+        {
+
+        }
+
         private void RegisterStates()
         {
             Modules.States.AddState(typeof(FireFlamethrower));
+            Modules.States.AddState(typeof(HeatWave));
+            Modules.States.AddState(typeof(HeatJetpack));
         }
 
         private void SetUpSkills()
@@ -61,7 +69,7 @@ namespace Starstorm2.Survivors.Pyro
             SkillFamily.Variant squawkVariant =  Utils.RegisterSkillVariant(squawkDef);
             SkillLocator skillLocator = bodyPrefab.GetComponent<SkillLocator>();
             SetUpPrimaries(skillLocator);
-            skillLocator.secondary = Utils.RegisterSkillsToFamily(bodyPrefab, new SkillFamily.Variant[] { squawkVariant });
+            SetUpSecondaries(skillLocator);
             SetUpUtilities(skillLocator);
             skillLocator.special = Utils.RegisterSkillsToFamily(bodyPrefab, new SkillFamily.Variant[] { squawkVariant });
         }
@@ -95,6 +103,40 @@ namespace Starstorm2.Survivors.Pyro
 
             skillLocator.primary = Utils.RegisterSkillsToFamily(bodyPrefab, new SkillFamily.Variant[] { primaryVariant1});
         }
+
+        private void SetUpSecondaries(SkillLocator skillLocator)
+        {
+            LanguageAPI.Add("SS2UPYRO_SECONDARY_NAME", "Heat Wave");
+            LanguageAPI.Add("SS2UPYRO_SECONDARY_DESCRIPTION", $"<color=#D78326>Consume 30% heat</color>.");
+
+            HeatSkillDef heatWaveDef = ScriptableObject.CreateInstance<HeatSkillDef>();
+            heatWaveDef.activationState = new SerializableEntityStateType(typeof(HeatWave));
+            heatWaveDef.activationStateMachineName = "Weapon";
+            heatWaveDef.skillName = "SS2UPYRO_SECONDARY_NAME";
+            heatWaveDef.skillNameToken = "SS2UPYRO_SECONDARY_NAME";
+            heatWaveDef.skillDescriptionToken = "SS2UPYRO_SECONDARY_DESCRIPTION";
+            heatWaveDef.icon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("pyroSkill2");
+            heatWaveDef.baseMaxStock = 1;
+            heatWaveDef.baseRechargeInterval = 0f;
+            heatWaveDef.beginSkillCooldownOnSkillEnd = true;
+            heatWaveDef.canceledFromSprinting = false;
+            heatWaveDef.fullRestockOnAssign = true;
+            heatWaveDef.interruptPriority = EntityStates.InterruptPriority.Skill;
+            heatWaveDef.isCombatSkill = false;
+            heatWaveDef.mustKeyPress = false;
+            heatWaveDef.cancelSprintingOnActivation = true;
+            heatWaveDef.forceSprintDuringState = false;
+            heatWaveDef.rechargeStock = 1;
+            heatWaveDef.requiredStock = 1;
+            heatWaveDef.stockToConsume = 1;
+            heatWaveDef.baseHeatRequirement = 0.3f;
+            Modules.Skills.FixSkillName(heatWaveDef);
+            Modules.Skills.skillDefs.Add(heatWaveDef);
+            SkillFamily.Variant heatWaveVariant = Utils.RegisterSkillVariant(heatWaveDef);
+
+            skillLocator.secondary = Utils.RegisterSkillsToFamily(bodyPrefab, new SkillFamily.Variant[] { heatWaveVariant });
+        }
+
         private void SetUpUtilities(SkillLocator skillLocator)
         {
             LanguageAPI.Add("SS2UPYRO_UTILITY_NAME", "Plan B");

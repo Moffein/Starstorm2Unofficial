@@ -272,6 +272,7 @@
     <Compile Include="Survivors\Pyro\Components\HeatController.cs" />
     <Compile Include="Survivors\Pyro\EntityStates\FireFlamethrower.cs" />
     <Compile Include="Survivors\Pyro\EntityStates\HeatJetpack.cs" />
+    <Compile Include="Survivors\Pyro\EntityStates\HeatWave.cs" />
     <Compile Include="Survivors\Pyro\HeatSkillDef.cs" />
     <Compile Include="Survivors\Pyro\PyroSkins.cs" />
     <Compile Include="Survivors\Pyro\PyroCore.cs" />
