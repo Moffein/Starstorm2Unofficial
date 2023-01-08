@@ -11,7 +11,7 @@ public class ChildLocator : MonoBehaviour
 	}
 
 	[SerializeField]
-	private NameTransformPair[] transformPairs;
+	public NameTransformPair[] transformPairs;
 
 	//for editor purposes. will not affect the game
 	public NameTransformPair[] TransformPairs { get => transformPairs; set => transformPairs = value; }
