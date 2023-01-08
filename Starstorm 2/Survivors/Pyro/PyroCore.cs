@@ -37,7 +37,6 @@ namespace Starstorm2.Survivors.Pyro
             RegisterStates();
             SetUpSkills();
             PyroSkins.RegisterSkins();
-            SetUpHeatWave();
             //CreateDoppelganger();
 
             Modules.Prefabs.RegisterNewSurvivor(bodyPrefab, PrefabCore.CreateDisplayPrefab("PyroDisplay", bodyPrefab), Color.red, "SS2UPYRO", 40.3f);
@@ -45,12 +44,6 @@ namespace Starstorm2.Survivors.Pyro
 
             if (StarstormPlugin.emoteAPILoaded) EmoteAPICompat();
         }
-
-        private void SetUpHeatWave()
-        {
-
-        }
-
         private void RegisterStates()
         {
             Modules.States.AddState(typeof(FireFlamethrower));
@@ -106,33 +99,33 @@ namespace Starstorm2.Survivors.Pyro
 
         private void SetUpSecondaries(SkillLocator skillLocator)
         {
-            LanguageAPI.Add("SS2UPYRO_SECONDARY_NAME", "Heat Wave");
-            LanguageAPI.Add("SS2UPYRO_SECONDARY_DESCRIPTION", $"<color=#D78326>Consume 30% heat</color>.");
+            LanguageAPI.Add("SS2UPYRO_SECONDARY_NAME", "Airblast");
+            LanguageAPI.Add("SS2UPYRO_SECONDARY_DESCRIPTION", $"<color=#D78326>Consume 33% heat</color> and fire a blast of air that <style=cIsUtility>knocks enemies back</style> and <style=cIsUtility>reflects projectiles</style>.");
 
-            HeatSkillDef heatWaveDef = ScriptableObject.CreateInstance<HeatSkillDef>();
-            heatWaveDef.activationState = new SerializableEntityStateType(typeof(HeatWave));
-            heatWaveDef.activationStateMachineName = "Weapon";
-            heatWaveDef.skillName = "SS2UPYRO_SECONDARY_NAME";
-            heatWaveDef.skillNameToken = "SS2UPYRO_SECONDARY_NAME";
-            heatWaveDef.skillDescriptionToken = "SS2UPYRO_SECONDARY_DESCRIPTION";
-            heatWaveDef.icon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("pyroSkill2");
-            heatWaveDef.baseMaxStock = 1;
-            heatWaveDef.baseRechargeInterval = 0.5f;
-            heatWaveDef.beginSkillCooldownOnSkillEnd = true;
-            heatWaveDef.canceledFromSprinting = false;
-            heatWaveDef.fullRestockOnAssign = true;
-            heatWaveDef.interruptPriority = EntityStates.InterruptPriority.Skill;
-            heatWaveDef.isCombatSkill = false;
-            heatWaveDef.mustKeyPress = false;
-            heatWaveDef.cancelSprintingOnActivation = true;
-            heatWaveDef.forceSprintDuringState = false;
-            heatWaveDef.rechargeStock = 1;
-            heatWaveDef.requiredStock = 1;
-            heatWaveDef.stockToConsume = 1;
-            heatWaveDef.baseHeatRequirement = 0.3f;
-            Modules.Skills.FixSkillName(heatWaveDef);
-            Modules.Skills.skillDefs.Add(heatWaveDef);
-            SkillFamily.Variant heatWaveVariant = Utils.RegisterSkillVariant(heatWaveDef);
+            HeatSkillDef airblast = ScriptableObject.CreateInstance<HeatSkillDef>();
+            airblast.activationState = new SerializableEntityStateType(typeof(HeatWave));
+            airblast.activationStateMachineName = "Weapon";
+            airblast.skillName = "SS2UPYRO_SECONDARY_NAME";
+            airblast.skillNameToken = "SS2UPYRO_SECONDARY_NAME";
+            airblast.skillDescriptionToken = "SS2UPYRO_SECONDARY_DESCRIPTION";
+            airblast.icon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("pyroSkill2");
+            airblast.baseMaxStock = 1;
+            airblast.baseRechargeInterval = 0f;
+            airblast.beginSkillCooldownOnSkillEnd = true;
+            airblast.canceledFromSprinting = false;
+            airblast.fullRestockOnAssign = true;
+            airblast.interruptPriority = EntityStates.InterruptPriority.Skill;
+            airblast.isCombatSkill = false;
+            airblast.mustKeyPress = false;
+            airblast.cancelSprintingOnActivation = true;
+            airblast.forceSprintDuringState = false;
+            airblast.rechargeStock = 1;
+            airblast.requiredStock = 1;
+            airblast.stockToConsume = 1;
+            airblast.baseHeatRequirement = 0.33f;
+            Modules.Skills.FixSkillName(airblast);
+            Modules.Skills.skillDefs.Add(airblast);
+            SkillFamily.Variant heatWaveVariant = Utils.RegisterSkillVariant(airblast);
 
             skillLocator.secondary = Utils.RegisterSkillsToFamily(bodyPrefab, new SkillFamily.Variant[] { heatWaveVariant });
         }

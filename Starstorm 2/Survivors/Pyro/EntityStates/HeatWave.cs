@@ -4,6 +4,9 @@ using UnityEngine;
 using UnityEngine.Networking;
 using RoR2.Projectile;
 using System.Collections.Generic;
+using UnityEngine.AddressableAssets;
+using R2API;
+using Starstorm2.Cores;
 
 namespace EntityStates.SS2UStates.Pyro
 {
@@ -12,14 +15,13 @@ namespace EntityStates.SS2UStates.Pyro
         public override void OnEnter()
         {
             base.OnEnter();
-            this.reflectedProjectile = false;
             heatController = base.GetComponent<HeatController>();
 
             int stocks = 1;
             if (base.skillLocator && base.skillLocator.secondary) stocks = base.skillLocator.secondary.maxStock;
             heatController.ConsumeHeat(HeatWave.heatCost, stocks);
 
-            EffectManager.SimpleMuzzleFlash(HeatWave.effectPrefab, base.gameObject, "MuzzleLeft", false);
+            EffectManager.SimpleMuzzleFlash(HeatWave.effectPrefab, base.gameObject, "Muzzle", false);
 
             Util.PlaySound(HeatWave.attackSoundString, base.gameObject);
 
@@ -69,31 +71,35 @@ namespace EntityStates.SS2UStates.Pyro
 
             bool reflected = false;
 
+            int projectilesReflected = 0;
             Collider[] array = Physics.OverlapBox(base.transform.position + aimRay.direction * HeatWave.hitboxOffset, HeatWave.hitboxDimensions, Quaternion.LookRotation(aimRay.direction, Vector3.up), LayerIndex.projectile.mask);
             for (int i = 0; i < array.Length; i++)
             {
                 ProjectileController pc = array[i].GetComponentInParent<ProjectileController>();
-                if (pc)
+                if (pc && !pc.cannotBeDeleted)
                 {
                     if (pc.owner != base.gameObject)
                     {
                         Vector3 aimSpot = (aimRay.origin + 100 * aimRay.direction) - pc.gameObject.transform.position;
 
                         pc.owner = base.gameObject;
+                        projectilesReflected++;
 
                         FireProjectileInfo info = new FireProjectileInfo()
                         {
-                            projectilePrefab = reflectProjectilePrefab,
+                            projectilePrefab = pc.gameObject,
                             position = pc.gameObject.transform.position,
                             rotation = base.characterBody.transform.rotation * Quaternion.FromToRotation(new Vector3(0, 0, 1), aimSpot),
                             owner = base.characterBody.gameObject,
                             damage = base.characterBody.damage * HeatWave.reflectDamageCoefficient,
-                            force = 3000f,
+                            force = 2000f,
                             crit = base.RollCrit(),
                             damageColorIndex = DamageColorIndex.Default,
                             target = null,
-                            speedOverride = 90f,
-                            useSpeedOverride = true
+                            speedOverride = 120f,
+                            useSpeedOverride = true,
+                            fuseOverride = -1f,
+                            useFuseOverride = false
                         };
                         ProjectileManager.instance.FireProjectile(info);
 
@@ -134,57 +140,24 @@ namespace EntityStates.SS2UStates.Pyro
                             if (cb)
                             {
                                 Vector3 forceVector = HeatWave.force * aimRay.direction;
-                                Rigidbody rb = cb.rigidbody;
-                                if (rb)
-                                {
-                                    forceVector *= Mathf.Min(Mathf.Max(rb.mass / 100f, 1f), maxForceScale);
-                                }
+                                if (forceVector.y < 1200f && !cb.isFlying) forceVector.y = 1200f;
 
-                                healthComponent.TakeDamageForce(new DamageInfo
+                                DamageInfo damageInfo = new DamageInfo
                                 {
                                     attacker = base.gameObject,
                                     inflictor = base.gameObject,
                                     damage = 0f,
                                     damageColorIndex = DamageColorIndex.Default,
-                                    damageType = DamageType.NonLethal,
+                                    damageType = DamageType.NonLethal | DamageType.Silent | DamageType.BypassArmor | DamageType.BypassBlock,
                                     crit = false,
                                     dotIndex = DotController.DotIndex.None,
                                     force = forceVector,
                                     position = base.transform.position,
                                     procChainMask = default(ProcChainMask),
                                     procCoefficient = 0f
-                                }, true, true);
-
-                                float heatMult = this.heatLevel / HeatWave.heatCost;
-                                healthComponent.TakeDamage(new DamageInfo
-                                {
-                                    attacker = base.gameObject,
-                                    inflictor = base.gameObject,
-                                    damage = this.damageStat * HeatWave.damageCoefficient * heatMult,
-                                    damageColorIndex = DamageColorIndex.Default,
-                                    damageType = DamageType.IgniteOnHit,
-                                    crit = base.RollCrit(),
-                                    dotIndex = DotController.DotIndex.None,
-                                    force = Vector3.zero,
-                                    position = base.transform.position,
-                                    procChainMask = default(ProcChainMask),
-                                    procCoefficient = 1f
-                                });
-
-                                GlobalEventManager.instance.OnHitEnemy(new DamageInfo
-                                {
-                                    attacker = base.gameObject,
-                                    inflictor = base.gameObject,
-                                    damage = this.damageStat * HeatWave.damageCoefficient * heatMult,
-                                    damageColorIndex = DamageColorIndex.Default,
-                                    damageType = DamageType.IgniteOnHit,
-                                    crit = base.RollCrit(),
-                                    dotIndex = DotController.DotIndex.None,
-                                    force = Vector3.zero,
-                                    position = base.transform.position,
-                                    procChainMask = default(ProcChainMask),
-                                    procCoefficient = 1f
-                                }, healthComponent.gameObject);
+                                };
+                                damageInfo.AddModdedDamageType(DamageTypeCore.ModdedDamageTypes.ScaleForceToMass);
+                                healthComponent.TakeDamage(damageInfo);
                             }
                         }
                     }
@@ -200,24 +173,18 @@ namespace EntityStates.SS2UStates.Pyro
         public static string attackSoundString = "Play_treeBot_shift_shoot";
         public static string reflectSoundString = "Play_loader_m1_swing";
         public static float baseDuration = 0.75f;
-        public static float damageCoefficient = 4f;
         public static float reflectWindowDuration = 0.2f;
         public static Vector3 hitboxDimensions = new Vector3(7.5f, 3.75f, 12f);
         public static float force = 2700f;
         public static float selfForce = 2700f;
-        public static float heatCost = 0.3f;
-        public static GameObject effectPrefab = null;
-        public static float maxForceScale = 20f;
+        public static float heatCost = 0.33f;
+        public static GameObject effectPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Treebot/TreebotShockwaveEffect.prefab").WaitForCompletion();
 
-        public static GameObject reflectProjectilePrefab;
-        public static float reflectDamageCoefficient = 4f;
+        public static float reflectDamageCoefficient = 10f;
 
         private ChildLocator childLocator;
         private Ray aimRay;
         private HeatController heatController;
-        private bool reflectedProjectile;
-
-        private float heatLevel;
 
         private static float hitboxOffset = (HeatWave.hitboxDimensions.z / 2f - 0.5f);
     }
