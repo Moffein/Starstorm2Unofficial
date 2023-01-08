@@ -43,6 +43,7 @@ namespace Starstorm2.Survivors.Cyborg
         private void SetBodyIndex()
         {
             bodyIndex = BodyCatalog.FindBodyIndex("CyborgBody");
+            if (bodyIndex != BodyIndex.None) IgnoreSprintCrosshair.bodies.Add(bodyIndex);
         }
 
         private void Setup()

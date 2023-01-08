@@ -55,10 +55,7 @@ namespace Starstorm2.Survivors.Pyro.Components
         [ClientRpc]
         public void RpcAddHeatServer(float heat)
         {
-            if (hasAuthority)
-            {
-                AddHeatAuthority(heat);
-            }
+            AddHeatAuthority(heat);
         }
 
         public void AddHeatAuthority(float heat)
@@ -71,14 +68,20 @@ namespace Starstorm2.Survivors.Pyro.Components
             this.heatDecayStopwatch = 0f;
         }
 
-        public void ConsumeHeat(float heat)
+        public void ConsumeHeat(float heat, int stocks)
         {
-            heatPercent -= heat;
+            float heatMult = 1f / (Mathf.Max(1f, 0.5f + 0.5f * stocks));
+            heatPercent -= heat * heatMult;
             if (heatPercent <= 0f)
             {
                 this.heatPercent = 0f;
             }
             this.heatDecayStopwatch = 0f;
+        }
+
+        public void ConsumeHeat(float heat)
+        {
+            ConsumeHeat(heat, 1);
         }
     }
 }

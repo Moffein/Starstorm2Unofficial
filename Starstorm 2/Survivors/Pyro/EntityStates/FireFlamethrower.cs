@@ -1,10 +1,5 @@
 ﻿using RoR2;
 using Starstorm2.Survivors.Pyro.Components;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using UnityEngine;
 
 namespace EntityStates.SS2UStates.Pyro
