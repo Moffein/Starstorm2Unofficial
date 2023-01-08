@@ -62,13 +62,13 @@ namespace Starstorm2.Survivors.Pyro
             SkillLocator skillLocator = bodyPrefab.GetComponent<SkillLocator>();
             SetUpPrimaries(skillLocator);
             skillLocator.secondary = Utils.RegisterSkillsToFamily(bodyPrefab, new SkillFamily.Variant[] { squawkVariant });
-            skillLocator.utility = Utils.RegisterSkillsToFamily(bodyPrefab, new SkillFamily.Variant[] { squawkVariant });
+            SetUpUtilities(skillLocator);
             skillLocator.special = Utils.RegisterSkillsToFamily(bodyPrefab, new SkillFamily.Variant[] { squawkVariant });
         }
         private void SetUpPrimaries(SkillLocator skillLocator)
         {
             LanguageAPI.Add("SS2UPYRO_PRIMARY_NAME", "Scorch");
-            LanguageAPI.Add("SS2UPYRO_PRIMARY_DESCRIPTION", $"Build up <color=#D78326>heat</color> and burn enemies for <style=cIsDamage>375% damage per second</style>. <style=cIsDamage>Ignites</style> at <color=#D78326>high heat</color>.");
+            LanguageAPI.Add("SS2UPYRO_PRIMARY_DESCRIPTION", "<color=#D78326>Build heat</color> and burn enemies for <style=cIsDamage>375% damage per second</style>. <style=cIsDamage>Ignites</style> at <color=#D78326>high heat</color>.");
 
             SkillDef primaryDef1 = ScriptableObject.CreateInstance<SkillDef>();
             primaryDef1.activationState = new SerializableEntityStateType(typeof(FireFlamethrower));
@@ -94,6 +94,37 @@ namespace Starstorm2.Survivors.Pyro
             SkillFamily.Variant primaryVariant1 = Utils.RegisterSkillVariant(primaryDef1);
 
             skillLocator.primary = Utils.RegisterSkillsToFamily(bodyPrefab, new SkillFamily.Variant[] { primaryVariant1});
+        }
+        private void SetUpUtilities(SkillLocator skillLocator)
+        {
+            LanguageAPI.Add("SS2UPYRO_UTILITY_NAME", "Plan B");
+            LanguageAPI.Add("SS2UPYRO_UTILITY_DESCRIPTION", $"<color=#D78326>Consume heat</color> and <style=cIsUtility>fly forwards</style>.");
+
+            SkillDef utilityDef1 = ScriptableObject.CreateInstance<SkillDef>();
+            utilityDef1.activationState = new SerializableEntityStateType(typeof(HeatJetpack));
+            utilityDef1.activationStateMachineName = "Weapon";
+            utilityDef1.skillName = "SS2UPYRO_UTILITY_NAME";
+            utilityDef1.skillNameToken = "SS2UPYRO_UTILITY_NAME";
+            utilityDef1.skillDescriptionToken = "SS2UPYRO_UTILITY_DESCRIPTION";
+            utilityDef1.icon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("pyroSkill3");
+            utilityDef1.baseMaxStock = 1;
+            utilityDef1.baseRechargeInterval = 0f;
+            utilityDef1.beginSkillCooldownOnSkillEnd = false;
+            utilityDef1.canceledFromSprinting = false;
+            utilityDef1.fullRestockOnAssign = true;
+            utilityDef1.interruptPriority = EntityStates.InterruptPriority.PrioritySkill;
+            utilityDef1.isCombatSkill = false;
+            utilityDef1.mustKeyPress = true;
+            utilityDef1.cancelSprintingOnActivation = false;
+            utilityDef1.forceSprintDuringState = true;
+            utilityDef1.rechargeStock = 1;
+            utilityDef1.requiredStock = 1;
+            utilityDef1.stockToConsume = 1;
+            Modules.Skills.FixSkillName(utilityDef1);
+            Modules.Skills.skillDefs.Add(utilityDef1);
+            SkillFamily.Variant utilityVariant1 = Utils.RegisterSkillVariant(utilityDef1);
+
+            skillLocator.utility = Utils.RegisterSkillsToFamily(bodyPrefab, new SkillFamily.Variant[] { utilityVariant1 });
         }
 
         private void SetBodyIndex()
