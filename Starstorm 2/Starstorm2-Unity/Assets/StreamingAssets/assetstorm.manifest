@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 2041297109
+CRC: 1643589399
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 5e4c1e18a60965bdef8936c56618da12
+    Hash: d73ecde4952b7c66ffe4b544aa5f8fb9
   TypeTreeHash:
     serializedVersion: 2
     Hash: 9b39e8c6fc23523925becd33387f2f7a
@@ -98,6 +98,7 @@ Assets:
 - Assets/AssetBundle/Pyro/Animations/maskPyroGesture.mask
 - Assets/AssetBundle/Items/StrangeCan/Strange_can.fbx
 - Assets/AssetBundle/Executioner/Textures/texExecutionerMasteryEmission.png
+- Assets/AssetBundle/Pyro/Icons/pyroSkill3.png
 - Assets/AssetBundle/Chirr/Animations/CameraAction.anim
 - Assets/AssetBundle/Executioner/Animations/RunFWD.anim
 - Assets/AssetBundle/GeneralAssets/Textures/texNeedler.png
@@ -222,6 +223,7 @@ Assets:
 - Assets/AssetBundle/Nucleator/Icons/texNucleatorIcon.png
 - Assets/AssetBundle/Cyborg/Animations/Primary1.anim
 - Assets/AssetBundle/Nemmando/VFX/NemmandoChargeSlashEffect.prefab
+- Assets/AssetBundle/Pyro/Icons/pyroSkill2.png
 - Assets/AssetBundle/Nemmando/VFX/Materials/matNemmandoLightningWhite.mat
 - Assets/AssetBundle/Chirr/Animations/Idle.anim
 - Assets/AssetBundle/Nemmando/VFX/Textures/texNemmandoSwing.png
@@ -372,6 +374,7 @@ Assets:
 - Assets/AssetBundle/Executioner/Animations/MenuIdle.anim
 - Assets/AssetBundle/Chirr/Animations/Flying.anim
 - Assets/AssetBundle/Executioner/Mesh/meshExecutionerKnight.mesh
+- Assets/AssetBundle/Pyro/Icons/pyroSkill4_scepter.png
 - Assets/AssetBundle/Nemmando/Materials/matGuardian.mat
 - Assets/AssetBundle/Nemmando/VFX/Textures/Slash.tga
 - Assets/AssetBundle/Nemmando/VFX/Materials/matNemmandoThruster.mat
@@ -664,6 +667,7 @@ Assets:
 - Assets/AssetBundle/Nemmando/Textures/texGuardian.png
 - Assets/AssetBundle/Pyro/Animations/MenuIdleIn.anim
 - Assets/AssetBundle/Cyborg/Animations/animCyTP_Spawn.anim
+- Assets/AssetBundle/Pyro/Icons/pyroSkill1.png
 - Assets/AssetBundle/Executioner/Animations/RunRHT.anim
 - Assets/AssetBundle/Nucleator/Animations/Clips/RunL.anim
 - Assets/AssetBundle/Nemmando/Animations/Taunt.anim
@@ -691,6 +695,7 @@ Assets:
 - Assets/AssetBundle/Nemmando/Mesh/meshNemmandoClassic.mesh
 - Assets/AssetBundle/Chirr/texChirrBefriendCrosshair.png
 - Assets/AssetBundle/FX/Dust.mat
+- Assets/AssetBundle/Pyro/Icons/pyroSkill4.png
 - Assets/AssetBundle/Nemmando/VFX/ImpactNemmandoSlash.prefab
 - Assets/AssetBundle/Items/RelicOfMass/Material_Base_Color.png
 - Assets/AssetBundle/Chirr/texChirrFriendCrosshair.png

@@ -10,6 +10,7 @@ using EntityStates;
 using RoR2.Skills;
 using UnityEngine.AddressableAssets;
 using Starstorm2.Survivors.Pyro.Components;
+using EntityStates.SS2UStates.Pyro;
 
 namespace Starstorm2.Survivors.Pyro
 {
@@ -31,7 +32,7 @@ namespace Starstorm2.Survivors.Pyro
             LanguageAPI.Add("SS2UPYRO_OUTRO_FAILURE", "..and so he vanished, with nothing but ashes left behind.");
             LanguageAPI.Add("SS2UPYRO_DESCRIPTION", "");
 
-            //RegisterStates();
+            RegisterStates();
             SetUpSkills();
             PyroSkins.RegisterSkins();
             //CreateDoppelganger();
@@ -40,6 +41,11 @@ namespace Starstorm2.Survivors.Pyro
             RoR2.RoR2Application.onLoad += SetBodyIndex;
 
             if (StarstormPlugin.emoteAPILoaded) EmoteAPICompat();
+        }
+
+        private void RegisterStates()
+        {
+            Modules.States.AddState(typeof(FireFlamethrower));
         }
 
         private void SetUpSkills()
@@ -52,10 +58,40 @@ namespace Starstorm2.Survivors.Pyro
             SkillDef squawkDef = Addressables.LoadAssetAsync<SkillDef>("RoR2/Base/Heretic/HereticDefaultAbility.asset").WaitForCompletion();
             SkillFamily.Variant squawkVariant =  Utils.RegisterSkillVariant(squawkDef);
             SkillLocator skillLocator = bodyPrefab.GetComponent<SkillLocator>();
-            skillLocator.primary = Utils.RegisterSkillsToFamily(bodyPrefab, new SkillFamily.Variant[] { squawkVariant });
+            SetUpPrimaries(skillLocator);
             skillLocator.secondary = Utils.RegisterSkillsToFamily(bodyPrefab, new SkillFamily.Variant[] { squawkVariant });
             skillLocator.utility = Utils.RegisterSkillsToFamily(bodyPrefab, new SkillFamily.Variant[] { squawkVariant });
             skillLocator.special = Utils.RegisterSkillsToFamily(bodyPrefab, new SkillFamily.Variant[] { squawkVariant });
+        }
+        private void SetUpPrimaries(SkillLocator skillLocator)
+        {
+            LanguageAPI.Add("SS2UPYRO_PRIMARY_NAME", "Scorch");
+            LanguageAPI.Add("SS2UPYRO_PRIMARY_DESCRIPTION", $"Build up <color=#D78326>heat</color> and burn enemies for <style=cIsDamage>375% damage per second</style>. <style=cIsDamage>Ignites</style> at <color=#D78326>high heat</color>.");
+
+            SkillDef primaryDef1 = ScriptableObject.CreateInstance<SkillDef>();
+            primaryDef1.activationState = new SerializableEntityStateType(typeof(FireFlamethrower));
+            primaryDef1.activationStateMachineName = "Weapon";
+            primaryDef1.skillName = "SS2UPYRO_PRIMARY_NAME";
+            primaryDef1.skillNameToken = "SS2UPYRO_PRIMARY_NAME";
+            primaryDef1.skillDescriptionToken = "SS2UPYRO_PRIMARY_DESCRIPTION";
+            primaryDef1.icon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("pyroSkill1");
+            primaryDef1.baseMaxStock = 1;
+            primaryDef1.baseRechargeInterval = 0f;
+            primaryDef1.beginSkillCooldownOnSkillEnd = false;
+            primaryDef1.canceledFromSprinting = false;
+            primaryDef1.fullRestockOnAssign = true;
+            primaryDef1.interruptPriority = EntityStates.InterruptPriority.Any;
+            primaryDef1.isCombatSkill = true;
+            primaryDef1.mustKeyPress = false;
+            primaryDef1.cancelSprintingOnActivation = true;
+            primaryDef1.rechargeStock = 1;
+            primaryDef1.requiredStock = 1;
+            primaryDef1.stockToConsume = 1;
+            Modules.Skills.FixSkillName(primaryDef1);
+            Modules.Skills.skillDefs.Add(primaryDef1);
+            SkillFamily.Variant primaryVariant1 = Utils.RegisterSkillVariant(primaryDef1);
+
+            skillLocator.primary = Utils.RegisterSkillsToFamily(bodyPrefab, new SkillFamily.Variant[] { primaryVariant1});
         }
 
         private void SetBodyIndex()
@@ -120,7 +156,7 @@ namespace Starstorm2.Survivors.Pyro
 
             //pyroPrefab.GetComponent<EntityStateMachine>().mainStateType = new SerializableEntityStateType(typeof(PyroMain));
 
-            bool hadSlide = true;
+            /*bool hadSlide = true;
             EntityStateMachine jetpackStateMachine = EntityStateMachine.FindByCustomName(pyroPrefab, "Slide");
             if (!jetpackStateMachine)
             {
@@ -138,7 +174,7 @@ namespace Starstorm2.Survivors.Pyro
             {
                 SetStateOnHurt ssoh = pyroPrefab.GetComponent<SetStateOnHurt>();
                 ssoh.idleStateMachine.Append(jetpackStateMachine);
-            }
+            }*/
 
             return pyroPrefab;
         }
