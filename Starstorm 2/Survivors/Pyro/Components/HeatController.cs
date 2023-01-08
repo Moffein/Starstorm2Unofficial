@@ -44,7 +44,7 @@ namespace Starstorm2.Survivors.Pyro.Components
 
         public bool IsHighHeat()
         {
-            return heatPercent > 1f ? true : false;
+            return heatPercent > 0.75f ? true : false;
         }
 
         public float GetHeatPercent()

@@ -86,12 +86,12 @@ namespace Starstorm2.Survivors.Pyro.Components
 
         private void StartAnim()
         {
-            PlayAnimation(animator, "FullBody, Override", "Firing", "", 0.2f);
+            PlayAnimation(animator, "FullBody, Override", "Firing", "", 0.5f);
         }
 
         private void StopAnim()
         {
-            PlayAnimation(animator, "FullBody, Override", "BufferEmpty", "", 0.2f);
+            PlayAnimation(animator, "FullBody, Override", "BufferEmpty", "", 0.5f);
         }
 
         private void PlayAnimation(Animator modelAnimator, string layerName, string animationStateName, string playbackRateParam, float duration)

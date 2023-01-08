@@ -11,6 +11,8 @@ using RoR2.Skills;
 using UnityEngine.AddressableAssets;
 using Starstorm2.Survivors.Pyro.Components;
 using EntityStates.SS2UStates.Pyro;
+using RoR2.UI;
+using Starstorm2.Survivors.Pyro.Components.Crosshair;
 
 namespace Starstorm2.Survivors.Pyro
 {
@@ -121,7 +123,7 @@ namespace Starstorm2.Survivors.Pyro
         }
         internal static GameObject CreatePyroPrefab()
         {
-            GameObject crosshair = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/UI/StandardCrosshair.prefab").WaitForCompletion();
+            GameObject crosshair = BuildCrosshair();//Addressables.LoadAssetAsync<GameObject>("RoR2/Base/UI/StandardCrosshair.prefab").WaitForCompletion();
 
             GameObject pyroPrefab = PrefabCore.CreatePrefab("SS2UPyroBody", "mdlPyro", new BodyInfo
             {
@@ -177,6 +179,19 @@ namespace Starstorm2.Survivors.Pyro
             }*/
 
             return pyroPrefab;
+        }
+
+        private static GameObject BuildCrosshair()
+        {
+            GameObject crosshairPrefab = Modules.Assets.mainAssetBundle.LoadAsset<UnityEngine.GameObject>("crosshairPyro.prefab").InstantiateClone("SS2UPyroCrosshair", false);
+            crosshairPrefab.AddComponent<HudElement>();
+
+            CrosshairController cc = crosshairPrefab.AddComponent<CrosshairController>();
+            cc.maxSpreadAngle = 0f;
+
+            crosshairPrefab.AddComponent<PyroCrosshairController>();
+
+            return crosshairPrefab;
         }
     }
 }

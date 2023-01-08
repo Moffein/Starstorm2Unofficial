@@ -12,8 +12,8 @@ namespace EntityStates.SS2UStates.Pyro
     public class FireFlamethrower : BaseState
     {
         public static float baseDuration = 0.16f;
-        public static float baseSelfForce = 420f;
-        public static float maxDistance = 24f;
+        public static float baseSelfForce = 450f;
+        public static float maxDistance = 20f;
         public static float heatFractionPerTick = 0.025f;
 		public static float procCoefficient = 0.7f;
 		public static float damageCoefficient = 0.6f;
@@ -88,15 +88,16 @@ namespace EntityStates.SS2UStates.Pyro
 				if (base.characterMotor && !base.characterMotor.isGrounded)
 				{
 					Vector3 selfForceDirection = base.GetAimRay().direction;
-					selfForceDirection.x = 0f;
-					selfForceDirection.y = Mathf.Min(0f, selfForceDirection.y);
-					selfForceDirection.z = 0f;
-					selfForceDirection.Normalize();
+					if (selfForceDirection.y < 0f)
+					{
+						selfForceDirection.x = 0f;
+						selfForceDirection.z = 0f;
 
-					float attackSpeedFactor = Mathf.Sqrt(this.attackSpeedStat);
-					selfForceDirection /= attackSpeedFactor;
+						float attackSpeedFactor = Mathf.Sqrt(this.attackSpeedStat);
+						selfForceDirection /= attackSpeedFactor;
 
-					base.characterMotor.ApplyForce(selfForceDirection * -FireFlamethrower.baseSelfForce, true, false);
+						base.characterMotor.ApplyForce(selfForceDirection * -FireFlamethrower.baseSelfForce, true, false);
+					}
 				}
 			}
 		}

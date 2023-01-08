@@ -266,6 +266,7 @@
     <Compile Include="StarstormPlugin.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="StaticValues.cs" />
+    <Compile Include="Survivors\Pyro\Components\Crosshair\PyroCrosshairController.cs" />
     <Compile Include="Survivors\Pyro\Components\FlamethrowerController.cs" />
     <Compile Include="Survivors\Pyro\Components\HeatController.cs" />
     <Compile Include="Survivors\Pyro\EntityStates\FireFlamethrower.cs" />

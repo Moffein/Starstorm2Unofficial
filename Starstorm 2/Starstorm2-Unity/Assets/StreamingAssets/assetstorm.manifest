@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 1643589399
+CRC: 976671251
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: d73ecde4952b7c66ffe4b544aa5f8fb9
+    Hash: 106c841555bcc1689d32af356a9fe789
   TypeTreeHash:
     serializedVersion: 2
     Hash: 9b39e8c6fc23523925becd33387f2f7a
@@ -100,6 +100,7 @@ Assets:
 - Assets/AssetBundle/Executioner/Textures/texExecutionerMasteryEmission.png
 - Assets/AssetBundle/Pyro/Icons/pyroSkill3.png
 - Assets/AssetBundle/Chirr/Animations/CameraAction.anim
+- Assets/AssetBundle/Pyro/UI/crosshairPyro.prefab
 - Assets/AssetBundle/Executioner/Animations/RunFWD.anim
 - Assets/AssetBundle/GeneralAssets/Textures/texNeedler.png
 - Assets/AssetBundle/Cyborg/Meshes/meshCyborgTele.mesh
@@ -364,7 +365,7 @@ Assets:
 - Assets/AssetBundle/Cyborg/Animations/animCyborgMenu.controller
 - Assets/AssetBundle/Enemies/Wayfarer/mdlWayfarer.prefab
 - Assets/AssetBundle/Items/ErraticGadget/gadgettex.png
-- Assets/AssetBundle/Cyborg/UI/texCrosshairChargeRifleBase_Subtracted.png
+- Assets/AssetBundle/GeneralAssets/Textures/UI/texCrosshairChargeRifleBase_Subtracted.png
 - Assets/AssetBundle/Chirr/Chirr_emoteskeleton.fbx
 - Assets/AssetBundle/Items/MoltenCoin/MoltenCoinDiffuse2.png
 - Assets/AssetBundle/Items/HuntersSigil/HuntersSigil_Icon.png
@@ -381,7 +382,7 @@ Assets:
 - Assets/AssetBundle/Cyborg/Meshes/meshCyborgOld.mesh
 - Assets/AssetBundle/Nemmando/Animations/NemmandoAnimator.controller
 - Assets/AssetBundle/Nemmando/Animations/SprintRestF.anim
-- Assets/AssetBundle/Cyborg/UI/texCrosshairChargeRifleDot.png
+- Assets/AssetBundle/GeneralAssets/Textures/UI/texCrosshairDot.png
 - Assets/AssetBundle/Nemmando/VFX/Textures/texNemmandoHitSpark.png
 - Assets/AssetBundle/Nemmando/Textures/texGuardianEmission.png
 - Assets/AssetBundle/Skins/Materials/matCommandoClassic.mat
@@ -394,7 +395,7 @@ Assets:
 - Assets/AssetBundle/BuffIcons/Status_Sigil.png
 - Assets/AssetBundle/Nemmando/VFX/Materials/metNemmandoCharge.mat
 - Assets/AssetBundle/Executioner/Mesh/meshExecutionerGun.mesh
-- Assets/AssetBundle/Cyborg/UI/texCrosshairChargeRifleCharge.png
+- Assets/AssetBundle/GeneralAssets/Textures/UI/texCrosshairChargeRifleCharge.png
 - Assets/AssetBundle/Cyborg/Animations/Primary2.anim
 - Assets/AssetBundle/Chirr/ChirrPassive.png
 - Assets/AssetBundle/Nemmando/Animations/NemmandoBodyUpper.mask
@@ -640,7 +641,7 @@ Assets:
 - Assets/AssetBundle/Nemmando/Icons/texNemmandoSkin.png
 - Assets/AssetBundle/Executioner/Textures/texExecutionerMasteryAlt.png
 - Assets/AssetBundle/Nemmando/Textures/texNemmandoEmission.png
-- Assets/AssetBundle/Cyborg/UI/texCrosshairShieldBar.png
+- Assets/AssetBundle/GeneralAssets/Textures/UI/texCrosshairShieldBar.png
 - Assets/AssetBundle/Enemies/Spooder/Animations/Attack.anim
 - Assets/AssetBundle/Cyborg/Animations/Tele/animCyTP2_Closed.anim
 - Assets/AssetBundle/Nucleator/Icons/texNucleatorPrimary.png
@@ -657,6 +658,7 @@ Assets:
 - Assets/AssetBundle/Skins/Materials/matAcridArmor.mat
 - Assets/AssetBundle/Executioner/Animations/MenuIdleIn.anim
 - Assets/AssetBundle/Executioner/ExecutionerDisplay.prefab
+- Assets/AssetBundle/GeneralAssets/Textures/UI/texCrosshairShieldBarBase.png
 - Assets/AssetBundle/Executioner/Animations/Special2.anim
 - Assets/AssetBundle/Chirr/Animations/WalkBWD.anim
 - Assets/AssetBundle/Nucleator/NucleatorDisplay.prefab
@@ -681,6 +683,7 @@ Assets:
 - Assets/AssetBundle/Nemmando/VFX/NemmandoChargeSlashStartEffectBlue.prefab
 - Assets/AssetBundle/Items/RelicOfMass/massrune.png
 - Assets/AssetBundle/Nemmando/VFX/Materials/metNemmandoChargeShadow.mat
+- Assets/AssetBundle/GeneralAssets/Textures/UI/texCrosshairQuadrant.png
 - Assets/AssetBundle/Nemmando/Animations/WalkLFT.anim
 - Assets/AssetBundle/Items/HuntersSigil/sigiltexNormal.png
 - Assets/AssetBundle/Nucleator/Animations/Clips/RunB.anim
@@ -705,7 +708,7 @@ Assets:
 - Assets/AssetBundle/Executioner/Materials/matWastelanderAxe.mat
 - Assets/AssetBundle/Executioner/Animations/LightImpact.anim
 - Assets/AssetBundle/Items/HottestSauce/HottestSauceTEmission.png
-- Assets/AssetBundle/Cyborg/UI/texCrosshairChargeRifleBase.png
+- Assets/AssetBundle/GeneralAssets/Textures/UI/texCrosshairChargeRifleBase.png
 - Assets/AssetBundle/Executioner/Animations/Rest.anim
 - Assets/AssetBundle/Items/Malice/T_Malice.png
 - Assets/AssetBundle/Chirr/Animations/ChirrAvatar.asset
