@@ -57,7 +57,7 @@ namespace EntityStates.SS2UStates.Pyro
                 DeflectServer();
             }
 
-            if (base.fixedAge > Airblast.baseDuration)
+            if (base.fixedAge >= Airblast.baseDuration)
             {
                 this.outer.SetNextStateToMain();
                 return;
@@ -179,7 +179,7 @@ namespace EntityStates.SS2UStates.Pyro
         public static float baseDuration = 0.75f;
         public static float reflectWindowDuration = 0.2f;
         public static Vector3 hitboxDimensions = new Vector3(8f, 8f, 16f);
-        public static float force = 2700f;
+        public static float force = 3000f;
         public static float selfForce = 2700f;
         public static float heatCost = 0.33f;
         public static GameObject effectPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Treebot/TreebotShockwaveEffect.prefab").WaitForCompletion();
@@ -191,6 +191,6 @@ namespace EntityStates.SS2UStates.Pyro
         private Ray aimRay;
         private HeatController heatController;
 
-        private static float hitboxOffset = (Airblast.hitboxDimensions.z / 2f - 0.5f);
+        private static float hitboxOffset = (16f / 2f - 0.5f);
     }
 }

@@ -8,7 +8,7 @@ namespace EntityStates.SS2UStates.Pyro
     {
         public static float baseDuration = 0.16f;
         public static float baseSelfForce = 450f;
-        public static float maxDistance = 20f;
+        public static float maxDistance = 24f;
         public static float heatFractionPerTick = 0.025f;
 		public static float procCoefficient = 0.7f;
 		public static float damageCoefficient = 0.672f;

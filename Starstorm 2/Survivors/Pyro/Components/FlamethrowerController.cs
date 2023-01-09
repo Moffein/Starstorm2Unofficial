@@ -160,6 +160,7 @@ namespace Starstorm2.Survivors.Pyro.Components
         private void OnDestroy()
         {
             DestroyFlamethrowerInstsance();
+            Util.PlaySound("Play_mage_R_end", base.gameObject);
         }
     }
 }

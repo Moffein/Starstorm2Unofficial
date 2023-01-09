@@ -15,6 +15,7 @@ using RoR2.UI;
 using Starstorm2.Survivors.Pyro.Components.Crosshair;
 using RoR2.Projectile;
 using Starstorm2.Survivors.Pyro.Components.Projectile;
+using RoR2.CharacterAI;
 
 namespace Starstorm2.Survivors.Pyro
 {
@@ -43,19 +44,19 @@ namespace Starstorm2.Survivors.Pyro
             LanguageAPI.Add("SS2UPYRO_SUBTITLE", "Pest Control");
             LanguageAPI.Add("SS2UPYRO_OUTRO_FLAVOR", "..and so he left, in a blaze of glory.");
             LanguageAPI.Add("SS2UPYRO_OUTRO_FAILURE", "..and so he vanished, with nothing but ashes left behind.");
-            LanguageAPI.Add("SS2UPYRO_DESCRIPTION", "");
+            LanguageAPI.Add("SS2UPYRO_DESCRIPTION", "The Pyro will stop at nothing to burn down everything in sight.\r\n\r\n< ! > Scorch generates Heat, which is required to use Pyro's abilities.\r\n\r\n< ! > Projectiles reflected by Return to Sender deal massive damage.\r\n\r\n< ! > Plan B allows you to quickly get in and out of fights.\r\n\r\n< ! > Blaze Flare is strongest when used at high Heat.\r\n\r\n");
 
             RegisterStates();
             SetUpSkills();
             PyroSkins.RegisterSkins();
-            //CreateDoppelganger();
+            CreateDoppelganger();
 
             Modules.Prefabs.RegisterNewSurvivor(bodyPrefab, PrefabCore.CreateDisplayPrefab("PyroDisplay", bodyPrefab), Color.red, "SS2UPYRO", 40.3f);
             RoR2.RoR2Application.onLoad += SetBodyIndex;
 
             if (StarstormPlugin.emoteAPILoaded) EmoteAPICompat();
 
-            NetworkSoundEventDef sound = Modules.Assets.CreateNetworkSoundEventDef("Play_mage_m1_impact");
+            NetworkSoundEventDef sound = Modules.Assets.CreateNetworkSoundEventDef("Play_commando_M2_grenade_explo");
             BuildFlaregunProjectile(sound);
             BuildFlaregunScepterProjectile(sound);
             Airblast.reflectSound = Modules.Assets.CreateNetworkSoundEventDef("Play_captain_drone_zap");
@@ -90,8 +91,9 @@ namespace Starstorm2.Survivors.Pyro
             agf.rb = rb;
 
             FlareProjectileController fpc = projectilePrefab.AddComponent<FlareProjectileController>();
+            fpc.initialEffectPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Common/VFX/OmniExplosionVFXQuick.prefab").WaitForCompletion();
             fpc.explosionEffectPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/IgniteOnKill/IgniteExplosionVFX.prefab").WaitForCompletion();
-            fpc.initialImpactSound = initialImpactSound;
+            fpc.explosionSound = initialImpactSound;
 
             Flaregun.projectilePrefab = projectilePrefab;
         }
@@ -126,8 +128,8 @@ namespace Starstorm2.Survivors.Pyro
 
             FlareProjectileController fpc = projectilePrefab.AddComponent<FlareProjectileController>();
             fpc.explosionEffectPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/IgniteOnKill/IgniteExplosionVFX.prefab").WaitForCompletion();
-            fpc.initialImpactSound = initialImpactSound;
-            fpc.explosionRadius = 12f;
+            fpc.explosionSound = initialImpactSound;
+            fpc.explosionRadius = 18f;
 
             FlaregunScepter.scepterProjectilePrefab = projectilePrefab;
         }
@@ -148,8 +150,6 @@ namespace Starstorm2.Survivors.Pyro
                 UnityEngine.Object.DestroyImmediate(sk);
             }
 
-            SkillDef squawkDef = Addressables.LoadAssetAsync<SkillDef>("RoR2/Base/Heretic/HereticDefaultAbility.asset").WaitForCompletion();
-            SkillFamily.Variant squawkVariant =  Utils.RegisterSkillVariant(squawkDef);
             SkillLocator skillLocator = bodyPrefab.GetComponent<SkillLocator>();
             SetUpPrimaries(skillLocator);
             SetUpSecondaries(skillLocator);
@@ -209,7 +209,7 @@ namespace Starstorm2.Survivors.Pyro
             airblast.interruptPriority = EntityStates.InterruptPriority.Skill;
             airblast.isCombatSkill = false;
             airblast.mustKeyPress = false;
-            airblast.cancelSprintingOnActivation = true;
+            airblast.cancelSprintingOnActivation = false;
             airblast.forceSprintDuringState = false;
             airblast.rechargeStock = 1;
             airblast.requiredStock = 1;
@@ -227,7 +227,7 @@ namespace Starstorm2.Survivors.Pyro
         private void SetUpUtilities(SkillLocator skillLocator)
         {
             LanguageAPI.Add("SS2UPYRO_UTILITY_NAME", "Plan B");
-            LanguageAPI.Add("SS2UPYRO_UTILITY_DESCRIPTION", $"<color=#D78326>Consume 33% heat</color> and <style=cIsUtility>fly forwards</style>. Hold the button to fly further.");
+            LanguageAPI.Add("SS2UPYRO_UTILITY_DESCRIPTION", $"<color=#D78326>Consume 33% heat</color> and <style=cIsUtility>fly forwards</style>. Hold the button to fly further at the cost of more <color=#D78326>heat</color>.");
 
             HeatSkillDef utilityDef1 = ScriptableObject.CreateInstance<HeatSkillDef>();
             utilityDef1.activationState = new SerializableEntityStateType(typeof(HeatJetpack));
@@ -237,7 +237,7 @@ namespace Starstorm2.Survivors.Pyro
             utilityDef1.skillDescriptionToken = "SS2UPYRO_UTILITY_DESCRIPTION";
             utilityDef1.icon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("pyroSkill3");
             utilityDef1.baseMaxStock = 1;
-            utilityDef1.baseRechargeInterval = 4f;
+            utilityDef1.baseRechargeInterval = 5f;
             utilityDef1.beginSkillCooldownOnSkillEnd = true;
             utilityDef1.canceledFromSprinting = false;
             utilityDef1.fullRestockOnAssign = true;
@@ -299,7 +299,7 @@ namespace Starstorm2.Survivors.Pyro
         private void SetUpScepters(SkillLocator skillLocator)
         {
             LanguageAPI.Add("SS2UPYRO_SPECIAL_SCEPTER_NAME", "Hell Flare");
-            LanguageAPI.Add("SS2UPYRO_SPECIAL_SCEPTER_DESCRIPTION", $"<color=#D78326>Consume all heat</color> and fire a flare for <style=cIsDamage>600% damage</style>. On impact, it explodes for up to <style=cIsDamage>16x150% damage</style> based on <color=#D78326>heat</color> consumed.");
+            LanguageAPI.Add("SS2UPYRO_SPECIAL_SCEPTER_DESCRIPTION", $"<color=#D78326>Consume all Heat</color> and fire a flare for <style=cIsDamage>600% damage</style>. On impact, it explodes for up to <style=cIsDamage>16x150% damage</style> based on <color=#D78326>heat</color> consumed.");
 
             HeatSkillDef flareScepter = ScriptableObject.CreateInstance<HeatSkillDef>();
             flareScepter.activationState = new SerializableEntityStateType(typeof(Flaregun));
@@ -386,14 +386,14 @@ namespace Starstorm2.Survivors.Pyro
                 armorGrowth = 0f,
                 bodyName = "SS2UPyroBody",
                 bodyNameToken = "SS2UPYRO_NAME",
-                characterPortrait = Modules.Assets.mainAssetBundle.LoadAsset<Texture2D>("pyroicon"),
+                characterPortrait = Modules.Assets.mainAssetBundle.LoadAsset<Texture2D>("texPortraitPyro"),
                 bodyColor = new Color32(215, 131, 38, 255),
                 crosshair = crosshair,
                 damage = 12f,
-                healthGrowth = 30f,
+                healthGrowth = 33f,
                 healthRegen = 1f,
                 jumpCount = 1,
-                maxHealth = 100f,
+                maxHealth = 110f,
                 subtitleNameToken = "SS2UPYRO_SUBTITLE",
                 podPrefab = LegacyResourcesAPI.Load<GameObject>("Prefabs/NetworkedObjects/SurvivorPod"),
                 acceleration = 80f
@@ -447,6 +447,92 @@ namespace Starstorm2.Survivors.Pyro
             crosshairPrefab.AddComponent<PyroCrosshairController>();
 
             return crosshairPrefab;
+        }
+
+        internal static void CreateDoppelganger()
+        {
+            GameObject doppelganger = PrefabAPI.InstantiateClone(LegacyResourcesAPI.Load<GameObject>("Prefabs/CharacterMasters/CommandoMonsterMaster"), "SS2UPyroMonsterMaster", true);
+            doppelganger.GetComponent<CharacterMaster>().bodyPrefab = bodyPrefab;
+            Modules.Prefabs.RemoveAISkillDrivers(doppelganger);
+
+            Modules.Prefabs.AddAISkillDriver(doppelganger, "Flare", SkillSlot.Special, null,
+                true, false,
+                Mathf.NegativeInfinity, Mathf.Infinity,
+                Mathf.NegativeInfinity, Mathf.Infinity,
+                0f, 30f,
+                true, false, true, -1,
+                AISkillDriver.TargetType.CurrentEnemy,
+                true, true, true,
+                AISkillDriver.MovementType.ChaseMoveTarget, 1f,
+                AISkillDriver.AimType.AtCurrentEnemy,
+                false,
+                false,
+                false,
+                AISkillDriver.ButtonPressType.Hold,
+                -1,
+                false,
+                true,
+                null);
+
+
+            Modules.Prefabs.AddAISkillDriver(doppelganger, "Jetpack", SkillSlot.Utility, null,
+                 true, false,
+                 Mathf.NegativeInfinity, Mathf.Infinity,
+                 Mathf.NegativeInfinity, Mathf.Infinity,
+                 20f, Mathf.Infinity,
+                 false, false, false, -1,
+                 AISkillDriver.TargetType.CurrentEnemy,
+                 false, false, false,
+                 AISkillDriver.MovementType.ChaseMoveTarget, 1f,
+                 AISkillDriver.AimType.AtCurrentEnemy,
+                 false,
+                 true,
+                 false,
+                 AISkillDriver.ButtonPressType.Hold,
+                 1f,
+                 false,
+                 true,
+                 null);
+
+            Modules.Prefabs.AddAISkillDriver(doppelganger, "W+M1", SkillSlot.Primary, null,
+                true, false,
+                Mathf.NegativeInfinity, Mathf.Infinity,
+                Mathf.NegativeInfinity, Mathf.Infinity,
+                0f, 20f,
+                true, false, true, -1,
+                AISkillDriver.TargetType.CurrentEnemy,
+                true, false, false,
+                AISkillDriver.MovementType.ChaseMoveTarget, 1f,
+                AISkillDriver.AimType.AtCurrentEnemy,
+                false,
+                false,
+                false,
+                AISkillDriver.ButtonPressType.Hold,
+                3f,
+                false,
+                false,
+                null);
+
+            Modules.Prefabs.AddAISkillDriver(doppelganger, "Chase", SkillSlot.None, null,
+                false, false,
+                Mathf.NegativeInfinity, Mathf.Infinity,
+                Mathf.NegativeInfinity, Mathf.Infinity,
+                0f, Mathf.Infinity,
+                false, false, false, -1,
+                AISkillDriver.TargetType.CurrentEnemy,
+                false, false, false,
+                AISkillDriver.MovementType.ChaseMoveTarget, 1f,
+                AISkillDriver.AimType.AtCurrentEnemy,
+                false,
+                true,
+                false,
+                AISkillDriver.ButtonPressType.Abstain,
+                -1,
+                false,
+                false,
+                null);
+
+            Modules.Prefabs.masterPrefabs.Add(doppelganger);
         }
     }
 }

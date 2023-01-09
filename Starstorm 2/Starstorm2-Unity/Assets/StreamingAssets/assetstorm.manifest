@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 2088088932
+CRC: 2940885514
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 95f0459674dd40159bdc328ccfed7daa
+    Hash: 80358d058e1a01fa8747861300cdb6a6
   TypeTreeHash:
     serializedVersion: 2
     Hash: e085efc3cec39229c22603e1a47b8115
@@ -270,6 +270,7 @@ Assets:
 - Assets/AssetBundle/Cyborg/cyborgTeleGhost.prefab
 - Assets/AssetBundle/Nucleator/Animations/Clips/MenuIdleIn.anim
 - Assets/AssetBundle/Executioner/VFX/IonEffect.prefab
+- Assets/AssetBundle/Pyro/Textures/texPortraitPyro.png
 - Assets/AssetBundle/Cyborg/Animations/default.anim
 - Assets/AssetBundle/Executioner/Icons/texExecutionerUtility.png
 - Assets/AssetBundle/Nemmando/VFX/Textures/texNemmandoSlash.png

@@ -8,13 +8,14 @@ namespace Starstorm2.Survivors.Pyro.Components.Projectile
 {
     public class FlareProjectileController : MonoBehaviour, IProjectileImpactBehavior
     {
+        public GameObject initialEffectPrefab;
         public GameObject explosionEffectPrefab;
         public float initialDamageCoefficient = 1f;
         public float initialRadius = 2.4f;
-        public NetworkSoundEventDef initialImpactSound;
+        public NetworkSoundEventDef explosionSound = null;
 
         public float explosionDamageCoefficient = 0.25f;
-        public float explosionRadius = 8f;
+        public float explosionRadius = 12f;
 
         public float delayBetweenExplosions = 0.3f;
 
@@ -58,11 +59,8 @@ namespace Starstorm2.Survivors.Pyro.Components.Projectile
                     radius = initialRadius,
                     teamIndex = teamFilter.teamIndex
                 };
-                if (explosionEffectPrefab) EffectManager.SpawnEffect(explosionEffectPrefab, new EffectData { origin = base.transform.position, scale = ba.radius }, true);
-                if (initialImpactSound != null)
-                {
-                    EffectManager.SimpleSoundEffect(initialImpactSound.index, base.transform.position, true);
-                }
+                if (initialEffectPrefab) EffectManager.SpawnEffect(initialEffectPrefab, new EffectData { origin = base.transform.position, scale = ba.radius }, true);
+                if (explosionSound != null) EffectManager.SimpleSoundEffect(explosionSound.index, base.transform.position, true);
                 ba.Fire();
             }
         }
@@ -124,6 +122,7 @@ namespace Starstorm2.Survivors.Pyro.Components.Projectile
                     teamIndex = teamFilter.teamIndex
                 };
                 if (explosionEffectPrefab) EffectManager.SpawnEffect(explosionEffectPrefab, new EffectData { origin = base.transform.position, scale = ba.radius }, true);
+                if (explosionSound != null) EffectManager.SimpleSoundEffect(explosionSound.index, base.transform.position, true);
                 ba.Fire();
             }
 
