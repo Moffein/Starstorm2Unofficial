@@ -238,6 +238,8 @@ namespace Starstorm2.Survivors.Cyborg
             ProjectileController pc = projectilePrefab.GetComponent<ProjectileController>();
             pc.ghostPrefab = ghostPrefab;
 
+            UnityEngine.Object.Destroy(projectilePrefab.GetComponent<MineProximityDetonator>());
+
             ProjectileSimple ps = projectilePrefab.GetComponent<ProjectileSimple>();
             ps.desiredForwardSpeed = 60;//lightning bomb 40, lightning bolt 80
             ps.lifetime = 10f;
