@@ -24,7 +24,6 @@ namespace Starstorm2.Cores
         public static BuffDef fearDebuff;
         public static BuffDef gougeBuff;
 
-        public static BuffDef exeSuperchargedBuff;
         public static BuffDef nucleatorSpecialBuff;
 
         public static BuffDef chirrFriendBuff;
@@ -81,7 +80,6 @@ namespace Starstorm2.Cores
         protected void RegisterBuffs()
         {
             //LogCore.LogInfo("Initializing Core: " + base.ToString());
-            exeSuperchargedBuff = CreateBuffDef("ExecutionerSuperchargedBuff", false, false, false, new Color(72 / 255, 1, 1), LegacyResourcesAPI.Load<Sprite>("Textures/BuffIcons/texBuffNullifiedIcon"));
             nucleatorSpecialBuff = CreateBuffDef("NucleatorSpecialBuff", false, false, false, Color.green, LegacyResourcesAPI.Load<Sprite>("Textures/BuffIcons/texBuffOverheat"));
 
             detritiveBuff = ScriptableObject.CreateInstance<BuffDef>();
@@ -90,14 +88,14 @@ namespace Starstorm2.Cores
             detritiveBuff.canStack = false;
             detritiveBuff.iconSprite = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("Status_Trematodes");
             detritiveBuff.isDebuff = false;
-            detritiveBuff.name = "Infested";
+            detritiveBuff.name = "SS2UInfested";
             buffDefs.Add(detritiveBuff);
 
             greaterBannerBuff = ScriptableObject.CreateInstance<BuffDef>();
             //buffIndex = BuffIndex.Count,
             greaterBannerBuff.canStack = false;
             greaterBannerBuff.iconSprite = LegacyResourcesAPI.Load<Sprite>("textures/bufficons/texBuffWarbannerIcon");
-            greaterBannerBuff.name = "GreaterWarbanner";
+            greaterBannerBuff.name = "SS2UGreaterWarbanner";
             greaterBannerBuff.buffColor = new Color(0.8392157f, 0.4882353f, 0.22745098f);
             buffDefs.Add(greaterBannerBuff);
 
@@ -105,7 +103,7 @@ namespace Starstorm2.Cores
             //buffIndex = BuffIndex.Count,
             strangeCanPoisonBuff.canStack = false;
             strangeCanPoisonBuff.iconSprite = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("Status_StrangeCan");
-            strangeCanPoisonBuff.name = "StrangeCanPoison";
+            strangeCanPoisonBuff.name = "SS2UStrangeCanPoison";
             strangeCanPoisonBuff.isDebuff = true;
             strangeCanPoisonBuff.buffColor = Color.green;
             buffDefs.Add(strangeCanPoisonBuff);
@@ -113,7 +111,7 @@ namespace Starstorm2.Cores
             sigilBuff = ScriptableObject.CreateInstance<BuffDef>();
             sigilBuff.canStack = false;
             sigilBuff.iconSprite = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("Status_Sigil");
-            sigilBuff.name = "SigilCritDefBoost";
+            sigilBuff.name = "SS2USigilCritDefBoost";
             sigilBuff.isDebuff = false;
             sigilBuff.buffColor = Color.white;
             buffDefs.Add(sigilBuff);
@@ -121,7 +119,7 @@ namespace Starstorm2.Cores
             greenChocBuff = ScriptableObject.CreateInstance<BuffDef>();
             greenChocBuff.canStack = true;
             greenChocBuff.iconSprite = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("Status_Chocolate");
-            greenChocBuff.name = "GreenChocAttackBoost";
+            greenChocBuff.name = "SS2UGreenChocAttackBoost";
             greenChocBuff.isDebuff = false;
             greenChocBuff.buffColor = Color.white;
             buffDefs.Add(greenChocBuff);
@@ -129,19 +127,19 @@ namespace Starstorm2.Cores
             watchMetronomeBuff = ScriptableObject.CreateInstance<BuffDef>();
             watchMetronomeBuff.canStack = true;
             watchMetronomeBuff.iconSprite = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("Status_WatchMetronome");
-            watchMetronomeBuff.name = "WatchMetronome";
+            watchMetronomeBuff.name = "SS2UWatchMetronome";
             watchMetronomeBuff.isDebuff = false;
             watchMetronomeBuff.buffColor = Color.cyan;
             buffDefs.Add(watchMetronomeBuff);
 
-            chirrFriendBuff = CreateBuffDef("ChirrFriendBuff", false, false, false, new Color32(245, 123, 145, 255), Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("buffChirrSoulLink"));
-            chirrSelfBuff = CreateBuffDef("ChirrSelfBuff", false, false, false, new Color32(245, 123, 145, 255), Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("buffChirrSoulLink"));
+            chirrFriendBuff = CreateBuffDef("SS2UChirrFriendBuff", false, false, false, new Color32(245, 123, 145, 255), Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("buffChirrSoulLink"));
+            chirrSelfBuff = CreateBuffDef("SS2UChirrSelfBuff", false, false, false, new Color32(245, 123, 145, 255), Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("buffChirrSoulLink"));
 
             #region Executioner
             fearDebuff = ScriptableObject.CreateInstance<BuffDef>();
             fearDebuff.canStack = false;
             fearDebuff.iconSprite = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("surprised-skull");
-            fearDebuff.name = "FearDebuff";
+            fearDebuff.name = "SS2UFearDebuff";
             fearDebuff.isDebuff = true;
             fearDebuff.buffColor = Color.white;
             buffDefs.Add(fearDebuff);
@@ -151,7 +149,7 @@ namespace Starstorm2.Cores
             gougeBuff = ScriptableObject.CreateInstance<BuffDef>();
             gougeBuff.canStack = true;
             gougeBuff.iconSprite = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("Status_NemesisBleed");
-            gougeBuff.name = "Gouge";
+            gougeBuff.name = "SS2UGouge";
             gougeBuff.isDebuff = true;
             gougeBuff.buffColor = Color.red;
             buffDefs.Add(gougeBuff);
@@ -161,7 +159,7 @@ namespace Starstorm2.Cores
         private void RegisterEffects()
         {
             //TODO: register in content pack?
-            greenChocPrefab = PrefabAPI.InstantiateClone(LegacyResourcesAPI.Load<GameObject>("Prefabs/Effects/WarCryEffect"), "GreenChocEffect", true);
+            greenChocPrefab = PrefabAPI.InstantiateClone(LegacyResourcesAPI.Load<GameObject>("Prefabs/Effects/WarCryEffect"), "SS2UGreenChocEffect", true);
             greenChocPrefab.AddComponent<NetworkIdentity>();
             var particles = greenChocPrefab.GetComponentInChildren<ParticleSystem>();
             if (particles)
