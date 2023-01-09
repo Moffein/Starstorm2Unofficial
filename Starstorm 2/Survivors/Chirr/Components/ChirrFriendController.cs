@@ -593,7 +593,7 @@ namespace Starstorm2.Survivors.Chirr.Components
                         //targetMaster.Respawn(targetBody.transform.position, targetBody.transform.rotation);
                         RpcSetMithrixConverted();
 
-                        EnemyCore.FakeMithrixChatMessageServer("BROTHERHURT_CHIRR_BEFRIEND_1");
+                        EnemyCore.FakeMithrixChatMessageServer("SS2UBROTHERHURT_CHIRR_BEFRIEND_1");
                     }
                 }
                 else if (targetBody.bodyIndex == EnemyCore.scavLunar1Index || targetBody.bodyIndex == EnemyCore.scavLunar2Index || targetBody.bodyIndex == EnemyCore.scavLunar3Index || targetBody.bodyIndex == EnemyCore.scavLunar4Index)

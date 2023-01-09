@@ -24,6 +24,7 @@ namespace Starstorm2.Cores
         public static BuffDef fearDebuff;
         public static BuffDef gougeBuff;
 
+        public static BuffDef exeSuperchargedBuff;
         public static BuffDef nucleatorSpecialBuff;
 
         public static BuffDef chirrFriendBuff;
@@ -80,7 +81,8 @@ namespace Starstorm2.Cores
         protected void RegisterBuffs()
         {
             //LogCore.LogInfo("Initializing Core: " + base.ToString());
-            nucleatorSpecialBuff = CreateBuffDef("NucleatorSpecialBuff", false, false, false, Color.green, LegacyResourcesAPI.Load<Sprite>("Textures/BuffIcons/texBuffOverheat"));
+            exeSuperchargedBuff = CreateBuffDef("SS2UExecutionerSuperchargedBuff", false, false, false, new Color(72 / 255, 1, 1), LegacyResourcesAPI.Load<Sprite>("Textures/BuffIcons/texBuffNullifiedIcon"));
+            nucleatorSpecialBuff = CreateBuffDef("SS2UNucleatorSpecialBuff", false, false, false, Color.green, LegacyResourcesAPI.Load<Sprite>("Textures/BuffIcons/texBuffOverheat"));
 
             detritiveBuff = ScriptableObject.CreateInstance<BuffDef>();
             detritiveBuff.buffColor = Color.white;

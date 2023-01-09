@@ -76,12 +76,19 @@ namespace Starstorm2.Survivors.Cyborg.Components.Crosshair
 
                 if (this.shieldBar)
                 {
-                    float targetFill = Mathf.Lerp(0f, 1f, chargeComponent.remainingShieldDuration / chargeComponent.GetMaxShieldDuration());
-                    Color targetColor = chargeComponent.shieldDepleted ? shieldDepleteColor : shieldColor;
-                    targetColor.a = chargeComponent.shieldActive ? 1f : 0.5f;
+                    if (this.chargeComponent.skillLocator && this.chargeComponent.skillLocator.secondary.skillDef == CyborgCore.defenseMatrixDef)
+                    {
+                        float targetFill = Mathf.Lerp(0f, 1f, chargeComponent.remainingShieldDuration / chargeComponent.GetMaxShieldDuration());
+                        Color targetColor = chargeComponent.shieldDepleted ? shieldDepleteColor : shieldColor;
+                        targetColor.a = chargeComponent.shieldActive ? 1f : 0.5f;
 
-                    shieldBar.color = targetColor;
-                    shieldBar.fillAmount = targetFill;
+                        shieldBar.color = targetColor;
+                        shieldBar.fillAmount = targetFill;
+                    }
+                    else
+                    {
+                        shieldBar.fillAmount = 0f;
+                    }
                 }
             }
         }

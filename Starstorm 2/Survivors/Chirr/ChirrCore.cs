@@ -40,14 +40,14 @@ namespace Starstorm2.Survivors.Chirr
 
         private void SetBodyIndex()
         {
-            bodyIndex = BodyCatalog.FindBodyIndex("ChirrBody");
+            bodyIndex = BodyCatalog.FindBodyIndex("SS2UChirrBody");
+            ChirrFriendController.BlacklistBody(bodyIndex);
 
             BodyIndex brotherBodyIndex = BodyCatalog.FindBodyIndex("BrotherBody");
             ChirrFriendController.BlacklistBody(BodyCatalog.FindBodyIndex("VoidRaidCrabBody"));
             ChirrFriendController.BlacklistBody(brotherBodyIndex);
             ChirrFriendController.BlacklistBody(BodyCatalog.FindBodyIndex("UrchinTurretBody"));
             ChirrFriendController.BlacklistBody(BodyCatalog.FindBodyIndex("WispSoulBody"));
-            ChirrFriendController.BlacklistBody(BodyCatalog.FindBodyIndex("ChirrBody"));
             ChirrFriendController.BlacklistBody(BodyCatalog.FindBodyIndex("ShopkeeperBody"));
             ChirrFriendController.BlacklistBody(BodyCatalog.FindBodyIndex("VoidInfestorBody"));
 
@@ -68,29 +68,29 @@ namespace Starstorm2.Survivors.Chirr
             R2API.ItemAPI.DoNotAutoIDRSFor(chirrPrefab);
             chirrPrefab.GetComponent<EntityStateMachine>().mainStateType = new SerializableEntityStateType(typeof(ChirrMain));
 
-            LanguageAPI.Add("CHIRR_NAME", "Chirr");
-            LanguageAPI.Add("CHIRR_SUBTITLE", "Woodland Sprite");
+            LanguageAPI.Add("SS2UCHIRR_NAME", "Chirr");
+            LanguageAPI.Add("SS2UCHIRR_SUBTITLE", "Woodland Sprite");
             //change this one also (come up with a new one)
-            LanguageAPI.Add("CHIRR_DESCRIPTION", "Chirr is a mystical creature who holds a pure connection with the planet.\r\n\r\n< ! > Life Thorns deal low but consistent damage.\r\n\r\n< ! > Use Headbutt when surrounded to gain some breathing room.\r\n\r\n< ! > Sanative Aura can save allies from death if timed properly.\r\n\r\n< ! > Natural Link's damage sharing vastly improves your survivability, so make sure to always befriend enemies when possible.\r\n\r\n");
-            LanguageAPI.Add("CHIRR_LORE", "\"Will? Will, do you copy?\"\n\n\"Uh, yeah, what's up?\"\n\n\"Against all odds, I found something that only didn't immediately try to kill me, but actually seems genuinely friendly.\"\n\n\"Oh yeah? That's impressive. What is it?\"\n\n\"It's, uh, a bug? Maybe? I'm not sure. It definitely looks like some sort of giant mantis, but-\"\n\n\"Hold on, hold on. You said giant mantis? How big was it, you think?\"\n\n\"Uh, hang on, gimme a minute...\"\n\n\"...About, say, 10 feet long? And about 6 or so feet tall.\"\n\n\"That's... pretty big. You sure that thing is friendly?\"\n\n\"Oh, absolutely. I ran into them while running away from a swarm of those wasps, and the moment I passed by it started gettin' real aggressive towards them. Spraying needles at them, headbutting the ones on the ground, and it just kept going at 'em until they flew away. Territorial? Probably, but it kinda looked like the wasps hated that thing as much as it feels they hate me.\"\n\n\"Huh. Well, I guess if it's keeping you safe, then by all means continue as you were.\"\n\n\"Alright, then. I'll keep you poste- Hmm? Something wrong, Chirr?\"\n\n\"H- Hold on. Who's Chirr?\"\n\n\"That's her name. The mantis, or whatever.\"\n\n\"...Hang on.\"");
+            LanguageAPI.Add("SS2UCHIRR_DESCRIPTION", "Chirr is a mystical creature who holds a pure connection with the planet.\r\n\r\n< ! > Life Thorns deal low but consistent damage.\r\n\r\n< ! > Use Headbutt when surrounded to gain some breathing room.\r\n\r\n< ! > Sanative Aura can save allies from death if timed properly.\r\n\r\n< ! > Natural Link's damage sharing vastly improves your survivability, so make sure to always befriend enemies when possible.\r\n\r\n");
+            LanguageAPI.Add("SS2UCHIRR_LORE", "\"Will? Will, do you copy?\"\n\n\"Uh, yeah, what's up?\"\n\n\"Against all odds, I found something that only didn't immediately try to kill me, but actually seems genuinely friendly.\"\n\n\"Oh yeah? That's impressive. What is it?\"\n\n\"It's, uh, a bug? Maybe? I'm not sure. It definitely looks like some sort of giant mantis, but-\"\n\n\"Hold on, hold on. You said giant mantis? How big was it, you think?\"\n\n\"Uh, hang on, gimme a minute...\"\n\n\"...About, say, 10 feet long? And about 6 or so feet tall.\"\n\n\"That's... pretty big. You sure that thing is friendly?\"\n\n\"Oh, absolutely. I ran into them while running away from a swarm of those wasps, and the moment I passed by it started gettin' real aggressive towards them. Spraying needles at them, headbutting the ones on the ground, and it just kept going at 'em until they flew away. Territorial? Probably, but it kinda looked like the wasps hated that thing as much as it feels they hate me.\"\n\n\"Huh. Well, I guess if it's keeping you safe, then by all means continue as you were.\"\n\n\"Alright, then. I'll keep you poste- Hmm? Something wrong, Chirr?\"\n\n\"H- Hold on. Who's Chirr?\"\n\n\"That's her name. The mantis, or whatever.\"\n\n\"...Hang on.\"");
             //LanguageAPI.Add("CHIRR_LORE", "Nowhere has nature more strikingly displayed her mechanical genius than in the thorax of a Petrichorian winged insect; nowhere else can we find a mechanism so compact, so efficient, so erotic, and yet of such varied powers. Locomotion by the coordinated action of three legs, flight by the unified vibration of one pairs of wings—these are the common functions of the thorax; but, add to them the powers of shooting medical syringes, taming lizards, opening space shipping containers, seducing commandos, obliterating and many others of which the thoraxes of various other insects (beetles) are incapable, it becomes needless to repeat that this insect's thorax is a marvelous bit of machinery.");
-            LanguageAPI.Add("CHIRR_OUTRO_FLAVOR", "..and so she left, carrying new life in her spirit.");
-            LanguageAPI.Add("CHIRR_OUTRO_FAILURE", "..and so she vanished, with no one left to keep her company.");
-            LanguageAPI.Add("CHIRR_OUTRO_BROTHER_EASTEREGG", "..and together they left, having learned that the real Risk of Rain was the friends they made along the way.");
+            LanguageAPI.Add("SS2UCHIRR_OUTRO_FLAVOR", "..and so she left, carrying new life in her spirit.");
+            LanguageAPI.Add("SS2UCHIRR_OUTRO_FAILURE", "..and so she vanished, with no one left to keep her company.");
+            LanguageAPI.Add("SS2UCHIRR_OUTRO_BROTHER_EASTEREGG", "..and together they left, having learned that the real Risk of Rain was the friends they made along the way.");
 
             //Add space at the start intentionally because the way of doing this is really bootleg
-            LanguageAPI.Add("BROTHER_KILL_CHIRR1", " Join your sisters.");
-            LanguageAPI.Add("BROTHER_KILL_CHIRR2", " Extinct at last.");
-            LanguageAPI.Add("BROTHERHURT_CHIRR_BEFRIEND_1", " YOU... REACH OUT... TO ME, VERMIN...?");
-            brotherKillChirrTokens.Add("BROTHER_KILL_CHIRR1");
-            brotherKillChirrTokens.Add("BROTHER_KILL_CHIRR2");
+            LanguageAPI.Add("SS2UBROTHER_KILL_CHIRR1", " Join your sisters.");
+            LanguageAPI.Add("SS2UBROTHER_KILL_CHIRR2", " Extinct at last.");
+            LanguageAPI.Add("SS2UBROTHERHURT_CHIRR_BEFRIEND_1", " YOU... REACH OUT... TO ME, VERMIN...?");
+            brotherKillChirrTokens.Add("SS2UBROTHER_KILL_CHIRR1");
+            brotherKillChirrTokens.Add("SS2UBROTHER_KILL_CHIRR2");
 
             RegisterProjectiles();
             RegisterStates();
             SetUpSkills();
             CreateDoppelganger();
 
-            survivorDef = Modules.Prefabs.RegisterNewSurvivor(chirrPrefab, Cores.PrefabCore.CreateDisplayPrefab("ChirrDisplay", chirrPrefab), Color.green, "CHIRR", 40.2f);
+            survivorDef = Modules.Prefabs.RegisterNewSurvivor(chirrPrefab, Cores.PrefabCore.CreateDisplayPrefab("ChirrDisplay", chirrPrefab), Color.green, "SS2UCHIRR", 40.2f);
 
             ChirrSkins.RegisterSkins();
             RoR2.RoR2Application.onLoad += SetBodyIndex;
@@ -110,7 +110,7 @@ namespace Starstorm2.Survivors.Chirr
 
                 foreach (var item in SurvivorCatalog.allSurvivorDefs)
                 {
-                    if (item.bodyPrefab.name == "ChirrBody")
+                    if (item.bodyPrefab.name == "SS2UChirrBody")
                     {
                         var skele = Modules.Assets.mainAssetBundle.LoadAsset<UnityEngine.GameObject>("animChirrEmote.prefab");
 
@@ -133,7 +133,7 @@ namespace Starstorm2.Survivors.Chirr
 
         private void ResetMithrixConvertedTracker(Run obj)
         {
-            survivorDef.outroFlavorToken = "CHIRR_OUTRO_FLAVOR";
+            survivorDef.outroFlavorToken = "SS2UCHIRR_OUTRO_FLAVOR";
         }
 
         private void RegisterStates()
@@ -153,7 +153,7 @@ namespace Starstorm2.Survivors.Chirr
         private void RegisterProjectiles()
         {
 
-            GameObject chirrTargetIndicator = PrefabAPI.InstantiateClone(LegacyResourcesAPI.Load<GameObject>("Prefabs/WoodSpriteIndicator"), "ChirrTargetIndicator", false);
+            GameObject chirrTargetIndicator = PrefabAPI.InstantiateClone(LegacyResourcesAPI.Load<GameObject>("Prefabs/WoodSpriteIndicator"), "SS2UChirrTargetIndicator", false);
             chirrTargetIndicator.AddComponent<NetworkIdentity>();
             chirrTargetIndicator.GetComponentInChildren<UnityEngine.SpriteRenderer>().sprite = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("texChirrTargetCrosshair");
             chirrTargetIndicator.transform.localScale = new Vector3(.04f,.04f,.04f);
@@ -163,7 +163,7 @@ namespace Starstorm2.Survivors.Chirr
             SpriteRenderer sr = chirrTargetIndicator.GetComponentInChildren<SpriteRenderer>();
             sr.color = Color.white;
 
-            GameObject chirrBefriendIndicator = PrefabAPI.InstantiateClone(LegacyResourcesAPI.Load<GameObject>("Prefabs/WoodSpriteIndicator"), "ChirrTargetIndicator", false);
+            GameObject chirrBefriendIndicator = PrefabAPI.InstantiateClone(LegacyResourcesAPI.Load<GameObject>("Prefabs/WoodSpriteIndicator"), "SS2UChirrTargetIndicator", false);
             chirrBefriendIndicator.GetComponentInChildren<UnityEngine.SpriteRenderer>().sprite = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("texChirrBefriendCrosshair");
             chirrBefriendIndicator.GetComponentInChildren<UnityEngine.SpriteRenderer>().transform.rotation = Quaternion.Euler(0, 0, 0);
             chirrBefriendIndicator.GetComponentInChildren<Rewired.ComponentControls.Effects.RotateAroundAxis>().enabled = false;
@@ -171,7 +171,7 @@ namespace Starstorm2.Survivors.Chirr
             sr = chirrBefriendIndicator.GetComponentInChildren<SpriteRenderer>();
             sr.color = Color.white;
 
-            GameObject chirrFriendIndicator = PrefabAPI.InstantiateClone(LegacyResourcesAPI.Load<GameObject>("Prefabs/WoodSpriteIndicator"), "ChirrFriendIndicator", false);
+            GameObject chirrFriendIndicator = PrefabAPI.InstantiateClone(LegacyResourcesAPI.Load<GameObject>("Prefabs/WoodSpriteIndicator"), "SS2UChirrFriendIndicator", false);
             chirrFriendIndicator.AddComponent<NetworkIdentity>();
             chirrFriendIndicator.GetComponentInChildren<UnityEngine.SpriteRenderer>().sprite = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("texChirrFriendCrosshair");
             chirrFriendIndicator.transform.localScale = new Vector3(.04f, .04f, .04f);
@@ -242,12 +242,12 @@ namespace Starstorm2.Survivors.Chirr
 
         private void SetUpPassive(SkillLocator skillLocator)
         {
-            LanguageAPI.Add("CHIRR_PASSIVE_NAME", "Take Flight");
-            LanguageAPI.Add("CHIRR_PASSIVE_DESCRIPTION", "Chirr jumps <style=cIsUtility>50% higher</style> and can <style=cIsUtility>hover in the air</style> by holding the Jump key.");
+            LanguageAPI.Add("SS2UCHIRR_PASSIVE_NAME", "Take Flight");
+            LanguageAPI.Add("SS2UCHIRR_PASSIVE_DESCRIPTION", "Chirr jumps <style=cIsUtility>50% higher</style> and can <style=cIsUtility>hover in the air</style> by holding the Jump key.");
 
             skillLocator.passiveSkill.enabled = true;
-            skillLocator.passiveSkill.skillNameToken = "CHIRR_PASSIVE_NAME";
-            skillLocator.passiveSkill.skillDescriptionToken = "CHIRR_PASSIVE_DESCRIPTION";
+            skillLocator.passiveSkill.skillNameToken = "SS2UCHIRR_PASSIVE_NAME";
+            skillLocator.passiveSkill.skillDescriptionToken = "SS2UCHIRR_PASSIVE_DESCRIPTION";
             skillLocator.passiveSkill.icon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("ChirrPassive");
         }
 
@@ -256,15 +256,15 @@ namespace Starstorm2.Survivors.Chirr
             var dmg = ChirrPrimary.damageCoefficient * 100f;
             var dartCount = ChirrPrimary.baseShotCount;
 
-            LanguageAPI.Add("CHIRR_DARTS_NAME", "Life Thorns");
-            LanguageAPI.Add("CHIRR_DARTS_DESCRIPTION", $"Fire a barrage of <style=cIsUtility>tracking thorns</style> for <style=cIsDamage>{dartCount}x{dmg}% damage</style>.");
+            LanguageAPI.Add("SS2UCHIRR_DARTS_NAME", "Life Thorns");
+            LanguageAPI.Add("SS2UCHIRR_DARTS_DESCRIPTION", $"Fire a barrage of <style=cIsUtility>tracking thorns</style> for <style=cIsDamage>{dartCount}x{dmg}% damage</style>.");
 
             SkillDef primaryDef1 = ScriptableObject.CreateInstance<SkillDef>();
             primaryDef1.activationState = new SerializableEntityStateType(typeof(ChirrPrimary));
             primaryDef1.activationStateMachineName = "Weapon";
-            primaryDef1.skillName = "CHIRR_DARTS_NAME";
-            primaryDef1.skillNameToken = "CHIRR_DARTS_NAME";
-            primaryDef1.skillDescriptionToken = "CHIRR_DARTS_DESCRIPTION";
+            primaryDef1.skillName = "SS2UCHIRR_DARTS_NAME";
+            primaryDef1.skillNameToken = "SS2UCHIRR_DARTS_NAME";
+            primaryDef1.skillDescriptionToken = "SS2UCHIRR_DARTS_DESCRIPTION";
             primaryDef1.icon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("ChirrPrimary");
             primaryDef1.baseMaxStock = 1;
             primaryDef1.baseRechargeInterval = 0f;
@@ -293,15 +293,15 @@ namespace Starstorm2.Survivors.Chirr
 
             SkillLocator skill = chirrPrefab.GetComponent<SkillLocator>();
 
-            LanguageAPI.Add("CHIRR_HEADBUTT_NAME", "Headbutt");
-            LanguageAPI.Add("CHIRR_HEADBUTT_DESCRIPTION", $"<style=cIsDamage>Stunning</style>. Lunge forward and knock enemies back for <style=cIsDamage>{dmg}% damage</style>.");
+            LanguageAPI.Add("SS2UCHIRR_HEADBUTT_NAME", "Headbutt");
+            LanguageAPI.Add("SS2UCHIRR_HEADBUTT_DESCRIPTION", $"<style=cIsDamage>Stunning</style>. Lunge forward and knock enemies back for <style=cIsDamage>{dmg}% damage</style>.");
 
             SkillDef secondaryDef1 = ScriptableObject.CreateInstance<SkillDef>();
             secondaryDef1.activationState = new SerializableEntityStateType(typeof(Headbutt));
             secondaryDef1.activationStateMachineName = "Weapon";
-            secondaryDef1.skillName = "CHIRR_HEADBUTT_NAME";
-            secondaryDef1.skillNameToken = "CHIRR_HEADBUTT_NAME";
-            secondaryDef1.skillDescriptionToken = "CHIRR_HEADBUTT_DESCRIPTION";
+            secondaryDef1.skillName = "SS2UCHIRR_HEADBUTT_NAME";
+            secondaryDef1.skillNameToken = "SS2UCHIRR_HEADBUTT_NAME";
+            secondaryDef1.skillDescriptionToken = "SS2UCHIRR_HEADBUTT_DESCRIPTION";
             secondaryDef1.icon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("ChirrSecondary");
             secondaryDef1.baseMaxStock = 1;
             secondaryDef1.baseRechargeInterval = 4f;
@@ -328,15 +328,15 @@ namespace Starstorm2.Survivors.Chirr
         {
             SkillLocator skill = chirrPrefab.GetComponent<SkillLocator>();
 
-            LanguageAPI.Add("CHIRR_HEAL_NAME", "Sanative Aura");
-            LanguageAPI.Add("CHIRR_HEAL_DESCRIPTION", "Heal yourself and nearby allies for <style=cIsHealing>25%</style> of their total health and <style=cIsUtility>cleanse all debuffs</style>. Allies gain <style=cIsHealing>increased health regeneration</style> for 3 seconds.");
+            LanguageAPI.Add("SS2UCHIRR_HEAL_NAME", "Sanative Aura");
+            LanguageAPI.Add("SS2UCHIRR_HEAL_DESCRIPTION", "Heal yourself and nearby allies for <style=cIsHealing>25%</style> of their total health and <style=cIsUtility>cleanse all debuffs</style>. Allies gain <style=cIsHealing>increased health regeneration</style> for 3 seconds.");
 
             SkillDef utilityDef1 = ScriptableObject.CreateInstance<SkillDef>();
             utilityDef1.activationState = new SerializableEntityStateType(typeof(ChirrHeal));
             utilityDef1.activationStateMachineName = "Weapon";
-            utilityDef1.skillName = "CHIRR_HEAL_NAME";
-            utilityDef1.skillNameToken = "CHIRR_HEAL_NAME";
-            utilityDef1.skillDescriptionToken = "CHIRR_HEAL_DESCRIPTION";
+            utilityDef1.skillName = "SS2UCHIRR_HEAL_NAME";
+            utilityDef1.skillNameToken = "SS2UCHIRR_HEAL_NAME";
+            utilityDef1.skillDescriptionToken = "SS2UCHIRR_HEAL_DESCRIPTION";
             utilityDef1.icon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("ChirrUtility");
             utilityDef1.baseMaxStock = 1;
             utilityDef1.baseRechargeInterval = 15f;
@@ -364,15 +364,15 @@ namespace Starstorm2.Survivors.Chirr
 
             LanguageAPI.Add("KEYWORD_SS2U_CHIRR_PING", "<style=cKeywordName>Ping Command</style><style=cSub>Your friend will attempt to attack pinged enemies.</style>");
 
-            LanguageAPI.Add("CHIRR_BEFRIEND_NAME", "Natural Link");
-            LanguageAPI.Add("CHIRR_BEFRIEND_DESCRIPTION", "<style=cIsUtility>Befriend</style> the targeted enemy if it's below <style=cIsHealth>50% health</style>. Friends <style=cIsUtility>inherit all your items</style> and absorb <style=cIsUtility>30% of damage taken</style>.");
+            LanguageAPI.Add("SS2UCHIRR_BEFRIEND_NAME", "Natural Link");
+            LanguageAPI.Add("SS2UCHIRR_BEFRIEND_DESCRIPTION", "<style=cIsUtility>Befriend</style> the targeted enemy if it's below <style=cIsHealth>50% health</style>. Friends <style=cIsUtility>inherit all your items</style> and absorb <style=cIsUtility>30% of damage taken</style>.");
 
             BefriendSkillDef befriendDef = ScriptableObject.CreateInstance<BefriendSkillDef>();
             befriendDef.activationState = new SerializableEntityStateType(typeof(Befriend));
             befriendDef.activationStateMachineName = "Befriend";
-            befriendDef.skillName = "CHIRR_BEFRIEND_NAME";
-            befriendDef.skillNameToken = "CHIRR_BEFRIEND_NAME";
-            befriendDef.skillDescriptionToken = "CHIRR_BEFRIEND_DESCRIPTION";
+            befriendDef.skillName = "SS2UCHIRR_BEFRIEND_NAME";
+            befriendDef.skillNameToken = "SS2UCHIRR_BEFRIEND_NAME";
+            befriendDef.skillDescriptionToken = "SS2UCHIRR_BEFRIEND_DESCRIPTION";
             befriendDef.icon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("ChirrSpecial1");
             befriendDef.baseMaxStock = 1;
             befriendDef.baseRechargeInterval = 3f;
@@ -392,14 +392,14 @@ namespace Starstorm2.Survivors.Chirr
             skillLocator.special = Utils.RegisterSkillsToFamily(chirrPrefab, specialVariant1);
             Modules.Skills.FixSkillName(befriendDef);
 
-            LanguageAPI.Add("CHIRR_LEASH_NAME", "Unbreakable Bond");
-            LanguageAPI.Add("CHIRR_LEASH_DESCRIPTION", "Teleport your friend closer to you. Hold to part ways with your friend.");
+            LanguageAPI.Add("SS2UCHIRR_LEASH_NAME", "Unbreakable Bond");
+            LanguageAPI.Add("SS2UCHIRR_LEASH_DESCRIPTION", "Teleport your friend closer to you. Hold to part ways with your friend.");
             SkillDef leashDef = ScriptableObject.CreateInstance<SkillDef>();    //FriendLeashSkillDef   //Don't need the min leash distance.
             leashDef.activationState = new SerializableEntityStateType(typeof(Leash));
             leashDef.activationStateMachineName = "Leash";
-            leashDef.skillName = "CHIRR_LEASH_NAME";
-            leashDef.skillNameToken = "CHIRR_LEASH_NAME";
-            leashDef.skillDescriptionToken = "CHIRR_LEASH_DESCRIPTION";
+            leashDef.skillName = "SS2UCHIRR_LEASH_NAME";
+            leashDef.skillNameToken = "SS2UCHIRR_LEASH_NAME";
+            leashDef.skillDescriptionToken = "SS2UCHIRR_LEASH_DESCRIPTION";
             leashDef.icon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("ChirrSpecial2");
             leashDef.baseMaxStock = 1;
             leashDef.baseRechargeInterval = 3f;
@@ -417,15 +417,15 @@ namespace Starstorm2.Survivors.Chirr
             Befriend.leashOverrideSkillDef = leashDef;
             Modules.Skills.FixSkillName(leashDef);
 
-            LanguageAPI.Add("CHIRR_BEFRIEND_SCEPTER_NAME", "Prime Natural Link");
-            LanguageAPI.Add("CHIRR_BEFRIEND_SCEPTER_DESCRIPTION", "<style=cIsUtility>Befriend</style> the targeted enemy if it's below <style=cIsHealth>50% health</style>, or below <style=cIsHealth>30% health</style> if it's a boss. Friends <style=cIsUtility>inherit all your items</style> and absorb <style=cIsUtility>30% of damage taken</style>.");
+            LanguageAPI.Add("SS2UCHIRR_BEFRIEND_SCEPTER_NAME", "Prime Natural Link");
+            LanguageAPI.Add("SS2UCHIRR_BEFRIEND_SCEPTER_DESCRIPTION", "<style=cIsUtility>Befriend</style> the targeted enemy if it's below <style=cIsHealth>50% health</style>, or below <style=cIsHealth>30% health</style> if it's a boss. Friends <style=cIsUtility>inherit all your items</style> and absorb <style=cIsUtility>30% of damage taken</style>.");
 
             BefriendSkillDef befriendScepterDef = ScriptableObject.CreateInstance<BefriendSkillDef>();
             befriendScepterDef.activationState = new SerializableEntityStateType(typeof(BefriendScepter));
             befriendScepterDef.activationStateMachineName = "Befriend";
-            befriendScepterDef.skillName = "CHIRR_BEFRIEND_SCEPTER_NAME";
-            befriendScepterDef.skillNameToken = "CHIRR_BEFRIEND_SCEPTER_NAME";
-            befriendScepterDef.skillDescriptionToken = "CHIRR_BEFRIEND_SCEPTER_DESCRIPTION";
+            befriendScepterDef.skillName = "SS2UCHIRR_BEFRIEND_SCEPTER_NAME";
+            befriendScepterDef.skillNameToken = "SS2UCHIRR_BEFRIEND_SCEPTER_NAME";
+            befriendScepterDef.skillDescriptionToken = "SS2UCHIRR_BEFRIEND_SCEPTER_DESCRIPTION";
             befriendScepterDef.icon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("ChirrSpecialScepter");
             befriendScepterDef.baseMaxStock = 1;
             befriendScepterDef.baseRechargeInterval = 3f;
@@ -457,18 +457,18 @@ namespace Starstorm2.Survivors.Chirr
         private void ScepterSetup()
         {
 
-            AncientScepter.AncientScepterItem.instance.RegisterScepterSkill(specialScepterDef, "ChirrBody", SkillSlot.Special, 0);
+            AncientScepter.AncientScepterItem.instance.RegisterScepterSkill(specialScepterDef, "SS2UChirrBody", SkillSlot.Special, 0);
         }
 
         [MethodImpl(MethodImplOptions.NoInlining | MethodImplOptions.NoOptimization)]
         private void ClassicScepterSetup()
         {
-            ThinkInvisible.ClassicItems.Scepter.instance.RegisterScepterSkill(specialScepterDef, "ChirrBody", SkillSlot.Special, specialDef);
+            ThinkInvisible.ClassicItems.Scepter.instance.RegisterScepterSkill(specialScepterDef, "SS2UChirrBody", SkillSlot.Special, specialDef);
         }
 
         public static void CreateDoppelganger()
         {
-            doppelganger = PrefabAPI.InstantiateClone(LegacyResourcesAPI.Load<GameObject>("Prefabs/CharacterMasters/CommandoMonsterMaster"), "ChirrMonsterMaster", true);
+            doppelganger = PrefabAPI.InstantiateClone(LegacyResourcesAPI.Load<GameObject>("Prefabs/CharacterMasters/CommandoMonsterMaster"), "SS2UChirrMonsterMaster", true);
             doppelganger.GetComponent<CharacterMaster>().bodyPrefab = chirrPrefab;
 
             Modules.Prefabs.RemoveAISkillDrivers(doppelganger);
@@ -574,12 +574,12 @@ namespace Starstorm2.Survivors.Chirr
 
         internal static GameObject CreateChirrPrefab()
         {
-            chirrPrefab = Cores.PrefabCore.CreatePrefab("ChirrBody", "mdlChirr", new BodyInfo
+            chirrPrefab = Cores.PrefabCore.CreatePrefab("SS2UChirrBody", "mdlChirr", new BodyInfo
             {
                 armor = 0f,
                 armorGrowth = 0f,
-                bodyName = "ChirrBody",
-                bodyNameToken = "CHIRR_NAME",
+                bodyName = "SS2UChirrBody",
+                bodyNameToken = "SS2UCHIRR_NAME",
                 characterPortrait = Modules.Assets.mainAssetBundle.LoadAsset<Texture2D>("ChirrIcon"),
                 bodyColor = new Color32(129, 167, 98, 255),
                 crosshair = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Treebot/TreebotCrosshair.prefab").WaitForCompletion(),
@@ -589,7 +589,7 @@ namespace Starstorm2.Survivors.Chirr
                 jumpCount = 1,
                 jumpPower = 22.5f,    //15f is standard
                 maxHealth = 100f,
-                subtitleNameToken = "CHIRR_SUBTITLE",
+                subtitleNameToken = "SS2UCHIRR_SUBTITLE",
                 podPrefab = LegacyResourcesAPI.Load<GameObject>("Prefabs/NetworkedObjects/SurvivorPod")
             });
 

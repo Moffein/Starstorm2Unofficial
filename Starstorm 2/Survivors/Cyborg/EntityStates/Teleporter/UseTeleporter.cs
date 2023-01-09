@@ -9,7 +9,7 @@ namespace EntityStates.SS2UStates.Cyborg.Special
     public class UseTeleporter : BaseState
     {
         public static GameObject explosionEffectPrefab;
-        public static float damageCoefficient = 12f;
+        public static float damageCoefficient = 8f;
         public static float radius = 14f;
         public static float baseDuration = 1f;
         private CyborgTeleportTracker teleTracker;
