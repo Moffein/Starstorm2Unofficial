@@ -119,6 +119,28 @@ namespace Starstorm2Unofficial.Survivors.Executioner
             childLocator.FindChild("MaxChargeEffect").Find("Lightning").GetComponent<ParticleSystemRenderer>().trailMaterial = Modules.Assets.matJellyfishLightningLarge;
 
             childLocator.FindChild("SuperchargeEffect").Find("Lightning").GetComponent<ParticleSystemRenderer>().trailMaterial = Modules.Assets.matJellyfishLightningLarge;
+            if (StarstormPlugin.emoteAPILoaded) EmoteAPICompat();
+        }
+
+        [MethodImpl(MethodImplOptions.NoInlining | MethodImplOptions.NoOptimization)]
+        private void EmoteAPICompat()
+        {
+            On.RoR2.SurvivorCatalog.Init += (orig) =>
+            {
+                orig();
+
+                foreach (var item in SurvivorCatalog.allSurvivorDefs)
+                {
+                    if (item.bodyPrefab.name == "SS2UExecutionerBody")
+                    {
+                        var skele = Modules.Assets.mainAssetBundle.LoadAsset<UnityEngine.GameObject>("animExecutionerEmote.prefab");
+
+                        EmotesAPI.CustomEmotesAPI.ImportArmature(item.bodyPrefab, skele);
+                        skele.GetComponentInChildren<BoneMapper>().scale = 1.5f;
+                        break;
+                    }
+                }
+            };
         }
 
         internal override void InitializeUnlockables()

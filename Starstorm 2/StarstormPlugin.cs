@@ -36,7 +36,6 @@ namespace Starstorm2Unofficial
         "LanguageAPI",
         "DirectorAPI",
         "NetworkingAPI",
-        "SoundAPI",
         "CommandHelper",
         "DamageAPI",
         "RecalculateStatsAPI",
@@ -81,10 +80,7 @@ namespace Starstorm2Unofficial
 
         public void Awake()
         {
-            if (BepInEx.Bootstrap.Chainloader.PluginInfos.ContainsKey("com.TeamMoonstorm.Starstorm2-Nightly") || BepInEx.Bootstrap.Chainloader.PluginInfos.ContainsKey("com.TeamMoonstorm.Starstorm2"))
-            {
-                return;
-            }
+            Modules.Files.PluginInfo = Info;
             scepterPluginLoaded = BepInEx.Bootstrap.Chainloader.PluginInfos.ContainsKey("com.DestroyedClone.AncientScepter");
             classicItemsLoaded = BepInEx.Bootstrap.Chainloader.PluginInfos.ContainsKey("com.ThinkInvisible.ClassicItems");
             kingArenaLoaded = BepInEx.Bootstrap.Chainloader.PluginInfos.ContainsKey("com.Kingpinush.KingKombatArena");
@@ -111,6 +107,11 @@ namespace Starstorm2Unofficial
             //Figure out where to place this later.
             ShootableProjectileComponent.AddHooks();
             IgnoreSprintCrosshair.Init();
+        }
+
+        public void Start()
+        {
+            Modules.SoundBanks.Init();
         }
 
         [MethodImpl(MethodImplOptions.NoInlining | MethodImplOptions.NoOptimization)]

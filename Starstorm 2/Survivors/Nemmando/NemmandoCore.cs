@@ -170,6 +170,28 @@ namespace Starstorm2Unofficial.Survivors.Nemmando
             bodyPrefab.GetComponentInChildren<ChildLocator>().FindChild("GunReloadEffect").GetChild(0).GetComponent<ParticleSystemRenderer>().material = Modules.Assets.CreateMaterial("matAmmo");
 
             InitializeBoss();
+            if (StarstormPlugin.emoteAPILoaded) EmoteAPICompat();
+        }
+
+        [MethodImpl(MethodImplOptions.NoInlining | MethodImplOptions.NoOptimization)]
+        private void EmoteAPICompat()
+        {
+            On.RoR2.SurvivorCatalog.Init += (orig) =>
+            {
+                orig();
+
+                foreach (var item in SurvivorCatalog.allSurvivorDefs)
+                {
+                    if (item.bodyPrefab.name == "SS2UNemmandoBody")
+                    {
+                        var skele = Modules.Assets.mainAssetBundle.LoadAsset<UnityEngine.GameObject>("animNemmandoEmote.prefab");
+
+                        EmotesAPI.CustomEmotesAPI.ImportArmature(item.bodyPrefab, skele);
+                        skele.GetComponentInChildren<BoneMapper>().scale = 1.5f;
+                        break;
+                    }
+                }
+            };
         }
 
         private void SetupSwordProjectile()

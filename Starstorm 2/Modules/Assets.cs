@@ -69,19 +69,16 @@ namespace Starstorm2Unofficial.Modules
         internal static GameObject nemChargedSlashStartFXBlue;
         internal static GameObject nemScepterImpactFX;
         internal static GameObject nemDashEffect;
-
         internal static GameObject nemSaberSwingFX;
+        #endregion
+
         internal static GameObject mercSwingFX;
 
         internal static NetworkSoundEventDef nemImpactSoundDef;
-        #endregion
-
-        private const string assetbundleName = "Assets.assetstorm";
 
         internal static void Initialize()
         {
             LoadAssetBundle();
-            LoadSoundbank();
             PopulateAssets();
         }
 
@@ -89,29 +86,10 @@ namespace Starstorm2Unofficial.Modules
         {
             if (mainAssetBundle == null)
             {
-                using (var assetStream = Assembly.GetExecutingAssembly().GetManifestResourceStream("Starstorm2Unofficial." + assetbundleName))
-                {
-                    mainAssetBundle = AssetBundle.LoadFromStream(assetStream);
-                }
+                mainAssetBundle = AssetBundle.LoadFromFile(Files.GetPathToFile("Assets", "assetstorm"));
             }
 
             assetNames = mainAssetBundle.GetAllAssetNames();
-        }
-
-        internal static void LoadSoundbank()
-        {
-            using (Stream manifestResourceStream2 = Assembly.GetExecutingAssembly().GetManifestResourceStream("Starstorm2Unofficial.Assets.Starstorm2.bnk"))
-            {
-                byte[] array = new byte[manifestResourceStream2.Length];
-                manifestResourceStream2.Read(array, 0, array.Length);
-                SoundAPI.SoundBanks.Add(array);
-            }
-            using (Stream manifestResourceStream2 = Assembly.GetExecutingAssembly().GetManifestResourceStream("Starstorm2Unofficial.Assets.SS2Music.bnk"))
-            {
-                byte[] array = new byte[manifestResourceStream2.Length];
-                manifestResourceStream2.Read(array, 0, array.Length);
-                SoundAPI.SoundBanks.Add(array);
-            }
         }
 
         internal static void PopulateAssets()

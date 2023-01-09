@@ -84,6 +84,8 @@
     <Compile Include="IgnoreSprintCrosshair.cs" />
     <Compile Include="Modules\CameraParams.cs" />
     <Compile Include="Modules\EntityStates\BaseMeleeAttack.cs" />
+    <Compile Include="Modules\Files.cs" />
+    <Compile Include="Modules\SoundBanks.cs" />
     <Compile Include="Survivors\Chirr\BefriendSkillDef.cs" />
     <Compile Include="Survivors\Chirr\ChirrSkins.cs" />
     <Compile Include="Survivors\Chirr\Components\ChirrFriendController.cs" />
@@ -281,10 +283,10 @@
     <Compile Include="Survivors\Pyro\PyroCore.cs" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Assets\Starstorm2.bnk" />
+    <None Include="Assets\Starstorm2.bnk" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Assets\assetstorm" />
+    <None Include="Assets\assetstorm" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Cores\Enemies\" />
@@ -652,7 +654,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Assets\SS2Music.bnk" />
+    <None Include="Assets\SS2Music.bnk" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

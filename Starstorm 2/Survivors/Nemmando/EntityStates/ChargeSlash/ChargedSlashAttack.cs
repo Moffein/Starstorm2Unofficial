@@ -6,6 +6,7 @@ using Starstorm2Unofficial.Components;
 using Starstorm2Unofficial.Cores;
 using Starstorm2Unofficial.Survivors.Nemmando.Components;
 using UnityEngine;
+using UnityEngine.Networking;
 
 namespace EntityStates.SS2UStates.Nemmando
 {
@@ -40,15 +41,25 @@ namespace EntityStates.SS2UStates.Nemmando
         public override void OnEnter()
         {
             base.OnEnter();
-            base.characterBody.isSprinting = false;
-            this.hitsFired = 0;
+
             this.duration = ChargedSlashAttack.baseDuration / this.attackSpeedStat;
+            if (base.characterBody)
+            {
+                base.characterBody.isSprinting = false;
+                base.characterBody.hideCrosshair = false;
+
+                if (NetworkServer.active)
+                {
+                    base.characterBody.AddTimedBuff(RoR2Content.Buffs.ArmorBoost, this.duration + 0.5f);
+                }
+            }
+
+            this.hitsFired = 0;
             this.hitCount = Mathf.RoundToInt(Util.Remap(this.charge, 0f, 1f, ChargedSlashAttack.minHits, ChargedSlashAttack.maxHits));
             this.damageCoefficient = Util.Remap(this.charge, 0f, 1f, ChargedSlashAttack.minDamageCoefficient, ChargedSlashAttack.maxDamageCoefficient);
             this.radius = Util.Remap(this.charge, 0f, 1f, ChargedSlashAttack.minRadius, ChargedSlashAttack.maxRadius);
             this.emission = Util.Remap(this.charge, 0f, 1f, ChargedSlashAttack.minEmission, ChargedSlashAttack.maxEmission);
             this.nemmandoController = base.GetComponent<NemmandoController>();
-            base.characterBody.hideCrosshair = false;
 
             this.minimumEmission = this.effectComponent.defaultSwordEmission;
 

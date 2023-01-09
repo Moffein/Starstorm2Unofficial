@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 1410582425
+CRC: 1642449554
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: bb2ad07750ba51244efcd3591286b9b0
+    Hash: ec01db56459eca0901694711fd751459
   TypeTreeHash:
     serializedVersion: 2
     Hash: e085efc3cec39229c22603e1a47b8115
@@ -118,6 +118,7 @@ Assets:
 - Assets/AssetBundle/Cyborg/cyborgTele.fbx
 - Assets/AssetBundle/Items/StrangeCan/strange_can.png
 - Assets/AssetBundle/Nemmando/Animations/SprintF.anim
+- Assets/AssetBundle/Executioner/animExecutionerEmote.prefab
 - Assets/AssetBundle/Nemmando/Animations/2Special12.anim
 - Assets/AssetBundle/Items/GreaterWarbanner/greater_warbanner_prop.fbx
 - Assets/AssetBundle/Cyborg/Animations/Landing.anim
@@ -227,6 +228,7 @@ Assets:
 - Assets/AssetBundle/Pyro/Icons/pyroSkill2.png
 - Assets/AssetBundle/Nemmando/VFX/Materials/matNemmandoLightningWhite.mat
 - Assets/AssetBundle/Chirr/Animations/Idle.anim
+- Assets/FBX/Nemmando/NemmandoAnims_emoteskeleton.fbx
 - Assets/AssetBundle/Nemmando/VFX/Textures/texNemmandoSwing.png
 - Assets/AssetBundle/Nucleator/Animations/Clips/PrimaryCharge.anim
 - Assets/AssetBundle/Nemmando/Animations/NemmandoAimPitch.anim
@@ -265,6 +267,7 @@ Assets:
 - Assets/AssetBundle/Pyro/Animations/Old/RunB.anim
 - Assets/AssetBundle/Chirr/ChirrIcon.png
 - Assets/AssetBundle/Items/DroidHead/droidheadtex.png
+- Assets/AssetBundle/Nemmando/animNemmandoEmote.prefab
 - Assets/AssetBundle/Nemmando/Animations/Descend.anim
 - Assets/AssetBundle/Executioner/Materials/matWastelander.mat
 - Assets/AssetBundle/Cyborg/cyborgTeleGhost.prefab
