@@ -17,29 +17,29 @@ namespace Starstorm2.Modules
             #region Executioner
             skinList.Add(new SkinEffectData
             {
-                skinNameToken = "EXECUTIONER_DEFAULT_SKIN_NAME",
+                skinNameToken = "SS2UEXECUTIONER_DEFAULT_SKIN_NAME",
                 shootSound = "ExecutionerPrimary",
                 ionShootSound = "ExecutionerSecondary",
-                bodyName = "EXECUTIONER_NAME"
+                bodyName = "SS2UEXECUTIONER_NAME"
             });
 
             skinList.Add(new SkinEffectData
             {
-                skinNameToken = "EXECUTIONER_MASTERY_SKIN_NAME",
+                skinNameToken = "SS2UEXECUTIONER_MASTERY_SKIN_NAME",
                 shootSound = "ExecutionerPrimary",
                 ionShootSound = "ExecutionerSecondary"
             });
 
             skinList.Add(new SkinEffectData
             {
-                skinNameToken = "EXECUTIONER_KNIGHT_SKIN_NAME",
+                skinNameToken = "SS2UEXECUTIONER_KNIGHT_SKIN_NAME",
                 shootSound = "ExecutionerPrimary",
                 ionShootSound = "ExecutionerSecondary"
             });
 
             skinList.Add(new SkinEffectData
             {
-                skinNameToken = "EXECUTIONER_WASTELANDER_SKIN_NAME",
+                skinNameToken = "SS2UEXECUTIONER_WASTELANDER_SKIN_NAME",
                 shootSound = "WastelanderPrimary",
                 ionShootSound = "WastelanderSecondary"
             });

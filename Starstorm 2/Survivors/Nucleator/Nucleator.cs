@@ -23,6 +23,8 @@ namespace Starstorm2.Modules.Survivors
     internal class Nucleator : SurvivorBase
     {
         internal override string bodyName { get; set; } = "Nucleator";
+        internal override string modelName { get; set; } = "mdlNucleator";
+        internal override string displayName { get; set; } = "NucleatorDisplay";
 
         internal override GameObject bodyPrefab { get; set; }
         internal override GameObject displayPrefab { get; set; }

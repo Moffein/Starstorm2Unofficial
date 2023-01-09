@@ -26,7 +26,9 @@ namespace Starstorm2.Survivors.Executioner
 
         public static BodyIndex bodyIndex;
 
-        internal override string bodyName { get; set; } = "Executioner";
+        internal override string bodyName { get; set; } = "SS2UExecutioner";
+        internal override string modelName { get; set; } = "mdlExecutioner";
+        internal override string displayName { get; set; } = "ExecutionerDisplay";
 
         internal override GameObject bodyPrefab { get; set; }
         internal override GameObject displayPrefab { get; set; }
@@ -36,8 +38,8 @@ namespace Starstorm2.Survivors.Executioner
         internal override StarstormBodyInfo bodyInfo { get; set; } = new StarstormBodyInfo
         {
             armor = 0f,
-            bodyName = "ExecutionerBody",
-            bodyNameToken = "EXECUTIONER_NAME",
+            bodyName = "SS2UExecutionerBody",
+            bodyNameToken = "SS2UEXECUTIONER_NAME",
             bodyColor = new Color(0.69f, 0.44f, 0.49f),
             characterPortrait = Modules.Assets.LoadCharacterIcon("Executioner"),
             crosshair = Modules.Assets.LoadCrosshair("Standard"),
@@ -46,7 +48,7 @@ namespace Starstorm2.Survivors.Executioner
             healthRegen = 1f,
             jumpCount = 1,
             maxHealth = 110f,
-            subtitleNameToken = "EXECUTIONER_SUBTITLE",
+            subtitleNameToken = "SS2UEXECUTIONER_SUBTITLE",
             podPrefab = LegacyResourcesAPI.Load<GameObject>("Prefabs/NetworkedObjects/SurvivorPod")
         };
 
@@ -86,7 +88,7 @@ namespace Starstorm2.Survivors.Executioner
 
         private void SetBodyIndex()
         {
-            bodyIndex = BodyCatalog.FindBodyIndex("ExecutionerBody");
+            bodyIndex = BodyCatalog.FindBodyIndex("SS2UExecutionerBody");
         }
 
         internal override void InitializeCharacter()
@@ -148,16 +150,16 @@ namespace Starstorm2.Survivors.Executioner
 
             #region Primary
             //Modules.Skills.AddPrimarySkill(bodyPrefab, Modules.Skills.CreatePrimarySkillDef(new SerializableEntityStateType(typeof(EntityStates.Starstorm2States.Executioner.ExecutionerPistol)), "Weapon", "EXECUTIONER_PISTOL_NAME", "EXECUTIONER_PISTOL_DESCRIPTION", Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("texExecutionerPrimary"), false));
-            Modules.Skills.AddPrimarySkill(bodyPrefab, Modules.Skills.CreatePrimarySkillDef(new SerializableEntityStateType(typeof(EntityStates.SS2UStates.Executioner.ExecutionerBurstPistol)), "Weapon", "EXECUTIONER_PISTOL_NAME", "EXECUTIONER_PISTOL_DESCRIPTION", Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("texExecutionerPrimary"), false));
+            Modules.Skills.AddPrimarySkill(bodyPrefab, Modules.Skills.CreatePrimarySkillDef(new SerializableEntityStateType(typeof(EntityStates.SS2UStates.Executioner.ExecutionerBurstPistol)), "Weapon", "SS2UEXECUTIONER_PISTOL_NAME", "SS2UEXECUTIONER_PISTOL_DESCRIPTION", Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("texExecutionerPrimary"), false));
             //if (Modules.Config.ss_test.Value) Modules.Skills.AddPrimarySkill(bodyPrefab, Modules.Skills.CreatePrimarySkillDef(new SerializableEntityStateType(typeof(EntityStates.Starstorm2States.Executioner.ExecutionerTaser)), "Weapon", "EXECUTIONER_TASER_NAME", "EXECUTIONER_TASER_DESCRIPTION", Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("texExecutionerPrimary"), false));
             #endregion
 
             #region Secondary
             SkillDef ionGunSkillDef = Modules.Skills.CreateSkillDef(new SkillDefInfo
             {
-                skillName = "EXECUTIONER_IONGUN_NAME",
-                skillNameToken = "EXECUTIONER_IONGUN_NAME",
-                skillDescriptionToken = "EXECUTIONER_IONGUN_DESCRIPTION",
+                skillName = "SS2UEXECUTIONER_IONGUN_NAME",
+                skillNameToken = "SS2UEXECUTIONER_IONGUN_NAME",
+                skillDescriptionToken = "SS2UEXECUTIONER_IONGUN_DESCRIPTION",
                 skillIcon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("texExecutionerSecondary"),
                 activationState = new SerializableEntityStateType(typeof(ExecutionerIonGun)),
                 activationStateMachineName = "Weapon",
@@ -184,9 +186,9 @@ namespace Starstorm2.Survivors.Executioner
             #region Utility
             SkillDef dashSkillDef = Modules.Skills.CreateSkillDef(new SkillDefInfo
             {
-                skillName = "EXECUTIONER_DASH_NAME",
-                skillNameToken = "EXECUTIONER_DASH_NAME",
-                skillDescriptionToken = "EXECUTIONER_DASH_DESCRIPTION",
+                skillName = "SS2UEXECUTIONER_DASH_NAME",
+                skillNameToken = "SS2UEXECUTIONER_DASH_NAME",
+                skillDescriptionToken = "SS2UEXECUTIONER_DASH_DESCRIPTION",
                 skillIcon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("texExecutionerUtility"),
                 activationState = new SerializableEntityStateType(typeof(EntityStates.SS2UStates.Executioner.ExecutionerDash)),
                 activationStateMachineName = "Slide",
@@ -216,9 +218,9 @@ namespace Starstorm2.Survivors.Executioner
             #region Special
             SkillDef executionSkillDef = Modules.Skills.CreateSkillDef(new SkillDefInfo
             {
-                skillName = "EXECUTIONER_AXE_NAME",
-                skillNameToken = "EXECUTIONER_AXE_NAME",
-                skillDescriptionToken = "EXECUTIONER_AXE_DESCRIPTION",
+                skillName = "SS2UEXECUTIONER_AXE_NAME",
+                skillNameToken = "SS2UEXECUTIONER_AXE_NAME",
+                skillDescriptionToken = "SS2UEXECUTIONER_AXE_DESCRIPTION",
                 skillIcon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("texExecutionerSpecial"),
                 activationState = new SerializableEntityStateType(typeof(ExecutionerAxe)),
                 activationStateMachineName = "Weapon",
@@ -245,9 +247,9 @@ namespace Starstorm2.Survivors.Executioner
 
             SkillDef scepterSkillDef = Modules.Skills.CreateSkillDef(new SkillDefInfo
             {
-                skillName = "EXECUTIONER_AXE_SCEPTER_NAME",
-                skillNameToken = "EXECUTIONER_AXE_SCEPTER_NAME",
-                skillDescriptionToken = "EXECUTIONER_AXE_SCEPTER_DESCRIPTION",
+                skillName = "SS2UEXECUTIONER_AXE_SCEPTER_NAME",
+                skillNameToken = "SS2UEXECUTIONER_AXE_SCEPTER_NAME",
+                skillDescriptionToken = "SS2UEXECUTIONER_AXE_SCEPTER_DESCRIPTION",
                 skillIcon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("texExecutionerSpecialScepter"),
                 activationState = new SerializableEntityStateType(typeof(ExecutionerAxeScepter)),
                 activationStateMachineName = "Weapon",
@@ -308,59 +310,59 @@ namespace Starstorm2.Survivors.Executioner
 
         internal override void RegisterTokens()
         {
-            LanguageAPI.Add("EXECUTIONER_NAME", "Executioner");
-            LanguageAPI.Add("EXECUTIONER_SUBTITLE", "Dreaded Guillotine");
-            LanguageAPI.Add("EXECUTIONER_DESCRIPTION", "The Executioner's goal is to spill as much blood as possible in the shortest amount of time. Bullets loaded, ion manipulators charged.\r\n\r\n" +
+            LanguageAPI.Add("SS2UEXECUTIONER_NAME", "Executioner");
+            LanguageAPI.Add("SS2UEXECUTIONER_SUBTITLE", "Dreaded Guillotine");
+            LanguageAPI.Add("SS2UEXECUTIONER_DESCRIPTION", "The Executioner's goal is to spill as much blood as possible in the shortest amount of time. Bullets loaded, ion manipulators charged.\r\n\r\n" +
                 " < ! > Ion Burst deals massive damage, but does not regenerate stocks over time.\r\n\r\n" +
                 " < ! > Crowd Disperion interrupts enemy attacks, providing you with a window of opportunity.\r\n\r\n" +
                 " < ! > Feared enemies give extra Ion Burst charges when killed.\r\n\r\n" +
                 " < ! > Combine Execution with Crowd Dispersion to quickly kill groups of enemies.\r\n\r\n");
-            LanguageAPI.Add("EXECUTIONER_OUTRO_FLAVOR", "..and so he left, bloodlust unfulfilled.");
-            LanguageAPI.Add("EXECUTIONER_OUTRO_FAILURE", "..and so he vanished, escaping what he'd believed was inevitable.");
-            LanguageAPI.Add("EXECUTIONER_LORE", "Death is inevitable. It comes for us all. Some may try to evade it, or run from it. But death arrives all the same. Death, however, is simply the cost of war. And death in glorious combat is one of the best deaths a man could ask for.\n\n" +
+            LanguageAPI.Add("SS2UEXECUTIONER_OUTRO_FLAVOR", "..and so he left, bloodlust unfulfilled.");
+            LanguageAPI.Add("SS2UEXECUTIONER_OUTRO_FAILURE", "..and so he vanished, escaping what he'd believed was inevitable.");
+            LanguageAPI.Add("SS2UEXECUTIONER_LORE", "Death is inevitable. It comes for us all. Some may try to evade it, or run from it. But death arrives all the same. Death, however, is simply the cost of war. And death in glorious combat is one of the best deaths a man could ask for.\n\n" +
                 "But, as always, some would seek to run from death. We call them by many names. Deserters, cowards, turncoats. Each and every one of them, traitors to the cause. These traitors must be punished for their crime. And that punishment: in an ironic twist, is the very thing they tried to avoid.\n\n" +
                 "Death will come for them. Not as a robed spectre with a scythe. Not in a trench coat, holding a revolver. Not as a sickness, nor the wear of time. No. For them, death will come bearing lustrous battlegarb, with service pistol loaded, and ion manipulators fully charged.");
 
-            LanguageAPI.Add("EXECUTIONER_DEFAULT_SKIN_NAME", "Default");
-            LanguageAPI.Add("EXECUTIONER_MASTERY_SKIN_NAME", "Vigilante");
-            LanguageAPI.Add("EXECUTIONER_KNIGHT_SKIN_NAME", "Gladiator");
-            LanguageAPI.Add("EXECUTIONER_WASTELANDER_SKIN_NAME", "Wastelander");
+            LanguageAPI.Add("SS2UEXECUTIONER_DEFAULT_SKIN_NAME", "Default");
+            LanguageAPI.Add("SS2UEXECUTIONER_MASTERY_SKIN_NAME", "Vigilante");
+            LanguageAPI.Add("SS2UEXECUTIONER_KNIGHT_SKIN_NAME", "Gladiator");
+            LanguageAPI.Add("SS2UEXECUTIONER_WASTELANDER_SKIN_NAME", "Wastelander");
 
             //float dmg = ExecutionerPistol.damageCoefficient * 100f;
             float dmg = ExecutionerBurstPistol.damageCoefficient * 100f;
             int shotCount = ExecutionerBurstPistol.baseShotCount;
 
-            LanguageAPI.Add("EXECUTIONER_PISTOL_NAME", "Service Pistol");
-            LanguageAPI.Add("EXECUTIONER_PISTOL_DESCRIPTION", $"Fire your pistol for <style=cIsDamage>{shotCount}x{dmg}% damage</style>.");
+            LanguageAPI.Add("SS2UEXECUTIONER_PISTOL_NAME", "Service Pistol");
+            LanguageAPI.Add("SS2UEXECUTIONER_PISTOL_DESCRIPTION", $"Fire your pistol for <style=cIsDamage>{shotCount}x{dmg}% damage</style>.");
             //LanguageAPI.Add("EXECUTIONER_PISTOL_DESCRIPTION", $"Fire your pistol for <style=cIsDamage>{dmg}% damage</style>.");
 
             dmg = ExecutionerTaser.damageCoefficient * 100f;
 
-            LanguageAPI.Add("EXECUTIONER_TASER_NAME", "Deadly Voltage");
-            LanguageAPI.Add("EXECUTIONER_TASER_DESCRIPTION", $"Release an arc of lightning forward for <style=cIsDamage>{dmg}% damage</style>.");
+            LanguageAPI.Add("SS2UEXECUTIONER_TASER_NAME", "Deadly Voltage");
+            LanguageAPI.Add("SS2UEXECUTIONER_TASER_DESCRIPTION", $"Release an arc of lightning forward for <style=cIsDamage>{dmg}% damage</style>.");
 
             dmg = ExecutionerIonGun.damageCoefficient * 100f;
 
-            LanguageAPI.Add("EXECUTIONER_IONGUN_NAME", "Ion Burst");
-            LanguageAPI.Add("EXECUTIONER_IONGUN_DESCRIPTION", $"<style=cIsDamage>Shocking</style>. Unload a barrage of ionized bullets for <style=cIsDamage>{dmg}% damage</style> each. Every slain enemy <style=cIsUtility>adds a bullet</style>.");
+            LanguageAPI.Add("SS2UEXECUTIONER_IONGUN_NAME", "Ion Burst");
+            LanguageAPI.Add("SS2UEXECUTIONER_IONGUN_DESCRIPTION", $"<style=cIsDamage>Shocking</style>. Unload a barrage of ionized bullets for <style=cIsDamage>{dmg}% damage</style> each. Every slain enemy <style=cIsUtility>adds a bullet</style>.");
 
             LanguageAPI.Add("KEYWORD_SS2U_FEAR", "<style=cKeywordName>Fear</style><style=cSub>Reduce movement speed by <style=cIsDamage>50%</style>. Feared enemies are <style=cIsHealth>instantly killed</style> if below <style=cIsHealth>15%</style> health.</style>");
 
-            LanguageAPI.Add("EXECUTIONER_DASH_NAME", "Crowd Dispersion");
-            LanguageAPI.Add("EXECUTIONER_DASH_DESCRIPTION", $"<style=cIsUtility>Dash forward</style> and <style=cIsDamage>Fear</style> nearby enemies.");
+            LanguageAPI.Add("SS2UEXECUTIONER_DASH_NAME", "Crowd Dispersion");
+            LanguageAPI.Add("SS2UEXECUTIONER_DASH_DESCRIPTION", $"<style=cIsUtility>Dash forward</style> and <style=cIsDamage>Fear</style> nearby enemies.");
 
             dmg = ExecutionerAxeSlam.damageCoefficient * 100f;
 
-            LanguageAPI.Add("EXECUTIONER_AXE_NAME", "Execution");
-            LanguageAPI.Add("EXECUTIONER_AXE_DESCRIPTION", $"<style=cIsDamage>Slayer</style>. <style=cIsUtility>Launch into the air</style>, then slam downwards with your ion axe for <style=cIsDamage>{dmg}% damage</style>.");
+            LanguageAPI.Add("SS2UEXECUTIONER_AXE_NAME", "Execution");
+            LanguageAPI.Add("SS2UEXECUTIONER_AXE_DESCRIPTION", $"<style=cIsDamage>Slayer</style>. <style=cIsUtility>Launch into the air</style>, then slam downwards with your ion axe for <style=cIsDamage>{dmg}% damage</style>.");
 
             dmg = ExecutionerAxeSlam.damageCoefficient * 100f * 1.5f;
-            LanguageAPI.Add("EXECUTIONER_AXE_SCEPTER_NAME", "Crowd Execution");
-            LanguageAPI.Add("EXECUTIONER_AXE_SCEPTER_DESCRIPTION", $"<style=cIsDamage>Slayer</style>. <style=cIsUtility>Launch into the air</style>, then slam downwards with your ion axe and <style=cIsUtility>fear</style> nearby enemies while dealing <style=cIsDamage>{dmg}% damage</style>.");
+            LanguageAPI.Add("SS2UEXECUTIONER_AXE_SCEPTER_NAME", "Crowd Execution");
+            LanguageAPI.Add("SS2UEXECUTIONER_AXE_SCEPTER_DESCRIPTION", $"<style=cIsDamage>Slayer</style>. <style=cIsUtility>Launch into the air</style>, then slam downwards with your ion axe and <style=cIsUtility>fear</style> nearby enemies while dealing <style=cIsDamage>{dmg}% damage</style>.");
 
-            LanguageAPI.Add("EXECUTIONER_UNLOCKUNLOCKABLE_ACHIEVEMENT_NAME", "Overkill");
-            LanguageAPI.Add("EXECUTIONER_UNLOCKUNLOCKABLE_ACHIEVEMENT_DESC", "Defeat an enemy by dealing 1000% of its max health in damage. <color=#c11>Host only</color>");
-            LanguageAPI.Add("EXECUTIONER_UNLOCKUNLOCKABLE_UNLOCKABLE_NAME", "Overkill");
+            LanguageAPI.Add("SS2UEXECUTIONER_UNLOCKUNLOCKABLE_ACHIEVEMENT_NAME", "Overkill");
+            LanguageAPI.Add("SS2UEXECUTIONER_UNLOCKUNLOCKABLE_ACHIEVEMENT_DESC", "Defeat an enemy by dealing 1000% of its max health in damage. <color=#c11>Host only</color>");
+            LanguageAPI.Add("SS2UEXECUTIONER_UNLOCKUNLOCKABLE_UNLOCKABLE_NAME", "Overkill");
 
             LanguageAPI.Add("ACHIEVEMENT_SS2UEXECUTIONERCLEARGAMEMONSOON_NAME", "Executioner: Mastery");
             LanguageAPI.Add("ACHIEVEMENT_SS2UEXECUTIONERCLEARGAMEMONSOON_DESCRIPTION", "As Executioner, beat the game or obliterate on Monsoon.");
@@ -439,7 +441,7 @@ namespace Starstorm2.Survivors.Executioner
             List<SkinDef> skins = new List<SkinDef>();
 
             #region DefaultSkin
-            SkinDef defaultSkin = Modules.Skins.CreateSkinDef("EXECUTIONER_DEFAULT_SKIN_NAME",
+            SkinDef defaultSkin = Modules.Skins.CreateSkinDef("SS2UEXECUTIONER_DEFAULT_SKIN_NAME",
                 Assets.mainAssetBundle.LoadAsset<Sprite>("texExecutionerSkin"),
                 defaultRenderers,
                 mainRenderer,
@@ -476,7 +478,7 @@ namespace Starstorm2.Survivors.Executioner
                 Modules.Assets.CreateMaterial("matExecutionerAxe", 1f)
             });
 
-            SkinDef masterySkin = Modules.Skins.CreateSkinDef("EXECUTIONER_MASTERY_SKIN_NAME",
+            SkinDef masterySkin = Modules.Skins.CreateSkinDef("SS2UEXECUTIONER_MASTERY_SKIN_NAME",
                 Assets.mainAssetBundle.LoadAsset<Sprite>("texExecutionerSkinMaster"),
                 masteryRendererInfos,
                 mainRenderer,
@@ -508,7 +510,7 @@ namespace Starstorm2.Survivors.Executioner
                 Modules.Assets.CreateMaterial("matExecutionerAxe", 1f)
             });
 
-            SkinDef grandMasterySkin = Modules.Skins.CreateSkinDef("EXECUTIONER_KNIGHT_SKIN_NAME",
+            SkinDef grandMasterySkin = Modules.Skins.CreateSkinDef("SS2UEXECUTIONER_KNIGHT_SKIN_NAME",
                 Assets.mainAssetBundle.LoadAsset<Sprite>("texExecutionerSkinGrandMaster"),
                 grandMasteryRendererInfos,
                 mainRenderer,
@@ -540,7 +542,7 @@ namespace Starstorm2.Survivors.Executioner
                 Modules.Assets.CreateMaterial("matWastelanderAxe", 1, Color.red)
             });
 
-            SkinDef wastelanderSkin = Modules.Skins.CreateSkinDef("EXECUTIONER_WASTELANDER_SKIN_NAME",
+            SkinDef wastelanderSkin = Modules.Skins.CreateSkinDef("SS2UEXECUTIONER_WASTELANDER_SKIN_NAME",
                 Assets.mainAssetBundle.LoadAsset<Sprite>("texExecutionerWastelander"),
                 wastelanderRendererInfos,
                 mainRenderer,

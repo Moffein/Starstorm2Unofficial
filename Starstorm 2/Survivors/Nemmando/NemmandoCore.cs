@@ -25,6 +25,8 @@ namespace Starstorm2.Survivors.Nemmando
         public static BodyIndex bodyIndex;
 
         internal override string bodyName { get; set; } = "Nemmando";
+        internal override string modelName { get; set; } = "mdlNemmando";
+        internal override string displayName { get; set; } = "NemmandoDisplay";
 
         internal override GameObject bodyPrefab { get; set; }
         internal override GameObject displayPrefab { get; set; }
