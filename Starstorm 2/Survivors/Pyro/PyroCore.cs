@@ -261,7 +261,7 @@ namespace Starstorm2.Survivors.Pyro
             Skills.secondaryAirblast = airblast;
 
             LanguageAPI.Add("SS2UPYRO_SECONDARY_ALT_NAME", "\"Suppressive Fire\"");
-            LanguageAPI.Add("SS2UPYRO_SECONDARY_ALT_DESCRIPTION", $"<color=#D78326>Consume 8% heat</color> to fire a puff of flames that deals <style=cIsDamage>100% damage</style> and <style=cIsDamage>ignites</style>.");
+            LanguageAPI.Add("SS2UPYRO_SECONDARY_ALT_DESCRIPTION", $"<color=#D78326>Consume 8% heat</color> to fire a puff of flames that deals <style=cIsDamage>84% damage</style> and <style=cIsDamage>ignites</style>.");
 
             HeatSkillDef suppressiveFire = ScriptableObject.CreateInstance<HeatSkillDef>();
             suppressiveFire.activationState = new SerializableEntityStateType(typeof(SuppressiveFire));
