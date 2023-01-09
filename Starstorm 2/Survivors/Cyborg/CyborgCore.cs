@@ -166,13 +166,13 @@ namespace Starstorm2Unofficial.Survivors.Cyborg
                 switch (i)
                 {
                     case 0: //fire
-                        overheatParticles[i].startColor = new Color(244f / 255f, 243f / 255f, 183f / 255f);
+                        overheatParticles[i].startColor = Color.white;
                         break;
                     case 1: //beams
-                        overheatParticles[i].startColor = Color.white;
+                        overheatParticles[i].startColor = new Color(244f / 255f, 243f / 255f, 183f / 255f);
                         break;
                     case 2: //lightning
-                        overheatParticles[i].startColor = Color.white;
+                        overheatParticles[i].startColor = new Color(244f / 255f, 243f / 255f, 183f / 255f);
                         break;
                 }
             }
@@ -499,7 +499,7 @@ namespace Starstorm2Unofficial.Survivors.Cyborg
              defenseMatrixDef.skillDescriptionToken = "SS2UCYBORG_SECONDARY_DEFENSEMATRIX_DESCRIPTION";
              defenseMatrixDef.icon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("cyborgsecondary");
              defenseMatrixDef.baseMaxStock = 1;
-             defenseMatrixDef.baseRechargeInterval = 6f;
+             defenseMatrixDef.baseRechargeInterval = 8f;
              defenseMatrixDef.beginSkillCooldownOnSkillEnd = true;
              defenseMatrixDef.canceledFromSprinting = false;
              defenseMatrixDef.fullRestockOnAssign = true;

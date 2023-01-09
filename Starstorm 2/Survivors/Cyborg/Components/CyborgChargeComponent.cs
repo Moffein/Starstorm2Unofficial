@@ -8,7 +8,7 @@ namespace Starstorm2Unofficial.Survivors.Cyborg.Components
     public class CyborgChargeComponent : NetworkBehaviour
     {
         public static float baseMaxShieldDuration = 2f;
-        public static float delayBeforeShieldRecharge = 0.5f;
+        public static float delayBeforeShieldRecharge = 1f;
 
         private float shieldRechargeDelayStopwatch;
         public bool shieldActive = false;
