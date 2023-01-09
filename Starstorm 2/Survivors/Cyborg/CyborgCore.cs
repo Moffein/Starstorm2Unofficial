@@ -194,6 +194,7 @@ namespace Starstorm2Unofficial.Survivors.Cyborg
 
             ProjectileSimple cyborgPylonProjectileSimple = cyborgPylon.GetComponent<ProjectileSimple>();
             cyborgPylonProjectileSimple.lifetime = 1000000f;
+            cyborgPylonProjectileSimple.desiredForwardSpeed = 65f;
 
             ProjectileImpactExplosion pylonProjectileImpactExplosion = cyborgPylon.GetComponent<ProjectileImpactExplosion>();
             pylonProjectileImpactExplosion.lifetime = 1000000f;
