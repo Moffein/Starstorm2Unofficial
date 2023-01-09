@@ -14,9 +14,12 @@ The SS2 team is free to use any of the new code from this mod as long as this re
   - Executioner
   - Cyborg
   - Chirr
+  - Pyro
   - Nemesis Commando
   
  - Storms
+ 
+ - Nemesis Invasion Event (triggered after completing Void Fields)
  
  *Items/Equipments are currently disabled.*
 

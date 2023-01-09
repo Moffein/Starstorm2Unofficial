@@ -81,7 +81,7 @@ namespace EntityStates.SS2UStates.Pyro
                 {
                     if (pc.owner != base.gameObject)
                     {
-                        Vector3 aimSpot = (aimRay.origin + 200 * aimRay.direction) - pc.gameObject.transform.position;
+                        Vector3 aimSpot = (aimRay.origin + 90f * aimRay.direction) - pc.gameObject.transform.position;
 
                         pc.owner = base.gameObject;
                         projectilesReflected++;
@@ -180,7 +180,7 @@ namespace EntityStates.SS2UStates.Pyro
         public static float reflectWindowDuration = 0.2f;
         public static Vector3 hitboxDimensions = new Vector3(8f, 8f, 16f);
         public static float force = 3000f;
-        public static float selfForce = 2700f;
+        public static float selfForce = 3000f;
         public static float heatCost = 0.33f;
         public static GameObject effectPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Treebot/TreebotShockwaveEffect.prefab").WaitForCompletion();
 

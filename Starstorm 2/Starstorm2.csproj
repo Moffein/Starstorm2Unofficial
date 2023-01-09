@@ -231,7 +231,6 @@
     <Compile Include="Cores\Unlockables\Achievements\Vanilla\VanillaGrandMasteryAchievements.cs" />
     <Compile Include="Modules\Achievements\BaseGrandMasteryAchievement.cs" />
     <Compile Include="Cores\Unlockables\VanillaSurvivorUnlockables.cs" />
-    <Compile Include="Cores\NemesisInvasion\VoidCore_old.cs" />
     <Compile Include="FUCKACCESSMODIFIERS.cs" />
     <Compile Include="Modules\Assets.cs" />
     <Compile Include="Modules\Config.cs" />

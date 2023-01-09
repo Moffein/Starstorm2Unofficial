@@ -237,8 +237,8 @@ namespace Starstorm2.Survivors.Nemmando
             body.levelMaxHealth =  960f;
             body.baseRegen = 0;
             body.levelRegen = 0;
-            body.baseDamage = 2f;
-            body.levelDamage = 0.4f;
+            body.baseDamage = 3f;
+            body.levelDamage = 0.6f;
             body.isChampion = true;
 
             R2API.ItemAPI.DoNotAutoIDRSFor(bossBodyPrefab);
