@@ -58,6 +58,7 @@ namespace Starstorm2.Survivors.Pyro
             NetworkSoundEventDef sound = Modules.Assets.CreateNetworkSoundEventDef("Play_mage_m1_impact");
             BuildFlaregunProjectile(sound);
             BuildFlaregunScepterProjectile(sound);
+            Airblast.reflectSound = Modules.Assets.CreateNetworkSoundEventDef("Play_captain_drone_zap");
         }
 
         private void BuildFlaregunProjectile(NetworkSoundEventDef initialImpactSound)

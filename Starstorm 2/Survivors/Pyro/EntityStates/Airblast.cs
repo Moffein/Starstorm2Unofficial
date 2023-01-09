@@ -16,10 +16,13 @@ namespace EntityStates.SS2UStates.Pyro
         {
             base.OnEnter();
             heatController = base.GetComponent<HeatController>();
-
-            int stocks = 1;
-            if (base.skillLocator && base.skillLocator.secondary) stocks = base.skillLocator.secondary.maxStock;
-            heatController.ConsumeHeat(Airblast.heatCost, stocks);
+            if (heatController)
+            {
+                int stocks = 1;
+                if (base.skillLocator && base.skillLocator.secondary) stocks = base.skillLocator.secondary.maxStock;
+                heatController.ConsumeHeat(Airblast.heatCost, stocks);
+            }
+            reflected = false;
 
             EffectManager.SimpleMuzzleFlash(Airblast.effectPrefab, base.gameObject, "Muzzle", false);
 
@@ -102,6 +105,15 @@ namespace EntityStates.SS2UStates.Pyro
                         ProjectileManager.instance.FireProjectile(info);
 
                         Destroy(pc.gameObject);
+
+                        if (!reflected)
+                        {
+                            reflected = true;
+                            if (reflectSound)
+                            {
+                                EffectManager.SimpleSoundEffect(reflectSound.index, base.transform.position, true);
+                            }
+                        }
                     }
                 }
             }
@@ -163,7 +175,7 @@ namespace EntityStates.SS2UStates.Pyro
         }
 
         public static string attackSoundString = "Play_treeBot_shift_shoot";
-        public static string reflectSoundString = "Play_loader_m1_swing";
+        public static NetworkSoundEventDef reflectSound;
         public static float baseDuration = 0.75f;
         public static float reflectWindowDuration = 0.2f;
         public static Vector3 hitboxDimensions = new Vector3(8f, 8f, 16f);
@@ -174,6 +186,7 @@ namespace EntityStates.SS2UStates.Pyro
 
         public static float reflectDamageCoefficient = 10f;
 
+        private bool reflected;
         private ChildLocator childLocator;
         private Ray aimRay;
         private HeatController heatController;
