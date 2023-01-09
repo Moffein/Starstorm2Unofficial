@@ -17,6 +17,9 @@ namespace Starstorm2.Modules
         internal static ConfigEntry<KeyCode> TauntKeybind;
         internal static KeyCode tauntKeybind;
 
+        internal static ConfigEntry<bool> EnableGrandMasteryCommando;
+        internal static ConfigEntry<bool> EnableGrandMasteryToolbot;
+
         internal static ConfigEntry<bool> EnableExecutioner;
         internal static ConfigEntry<bool> EnableNemmando;
         internal static ConfigEntry<bool> EnableCyborg;
@@ -105,6 +108,15 @@ namespace Starstorm2.Modules
                              true,
                              "Enable this survivor.");
 
+            EnableGrandMasteryCommando = StarstormPlugin.instance.Config.Bind("Starstorm 2 :: Skins",
+                             "Commando: Grand Mastery",
+                             true,
+                             "Enable this skin.");
+            
+            EnableGrandMasteryToolbot = StarstormPlugin.instance.Config.Bind("Starstorm 2 :: Skins",
+                              "MUL-T: Grand Mastery",
+                              true,
+                              "Enable this skin.");
 
             EnableVoid =
                 StarstormPlugin.instance.Config.Bind("Starstorm 2 :: Void Fields changes",

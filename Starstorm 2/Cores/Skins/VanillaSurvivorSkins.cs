@@ -30,6 +30,8 @@ namespace Starstorm2.Cores.Skins
 
         private static void RegisterCommandoSkins()
         {
+            if (!Modules.Config.EnableGrandMasteryCommando.Value) return;
+
             GameObject bodyPrefab = BodyCatalog.FindBodyPrefab("CommandoBody");
             ModelSkinController skinController = bodyPrefab.GetComponentInChildren<ModelSkinController>();
             GameObject model = skinController.gameObject;
@@ -78,6 +80,8 @@ namespace Starstorm2.Cores.Skins
 
         private static void RegisterMultSkins()
         {
+            if (!Modules.Config.EnableGrandMasteryToolbot.Value) return;
+
             GameObject bodyPrefab = BodyCatalog.FindBodyPrefab("ToolbotBody");
             ModelSkinController skinController = bodyPrefab.GetComponentInChildren<ModelSkinController>();
             GameObject model = skinController.gameObject;
