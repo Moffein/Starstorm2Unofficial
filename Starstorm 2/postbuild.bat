@@ -16,7 +16,7 @@ rem package the mod
 mkdir ..\Starstorm2Release\plugins\ChirrLover-Starstorm2Unofficial
 cd ..\Starstorm2Release\plugins\ChirrLover-Starstorm2Unofficial
 copy ..\README.md .
-tar caf Starstorm2.zip icon.png	manifest.json README.md Starstorm2Unofficial.dll
+tar caf Starstorm2Unofficial.zip icon.png	manifest.json README.md Starstorm2Unofficial.dll
 del README.md
 
 rem copy the mod to your game plugins directory for testing
