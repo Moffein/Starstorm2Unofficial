@@ -70,7 +70,7 @@ namespace EntityStates.SS2UStates.Pyro
             return InterruptPriority.PrioritySkill;
         }
 
-        public static GameObject muzzleflashEffectPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Captain/CaptainChargeTazer.prefab").WaitForCompletion();
+        public static GameObject muzzleflashEffectPrefab = Resources.Load<GameObject>("prefabs/effects/impacteffects/missileexplosionvfx");
         public static GameObject projectilePrefab;
         public static float damageCoefficient = 6f;
         public static float baseDuration = 0.5f;

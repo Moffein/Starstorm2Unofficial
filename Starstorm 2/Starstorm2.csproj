@@ -275,6 +275,7 @@
     <Compile Include="Survivors\Pyro\EntityStates\HeatJetpack.cs" />
     <Compile Include="Survivors\Pyro\EntityStates\Airblast.cs" />
     <Compile Include="Survivors\Pyro\EntityStates\Flaregun.cs" />
+    <Compile Include="Survivors\Pyro\EntityStates\SuppressiveFire.cs" />
     <Compile Include="Survivors\Pyro\HeatSkillDef.cs" />
     <Compile Include="Survivors\Pyro\PyroSkins.cs" />
     <Compile Include="Survivors\Pyro\PyroCore.cs" />

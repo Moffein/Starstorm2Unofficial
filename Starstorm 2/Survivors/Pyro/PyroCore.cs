@@ -27,6 +27,7 @@ namespace Starstorm2.Survivors.Pyro
         public static class Skills
         {
             public static SkillDef primaryScorch;
+            public static SkillDef secondaryFire;
             public static SkillDef secondaryAirblast;
             public static SkillDef utilityHeatJetpack;
             public static SkillDef specialFlare;
@@ -56,15 +57,53 @@ namespace Starstorm2.Survivors.Pyro
 
             if (StarstormPlugin.emoteAPILoaded) EmoteAPICompat();
 
-            NetworkSoundEventDef sound = Modules.Assets.CreateNetworkSoundEventDef("Play_commando_M2_grenade_explo");
+            NetworkSoundEventDef sound = Modules.Assets.CreateNetworkSoundEventDef("Play_item_proc_behemoth");
             BuildFlaregunProjectile(sound);
             BuildFlaregunScepterProjectile(sound);
+            BuildSuppressiveFireProjectile();
             Airblast.reflectSound = Modules.Assets.CreateNetworkSoundEventDef("Play_captain_drone_zap");
+        }
+
+        private void BuildSuppressiveFireProjectile()
+        {
+            GameObject projectilePrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Lemurian/Fireball.prefab").WaitForCompletion().InstantiateClone("SS2UPyroSuppressiveFireProjectile", true);
+            Modules.Prefabs.projectilePrefabs.Add(projectilePrefab);
+            UnityEngine.Object.Destroy(projectilePrefab.GetComponent<ProjectileSingleTargetImpact>());
+
+            projectilePrefab.transform.localScale *= 1.5f;
+
+            GameObject ghostPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Lemurian/FireballGhost.prefab").WaitForCompletion().InstantiateClone("SS2UPyroSuppressiveFireGhost", true);
+            ghostPrefab.transform.localScale *= 0.5f;
+
+            ProjectileController pc = projectilePrefab.GetComponent<ProjectileController>();
+            pc.ghostPrefab = ghostPrefab;
+
+            ProjectileSimple ps = projectilePrefab.GetComponent<ProjectileSimple>();
+            ps.desiredForwardSpeed = 100f;
+            ps.lifetime = 0.5f;
+
+            ProjectileImpactExplosion pie = projectilePrefab.AddComponent<ProjectileImpactExplosion>();
+            pie.explosionEffect = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Common/VFX/OmniExplosionVFXQuick.prefab").WaitForCompletion();
+            pie.blastAttackerFiltering = AttackerFiltering.NeverHitSelf;
+            pie.blastDamageCoefficient = 1f;
+            pie.blastProcCoefficient = 1f;
+            pie.blastRadius = 3f;
+            pie.bonusBlastForce = Vector3.zero;
+            pie.canRejectForce = true;
+            pie.destroyOnEnemy = true;
+            pie.destroyOnWorld = true;
+            pie.falloffModel = BlastAttack.FalloffModel.None;
+            pie.lifetime = 0.5f;
+
+            ProjectileDamage pd = projectilePrefab.GetComponent<ProjectileDamage>();
+            pd.damageType = DamageType.IgniteOnHit;
+
+            SuppressiveFire.projectilePrefab = projectilePrefab;
         }
 
         private void BuildFlaregunProjectile(NetworkSoundEventDef initialImpactSound)
         {
-            GameObject projectilePrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Lemurian/Fireball.prefab").WaitForCompletion().InstantiateClone("SS2UPyroFlare", true);
+            GameObject projectilePrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Lemurian/Fireball.prefab").WaitForCompletion().InstantiateClone("SS2UPyroFlareProjectile", true);
             Modules.Prefabs.projectilePrefabs.Add(projectilePrefab);
 
             UnityEngine.Object.Destroy(projectilePrefab.GetComponent<ProjectileSingleTargetImpact>());
@@ -137,6 +176,7 @@ namespace Starstorm2.Survivors.Pyro
         private void RegisterStates()
         {
             Modules.States.AddState(typeof(FireFlamethrower));
+            Modules.States.AddState(typeof(SuppressiveFire));
             Modules.States.AddState(typeof(Airblast));
             Modules.States.AddState(typeof(HeatJetpack));
             Modules.States.AddState(typeof(Flaregun));
@@ -192,7 +232,7 @@ namespace Starstorm2.Survivors.Pyro
         private void SetUpSecondaries(SkillLocator skillLocator)
         {
             LanguageAPI.Add("SS2UPYRO_SECONDARY_NAME", "Return to Sender");
-            LanguageAPI.Add("SS2UPYRO_SECONDARY_DESCRIPTION", $"<color=#D78326>Consume 33% heat</color> and fire a nonlethal blast of air that <style=cIsUtility>pushes</style> enemies and <style=cIsUtility>reflects projectiles</style>.");
+            LanguageAPI.Add("SS2UPYRO_SECONDARY_DESCRIPTION", $"<color=#D78326>Consume 25% heat</color> and fire a nonlethal blast of air that <style=cIsUtility>pushes</style> enemies and <style=cIsUtility>reflects projectiles</style>.");
 
             HeatSkillDef airblast = ScriptableObject.CreateInstance<HeatSkillDef>();
             airblast.activationState = new SerializableEntityStateType(typeof(Airblast));
@@ -214,14 +254,42 @@ namespace Starstorm2.Survivors.Pyro
             airblast.rechargeStock = 1;
             airblast.requiredStock = 1;
             airblast.stockToConsume = 1;
-            airblast.baseHeatRequirement = 0.33f;
+            airblast.baseHeatRequirement = 0.25f;
             Modules.Skills.FixSkillName(airblast);
             Modules.Skills.skillDefs.Add(airblast);
-            SkillFamily.Variant heatWaveVariant = Utils.RegisterSkillVariant(airblast);
-
+            SkillFamily.Variant airblastVariant = Utils.RegisterSkillVariant(airblast);
             Skills.secondaryAirblast = airblast;
 
-            skillLocator.secondary = Utils.RegisterSkillsToFamily(bodyPrefab, new SkillFamily.Variant[] { heatWaveVariant });
+            LanguageAPI.Add("SS2UPYRO_SECONDARY_ALT_NAME", "\"Suppressive Fire\"");
+            LanguageAPI.Add("SS2UPYRO_SECONDARY_ALT_DESCRIPTION", $"<color=#D78326>Consume 8% heat</color> to fire a puff of flames that deals <style=cIsDamage>100% damage</style> and <style=cIsDamage>ignites</style>.");
+
+            HeatSkillDef suppressiveFire = ScriptableObject.CreateInstance<HeatSkillDef>();
+            suppressiveFire.activationState = new SerializableEntityStateType(typeof(SuppressiveFire));
+            suppressiveFire.activationStateMachineName = "Weapon";
+            suppressiveFire.skillName = "SS2UPYRO_SECONDARY_ALT_NAME";
+            suppressiveFire.skillNameToken = "SS2UPYRO_SECONDARY_ALT_NAME";
+            suppressiveFire.skillDescriptionToken = "SS2UPYRO_SECONDARY_ALT_DESCRIPTION";
+            suppressiveFire.icon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("pyroSkill2");
+            suppressiveFire.baseMaxStock = 1;
+            suppressiveFire.baseRechargeInterval = 0f;
+            suppressiveFire.beginSkillCooldownOnSkillEnd = true;
+            suppressiveFire.canceledFromSprinting = false;
+            suppressiveFire.fullRestockOnAssign = true;
+            suppressiveFire.interruptPriority = EntityStates.InterruptPriority.Any;
+            suppressiveFire.isCombatSkill = true;
+            suppressiveFire.mustKeyPress = false;
+            suppressiveFire.cancelSprintingOnActivation = true;
+            suppressiveFire.forceSprintDuringState = false;
+            suppressiveFire.rechargeStock = 1;
+            suppressiveFire.requiredStock = 1;
+            suppressiveFire.stockToConsume = 1;
+            suppressiveFire.baseHeatRequirement = 0.08f;
+            Modules.Skills.FixSkillName(suppressiveFire);
+            Modules.Skills.skillDefs.Add(suppressiveFire);
+            SkillFamily.Variant fireVariant = Utils.RegisterSkillVariant(suppressiveFire);
+            Skills.secondaryFire = suppressiveFire;
+
+            skillLocator.secondary = Utils.RegisterSkillsToFamily(bodyPrefab, new SkillFamily.Variant[] { fireVariant, airblastVariant });
         }
 
         private void SetUpUtilities(SkillLocator skillLocator)

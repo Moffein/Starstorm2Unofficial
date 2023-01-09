@@ -181,7 +181,7 @@ namespace EntityStates.SS2UStates.Pyro
         public static Vector3 hitboxDimensions = new Vector3(8f, 8f, 16f);
         public static float force = 3000f;
         public static float selfForce = 3000f;
-        public static float heatCost = 0.33f;
+        public static float heatCost = 0.25f;
         public static GameObject effectPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Treebot/TreebotShockwaveEffect.prefab").WaitForCompletion();
 
         public static float reflectDamageCoefficient = 10f;
