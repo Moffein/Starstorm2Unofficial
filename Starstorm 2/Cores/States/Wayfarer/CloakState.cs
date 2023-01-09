@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using RoR2;
 using UnityEngine;
 
-namespace Starstorm2.Cores.States.Wayfarer
+namespace Starstorm2Unofficial.Cores.States.Wayfarer
 {
     class CloakState : BaseSkillState
     {

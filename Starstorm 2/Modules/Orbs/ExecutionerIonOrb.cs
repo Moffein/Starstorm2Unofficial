@@ -1,8 +1,8 @@
 ﻿using RoR2;
 using RoR2.Orbs;
-using Starstorm2.Survivors.Executioner.Components;
+using Starstorm2Unofficial.Survivors.Executioner.Components;
 
-namespace Starstorm2.Modules.Orbs
+namespace Starstorm2Unofficial.Modules.Orbs
 {
     public class ExecutionerIonOrb : Orb
     {

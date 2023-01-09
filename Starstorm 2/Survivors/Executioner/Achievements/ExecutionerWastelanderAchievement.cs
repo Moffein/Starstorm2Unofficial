@@ -1,7 +1,7 @@
 ﻿using RoR2;
 using RoR2.Achievements;
 
-namespace Starstorm2.Survivors.Executioner.Achievements
+namespace Starstorm2Unofficial.Survivors.Executioner.Achievements
 {
 	[RegisterAchievement("SS2UExecutionerWastelander", "Skins.SS2UExecutioner.Wastelander", null, null)]
 	public class ExecutionerWastelanderAchievement : BaseAchievement

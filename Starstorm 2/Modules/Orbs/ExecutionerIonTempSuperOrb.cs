@@ -2,7 +2,7 @@
 using RoR2.Orbs;
 using UnityEngine.Networking;
 
-namespace Starstorm2.Modules.Orbs
+namespace Starstorm2Unofficial.Modules.Orbs
 {
     public class ExecutionerIonTempSuperOrb : Orb
     {
@@ -34,7 +34,7 @@ namespace Starstorm2.Modules.Orbs
         {
             if (this.body && NetworkServer.active)
             {
-                this.body.AddTimedBuff(Starstorm2.Cores.BuffCore.exeSuperchargedBuff, 10f);
+                this.body.AddTimedBuff(Starstorm2Unofficial.Cores.BuffCore.exeSuperchargedBuff, 10f);
                 EffectManager.SimpleSoundEffect(Modules.Assets.exeSuperchargeSoundDef.index, this.body.transform.position, true);
             }
         }

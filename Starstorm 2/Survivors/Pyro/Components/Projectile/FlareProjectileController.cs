@@ -4,7 +4,7 @@ using UnityEngine.Networking;
 using RoR2.Projectile;
 using UnityEngine.AddressableAssets;
 
-namespace Starstorm2.Survivors.Pyro.Components.Projectile
+namespace Starstorm2Unofficial.Survivors.Pyro.Components.Projectile
 {
     public class FlareProjectileController : MonoBehaviour, IProjectileImpactBehavior
     {

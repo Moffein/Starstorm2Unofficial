@@ -1,6 +1,6 @@
 ﻿using R2API;
 using RoR2;
-using Starstorm2.Cores;
+using Starstorm2Unofficial.Cores;
 using System;
 using System.Globalization;
 using UnityEngine;
@@ -37,11 +37,11 @@ public abstract class SS2Item
         itemDef.descriptionToken = $"ITEM_{upperName}_DESC";
         itemDef.loreToken = $"ITEM_{upperName}_LORE";
         itemDef.canRemove = CanRemove;
-        itemDef.pickupIconSprite = PickupIconPath != "" ? Starstorm2.Modules.Assets.mainAssetBundle.LoadAsset<Sprite>(PickupIconPath) : null;
-        itemDef.pickupModelPrefab = PickupModelPath != "" ? Starstorm2.Modules.Assets.mainAssetBundle.LoadAsset<GameObject>(PickupModelPath) : null;
+        itemDef.pickupIconSprite = PickupIconPath != "" ? Starstorm2Unofficial.Modules.Assets.mainAssetBundle.LoadAsset<Sprite>(PickupIconPath) : null;
+        itemDef.pickupModelPrefab = PickupModelPath != "" ? Starstorm2Unofficial.Modules.Assets.mainAssetBundle.LoadAsset<GameObject>(PickupModelPath) : null;
         itemDef.tags = Tags;
         itemDef.tier = Tier;
-        Starstorm2.Modules.Items.itemDefs.Add(itemDef);
+        Starstorm2Unofficial.Modules.Items.itemDefs.Add(itemDef);
 
         LanguageAPI.Add(itemDef.nameToken, Name);
         LanguageAPI.Add(itemDef.pickupToken, Pickup);
@@ -67,7 +67,7 @@ public abstract class SS2Item
         Renderer[] children = modelPrefab.GetComponentsInChildren<Renderer>();
 
         for (int i = 0; i < children.Length; i++) {
-            children[i].material.shader = Starstorm2.Modules.Assets.hotpoo;
+            children[i].material.shader = Starstorm2Unofficial.Modules.Assets.hotpoo;
         }
     }
 

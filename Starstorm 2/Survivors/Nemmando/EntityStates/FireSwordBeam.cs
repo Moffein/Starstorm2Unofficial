@@ -3,9 +3,9 @@ using UnityEngine;
 using EntityStates;
 using RoR2.Projectile;
 using R2API;
-using Starstorm2.Components;
+using Starstorm2Unofficial.Components;
 using EntityStates.SS2UStates.Common;
-using Starstorm2.Survivors.Nemmando.Components;
+using Starstorm2Unofficial.Survivors.Nemmando.Components;
 
 namespace EntityStates.SS2UStates.Nemmando
 {

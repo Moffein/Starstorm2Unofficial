@@ -9,7 +9,7 @@ using RoR2.Projectile;
 using UnityEngine;
 using UnityEngine.Networking;
 
-namespace Starstorm2.Cores.Items
+namespace Starstorm2Unofficial.Cores.Items
 {
     class ShackledLamp : SS2Item<ShackledLamp>
     {

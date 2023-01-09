@@ -4,7 +4,7 @@ using EntityStates;
 using R2API;
 using RoR2;
 using RoR2.Skills;
-using Starstorm2.Cores;
+using Starstorm2Unofficial.Cores;
 using UnityEngine;
 using UnityEngine.Networking;
 
@@ -45,7 +45,7 @@ namespace EntityStates.SS2UStates.Nemmando
 
 			Vector3 quat = Quaternion.LookRotation(characterDirection.forward).eulerAngles;
 
-			GameObject slashEffect = Starstorm2.Modules.Assets.nemSwingFX;
+			GameObject slashEffect = Starstorm2Unofficial.Modules.Assets.nemSwingFX;
 			
 			slashEffect.transform.parent = base.characterMotor.transform;
 			EffectData slashEffectData = new EffectData()

@@ -10,7 +10,7 @@ using RoR2;
 using RoR2.Skills;
 using RoR2.Projectile;
 using UnityEngine;
-using Starstorm2.Cores;
+using Starstorm2Unofficial.Cores;
 using UnityEngine.Networking;
 using KinematicCharacterController;
 

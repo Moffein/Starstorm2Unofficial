@@ -1,7 +1,7 @@
 ﻿using RoR2;
-using Starstorm2.Components;
-using Starstorm2.Cores;
-using Starstorm2.Survivors.Executioner.Components;
+using Starstorm2Unofficial.Components;
+using Starstorm2Unofficial.Cores;
+using Starstorm2Unofficial.Survivors.Executioner.Components;
 using System;
 using System.Collections.Generic;
 using UnityEngine;

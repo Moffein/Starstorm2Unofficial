@@ -1,6 +1,6 @@
 ﻿using RoR2;
 using RoR2.Projectile;
-using Starstorm2.Survivors.Pyro.Components;
+using Starstorm2Unofficial.Survivors.Pyro.Components;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 

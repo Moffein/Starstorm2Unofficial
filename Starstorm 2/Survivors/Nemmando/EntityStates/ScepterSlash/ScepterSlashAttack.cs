@@ -2,8 +2,8 @@
 using EntityStates.SS2UStates.Common;
 using RoR2;
 using RoR2.Orbs;
-using Starstorm2.Components;
-using Starstorm2.Survivors.Nemmando.Components;
+using Starstorm2Unofficial.Components;
+using Starstorm2Unofficial.Survivors.Nemmando.Components;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -63,7 +63,7 @@ namespace EntityStates.SS2UStates.Nemmando
             base.characterMotor.rootMotion = Vector3.zero;
             base.characterMotor.velocity = Vector3.zero;
 
-            EffectManager.SpawnEffect(Starstorm2.Modules.Assets.nemChargedSlashStartFX, this.attackEffect, true);
+            EffectManager.SpawnEffect(Starstorm2Unofficial.Modules.Assets.nemChargedSlashStartFX, this.attackEffect, true);
 
             base.PlayAnimation("FullBody, Override", "DecisiveStrike", "DecisiveStrike.playbackRate", this.duration);
             Util.PlaySound("NemmandoDecisiveStrikeFire", base.gameObject);
@@ -116,7 +116,7 @@ namespace EntityStates.SS2UStates.Nemmando
                             rotation = hurtbox.transform.rotation
                         };
 
-                        EffectManager.SpawnEffect(Starstorm2.Modules.Assets.nemScepterImpactFX, effect, false);
+                        EffectManager.SpawnEffect(Starstorm2Unofficial.Modules.Assets.nemScepterImpactFX, effect, false);
                     }
                 }
             }
@@ -147,7 +147,7 @@ namespace EntityStates.SS2UStates.Nemmando
                     {
                         if (i.healthComponent.alive)
                         {
-                            Starstorm2.Modules.Orbs.NemmandoDashOrb dashOrb = new Starstorm2.Modules.Orbs.NemmandoDashOrb();
+                            Starstorm2Unofficial.Modules.Orbs.NemmandoDashOrb dashOrb = new Starstorm2Unofficial.Modules.Orbs.NemmandoDashOrb();
                             dashOrb.origin = base.transform.position;
                             dashOrb.target = i;
                             OrbManager.instance.AddOrb(dashOrb);

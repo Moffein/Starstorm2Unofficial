@@ -2,7 +2,7 @@
 using UnityEngine;
 using UnityEngine.Networking;
 
-namespace Starstorm2.Survivors.Chirr.Components
+namespace Starstorm2Unofficial.Survivors.Chirr.Components
 {
     [RequireComponent(typeof(CharacterMaster))]
     public class MasterFriendController : MonoBehaviour

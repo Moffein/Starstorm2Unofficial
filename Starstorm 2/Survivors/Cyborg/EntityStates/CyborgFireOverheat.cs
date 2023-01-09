@@ -1,8 +1,8 @@
 ﻿using RoR2;
 using RoR2.Projectile;
 using UnityEngine;
-using Starstorm2.Cores;
-using Starstorm2.Survivors.Cyborg.Components;
+using Starstorm2Unofficial.Cores;
+using Starstorm2Unofficial.Survivors.Cyborg.Components;
 
 namespace EntityStates.SS2UStates.Cyborg
 {

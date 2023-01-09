@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Starstorm2.Survivors.Executioner.Components
+namespace Starstorm2Unofficial.Survivors.Executioner.Components
 {
     public class MasterIonStockComponent : MonoBehaviour
     {

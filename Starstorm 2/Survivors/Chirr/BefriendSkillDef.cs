@@ -1,9 +1,9 @@
 ﻿using JetBrains.Annotations;
 using RoR2;
 using RoR2.Skills;
-using Starstorm2.Survivors.Chirr.Components;
+using Starstorm2Unofficial.Survivors.Chirr.Components;
 
-namespace Starstorm2.Survivors.Chirr
+namespace Starstorm2Unofficial.Survivors.Chirr
 {
 	public class BefriendSkillDef : SkillDef
 	{

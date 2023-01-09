@@ -5,14 +5,14 @@ using System.Linq;
 using R2API;
 using RoR2;
 using RoR2.CharacterAI;
-using Starstorm2.Components;
-using Starstorm2.Cores.NemesisInvasion.Components;
+using Starstorm2Unofficial.Components;
+using Starstorm2Unofficial.Cores.NemesisInvasion.Components;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.Networking;
 using UnityEngine.Rendering.PostProcessing;
 
-namespace Starstorm2.Cores.NemesisInvasion
+namespace Starstorm2Unofficial.Cores.NemesisInvasion
 {
     public class NemesisInvasionCore
     {

@@ -4,7 +4,7 @@ using RoR2;
 using RoR2.UI;
 using UnityEngine;
 
-namespace Starstorm2.Cores.States.Nucleator
+namespace Starstorm2Unofficial.Cores.States.Nucleator
 {
     class NucleatorSkillStateBase : BaseSkillState
     {
@@ -101,7 +101,7 @@ namespace Starstorm2.Cores.States.Nucleator
         private float TakeDamage()
         {
             var damage = CalculateDamageInstance();
-            if (!this.characterBody.HasBuff(Starstorm2.Cores.BuffCore.nucleatorSpecialBuff))
+            if (!this.characterBody.HasBuff(Starstorm2Unofficial.Cores.BuffCore.nucleatorSpecialBuff))
             {
                 this.characterBody.healthComponent.TakeDamage(
                     new DamageInfo()

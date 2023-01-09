@@ -1,8 +1,8 @@
 ﻿using EntityStates.SS2UStates.Common;
 using R2API;
 using RoR2;
-using Starstorm2.Cores;
-using Starstorm2.Survivors.Nemmando.Components;
+using Starstorm2Unofficial.Cores;
+using Starstorm2Unofficial.Survivors.Nemmando.Components;
 using UnityEngine;
 using UnityEngine.Networking;
 

@@ -3,7 +3,7 @@ using System;
 using EntityStates.SS2UStates.Common.Emotes;
 using EntityStates.SS2UStates.Common;
 
-namespace Starstorm2.Modules
+namespace Starstorm2Unofficial.Modules
 {
     public static class States
     {

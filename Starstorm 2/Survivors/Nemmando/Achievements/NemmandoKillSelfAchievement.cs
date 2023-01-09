@@ -1,8 +1,8 @@
 ﻿using RoR2;
 using RoR2.Achievements;
-using Starstorm2.Survivors.Nemmando.Components;
+using Starstorm2Unofficial.Survivors.Nemmando.Components;
 
-namespace Starstorm2.Survivors.Nemmando.Achievements
+namespace Starstorm2Unofficial.Survivors.Nemmando.Achievements
 {
     [RegisterAchievement("SS2UNemmandoKillSelf", "Skins.SS2UNemmando.Commando", null, null)]
     public class NemmandoKillSelfAchievement : BaseAchievement

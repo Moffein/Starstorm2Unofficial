@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using UnityEngine;
 
-namespace Starstorm2.Modules
+namespace Starstorm2Unofficial.Modules
 {
     internal static class Config
     {

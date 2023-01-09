@@ -4,10 +4,10 @@ using UnityEngine;
 using R2API;
 using RoR2;
 using R2API.Utils;
-using Starstorm2.Cores.Unlockables;
+using Starstorm2Unofficial.Cores.Unlockables;
 using System.Collections.Generic;
 
-namespace Starstorm2.Cores.Skins
+namespace Starstorm2Unofficial.Cores.Skins
 {
     public static class VanillaSurvivorSkins
     {

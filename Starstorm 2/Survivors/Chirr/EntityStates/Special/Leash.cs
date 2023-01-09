@@ -1,5 +1,5 @@
 ﻿using RoR2;
-using Starstorm2.Survivors.Chirr.Components;
+using Starstorm2Unofficial.Survivors.Chirr.Components;
 using UnityEngine;
 using UnityEngine.Networking;
 

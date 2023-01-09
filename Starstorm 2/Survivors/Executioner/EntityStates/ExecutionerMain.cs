@@ -1,7 +1,7 @@
 ﻿using RoR2;
 using UnityEngine;
 using EntityStates;
-using Starstorm2.Survivors.Executioner.Components;
+using Starstorm2Unofficial.Survivors.Executioner.Components;
 
 //TODO: should check that secondary is ion gun before attempting to store/load charges
 
@@ -58,12 +58,12 @@ namespace EntityStates.SS2UStates.Executioner
 
             if (base.isAuthority && base.characterMotor.isGrounded)
             {
-                if (Input.GetKeyDown(Starstorm2.Modules.Config.restKeybind))
+                if (Input.GetKeyDown(Starstorm2Unofficial.Modules.Config.restKeybind))
                 {
                     this.outer.SetInterruptState(new EntityStates.SS2UStates.Common.Emotes.RestEmote(), InterruptPriority.Any);
                     return;
                 }
-                else if (Input.GetKeyDown(Starstorm2.Modules.Config.tauntKeybind))
+                else if (Input.GetKeyDown(Starstorm2Unofficial.Modules.Config.tauntKeybind))
                 {
                     this.outer.SetInterruptState(new EntityStates.SS2UStates.Common.Emotes.TauntEmote(), InterruptPriority.Any);
                     return;

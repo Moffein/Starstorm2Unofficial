@@ -7,7 +7,7 @@ using UnityEngine;
 using UnityEngine.Networking;
 using UnityEngine.UI;
 
-namespace Starstorm2.Cores.States.Nucleator
+namespace Starstorm2Unofficial.Cores.States.Nucleator
 {
     [RequireComponent(typeof(HudElement))]
     public class ChargeController : MonoBehaviour

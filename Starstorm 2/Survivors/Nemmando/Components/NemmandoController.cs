@@ -1,10 +1,10 @@
 ﻿using RoR2;
 using RoR2.Projectile;
-using Starstorm2.Cores;
+using Starstorm2Unofficial.Cores;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 
-namespace Starstorm2.Survivors.Nemmando.Components
+namespace Starstorm2Unofficial.Survivors.Nemmando.Components
 {
     public class NemmandoController : MonoBehaviour
     {
@@ -48,7 +48,7 @@ namespace Starstorm2.Survivors.Nemmando.Components
         {
             if (this.characterBody)
             {
-                if (this.characterBody.skillLocator.secondary.skillDef== Starstorm2.Survivors.Nemmando.NemmandoCore.secondaryDistantGash && this.characterBody.skillLocator.special == Starstorm2.Survivors.Nemmando.NemmandoCore.specialDecisiveStrike)
+                if (this.characterBody.skillLocator.secondary.skillDef== Starstorm2Unofficial.Survivors.Nemmando.NemmandoCore.secondaryDistantGash && this.characterBody.skillLocator.special == Starstorm2Unofficial.Survivors.Nemmando.NemmandoCore.specialDecisiveStrike)
                 {
                     this.gunHolstered = true;
                     this.gun = this.childLocator.FindChild("Gun");

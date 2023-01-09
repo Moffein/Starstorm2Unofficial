@@ -1,7 +1,7 @@
 ﻿using RoR2;
 using UnityEngine.Networking;
 
-namespace Starstorm2.Survivors.Executioner.Components
+namespace Starstorm2Unofficial.Survivors.Executioner.Components
 {
     public class IonGunChargeComponent : NetworkBehaviour
     {

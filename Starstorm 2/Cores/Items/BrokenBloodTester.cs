@@ -9,7 +9,7 @@ using UnityEngine;
 
 //TODO: i don't think this works for non-host in multiplayer
 
-namespace Starstorm2.Cores.Items
+namespace Starstorm2Unofficial.Cores.Items
 {
     class BrokenBloodTester : SS2Item<BrokenBloodTester>
     {

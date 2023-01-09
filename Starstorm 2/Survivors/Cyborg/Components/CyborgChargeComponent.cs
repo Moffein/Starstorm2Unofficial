@@ -2,7 +2,7 @@
 using UnityEngine;
 using UnityEngine.Networking;
 
-namespace Starstorm2.Survivors.Cyborg.Components
+namespace Starstorm2Unofficial.Survivors.Cyborg.Components
 {
     //Crosshair gets charge info from this component.
     public class CyborgChargeComponent : NetworkBehaviour

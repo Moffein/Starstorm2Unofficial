@@ -8,23 +8,23 @@ using UnityEngine.AddressableAssets;
 using EntityStates;
 using System.Linq;
 using EntityStates.SS2UStates.Cyborg;
-using Starstorm2.Survivors.Cyborg.Components;
-using Starstorm2.Cores;
-using Starstorm2.Modules;
+using Starstorm2Unofficial.Survivors.Cyborg.Components;
+using Starstorm2Unofficial.Cores;
+using Starstorm2Unofficial.Modules;
 using EntityStates.SS2UStates.Cyborg.Special;
-using Starstorm2.Survivors.Cyborg.Components.TeleportProjectile;
-using Starstorm2.Survivors.Cyborg.Components.OverheatProjectile;
+using Starstorm2Unofficial.Survivors.Cyborg.Components.TeleportProjectile;
+using Starstorm2Unofficial.Survivors.Cyborg.Components.OverheatProjectile;
 using System.Runtime.CompilerServices;
 using EntityStates.SS2UStates.Cyborg.Secondary;
 using RoR2.CharacterAI;
 using RoR2.UI;
-using Starstorm2.Survivors.Cyborg.Components.Crosshair;
+using Starstorm2Unofficial.Survivors.Cyborg.Components.Crosshair;
 using EntityStates.SS2UStates.Cyborg.ChargeRifle;
 using EntityStates.SS2UStates.Cyborg.Jetpack;
-using Starstorm2.Components.Projectiles;
-using Starstorm2.Survivors.Cyborg.Components.ShockCoreProjectile;
+using Starstorm2Unofficial.Components.Projectiles;
+using Starstorm2Unofficial.Survivors.Cyborg.Components.ShockCoreProjectile;
 
-namespace Starstorm2.Survivors.Cyborg
+namespace Starstorm2Unofficial.Survivors.Cyborg
 {
     //Would prefer for this to be the same as Nemmando/ExeCore, but I don't want to rewrite this so I'll leave it as-is.
     public class CyborgCore

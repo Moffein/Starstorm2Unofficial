@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Starstorm2.Modules.Achievements
+namespace Starstorm2Unofficial.Modules.Achievements
 {
 	public class BaseGrandMasteryAchievement : BaseAchievement
 	{

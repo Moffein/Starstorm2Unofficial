@@ -2,7 +2,7 @@
 using RoR2.ContentManagement;
 using System.Collections.Generic;
 
-namespace Starstorm2.Cores
+namespace Starstorm2Unofficial.Cores
 {
     class EquipmentCore
     {

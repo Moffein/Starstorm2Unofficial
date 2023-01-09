@@ -4,20 +4,20 @@ using System.Linq;
 using RoR2;
 using UnityEngine;
 using R2API;
-using Starstorm2.Cores;
+using Starstorm2Unofficial.Cores;
 using System.Runtime.CompilerServices;
 using EntityStates;
 using RoR2.Skills;
 using UnityEngine.AddressableAssets;
-using Starstorm2.Survivors.Pyro.Components;
+using Starstorm2Unofficial.Survivors.Pyro.Components;
 using EntityStates.SS2UStates.Pyro;
 using RoR2.UI;
-using Starstorm2.Survivors.Pyro.Components.Crosshair;
+using Starstorm2Unofficial.Survivors.Pyro.Components.Crosshair;
 using RoR2.Projectile;
-using Starstorm2.Survivors.Pyro.Components.Projectile;
+using Starstorm2Unofficial.Survivors.Pyro.Components.Projectile;
 using RoR2.CharacterAI;
 
-namespace Starstorm2.Survivors.Pyro
+namespace Starstorm2Unofficial.Survivors.Pyro
 {
     public class PyroCore
     {
@@ -261,7 +261,7 @@ namespace Starstorm2.Survivors.Pyro
             Skills.secondaryAirblast = airblast;
 
             LanguageAPI.Add("SS2UPYRO_SECONDARY_ALT_NAME", "\"Suppressive Fire\"");
-            LanguageAPI.Add("SS2UPYRO_SECONDARY_ALT_DESCRIPTION", $"<color=#D78326>Consume 8% heat</color> to fire a puff of flames that deals <style=cIsDamage>84% damage</style> and <style=cIsDamage>ignites</style>.");
+            LanguageAPI.Add("SS2UPYRO_SECONDARY_ALT_DESCRIPTION", $"<color=#D78326>Rapidly consume heat</color> to fire a stream of fireballs that deal <style=cIsDamage>840% damage per second</style> and <style=cIsDamage>ignite</style>.");
 
             HeatSkillDef suppressiveFire = ScriptableObject.CreateInstance<HeatSkillDef>();
             suppressiveFire.activationState = new SerializableEntityStateType(typeof(SuppressiveFire));

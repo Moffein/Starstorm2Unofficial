@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Starstorm2.Survivors.Cyborg.Components.OverheatProjectile
+namespace Starstorm2Unofficial.Survivors.Cyborg.Components.OverheatProjectile
 {
     public class BFGGhostReduceSizeOverTime : MonoBehaviour
     {

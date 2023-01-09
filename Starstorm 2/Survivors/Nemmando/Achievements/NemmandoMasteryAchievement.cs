@@ -1,7 +1,7 @@
 ﻿using RoR2;
 using RoR2.Achievements;
 
-namespace Starstorm2.Survivors.Nemmando.Achievements
+namespace Starstorm2Unofficial.Survivors.Nemmando.Achievements
 {
     [RegisterAchievement("SS2UNemmandoClearGameMonsoon", "Skins.SS2UNemmando.Mastery", null, null)]
     public class NemmandoMasteryAchievement : BasePerSurvivorClearGameMonsoonAchievement

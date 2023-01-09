@@ -9,14 +9,14 @@ using EntityStates;
 using System.Linq;
 using UnityEngine.AddressableAssets;
 using RoR2.Projectile;
-using Starstorm2.Survivors.Chirr.Components;
+using Starstorm2Unofficial.Survivors.Chirr.Components;
 using EntityStates.SS2UStates.Chirr.Special;
 using System.Runtime.CompilerServices;
-using Starstorm2.Cores;
+using Starstorm2Unofficial.Cores;
 using System.Collections.Generic;
 using RoR2.CharacterAI;
 
-namespace Starstorm2.Survivors.Chirr
+namespace Starstorm2Unofficial.Survivors.Chirr
 {
     public class ChirrCore
     {

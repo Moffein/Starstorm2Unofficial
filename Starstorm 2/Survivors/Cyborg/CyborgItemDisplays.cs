@@ -1,11 +1,11 @@
 using UnityEngine;
 using RoR2;
 using System.Collections.Generic;
-using Starstorm2.Cores;
+using Starstorm2Unofficial.Cores;
 
 //TODO: anniversary update item displays
 
-namespace Starstorm2.Survivors.Cyborg
+namespace Starstorm2Unofficial.Survivors.Cyborg
 {
     public static class CyborgItemDisplays
     {

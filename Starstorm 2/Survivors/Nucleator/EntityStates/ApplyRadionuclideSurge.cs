@@ -1,9 +1,9 @@
 ﻿using EntityStates;
-using Starstorm2.Cores;
+using Starstorm2Unofficial.Cores;
 using UnityEngine;
 using UnityEngine.Networking;
 
-namespace Starstorm2.Cores.States.Nucleator
+namespace Starstorm2Unofficial.Cores.States.Nucleator
 {
     class ApplyRadionuclideSurge : BaseSkillState
     {
@@ -14,7 +14,7 @@ namespace Starstorm2.Cores.States.Nucleator
         public override void OnEnter()
         {
             base.OnEnter();
-            if (NetworkServer.active) base.characterBody.AddTimedBuff(Starstorm2.Cores.BuffCore.nucleatorSpecialBuff, buffDuration);
+            if (NetworkServer.active) base.characterBody.AddTimedBuff(Starstorm2Unofficial.Cores.BuffCore.nucleatorSpecialBuff, buffDuration);
             this.animator = base.GetModelAnimator();
 
             if (this.animator) this.animator.SetLayerWeight(this.animator.GetLayerIndex("Body, Additive"), 1f);

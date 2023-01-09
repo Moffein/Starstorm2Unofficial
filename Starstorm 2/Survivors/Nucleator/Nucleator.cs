@@ -9,8 +9,8 @@ using RoR2.CharacterAI;
 using RoR2.Projectile;
 using RoR2.Skills;
 using RoR2.UI;
-using Starstorm2.Cores;
-using Starstorm2.Cores.States.Nucleator;
+using Starstorm2Unofficial.Cores;
+using Starstorm2Unofficial.Cores.States.Nucleator;
 using System;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
@@ -18,7 +18,7 @@ using UnityEngine;
 using UnityEngine.Networking;
 using UnityEngine.UI;
 
-namespace Starstorm2.Modules.Survivors
+namespace Starstorm2Unofficial.Modules.Survivors
 {
     internal class Nucleator : SurvivorBase
     {

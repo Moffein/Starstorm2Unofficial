@@ -2,7 +2,7 @@
 using System;
 using UnityEngine;
 
-namespace Starstorm2.Modules
+namespace Starstorm2Unofficial.Modules
 {
     internal static class Skins
     {

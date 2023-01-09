@@ -1,7 +1,7 @@
 ﻿using R2API;
 using RoR2;
 using RoR2.Skills;
-using Starstorm2.Cores;
+using Starstorm2Unofficial.Cores;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 

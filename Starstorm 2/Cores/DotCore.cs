@@ -12,7 +12,7 @@ using static RoR2.DotController;
 
 //FIXME: it's totally fucking fucked mate, big time
 
-namespace Starstorm2.Cores
+namespace Starstorm2Unofficial.Cores
 {
     [R2APISubmoduleDependency(nameof(DotAPI))]
     class DoTCore

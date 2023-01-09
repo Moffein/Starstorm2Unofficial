@@ -2,7 +2,7 @@
 using System;
 using UnityEngine;
 
-namespace Starstorm2.Components
+namespace Starstorm2Unofficial.Components
 {
     public class NemesisMusicComponentMaster : MonoBehaviour
     {

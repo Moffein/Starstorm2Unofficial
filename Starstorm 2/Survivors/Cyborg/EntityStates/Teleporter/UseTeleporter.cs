@@ -1,7 +1,7 @@
 ﻿using RoR2;
 using UnityEngine;
 using RoR2.Projectile;
-using Starstorm2.Survivors.Cyborg.Components;
+using Starstorm2Unofficial.Survivors.Cyborg.Components;
 using UnityEngine.Networking;
 
 namespace EntityStates.SS2UStates.Cyborg.Special

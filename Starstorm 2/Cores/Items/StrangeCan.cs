@@ -7,7 +7,7 @@ using R2API;
 using RoR2;
 using UnityEngine;
 
-namespace Starstorm2.Cores.Items
+namespace Starstorm2Unofficial.Cores.Items
 {
     class StrangeCan : SS2Item<StrangeCan>
     {

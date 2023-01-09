@@ -1,6 +1,6 @@
 ﻿using BepInEx.Configuration;
 
-namespace Starstorm2
+namespace Starstorm2Unofficial
 {
     public static class StaticValues
     {

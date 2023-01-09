@@ -1,9 +1,9 @@
 ﻿using R2API;
 using RoR2;
-using Starstorm2.Modules;
+using Starstorm2Unofficial.Modules;
 using UnityEngine;
 
-namespace Starstorm2.Cores.Unlockables
+namespace Starstorm2Unofficial.Cores.Unlockables
 {
     public static class VanillaSurvivorUnlockables
     {

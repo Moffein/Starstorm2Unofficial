@@ -1,7 +1,7 @@
 ﻿using MonoMod.Cil;
 using System;
 
-namespace Starstorm2.Modules
+namespace Starstorm2Unofficial.Modules
 {
     internal static class Music
     {

@@ -1,12 +1,12 @@
 ﻿using RoR2;
-using Starstorm2.Survivors.Pyro.Components;
+using Starstorm2Unofficial.Survivors.Pyro.Components;
 using UnityEngine;
 using UnityEngine.Networking;
 using RoR2.Projectile;
 using System.Collections.Generic;
 using UnityEngine.AddressableAssets;
 using R2API;
-using Starstorm2.Cores;
+using Starstorm2Unofficial.Cores;
 
 namespace EntityStates.SS2UStates.Pyro
 {

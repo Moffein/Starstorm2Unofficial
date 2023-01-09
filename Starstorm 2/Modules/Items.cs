@@ -1,7 +1,7 @@
 ﻿using RoR2;
 using System.Collections.Generic;
 
-namespace Starstorm2.Modules
+namespace Starstorm2Unofficial.Modules
 {
     internal static class Items
     {

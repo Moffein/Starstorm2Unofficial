@@ -1,6 +1,6 @@
 ﻿using R2API;
 using RoR2;
-using Starstorm2.Cores;
+using Starstorm2Unofficial.Cores;
 using System;
 using System.Globalization;
 using UnityEngine;
@@ -51,8 +51,8 @@ public abstract class SS2Equipment
         def.appearsInSinglePlayer = true;
         def.appearsInMultiPlayer = true;
         def.passiveBuffDef = PassiveBuffDef;
-        def.pickupIconSprite = PickupIconPath != "" ? Starstorm2.Modules.Assets.mainAssetBundle.LoadAsset<Sprite>(PickupIconPath) : null;
-        def.pickupModelPrefab = PickupModelPath != "" ? Starstorm2.Modules.Assets.mainAssetBundle.LoadAsset<GameObject>(PickupModelPath) : null;
+        def.pickupIconSprite = PickupIconPath != "" ? Starstorm2Unofficial.Modules.Assets.mainAssetBundle.LoadAsset<Sprite>(PickupIconPath) : null;
+        def.pickupModelPrefab = PickupModelPath != "" ? Starstorm2Unofficial.Modules.Assets.mainAssetBundle.LoadAsset<GameObject>(PickupModelPath) : null;
 
         LanguageAPI.Add(def.nameToken, Name);
         LanguageAPI.Add(def.pickupToken, Pickup);
@@ -64,7 +64,7 @@ public abstract class SS2Equipment
             var modelPrefab = def.pickupModelPrefab;
             if (modelPrefab)
             {
-                modelPrefab.GetComponentInChildren<MeshRenderer>().material.shader = Starstorm2.Modules.Assets.hotpoo;
+                modelPrefab.GetComponentInChildren<MeshRenderer>().material.shader = Starstorm2Unofficial.Modules.Assets.hotpoo;
             }
         }
 
@@ -73,7 +73,7 @@ public abstract class SS2Equipment
         On.RoR2.EquipmentSlot.PerformEquipmentAction += EquipmentSlot_PerformEquipmentAction;
 
         equipDef = def;
-        Starstorm2.Modules.Items.equipmentDefs.Add(equipDef);
+        Starstorm2Unofficial.Modules.Items.equipmentDefs.Add(equipDef);
 
         return def;
     }

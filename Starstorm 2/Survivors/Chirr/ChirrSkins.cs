@@ -1,11 +1,11 @@
 ﻿using R2API;
 using R2API.Utils;
 using RoR2;
-using Starstorm2.Cores;
+using Starstorm2Unofficial.Cores;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Starstorm2.Survivors.Chirr
+namespace Starstorm2Unofficial.Survivors.Chirr
 {
     public static class ChirrSkins
     {

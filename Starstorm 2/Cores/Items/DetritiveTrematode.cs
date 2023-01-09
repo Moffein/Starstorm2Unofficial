@@ -9,7 +9,7 @@ using UnityEngine;
 
 //FIXME: trematode debuff does no damage
 
-namespace Starstorm2.Cores.Items
+namespace Starstorm2Unofficial.Cores.Items
 {
     class DetritiveTrematode : SS2Item<DetritiveTrematode>
     {

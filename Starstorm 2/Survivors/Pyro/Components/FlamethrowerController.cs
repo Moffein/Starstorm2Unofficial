@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.Networking;
 
-namespace Starstorm2.Survivors.Pyro.Components
+namespace Starstorm2Unofficial.Survivors.Pyro.Components
 {
     public class FlamethrowerController : MonoBehaviour
     {

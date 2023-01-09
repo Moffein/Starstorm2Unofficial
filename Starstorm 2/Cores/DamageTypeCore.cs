@@ -4,7 +4,7 @@ using System;
 using UnityEngine;
 using UnityEngine.Networking;
 
-namespace Starstorm2.Cores
+namespace Starstorm2Unofficial.Cores
 {
     public class DamageTypeCore
     {

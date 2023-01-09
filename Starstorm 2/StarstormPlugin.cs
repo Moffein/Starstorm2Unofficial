@@ -2,20 +2,20 @@
 using BepInEx.Configuration;
 using R2API.Utils;
 using RoR2;
-using Starstorm2.Components.Projectiles;
-using Starstorm2.Cores;
-using Starstorm2.Cores.Equipment;
-using Starstorm2.Cores.Items;
-using Starstorm2.Cores.NemesisInvasion;
-using Starstorm2.Survivors.Chirr;
-using Starstorm2.Survivors.Cyborg;
-using Starstorm2.Survivors.Pyro;
+using Starstorm2Unofficial.Components.Projectiles;
+using Starstorm2Unofficial.Cores;
+using Starstorm2Unofficial.Cores.Equipment;
+using Starstorm2Unofficial.Cores.Items;
+using Starstorm2Unofficial.Cores.NemesisInvasion;
+using Starstorm2Unofficial.Survivors.Chirr;
+using Starstorm2Unofficial.Survivors.Cyborg;
+using Starstorm2Unofficial.Survivors.Pyro;
 using System;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using UnityEngine;
 
-namespace Starstorm2
+namespace Starstorm2Unofficial
 {
     [BepInDependency("com.bepis.r2api", BepInDependency.DependencyFlags.HardDependency)]
     [BepInDependency("com.TeamMoonstorm.Starstorm2-Nightly", BepInDependency.DependencyFlags.SoftDependency)]
@@ -49,7 +49,7 @@ namespace Starstorm2
     {
         internal const string guid = "com.ChirrLover.Starstorm2Unofficial";
         internal const string modName = "Starstorm 2 Unofficial";
-        internal const string version = "0.8.0";
+        internal const string version = "0.9.0";
 
         public static StarstormPlugin instance;
 

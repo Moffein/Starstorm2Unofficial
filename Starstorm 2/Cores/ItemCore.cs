@@ -3,7 +3,7 @@ using BepInEx.Configuration;
 using R2API;
 using RoR2;
 using RoR2.ContentManagement;
-using Starstorm2.Cores.Items;
+using Starstorm2Unofficial.Cores.Items;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -11,7 +11,7 @@ using System.Globalization;
 using UnityEngine;
 using UnityEngine.Networking;
 
-namespace Starstorm2.Cores
+namespace Starstorm2Unofficial.Cores
 {
     class ItemCore
     {

@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Starstorm2
+namespace Starstorm2Unofficial
 {
     //This wouldn't be needed if the crosshair override system actually worked.
     public static class IgnoreSprintCrosshair

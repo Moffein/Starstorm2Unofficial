@@ -1,7 +1,7 @@
 ﻿using RoR2;
 using RoR2.Skills;
-using Starstorm2.Survivors.Chirr;
-using Starstorm2.Survivors.Chirr.Components;
+using Starstorm2Unofficial.Survivors.Chirr;
+using Starstorm2Unofficial.Survivors.Chirr.Components;
 using UnityEngine;
 using UnityEngine.Networking;
 

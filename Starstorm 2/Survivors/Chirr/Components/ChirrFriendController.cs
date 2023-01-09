@@ -2,7 +2,7 @@
 using RoR2;
 using RoR2.CharacterAI;
 using RoR2.Navigation;
-using Starstorm2.Cores;
+using Starstorm2Unofficial.Cores;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,7 +10,7 @@ using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.Networking;
 
-namespace Starstorm2.Survivors.Chirr.Components
+namespace Starstorm2Unofficial.Survivors.Chirr.Components
 {
     //I went overboard with the amount of nullchecks in this class, there's a lot of redundant ones.
     //Don't like how it's ambiguous whether targetMaster/targetBody/trackingTarget/_trackingTargetMasterNetID is used to identify valid targets. Should have a clear-cut hierarchy instead.

@@ -2,7 +2,7 @@
 using RoR2.Orbs;
 using UnityEngine;
 
-namespace Starstorm2.Modules.Orbs
+namespace Starstorm2Unofficial.Modules.Orbs
 {
     public class NemmandoDashOrb : Orb
     {

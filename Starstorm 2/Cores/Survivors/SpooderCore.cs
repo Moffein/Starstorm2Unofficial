@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Starstorm2.Cores
+namespace Starstorm2Unofficial.Cores
 {
     public class SpooderCore
     {

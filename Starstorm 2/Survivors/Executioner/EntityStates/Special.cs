@@ -1,7 +1,7 @@
 ﻿using RoR2;
-using Starstorm2.Components;
-using Starstorm2.Cores;
-using Starstorm2.Survivors.Executioner.Components;
+using Starstorm2Unofficial.Components;
+using Starstorm2Unofficial.Cores;
+using Starstorm2Unofficial.Survivors.Executioner.Components;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -207,7 +207,7 @@ namespace EntityStates.SS2UStates.Executioner
             Util.PlayAttackSpeedSound("ExecutionerSpecialImpact", base.gameObject, this.attackSpeedStat);
             //Util.PlayAttackSpeedSound(Engi.EngiWeapon.FireGrenades.attackSoundString, base.gameObject, this.attackSpeedStat);
             EffectManager.SpawnEffect(slamEffect, slamEffectData, true);
-            EffectManager.SpawnEffect(Starstorm2.Modules.Assets.exeAxeSlamEffect, slamEffectData, true);
+            EffectManager.SpawnEffect(Starstorm2Unofficial.Modules.Assets.exeAxeSlamEffect, slamEffectData, true);
 
             base.characterBody.bodyFlags -= CharacterBody.BodyFlags.IgnoreFallDamage;
 

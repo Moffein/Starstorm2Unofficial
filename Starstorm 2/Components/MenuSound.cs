@@ -1,7 +1,7 @@
 ﻿using RoR2;
 using UnityEngine;
 
-namespace Starstorm2.Components
+namespace Starstorm2Unofficial.Components
 {
     public class MenuSound : MonoBehaviour
     {

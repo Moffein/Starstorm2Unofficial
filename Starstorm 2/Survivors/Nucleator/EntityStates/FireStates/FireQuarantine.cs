@@ -2,7 +2,7 @@
 using RoR2;
 using UnityEngine;
 
-namespace Starstorm2.Cores.States.Nucleator
+namespace Starstorm2Unofficial.Cores.States.Nucleator
 {
     class FireQuarantine : BaseSkillState
     {

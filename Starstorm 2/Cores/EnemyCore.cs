@@ -15,7 +15,7 @@ using RoR2.CharacterAI;
 using KinematicCharacterController;
 using UnityEngine.AddressableAssets;
 
-namespace Starstorm2.Cores
+namespace Starstorm2Unofficial.Cores
 {
     public class EnemyCore
     {

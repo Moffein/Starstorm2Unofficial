@@ -2,7 +2,7 @@
 using System;
 using UnityEngine;
 
-namespace Starstorm2.Survivors.Nemmando.Components
+namespace Starstorm2Unofficial.Survivors.Nemmando.Components
 {
     public class NemmandoUnlockComponent : MonoBehaviour
     {

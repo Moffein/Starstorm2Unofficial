@@ -7,7 +7,7 @@ using UnityEngine;
 using RoR2;
 using EntityStates;
 
-namespace Starstorm2.Cores.States.Wayfarer
+namespace Starstorm2Unofficial.Cores.States.Wayfarer
 {
     class MeleeSlam : BaseSkillState
     {

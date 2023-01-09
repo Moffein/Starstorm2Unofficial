@@ -7,18 +7,18 @@ using RoR2;
 using RoR2.CharacterAI;
 using RoR2.Projectile;
 using RoR2.Skills;
-using Starstorm2.Cores;
-using Starstorm2.Cores.NemesisInvasion;
-using Starstorm2.Modules;
-using Starstorm2.Modules.Survivors;
-using Starstorm2.Survivors.Nemmando.Components;
+using Starstorm2Unofficial.Cores;
+using Starstorm2Unofficial.Cores.NemesisInvasion;
+using Starstorm2Unofficial.Modules;
+using Starstorm2Unofficial.Modules.Survivors;
+using Starstorm2Unofficial.Survivors.Nemmando.Components;
 using System;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 
-namespace Starstorm2.Survivors.Nemmando
+namespace Starstorm2Unofficial.Survivors.Nemmando
 {
     internal class NemmandoCore : SurvivorBase
     {
@@ -269,7 +269,7 @@ namespace Starstorm2.Survivors.Nemmando
 
             bossBodyPrefab.AddComponent<Components.NemmandoUnlockComponent>();
             bossBodyPrefab.AddComponent<Components.NemmandoSpecialSwapComponent>();
-            bossBodyPrefab.AddComponent<Starstorm2.Components.NemesisBossComponent>();
+            bossBodyPrefab.AddComponent<Starstorm2Unofficial.Components.NemesisBossComponent>();
 
             Modules.Prefabs.bodyPrefabs.Add(bossBodyPrefab);
             Modules.Prefabs.masterPrefabs.Add(bossMasterPrefab);

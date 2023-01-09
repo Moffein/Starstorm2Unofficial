@@ -10,7 +10,7 @@ using UnityEngine.Networking;
 
 //FIXME: appears to break when stacked via shrine of order
 
-namespace Starstorm2.Cores.Items
+namespace Starstorm2Unofficial.Cores.Items
 {
     class HuntersSigil : SS2Item<HuntersSigil>
     {

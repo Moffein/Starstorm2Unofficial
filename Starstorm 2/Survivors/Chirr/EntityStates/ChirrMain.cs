@@ -5,8 +5,8 @@ using RoR2.CharacterAI;
 using System.Linq;
 using System.Collections.Generic;
 using UnityEngine.Networking;
-using Starstorm2.Survivors.Chirr;
-using Starstorm2.Survivors.Chirr.Components;
+using Starstorm2Unofficial.Survivors.Chirr;
+using Starstorm2Unofficial.Survivors.Chirr.Components;
 
 
 //TODO: should check that secondary is ion gun before attempting to store/load charges

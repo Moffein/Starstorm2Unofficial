@@ -2,9 +2,9 @@
 using RoR2;
 using RoR2.Skills;
 using UnityEngine;
-using Starstorm2.Survivors.Pyro.Components;
+using Starstorm2Unofficial.Survivors.Pyro.Components;
 
-namespace Starstorm2.Survivors.Pyro
+namespace Starstorm2Unofficial.Survivors.Pyro
 {
 	public class HeatSkillDef : SkillDef
 	{

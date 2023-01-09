@@ -2,7 +2,7 @@
 using MonoMod.Cil;
 using R2API;
 using RoR2;
-using Starstorm2.Survivors.Chirr.Components;
+using Starstorm2Unofficial.Survivors.Chirr.Components;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,7 +10,7 @@ using UnityEngine;
 using UnityEngine.Networking;
 using Object = UnityEngine.Object;
 
-namespace Starstorm2.Cores
+namespace Starstorm2Unofficial.Cores
 {
     public class BuffCore
     {

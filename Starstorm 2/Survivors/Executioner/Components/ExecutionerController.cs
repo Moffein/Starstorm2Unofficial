@@ -1,7 +1,7 @@
 ﻿using RoR2;
 using UnityEngine;
 
-namespace Starstorm2.Survivors.Executioner.Components
+namespace Starstorm2Unofficial.Survivors.Executioner.Components
 {
     public class ExecutionerController : MonoBehaviour
     {
@@ -182,7 +182,7 @@ namespace Starstorm2.Survivors.Executioner.Components
             // supercharge effect loop
             if (this.characterBody)
             {
-                bool charged = this.characterBody.HasBuff(Starstorm2.Cores.BuffCore.exeSuperchargedBuff);
+                bool charged = this.characterBody.HasBuff(Starstorm2Unofficial.Cores.BuffCore.exeSuperchargedBuff);
                 if (this.isSuperCharged && !charged && this.superchargeEffectLoop) this.superchargeEffectLoop.Stop();
                 if (!this.isSuperCharged && charged && this.superchargeEffectLoop)
                 {

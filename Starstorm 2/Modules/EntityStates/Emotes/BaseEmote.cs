@@ -1,6 +1,6 @@
 ﻿using EntityStates;
 using RoR2;
-using Starstorm2.Modules;
+using Starstorm2Unofficial.Modules;
 using UnityEngine;
 using static RoR2.CameraTargetParams;
 
@@ -116,12 +116,12 @@ namespace EntityStates.SS2UStates.Common.Emotes
             //emote cancels
             if (base.isAuthority && base.characterMotor.isGrounded)
             {
-                if (Input.GetKeyDown(Starstorm2.Modules.Config.restKeybind))
+                if (Input.GetKeyDown(Starstorm2Unofficial.Modules.Config.restKeybind))
                 {
                     this.outer.SetInterruptState(new RestEmote(), InterruptPriority.Any);
                     return;
                 }
-                else if (Input.GetKeyDown(Starstorm2.Modules.Config.tauntKeybind))
+                else if (Input.GetKeyDown(Starstorm2Unofficial.Modules.Config.tauntKeybind))
                 {
                     this.outer.SetInterruptState(new TauntEmote(), InterruptPriority.Any);
                     return;

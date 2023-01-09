@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.Networking;
 
-namespace Starstorm2.Survivors.Cyborg.Components
+namespace Starstorm2Unofficial.Survivors.Cyborg.Components
 {
     public class CyborgTeleportTracker : NetworkBehaviour
     {

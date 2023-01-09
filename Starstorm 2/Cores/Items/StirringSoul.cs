@@ -8,7 +8,7 @@ using RoR2;
 using UnityEngine;
 using UnityEngine.Networking;
 
-namespace Starstorm2.Cores.Items
+namespace Starstorm2Unofficial.Cores.Items
 {
     class StirringSoul : SS2Item<StirringSoul>
     {

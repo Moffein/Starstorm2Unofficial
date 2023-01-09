@@ -1,0 +1,662 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{00C13A13-ED8F-4769-BCB1-029E4EDB505A}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Starstorm2Unofficial</RootNamespace>
+    <AssemblyName>Starstorm2Unofficial</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <LangVersion>latest</LangVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
+  <ItemGroup>
+    <Content Include="libs\0Harmony.dll" />
+    <Content Include="libs\0Harmony.xml" />
+    <Content Include="libs\Assembly-CSharp.dll" />
+    <Content Include="libs\Assembly-CSharp.R2API.mm.dll" />
+    <Content Include="libs\BepInEx.dll" />
+    <Content Include="libs\BepInEx.Harmony.dll" />
+    <Content Include="libs\BepInEx.Harmony.xml" />
+    <Content Include="libs\BepInEx.MonoMod.Loader.dll" />
+    <Content Include="libs\BepInEx.Preloader.dll" />
+    <Content Include="libs\BepInEx.Preloader.xml" />
+    <Content Include="libs\BepInEx.xml" />
+    <Content Include="libs\Facepunch.Steamworks.dll" />
+    <Content Include="libs\MMHOOK_Assembly-CSharp.dll" />
+    <Content Include="libs\Mono.Cecil.dll" />
+    <Content Include="libs\Mono.Cecil.Mdb.dll" />
+    <Content Include="libs\Mono.Cecil.Pdb.dll" />
+    <Content Include="libs\Mono.Cecil.Rocks.dll" />
+    <Content Include="libs\MonoMod.exe" />
+    <Content Include="libs\MonoMod.RuntimeDetour.dll" />
+    <Content Include="libs\MonoMod.RuntimeDetour.xml" />
+    <Content Include="libs\MonoMod.Utils.dll" />
+    <Content Include="libs\MonoMod.Utils.xml" />
+    <Content Include="libs\MonoMod.xml" />
+    <Content Include="libs\R2API.dll" />
+    <Content Include="libs\R2API.xml" />
+    <Content Include="libs\Unity.TextMeshPro.dll" />
+    <Content Include="libs\UnityEngine.AnimationModule.dll" />
+    <Content Include="libs\UnityEngine.AssetBundleModule.dll" />
+    <Content Include="libs\UnityEngine.CoreModule.dll" />
+    <Content Include="libs\UnityEngine.dll" />
+    <Content Include="libs\UnityEngine.Networking.dll" />
+    <Content Include="libs\UnityEngine.ParticleSystemModule.dll" />
+    <Content Include="libs\UnityEngine.PhysicsModule.dll" />
+    <Content Include="libs\UnityEngine.UI.dll" />
+    <Content Include="libs\UnityEngine.UIModule.dll" />
+    <Content Include="libs\UnityEngine.UNETModule.dll" />
+    <Content Include="libs\Wwise.dll" />
+    <Content Include="libs\Zio.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="API\ComponentHelpers.cs" />
+    <Compile Include="API\LogCore.cs" />
+    <Compile Include="API\Utils.cs" />
+    <Compile Include="Cores\NemesisInvasion\Components\Body\NemesisDropItemOnDeath.cs" />
+    <Compile Include="Cores\NemesisInvasion\Components\NemesisInvasionManager.cs" />
+    <Compile Include="Cores\NemesisInvasion\NemesisInvasionCore.cs" />
+    <Compile Include="IgnoreSprintCrosshair.cs" />
+    <Compile Include="Modules\CameraParams.cs" />
+    <Compile Include="Modules\EntityStates\BaseMeleeAttack.cs" />
+    <Compile Include="Survivors\Chirr\BefriendSkillDef.cs" />
+    <Compile Include="Survivors\Chirr\ChirrSkins.cs" />
+    <Compile Include="Survivors\Chirr\Components\ChirrFriendController.cs" />
+    <Compile Include="Survivors\Chirr\Components\ChirrLeashSkillOverrideController.cs" />
+    <Compile Include="Survivors\Chirr\Components\MasterFriendController.cs" />
+    <Compile Include="Survivors\Chirr\EntityStates\ChirrPrimary.cs" />
+    <Compile Include="Survivors\Chirr\EntityStates\Headbutt.cs" />
+    <Compile Include="Survivors\Chirr\EntityStates\JetpackOn.cs" />
+    <Compile Include="Survivors\Chirr\EntityStates\Special\Befriend.cs" />
+    <Compile Include="Survivors\Chirr\EntityStates\Special\BefriendScepter.cs" />
+    <Compile Include="Survivors\Chirr\EntityStates\Special\Leash.cs" />
+    <Compile Include="Survivors\Chirr\EntityStates\TriDart.cs" />
+    <Compile Include="Survivors\Chirr\FriendLeashSkillDef.cs" />
+    <Compile Include="Survivors\Cyborg\Achievements\CyborgGrandMasteryAchievement.cs" />
+    <Compile Include="Survivors\Cyborg\Achievements\CyborgMasteryAchievement.cs" />
+    <Compile Include="Survivors\Cyborg\Components\CyborgChargeComponent.cs" />
+    <Compile Include="Survivors\Cyborg\Components\Crosshair\CyborgCrosshairChargeController.cs" />
+    <Compile Include="Survivors\Cyborg\Components\CyborgController.cs" />
+    <Compile Include="Survivors\Cyborg\Components\CyborgTeleportTracker.cs" />
+    <Compile Include="Survivors\Cyborg\Components\OverheatProjectile\BFGGhostReduceSizeOverTime.cs" />
+    <Compile Include="Survivors\Cyborg\Components\OverheatProjectile\LightningSoundComponent.cs" />
+    <Compile Include="Survivors\Cyborg\Components\OverheatProjectile\OverheatReduceTickrateOverTime.cs" />
+    <Compile Include="Components\Projectiles\ShootableProjectileComponent.cs" />
+    <Compile Include="Survivors\Cyborg\Components\ShockCoreProjectile\ShootableShockCore.cs" />
+    <Compile Include="Survivors\Cyborg\Components\TeleportProjectile\AssignToTeleportTracker.cs" />
+    <Compile Include="Survivors\Cyborg\CyborgTeleSkillDef.cs" />
+    <Compile Include="Survivors\Cyborg\DefenseMatrixManager.cs" />
+    <Compile Include="Survivors\Cyborg\DefenseMatrixSkillDef.cs" />
+    <Compile Include="Survivors\Cyborg\EntityStates\Jetpack\FlightMode.cs" />
+    <Compile Include="Survivors\Cyborg\EntityStates\OverheatScepter.cs" />
+    <Compile Include="Survivors\Cyborg\EntityStates\PrimaryLaser.cs" />
+    <Compile Include="Survivors\Cyborg\EntityStates\ChargeRifle\ChargeBeam.cs" />
+    <Compile Include="Survivors\Cyborg\EntityStates\Secondary\DefenseMatrix.cs" />
+    <Compile Include="Survivors\Cyborg\EntityStates\ChargeRifle\FireBeam.cs" />
+    <Compile Include="Survivors\Cyborg\EntityStates\Secondary\ShockCore.cs" />
+    <Compile Include="Survivors\Cyborg\EntityStates\Teleporter\DeployTeleporter.cs" />
+    <Compile Include="Survivors\Cyborg\EntityStates\Teleporter\UseTeleporter.cs" />
+    <Compile Include="Survivors\Executioner\Components\ExecutionerController.cs" />
+    <Compile Include="Survivors\Executioner\Components\ExecutionerKillComponent.cs" />
+    <Compile Include="Components\MenuSound.cs" />
+    <Compile Include="Components\NemesisBossComponent.cs" />
+    <Compile Include="Components\NemesisMusicComponent.cs" />
+    <Compile Include="Components\NemesisMusicComponentMaster.cs" />
+    <Compile Include="Survivors\Executioner\EntityStates\SpecialScepter.cs" />
+    <Compile Include="Survivors\Nemmando\Achievements\NemmandoKillSelfAchievement.cs" />
+    <Compile Include="Survivors\Nemmando\Achievements\NemmandoUnlockAchievement.cs" />
+    <Compile Include="Survivors\Nemmando\Components\NemmandoAnimationEvents.cs" />
+    <Compile Include="Survivors\Nemmando\Components\NemmandoController.cs" />
+    <Compile Include="Survivors\Nemmando\Components\NemmandoSpecialSwapComponent.cs" />
+    <Compile Include="Survivors\Nemmando\Components\NemmandoUnlockComponent.cs" />
+    <Compile Include="API\SS2Equipment.cs" />
+    <Compile Include="API\SS2Item.cs" />
+    <Compile Include="Components\StormSoundComponent.cs" />
+    <Compile Include="Survivors\Cyborg\EntityStates\Jetpack\JetpackOn.cs" />
+    <Compile Include="Survivors\Executioner\Components\IonGunChargeComponent.cs" />
+    <Compile Include="Survivors\Executioner\Components\MasterIonStockComponent.cs" />
+    <Compile Include="Survivors\Executioner\EntityStates\PrimaryBurst.cs" />
+    <Compile Include="Survivors\Chirr\ChirrCore.cs" />
+    <Compile Include="Cores\ItemDisplays\PyroItemDisplays.cs" />
+    <Compile Include="Survivors\Cyborg\CyborgItemDisplays.cs" />
+    <Compile Include="Cores\Items\BabyToys.cs" />
+    <Compile Include="Cores\Items\ShackledLamp.cs" />
+    <Compile Include="Cores\PrefabCore.cs" />
+    <Compile Include="Cores\SkinsCore.cs" />
+    <Compile Include="Cores\Equipment\CloakingHeadband.cs" />
+    <Compile Include="Cores\Equipment\GreaterWarbanner.cs" />
+    <Compile Include="Cores\Equipment\PressurizedCanister.cs" />
+    <Compile Include="Cores\EventsCore.cs" />
+    <Compile Include="Cores\ItemDisplayCore.cs" />
+    <Compile Include="Cores\Items\BrokenBloodTester.cs" />
+    <Compile Include="Cores\Items\CoffeeBag.cs" />
+    <Compile Include="Cores\Items\DetritiveTrematode.cs" />
+    <Compile Include="Cores\Items\Diary.cs" />
+    <Compile Include="Cores\Items\DormantFungus.cs" />
+    <Compile Include="Cores\Items\DroidHead.cs" />
+    <Compile Include="Cores\Items\ErraticGadget.cs" />
+    <Compile Include="Cores\Items\Fork.cs" />
+    <Compile Include="Cores\Items\GreenChocolate.cs" />
+    <Compile Include="Cores\Items\HottestSauce.cs" />
+    <Compile Include="Cores\Items\HuntersSigil.cs" />
+    <Compile Include="Cores\Items\Malice.cs" />
+    <Compile Include="Cores\Items\MoltenCoin.cs" />
+    <Compile Include="Cores\Items\NkotasHeritage.cs" />
+    <Compile Include="Cores\Items\PrototypeJetBoots.cs" />
+    <Compile Include="Cores\Items\RelicOfMass.cs" />
+    <Compile Include="Cores\Items\StirringSoul.cs" />
+    <Compile Include="Cores\Items\StrangeCan.cs" />
+    <Compile Include="Cores\Items\WatchMetronome.cs" />
+    <Compile Include="Cores\EnemyCore.cs" />
+    <Compile Include="Cores\DamageTypeCore.cs" />
+    <Compile Include="Survivors\Cyborg\CyborgSkins.cs" />
+    <Compile Include="Cores\Skins\VanillaSurvivorSkins.cs" />
+    <Compile Include="Cores\Survivors\SpooderCore.cs" />
+    <Compile Include="Cores\Starstorm2ItemManager.cs" />
+    <Compile Include="Survivors\Chirr\EntityStates\ChirrMain.cs" />
+    <Compile Include="Survivors\Chirr\EntityStates\ChirrHeal.cs" />
+    <Compile Include="Survivors\Cyborg\EntityStates\CyborgMain.cs" />
+    <Compile Include="Survivors\Cyborg\EntityStates\Secondary\FireTrackShot.cs" />
+    <Compile Include="Survivors\Cyborg\EntityStates\CyborgFireOverheat.cs" />
+    <Compile Include="Modules\EntityStates\Emotes\BaseEmote.cs" />
+    <Compile Include="Modules\EntityStates\Emotes\RestEmote.cs" />
+    <Compile Include="Modules\EntityStates\Emotes\TauntEmote.cs" />
+    <Compile Include="Survivors\Executioner\EntityStates\ExecutionerMain.cs" />
+    <Compile Include="Survivors\Executioner\EntityStates\Primary.cs" />
+    <Compile Include="Survivors\Executioner\EntityStates\Secondary.cs" />
+    <Compile Include="Survivors\Executioner\EntityStates\Special.cs" />
+    <Compile Include="Survivors\Executioner\EntityStates\Utility.cs" />
+    <Compile Include="Survivors\Cyborg\CyborgCore.cs" />
+    <Compile Include="Cores\ItemCore.cs" />
+    <Compile Include="Cores\DotCore.cs" />
+    <Compile Include="Cores\EquipmentCore.cs" />
+    <Compile Include="Cores\BuffCore.cs" />
+    <Compile Include="Modules\EntityStates\BaseCustomSkillState.cs" />
+    <Compile Include="Modules\EntityStates\BaseCustomMainState.cs" />
+    <Compile Include="Modules\EntityStates\NemesisSpawnState.cs" />
+    <Compile Include="Survivors\Nemmando\EntityStates\BladeOfCessation2.cs" />
+    <Compile Include="Survivors\Nemmando\EntityStates\ChargeBarrage\ChargeBarrageCharge.cs" />
+    <Compile Include="Survivors\Nemmando\EntityStates\ChargeBarrage\ChargeBarrageFire.cs" />
+    <Compile Include="Survivors\Nemmando\EntityStates\ChargeSlash\ChargedSlashAttack.cs" />
+    <Compile Include="Survivors\Nemmando\EntityStates\ChargeSlash\ChargedSlashEntry.cs" />
+    <Compile Include="Survivors\Nemmando\EntityStates\ChargeSlash\ChargedSlashCharge.cs" />
+    <Compile Include="Survivors\Nemmando\EntityStates\ChargeSwordBeam.cs" />
+    <Compile Include="Survivors\Nemmando\EntityStates\FireSwordBeam.cs" />
+    <Compile Include="Survivors\Nemmando\EntityStates\FireDecisiveStrike.cs" />
+    <Compile Include="Survivors\Nemmando\EntityStates\ChargeDecisiveStrike.cs" />
+    <Compile Include="Survivors\Nemmando\EntityStates\ScepterBarrage\ScepterBarrageCharge.cs" />
+    <Compile Include="Survivors\Nemmando\EntityStates\ScepterBarrage\ScepterBarrageFire.cs" />
+    <Compile Include="Survivors\Nemmando\EntityStates\ScepterSlash\ScepterSlashCharge.cs" />
+    <Compile Include="Survivors\Nemmando\EntityStates\ScepterSlash\ScepterSlashAttack.cs" />
+    <Compile Include="Survivors\Nemmando\EntityStates\ScepterSlash\ScepterSlashEntry.cs" />
+    <Compile Include="Survivors\Nemmando\EntityStates\ShootGun.cs" />
+    <Compile Include="Survivors\Nemmando\EntityStates\Submission.cs" />
+    <Compile Include="Survivors\Nemmando\EntityStates\DodgeState.cs" />
+    <Compile Include="Survivors\Nemmando\EntityStates\NemmandoMain.cs" />
+    <Compile Include="Cores\States\Wayfarer\CloakState.cs" />
+    <Compile Include="Cores\States\Wayfarer\CreateBuffWard.cs" />
+    <Compile Include="Cores\States\Wayfarer\FireChains.cs" />
+    <Compile Include="Cores\States\Wayfarer\MeleeSlam.cs" />
+    <Compile Include="Cores\TyphoonCore.cs" />
+    <Compile Include="Survivors\Executioner\Achievements\ExecutionerGrandMasteryAchievement.cs" />
+    <Compile Include="Survivors\Executioner\Achievements\ExecutionerMasteryAchievement.cs" />
+    <Compile Include="Survivors\Executioner\Achievements\ExecutionerWastelanderAchievement.cs" />
+    <Compile Include="Survivors\Nemmando\Achievements\NemmandoGrandMasteryAchievement.cs" />
+    <Compile Include="Survivors\Nemmando\Achievements\NemmandoMasteryAchievement.cs" />
+    <Compile Include="Cores\Unlockables\Achievements\Vanilla\VanillaGrandMasteryAchievements.cs" />
+    <Compile Include="Modules\Achievements\BaseGrandMasteryAchievement.cs" />
+    <Compile Include="Cores\Unlockables\VanillaSurvivorUnlockables.cs" />
+    <Compile Include="FUCKACCESSMODIFIERS.cs" />
+    <Compile Include="Modules\Assets.cs" />
+    <Compile Include="Modules\Config.cs" />
+    <Compile Include="Modules\ContentPacks.cs" />
+    <Compile Include="Modules\Effects.cs" />
+    <Compile Include="Modules\Helpers.cs" />
+    <Compile Include="Modules\ItemDisplays.cs" />
+    <Compile Include="Modules\Items.cs" />
+    <Compile Include="Modules\Music.cs" />
+    <Compile Include="Modules\Orbs\ExecutionerIonOrb.cs" />
+    <Compile Include="Modules\Orbs\ExecutionerIonSuperOrb.cs" />
+    <Compile Include="Modules\Orbs\ExecutionerIonTempSuperOrb.cs" />
+    <Compile Include="Modules\Orbs\NemmandoDashOrb.cs" />
+    <Compile Include="Modules\Prefabs.cs" />
+    <Compile Include="Modules\Skills.cs" />
+    <Compile Include="Modules\Skins.cs" />
+    <Compile Include="Modules\States.cs" />
+    <Compile Include="Survivors\Executioner\ExecutionerCore.cs" />
+    <Compile Include="Survivors\Nemmando\NemmandoCore.cs" />
+    <Compile Include="Survivors\Nucleator\EntityStates\ApplyRadionuclideSurge.cs" />
+    <Compile Include="Survivors\Nucleator\EntityStates\ChargeController.cs" />
+    <Compile Include="Survivors\Nucleator\EntityStates\ChargeStates\ChargeFissionImpulse.cs" />
+    <Compile Include="Survivors\Nucleator\EntityStates\ChargeStates\ChargeIrradiate.cs" />
+    <Compile Include="Survivors\Nucleator\EntityStates\ChargeStates\ChargeQuarantine.cs" />
+    <Compile Include="Survivors\Nucleator\EntityStates\ChargeStates\NucleatorSkillStateBase.cs" />
+    <Compile Include="Survivors\Nucleator\EntityStates\FireStates\FireFissionImpulse.cs" />
+    <Compile Include="Survivors\Nucleator\EntityStates\FireStates\FireIrradiate.cs" />
+    <Compile Include="Survivors\Nucleator\EntityStates\FireStates\FireQuarantine.cs" />
+    <Compile Include="Survivors\Nucleator\EntityStates\NucleatorProjectile.cs" />
+    <Compile Include="Survivors\Nucleator\Nucleator.cs" />
+    <Compile Include="Modules\Survivors\SurvivorBase.cs" />
+    <Compile Include="Modules\Unlockables.cs" />
+    <Compile Include="StarstormPlugin.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="StaticValues.cs" />
+    <Compile Include="Survivors\Pyro\Components\Crosshair\PyroCrosshairController.cs" />
+    <Compile Include="Survivors\Pyro\Components\FlamethrowerController.cs" />
+    <Compile Include="Survivors\Pyro\Components\HeatController.cs" />
+    <Compile Include="Survivors\Pyro\Components\Projectile\FlareProjectileController.cs" />
+    <Compile Include="Survivors\Pyro\EntityStates\FireFlamethrower.cs" />
+    <Compile Include="Survivors\Pyro\EntityStates\FlaregunScepter.cs" />
+    <Compile Include="Survivors\Pyro\EntityStates\HeatJetpack.cs" />
+    <Compile Include="Survivors\Pyro\EntityStates\Airblast.cs" />
+    <Compile Include="Survivors\Pyro\EntityStates\Flaregun.cs" />
+    <Compile Include="Survivors\Pyro\EntityStates\SuppressiveFire.cs" />
+    <Compile Include="Survivors\Pyro\HeatSkillDef.cs" />
+    <Compile Include="Survivors\Pyro\PyroSkins.cs" />
+    <Compile Include="Survivors\Pyro\PyroCore.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Assets\Starstorm2.bnk" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Assets\assetstorm" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Cores\Enemies\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="0Harmony">
+      <HintPath>libs\BepInEx\0Harmony.dll</HintPath>
+    </Reference>
+    <Reference Include="0Harmony20">
+      <HintPath>libs\BepInEx\0Harmony20.dll</HintPath>
+    </Reference>
+    <Reference Include="AncientScepter">
+      <HintPath>libs\SoftDependencies\AncientScepter.dll</HintPath>
+    </Reference>
+    <Reference Include="Assembly-CSharp, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>libs\Assembly-CSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="BepInEx">
+      <HintPath>libs\BepInEx\BepInEx.dll</HintPath>
+    </Reference>
+    <Reference Include="BepInEx.Harmony">
+      <HintPath>libs\BepInEx\BepInEx.Harmony.dll</HintPath>
+    </Reference>
+    <Reference Include="BepInEx.Preloader">
+      <HintPath>libs\BepInEx\BepInEx.Preloader.dll</HintPath>
+    </Reference>
+    <Reference Include="ClassicItems">
+      <HintPath>libs\SoftDependencies\ClassicItems.dll</HintPath>
+    </Reference>
+    <Reference Include="com.unity.multiplayer-hlapi.Runtime">
+      <HintPath>libs\com.unity.multiplayer-hlapi.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="CustomEmotesAPI">
+      <HintPath>libs\SoftDependencies\CustomEmotesAPI.dll</HintPath>
+    </Reference>
+    <Reference Include="Decalicious">
+      <HintPath>libs\Decalicious.dll</HintPath>
+    </Reference>
+    <Reference Include="DropInMultiplayer">
+      <HintPath>libs\SoftDependencies\DropInMultiplayer.dll</HintPath>
+    </Reference>
+    <Reference Include="Facepunch.Steamworks, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>libs\Facepunch.Steamworks.dll</HintPath>
+    </Reference>
+    <Reference Include="GenericIK">
+      <HintPath>libs\GenericIK.dll</HintPath>
+    </Reference>
+    <Reference Include="HarmonyXInterop">
+      <HintPath>libs\BepInEx\HarmonyXInterop.dll</HintPath>
+    </Reference>
+    <Reference Include="HGCSharpUtils">
+      <HintPath>libs\HGCSharpUtils.dll</HintPath>
+    </Reference>
+    <Reference Include="HGUnityUtils">
+      <HintPath>libs\HGUnityUtils.dll</HintPath>
+    </Reference>
+    <Reference Include="Inferno">
+      <HintPath>libs\SoftDependencies\Inferno.dll</HintPath>
+    </Reference>
+    <Reference Include="KinematicCharacterController">
+      <HintPath>libs\KinematicCharacterController.dll</HintPath>
+    </Reference>
+    <Reference Include="KingKombatArena">
+      <HintPath>libs\SoftDependencies\KingKombatArena.dll</HintPath>
+    </Reference>
+    <Reference Include="LegacyResourcesAPI">
+      <HintPath>libs\LegacyResourcesAPI.dll</HintPath>
+    </Reference>
+    <Reference Include="MMHOOK_RoR2">
+      <HintPath>libs\BepInEx\MMHOOK_RoR2.dll</HintPath>
+    </Reference>
+    <Reference Include="ModLoader">
+      <HintPath>libs\ModLoader.dll</HintPath>
+    </Reference>
+    <Reference Include="Mono.Cecil">
+      <HintPath>libs\BepInEx\Mono.Cecil.dll</HintPath>
+    </Reference>
+    <Reference Include="Mono.Cecil.Mdb">
+      <HintPath>libs\BepInEx\Mono.Cecil.Mdb.dll</HintPath>
+    </Reference>
+    <Reference Include="Mono.Cecil.Pdb">
+      <HintPath>libs\BepInEx\Mono.Cecil.Pdb.dll</HintPath>
+    </Reference>
+    <Reference Include="Mono.Cecil.Rocks">
+      <HintPath>libs\BepInEx\Mono.Cecil.Rocks.dll</HintPath>
+    </Reference>
+    <Reference Include="MonoMod.RuntimeDetour">
+      <HintPath>libs\BepInEx\MonoMod.RuntimeDetour.dll</HintPath>
+    </Reference>
+    <Reference Include="MonoMod.Utils">
+      <HintPath>libs\BepInEx\MonoMod.Utils.dll</HintPath>
+    </Reference>
+    <Reference Include="R2API">
+      <HintPath>libs\R2API\R2API.dll</HintPath>
+    </Reference>
+    <Reference Include="Rewired_Core">
+      <HintPath>libs\Rewired_Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Rewired_CSharp">
+      <HintPath>libs\Rewired_CSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="RiskOfOptions">
+      <HintPath>libs\SoftDependencies\RiskOfOptions.dll</HintPath>
+    </Reference>
+    <Reference Include="RoR2">
+      <HintPath>libs\RoR2.dll</HintPath>
+    </Reference>
+    <Reference Include="RoR2BepInExPack">
+      <HintPath>libs\BepInEx\RoR2BepInExPack.dll</HintPath>
+    </Reference>
+    <Reference Include="SimpleJSON">
+      <HintPath>libs\SimpleJSON.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Drawing" />
+    <Reference Include="TILER2">
+      <HintPath>libs\SoftDependencies\TILER2.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Addressables">
+      <HintPath>libs\Unity.Addressables.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Postprocessing.Runtime">
+      <HintPath>libs\Unity.Postprocessing.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.ProBuilder">
+      <HintPath>libs\Unity.ProBuilder.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.ProBuilder.Csg">
+      <HintPath>libs\Unity.ProBuilder.Csg.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.ProBuilder.KdTree">
+      <HintPath>libs\Unity.ProBuilder.KdTree.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.ProBuilder.Poly2Tri">
+      <HintPath>libs\Unity.ProBuilder.Poly2Tri.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.ProBuilder.Stl">
+      <HintPath>libs\Unity.ProBuilder.Stl.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.RenderPipelines.Core.Runtime">
+      <HintPath>libs\Unity.RenderPipelines.Core.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.RenderPipelines.Core.ShaderLibrary">
+      <HintPath>libs\Unity.RenderPipelines.Core.ShaderLibrary.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.ResourceManager">
+      <HintPath>libs\Unity.ResourceManager.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.ScriptableBuildPipeline">
+      <HintPath>libs\Unity.ScriptableBuildPipeline.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.TextMeshPro, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>libs\Unity.TextMeshPro.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Timeline">
+      <HintPath>libs\Unity.Timeline.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>libs\UnityEngine.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.AccessibilityModule">
+      <HintPath>libs\UnityEngine.AccessibilityModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.AIModule">
+      <HintPath>libs\UnityEngine.AIModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.AndroidJNIModule">
+      <HintPath>libs\UnityEngine.AndroidJNIModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.AnimationModule, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>libs\UnityEngine.AnimationModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.ARModule">
+      <HintPath>libs\UnityEngine.ARModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.AssetBundleModule, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>libs\UnityEngine.AssetBundleModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.AudioModule">
+      <HintPath>libs\UnityEngine.AudioModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.ClothModule">
+      <HintPath>libs\UnityEngine.ClothModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.ClusterInputModule">
+      <HintPath>libs\UnityEngine.ClusterInputModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.ClusterRendererModule">
+      <HintPath>libs\UnityEngine.ClusterRendererModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>libs\UnityEngine.CoreModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.CrashReportingModule">
+      <HintPath>libs\UnityEngine.CrashReportingModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.DirectorModule">
+      <HintPath>libs\UnityEngine.DirectorModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.DSPGraphModule">
+      <HintPath>libs\UnityEngine.DSPGraphModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.GameCenterModule">
+      <HintPath>libs\UnityEngine.GameCenterModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.GridModule">
+      <HintPath>libs\UnityEngine.GridModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.HotReloadModule">
+      <HintPath>libs\UnityEngine.HotReloadModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.ImageConversionModule">
+      <HintPath>libs\UnityEngine.ImageConversionModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.IMGUIModule">
+      <HintPath>libs\UnityEngine.IMGUIModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.InputLegacyModule">
+      <HintPath>libs\UnityEngine.InputLegacyModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.InputModule">
+      <HintPath>libs\UnityEngine.InputModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.JSONSerializeModule">
+      <HintPath>libs\UnityEngine.JSONSerializeModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.LocalizationModule">
+      <HintPath>libs\UnityEngine.LocalizationModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.ParticleSystemModule, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>libs\UnityEngine.ParticleSystemModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.PerformanceReportingModule">
+      <HintPath>libs\UnityEngine.PerformanceReportingModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.Physics2DModule">
+      <HintPath>libs\UnityEngine.Physics2DModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.PhysicsModule, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>libs\UnityEngine.PhysicsModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.ProfilerModule">
+      <HintPath>libs\UnityEngine.ProfilerModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.ScreenCaptureModule">
+      <HintPath>libs\UnityEngine.ScreenCaptureModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.SharedInternalsModule">
+      <HintPath>libs\UnityEngine.SharedInternalsModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.SpatialTracking">
+      <HintPath>libs\UnityEngine.SpatialTracking.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.SpriteMaskModule">
+      <HintPath>libs\UnityEngine.SpriteMaskModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.SpriteShapeModule">
+      <HintPath>libs\UnityEngine.SpriteShapeModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.StreamingModule">
+      <HintPath>libs\UnityEngine.StreamingModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.SubstanceModule">
+      <HintPath>libs\UnityEngine.SubstanceModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.SubsystemsModule">
+      <HintPath>libs\UnityEngine.SubsystemsModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.TerrainModule">
+      <HintPath>libs\UnityEngine.TerrainModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.TerrainPhysicsModule">
+      <HintPath>libs\UnityEngine.TerrainPhysicsModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.TextCoreModule">
+      <HintPath>libs\UnityEngine.TextCoreModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.TextRenderingModule">
+      <HintPath>libs\UnityEngine.TextRenderingModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.TilemapModule">
+      <HintPath>libs\UnityEngine.TilemapModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.TLSModule">
+      <HintPath>libs\UnityEngine.TLSModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UI, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>libs\UnityEngine.UI.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UIElementsModule">
+      <HintPath>libs\UnityEngine.UIElementsModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UIModule, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>libs\UnityEngine.UIModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UmbraModule">
+      <HintPath>libs\UnityEngine.UmbraModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UNETModule, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>libs\UnityEngine.UNETModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UnityAnalyticsModule">
+      <HintPath>libs\UnityEngine.UnityAnalyticsModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UnityConnectModule">
+      <HintPath>libs\UnityEngine.UnityConnectModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UnityTestProtocolModule">
+      <HintPath>libs\UnityEngine.UnityTestProtocolModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UnityWebRequestAssetBundleModule">
+      <HintPath>libs\UnityEngine.UnityWebRequestAssetBundleModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UnityWebRequestAudioModule">
+      <HintPath>libs\UnityEngine.UnityWebRequestAudioModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UnityWebRequestModule">
+      <HintPath>libs\UnityEngine.UnityWebRequestModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UnityWebRequestTextureModule">
+      <HintPath>libs\UnityEngine.UnityWebRequestTextureModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UnityWebRequestWWWModule">
+      <HintPath>libs\UnityEngine.UnityWebRequestWWWModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.VehiclesModule">
+      <HintPath>libs\UnityEngine.VehiclesModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.VFXModule">
+      <HintPath>libs\UnityEngine.VFXModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.VideoModule">
+      <HintPath>libs\UnityEngine.VideoModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.VRModule">
+      <HintPath>libs\UnityEngine.VRModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.WindModule">
+      <HintPath>libs\UnityEngine.WindModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.XR.LegacyInputHelpers">
+      <HintPath>libs\UnityEngine.XR.LegacyInputHelpers.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.XRModule">
+      <HintPath>libs\UnityEngine.XRModule.dll</HintPath>
+    </Reference>
+    <Reference Include="Wwise, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>libs\Wwise.dll</HintPath>
+    </Reference>
+    <Reference Include="Zio, Version=0.7.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>libs\Zio.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Assets\SS2Music.bnk" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>cd $(ProjectDir)
+call postbuild.bat</PostBuildEvent>
+  </PropertyGroup>
+</Project>

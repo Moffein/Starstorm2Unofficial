@@ -4,7 +4,7 @@ using RoR2;
 using RoR2.Projectile;
 using UnityEngine;
 
-namespace Starstorm2.Cores.States.Nucleator
+namespace Starstorm2Unofficial.Cores.States.Nucleator
 {
     class FireIrradiate : BaseSkillState
     {

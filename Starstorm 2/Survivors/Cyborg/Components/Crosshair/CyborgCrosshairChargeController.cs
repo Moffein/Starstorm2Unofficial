@@ -2,7 +2,7 @@
 using UnityEngine.UI;
 using UnityEngine;
 
-namespace Starstorm2.Survivors.Cyborg.Components.Crosshair
+namespace Starstorm2Unofficial.Survivors.Cyborg.Components.Crosshair
 {
     public class CyborgCrosshairChargeController : MonoBehaviour
     {

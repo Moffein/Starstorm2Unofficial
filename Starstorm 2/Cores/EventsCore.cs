@@ -14,7 +14,7 @@ using R2API.Networking;
 using UnityEngine.AddressableAssets;
 //TODO: event selection weight
 
-namespace Starstorm2.Cores
+namespace Starstorm2Unofficial.Cores
 {
     public class EventsCore
     {

@@ -1,6 +1,6 @@
 ﻿using RoR2.ContentManagement;
 
-namespace Starstorm2.Modules
+namespace Starstorm2Unofficial.Modules
 {
     internal class ContentPacks : IContentPackProvider
     {

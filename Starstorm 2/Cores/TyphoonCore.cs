@@ -8,7 +8,7 @@ using R2API.Utils;
 using RoR2;
 using UnityEngine;
 
-namespace Starstorm2.Cores
+namespace Starstorm2Unofficial.Cores
 {
     [R2APISubmoduleDependency((nameof(DifficultyAPI)))]
     public class TyphoonCore

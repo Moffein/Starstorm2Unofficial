@@ -1,7 +1,7 @@
 ﻿using RoR2;
 using RoR2.Projectile;
 using R2API;
-using Starstorm2.Cores;
+using Starstorm2Unofficial.Cores;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,7 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
 
-namespace Starstorm2.Survivors.Cyborg.Components
+namespace Starstorm2Unofficial.Survivors.Cyborg.Components
 {
     public class CyborgController : MonoBehaviour
     {

@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 //TODO: anniversary update item displays
 
-namespace Starstorm2.Cores.ItemDisplays
+namespace Starstorm2Unofficial.Cores.ItemDisplays
 {
     public static class PyroItemDisplays
     {

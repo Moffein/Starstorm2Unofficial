@@ -1,8 +1,8 @@
 ﻿using RoR2;
 using RoR2.Projectile;
 using RoR2.UI;
-using Starstorm2.Survivors.Cyborg;
-using Starstorm2.Survivors.Cyborg.Components;
+using Starstorm2Unofficial.Survivors.Cyborg;
+using Starstorm2Unofficial.Survivors.Cyborg.Components;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AddressableAssets;

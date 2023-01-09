@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.Networking;
 
 //Fixes the case where you have a minion without being in the Befriend state
-namespace Starstorm2.Survivors.Chirr.Components
+namespace Starstorm2Unofficial.Survivors.Chirr.Components
 {
     public class ChirrLeashSkillOverrideController : MonoBehaviour
     {

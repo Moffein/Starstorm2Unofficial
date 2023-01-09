@@ -1,8 +1,8 @@
 ﻿using EntityStates.SS2UStates.Common;
 using R2API;
 using RoR2;
-using Starstorm2.Cores;
-using Starstorm2.Cores.States;
+using Starstorm2Unofficial.Cores;
+using Starstorm2Unofficial.Cores.States;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -92,7 +92,7 @@ namespace EntityStates.SS2UStates.Executioner
                 rotation = Quaternion.LookRotation(base.GetAimRay().direction)
             };
 
-            EffectManager.SpawnEffect(Starstorm2.Modules.Assets.exeIonEffect, ionEffectData, true);
+            EffectManager.SpawnEffect(Starstorm2Unofficial.Modules.Assets.exeIonEffect, ionEffectData, true);
 
             float animSpeed = 4f;
             if (this.shotsToFire == 1) animSpeed = 8f;
@@ -131,7 +131,7 @@ namespace EntityStates.SS2UStates.Executioner
                 bullet.AddModdedDamageType(DamageTypeCore.ModdedDamageTypes.ExtendFear);
                 bullet.Fire();
 
-                if (!base.characterBody.HasBuff(Starstorm2.Cores.BuffCore.exeSuperchargedBuff)) skill.DeductStock(1);
+                if (!base.characterBody.HasBuff(Starstorm2Unofficial.Cores.BuffCore.exeSuperchargedBuff)) skill.DeductStock(1);
             }
         }
 

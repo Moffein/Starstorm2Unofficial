@@ -1,7 +1,7 @@
 ﻿using EntityStates;
 using RoR2;
-using Starstorm2.Components;
-using Starstorm2.Survivors.Nemmando.Components;
+using Starstorm2Unofficial.Components;
+using Starstorm2Unofficial.Survivors.Nemmando.Components;
 using UnityEngine;
 
 namespace EntityStates.SS2UStates.Nemmando

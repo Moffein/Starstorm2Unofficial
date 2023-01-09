@@ -2,10 +2,10 @@
 using RoR2;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
-using Starstorm2.Survivors.Cyborg.Components;
+using Starstorm2Unofficial.Survivors.Cyborg.Components;
 using RoR2.Skills;
 using R2API;
-using Starstorm2.Cores;
+using Starstorm2Unofficial.Cores;
 
 namespace EntityStates.SS2UStates.Cyborg.ChargeRifle
 {

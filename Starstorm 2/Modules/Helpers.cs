@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Text;
 using UnityEngine;
 
-namespace Starstorm2.Modules
+namespace Starstorm2Unofficial.Modules
 {
     public static class Helpers
     {

@@ -4,10 +4,10 @@ using R2API;
 using RoR2;
 using R2API.Utils;
 using System.Collections.Generic;
-using Starstorm2.Cores;
-using Starstorm2.Modules;
+using Starstorm2Unofficial.Cores;
+using Starstorm2Unofficial.Modules;
 
-namespace Starstorm2.Survivors.Cyborg
+namespace Starstorm2Unofficial.Survivors.Cyborg
 {
     public static class CyborgSkins 
     {

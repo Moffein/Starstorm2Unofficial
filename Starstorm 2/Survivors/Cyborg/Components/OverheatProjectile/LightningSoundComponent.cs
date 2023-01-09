@@ -4,7 +4,7 @@ using RoR2.Projectile;
 using UnityEngine.Networking;
 using System.Linq;
 
-namespace Starstorm2.Survivors.Cyborg.Components.OverheatProjectile
+namespace Starstorm2Unofficial.Survivors.Cyborg.Components.OverheatProjectile
 {
     [RequireComponent(typeof(ProjectileProximityBeamController))]
     public class LightningSoundComponent : MonoBehaviour

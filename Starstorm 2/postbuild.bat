@@ -9,16 +9,16 @@ if %username% == Erikbir set pluginpath=C:\Users\Erikbir\AppData\Roaming\r2modma
 
 rem weaver patch for mp compatibility
 cd Weaver\
-Unity.UNetWeaver.exe "..\libs\UnityEngine.CoreModule.dll" "..\libs\com.unity.multiplayer-hlapi.Runtime.dll" "..\Starstorm2Release" "..\bin\Debug\Starstorm2.dll" "..\libs"
+Unity.UNetWeaver.exe "..\libs\UnityEngine.CoreModule.dll" "..\libs\com.unity.multiplayer-hlapi.Runtime.dll" "..\Starstorm2Release" "..\bin\Debug\Starstorm2Unofficial.dll" "..\libs"
 
 rem package the mod
 mkdir ..\Starstorm2Release\
 cd ..\Starstorm2Release\
 copy ..\README.md .
-tar caf Starstorm2.zip icon.png	manifest.json README.md Starstorm2.dll
+tar caf Starstorm2.zip icon.png	manifest.json README.md Starstorm2Unofficial.dll
 del README.md
 
 rem copy the mod to your game plugins directory for testing
 mkdir "%pluginpath%\"
-copy Starstorm2.dll "%pluginpath%\"
+copy Starstorm2Unofficial.dll "%pluginpath%\"
 rem copy starstorm2.language "%pluginpath%\"

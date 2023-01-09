@@ -8,17 +8,17 @@ using RoR2;
 using RoR2.CharacterAI;
 using RoR2.Orbs;
 using RoR2.Skills;
-using Starstorm2.Cores;
-using Starstorm2.Modules;
-using Starstorm2.Modules.Survivors;
-using Starstorm2.Survivors.Executioner.Components;
+using Starstorm2Unofficial.Cores;
+using Starstorm2Unofficial.Modules;
+using Starstorm2Unofficial.Modules.Survivors;
+using Starstorm2Unofficial.Survivors.Executioner.Components;
 using System;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 
-namespace Starstorm2.Survivors.Executioner
+namespace Starstorm2Unofficial.Survivors.Executioner
 {
     internal class ExecutionerCore : SurvivorBase
     {

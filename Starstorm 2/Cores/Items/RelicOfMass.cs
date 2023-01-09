@@ -5,12 +5,12 @@ using System.Text;
 using System.Threading.Tasks;
 using RoR2;
 using UnityEngine;
-using Starstorm2.Cores;
+using Starstorm2Unofficial.Cores;
 using R2API;
 
 //FIXME: adds health after applying transcendence shields
 
-namespace Starstorm2.Cores.Items
+namespace Starstorm2Unofficial.Cores.Items
 {
     class RelicOfMass : SS2Item<RelicOfMass>
     {

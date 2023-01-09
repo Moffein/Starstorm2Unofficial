@@ -3,7 +3,7 @@ using UnityEngine;
 using RoR2.Projectile;
 using UnityEngine.Networking;
 
-namespace Starstorm2.Survivors.Cyborg.Components.OverheatProjectile
+namespace Starstorm2Unofficial.Survivors.Cyborg.Components.OverheatProjectile
 {
     [RequireComponent(typeof(ProjectileSimple))]
     [RequireComponent(typeof(ProjectileProximityBeamController))]

@@ -1,7 +1,7 @@
 ﻿using EntityStates;
 using RoR2;
 
-namespace Starstorm2.Cores.States.Nucleator
+namespace Starstorm2Unofficial.Cores.States.Nucleator
 {
     class ChargeIrradiate : NucleatorSkillStateBase
     {

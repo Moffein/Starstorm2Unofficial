@@ -7,7 +7,7 @@ using System.Collections.Generic;
 using System.Reflection;
 using UnityEngine;
 
-namespace Starstorm2.Modules
+namespace Starstorm2Unofficial.Modules
 {
     internal static class Unlockables
     {

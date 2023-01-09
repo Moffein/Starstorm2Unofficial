@@ -1,7 +1,7 @@
 ﻿using RoR2;
 using UnityEngine;
 
-namespace Starstorm2.Survivors.Nemmando.Components
+namespace Starstorm2Unofficial.Survivors.Nemmando.Components
 {
     // this is such a hack but if it works it works(for now)
     public class NemmandoSpecialSwapComponent : MonoBehaviour

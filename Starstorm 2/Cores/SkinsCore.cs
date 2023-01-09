@@ -7,9 +7,9 @@ using System.Linq;
 using System.Reflection;
 using UnityEngine;
 using UnityEngine.Networking;
-using Starstorm2.Cores.Skins;
+using Starstorm2Unofficial.Cores.Skins;
 
-namespace Starstorm2.Cores
+namespace Starstorm2Unofficial.Cores
 {
     public class SkinsCore 
     {

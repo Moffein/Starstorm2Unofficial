@@ -1,13 +1,13 @@
 ﻿using RoR2;
 using RoR2.Achievements;
-using Starstorm2.Modules.Achievements;
+using Starstorm2Unofficial.Modules.Achievements;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Starstorm2.Cores.Unlockables.Achievements.Vanilla
+namespace Starstorm2Unofficial.Cores.Unlockables.Achievements.Vanilla
 {
 	[RegisterAchievement("SS2UCommandoClearGameTyphoon", "Skins.SS2UCommando.GrandMastery", null, null)]
 	public class CommandoGrandMasteryAchievement : BaseGrandMasteryAchievement

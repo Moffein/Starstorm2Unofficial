@@ -3,7 +3,7 @@ using RoR2;
 using System.Collections.Generic;
 using System;
 
-namespace Starstorm2.Modules
+namespace Starstorm2Unofficial.Modules
 {
     internal static class Effects
     {

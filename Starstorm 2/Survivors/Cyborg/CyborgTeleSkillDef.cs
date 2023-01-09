@@ -1,14 +1,14 @@
 ﻿using JetBrains.Annotations;
 using RoR2;
 using RoR2.Skills;
-using Starstorm2.Survivors.Cyborg.Components;
+using Starstorm2Unofficial.Survivors.Cyborg.Components;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Starstorm2.Survivors.Cyborg
+namespace Starstorm2Unofficial.Survivors.Cyborg
 {
 	public class CyborgTeleSkillDef : SkillDef
 	{

@@ -1,8 +1,8 @@
 ﻿using RoR2;
 using RoR2.Achievements;
-using Starstorm2.Modules.Achievements;
+using Starstorm2Unofficial.Modules.Achievements;
 using UnityEngine;
-namespace Starstorm2.Survivors.Executioner.Achievements
+namespace Starstorm2Unofficial.Survivors.Executioner.Achievements
 {
     [RegisterAchievement("SS2UExecutionerClearGameTyphoon", "Skins.SS2UExecutioner.GrandMastery", null, null)]
     public class ExecutionerGrandMasteryAchievement : BaseGrandMasteryAchievement

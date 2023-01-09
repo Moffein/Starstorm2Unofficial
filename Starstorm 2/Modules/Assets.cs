@@ -8,7 +8,7 @@ using System.Collections.Generic;
 using RoR2.UI;
 using RoR2.Projectile;
 
-namespace Starstorm2.Modules
+namespace Starstorm2Unofficial.Modules
 {
     internal static class Assets
     {
@@ -89,7 +89,7 @@ namespace Starstorm2.Modules
         {
             if (mainAssetBundle == null)
             {
-                using (var assetStream = Assembly.GetExecutingAssembly().GetManifestResourceStream("Starstorm2." + assetbundleName))
+                using (var assetStream = Assembly.GetExecutingAssembly().GetManifestResourceStream("Starstorm2Unofficial." + assetbundleName))
                 {
                     mainAssetBundle = AssetBundle.LoadFromStream(assetStream);
                 }
@@ -100,13 +100,13 @@ namespace Starstorm2.Modules
 
         internal static void LoadSoundbank()
         {
-            using (Stream manifestResourceStream2 = Assembly.GetExecutingAssembly().GetManifestResourceStream("Starstorm2.Assets.Starstorm2.bnk"))
+            using (Stream manifestResourceStream2 = Assembly.GetExecutingAssembly().GetManifestResourceStream("Starstorm2Unofficial.Assets.Starstorm2.bnk"))
             {
                 byte[] array = new byte[manifestResourceStream2.Length];
                 manifestResourceStream2.Read(array, 0, array.Length);
                 SoundAPI.SoundBanks.Add(array);
             }
-            using (Stream manifestResourceStream2 = Assembly.GetExecutingAssembly().GetManifestResourceStream("Starstorm2.Assets.SS2Music.bnk"))
+            using (Stream manifestResourceStream2 = Assembly.GetExecutingAssembly().GetManifestResourceStream("Starstorm2Unofficial.Assets.SS2Music.bnk"))
             {
                 byte[] array = new byte[manifestResourceStream2.Length];
                 manifestResourceStream2.Read(array, 0, array.Length);

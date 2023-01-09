@@ -1,7 +1,7 @@
 ﻿using EntityStates.SS2UStates.Cyborg.Jetpack;
 using RoR2;
 using RoR2.UI;
-using Starstorm2.Survivors.Cyborg.Components;
+using Starstorm2Unofficial.Survivors.Cyborg.Components;
 using UnityEngine;
 
 namespace EntityStates.SS2UStates.Cyborg

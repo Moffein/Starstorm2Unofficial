@@ -4,7 +4,7 @@ using RoR2.CharacterAI;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Starstorm2.Modules
+namespace Starstorm2Unofficial.Modules
 {
     // module for creating body prefabs and whatnot
     // recommended to simply avoid touching this unless you REALLY need to
@@ -279,9 +279,9 @@ namespace Starstorm2.Modules
 
         private static GameObject CreateModel(GameObject main, string modelName)
         {
-            Starstorm2.StarstormPlugin.DestroyImmediate(main.transform.Find("ModelBase").gameObject);
-            Starstorm2.StarstormPlugin.DestroyImmediate(main.transform.Find("CameraPivot").gameObject);
-            Starstorm2.StarstormPlugin.DestroyImmediate(main.transform.Find("AimOrigin").gameObject);
+            Starstorm2Unofficial.StarstormPlugin.DestroyImmediate(main.transform.Find("ModelBase").gameObject);
+            Starstorm2Unofficial.StarstormPlugin.DestroyImmediate(main.transform.Find("CameraPivot").gameObject);
+            Starstorm2Unofficial.StarstormPlugin.DestroyImmediate(main.transform.Find("AimOrigin").gameObject);
 
             if (Modules.Assets.mainAssetBundle.LoadAsset<GameObject>(modelName) == null)
             {

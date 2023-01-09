@@ -1,9 +1,9 @@
 ﻿using RoR2;
 using UnityEngine;
-using Starstorm2.Cores;
+using Starstorm2Unofficial.Cores;
 using R2API;
 
-namespace Starstorm2.Cores.Items
+namespace Starstorm2Unofficial.Cores.Items
 {
     class MoltenCoin : SS2Item<MoltenCoin>
     {

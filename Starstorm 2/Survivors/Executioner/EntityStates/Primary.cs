@@ -3,7 +3,7 @@ using RoR2.Orbs;
 using UnityEngine;
 using System.Linq;
 using System.Collections.Generic;
-using Starstorm2.Cores.States;
+using Starstorm2Unofficial.Cores.States;
 using UnityEngine.Networking;
 using EntityStates.SS2UStates.Common;
 
@@ -72,7 +72,7 @@ namespace EntityStates.SS2UStates.Executioner
                 base.AddRecoil(-0.4f * recoil, -0.8f * recoil, -0.3f * recoil, 0.3f * recoil);
 
                 EffectManager.SimpleMuzzleFlash(Commando.CommandoWeapon.FirePistol2.muzzleEffectPrefab, base.gameObject, this.muzzleString, false);
-                tracerPrefab = Starstorm2.Modules.Assets.exeGunTracer;
+                tracerPrefab = Starstorm2Unofficial.Modules.Assets.exeGunTracer;
 
                 if (base.isAuthority)
                 {
@@ -181,7 +181,7 @@ namespace EntityStates.SS2UStates.Executioner
                 base.AddRecoil(-0.4f * recoil, -0.8f * recoil, -0.3f * recoil, 0.3f * recoil);
 
                 EffectManager.SimpleMuzzleFlash(Commando.CommandoWeapon.FirePistol2.muzzleEffectPrefab, base.gameObject, this.muzzleString, false);
-                tracerPrefab = Starstorm2.Modules.Assets.exeGunTracer;
+                tracerPrefab = Starstorm2Unofficial.Modules.Assets.exeGunTracer;
 
                 if (NetworkServer.active)
                 {

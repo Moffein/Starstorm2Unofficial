@@ -9,7 +9,7 @@ using RoR2;
 using UnityEngine;
 using UnityEngine.Networking;
 
-namespace Starstorm2.Cores.Items
+namespace Starstorm2Unofficial.Cores.Items
 {
     class NkotasHeritage : SS2Item<NkotasHeritage>
     {

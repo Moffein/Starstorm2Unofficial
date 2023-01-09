@@ -4,7 +4,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Starstorm2.Modules.Survivors
+namespace Starstorm2Unofficial.Modules.Survivors
 {
     internal abstract class SurvivorBase
     {

@@ -1,11 +1,11 @@
 ﻿using R2API;
 using RoR2;
 using RoR2.ContentManagement;
-using Starstorm2.Survivors.Cyborg.Components;
+using Starstorm2Unofficial.Survivors.Cyborg.Components;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Starstorm2.Cores
+namespace Starstorm2Unofficial.Cores
 {
     public class PrefabCore
     {

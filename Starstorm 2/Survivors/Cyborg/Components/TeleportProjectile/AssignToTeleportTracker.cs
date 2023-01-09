@@ -3,7 +3,7 @@ using RoR2.Projectile;
 using UnityEngine;
 using UnityEngine.Networking;
 
-namespace Starstorm2.Survivors.Cyborg.Components.TeleportProjectile
+namespace Starstorm2Unofficial.Survivors.Cyborg.Components.TeleportProjectile
 {
     public class AssignToTeleportTracker : MonoBehaviour
     {

@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
 
-namespace Starstorm2.Survivors.Cyborg
+namespace Starstorm2Unofficial.Survivors.Cyborg
 {
     //Allows Defense Matrix to block enemy hitscan without blocking friendly hitscan/projectiles
     public static class DefenseMatrixManager

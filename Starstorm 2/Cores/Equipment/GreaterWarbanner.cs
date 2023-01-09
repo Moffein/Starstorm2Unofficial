@@ -8,7 +8,7 @@ using RoR2;
 using UnityEngine;
 using UnityEngine.Networking;
 
-namespace Starstorm2.Cores.Equipment
+namespace Starstorm2Unofficial.Cores.Equipment
 {
     class GreaterWarbanner : SS2Equipment<GreaterWarbanner>
     {

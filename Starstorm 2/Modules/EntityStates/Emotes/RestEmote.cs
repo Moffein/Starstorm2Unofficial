@@ -1,4 +1,4 @@
-﻿using Starstorm2.Modules;
+﻿using Starstorm2Unofficial.Modules;
 
 namespace EntityStates.SS2UStates.Common.Emotes
 {
@@ -13,7 +13,7 @@ namespace EntityStates.SS2UStates.Common.Emotes
             CustomEffectComponent effectComponent = this.GetComponent<CustomEffectComponent>();
             if (effectComponent)
             {
-                if (effectComponent.hasSheath && effectComponent.chargeAttackEffect == Starstorm2.Modules.Assets.nemChargedSlashStartFXBlue)
+                if (effectComponent.hasSheath && effectComponent.chargeAttackEffect == Starstorm2Unofficial.Modules.Assets.nemChargedSlashStartFXBlue)
                 {
                     this.animString = "SitChair";
                     this.animDuration = 0.6f;

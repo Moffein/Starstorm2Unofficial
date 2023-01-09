@@ -20,12 +20,12 @@ namespace EntityStates.SS2UStates.Nemmando
 
             if (base.isAuthority && base.characterMotor.isGrounded)
             {
-                if (Input.GetKeyDown(Starstorm2.Modules.Config.restKeybind))
+                if (Input.GetKeyDown(Starstorm2Unofficial.Modules.Config.restKeybind))
                 {
                     this.outer.SetInterruptState(new Common.Emotes.RestEmote(), InterruptPriority.Any);
                     return;
                 }
-                else if (Input.GetKeyDown(Starstorm2.Modules.Config.tauntKeybind))
+                else if (Input.GetKeyDown(Starstorm2Unofficial.Modules.Config.tauntKeybind))
                 {
                     this.outer.SetInterruptState(new Common.Emotes.TauntEmote(), InterruptPriority.Any);
                     return;

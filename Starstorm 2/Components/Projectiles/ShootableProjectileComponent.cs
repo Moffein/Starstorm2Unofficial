@@ -4,7 +4,7 @@ using RoR2.Projectile;
 using UnityEngine;
 using UnityEngine.Networking;
 
-namespace Starstorm2.Components.Projectiles
+namespace Starstorm2Unofficial.Components.Projectiles
 {
 	public class ShootableProjectileComponent : MonoBehaviour
 	{

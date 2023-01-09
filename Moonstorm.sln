@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.28307.1300
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.32228.343
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Starstorm2", "Starstorm 2\Starstorm2.csproj", "{00C13A13-ED8F-4769-BCB1-029E4EDB505A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Starstorm2Unofficial", "Starstorm 2\Starstorm2Unofficial.csproj", "{00C13A13-ED8F-4769-BCB1-029E4EDB505A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -1,11 +1,11 @@
 ﻿using R2API;
 using RoR2;
 using RoR2.Projectile;
-using Starstorm2.Components.Projectiles;
+using Starstorm2Unofficial.Components.Projectiles;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 
-namespace Starstorm2.Survivors.Cyborg.Components.ShockCoreProjectile
+namespace Starstorm2Unofficial.Survivors.Cyborg.Components.ShockCoreProjectile
 {
     public class ShootableShockCore : ShootableProjectileComponent
     {

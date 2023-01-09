@@ -5,7 +5,7 @@ using System;
 using UnityEngine;
 using UnityEngine.Networking;
 
-namespace Starstorm2.Cores.States.Nucleator
+namespace Starstorm2Unofficial.Cores.States.Nucleator
 {
     // Token: 0x02000603 RID: 1539
     [RequireComponent(typeof(ProjectileController))]

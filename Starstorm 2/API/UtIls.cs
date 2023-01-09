@@ -2,7 +2,7 @@
 using R2API.Utils;
 using RoR2;
 using RoR2.Skills;
-using Starstorm2.Cores;
+using Starstorm2Unofficial.Cores;
 using System.Collections;
 using System.Linq;
 using UnityEngine;
@@ -17,10 +17,10 @@ public static class Utils
     /// <param name="skillTypes"></param>
     public static void RegisterSkillDef(SkillDef skillDef, params System.Type[] skillTypes) {
         for (int i = 0; i < skillTypes.Length; i++) {
-            Starstorm2.Modules.States.AddState(skillTypes[i]);
+            Starstorm2Unofficial.Modules.States.AddState(skillTypes[i]);
         }
 
-        Starstorm2.Modules.Skills.skillDefs.Add(skillDef);
+        Starstorm2Unofficial.Modules.Skills.skillDefs.Add(skillDef);
     }
 
     /// <summary>
@@ -59,7 +59,7 @@ public static class Utils
         GenericSkill genericSkill = characterBodyObject.AddComponent<GenericSkill>();
 
         SkillFamily newFamily = ScriptableObject.CreateInstance<SkillFamily>();
-        Starstorm2.Modules.Skills.skillFamilies.Add(newFamily);
+        Starstorm2Unofficial.Modules.Skills.skillFamilies.Add(newFamily);
 
         genericSkill.SetFieldValue("_skillFamily", newFamily);
         genericSkill.SetFieldValue("skillName", skillname);

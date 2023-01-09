@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using RoR2;
 
-namespace Starstorm2.Cores.Items
+namespace Starstorm2Unofficial.Cores.Items
 {
     class BabyToys : SS2Item<BabyToys>
     {

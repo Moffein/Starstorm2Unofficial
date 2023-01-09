@@ -3,13 +3,13 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using RoR2;
-using Starstorm2.Cores.NemesisInvasion.Components.Body;
+using Starstorm2Unofficial.Cores.NemesisInvasion.Components.Body;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.Networking;
 using UnityEngine.Rendering.PostProcessing;
 
-namespace Starstorm2.Cores.NemesisInvasion.Components
+namespace Starstorm2Unofficial.Cores.NemesisInvasion.Components
 {
     public class NemesisInvasionManager : MonoBehaviour
     {

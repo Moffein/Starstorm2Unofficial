@@ -2,7 +2,7 @@
 using UnityEngine;
 using UnityEngine.Networking;
 
-namespace Starstorm2.Cores.NemesisInvasion.Components.Body
+namespace Starstorm2Unofficial.Cores.NemesisInvasion.Components.Body
 {
     public class NemesisDropItemOnDeath : MonoBehaviour
     {

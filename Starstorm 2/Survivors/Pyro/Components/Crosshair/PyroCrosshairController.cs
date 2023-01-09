@@ -1,10 +1,10 @@
 ﻿using RoR2;
 using UnityEngine;
-using Starstorm2.Survivors.Pyro;
+using Starstorm2Unofficial.Survivors.Pyro;
 using UnityEngine.UI;
 using RoR2.UI;
 
-namespace Starstorm2.Survivors.Pyro.Components.Crosshair
+namespace Starstorm2Unofficial.Survivors.Pyro.Components.Crosshair
 {
     public class PyroCrosshairController : MonoBehaviour
     {

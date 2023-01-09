@@ -4,7 +4,7 @@ using RoR2;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 
-namespace Starstorm2.Cores
+namespace Starstorm2Unofficial.Cores
 {
     public class ItemDisplayCore
     {
