@@ -2,7 +2,7 @@
 
 Unofficial update to the Pre-SotV version of Starstorm 2. **[Get the official version here!](https://thunderstore.io/package/TeamMoonstorm/Starstorm2/)**
 
-This mod is incompatible with the official version of SS2, so make sure you're not running both at the same time. This mod is standalone and only needs R2API/BepInEx to function.
+This mod can be used alongside the official version of Starstorm 2. Be sure to go through your configs to disable duplicated features.
 
 I've gotten permission to work on this project and host it here, but do not have permission to upload this to Thunderstore.
 
