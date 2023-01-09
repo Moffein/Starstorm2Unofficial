@@ -10,7 +10,7 @@ using Starstorm2.Cores;
 
 namespace EntityStates.SS2UStates.Pyro
 {
-    public class HeatWave : BaseState  //based on Enforcer's shield deflect code https://github.com/GnomeModder/EnforcerMod/blob/master/EnforcerMod_VS/Secondary.cs
+    public class Airblast : BaseState  //based on Enforcer's shield deflect code https://github.com/GnomeModder/EnforcerMod/blob/master/EnforcerMod_VS/Secondary.cs
     {
         public override void OnEnter()
         {
@@ -19,11 +19,11 @@ namespace EntityStates.SS2UStates.Pyro
 
             int stocks = 1;
             if (base.skillLocator && base.skillLocator.secondary) stocks = base.skillLocator.secondary.maxStock;
-            heatController.ConsumeHeat(HeatWave.heatCost, stocks);
+            heatController.ConsumeHeat(Airblast.heatCost, stocks);
 
-            EffectManager.SimpleMuzzleFlash(HeatWave.effectPrefab, base.gameObject, "Muzzle", false);
+            EffectManager.SimpleMuzzleFlash(Airblast.effectPrefab, base.gameObject, "Muzzle", false);
 
-            Util.PlaySound(HeatWave.attackSoundString, base.gameObject);
+            Util.PlaySound(Airblast.attackSoundString, base.gameObject);
 
             this.aimRay = base.GetAimRay();
             this.childLocator = base.GetModelTransform().GetComponent<ChildLocator>();
@@ -36,7 +36,7 @@ namespace EntityStates.SS2UStates.Pyro
                 {
                     base.characterMotor.velocity.y = 0f;
                 }
-                base.characterMotor.ApplyForce(-aimRay.direction * HeatWave.selfForce, true, false);
+                base.characterMotor.ApplyForce(-aimRay.direction * Airblast.selfForce, true, false);
             }
 
             if (NetworkServer.active)
@@ -49,12 +49,12 @@ namespace EntityStates.SS2UStates.Pyro
         {
             base.FixedUpdate();
 
-            if (NetworkServer.active && base.fixedAge <= HeatWave.reflectWindowDuration)
+            if (NetworkServer.active && base.fixedAge <= Airblast.reflectWindowDuration)
             {
                 DeflectServer();
             }
 
-            if (base.fixedAge > HeatWave.baseDuration)
+            if (base.fixedAge > Airblast.baseDuration)
             {
                 this.outer.SetNextStateToMain();
                 return;
@@ -69,10 +69,8 @@ namespace EntityStates.SS2UStates.Pyro
             }
             Ray aimRay = base.GetAimRay();
 
-            bool reflected = false;
-
             int projectilesReflected = 0;
-            Collider[] array = Physics.OverlapBox(base.transform.position + aimRay.direction * HeatWave.hitboxOffset, HeatWave.hitboxDimensions, Quaternion.LookRotation(aimRay.direction, Vector3.up), LayerIndex.projectile.mask);
+            Collider[] array = Physics.OverlapBox(base.transform.position + aimRay.direction * Airblast.hitboxOffset, Airblast.hitboxDimensions, Quaternion.LookRotation(aimRay.direction, Vector3.up), LayerIndex.projectile.mask);
             for (int i = 0; i < array.Length; i++)
             {
                 ProjectileController pc = array[i].GetComponentInParent<ProjectileController>();
@@ -80,7 +78,7 @@ namespace EntityStates.SS2UStates.Pyro
                 {
                     if (pc.owner != base.gameObject)
                     {
-                        Vector3 aimSpot = (aimRay.origin + 100 * aimRay.direction) - pc.gameObject.transform.position;
+                        Vector3 aimSpot = (aimRay.origin + 200 * aimRay.direction) - pc.gameObject.transform.position;
 
                         pc.owner = base.gameObject;
                         projectilesReflected++;
@@ -89,9 +87,9 @@ namespace EntityStates.SS2UStates.Pyro
                         {
                             projectilePrefab = pc.gameObject,
                             position = pc.gameObject.transform.position,
-                            rotation = base.characterBody.transform.rotation * Quaternion.FromToRotation(new Vector3(0, 0, 1), aimSpot),
-                            owner = base.characterBody.gameObject,
-                            damage = base.characterBody.damage * HeatWave.reflectDamageCoefficient,
+                            rotation = base.transform.rotation * Quaternion.FromToRotation(new Vector3(0, 0, 1), aimSpot),
+                            owner = base.gameObject,
+                            damage = this.damageStat * Airblast.reflectDamageCoefficient,
                             force = 2000f,
                             crit = base.RollCrit(),
                             damageColorIndex = DamageColorIndex.Default,
@@ -104,12 +102,6 @@ namespace EntityStates.SS2UStates.Pyro
                         ProjectileManager.instance.FireProjectile(info);
 
                         Destroy(pc.gameObject);
-
-                        if (!reflected)
-                        {
-                            reflected = true;
-                            Util.PlaySound(HeatWave.reflectSoundString, base.gameObject);
-                        }
                     }
                 }
             }
@@ -122,7 +114,7 @@ namespace EntityStates.SS2UStates.Pyro
                 return;
             }
             List<HealthComponent> hcList = new List<HealthComponent>();
-            Collider[] array = Physics.OverlapBox(base.transform.position + aimRay.direction * HeatWave.hitboxOffset, HeatWave.hitboxDimensions, Quaternion.LookRotation(aimRay.direction, Vector3.up), LayerIndex.entityPrecise.mask);
+            Collider[] array = Physics.OverlapBox(base.transform.position + aimRay.direction * Airblast.hitboxOffset, Airblast.hitboxDimensions, Quaternion.LookRotation(aimRay.direction, Vector3.up), LayerIndex.entityPrecise.mask);
             for (int i = 0; i < array.Length; i++)
             {
                 HurtBox hurtBox = array[i].GetComponent<HurtBox>();
@@ -139,7 +131,7 @@ namespace EntityStates.SS2UStates.Pyro
                             CharacterBody cb = healthComponent.body;
                             if (cb)
                             {
-                                Vector3 forceVector = HeatWave.force * aimRay.direction;
+                                Vector3 forceVector = Airblast.force * aimRay.direction;
                                 if (forceVector.y < 1200f && !cb.isFlying) forceVector.y = 1200f;
 
                                 DamageInfo damageInfo = new DamageInfo
@@ -174,7 +166,7 @@ namespace EntityStates.SS2UStates.Pyro
         public static string reflectSoundString = "Play_loader_m1_swing";
         public static float baseDuration = 0.75f;
         public static float reflectWindowDuration = 0.2f;
-        public static Vector3 hitboxDimensions = new Vector3(7.5f, 3.75f, 12f);
+        public static Vector3 hitboxDimensions = new Vector3(8f, 8f, 16f);
         public static float force = 2700f;
         public static float selfForce = 2700f;
         public static float heatCost = 0.33f;
@@ -186,6 +178,6 @@ namespace EntityStates.SS2UStates.Pyro
         private Ray aimRay;
         private HeatController heatController;
 
-        private static float hitboxOffset = (HeatWave.hitboxDimensions.z / 2f - 0.5f);
+        private static float hitboxOffset = (Airblast.hitboxDimensions.z / 2f - 0.5f);
     }
 }

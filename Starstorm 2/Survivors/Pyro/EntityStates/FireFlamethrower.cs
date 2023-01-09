@@ -11,7 +11,7 @@ namespace EntityStates.SS2UStates.Pyro
         public static float maxDistance = 20f;
         public static float heatFractionPerTick = 0.025f;
 		public static float procCoefficient = 0.7f;
-		public static float damageCoefficient = 0.6f;
+		public static float damageCoefficient = 0.672f;
 		public static GameObject impactEffectPrefab = Resources.Load<GameObject>("prefabs/effects/impacteffects/missileexplosionvfx");
 
 		private float duration;

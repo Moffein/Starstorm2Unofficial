@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 
 namespace Starstorm2
 {
+    //This wouldn't be needed if the crosshair override system actually worked.
     public static class IgnoreSprintCrosshair
     {
         public static HashSet<BodyIndex> bodies = new HashSet<BodyIndex>();

@@ -7,7 +7,7 @@ namespace EntityStates.SS2UStates.Pyro
 {
     public class HeatJetpack : BaseState
     {
-        public static float minDuration = 0.25f;
+        public static float minDuration = 0.33f;
         public static float heatConsumptionPerSecond = 1f;
 
         //Set the same since higher maxSpeed means tapping is more efficient than holding.
