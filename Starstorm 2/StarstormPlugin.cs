@@ -77,11 +77,6 @@ namespace Starstorm2
         ItemDisplayCore itemDisplayCore;
         SkinsCore skinsCore;
 
-        CyborgCore cyborgCore;
-        //NucleatorCore nucleatorCore;
-        ChirrCore chirrCore;
-        //PyroCore pyroCore;
-
         //EnemyCore enemyCore;
 
         public void Awake()
@@ -126,19 +121,13 @@ namespace Starstorm2
 
         private void InitializeSurvivors()
         {
-            //if (Modules.Config.EnableExecutioner.Value)
-            new Survivors.Executioner.ExecutionerCore().Initialize();
-
-            new Survivors.Nemmando.NemmandoCore().Initialize();
-
-            cyborgCore = new CyborgCore();
-
-            chirrCore = new ChirrCore();
+            if (Modules.Config.EnableExecutioner.Value) new Survivors.Executioner.ExecutionerCore().Initialize();
+            if (Modules.Config.EnableNemmando.Value) new Survivors.Nemmando.NemmandoCore().Initialize();
+            if (Modules.Config.EnableCyborg.Value) new CyborgCore();
+            if (Modules.Config.EnableChirr.Value) new ChirrCore();
+            if (Modules.Config.EnablePyro.Value) new PyroCore();
 
             //new Modules.Survivors.Nucleator().Initialize();
-            
-            //if (EnableNucleator.Value) nucleatorCore = new NucleatorCore();
-            new PyroCore();
         }
 
         private void Initialize()

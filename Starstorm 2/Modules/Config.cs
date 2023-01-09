@@ -17,6 +17,12 @@ namespace Starstorm2.Modules
         internal static ConfigEntry<KeyCode> TauntKeybind;
         internal static KeyCode tauntKeybind;
 
+        internal static ConfigEntry<bool> EnableExecutioner;
+        internal static ConfigEntry<bool> EnableNemmando;
+        internal static ConfigEntry<bool> EnableCyborg;
+        internal static ConfigEntry<bool> EnableChirr;
+        internal static ConfigEntry<bool> EnablePyro;
+
         internal static ConfigEntry<bool> EnableItems;
         internal static List<ConfigEntry<bool>> ItemToggles;
         internal static ConfigEntry<bool> EnableEquipment;
@@ -73,6 +79,31 @@ namespace Starstorm2.Modules
                             false,
                             "Set to true to disable jump control on Pressurized Canister - activating the equipment will apply constant upward force regardless of whether you hold the jump button. This may lead to Funny and Memorable (tm) moments, especially if you like picking up Gestures of the Drowned.");
              */
+
+            EnableExecutioner = StarstormPlugin.instance.Config.Bind("Starstorm 2 :: Survivors",
+                            "Executioner",
+                            true,
+                            "Enable this survivor.");
+
+            EnableNemmando = StarstormPlugin.instance.Config.Bind("Starstorm 2 :: Survivors",
+                             "Nemesis Commando",
+                             true,
+                             "Enable this survivor.");
+
+            EnableCyborg = StarstormPlugin.instance.Config.Bind("Starstorm 2 :: Survivors",
+                             "Cyborg",
+                             true,
+                             "Enable this survivor.");
+
+            EnableChirr = StarstormPlugin.instance.Config.Bind("Starstorm 2 :: Survivors",
+                             "Chirr",
+                             true,
+                             "Enable this survivor.");
+
+            EnablePyro = StarstormPlugin.instance.Config.Bind("Starstorm 2 :: Survivors",
+                             "Pyro",
+                             true,
+                             "Enable this survivor.");
 
 
             EnableVoid =
