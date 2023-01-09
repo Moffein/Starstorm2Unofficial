@@ -73,7 +73,7 @@ namespace Starstorm2Unofficial.Survivors.Pyro
 
             projectilePrefab.transform.localScale *= 1.5f;
 
-            GameObject ghostPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Lemurian/FireballGhost.prefab").WaitForCompletion().InstantiateClone("SS2UPyroSuppressiveFireGhost", true);
+            GameObject ghostPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Lemurian/FireballGhost.prefab").WaitForCompletion().InstantiateClone("SS2UPyroSuppressiveFireGhost", false);
             ghostPrefab.transform.localScale *= 0.5f;
 
             ProjectileController pc = projectilePrefab.GetComponent<ProjectileController>();
@@ -247,7 +247,7 @@ namespace Starstorm2Unofficial.Survivors.Pyro
             airblast.beginSkillCooldownOnSkillEnd = true;
             airblast.canceledFromSprinting = false;
             airblast.fullRestockOnAssign = true;
-            airblast.interruptPriority = EntityStates.InterruptPriority.Skill;
+            airblast.interruptPriority = EntityStates.InterruptPriority.Any;
             airblast.isCombatSkill = false;
             airblast.mustKeyPress = false;
             airblast.cancelSprintingOnActivation = false;

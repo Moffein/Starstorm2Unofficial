@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 0b4ceb63610475c4e974821f13cffd06
+guid: 42e11a57ebaf5bd41ab251ff2cd164db
 ModelImporter:
   serializedVersion: 19301
   internalIDToNameTable:
@@ -224,7 +224,7 @@ ModelImporter:
     second: gun.r_end
   - first:
       1: 100146
-    second: GunMesh
+    second: GunMesh.001
   - first:
       1: 100148
     second: hand.l
@@ -290,69 +290,87 @@ ModelImporter:
     second: Sword
   - first:
       1: 100190
-    second: Sword_end
+    second: SwordSMEAR1
   - first:
       1: 100192
-    second: thigh.l
+    second: SwordSMEAR2
   - first:
       1: 100194
-    second: thigh.r
+    second: SwordSMEAR3
   - first:
       1: 100196
-    second: thumb.1.l
+    second: SwordSMEAR4
   - first:
       1: 100198
-    second: thumb.1.r
+    second: SwordSMEAR5
   - first:
       1: 100200
-    second: thumb.2.l
+    second: SwordSMEAR6
   - first:
       1: 100202
-    second: thumb.2.l_end
+    second: SwordSMEAR6_end
   - first:
       1: 100204
-    second: thumb.2.r
+    second: thigh.l
   - first:
       1: 100206
-    second: thumb.2.r_end
+    second: thigh.r
   - first:
       1: 100208
-    second: thumbIKBender.l
+    second: thumb.1.l
   - first:
       1: 100210
-    second: thumbIKBender.r
+    second: thumb.1.r
   - first:
       1: 100212
-    second: thumbIKTarget.l
+    second: thumb.2.l
   - first:
       1: 100214
-    second: thumbIKTarget.l_end
+    second: thumb.2.l_end
   - first:
       1: 100216
-    second: thumbIKTarget.r
+    second: thumb.2.r
   - first:
       1: 100218
-    second: thumbIKTarget.r_end
+    second: thumb.2.r_end
   - first:
       1: 100220
-    second: thumbIKTarget.r_end_end
+    second: thumbIKBender.l
   - first:
       1: 100222
-    second: toe.l
+    second: thumbIKBender.r
   - first:
       1: 100224
-    second: toe.l_end
+    second: thumbIKTarget.l
   - first:
       1: 100226
-    second: toe.r
+    second: thumbIKTarget.l_end
   - first:
       1: 100228
-    second: toe.r_end
+    second: thumbIKTarget.r
   - first:
       1: 100230
-    second: upper_arm.l
+    second: thumbIKTarget.r_end
   - first:
       1: 100232
+    second: thumbIKTarget.r_end_end
+  - first:
+      1: 100234
+    second: toe.l
+  - first:
+      1: 100236
+    second: toe.l_end
+  - first:
+      1: 100238
+    second: toe.r
+  - first:
+      1: 100240
+    second: toe.r_end
+  - first:
+      1: 100242
+    second: upper_arm.l
+  - first:
+      1: 100244
     second: upper_arm.r
   - first:
       4: 400000
@@ -575,7 +593,7 @@ ModelImporter:
     second: gun.r_end
   - first:
       4: 400146
-    second: GunMesh
+    second: GunMesh.001
   - first:
       4: 400148
     second: hand.l
@@ -641,223 +659,247 @@ ModelImporter:
     second: Sword
   - first:
       4: 400190
-    second: Sword_end
+    second: SwordSMEAR1
   - first:
       4: 400192
-    second: thigh.l
+    second: SwordSMEAR2
   - first:
       4: 400194
-    second: thigh.r
+    second: SwordSMEAR3
   - first:
       4: 400196
-    second: thumb.1.l
+    second: SwordSMEAR4
   - first:
       4: 400198
-    second: thumb.1.r
+    second: SwordSMEAR5
   - first:
       4: 400200
-    second: thumb.2.l
+    second: SwordSMEAR6
   - first:
       4: 400202
-    second: thumb.2.l_end
+    second: SwordSMEAR6_end
   - first:
       4: 400204
-    second: thumb.2.r
+    second: thigh.l
   - first:
       4: 400206
-    second: thumb.2.r_end
+    second: thigh.r
   - first:
       4: 400208
-    second: thumbIKBender.l
+    second: thumb.1.l
   - first:
       4: 400210
-    second: thumbIKBender.r
+    second: thumb.1.r
   - first:
       4: 400212
-    second: thumbIKTarget.l
+    second: thumb.2.l
   - first:
       4: 400214
-    second: thumbIKTarget.l_end
+    second: thumb.2.l_end
   - first:
       4: 400216
-    second: thumbIKTarget.r
+    second: thumb.2.r
   - first:
       4: 400218
-    second: thumbIKTarget.r_end
+    second: thumb.2.r_end
   - first:
       4: 400220
-    second: thumbIKTarget.r_end_end
+    second: thumbIKBender.l
   - first:
       4: 400222
-    second: toe.l
+    second: thumbIKBender.r
   - first:
       4: 400224
-    second: toe.l_end
+    second: thumbIKTarget.l
   - first:
       4: 400226
-    second: toe.r
+    second: thumbIKTarget.l_end
   - first:
       4: 400228
-    second: toe.r_end
+    second: thumbIKTarget.r
   - first:
       4: 400230
-    second: upper_arm.l
+    second: thumbIKTarget.r_end
   - first:
       4: 400232
+    second: thumbIKTarget.r_end_end
+  - first:
+      4: 400234
+    second: toe.l
+  - first:
+      4: 400236
+    second: toe.l_end
+  - first:
+      4: 400238
+    second: toe.r
+  - first:
+      4: 400240
+    second: toe.r_end
+  - first:
+      4: 400242
+    second: upper_arm.l
+  - first:
+      4: 400244
     second: upper_arm.r
   - first:
       21: 2100000
-    second: Material.003
-  - first:
-      21: 2100002
-    second: (null)
-  - first:
-      21: 2100004
     second: Material.001
   - first:
       23: 2300000
-    second: GunMesh
-  - first:
-      23: 2300002
-    second: NemesisCommandoSword
+    second: GunMesh.001
   - first:
       33: 3300000
-    second: GunMesh
-  - first:
-      33: 3300002
-    second: NemesisCommandoSword
+    second: GunMesh.001
   - first:
       43: 4300000
-    second: NemesisCommandoSword
+    second: GunMesh.001
   - first:
       43: 4300002
-    second: GunMesh
+    second: NemesisCommandoSword
   - first:
       43: 4300004
     second: NemesisCommandoMesh
   - first:
       74: 7400000
-    second: Idle
-  - first:
-      74: 7400002
-    second: Secondary2
-  - first:
-      74: 7400004
     second: WalkBWD
   - first:
-      74: 7400006
+      74: 7400002
     second: WalkLFT
   - first:
-      74: 7400008
-    second: Default
-  - first:
-      74: 7400010
-    second: Ascending
-  - first:
-      74: 7400012
-    second: Sprint
-  - first:
-      74: 7400014
-    second: Special
-  - first:
-      74: 7400016
-    second: CharIdle
-  - first:
-      74: 7400018
-    second: CharSelect
-  - first:
-      74: 7400020
-    second: DEFauly
-  - first:
-      74: 7400022
-    second: Hitstun
-  - first:
-      74: 7400024
-    second: Jumping
-  - first:
-      74: 7400026
-    second: Descending
-  - first:
-      74: 7400028
-    second: Primary3
-  - first:
-      74: 7400030
-    second: Secondary4
-  - first:
-      74: 7400032
-    second: Primary2
-  - first:
-      74: 7400034
-    second: Secondary3
-  - first:
-      74: 7400036
-    second: WalkFWD
-  - first:
-      74: 7400038
-    second: Primary1
-  - first:
-      74: 7400040
-    second: Landing
-  - first:
-      74: 7400042
-    second: Secondary1
-  - first:
-      74: 7400044
-    second: Secondary5
-  - first:
-      74: 7400046
+      74: 7400004
     second: WalkRHT
   - first:
-      74: 7400048
+      74: 7400006
+    second: WalkFWD
+  - first:
+      74: 7400008
+    second: Sprint
+  - first:
+      74: 7400010
+    second: 2Special1
+  - first:
+      74: 7400012
+    second: 2Special2
+  - first:
+      74: 7400014
+    second: 2Special3
+  - first:
+      74: 7400016
+    second: 2Special4
+  - first:
+      74: 7400018
+    second: 2Special5
+  - first:
+      74: 7400020
+    second: Primary1
+  - first:
+      74: 7400022
+    second: Primary2
+  - first:
+      74: 7400024
+    second: Secondary1
+  - first:
+      74: 7400026
+    second: Secondary2
+  - first:
+      74: 7400028
+    second: Secondary3(Strong)
+  - first:
+      74: 7400030
+    second: Secondary3(weak)
+  - first:
+      74: 7400032
+    second: Armature|2Special2
+  - first:
+      74: 7400034
+    second: Armature|2Special3
+  - first:
+      74: 7400036
+    second: Armature|2Special4
+  - first:
+      74: 7400038
+    second: Armature|2Special5
+  - first:
+      74: 7400040
     second: Armature|Ascending
   - first:
-      74: 7400050
+      74: 7400042
     second: Armature|CharIdle
   - first:
-      74: 7400052
+      74: 7400044
     second: Armature|CharSelect
   - first:
-      74: 7400054
+      74: 7400046
     second: Armature|Descending
   - first:
-      74: 7400056
+      74: 7400048
     second: Armature|Landing
   - first:
-      74: 7400058
+      74: 7400050
     second: Armature|Primary1
   - first:
-      74: 7400060
+      74: 7400052
     second: Armature|Primary2
   - first:
-      74: 7400062
-    second: Armature|Primary3
+      74: 7400054
+    second: Armature|RestIdle
   - first:
-      74: 7400064
+      74: 7400056
+    second: Armature|RestToIdle
+  - first:
+      74: 7400058
     second: Armature|Secondary1
   - first:
-      74: 7400066
+      74: 7400060
     second: Armature|Secondary2
   - first:
+      74: 7400062
+    second: Armature|Secondary3(Strong)
+  - first:
+      74: 7400064
+    second: Armature|Secondary3(weak)
+  - first:
+      74: 7400066
+    second: Armature|Special1
+  - first:
       74: 7400068
-    second: Armature|Secondary3
+    second: Armature|Special2Down
   - first:
       74: 7400070
-    second: Armature|Secondary5
+    second: Armature|Special2FWD
   - first:
       74: 7400072
-    second: Armature|Special
+    second: Armature|Special2LFT
   - first:
       74: 7400074
+    second: Armature|Special2RHT
+  - first:
+      74: 7400076
+    second: Armature|Special2UP
+  - first:
+      74: 7400078
+    second: Armature|WalkLFT
+  - first:
+      74: 7400080
     second: Armature|WalkFWD
+  - first:
+      74: 7400082
+    second: 2Special12
   - first:
       95: 9500000
     second: //RootNode
   - first:
       137: 13700000
     second: NemesisCommandoMesh
+  - first:
+      137: 13700002
+    second: NemesisCommandoSword
+  - first:
+      41386430: 2186277476908879412
+    second: ImportLogs
   externalObjects: {}
   materials:
-    materialImportMode: 0
+    materialImportMode: 1
     materialName: 0
     materialSearch: 1
     materialLocation: 1
@@ -884,69 +926,11 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: Idle
-      takeName: Idle
-      internalID: 0
-      firstFrame: 0
-      lastFrame: 149
-      wrapMode: 0
-      orientationOffsetY: 0
-      level: 0
-      cycleOffset: 0
-      loop: 0
-      hasAdditiveReferencePose: 0
-      loopTime: 1
-      loopBlend: 0
-      loopBlendOrientation: 0
-      loopBlendPositionY: 0
-      loopBlendPositionXZ: 0
-      keepOriginalOrientation: 0
-      keepOriginalPositionY: 1
-      keepOriginalPositionXZ: 0
-      heightFromFeet: 0
-      mirror: 0
-      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
-      curves: []
-      events: []
-      transformMask: []
-      maskType: 3
-      maskSource: {instanceID: 0}
-      additiveReferencePoseFrame: 0
-    - serializedVersion: 16
-      name: Secondary2
-      takeName: Secondary2
-      internalID: 0
-      firstFrame: 0
-      lastFrame: 10
-      wrapMode: 0
-      orientationOffsetY: 0
-      level: 0
-      cycleOffset: 0
-      loop: 0
-      hasAdditiveReferencePose: 0
-      loopTime: 1
-      loopBlend: 0
-      loopBlendOrientation: 0
-      loopBlendPositionY: 0
-      loopBlendPositionXZ: 0
-      keepOriginalOrientation: 0
-      keepOriginalPositionY: 1
-      keepOriginalPositionXZ: 0
-      heightFromFeet: 0
-      mirror: 0
-      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
-      curves: []
-      events: []
-      transformMask: []
-      maskType: 3
-      maskSource: {instanceID: 0}
-      additiveReferencePoseFrame: 0
-    - serializedVersion: 16
       name: WalkBWD
       takeName: WalkBWD
       internalID: 0
       firstFrame: 0
-      lastFrame: 18
+      lastFrame: 17
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -954,7 +938,7 @@ ModelImporter:
       loop: 0
       hasAdditiveReferencePose: 0
       loopTime: 1
-      loopBlend: 0
+      loopBlend: 1
       loopBlendOrientation: 0
       loopBlendPositionY: 0
       loopBlendPositionXZ: 0
@@ -975,7 +959,7 @@ ModelImporter:
       takeName: WalkLFT
       internalID: 0
       firstFrame: 0
-      lastFrame: 24
+      lastFrame: 17
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -983,558 +967,7 @@ ModelImporter:
       loop: 0
       hasAdditiveReferencePose: 0
       loopTime: 1
-      loopBlend: 0
-      loopBlendOrientation: 0
-      loopBlendPositionY: 0
-      loopBlendPositionXZ: 0
-      keepOriginalOrientation: 0
-      keepOriginalPositionY: 1
-      keepOriginalPositionXZ: 0
-      heightFromFeet: 0
-      mirror: 0
-      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
-      curves: []
-      events: []
-      transformMask: []
-      maskType: 3
-      maskSource: {instanceID: 0}
-      additiveReferencePoseFrame: 0
-    - serializedVersion: 16
-      name: Default
-      takeName: Default
-      internalID: 0
-      firstFrame: 0
-      lastFrame: 99
-      wrapMode: 0
-      orientationOffsetY: 0
-      level: 0
-      cycleOffset: 0
-      loop: 0
-      hasAdditiveReferencePose: 0
-      loopTime: 1
-      loopBlend: 0
-      loopBlendOrientation: 0
-      loopBlendPositionY: 0
-      loopBlendPositionXZ: 0
-      keepOriginalOrientation: 0
-      keepOriginalPositionY: 1
-      keepOriginalPositionXZ: 0
-      heightFromFeet: 0
-      mirror: 0
-      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
-      curves: []
-      events: []
-      transformMask: []
-      maskType: 3
-      maskSource: {instanceID: 0}
-      additiveReferencePoseFrame: 0
-    - serializedVersion: 16
-      name: Ascending
-      takeName: Ascending
-      internalID: 0
-      firstFrame: 0
-      lastFrame: 99
-      wrapMode: 0
-      orientationOffsetY: 0
-      level: 0
-      cycleOffset: 0
-      loop: 0
-      hasAdditiveReferencePose: 0
-      loopTime: 1
-      loopBlend: 0
-      loopBlendOrientation: 0
-      loopBlendPositionY: 0
-      loopBlendPositionXZ: 0
-      keepOriginalOrientation: 0
-      keepOriginalPositionY: 1
-      keepOriginalPositionXZ: 0
-      heightFromFeet: 0
-      mirror: 0
-      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
-      curves: []
-      events: []
-      transformMask: []
-      maskType: 3
-      maskSource: {instanceID: 0}
-      additiveReferencePoseFrame: 0
-    - serializedVersion: 16
-      name: Sprint
-      takeName: Sprint
-      internalID: 0
-      firstFrame: 0
-      lastFrame: 16
-      wrapMode: 0
-      orientationOffsetY: 0
-      level: 0
-      cycleOffset: 0
-      loop: 0
-      hasAdditiveReferencePose: 0
-      loopTime: 1
-      loopBlend: 0
-      loopBlendOrientation: 0
-      loopBlendPositionY: 0
-      loopBlendPositionXZ: 0
-      keepOriginalOrientation: 0
-      keepOriginalPositionY: 1
-      keepOriginalPositionXZ: 0
-      heightFromFeet: 0
-      mirror: 0
-      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
-      curves: []
-      events: []
-      transformMask: []
-      maskType: 3
-      maskSource: {instanceID: 0}
-      additiveReferencePoseFrame: 0
-    - serializedVersion: 16
-      name: Special
-      takeName: Special
-      internalID: 0
-      firstFrame: 0
-      lastFrame: 4
-      wrapMode: 0
-      orientationOffsetY: 0
-      level: 0
-      cycleOffset: 0
-      loop: 0
-      hasAdditiveReferencePose: 0
-      loopTime: 0
-      loopBlend: 0
-      loopBlendOrientation: 0
-      loopBlendPositionY: 0
-      loopBlendPositionXZ: 0
-      keepOriginalOrientation: 0
-      keepOriginalPositionY: 1
-      keepOriginalPositionXZ: 0
-      heightFromFeet: 0
-      mirror: 0
-      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
-      curves: []
-      events: []
-      transformMask: []
-      maskType: 3
-      maskSource: {instanceID: 0}
-      additiveReferencePoseFrame: 0
-    - serializedVersion: 16
-      name: CharIdle
-      takeName: CharIdle
-      internalID: 0
-      firstFrame: 0
-      lastFrame: 699
-      wrapMode: 0
-      orientationOffsetY: 0
-      level: 0
-      cycleOffset: 0
-      loop: 0
-      hasAdditiveReferencePose: 0
-      loopTime: 1
-      loopBlend: 0
-      loopBlendOrientation: 0
-      loopBlendPositionY: 0
-      loopBlendPositionXZ: 0
-      keepOriginalOrientation: 0
-      keepOriginalPositionY: 1
-      keepOriginalPositionXZ: 0
-      heightFromFeet: 0
-      mirror: 0
-      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
-      curves: []
-      events: []
-      transformMask: []
-      maskType: 3
-      maskSource: {instanceID: 0}
-      additiveReferencePoseFrame: 0
-    - serializedVersion: 16
-      name: CharSelect
-      takeName: CharSelect
-      internalID: 0
-      firstFrame: 0
-      lastFrame: 29
-      wrapMode: 0
-      orientationOffsetY: 0
-      level: 0
-      cycleOffset: 0
-      loop: 0
-      hasAdditiveReferencePose: 0
-      loopTime: 0
-      loopBlend: 0
-      loopBlendOrientation: 0
-      loopBlendPositionY: 0
-      loopBlendPositionXZ: 0
-      keepOriginalOrientation: 0
-      keepOriginalPositionY: 1
-      keepOriginalPositionXZ: 0
-      heightFromFeet: 0
-      mirror: 0
-      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
-      curves: []
-      events: []
-      transformMask: []
-      maskType: 3
-      maskSource: {instanceID: 0}
-      additiveReferencePoseFrame: 0
-    - serializedVersion: 16
-      name: DEFauly
-      takeName: DEFauly
-      internalID: 0
-      firstFrame: 0
-      lastFrame: 1
-      wrapMode: 0
-      orientationOffsetY: 0
-      level: 0
-      cycleOffset: 0
-      loop: 0
-      hasAdditiveReferencePose: 0
-      loopTime: 0
-      loopBlend: 0
-      loopBlendOrientation: 0
-      loopBlendPositionY: 0
-      loopBlendPositionXZ: 0
-      keepOriginalOrientation: 0
-      keepOriginalPositionY: 1
-      keepOriginalPositionXZ: 0
-      heightFromFeet: 0
-      mirror: 0
-      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
-      curves: []
-      events: []
-      transformMask: []
-      maskType: 3
-      maskSource: {instanceID: 0}
-      additiveReferencePoseFrame: 0
-    - serializedVersion: 16
-      name: Hitstun
-      takeName: Hitstun
-      internalID: 0
-      firstFrame: 0
-      lastFrame: 8
-      wrapMode: 0
-      orientationOffsetY: 0
-      level: 0
-      cycleOffset: 0
-      loop: 0
-      hasAdditiveReferencePose: 0
-      loopTime: 0
-      loopBlend: 0
-      loopBlendOrientation: 0
-      loopBlendPositionY: 0
-      loopBlendPositionXZ: 0
-      keepOriginalOrientation: 0
-      keepOriginalPositionY: 1
-      keepOriginalPositionXZ: 0
-      heightFromFeet: 0
-      mirror: 0
-      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
-      curves: []
-      events: []
-      transformMask: []
-      maskType: 3
-      maskSource: {instanceID: 0}
-      additiveReferencePoseFrame: 0
-    - serializedVersion: 16
-      name: Jumping
-      takeName: Jumping
-      internalID: 0
-      firstFrame: 0
-      lastFrame: 8
-      wrapMode: 0
-      orientationOffsetY: 0
-      level: 0
-      cycleOffset: 0
-      loop: 0
-      hasAdditiveReferencePose: 0
-      loopTime: 0
-      loopBlend: 0
-      loopBlendOrientation: 0
-      loopBlendPositionY: 0
-      loopBlendPositionXZ: 0
-      keepOriginalOrientation: 0
-      keepOriginalPositionY: 1
-      keepOriginalPositionXZ: 0
-      heightFromFeet: 0
-      mirror: 0
-      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
-      curves: []
-      events: []
-      transformMask: []
-      maskType: 3
-      maskSource: {instanceID: 0}
-      additiveReferencePoseFrame: 0
-    - serializedVersion: 16
-      name: Descending
-      takeName: Descending
-      internalID: 0
-      firstFrame: 0
-      lastFrame: 99
-      wrapMode: 0
-      orientationOffsetY: 0
-      level: 0
-      cycleOffset: 0
-      loop: 0
-      hasAdditiveReferencePose: 0
-      loopTime: 1
-      loopBlend: 0
-      loopBlendOrientation: 0
-      loopBlendPositionY: 0
-      loopBlendPositionXZ: 0
-      keepOriginalOrientation: 0
-      keepOriginalPositionY: 1
-      keepOriginalPositionXZ: 0
-      heightFromFeet: 0
-      mirror: 0
-      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
-      curves: []
-      events: []
-      transformMask: []
-      maskType: 3
-      maskSource: {instanceID: 0}
-      additiveReferencePoseFrame: 0
-    - serializedVersion: 16
-      name: Primary3
-      takeName: Primary3
-      internalID: 0
-      firstFrame: 0
-      lastFrame: 23
-      wrapMode: 0
-      orientationOffsetY: 0
-      level: 0
-      cycleOffset: 0
-      loop: 0
-      hasAdditiveReferencePose: 0
-      loopTime: 0
-      loopBlend: 0
-      loopBlendOrientation: 0
-      loopBlendPositionY: 0
-      loopBlendPositionXZ: 0
-      keepOriginalOrientation: 0
-      keepOriginalPositionY: 1
-      keepOriginalPositionXZ: 0
-      heightFromFeet: 0
-      mirror: 0
-      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
-      curves: []
-      events: []
-      transformMask: []
-      maskType: 3
-      maskSource: {instanceID: 0}
-      additiveReferencePoseFrame: 0
-    - serializedVersion: 16
-      name: Secondary4
-      takeName: Secondary4
-      internalID: 0
-      firstFrame: 0
-      lastFrame: 99
-      wrapMode: 0
-      orientationOffsetY: 0
-      level: 0
-      cycleOffset: 0
-      loop: 0
-      hasAdditiveReferencePose: 0
-      loopTime: 1
-      loopBlend: 0
-      loopBlendOrientation: 0
-      loopBlendPositionY: 0
-      loopBlendPositionXZ: 0
-      keepOriginalOrientation: 0
-      keepOriginalPositionY: 1
-      keepOriginalPositionXZ: 0
-      heightFromFeet: 0
-      mirror: 0
-      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
-      curves: []
-      events: []
-      transformMask: []
-      maskType: 3
-      maskSource: {instanceID: 0}
-      additiveReferencePoseFrame: 0
-    - serializedVersion: 16
-      name: Primary2
-      takeName: Primary2
-      internalID: 0
-      firstFrame: 0
-      lastFrame: 18
-      wrapMode: 0
-      orientationOffsetY: 0
-      level: 0
-      cycleOffset: 0
-      loop: 0
-      hasAdditiveReferencePose: 0
-      loopTime: 0
-      loopBlend: 0
-      loopBlendOrientation: 0
-      loopBlendPositionY: 0
-      loopBlendPositionXZ: 0
-      keepOriginalOrientation: 0
-      keepOriginalPositionY: 1
-      keepOriginalPositionXZ: 0
-      heightFromFeet: 0
-      mirror: 0
-      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
-      curves: []
-      events: []
-      transformMask: []
-      maskType: 3
-      maskSource: {instanceID: 0}
-      additiveReferencePoseFrame: 0
-    - serializedVersion: 16
-      name: Secondary3
-      takeName: Secondary3
-      internalID: 0
-      firstFrame: 0
-      lastFrame: 30
-      wrapMode: 0
-      orientationOffsetY: 0
-      level: 0
-      cycleOffset: 0
-      loop: 0
-      hasAdditiveReferencePose: 0
-      loopTime: 0
-      loopBlend: 0
-      loopBlendOrientation: 0
-      loopBlendPositionY: 0
-      loopBlendPositionXZ: 0
-      keepOriginalOrientation: 0
-      keepOriginalPositionY: 1
-      keepOriginalPositionXZ: 0
-      heightFromFeet: 0
-      mirror: 0
-      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
-      curves: []
-      events: []
-      transformMask: []
-      maskType: 3
-      maskSource: {instanceID: 0}
-      additiveReferencePoseFrame: 0
-    - serializedVersion: 16
-      name: WalkFWD
-      takeName: WalkFWD
-      internalID: 0
-      firstFrame: 0
-      lastFrame: 18
-      wrapMode: 0
-      orientationOffsetY: 0
-      level: 0
-      cycleOffset: 0
-      loop: 0
-      hasAdditiveReferencePose: 0
-      loopTime: 1
-      loopBlend: 0
-      loopBlendOrientation: 0
-      loopBlendPositionY: 0
-      loopBlendPositionXZ: 0
-      keepOriginalOrientation: 0
-      keepOriginalPositionY: 1
-      keepOriginalPositionXZ: 0
-      heightFromFeet: 0
-      mirror: 0
-      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
-      curves: []
-      events: []
-      transformMask: []
-      maskType: 3
-      maskSource: {instanceID: 0}
-      additiveReferencePoseFrame: 0
-    - serializedVersion: 16
-      name: Primary1
-      takeName: Primary1
-      internalID: 0
-      firstFrame: 0
-      lastFrame: 18
-      wrapMode: 0
-      orientationOffsetY: 0
-      level: 0
-      cycleOffset: 0
-      loop: 0
-      hasAdditiveReferencePose: 0
-      loopTime: 0
-      loopBlend: 0
-      loopBlendOrientation: 0
-      loopBlendPositionY: 0
-      loopBlendPositionXZ: 0
-      keepOriginalOrientation: 0
-      keepOriginalPositionY: 1
-      keepOriginalPositionXZ: 0
-      heightFromFeet: 0
-      mirror: 0
-      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
-      curves: []
-      events: []
-      transformMask: []
-      maskType: 3
-      maskSource: {instanceID: 0}
-      additiveReferencePoseFrame: 0
-    - serializedVersion: 16
-      name: Landing
-      takeName: Landing
-      internalID: 0
-      firstFrame: 0
-      lastFrame: 8
-      wrapMode: 0
-      orientationOffsetY: 0
-      level: 0
-      cycleOffset: 0
-      loop: 0
-      hasAdditiveReferencePose: 0
-      loopTime: 0
-      loopBlend: 0
-      loopBlendOrientation: 0
-      loopBlendPositionY: 0
-      loopBlendPositionXZ: 0
-      keepOriginalOrientation: 0
-      keepOriginalPositionY: 1
-      keepOriginalPositionXZ: 0
-      heightFromFeet: 0
-      mirror: 0
-      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
-      curves: []
-      events: []
-      transformMask: []
-      maskType: 3
-      maskSource: {instanceID: 0}
-      additiveReferencePoseFrame: 0
-    - serializedVersion: 16
-      name: Secondary1
-      takeName: Secondary1
-      internalID: 0
-      firstFrame: 0
-      lastFrame: 8
-      wrapMode: 0
-      orientationOffsetY: 0
-      level: 0
-      cycleOffset: 0
-      loop: 0
-      hasAdditiveReferencePose: 0
-      loopTime: 0
-      loopBlend: 0
-      loopBlendOrientation: 0
-      loopBlendPositionY: 0
-      loopBlendPositionXZ: 0
-      keepOriginalOrientation: 0
-      keepOriginalPositionY: 1
-      keepOriginalPositionXZ: 0
-      heightFromFeet: 0
-      mirror: 0
-      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
-      curves: []
-      events: []
-      transformMask: []
-      maskType: 3
-      maskSource: {instanceID: 0}
-      additiveReferencePoseFrame: 0
-    - serializedVersion: 16
-      name: Secondary5
-      takeName: Secondary5
-      internalID: 0
-      firstFrame: 0
-      lastFrame: 24
-      wrapMode: 0
-      orientationOffsetY: 0
-      level: 0
-      cycleOffset: 0
-      loop: 0
-      hasAdditiveReferencePose: 0
-      loopTime: 0
-      loopBlend: 0
+      loopBlend: 1
       loopBlendOrientation: 0
       loopBlendPositionY: 0
       loopBlendPositionXZ: 0
@@ -1555,7 +988,7 @@ ModelImporter:
       takeName: WalkRHT
       internalID: 0
       firstFrame: 0
-      lastFrame: 24
+      lastFrame: 17
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -1563,7 +996,7 @@ ModelImporter:
       loop: 0
       hasAdditiveReferencePose: 0
       loopTime: 1
-      loopBlend: 0
+      loopBlend: 1
       loopBlendOrientation: 0
       loopBlendPositionY: 0
       loopBlendPositionXZ: 0
@@ -1580,11 +1013,11 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: Armature|Ascending
-      takeName: Armature|Ascending
+      name: WalkFWD
+      takeName: WalkFWD
       internalID: 0
       firstFrame: 0
-      lastFrame: 99
+      lastFrame: 17
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -1592,7 +1025,7 @@ ModelImporter:
       loop: 0
       hasAdditiveReferencePose: 0
       loopTime: 1
-      loopBlend: 0
+      loopBlend: 1
       loopBlendOrientation: 0
       loopBlendPositionY: 0
       loopBlendPositionXZ: 0
@@ -1603,17 +1036,31 @@ ModelImporter:
       mirror: 0
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
-      events: []
+      events:
+      - time: 0
+        functionName: Footstep
+        data: FootL
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.47619048
+        functionName: Footstep
+        data: FootR
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
       transformMask: []
       maskType: 3
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: Armature|CharIdle
-      takeName: Armature|CharIdle
+      name: Sprint
+      takeName: Sprint
       internalID: 0
       firstFrame: 0
-      lastFrame: 699
+      lastFrame: 16
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -1621,7 +1068,7 @@ ModelImporter:
       loop: 0
       hasAdditiveReferencePose: 0
       loopTime: 1
-      loopBlend: 0
+      loopBlend: 1
       loopBlendOrientation: 0
       loopBlendPositionY: 0
       loopBlendPositionXZ: 0
@@ -1632,17 +1079,31 @@ ModelImporter:
       mirror: 0
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
-      events: []
+      events:
+      - time: 0
+        functionName: Footstep
+        data: FootL
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.46609452
+        functionName: Footstep
+        data: FootR
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
       transformMask: []
       maskType: 3
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: Armature|CharSelect
-      takeName: Armature|CharSelect
+      name: 2Special12
+      takeName: 2Special12
       internalID: 0
       firstFrame: 0
-      lastFrame: 29
+      lastFrame: 56
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -1667,18 +1128,18 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: Armature|Descending
-      takeName: Armature|Descending
+      name: 2Special3
+      takeName: 2Special3
       internalID: 0
       firstFrame: 0
-      lastFrame: 99
+      lastFrame: 149
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
-      loopTime: 1
+      loopTime: 0
       loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 0
@@ -1696,11 +1157,40 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: Armature|Landing
-      takeName: Armature|Landing
+      name: 2Special4
+      takeName: 2Special4
       internalID: 0
       firstFrame: 0
-      lastFrame: 8
+      lastFrame: 149
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: 2Special5
+      takeName: 2Special5
+      internalID: 0
+      firstFrame: 0
+      lastFrame: 149
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -1729,7 +1219,7 @@ ModelImporter:
       takeName: Armature|Primary1
       internalID: 0
       firstFrame: 0
-      lastFrame: 18
+      lastFrame: 39
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -1758,7 +1248,7 @@ ModelImporter:
       takeName: Armature|Primary2
       internalID: 0
       firstFrame: 0
-      lastFrame: 18
+      lastFrame: 39
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -1783,11 +1273,11 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: Armature|Primary3
-      takeName: Armature|Primary3
+      name: Secondary2
+      takeName: Secondary2
       internalID: 0
       firstFrame: 0
-      lastFrame: 23
+      lastFrame: 47
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -1812,11 +1302,11 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: Armature|Secondary1
-      takeName: Armature|Secondary1
+      name: Secondary3(Strong)
+      takeName: Secondary3(Strong)
       internalID: 0
       firstFrame: 0
-      lastFrame: 8
+      lastFrame: 19
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -1841,40 +1331,11 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: Armature|Secondary2
-      takeName: Armature|Secondary2
+      name: Secondary3(weak)
+      takeName: Secondary3(weak)
       internalID: 0
       firstFrame: 0
-      lastFrame: 79
-      wrapMode: 0
-      orientationOffsetY: 0
-      level: 0
-      cycleOffset: 0
-      loop: 0
-      hasAdditiveReferencePose: 0
-      loopTime: 1
-      loopBlend: 0
-      loopBlendOrientation: 0
-      loopBlendPositionY: 0
-      loopBlendPositionXZ: 0
-      keepOriginalOrientation: 0
-      keepOriginalPositionY: 1
-      keepOriginalPositionXZ: 0
-      heightFromFeet: 0
-      mirror: 0
-      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
-      curves: []
-      events: []
-      transformMask: []
-      maskType: 3
-      maskSource: {instanceID: 0}
-      additiveReferencePoseFrame: 0
-    - serializedVersion: 16
-      name: Armature|Secondary3
-      takeName: Armature|Secondary3
-      internalID: 0
-      firstFrame: 0
-      lastFrame: 9
+      lastFrame: 19
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -1882,93 +1343,6 @@ ModelImporter:
       loop: 0
       hasAdditiveReferencePose: 0
       loopTime: 0
-      loopBlend: 0
-      loopBlendOrientation: 0
-      loopBlendPositionY: 0
-      loopBlendPositionXZ: 0
-      keepOriginalOrientation: 0
-      keepOriginalPositionY: 1
-      keepOriginalPositionXZ: 0
-      heightFromFeet: 0
-      mirror: 0
-      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
-      curves: []
-      events: []
-      transformMask: []
-      maskType: 3
-      maskSource: {instanceID: 0}
-      additiveReferencePoseFrame: 0
-    - serializedVersion: 16
-      name: Armature|Secondary5
-      takeName: Armature|Secondary5
-      internalID: 0
-      firstFrame: 0
-      lastFrame: 24
-      wrapMode: 0
-      orientationOffsetY: 0
-      level: 0
-      cycleOffset: 0
-      loop: 0
-      hasAdditiveReferencePose: 0
-      loopTime: 0
-      loopBlend: 0
-      loopBlendOrientation: 0
-      loopBlendPositionY: 0
-      loopBlendPositionXZ: 0
-      keepOriginalOrientation: 0
-      keepOriginalPositionY: 1
-      keepOriginalPositionXZ: 0
-      heightFromFeet: 0
-      mirror: 0
-      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
-      curves: []
-      events: []
-      transformMask: []
-      maskType: 3
-      maskSource: {instanceID: 0}
-      additiveReferencePoseFrame: 0
-    - serializedVersion: 16
-      name: Armature|Special
-      takeName: Armature|Special
-      internalID: 0
-      firstFrame: 0
-      lastFrame: 4
-      wrapMode: 0
-      orientationOffsetY: 0
-      level: 0
-      cycleOffset: 0
-      loop: 0
-      hasAdditiveReferencePose: 0
-      loopTime: 0
-      loopBlend: 0
-      loopBlendOrientation: 0
-      loopBlendPositionY: 0
-      loopBlendPositionXZ: 0
-      keepOriginalOrientation: 0
-      keepOriginalPositionY: 1
-      keepOriginalPositionXZ: 0
-      heightFromFeet: 0
-      mirror: 0
-      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
-      curves: []
-      events: []
-      transformMask: []
-      maskType: 3
-      maskSource: {instanceID: 0}
-      additiveReferencePoseFrame: 0
-    - serializedVersion: 16
-      name: Armature|WalkFWD
-      takeName: Armature|WalkFWD
-      internalID: 0
-      firstFrame: 0
-      lastFrame: 18
-      wrapMode: 0
-      orientationOffsetY: 0
-      level: 0
-      cycleOffset: 0
-      loop: 0
-      hasAdditiveReferencePose: 0
-      loopTime: 1
       loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 0
@@ -2047,5 +1421,5 @@ ModelImporter:
   avatarSetup: 1
   additionalBone: 0
   userData: 
-  assetBundleName: assetstorm
+  assetBundleName: 
   assetBundleVariant: 

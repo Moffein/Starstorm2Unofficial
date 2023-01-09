@@ -62,7 +62,7 @@ namespace EntityStates.SS2UStates.Pyro
 
         public override InterruptPriority GetMinimumInterruptPriority()
         {
-            return InterruptPriority.PrioritySkill;
+            return InterruptPriority.Skill;
         }
 
         public static float baseSelfForce = 600f;
