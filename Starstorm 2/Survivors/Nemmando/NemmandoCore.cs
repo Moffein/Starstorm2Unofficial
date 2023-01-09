@@ -24,7 +24,7 @@ namespace Starstorm2.Survivors.Nemmando
     {
         public static BodyIndex bodyIndex;
 
-        internal override string bodyName { get; set; } = "Nemmando";
+        internal override string bodyName { get; set; } = "SS2UNemmando";
         internal override string modelName { get; set; } = "mdlNemmando";
         internal override string displayName { get; set; } = "NemmandoDisplay";
 
@@ -39,8 +39,8 @@ namespace Starstorm2.Survivors.Nemmando
         internal override StarstormBodyInfo bodyInfo { get; set; } = new StarstormBodyInfo
         {
             armor = 20f,
-            bodyName = "NemmandoBody",
-            bodyNameToken = "NEMMANDO_NAME",
+            bodyName = "SS2UNemmandoBody",
+            bodyNameToken = "SS2UNEMMANDO_NAME",
             bodyColor = new Color(1.0f, 0.20f, 0.20f),
             characterPortrait = Modules.Assets.LoadCharacterIcon("Nemmando"),
             crosshair = Modules.Assets.LoadCrosshair("Standard"),
@@ -49,7 +49,7 @@ namespace Starstorm2.Survivors.Nemmando
             healthRegen = 2.5f,
             jumpCount = 1,
             maxHealth = 110f,
-            subtitleNameToken = "NEMMANDO_SUBTITLE",
+            subtitleNameToken = "SS2UNEMMANDO_SUBTITLE",
             menuSoundString = "NemmandoCSS"
         };
 
@@ -142,9 +142,9 @@ namespace Starstorm2.Survivors.Nemmando
 
         private void SetBodyIndex()
         {
-            bodyIndex = BodyCatalog.FindBodyIndex("NemmandoBody");
+            bodyIndex = BodyCatalog.FindBodyIndex("SS2UNemmandoBody");
 
-            BodyIndex monsterBodyIndex = BodyCatalog.FindBodyIndex("NemmandoMonsterBody");
+            BodyIndex monsterBodyIndex = BodyCatalog.FindBodyIndex("SS2UNemmandoMonsterBody");
             if (monsterBodyIndex != BodyIndex.None)
             {
                 NemesisInvasionCore.prioritizePlayersList.Add(monsterBodyIndex);
@@ -175,10 +175,10 @@ namespace Starstorm2.Survivors.Nemmando
         private void SetupSwordProjectile()
         {
 
-            GameObject swordBeam = PrefabAPI.InstantiateClone(LegacyResourcesAPI.Load<GameObject>("Prefabs/Projectiles/FMJ"), "NemmandoSwordBeam", true);
+            GameObject swordBeam = PrefabAPI.InstantiateClone(LegacyResourcesAPI.Load<GameObject>("Prefabs/Projectiles/FMJ"), "SS2UNemmandoSwordBeam", true);
             swordBeam.transform.localScale = new Vector3(4.5f, 2.5f, 2.5f);
 
-            GameObject swordBeamGhost = PrefabAPI.InstantiateClone(LegacyResourcesAPI.Load<GameObject>("Prefabs/Projectiles/EvisProjectile").GetComponent<ProjectileController>().ghostPrefab, "NemmandoSwordBeamGhost", false);
+            GameObject swordBeamGhost = PrefabAPI.InstantiateClone(LegacyResourcesAPI.Load<GameObject>("Prefabs/Projectiles/EvisProjectile").GetComponent<ProjectileController>().ghostPrefab, "SS2UNemmandoSwordBeamGhost", false);
             foreach (ParticleSystemRenderer i in swordBeamGhost.GetComponentsInChildren<ParticleSystemRenderer>())
             {
                 if (i)
@@ -211,7 +211,7 @@ namespace Starstorm2.Survivors.Nemmando
 
         private void SetupLaserTracer()
         {
-            GameObject laserTracer = LegacyResourcesAPI.Load<GameObject>("Prefabs/Effects/Tracers/TracerCommandoShotgun").InstantiateClone("NemmandoLaserTracer", true);
+            GameObject laserTracer = LegacyResourcesAPI.Load<GameObject>("Prefabs/Effects/Tracers/TracerCommandoShotgun").InstantiateClone("SS2UNemmandoLaserTracer", true);
 
             foreach (LineRenderer i in laserTracer.GetComponentsInChildren<LineRenderer>())
             {
@@ -232,7 +232,7 @@ namespace Starstorm2.Survivors.Nemmando
 
         private void InitializeBoss()
         {
-            bossBodyPrefab = PrefabAPI.InstantiateClone(bodyPrefab, "NemmandoMonsterBody", true);
+            bossBodyPrefab = PrefabAPI.InstantiateClone(bodyPrefab, "SS2UNemmandoMonsterBody", true);
 
             var body = bossBodyPrefab.GetComponent<CharacterBody>();
             body.baseMaxHealth = 3200f;
@@ -257,7 +257,7 @@ namespace Starstorm2.Survivors.Nemmando
                 ml.modelTransform.localScale *= 2f;
             }
 
-            bossMasterPrefab = PrefabAPI.InstantiateClone(LegacyResourcesAPI.Load<GameObject>("Prefabs/CharacterMasters/MercMonsterMaster"), "NemmandoBossMaster", true);
+            bossMasterPrefab = PrefabAPI.InstantiateClone(LegacyResourcesAPI.Load<GameObject>("Prefabs/CharacterMasters/MercMonsterMaster"), "SS2UNemmandoBossMaster", true);
             bossMasterPrefab.GetComponent<CharacterMaster>().bodyPrefab = bossBodyPrefab;
 
             GameObject bossEffect = GameObject.Instantiate(Modules.Assets.nemmandoBossFX);
@@ -394,7 +394,7 @@ namespace Starstorm2.Survivors.Nemmando
 
         internal override void InitializeDoppelganger()
         {
-            GameObject masterPrefab = PrefabAPI.InstantiateClone(LegacyResourcesAPI.Load<GameObject>("Prefabs/CharacterMasters/CommandoMonsterMaster"), "NemmandoMonsterMaster", true);
+            GameObject masterPrefab = PrefabAPI.InstantiateClone(LegacyResourcesAPI.Load<GameObject>("Prefabs/CharacterMasters/CommandoMonsterMaster"), "SS2UNemmandoMonsterMaster", true);
             masterPrefab.GetComponent<CharacterMaster>().bodyPrefab = bodyPrefab;
             Modules.Prefabs.masterPrefabs.Add(masterPrefab);
 
@@ -517,8 +517,8 @@ namespace Starstorm2.Survivors.Nemmando
             Modules.Skills.CreateSkillFamilies(bodyPrefab);
 
             #region Primary
-            SkillDef m1SkillDef = Modules.Skills.CreatePrimarySkillDef(new SerializableEntityStateType(typeof(BladeOfCessation2)), "Weapon", "NEMMANDO_PRIMARY_BLADE_NAME", "NEMMANDO_PRIMARY_BLADE_DESCRIPTION", Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("texBladeOfCessation"), true);
-            m1SkillDef.keywordTokens = new string[] { "KEYWORD_GOUGE", "KEYWORD_AGILE" };
+            SkillDef m1SkillDef = Modules.Skills.CreatePrimarySkillDef(new SerializableEntityStateType(typeof(BladeOfCessation2)), "Weapon", "SS2UNEMMANDO_PRIMARY_BLADE_NAME", "SS2UNEMMANDO_PRIMARY_BLADE_DESCRIPTION", Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("texBladeOfCessation"), true);
+            m1SkillDef.keywordTokens = new string[] { "KEYWORD_SS2U_GOUGE", "KEYWORD_AGILE" };
 
             Modules.Skills.AddPrimarySkill(bodyPrefab, m1SkillDef);
             #endregion
@@ -526,9 +526,9 @@ namespace Starstorm2.Survivors.Nemmando
             #region Secondary
             SkillDef gashSkillDef = Modules.Skills.CreateSkillDef(new SkillDefInfo
             {
-                skillName = "NEMMANDO_SECONDARY_CONCUSSION_NAME",
-                skillNameToken = "NEMMANDO_SECONDARY_CONCUSSION_NAME",
-                skillDescriptionToken = "NEMMANDO_SECONDARY_CONCUSSION_DESCRIPTION",
+                skillName = "SS2UNEMMANDO_SECONDARY_CONCUSSION_NAME",
+                skillNameToken = "SS2UNEMMANDO_SECONDARY_CONCUSSION_NAME",
+                skillDescriptionToken = "SS2UNEMMANDO_SECONDARY_CONCUSSION_DESCRIPTION",
                 skillIcon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("texPhaseCharge"),
                 activationState = new SerializableEntityStateType(typeof(ChargeSwordBeam)),
                 activationStateMachineName = "Weapon",
@@ -546,15 +546,15 @@ namespace Starstorm2.Survivors.Nemmando
                 rechargeStock = 1,
                 requiredStock = 1,
                 stockToConsume = 1,
-                keywordTokens = new string[] { "KEYWORD_GOUGE" }
+                keywordTokens = new string[] { "KEYWORD_SS2U_GOUGE" }
             });
             secondaryDistantGash = gashSkillDef;
 
             SkillDef gunSkillDef = Modules.Skills.CreateSkillDef(new SkillDefInfo
             {
-                skillName = "NEMMANDO_SECONDARY_SHOOT_NAME",
-                skillNameToken = "NEMMANDO_SECONDARY_SHOOT_NAME",
-                skillDescriptionToken = "NEMMANDO_SECONDARY_SHOOT_DESCRIPTION",
+                skillName = "SS2UNEMMANDO_SECONDARY_SHOOT_NAME",
+                skillNameToken = "SS2UNEMMANDO_SECONDARY_SHOOT_NAME",
+                skillDescriptionToken = "SS2UNEMMANDO_SECONDARY_SHOOT_DESCRIPTION",
                 skillIcon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("texSubmission"),
                 activationState = new SerializableEntityStateType(typeof(ShootGun)),
                 activationStateMachineName = "Slide",
@@ -582,9 +582,9 @@ namespace Starstorm2.Survivors.Nemmando
             #region Utility
             SkillDef dashSkillDef = Modules.Skills.CreateSkillDef(new SkillDefInfo
             {
-                skillName = "NEMMANDO_UTILITY_DODGE_NAME",
-                skillNameToken = "NEMMANDO_UTILITY_DODGE_NAME",
-                skillDescriptionToken = "NEMMANDO_UTILITY_DODGE_DESCRIPTION",
+                skillName = "SS2UNEMMANDO_UTILITY_DODGE_NAME",
+                skillNameToken = "SS2UNEMMANDO_UTILITY_DODGE_NAME",
+                skillDescriptionToken = "SS2UNEMMANDO_UTILITY_DODGE_DESCRIPTION",
                 skillIcon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("texTacticalRoll"),
                 activationState = new SerializableEntityStateType(typeof(DodgeState)),
                 activationStateMachineName = "Body",
@@ -610,9 +610,9 @@ namespace Starstorm2.Survivors.Nemmando
             #region Special
             SkillDef submissionSkillDef = Modules.Skills.CreateSkillDef(new SkillDefInfo
             {
-                skillName = "NEMMANDO_SPECIAL_SUBMISSION_NAME",
-                skillNameToken = "NEMMANDO_SPECIAL_SUBMISSION_NAME",
-                skillDescriptionToken = "NEMMANDO_SPECIAL_SUBMISSION_DESCRIPTION",
+                skillName = "SS2UNEMMANDO_SPECIAL_SUBMISSION_NAME",
+                skillNameToken = "SS2UNEMMANDO_SPECIAL_SUBMISSION_NAME",
+                skillDescriptionToken = "SS2UNEMMANDO_SPECIAL_SUBMISSION_DESCRIPTION",
                 skillIcon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("texSubmission"),
                 activationState = new SerializableEntityStateType(typeof(ChargeBarrageCharge)),
                 activationStateMachineName = "Slide",
@@ -635,9 +635,9 @@ namespace Starstorm2.Survivors.Nemmando
 
             decisiveStrikeSkillDef = Modules.Skills.CreateSkillDef(new SkillDefInfo
             {
-                skillName = "NEMMANDO_SPECIAL_EPIC_NAME",
-                skillNameToken = "NEMMANDO_SPECIAL_EPIC_NAME",
-                skillDescriptionToken = "NEMMANDO_SPECIAL_EPIC_DESCRIPTION",
+                skillName = "SS2UNEMMANDO_SPECIAL_EPIC_NAME",
+                skillNameToken = "SS2UNEMMANDO_SPECIAL_EPIC_NAME",
+                skillDescriptionToken = "SS2UNEMMANDO_SPECIAL_EPIC_DESCRIPTION",
                 skillIcon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("texDecisiveStrike"),
                 activationState = new SerializableEntityStateType(typeof(ChargedSlashCharge)),
                 activationStateMachineName = "Body",
@@ -655,7 +655,7 @@ namespace Starstorm2.Survivors.Nemmando
                 rechargeStock = 1,
                 requiredStock = 1,
                 stockToConsume = 1,
-                keywordTokens = new string[] { "KEYWORD_GOUGE" }
+                keywordTokens = new string[] { "KEYWORD_SS2U_GOUGE" }
             });
             specialDecisiveStrike = decisiveStrikeSkillDef;
 
@@ -709,9 +709,9 @@ namespace Starstorm2.Survivors.Nemmando
         {
             scepterSubmissionSkillDef = Modules.Skills.CreateSkillDef(new SkillDefInfo
             {
-                skillName = "NEMMANDO_SPECIAL_SCEPSUBMISSION_NAME",
-                skillNameToken = "NEMMANDO_SPECIAL_SCEPSUBMISSION_NAME",
-                skillDescriptionToken = "NEMMANDO_SPECIAL_SCEPSUBMISSION_DESCRIPTION",
+                skillName = "SS2UNEMMANDO_SPECIAL_SCEPSUBMISSION_NAME",
+                skillNameToken = "SS2UNEMMANDO_SPECIAL_SCEPSUBMISSION_NAME",
+                skillDescriptionToken = "SS2UNEMMANDO_SPECIAL_SCEPSUBMISSION_DESCRIPTION",
                 skillIcon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("texSubmissionScepter"),
                 activationState = new SerializableEntityStateType(typeof(ScepterBarrageCharge)),
                 activationStateMachineName = "Slide",
@@ -733,9 +733,9 @@ namespace Starstorm2.Survivors.Nemmando
 
             scepterDecisiveStrikeSkillDef = Modules.Skills.CreateSkillDef(new SkillDefInfo
             {
-                skillName = "NEMMANDO_SPECIAL_SCEPEPIC_NAME",
-                skillNameToken = "NEMMANDO_SPECIAL_SCEPEPIC_NAME",
-                skillDescriptionToken = "NEMMANDO_SPECIAL_SCEPEPIC_DESCRIPTION",
+                skillName = "SS2UNEMMANDO_SPECIAL_SCEPEPIC_NAME",
+                skillNameToken = "SS2UNEMMANDO_SPECIAL_SCEPEPIC_NAME",
+                skillDescriptionToken = "SS2UNEMMANDO_SPECIAL_SCEPEPIC_DESCRIPTION",
                 skillIcon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("texDecisiveStrikeScepter"),
                 activationState = new SerializableEntityStateType(typeof(ScepterSlashCharge)),
                 activationStateMachineName = "Body",
@@ -753,74 +753,74 @@ namespace Starstorm2.Survivors.Nemmando
                 rechargeStock = 1,
                 requiredStock = 1,
                 stockToConsume = 1,
-                keywordTokens = new string[] { "KEYWORD_GOUGE" }
+                keywordTokens = new string[] { "KEYWORD_SS2U_GOUGE" }
             });
         }
 
         internal override void RegisterTokens()
         {
-            LanguageAPI.Add("NEMMANDO_NAME", "Nemesis Commando");
-            LanguageAPI.Add("NEMMANDO_SUBTITLE", "Lone Echo");
-            LanguageAPI.Add("NEMMANDO_DESCRIPTION", "The Nemesis Commando's origins are unknown, but something is clear: he's no longer who he once was.\r\n\r\n" +
+            LanguageAPI.Add("SS2UNEMMANDO_NAME", "Nemesis Commando");
+            LanguageAPI.Add("SS2UNEMMANDO_SUBTITLE", "Lone Echo");
+            LanguageAPI.Add("SS2UNEMMANDO_DESCRIPTION", "The Nemesis Commando's origins are unknown, but something is clear: he's no longer who he once was.\r\n\r\n" +
                 "< ! > Blade of Cessation is risky but can build up a lot of damage by stacking Gouge.\r\n\r\n" +
                 "< ! > Distant Gash can be used to safely apply stacks of Gouge to groups of enemies - take advantage of its piercing!\r\n\r\n" +
                 "< ! > Proper balance of melee and ranged combat is key, and Tactical Roll grants high armor to help enter and exit battles.\r\n\r\n" +
                 "< ! > Submission deals massive damage when fully charged.\r\n\r\n");
-            LanguageAPI.Add("NEMMANDO_OUTRO_FLAVOR", "..and so he left, newfound sense of humanity within.");
-            LanguageAPI.Add("NEMMANDO_OUTRO_FAILURE", "..and so he returned, concluding his endless struggle.");
-            LanguageAPI.Add("NEMMANDO_LORE", "He lays to rest by a fire, setting the weapons he carries within an arm's reach. Checking his surroundings, hoping the cave he hid in would be enough shelter. Some would say, it isn't wise to be overly cautious. He would say, <color=#FFCCED>they haven't seen enough.</color>\n\n" +
+            LanguageAPI.Add("SS2UNEMMANDO_OUTRO_FLAVOR", "..and so he left, newfound sense of humanity within.");
+            LanguageAPI.Add("SS2UNEMMANDO_OUTRO_FAILURE", "..and so he returned, concluding his endless struggle.");
+            LanguageAPI.Add("SS2UNEMMANDO_LORE", "He lays to rest by a fire, setting the weapons he carries within an arm's reach. Checking his surroundings, hoping the cave he hid in would be enough shelter. Some would say, it isn't wise to be overly cautious. He would say, <color=#FFCCED>they haven't seen enough.</color>\n\n" +
                 "The service pistol he got when he enlisted. Well used, dirtied, and loved. It's brought him through thick and thin, no matter which mission he took on. Some would say, only a fool would trust their weapon. He would say, <color=#FFCCED>your weapon is all you can trust.</color>\n\n" +
                 "The blade of a fallen brother of war. Picked from what he could scavenge of the last of humanity he's seen. Some would say, it keeps their spirits united. He would say, <color=#FFCCED>it's to keep their spirits from joining for as long as possible.</color>\n\n" +
                 "The loads of cargo that landed with him. Each item picked from a chest, keeping him alive in one way or another. Dozens of shipments to anyone but him. Some would say, they aren't his items to take. He would say, <color=#FFCCED>if he doesn't take them, then no one will.</color>\n\n" +
                 "The glow of a violet light coming from deeper within the cave. Calming, warming... beckoning. Welcoming him deeper and deeper, promising safety. Some would say, what sounds too good to be true probably is. He would say, <color=#FFCCED>Faust was a wise man.</color>");
 
-            LanguageAPI.Add("NEMMANDO_DEFAULT_SKIN_NAME", "Default");
-            LanguageAPI.Add("NEMMANDO_MASTERY_SKIN_NAME", "Minuano");
-            LanguageAPI.Add("NEMMANDO_CLASSIC_SKIN_NAME", "Classic");
-            LanguageAPI.Add("NEMMANDO_COMMANDO_SKIN_NAME", "Commando");
-            LanguageAPI.Add("NEMMANDO_VERGIL_SKIN_NAME", "Motivator");
+            LanguageAPI.Add("SS2UNEMMANDO_DEFAULT_SKIN_NAME", "Default");
+            LanguageAPI.Add("SS2UNEMMANDO_MASTERY_SKIN_NAME", "Minuano");
+            LanguageAPI.Add("SS2UNEMMANDO_CLASSIC_SKIN_NAME", "Classic");
+            LanguageAPI.Add("SS2UNEMMANDO_COMMANDO_SKIN_NAME", "Commando");
+            LanguageAPI.Add("SS2UNEMMANDO_VERGIL_SKIN_NAME", "Motivator");
 
             float gougeDuration = 2f;
             string gougeDamage = $"<style=cIsDamage>{gougeDuration * DamageTypeCore.gougeDamageCoefficient * 100}%</style> base damage";
             string bladeDamage = $"<style=cIsDamage>{BladeOfCessation2.damageCoefficient * 100}% damage</style>";
 
-            LanguageAPI.Add("KEYWORD_GOUGE", $"<style=cKeywordName>Gouge</style><style=cSub>Deal {gougeDamage} over {gougeDuration}s. <i>Capable of triggering item effects.</i>");
+            LanguageAPI.Add("KEYWORD_SS2U_GOUGE", $"<style=cKeywordName>Gouge</style><style=cSub>Deal {gougeDamage} over {gougeDuration}s. <i>Capable of triggering item effects.</i>");
 
-            LanguageAPI.Add("NEMMANDO_PRIMARY_BLADE_NAME", "Blade of Cessation");
-            LanguageAPI.Add("NEMMANDO_PRIMARY_BLADE_DESCRIPTION", $@"<style=cIsHealth>Gouging</style>. <style=cIsUtility>Agile.</style> Slice enemies for {bladeDamage}.");
+            LanguageAPI.Add("SS2UNEMMANDO_PRIMARY_BLADE_NAME", "Blade of Cessation");
+            LanguageAPI.Add("SS2UNEMMANDO_PRIMARY_BLADE_DESCRIPTION", $@"<style=cIsHealth>Gouging</style>. <style=cIsUtility>Agile.</style> Slice enemies for {bladeDamage}.");
 
-            LanguageAPI.Add("NEMMANDO_SECONDARY_CONCUSSION_NAME", "Distant Gash");
+            LanguageAPI.Add("SS2UNEMMANDO_SECONDARY_CONCUSSION_NAME", "Distant Gash");
 
             string chargeDamage = $"<style=cIsDamage>{FireSwordBeam.minDamageCoeffficient * 100}%-{FireSwordBeam.maxDamageCoefficient * 100}% damage</style>";
-            LanguageAPI.Add("NEMMANDO_SECONDARY_CONCUSSION_DESCRIPTION", $"<style=cIsHealth>Gouging</style>. Charge a piercing sword beam for {chargeDamage}.");
+            LanguageAPI.Add("SS2UNEMMANDO_SECONDARY_CONCUSSION_DESCRIPTION", $"<style=cIsHealth>Gouging</style>. Charge a piercing sword beam for {chargeDamage}.");
 
-            LanguageAPI.Add("NEMMANDO_SECONDARY_SHOOT_NAME", "Single Tap");
+            LanguageAPI.Add("SS2UNEMMANDO_SECONDARY_SHOOT_NAME", "Single Tap");
 
             chargeDamage = $"<style=cIsDamage>{ShootGun.damageCoefficient * 100}% damage</style>";
-            LanguageAPI.Add("NEMMANDO_SECONDARY_SHOOT_DESCRIPTION", $"Fire your gun for {chargeDamage}.");
+            LanguageAPI.Add("SS2UNEMMANDO_SECONDARY_SHOOT_DESCRIPTION", $"Fire your gun for {chargeDamage}.");
 
-            LanguageAPI.Add("NEMMANDO_UTILITY_DODGE_NAME", "Tactical Roll");
-            LanguageAPI.Add("NEMMANDO_UTILITY_DODGE_DESCRIPTION", "<style=cIsUtility>Roll</style> a short distance and gain <style=cIsUtility>100 armor</style>.");
+            LanguageAPI.Add("SS2UNEMMANDO_UTILITY_DODGE_NAME", "Tactical Roll");
+            LanguageAPI.Add("SS2UNEMMANDO_UTILITY_DODGE_DESCRIPTION", "<style=cIsUtility>Roll</style> a short distance and gain <style=cIsUtility>100 armor</style>.");
 
-            LanguageAPI.Add("NEMMANDO_SPECIAL_SUBMISSION_NAME", "Submission");
-            LanguageAPI.Add("NEMMANDO_SPECIAL_SUBMISSION_DESCRIPTION", $"Charge up a barrage of <style=cIsDamage>5 shotgun blasts</style> that deal <style=cIsDamage>4x{ChargeBarrageFire.damageCoefficient * 100}% damage</style> each. The number of shots increases with attack speed.");
+            LanguageAPI.Add("SS2UNEMMANDO_SPECIAL_SUBMISSION_NAME", "Submission");
+            LanguageAPI.Add("SS2UNEMMANDO_SPECIAL_SUBMISSION_DESCRIPTION", $"Charge up a barrage of <style=cIsDamage>5 shotgun blasts</style> that deal <style=cIsDamage>4x{ChargeBarrageFire.damageCoefficient * 100}% damage</style> each. The number of shots increases with attack speed.");
 
-            LanguageAPI.Add("NEMMANDO_SPECIAL_EPIC_NAME", "Decisive Strike");
+            LanguageAPI.Add("SS2UNEMMANDO_SPECIAL_EPIC_NAME", "Decisive Strike");
             string chargedSlashDamage = $"<style=cIsDamage>{ChargedSlashAttack.maxHits}x{ChargedSlashAttack.maxDamageCoefficient * 100}% damage</style>";
-            LanguageAPI.Add("NEMMANDO_SPECIAL_EPIC_DESCRIPTION", $"<style=cIsHealth>Gouging</style>. Charge up a devastating barrage of <style=cIsDamage>slashes</style> that deals up to {chargedSlashDamage}.");
+            LanguageAPI.Add("SS2UNEMMANDO_SPECIAL_EPIC_DESCRIPTION", $"<style=cIsHealth>Gouging</style>. Charge up a devastating barrage of <style=cIsDamage>slashes</style> that deals up to {chargedSlashDamage}.");
 
             string desc = $"Charge up a barrage of <style=cIsDamage>5 shotgun blasts</style> that deal <style=cIsDamage>4x{ChargeBarrageFire.damageCoefficient * 100}% damage</style> each. The number of shots increases with attack speed.";
             desc += Helpers.ScepterDescription($"Fire lasers for {100f * ScepterBarrageFire.laserDamageCoefficient}% damage.");
 
-            LanguageAPI.Add("NEMMANDO_SPECIAL_SCEPSUBMISSION_NAME", "Subjunction");
-            LanguageAPI.Add("NEMMANDO_SPECIAL_SCEPSUBMISSION_DESCRIPTION", desc);
+            LanguageAPI.Add("SS2UNEMMANDO_SPECIAL_SCEPSUBMISSION_NAME", "Subjunction");
+            LanguageAPI.Add("SS2UNEMMANDO_SPECIAL_SCEPSUBMISSION_DESCRIPTION", desc);
 
             chargedSlashDamage = $"<style=cIsDamage>{ChargedSlashAttack.maxHits}x{ChargedSlashAttack.maxDamageCoefficient * 100}% damage</style>";
             desc = $"<style=cIsHealth>Gouging</style>. Charge up a devastating barrage of <style=cIsDamage>slashes</style> that deals up to {chargedSlashDamage}.";
             desc += Helpers.ScepterDescription("Briefly disappear and then unleash all your strikes at once. Hit count increases the more attack speed you have.");
 
-            LanguageAPI.Add("NEMMANDO_SPECIAL_SCEPEPIC_NAME", "Judgement Cut End");
-            LanguageAPI.Add("NEMMANDO_SPECIAL_SCEPEPIC_DESCRIPTION", desc);
+            LanguageAPI.Add("SS2UNEMMANDO_SPECIAL_SCEPEPIC_NAME", "Judgement Cut End");
+            LanguageAPI.Add("SS2UNEMMANDO_SPECIAL_SCEPEPIC_DESCRIPTION", desc);
 
             // todo: make a base class for mastery achievements and simply inherit from it for each character 
             LanguageAPI.Add("ACHIEVEMENT_SS2UNEMMANDOCLEARGAMEMONSOON_NAME", "Nemesis Commando: Mastery");
@@ -832,9 +832,9 @@ namespace Starstorm2.Survivors.Nemmando
             LanguageAPI.Add("ACHIEVEMENT_SS2UNEMMANDOKILLSELF_NAME", "Nemesis Commando: Nemesis Nemesis");
             LanguageAPI.Add("ACHIEVEMENT_SS2UNEMMANDOKILLSELF_DESCRIPTION", "As Nemesis Commando, defeat Commando's vestige.");
 
-            LanguageAPI.Add("NEMMANDO_EPICUNLOCKABLE_ACHIEVEMENT_NAME", "Nemesis Commando: Zandatsu");
-            LanguageAPI.Add("NEMMANDO_EPICUNLOCKABLE_ACHIEVEMENT_DESC", "As Nemesis Commando, inflict 50 stacks of Gouge on one enemy.");
-            LanguageAPI.Add("NEMMANDO_EPICUNLOCKABLE_UNLOCKABLE_NAME", "Nemesis Commando: Zandatsu");
+            LanguageAPI.Add("SS2UNEMMANDO_EPICUNLOCKABLE_ACHIEVEMENT_NAME", "Nemesis Commando: Zandatsu");
+            LanguageAPI.Add("SS2UNEMMANDO_EPICUNLOCKABLE_ACHIEVEMENT_DESC", "As Nemesis Commando, inflict 50 stacks of Gouge on one enemy.");
+            LanguageAPI.Add("SS2UNEMMANDO_EPICUNLOCKABLE_UNLOCKABLE_NAME", "Nemesis Commando: Zandatsu");
 
             LanguageAPI.Add("ACHIEVEMENT_SS2UNEMMANDOUNLOCK_NAME", "???");
             LanguageAPI.Add("ACHIEVEMENT_SS2UNEMMANDOUNLOCK_DESCRIPTION", "Defeat Commando's vestige.");
@@ -940,7 +940,7 @@ namespace Starstorm2.Survivors.Nemmando
             };
 
             #region DefaultSkin
-            SkinDef defaultSkin = Modules.Skins.CreateSkinDef("NEMMANDO_DEFAULT_SKIN_NAME",
+            SkinDef defaultSkin = Modules.Skins.CreateSkinDef("SS2UNEMMANDO_DEFAULT_SKIN_NAME",
                 Assets.mainAssetBundle.LoadAsset<Sprite>("texNemmandoSkin"),
                 defaultRenderers,
                 mainRenderer,
@@ -981,7 +981,7 @@ namespace Starstorm2.Survivors.Nemmando
                 masteryMatNoEmission
             });
 
-            SkinDef masterySkin = Modules.Skins.CreateSkinDef("NEMMANDO_MASTERY_SKIN_NAME",
+            SkinDef masterySkin = Modules.Skins.CreateSkinDef("SS2UNEMMANDO_MASTERY_SKIN_NAME",
                 Assets.mainAssetBundle.LoadAsset<Sprite>("texNemmandoSkinMaster"),
                 masteryRendererInfos,
                 mainRenderer,
@@ -1020,7 +1020,7 @@ namespace Starstorm2.Survivors.Nemmando
                 Modules.Assets.CreateMaterial("matNemmandoClassic", 0, Color.white)
             });
 
-            SkinDef grandMasterySkin = Modules.Skins.CreateSkinDef("NEMMANDO_CLASSIC_SKIN_NAME",
+            SkinDef grandMasterySkin = Modules.Skins.CreateSkinDef("SS2UNEMMANDO_CLASSIC_SKIN_NAME",
                 Assets.mainAssetBundle.LoadAsset<Sprite>("texNemmandoSkinGrandMaster"),
                 grandMasteryRendererInfos,
                 mainRenderer,
@@ -1061,7 +1061,7 @@ namespace Starstorm2.Survivors.Nemmando
 
             CreateKillSelfUnlockable();
 
-            SkinDef commandoSkin = Modules.Skins.CreateSkinDef("NEMMANDO_COMMANDO_SKIN_NAME",
+            SkinDef commandoSkin = Modules.Skins.CreateSkinDef("SS2UNEMMANDO_COMMANDO_SKIN_NAME",
                  Assets.mainAssetBundle.LoadAsset<Sprite>("texNemmandoCommandoSkin"),
                 commandoRendererInfos,
                 mainRenderer,
@@ -1114,7 +1114,7 @@ namespace Starstorm2.Survivors.Nemmando
                 Modules.Assets.commandoMat
                 });
 
-                SkinDef commandoJokeSkin = Modules.Skins.CreateSkinDef("NEMMANDO_COMMANDO_SKIN_NAME",
+                SkinDef commandoJokeSkin = Modules.Skins.CreateSkinDef("SS2UNEMMANDO_COMMANDO_SKIN_NAME",
                     LegacyResourcesAPI.Load<GameObject>("Prefabs/CharacterBodies/CommandoBody").GetComponentInChildren<ModelSkinController>().skins[0].icon,
                     commandoJokeRendererInfos,
                     mainRenderer,
@@ -1153,7 +1153,7 @@ namespace Starstorm2.Survivors.Nemmando
                     Modules.Assets.commandoMat
                 });
 
-                SkinDef vergilSkin = Modules.Skins.CreateSkinDef("NEMMANDO_VERGIL_SKIN_NAME",
+                SkinDef vergilSkin = Modules.Skins.CreateSkinDef("SS2UNEMMANDO_VERGIL_SKIN_NAME",
                     Assets.mainAssetBundle.LoadAsset<Sprite>("texVergilSkin"),
                     vergilRendererInfos,
                     mainRenderer,

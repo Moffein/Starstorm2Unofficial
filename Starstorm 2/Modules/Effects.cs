@@ -47,7 +47,7 @@ namespace Starstorm2.Modules
             #region Nemmando
             skinList.Add(new SkinEffectData
             {
-                skinNameToken = "NEMMANDO_DEFAULT_SKIN_NAME",
+                skinNameToken = "SS2UNEMMANDO_DEFAULT_SKIN_NAME",
                 impactEffect = Assets.nemImpactFX,
                 impactSoundDef = Assets.nemImpactSoundDef,
                 defaultSwordEmission = 0f,
@@ -57,12 +57,12 @@ namespace Starstorm2.Modules
                 swingEffect = Assets.nemSaberSwingFX,
                 swingSound = "NemmandoSwingSaber",
                 shootSound = "NemmandoShoot",
-                bodyName = "NEMMANDO_NAME"
+                bodyName = "SS2UNEMMANDO_NAME"
             });
 
             skinList.Add(new SkinEffectData
             {
-                skinNameToken = "NEMMANDO_MASTERY_SKIN_NAME",
+                skinNameToken = "SS2UNEMMANDO_MASTERY_SKIN_NAME",
                 impactEffect = Assets.nemImpactFX,
                 impactSoundDef = Assets.nemImpactSoundDef,
                 defaultSwordEmission = 0f,
@@ -77,7 +77,7 @@ namespace Starstorm2.Modules
 
             skinList.Add(new SkinEffectData
             {
-                skinNameToken = "NEMMANDO_CLASSIC_SKIN_NAME",
+                skinNameToken = "SS2UNEMMANDO_CLASSIC_SKIN_NAME",
                 impactEffect = Assets.nemImpactFX,
                 impactSoundDef = Assets.nemImpactSoundDef,
                 defaultSwordEmission = 1f,
@@ -91,7 +91,7 @@ namespace Starstorm2.Modules
 
             skinList.Add(new SkinEffectData
             {
-                skinNameToken = "NEMMANDO_COMMANDO_SKIN_NAME",
+                skinNameToken = "SS2UNEMMANDO_COMMANDO_SKIN_NAME",
                 impactEffect = LegacyResourcesAPI.Load<GameObject>("Prefabs/Effects/OmniEffect/OmniImpactVFXSlashMerc"),
                 impactSoundDef = LegacyResourcesAPI.Load<NetworkSoundEventDef>("NetworkSoundEventDefs/nseMercSwordImpact"),
                 defaultSwordEmission = 1f,
@@ -105,7 +105,7 @@ namespace Starstorm2.Modules
 
             skinList.Add(new SkinEffectData
             {
-                skinNameToken = "NEMMANDO_VERGIL_SKIN_NAME",
+                skinNameToken = "SS2UNEMMANDO_VERGIL_SKIN_NAME",
                 impactEffect = LegacyResourcesAPI.Load<GameObject>("Prefabs/Effects/OmniEffect/OmniImpactVFXSlashMerc"),
                 impactSoundDef = Assets.nemImpactSoundDef,
                 defaultSwordEmission = 5f,
