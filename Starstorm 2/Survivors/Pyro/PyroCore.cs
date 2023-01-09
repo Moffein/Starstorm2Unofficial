@@ -247,7 +247,7 @@ namespace Starstorm2Unofficial.Survivors.Pyro
             airblast.beginSkillCooldownOnSkillEnd = true;
             airblast.canceledFromSprinting = false;
             airblast.fullRestockOnAssign = true;
-            airblast.interruptPriority = EntityStates.InterruptPriority.Any;
+            airblast.interruptPriority = EntityStates.InterruptPriority.Skill;
             airblast.isCombatSkill = false;
             airblast.mustKeyPress = false;
             airblast.cancelSprintingOnActivation = false;
@@ -276,7 +276,7 @@ namespace Starstorm2Unofficial.Survivors.Pyro
             suppressiveFire.beginSkillCooldownOnSkillEnd = true;
             suppressiveFire.canceledFromSprinting = false;
             suppressiveFire.fullRestockOnAssign = true;
-            suppressiveFire.interruptPriority = EntityStates.InterruptPriority.Skill;
+            suppressiveFire.interruptPriority = EntityStates.InterruptPriority.Any;
             suppressiveFire.isCombatSkill = true;
             suppressiveFire.mustKeyPress = false;
             suppressiveFire.cancelSprintingOnActivation = true;
