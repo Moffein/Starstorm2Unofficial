@@ -87,7 +87,7 @@ namespace Starstorm2Unofficial.Survivors.Pyro
             pie.explosionEffect = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Common/VFX/OmniExplosionVFXQuick.prefab").WaitForCompletion();
             pie.blastAttackerFiltering = AttackerFiltering.NeverHitSelf;
             pie.blastDamageCoefficient = 1f;
-            pie.blastProcCoefficient = 1f;
+            pie.blastProcCoefficient = 0.7f;
             pie.blastRadius = 3f;
             pie.bonusBlastForce = Vector3.zero;
             pie.canRejectForce = true;
@@ -318,7 +318,7 @@ namespace Starstorm2Unofficial.Survivors.Pyro
             utilityDef1.rechargeStock = 1;
             utilityDef1.requiredStock = 1;
             utilityDef1.stockToConsume = 1;
-            utilityDef1.baseHeatRequirement = 0.33f;
+            utilityDef1.baseHeatRequirement = 0.4f;
             Modules.Skills.FixSkillName(utilityDef1);
             Modules.Skills.skillDefs.Add(utilityDef1);
             SkillFamily.Variant utilityVariant1 = Utils.RegisterSkillVariant(utilityDef1);

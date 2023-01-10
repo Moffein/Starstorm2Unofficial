@@ -2,6 +2,8 @@
 using UnityEngine;
 using RoR2.Projectile;
 using UnityEngine.Networking;
+using Starstorm2Unofficial.Components.Projectiles;
+using R2API;
 
 namespace Starstorm2Unofficial.Survivors.Cyborg.Components.OverheatProjectile
 {
@@ -9,10 +11,9 @@ namespace Starstorm2Unofficial.Survivors.Cyborg.Components.OverheatProjectile
     [RequireComponent(typeof(ProjectileProximityBeamController))]
     public class OverheatReduceTickrateOverTime : MonoBehaviour
     {
-        public static float fullDPSDurationPercent = 0f;
-        public static float finalDPSMultiplier = 0.1f;
+        public float fullDPSDurationPercent = 0f;
+        public float finalDPSMultiplier = 0.1f;
 
-        private float initialOverlapInterval;
         private float initialResetInterval;
         private float startDecayTime;
         private float totalLifetime;
@@ -22,7 +23,6 @@ namespace Starstorm2Unofficial.Survivors.Cyborg.Components.OverheatProjectile
         {
             pbc = base.GetComponent<ProjectileProximityBeamController>();
             initialResetInterval = pbc.listClearInterval;
-            initialOverlapInterval = pbc.attackInterval;
 
             ProjectileSimple ps = base.GetComponent<ProjectileSimple>();
             totalLifetime = ps.lifetime;

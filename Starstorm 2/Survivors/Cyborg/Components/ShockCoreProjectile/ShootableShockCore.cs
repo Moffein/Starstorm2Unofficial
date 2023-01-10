@@ -31,7 +31,7 @@ namespace Starstorm2Unofficial.Survivors.Cyborg.Components.ShockCoreProjectile
             ProjectileImpactExplosion pie = base.gameObject.GetComponent<ProjectileImpactExplosion>();
             if (pie)
             {
-                pie.blastRadius = 14f;
+                pie.blastRadius = 20f;
                 pie.falloffModel = BlastAttack.FalloffModel.None;
                 pie.explosionEffect = ShootableShockCore.explosionEffectPrefab;
 
