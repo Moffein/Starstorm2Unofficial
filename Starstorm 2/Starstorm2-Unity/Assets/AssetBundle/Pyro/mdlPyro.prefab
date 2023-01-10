@@ -41,8 +41,8 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.25
-  m_Height: 2
+  m_Radius: 0.35
+  m_Height: 2.4
   m_Direction: 1
   m_Center: {x: 0, y: -0.20505297, z: 0}
 --- !u!1 &2141984270868074527
@@ -165,19 +165,6 @@ MonoBehaviour:
     transform: {fileID: 3626405912452286603}
   - name: Head
     transform: {fileID: 3626405912452286603}
---- !u!135 &5924348989390217775
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3626405912452781217}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.1
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!54 &8988429881199091326
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -194,6 +181,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!135 &5924348989390217775
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3626405912452781217}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.1
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!54 &5520797328695185568
 Rigidbody:
   m_ObjectHideFlags: 0

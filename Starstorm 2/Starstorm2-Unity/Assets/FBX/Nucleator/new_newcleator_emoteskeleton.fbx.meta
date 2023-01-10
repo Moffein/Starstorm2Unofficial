@@ -1,0 +1,1030 @@
+fileFormatVersion: 2
+guid: 2869e4666cee921498bcc18411ccf98f
+ModelImporter:
+  serializedVersion: 19301
+  internalIDToNameTable:
+  - first:
+      1: 100000
+    second: BASE
+  - first:
+      1: 100002
+    second: Calf.L
+  - first:
+      1: 100004
+    second: Calf.R
+  - first:
+      1: 100006
+    second: Camera
+  - first:
+      1: 100008
+    second: ElbowIK.L
+  - first:
+      1: 100010
+    second: ElbowIK.R
+  - first:
+      1: 100012
+    second: Foot.L
+  - first:
+      1: 100014
+    second: Foot.R
+  - first:
+      1: 100016
+    second: FootIK.L
+  - first:
+      1: 100018
+    second: FootIK.R
+  - first:
+      1: 100020
+    second: Forearm.L
+  - first:
+      1: 100022
+    second: Forearm.R
+  - first:
+      1: 100024
+    second: ForearmIK.L
+  - first:
+      1: 100026
+    second: ForearmIK.R
+  - first:
+      1: 100028
+    second: Head
+  - first:
+      1: 100030
+    second: KneeIK.L
+  - first:
+      1: 100032
+    second: KneeIK.R
+  - first:
+      1: 100034
+    second: Midriff
+  - first:
+      1: 100036
+    second: Neck
+  - first:
+      1: 100038
+    second: //RootNode
+  - first:
+      1: 100040
+    second: NucleatorArmature
+  - first:
+      1: 100042
+    second: NucleatorMesh
+  - first:
+      1: 100044
+    second: Pelvis
+  - first:
+      1: 100046
+    second: Point
+  - first:
+      1: 100048
+    second: ROOT
+  - first:
+      1: 100050
+    second: Shoulder.L
+  - first:
+      1: 100052
+    second: Shoulder.R
+  - first:
+      1: 100054
+    second: Thigh.L
+  - first:
+      1: 100056
+    second: Thigh.R
+  - first:
+      1: 100058
+    second: Toe.L
+  - first:
+      1: 100060
+    second: Toe.R
+  - first:
+      1: 100062
+    second: Torso
+  - first:
+      1: 100064
+    second: Tube1.L
+  - first:
+      1: 100066
+    second: Tube1.R
+  - first:
+      1: 100068
+    second: Tube2.L
+  - first:
+      1: 100070
+    second: Tube2.R
+  - first:
+      1: 100072
+    second: Tube3.L
+  - first:
+      1: 100074
+    second: Tube3.R
+  - first:
+      1: 100076
+    second: Tube4.L
+  - first:
+      1: 100078
+    second: Tube4.R
+  - first:
+      1: 100080
+    second: Tube5.L
+  - first:
+      1: 100082
+    second: Tube5.R
+  - first:
+      1: 100084
+    second: Tube6.L
+  - first:
+      1: 100086
+    second: Tube6.R
+  - first:
+      1: 100088
+    second: Tube7.L
+  - first:
+      1: 100090
+    second: Tube7.R
+  - first:
+      1: 100092
+    second: Tube8.L
+  - first:
+      1: 100094
+    second: Tube8.R
+  - first:
+      1: 100096
+    second: Tube9.L
+  - first:
+      1: 100098
+    second: Tube9.L.001
+  - first:
+      1: 100100
+    second: Tube9.R
+  - first:
+      1: 100102
+    second: Tube9.R.001
+  - first:
+      1: 100104
+    second: TubeJiggleLeft
+  - first:
+      1: 100106
+    second: TubeJiggleLeft.001
+  - first:
+      1: 100108
+    second: TubeJiggleRight
+  - first:
+      1: 100110
+    second: TubeJiggleRight.001
+  - first:
+      1: 100112
+    second: UpperArm1.L
+  - first:
+      1: 100114
+    second: UpperArm1.R
+  - first:
+      1: 100116
+    second: UpperArm2.L
+  - first:
+      1: 100118
+    second: UpperArm2.R
+  - first:
+      4: 400000
+    second: BASE
+  - first:
+      4: 400002
+    second: Calf.L
+  - first:
+      4: 400004
+    second: Calf.R
+  - first:
+      4: 400006
+    second: Camera
+  - first:
+      4: 400008
+    second: ElbowIK.L
+  - first:
+      4: 400010
+    second: ElbowIK.R
+  - first:
+      4: 400012
+    second: Foot.L
+  - first:
+      4: 400014
+    second: Foot.R
+  - first:
+      4: 400016
+    second: FootIK.L
+  - first:
+      4: 400018
+    second: FootIK.R
+  - first:
+      4: 400020
+    second: Forearm.L
+  - first:
+      4: 400022
+    second: Forearm.R
+  - first:
+      4: 400024
+    second: ForearmIK.L
+  - first:
+      4: 400026
+    second: ForearmIK.R
+  - first:
+      4: 400028
+    second: Head
+  - first:
+      4: 400030
+    second: KneeIK.L
+  - first:
+      4: 400032
+    second: KneeIK.R
+  - first:
+      4: 400034
+    second: Midriff
+  - first:
+      4: 400036
+    second: Neck
+  - first:
+      4: 400038
+    second: //RootNode
+  - first:
+      4: 400040
+    second: NucleatorArmature
+  - first:
+      4: 400042
+    second: NucleatorMesh
+  - first:
+      4: 400044
+    second: Pelvis
+  - first:
+      4: 400046
+    second: Point
+  - first:
+      4: 400048
+    second: ROOT
+  - first:
+      4: 400050
+    second: Shoulder.L
+  - first:
+      4: 400052
+    second: Shoulder.R
+  - first:
+      4: 400054
+    second: Thigh.L
+  - first:
+      4: 400056
+    second: Thigh.R
+  - first:
+      4: 400058
+    second: Toe.L
+  - first:
+      4: 400060
+    second: Toe.R
+  - first:
+      4: 400062
+    second: Torso
+  - first:
+      4: 400064
+    second: Tube1.L
+  - first:
+      4: 400066
+    second: Tube1.R
+  - first:
+      4: 400068
+    second: Tube2.L
+  - first:
+      4: 400070
+    second: Tube2.R
+  - first:
+      4: 400072
+    second: Tube3.L
+  - first:
+      4: 400074
+    second: Tube3.R
+  - first:
+      4: 400076
+    second: Tube4.L
+  - first:
+      4: 400078
+    second: Tube4.R
+  - first:
+      4: 400080
+    second: Tube5.L
+  - first:
+      4: 400082
+    second: Tube5.R
+  - first:
+      4: 400084
+    second: Tube6.L
+  - first:
+      4: 400086
+    second: Tube6.R
+  - first:
+      4: 400088
+    second: Tube7.L
+  - first:
+      4: 400090
+    second: Tube7.R
+  - first:
+      4: 400092
+    second: Tube8.L
+  - first:
+      4: 400094
+    second: Tube8.R
+  - first:
+      4: 400096
+    second: Tube9.L
+  - first:
+      4: 400098
+    second: Tube9.L.001
+  - first:
+      4: 400100
+    second: Tube9.R
+  - first:
+      4: 400102
+    second: Tube9.R.001
+  - first:
+      4: 400104
+    second: TubeJiggleLeft
+  - first:
+      4: 400106
+    second: TubeJiggleLeft.001
+  - first:
+      4: 400108
+    second: TubeJiggleRight
+  - first:
+      4: 400110
+    second: TubeJiggleRight.001
+  - first:
+      4: 400112
+    second: UpperArm1.L
+  - first:
+      4: 400114
+    second: UpperArm1.R
+  - first:
+      4: 400116
+    second: UpperArm2.L
+  - first:
+      4: 400118
+    second: UpperArm2.R
+  - first:
+      20: 2000000
+    second: Camera
+  - first:
+      21: 2100000
+    second: Material.001
+  - first:
+      43: 4300000
+    second: NucleatorMesh
+  - first:
+      74: 7400000
+    second: NucleatorArmature|AscendLoop
+  - first:
+      74: 7400002
+    second: NucleatorArmature|CombatIdle
+  - first:
+      74: 7400004
+    second: NucleatorArmature|CSS
+  - first:
+      74: 7400006
+    second: NucleatorArmature|Idle
+  - first:
+      74: 7400008
+    second: NucleatorArmature|Jump
+  - first:
+      74: 7400010
+    second: NucleatorArmature|PrimaryBig
+  - first:
+      74: 7400012
+    second: NucleatorArmature|PrimaryCharge
+  - first:
+      74: 7400014
+    second: NucleatorArmature|PrimaryChargeHold
+  - first:
+      74: 7400016
+    second: NucleatorArmature|PrimaryLight
+  - first:
+      74: 7400018
+    second: NucleatorArmature|Rest Pose
+  - first:
+      74: 7400020
+    second: NucleatorArmature|RunBackwards
+  - first:
+      74: 7400022
+    second: NucleatorArmature|RunForwards
+  - first:
+      74: 7400024
+    second: NucleatorArmature|RunLeft
+  - first:
+      74: 7400026
+    second: NucleatorArmature|RunRight
+  - first:
+      74: 7400028
+    second: NucleatorArmature|SecondaryCharge
+  - first:
+      74: 7400030
+    second: NucleatorArmature|SecondaryRelease
+  - first:
+      74: 7400032
+    second: NucleatorArmature|Sit
+  - first:
+      74: 7400034
+    second: NucleatorArmature|SpecialIdle
+  - first:
+      74: 7400036
+    second: NucleatorArmature|Sprint
+  - first:
+      74: 7400038
+    second: NucleatorArmature|Stop
+  - first:
+      74: 7400040
+    second: NucleatorArmature|UtilityCharge
+  - first:
+      74: 7400042
+    second: NucleatorArmature|UtilityRelease
+  - first:
+      95: 9500000
+    second: //RootNode
+  - first:
+      108: 10800000
+    second: Point
+  - first:
+      137: 13700000
+    second: NucleatorMesh
+  externalObjects: {}
+  materials:
+    materialImportMode: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: "\nClip 'NucleatorArmature|CSS' has import animation
+      warnings that might lower retargeting quality:\nNote: Activate translation
+      DOF on avatar to improve retargeting quality.\n\t'Midriff' is inbetween humanoid
+      transforms and has rotation animation that will be discarded.\n\nClip 'NucleatorArmature|RunBackwards'
+      has import animation warnings that might lower retargeting quality:\nNote:
+      Activate translation DOF on avatar to improve retargeting quality.\n\t'Pelvis'
+      is inbetween humanoid transforms and has rotation animation that will be discarded.\n\nClip
+      'NucleatorArmature|RunForwards' has import animation warnings that might lower
+      retargeting quality:\nNote: Activate translation DOF on avatar to improve retargeting
+      quality.\n\t'Pelvis' is inbetween humanoid transforms and has rotation animation
+      that will be discarded.\n\nClip 'NucleatorArmature|RunLeft' has import animation
+      warnings that might lower retargeting quality:\nNote: Activate translation
+      DOF on avatar to improve retargeting quality.\n\t'Pelvis' is inbetween humanoid
+      transforms and has rotation animation that will be discarded.\n\nClip 'NucleatorArmature|RunRight'
+      has import animation warnings that might lower retargeting quality:\nNote:
+      Activate translation DOF on avatar to improve retargeting quality.\n\t'Pelvis'
+      is inbetween humanoid transforms and has rotation animation that will be discarded.\n\nClip
+      'NucleatorArmature|Sprint' has import animation warnings that might lower retargeting
+      quality:\nNote: Activate translation DOF on avatar to improve retargeting quality.\n\t'Pelvis'
+      is inbetween humanoid transforms and has rotation animation that will be discarded.\n\nClip
+      'NucleatorArmature|Stop' has import animation warnings that might lower retargeting
+      quality:\nNote: Activate translation DOF on avatar to improve retargeting quality.\n\t'Midriff'
+      is inbetween humanoid transforms and has rotation animation that will be discarded.\n\nClip
+      'NucleatorArmature|UtilityCharge' has import animation warnings that might
+      lower retargeting quality:\nNote: Activate translation DOF on avatar to improve
+      retargeting quality.\n\t'Midriff' is inbetween humanoid transforms and has
+      rotation animation that will be discarded.\n\nClip 'NucleatorArmature|UtilityRelease'
+      has import animation warnings that might lower retargeting quality:\nNote:
+      Activate translation DOF on avatar to improve retargeting quality.\n\t'Midriff'
+      is inbetween humanoid transforms and has rotation animation that will be discarded.\n"
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 3
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    sortHierarchyByName: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 0
+    importLights: 0
+    fileIdsGeneration: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    skinWeightsMode: 0
+    maxBonesPerVertex: 4
+    minBoneWeight: 0.001
+    meshOptimizationFlags: -1
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 0
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  referencedClips: []
+  importAnimation: 1
+  humanDescription:
+    serializedVersion: 3
+    human:
+    - boneName: ROOT
+      humanName: Hips
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Thigh.L
+      humanName: LeftUpperLeg
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Thigh.R
+      humanName: RightUpperLeg
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Calf.L
+      humanName: LeftLowerLeg
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Calf.R
+      humanName: RightLowerLeg
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Foot.L
+      humanName: LeftFoot
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Foot.R
+      humanName: RightFoot
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Torso
+      humanName: Spine
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Neck
+      humanName: Neck
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Head
+      humanName: Head
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Shoulder.L
+      humanName: LeftShoulder
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Shoulder.R
+      humanName: RightShoulder
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: UpperArm1.L
+      humanName: LeftUpperArm
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: UpperArm1.R
+      humanName: RightUpperArm
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: UpperArm2.L
+      humanName: LeftLowerArm
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: UpperArm2.R
+      humanName: RightLowerArm
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: TubeJiggleLeft.001
+      humanName: LeftEye
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: TubeJiggleRight.001
+      humanName: RightEye
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Forearm.L
+      humanName: LeftHand
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Forearm.R
+      humanName: RightHand
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    skeleton:
+    - name: new_newcleator_emoteskeleton(Clone)
+      parentName: 
+      position: {x: 0, y: 0, z: 0}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Camera
+      parentName: new_newcleator_emoteskeleton(Clone)
+      position: {x: -0.00044822693, y: 3.1637044, z: 20.202219}
+      rotation: {x: 3.552714e-15, y: -0.7071067, z: 3.5527135e-15, w: 0.7071068}
+      scale: {x: 1, y: 1, z: 1}
+    - name: NucleatorArmature
+      parentName: new_newcleator_emoteskeleton(Clone)
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
+      scale: {x: 0.42952362, y: 0.42952362, z: 0.42952362}
+    - name: BASE
+      parentName: NucleatorArmature
+      position: {x: -0, y: -0.17444904, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: ElbowIK.L
+      parentName: BASE
+      position: {x: -1.066869, y: 3.1079993, z: 3.318406}
+      rotation: {x: 4.292369e-17, y: 0.9646246, z: -4.292369e-17, w: -0.26362753}
+      scale: {x: 0.59018767, y: 1, z: 0.87897843}
+    - name: ElbowIK.R
+      parentName: BASE
+      position: {x: -0.13251114, y: 2.35052, z: 2.3837624}
+      rotation: {x: 7.520875e-17, y: 0.9646246, z: -7.520875e-17, w: 0.26362753}
+      scale: {x: 0.59018767, y: 1, z: 0.87897843}
+    - name: FootIK.L
+      parentName: BASE
+      position: {x: -0.90791214, y: 0.18792933, z: 0.92345154}
+      rotation: {x: -0.7071068, y: 0.00000008429372, z: -0.0000000842937, w: 0.7071067}
+      scale: {x: 1, y: 1, z: 1}
+    - name: FootIK.R
+      parentName: BASE
+      position: {x: 0.68609697, y: -0.56106406, z: 2.0258608}
+      rotation: {x: -0.7071068, y: -0.00000008429372, z: 0.0000000842937, w: 0.7071067}
+      scale: {x: 1, y: 1, z: 1}
+    - name: ForearmIK.L
+      parentName: BASE
+      position: {x: -3.5272322, y: 0.09051588, z: 3.803318}
+      rotation: {x: 0.13131882, y: -0.5472813, z: 0.82497585, w: 0.05151129}
+      scale: {x: 1, y: 0.9999997, z: 0.99999976}
+    - name: ForearmIK.R
+      parentName: BASE
+      position: {x: 3.0093389, y: -1.9448079, z: 3.5767481}
+      rotation: {x: -0.13131882, y: -0.5472813, z: 0.82497585, w: -0.05151129}
+      scale: {x: 1, y: 0.9999997, z: 0.99999976}
+    - name: KneeIK.L
+      parentName: BASE
+      position: {x: -1.3443668, y: -4.6672955, z: 2.3650858}
+      rotation: {x: 1, y: 4.622913e-24, z: -0.0000000754979, w: 6.123234e-17}
+      scale: {x: 1, y: 1, z: 1}
+    - name: KneeIK.R
+      parentName: BASE
+      position: {x: 1.128048, y: -4.808362, z: 2.3956778}
+      rotation: {x: 1, y: -4.622913e-24, z: 0.0000000754979, w: 6.123234e-17}
+      scale: {x: 1, y: 1, z: 1}
+    - name: ROOT
+      parentName: BASE
+      position: {x: 2.9909657e-17, y: 0.17444876, z: 4.6146297}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Midriff
+      parentName: ROOT
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0.7887213, y: -0.00000007328404, z: -0.000000094022894, w: 0.6147509}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Torso
+      parentName: Midriff
+      position: {x: 7.135337e-15, y: 0.94597024, z: 0.000000029802322}
+      rotation: {x: 0.12386444, y: -1.0658141e-14, z: -0.000000029531598, w: 0.9922992}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Neck
+      parentName: Torso
+      position: {x: -3.1646906e-14, y: 1.7709423, z: 0.00000035762787}
+      rotation: {x: -0.015518829, y: -0.000000119195064, z: 0.000000005549902, w: 0.99987966}
+      scale: {x: 1, y: 0.99999994, z: 0.99999994}
+    - name: Head
+      parentName: Neck
+      position: {x: -1.2782685e-13, y: 0.38403106, z: -0.00000017881393}
+      rotation: {x: -0.1177851, y: 0.00000011837958, z: 0.000000042123244, w: 0.99303913}
+      scale: {x: 1, y: 1, z: 1.0000001}
+    - name: TubeJiggleLeft.001
+      parentName: Head
+      position: {x: -0.79948, y: -0.0463593, z: 0.27192765}
+      rotation: {x: -0.78713393, y: -0.000000032010206, z: 0.00000016258484, w: 0.61678207}
+      scale: {x: 1, y: 1, z: 1}
+    - name: TubeJiggleRight.001
+      parentName: Head
+      position: {x: 0.79948014, y: -0.0463593, z: 0.27192742}
+      rotation: {x: -0.78713405, y: 0.000000115042134, z: -0.000000025082535, w: 0.61678195}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Shoulder.L
+      parentName: Torso
+      position: {x: -3.1646906e-14, y: 1.7709423, z: 0.00000035762787}
+      rotation: {x: 0.038057443, y: -0.058272943, z: 0.7698807, w: 0.6343813}
+      scale: {x: 1, y: 1, z: 1}
+    - name: UpperArm1.L
+      parentName: Shoulder.L
+      position: {x: -0.24300015, y: 1.8926777, z: 0.02401629}
+      rotation: {x: 0.02653701, y: 0.36656594, z: -0.07916932, w: 0.9266377}
+      scale: {x: 0.9999998, y: 0.9999995, z: 0.9999996}
+    - name: UpperArm2.L
+      parentName: UpperArm1.L
+      position: {x: 0.0000005951151, y: 1.3249216, z: -0.0000002682209}
+      rotation: {x: 0.027029939, y: -0.028960314, z: 0.02751743, w: 0.9988361}
+      scale: {x: 1.0000007, y: 1.0000002, z: 1.0000002}
+    - name: Forearm.L
+      parentName: UpperArm2.L
+      position: {x: 0.0000005066395, y: 0.9427999, z: -0.000000059604645}
+      rotation: {x: 0.43382418, y: -0.14149798, z: 0.033955447, w: 0.8891692}
+      scale: {x: 0.99999994, y: 0.99999964, z: 0.9999996}
+    - name: Tube9.L.001
+      parentName: Forearm.L
+      position: {x: -0.16694689, y: 1.1536797, z: -0.73306787}
+      rotation: {x: 0.5209205, y: -0.42767763, z: -0.44734767, w: 0.58788925}
+      scale: {x: 0.99999994, y: 0.99999994, z: 1}
+    - name: Shoulder.R
+      parentName: Torso
+      position: {x: -3.1646906e-14, y: 1.7709423, z: 0.00000035762787}
+      rotation: {x: 0.038057197, y: 0.058273084, z: -0.7698808, w: 0.6343812}
+      scale: {x: 1.0000001, y: 1, z: 1}
+    - name: UpperArm1.R
+      parentName: Shoulder.R
+      position: {x: 0.2429995, y: 1.892678, z: 0.024016228}
+      rotation: {x: 0.036309775, y: -0.5415165, z: 0.057226133, w: 0.83795387}
+      scale: {x: 1.0000001, y: 1, z: 0.9999997}
+    - name: UpperArm2.R
+      parentName: UpperArm1.R
+      position: {x: 0.00000032782555, y: 1.3249221, z: 0.0000002682209}
+      rotation: {x: 0.03143273, y: 0.02054888, z: -0.021238346, w: 0.999069}
+      scale: {x: 1.0000001, y: 1.0000001, z: 1}
+    - name: Forearm.R
+      parentName: UpperArm2.R
+      position: {x: 0.00000035762787, y: 0.9427996, z: -0.0000005066395}
+      rotation: {x: 0.39249694, y: 0.1969948, z: -0.09187928, w: 0.8936987}
+      scale: {x: 1.0000001, y: 1.0000005, z: 1.0000001}
+    - name: Tube9.R.001
+      parentName: Forearm.R
+      position: {x: 0.16694629, y: 1.1536783, z: -0.73306775}
+      rotation: {x: 0.52092046, y: 0.4276777, z: 0.44734767, w: 0.5878892}
+      scale: {x: 1, y: 1.0000001, z: 1.0000001}
+    - name: Tube1.L
+      parentName: Torso
+      position: {x: -1.9967573, y: 0.31618768, z: -2.8132877}
+      rotation: {x: -0.42943332, y: 0.46416402, z: 0.56917554, w: 0.5255264}
+      scale: {x: 1, y: 1.0000005, z: 1.0000001}
+    - name: Tube2.L
+      parentName: Tube1.L
+      position: {x: 0.00000025331974, y: 0.7120364, z: 0.0000012519304}
+      rotation: {x: -0.3059791, y: 0.21366866, z: -0.04138848, w: 0.92682767}
+      scale: {x: 0.99999994, y: 0.9999995, z: 0.9999996}
+    - name: Tube3.L
+      parentName: Tube2.L
+      position: {x: 0.000000059604645, y: 0.8011711, z: 0.00000032782555}
+      rotation: {x: -0.07522025, y: 0.04672679, z: -0.12670302, w: 0.9879802}
+      scale: {x: 0.9999994, y: 0.9999996, z: 0.9999998}
+    - name: Tube4.L
+      parentName: Tube3.L
+      position: {x: -0.00000011920929, y: 0.8416912, z: 0.0000010579824}
+      rotation: {x: -0.22123432, y: 0.06316453, z: 0.17863443, w: 0.95663756}
+      scale: {x: 1.0000005, y: 1, z: 0.99999964}
+    - name: Tube5.L
+      parentName: Tube4.L
+      position: {x: -0.00000029802322, y: 0.66943455, z: 0.000000029802322}
+      rotation: {x: -0.3216074, y: 0.079105675, z: 0.204904, w: 0.92104584}
+      scale: {x: 0.9999998, y: 1.0000002, z: 1.0000001}
+    - name: Tube6.L
+      parentName: Tube5.L
+      position: {x: 0.00000011920929, y: 0.76528895, z: 0.0000014305115}
+      rotation: {x: -0.17034283, y: 0.505439, z: -0.26965073, w: 0.8017501}
+      scale: {x: 1.0000005, y: 0.9999998, z: 0.99999994}
+    - name: Tube7.L
+      parentName: Tube6.L
+      position: {x: 0.00000017881393, y: 0.632375, z: -0.000000057742}
+      rotation: {x: 0.22067955, y: 0.6017716, z: -0.34211302, w: 0.6871173}
+      scale: {x: 0.9999995, y: 0.99999934, z: 0.9999998}
+    - name: Tube8.L
+      parentName: Tube7.L
+      position: {x: 0.0000005066395, y: 0.53684294, z: -0.00000018626451}
+      rotation: {x: -0.3976208, y: -0.22612838, z: -0.061937332, w: 0.8870893}
+      scale: {x: 1, y: 1.0000005, z: 1.0000004}
+    - name: Tube9.L
+      parentName: Tube8.L
+      position: {x: 0.00000040233135, y: 0.6326401, z: -0.00000018626451}
+      rotation: {x: -0.26756936, y: -0.010643386, z: 0.064396515, w: 0.9613254}
+      scale: {x: 0.99999994, y: 1.0000005, z: 0.99999976}
+    - name: Tube1.R
+      parentName: Torso
+      position: {x: 1.9967558, y: 0.31618756, z: -2.8132894}
+      rotation: {x: 0.12098734, y: -0.08680199, z: -0.713375, w: 0.68478}
+      scale: {x: 1.0000002, y: 1.0000002, z: 0.99999994}
+    - name: Tube2.R
+      parentName: Tube1.R
+      position: {x: -0.00000040233135, y: 0.712037, z: -0.00000011920929}
+      rotation: {x: 0.32020497, y: 0.89603335, z: 0.023093574, w: 0.3066917}
+      scale: {x: 0.99999994, y: 1.0000004, z: 0.9999998}
+    - name: Tube3.R
+      parentName: Tube2.R
+      position: {x: 0.00000058859587, y: 0.8011716, z: -0.00000013411045}
+      rotation: {x: 0.0792214, y: 0.1571962, z: 0.10638354, w: 0.9786194}
+      scale: {x: 1.0000002, y: 1.0000005, z: 0.9999998}
+    - name: Tube4.R
+      parentName: Tube3.R
+      position: {x: 0.00000020861626, y: 0.8416912, z: 0.0000005364418}
+      rotation: {x: -0.16993731, y: -0.4984525, z: 0.18946636, w: 0.8287152}
+      scale: {x: 0.9999994, y: 0.99999964, z: 1.0000001}
+    - name: Tube5.R
+      parentName: Tube4.R
+      position: {x: -0.000000029802322, y: 0.6694339, z: 0.00000011920929}
+      rotation: {x: -0.0048521673, y: -0.31587398, z: 0.31737116, w: 0.894134}
+      scale: {x: 1.0000005, y: 1.0000002, z: 0.99999976}
+    - name: Tube6.R
+      parentName: Tube5.R
+      position: {x: -0.00000011920929, y: 0.7652893, z: 0.00000059604645}
+      rotation: {x: 0.19408824, y: 0.49344033, z: 0.1529246, w: 0.8339428}
+      scale: {x: 0.99999976, y: 1, z: 1.0000001}
+    - name: Tube7.R
+      parentName: Tube6.R
+      position: {x: 0.00000021792948, y: 0.6323749, z: -0.000000067055225}
+      rotation: {x: -0.24468353, y: 0.69070745, z: 0.25532907, w: 0.63076174}
+      scale: {x: 0.99999964, y: 0.99999905, z: 0.99999976}
+    - name: Tube8.R
+      parentName: Tube7.R
+      position: {x: -0.00000082328916, y: 0.5368431, z: 0.0000004991889}
+      rotation: {x: 0.38504374, y: 0.1205763, z: -0.14901319, w: 0.90277225}
+      scale: {x: 0.9999996, y: 1.0000011, z: 1.0000001}
+    - name: Tube9.R
+      parentName: Tube8.R
+      position: {x: 0.00000071525574, y: 0.6326401, z: -0.00000029802322}
+      rotation: {x: 0.26931375, y: -0.0212141, z: -0.02770389, w: 0.96242017}
+      scale: {x: 1.0000005, y: 1, z: 1.0000002}
+    - name: TubeJiggleLeft
+      parentName: Torso
+      position: {x: -1.3316796, y: 2.4308176, z: 0.5318144}
+      rotation: {x: -0.5066073, y: 0.000000023318238, z: 0.00000016046916, w: 0.8621769}
+      scale: {x: 1, y: 0.9999999, z: 0.9999999}
+    - name: TubeJiggleRight
+      parentName: Torso
+      position: {x: 1.3316798, y: 2.4308176, z: 0.5318138}
+      rotation: {x: -0.5066073, y: 0.00000022887723, z: 0.00000003968462, w: 0.8621769}
+      scale: {x: 1, y: 0.99999994, z: 0.9999999}
+    - name: Pelvis
+      parentName: ROOT
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: -0.7802026, y: -0.000000074568625, z: 0.00000009300739, w: 0.6255269}
+      scale: {x: 1, y: 0.99999994, z: 0.99999994}
+    - name: Thigh.L
+      parentName: Pelvis
+      position: {x: -0.7463884, y: 1.0485413, z: 0.23357487}
+      rotation: {x: -0.009262145, y: 0.044819925, z: 0.048279006, w: 0.99778485}
+      scale: {x: 1, y: 0.99999976, z: 0.99999994}
+    - name: Calf.L
+      parentName: Thigh.L
+      position: {x: 0.00000008940697, y: 1.6725851, z: -0.000000011175871}
+      rotation: {x: 0.3340682, y: 0.002085302, z: -0.0024165802, w: 0.94254357}
+      scale: {x: 1.0000001, y: 1, z: 0.9999998}
+    - name: Foot.L
+      parentName: Calf.L
+      position: {x: -0.000000025960617, y: 1.9413579, z: 0.00000010151416}
+      rotation: {x: -0.18998958, y: -0.6660181, z: 0.13350505, w: 0.7088725}
+      scale: {x: 1, y: 1.0000004, z: 1.0000001}
+    - name: Toe.L
+      parentName: Foot.L
+      position: {x: 0.000000019790605, y: 0.80727786, z: 0.0000000136496965}
+      rotation: {x: -0.06917939, y: 0.0000000068485315, z: 0.000000086631374, w: 0.99760425}
+      scale: {x: 1, y: 0.9999999, z: 1}
+    - name: Thigh.R
+      parentName: Pelvis
+      position: {x: 0.7463885, y: 1.0485413, z: 0.23357451}
+      rotation: {x: 0.007901253, y: -0.07572285, z: -0.032428697, w: 0.99657017}
+      scale: {x: 1, y: 0.99999994, z: 1.0000001}
+    - name: Calf.R
+      parentName: Thigh.R
+      position: {x: -0.00000023841858, y: 1.672585, z: 0.00000010803342}
+      rotation: {x: 0.29438853, y: 0.030274816, z: -0.013776827, w: 0.9551069}
+      scale: {x: 1, y: 0.99999994, z: 1.0000001}
+    - name: Foot.R
+      parentName: Calf.R
+      position: {x: -0.00000008940697, y: 1.9413576, z: 0.00000006891787}
+      rotation: {x: -0.38753176, y: -0.010717297, z: 0.019128252, w: 0.9215955}
+      scale: {x: 1, y: 1.0000001, z: 1.0000002}
+    - name: Toe.R
+      parentName: Foot.R
+      position: {x: 0.000000016763806, y: 0.8072779, z: 0.000000074505806}
+      rotation: {x: -0.06917941, y: -0.000000001166949, z: 0.00000008542067, w: 0.99760425}
+      scale: {x: 1, y: 0.9999999, z: 1}
+    - name: NucleatorMesh
+      parentName: new_newcleator_emoteskeleton(Clone)
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
+      scale: {x: 0.42952362, y: 0.42952362, z: 0.42952362}
+    - name: Point
+      parentName: new_newcleator_emoteskeleton(Clone)
+      position: {x: -12.275765, y: 13.127775, z: 5.34108}
+      rotation: {x: -0.00000003774895, y: 0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    globalScale: 1
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 1
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  autoGenerateAvatarMappingIfUnspecified: 1
+  animationType: 3
+  humanoidOversampling: 1
+  avatarSetup: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

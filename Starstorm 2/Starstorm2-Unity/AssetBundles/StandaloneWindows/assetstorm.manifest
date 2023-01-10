@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 2893831064
+CRC: 4208231919
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 444f41cdfc1dd89890db525da353efb6
+    Hash: 9a39b18ac9dc34236676335106f7f59a
   TypeTreeHash:
     serializedVersion: 2
     Hash: e085efc3cec39229c22603e1a47b8115
@@ -699,6 +699,7 @@ Assets:
 - Assets/AssetBundle/Chirr/Animations/RestLoop.anim
 - Assets/AssetBundle/Nemmando/VFX/NemmandoSwingEffect.prefab
 - Assets/AssetBundle/Chirr/Animations/WalkFWD.anim
+- Assets/AssetBundle/Nucleator/animNucleatorEmote.prefab
 - Assets/AssetBundle/Nemmando/Animations/SprintRestR.anim
 - Assets/AssetBundle/Cyborg/Animations/Special11.anim
 - Assets/AssetBundle/Nemmando/Mesh/meshNemmandoClassic.mesh

@@ -22,7 +22,7 @@ namespace Starstorm2Unofficial.Modules.Survivors
 {
     internal class Nucleator : SurvivorBase
     {
-        internal override string bodyName { get; set; } = "Nucleator";
+        internal override string bodyName { get; set; } = "SS2UNucleator";
         internal override string modelName { get; set; } = "mdlNucleator";
         internal override string displayName { get; set; } = "NucleatorDisplay";
 
@@ -34,8 +34,8 @@ namespace Starstorm2Unofficial.Modules.Survivors
         internal override StarstormBodyInfo bodyInfo { get; set; } = new StarstormBodyInfo
         {
             armor = 30f,
-            bodyName = "NucleatorBody",
-            bodyNameToken = "NUCLEATOR_NAME",
+            bodyName = "SS2UNucleatorBody",
+            bodyNameToken = "SS2UNUCLEATOR_NAME",
             bodyColor = new Color(0.8039216f, 0.482352942f, 0.843137264f),
             characterPortrait = Modules.Assets.LoadCharacterIcon("Nucleator"),
             crosshair = Modules.Assets.LoadCrosshair("ToolbotGrenadeLauncherCrosshair"),
@@ -44,7 +44,7 @@ namespace Starstorm2Unofficial.Modules.Survivors
             healthRegen = 2f,
             jumpCount = 1,
             maxHealth = 400f,
-            subtitleNameToken = "NUCLEATOR_SUBTITLE",
+            subtitleNameToken = "SS2UNUCLEATOR_SUBTITLE",
             podPrefab = LegacyResourcesAPI.Load<GameObject>("Prefabs/NetworkedObjects/SurvivorPod"),
             cameraParams = Modules.CameraParams.NewCameraParams("ccpNucleator", new Vector3(0f, 2.8f, -12.2f))
         };
@@ -82,6 +82,28 @@ namespace Starstorm2Unofficial.Modules.Survivors
 
             CreateUiChargeWidget();
             CreatePrimaryProjectile();
+            if (StarstormPlugin.emoteAPILoaded) EmoteAPICompat();
+        }
+
+        [MethodImpl(MethodImplOptions.NoInlining | MethodImplOptions.NoOptimization)]
+        private void EmoteAPICompat()
+        {
+            On.RoR2.SurvivorCatalog.Init += (orig) =>
+            {
+                orig();
+
+                foreach (var item in SurvivorCatalog.allSurvivorDefs)
+                {
+                    if (item.bodyPrefab.name == "SS2UNucleatorBody")
+                    {
+                        var skele = Modules.Assets.mainAssetBundle.LoadAsset<UnityEngine.GameObject>("animNucleatorEmote.prefab");
+
+                        EmotesAPI.CustomEmotesAPI.ImportArmature(item.bodyPrefab, skele);
+                        skele.GetComponentInChildren<BoneMapper>().scale = 1.5f;
+                        break;
+                    }
+                }
+            };
         }
 
         internal override void InitializeUnlockables()
@@ -252,49 +274,44 @@ namespace Starstorm2Unofficial.Modules.Survivors
 
         internal override void RegisterTokens()
         {
-            LanguageAPI.Add("NUCLEATOR_NAME", "Nucleator");
-            LanguageAPI.Add("NUCLEATOR_SUBTITLE", "Walking Fallout");
-            LanguageAPI.Add("NUCLEATOR_DESCRIPTION", "The Nucleator is a radioactive juggernaut with rad-proof armor, which allows him to manipulate nuclear components for long periods of time.\n\n" +
+            LanguageAPI.Add("SS2UNUCLEATOR_NAME", "Nucleator");
+            LanguageAPI.Add("SS2UNUCLEATOR_SUBTITLE", "Walking Fallout");
+            LanguageAPI.Add("SS2UNUCLEATOR_DESCRIPTION", "The Nucleator is a radioactive juggernaut with rad-proof armor, which allows him to manipulate nuclear components for long periods of time.\n\n" +
                 "<color=#CCD3E0> < ! > Nucleator can charge his skills for maximum output, however, be careful as overcharging them may lead to self-harm!\n\n" +
                 " < ! > x\n\n" +
                 " < ! > y\n\n" +
                 " < ! > z\n");
-            LanguageAPI.Add("NUCLEATOR_OUTRO_FLAVOR", "..and so he left, soul and bones crackling with radiation.");
-            LanguageAPI.Add("NUCLEATOR_OUTRO_FAILURE", "..and so he vanished, an uninhabitable wasteland in his wake.");
-            LanguageAPI.Add("NUCLEATOR_LORE", "laugh and grow fat");
-            LanguageAPI.Add("NUCLEATOR_DEFAULT_SKIN_NAME", "Default");
-            LanguageAPI.Add("NUCLEATOR_MASTERY_SKIN_NAME", "Blastproof");
-            LanguageAPI.Add("NUCLEATOR_KNIGHT_SKIN_NAME", "Gladiator");
+            LanguageAPI.Add("SS2UNUCLEATOR_OUTRO_FLAVOR", "..and so he left, soul and bones crackling with radiation.");
+            LanguageAPI.Add("SS2UNUCLEATOR_OUTRO_FAILURE", "..and so he vanished, an uninhabitable wasteland in his wake.");
+            LanguageAPI.Add("SS2UNUCLEATOR_LORE", "laugh and grow fat");
+            LanguageAPI.Add("SS2UNUCLEATOR_DEFAULT_SKIN_NAME", "Default");
+            LanguageAPI.Add("SS2UNUCLEATOR_MASTERY_SKIN_NAME", "Blastproof");
+            LanguageAPI.Add("SS2UNUCLEATOR_KNIGHT_SKIN_NAME", "Gladiator");
 
-            LanguageAPI.Add("NUCLEATOR_PRIMARY_NAME", "Irradiate");
-            LanguageAPI.Add("NUCLEATOR_PRIMARY_DESCRIPTION", $"Charge and fire a bullet for up to <style=cIsDamage>{500}% damage</style>, <style=cIsDamage>{900}% damage</style> on <style=cIsUtility>overcharge</style>. The bullet's damage increases <style=cIsUtility>the farther it travels</style>.");
+            LanguageAPI.Add("SS2UNUCLEATOR_PRIMARY_NAME", "Irradiate");
+            LanguageAPI.Add("SS2UNUCLEATOR_PRIMARY_DESCRIPTION", $"Charge and fire a bullet for up to <style=cIsDamage>{500}% damage</style>, <style=cIsDamage>{900}% damage</style> on <style=cIsUtility>overcharge</style>. The bullet's damage increases <style=cIsUtility>the farther it travels</style>.");
 
-            LanguageAPI.Add("NUCLEATOR_SECONDARY_NAME", "Quarantine");
-            LanguageAPI.Add("NUCLEATOR_SECONDARY_DESCRIPTION", $"Push enemies in front of you for <style=cIsDamage>{500}% piercing damage</style>.");
+            LanguageAPI.Add("SS2UNUCLEATOR_SECONDARY_NAME", "Quarantine");
+            LanguageAPI.Add("SS2UNUCLEATOR_SECONDARY_DESCRIPTION", $"Push enemies in front of you for <style=cIsDamage>{500}% piercing damage</style>.");
 
-            LanguageAPI.Add("NUCLEATOR_UTILITY_NAME", "Fission Impulse");
-            LanguageAPI.Add("NUCLEATOR_UTILITY_DESCRIPTION", $"<style=cIsUtility>Hold</style> to <style=cIsUtility>launch yourself</style>, dealing style=cIsDamage>{550}% damage</style>. Control the direction using the movement keys.");
+            LanguageAPI.Add("SS2UNUCLEATOR_UTILITY_NAME", "Fission Impulse");
+            LanguageAPI.Add("SS2UNUCLEATOR_UTILITY_DESCRIPTION", $"<style=cIsUtility>Hold</style> to <style=cIsUtility>launch yourself</style>, dealing style=cIsDamage>{550}% damage</style>. Control the direction using the movement keys.");
 
-            LanguageAPI.Add("NUCLEATOR_SPECIAL_NAME", "Radionuclide Surge");
-            LanguageAPI.Add("NUCLEATOR_SPECIAL_DESCRIPTION", $"Enter a nuclear state for <style=cIsUtility>6 seconds</style>, adding <style=cIsHealing>radiation</style> to every attack while becoming <style=cIsUtility>invulnerable to overcharging skills</style>.");
+            LanguageAPI.Add("SS2UNUCLEATOR_SPECIAL_NAME", "Radionuclide Surge");
+            LanguageAPI.Add("SS2UNUCLEATOR_SPECIAL_DESCRIPTION", $"Enter a nuclear state for <style=cIsUtility>6 seconds</style>, adding <style=cIsHealing>radiation</style> to every attack while becoming <style=cIsUtility>invulnerable to overcharging skills</style>.");
 
-            LanguageAPI.Add("NUCLEATOR_UNLOCKUNLOCKABLE_ACHIEVEMENT_NAME", "Overkill");
-            LanguageAPI.Add("NUCLEATOR_UNLOCKUNLOCKABLE_ACHIEVEMENT_DESC", "Collect 5 Legendary items in one run.");
-            LanguageAPI.Add("NUCLEATOR_UNLOCKUNLOCKABLE_UNLOCKABLE_NAME", "Overkill");
+            LanguageAPI.Add("SS2UNUCLEATOR_UNLOCKUNLOCKABLE_ACHIEVEMENT_NAME", "Overkill");
+            LanguageAPI.Add("SS2UNUCLEATOR_UNLOCKUNLOCKABLE_ACHIEVEMENT_DESC", "Collect 5 Legendary items in one run.");
+            LanguageAPI.Add("SS2UNUCLEATOR_UNLOCKUNLOCKABLE_UNLOCKABLE_NAME", "Overkill");
 
             // todo: make a base class for mastery achievements and simply inherit from it for each character 
-            LanguageAPI.Add("NUCLEATOR_MASTERYUNLOCKABLE_ACHIEVEMENT_NAME", "Nucleator: Mastery");
-            LanguageAPI.Add("NUCLEATOR_MASTERYUNLOCKABLE_ACHIEVEMENT_DESC", "As Nucleator, beat the game or obliterate on Monsoon or harder.");
-            LanguageAPI.Add("NUCLEATOR_MASTERYUNLOCKABLE_UNLOCKABLE_NAME", "Nucleator: Mastery");
+            LanguageAPI.Add("SS2UNUCLEATOR_MASTERYUNLOCKABLE_ACHIEVEMENT_NAME", "Nucleator: Mastery");
+            LanguageAPI.Add("SS2UNUCLEATOR_MASTERYUNLOCKABLE_ACHIEVEMENT_DESC", "As Nucleator, beat the game or obliterate on Monsoon or harder.");
+            LanguageAPI.Add("SS2UNUCLEATOR_MASTERYUNLOCKABLE_UNLOCKABLE_NAME", "Nucleator: Mastery");
 
-            LanguageAPI.Add("NUCLEATOR_GRANDMASTERYUNLOCKABLE_ACHIEVEMENT_NAME", "Nucleator: Grand Mastery");
-            LanguageAPI.Add("NUCLEATOR_GRANDMASTERYUNLOCKABLE_ACHIEVEMENT_DESC", "As Nucleator, beat the game or obliterate on Typhoon.");
-            LanguageAPI.Add("NUCLEATOR_GRANDMASTERYUNLOCKABLE_UNLOCKABLE_NAME", "Nucleator: Grand Mastery");
-        }
-
-        internal override void Hook()
-        {
-
+            LanguageAPI.Add("SS2UNUCLEATOR_GRANDMASTERYUNLOCKABLE_ACHIEVEMENT_NAME", "Nucleator: Grand Mastery");
+            LanguageAPI.Add("SS2UNUCLEATOR_GRANDMASTERYUNLOCKABLE_ACHIEVEMENT_DESC", "As Nucleator, beat the game or obliterate on Typhoon.");
+            LanguageAPI.Add("SS2UNUCLEATOR_GRANDMASTERYUNLOCKABLE_UNLOCKABLE_NAME", "Nucleator: Grand Mastery");
         }
 
         internal override void InitializeSkins()
