@@ -17,8 +17,14 @@ namespace Starstorm2Unofficial.Survivors.Cyborg.Components.ShockCoreProjectile
         public float delayBeforeExplosion = 0.5f;
         public float implosionDamageCoefficient = 2f;
 
+        private ProjectileImpactExplosion pie;
         private float explosionTimer = 0f;
         private bool beginTimer = false;
+
+        public void Awake()
+        {
+            pie = base.gameObject.GetComponent<ProjectileImpactExplosion>();
+        }
 
         public void FixedUpdate()
         {
@@ -31,13 +37,8 @@ namespace Starstorm2Unofficial.Survivors.Cyborg.Components.ShockCoreProjectile
                     {
                         beginTimer = false;
 
-                        ProjectileImpactExplosion pie = base.gameObject.GetComponent<ProjectileImpactExplosion>();
                         if (pie)
                         {
-                            pie.blastRadius = radius;
-                            pie.falloffModel = BlastAttack.FalloffModel.None;
-                            pie.explosionEffect = explosionEffectPrefab;
-
                             pie.Detonate();
                             Destroy(base.gameObject);
                         }
@@ -52,6 +53,15 @@ namespace Starstorm2Unofficial.Survivors.Cyborg.Components.ShockCoreProjectile
 
             explosionTimer = delayBeforeExplosion;
             beginTimer = true;
+
+            if (pie)
+            {
+                pie.blastRadius = radius;
+                pie.falloffModel = BlastAttack.FalloffModel.None;
+                pie.explosionEffect = explosionEffectPrefab;
+                pie.destroyOnEnemy = false;
+                pie.destroyOnWorld = false;
+            }
 
             //damageInfo.crit = true;
             damageInfo.force = Vector3.zero;
