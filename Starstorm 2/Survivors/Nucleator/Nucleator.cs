@@ -33,20 +33,20 @@ namespace Starstorm2Unofficial.Modules.Survivors
 
         internal override StarstormBodyInfo bodyInfo { get; set; } = new StarstormBodyInfo
         {
-            armor = 30f,
+            armor = 20f,
             bodyName = "SS2UNucleatorBody",
             bodyNameToken = "SS2UNUCLEATOR_NAME",
             bodyColor = new Color(0.8039216f, 0.482352942f, 0.843137264f),
             characterPortrait = Modules.Assets.LoadCharacterIcon("Nucleator"),
             crosshair = Modules.Assets.LoadCrosshair("ToolbotGrenadeLauncherCrosshair"),
-            damage = 14f,
-            healthGrowth = 40f,
-            healthRegen = 2f,
+            damage = 12f,
+            healthGrowth = 54f,
+            healthRegen = 2.5f,
             jumpCount = 1,
-            maxHealth = 400f,
+            maxHealth = 180f,
             subtitleNameToken = "SS2UNUCLEATOR_SUBTITLE",
             podPrefab = LegacyResourcesAPI.Load<GameObject>("Prefabs/NetworkedObjects/SurvivorPod"),
-            cameraParams = Modules.CameraParams.NewCameraParams("ccpNucleator", new Vector3(0f, 2.8f, -12.2f))
+            cameraParams = Modules.CameraParams.NewCameraParams("ccpNucleator", new Vector3(0f, 0f, -4.7f))
         };
 
         internal static Material nucleatorMat = Modules.Assets.CreateMaterial("matNucleator", 1f, Color.white);
@@ -59,7 +59,7 @@ namespace Starstorm2Unofficial.Modules.Survivors
                     material = nucleatorMat,
                 }};
 
-        internal override Type characterMainState { get; set; } = typeof(EntityStates.SS2UStates.Nemmando.NemmandoMain);
+        internal override Type characterMainState { get; set; } = typeof(EntityStates.GenericCharacterMain);
 
         // item display stuffs
         internal override ItemDisplayRuleSet itemDisplayRuleSet { get; set; }
@@ -82,6 +82,7 @@ namespace Starstorm2Unofficial.Modules.Survivors
 
             CreateUiChargeWidget();
             CreatePrimaryProjectile();
+
             if (StarstormPlugin.emoteAPILoaded) EmoteAPICompat();
         }
 

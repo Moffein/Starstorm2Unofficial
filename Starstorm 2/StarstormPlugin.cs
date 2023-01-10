@@ -128,7 +128,7 @@ namespace Starstorm2Unofficial
             if (Modules.Config.EnableChirr.Value) new ChirrCore();
             if (Modules.Config.EnablePyro.Value) new PyroCore();
 
-            //new Modules.Survivors.Nucleator().Initialize();
+            new Modules.Survivors.Nucleator().Initialize();
         }
 
         private void Initialize()

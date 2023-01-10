@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 4208231919
+CRC: 220853408
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 9a39b18ac9dc34236676335106f7f59a
+    Hash: 91600b5e75bb3575918e443c1c7f7c3c
   TypeTreeHash:
     serializedVersion: 2
     Hash: e085efc3cec39229c22603e1a47b8115
@@ -754,5 +754,6 @@ Assets:
 - Assets/AssetBundle/Nucleator/Animations/Clips/DefaultPose.anim
 - Assets/AssetBundle/Items/DetritiveTrematode/Detritive_Trematode_Tex.png
 - Assets/AssetBundle/Executioner/Animations/Descend.anim
+- Assets/AssetBundle/GeneralAssets/Textures/UI/texCrosshairNibCurved.png
 - Assets/AssetBundle/Chirr/Materials/Material.mat
 Dependencies: []
