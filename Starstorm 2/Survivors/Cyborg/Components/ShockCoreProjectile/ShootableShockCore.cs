@@ -15,6 +15,7 @@ namespace Starstorm2Unofficial.Survivors.Cyborg.Components.ShockCoreProjectile
         public GameObject explosionEffectPrefab;
         public float radius = 20f;
         public float delayBeforeExplosion = 0.5f;
+        public float implosionDamageCoefficient = 2f;
 
         private float explosionTimer = 0f;
         private bool beginTimer = false;
@@ -60,7 +61,7 @@ namespace Starstorm2Unofficial.Survivors.Cyborg.Components.ShockCoreProjectile
             ProjectileDamage pd = base.gameObject.GetComponent<ProjectileDamage>();
             if (pd)
             {
-                pd.damage *= 2f;
+                pd.damage *= implosionDamageCoefficient;
             }
 
             DamageAPI.ModdedDamageTypeHolderComponent mdc = base.gameObject.GetComponent<DamageAPI.ModdedDamageTypeHolderComponent>();
