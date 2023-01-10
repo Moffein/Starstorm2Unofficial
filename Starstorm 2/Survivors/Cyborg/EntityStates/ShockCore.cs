@@ -23,10 +23,13 @@ namespace EntityStates.SS2UStates.Cyborg
 
             if (base.isAuthority)
             {
-                ProjectileManager.instance.FireProjectile(ShockCore.projectilePrefab, aimRay.origin, Util.QuaternionSafeLookRotation(aimRay.direction), base.gameObject, this.damageStat * ShockCore.damageCoefficient, 0f, base.RollCrit(), DamageColorIndex.Default, null, -1f);
+                ProjectileManager.instance.FireProjectile(GetProjectilePrefab(), aimRay.origin, Util.QuaternionSafeLookRotation(aimRay.direction), base.gameObject, this.damageStat * GetDamageCoefficient(), 0f, base.RollCrit(), DamageColorIndex.Default, null, -1f);
             }
             ApplySelfKnockback();
         }
+
+        public virtual float GetDamageCoefficient() { return ShockCore.damageCoefficient;  }
+        public virtual GameObject GetProjectilePrefab() { return ShockCore.projectilePrefab; }
 
         public void ApplySelfKnockback()
         {
@@ -60,7 +63,7 @@ namespace EntityStates.SS2UStates.Cyborg
 
         public static GameObject muzzleflashEffectPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Captain/CaptainChargeTazer.prefab").WaitForCompletion();
         public static GameObject projectilePrefab;
-        public static float damageCoefficient = 5f;
+        public static float damageCoefficient = 8f;
         public static float baseDuration = 0.5f;
 
         private float duration;

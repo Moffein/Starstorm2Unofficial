@@ -12,7 +12,6 @@ namespace EntityStates.SS2UStates.Cyborg
 
         private float hoverVelocity = -1f;    //was -1.1
         private float hoverAcceleration = 60f;  //was 25f
-        private CyborgController cyborgController;
 
         private Transform thrusterEffectL;
         private Transform thrusterEffectR;
@@ -24,7 +23,6 @@ namespace EntityStates.SS2UStates.Cyborg
         {
             base.OnEnter();
             jetpackStateMachine = EntityStateMachine.FindByCustomName(base.gameObject, "Jetpack");
-            cyborgController = base.GetComponent<CyborgController>();
 
             ChildLocator cl = base.GetModelChildLocator();
             if (cl)
@@ -53,11 +51,11 @@ namespace EntityStates.SS2UStates.Cyborg
                 if (this.hasCharacterMotor && this.hasInputBank && base.isAuthority)
                 {
                     bool inputPressed = base.inputBank.jump.down && base.characterMotor.velocity.y < 0f && !base.characterMotor.isGrounded;
-                    if (inputPressed && !inJetpackState && cyborgController.allowJetpack)
+                    if (inputPressed && !inJetpackState)
                     {
                         this.jetpackStateMachine.SetNextState(new JetpackOn());
                     }
-                    if (inJetpackState && (!inputPressed || !cyborgController.allowJetpack))
+                    if (inJetpackState && !inputPressed)
                     {
                         this.jetpackStateMachine.SetNextState(new Idle());
                     }
