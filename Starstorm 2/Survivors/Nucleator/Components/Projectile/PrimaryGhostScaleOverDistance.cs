@@ -4,9 +4,9 @@ namespace Starstorm2Unofficial.Survivors.Nucleator.Components.Projectile
 {
     public class GhostScaleOverTime : MonoBehaviour
     {
-        public float maxScale = 6f;
-        public float delayBeforeScaling = 0.5f;
-        public float timeToScale = 1f;
+        public float maxScale = 5f;
+        public float delayBeforeScaling = 1f / 3f;
+        public float timeToScale = 1.5f - 1f / 3f;
 
         private float stopwatch;
         private Vector3 initialScale;
@@ -21,8 +21,8 @@ namespace Starstorm2Unofficial.Survivors.Nucleator.Components.Projectile
             stopwatch += Time.fixedDeltaTime;
             if (stopwatch >= delayBeforeScaling)
             {
-                float scaleTime = stopwatch - delayBeforeScaling;
-                float newScale = Mathf.Lerp(1f, maxScale, scaleTime / timeToScale);
+                float scaleTime = (stopwatch - delayBeforeScaling) / timeToScale;
+                float newScale = Mathf.Lerp(1f, maxScale, scaleTime);
                 base.transform.localScale = newScale * initialScale;
             }
         }

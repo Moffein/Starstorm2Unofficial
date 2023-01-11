@@ -4650,6 +4650,19 @@
 								</Sound>
 								<Sound Name="skill1" ID="{457D11B5-BC71-40A8-A966-B61FF527B07B}" ShortID="403578640">
 									<PropertyList>
+										<Property Name="Pitch" Type="int32">
+											<ModifierList>
+												<ModifierInfo>
+													<Modifier Name="" ID="{68BA8B0B-CD18-4813-AC50-DC63CDF6C262}">
+														<PropertyList>
+															<Property Name="Enabled" Type="bool" Value="True"/>
+															<Property Name="Max" Type="Real64" Value="150"/>
+															<Property Name="Min" Type="Real64" Value="-150"/>
+														</PropertyList>
+													</Modifier>
+												</ModifierInfo>
+											</ModifierList>
+										</Property>
 										<Property Name="Volume" Type="Real64">
 											<ValueList>
 												<Value>-4</Value>

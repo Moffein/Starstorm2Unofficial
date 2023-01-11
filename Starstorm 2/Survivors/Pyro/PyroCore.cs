@@ -296,7 +296,7 @@ namespace Starstorm2Unofficial.Survivors.Pyro
         private void SetUpUtilities(SkillLocator skillLocator)
         {
             LanguageAPI.Add("SS2UPYRO_UTILITY_NAME", "Plan B");
-            LanguageAPI.Add("SS2UPYRO_UTILITY_DESCRIPTION", $"<color=#D78326>Consume 33% heat</color> and <style=cIsUtility>fly forwards</style>. Hold the button to fly further at the cost of more <color=#D78326>heat</color>.");
+            LanguageAPI.Add("SS2UPYRO_UTILITY_DESCRIPTION", $"<color=#D78326>Consume 40% heat</color> and <style=cIsUtility>fly forwards</style>. Hold the button to fly further at the cost of more <color=#D78326>heat</color>.");
 
             HeatSkillDef utilityDef1 = ScriptableObject.CreateInstance<HeatSkillDef>();
             utilityDef1.activationState = new SerializableEntityStateType(typeof(HeatJetpack));

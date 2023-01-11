@@ -22,8 +22,10 @@ namespace Starstorm2Unofficial.Survivors.Nucleator
             pc.ghostPrefab = projectileGhost;
 
             ProjectileSimple ps = projectilePrefab.GetComponent<ProjectileSimple>();
-            ps.desiredForwardSpeed = 80f;
+            ps.desiredForwardSpeed = 60f;
             ps.lifetime = 10f;
+
+            projectilePrefab.AddComponent<PrimaryProjectileComponent>();
 
             return projectilePrefab;
         }
