@@ -278,6 +278,8 @@ MonoBehaviour:
   transformPairs:
   - name: ChargeBar
     transform: {fileID: 4996706003698360114}
+  - name: BarBackground
+    transform: {fileID: 5235140783672173153}
 --- !u!1 &5747564507179378806
 GameObject:
   m_ObjectHideFlags: 0
@@ -496,7 +498,7 @@ MonoBehaviour:
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 0
-  m_FillAmount: 1
+  m_FillAmount: 0
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0

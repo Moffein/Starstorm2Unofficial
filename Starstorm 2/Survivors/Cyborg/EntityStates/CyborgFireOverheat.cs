@@ -29,7 +29,7 @@ namespace EntityStates.SS2UStates.Cyborg
             this.animator = base.GetModelAnimator();
             this.muzzleString = "Muzzle";
 
-            Util.PlaySound("CyborgUtility", base.gameObject);
+            Util.PlaySound("SS2UCyborgUtility", base.gameObject);
             base.PlayAnimation("Gesture, Override", "FireSpecial", "FireArrow.playbackRate", this.duration);
 
             damageCoefficientInternal = CyborgFireOverheat.damageCoefficient;

@@ -12,7 +12,7 @@ namespace EntityStates.SS2UStates.Chirr
         public static float force = 100f;
         public static float baseDuration = 0.5f;
         public static float baseShotDuration = 0.1f;
-        public static string attackSoundString = "ChirrPrimary";
+        public static string attackSoundString = "SS2UChirrPrimary";
         public static int baseShotCount = 3;
         public static float spreadBloom = 0.4f;
         public static float recoil = 1f;

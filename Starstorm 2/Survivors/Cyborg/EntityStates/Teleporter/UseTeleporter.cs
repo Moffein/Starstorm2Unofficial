@@ -29,7 +29,7 @@ namespace EntityStates.SS2UStates.Cyborg.Special
                 Vector3? teleportLocation = teleTracker.GetTeleportCoordinates();
                 if (teleportLocation != null)
                 {
-                    Util.PlaySound("CyborgSpecialTeleport", base.gameObject);
+                    Util.PlaySound("SS2UCyborgSpecialTeleport", base.gameObject);
                     base.characterMotor.velocity.y = 0f;
                     base.characterMotor.disableAirControlUntilCollision = false;
 

@@ -168,7 +168,7 @@ namespace Starstorm2Unofficial.Survivors.Executioner.Components
                 {
                     if (!this.wasMaxCharge)
                     {
-                        Util.PlaySound("ExecutionerMaxCharge", this.gameObject);
+                        Util.PlaySound("SS2UExecutionerMaxCharge", this.gameObject);
                         this.PlayMaxChargeEffect();
                     }
                     this.wasMaxCharge = true;

@@ -289,7 +289,7 @@ namespace Starstorm2Unofficial.Cores.Items
         private void Awake()
         {
             // only way i know how to network this kek
-            Util.PlaySound("SigilActivation", this.gameObject);
+            Util.PlaySound("SS2USigilActivation", this.gameObject);
         }
     }
 }

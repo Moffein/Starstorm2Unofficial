@@ -42,7 +42,7 @@ namespace EntityStates.SS2UStates.Cyborg
         {
             Ray aimRay = base.GetAimRay();
             EffectManager.SimpleMuzzleFlash(PrimaryLaser.muzzleflashEffectPrefab, base.gameObject, this.muzzleString, false);
-            Util.PlaySound("CyborgPrimary", base.gameObject);
+            Util.PlaySound("SS2UCyborgPrimary", base.gameObject);
 
             if (base.isAuthority)
             {

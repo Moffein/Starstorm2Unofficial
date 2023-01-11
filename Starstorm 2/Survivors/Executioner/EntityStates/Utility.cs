@@ -59,7 +59,7 @@ namespace EntityStates.SS2UStates.Executioner
             this.animator = base.GetModelAnimator();
 
             this.duration = baseDuration;
-            Util.PlayAttackSpeedSound("ExecutionerUtility", base.gameObject, 1.0f);
+            Util.PlayAttackSpeedSound("SS2UExecutionerUtility", base.gameObject, 1.0f);
             base.PlayAnimation("FullBody, Override", "Utility", "Utility.playbackRate", this.duration);
 
             if (this.exeController) this.exeController.PlayDashEffect();

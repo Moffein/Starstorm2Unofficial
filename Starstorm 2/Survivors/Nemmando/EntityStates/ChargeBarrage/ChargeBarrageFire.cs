@@ -64,7 +64,7 @@ namespace EntityStates.SS2UStates.Nemmando
 
             EffectManager.SimpleMuzzleFlash(EntityStates.Commando.CommandoWeapon.FireBarrage.effectPrefab, base.gameObject, muzzleName, false);
             base.PlayCrossfade("UpperBody, Override", "Special", "Special.rate", this.durationBetweenShots, 0.05f);
-            Util.PlaySound("NemmandoSubmissionFire", base.gameObject);
+            Util.PlaySound("SS2UNemmandoSubmissionFire", base.gameObject);
 
             base.AddRecoil(-0.8f * ChargeBarrageFire.recoil, -1f * ChargeBarrageFire.recoil, -0.1f * ChargeBarrageFire.recoil, 0.15f * ChargeBarrageFire.recoil);
 

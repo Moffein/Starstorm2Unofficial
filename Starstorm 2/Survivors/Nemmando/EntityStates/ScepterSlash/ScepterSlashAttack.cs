@@ -66,7 +66,7 @@ namespace EntityStates.SS2UStates.Nemmando
             EffectManager.SpawnEffect(Starstorm2Unofficial.Modules.Assets.nemChargedSlashStartFX, this.attackEffect, true);
 
             base.PlayAnimation("FullBody, Override", "DecisiveStrike", "DecisiveStrike.playbackRate", this.duration);
-            Util.PlaySound("NemmandoDecisiveStrikeFire", base.gameObject);
+            Util.PlaySound("SS2UNemmandoDecisiveStrikeFire", base.gameObject);
 
             if (NetworkServer.active) base.characterBody.AddBuff(RoR2Content.Buffs.HiddenInvincibility);
 

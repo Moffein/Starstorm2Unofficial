@@ -224,7 +224,7 @@ localScale = new Vector3(0.0013F, 0.0013F, 0.0013F)
                             body.baseDamage *= StaticValues.droidDamage + droidHeadCount;
                             body.levelDamage *= 1 + droidHeadCount;
 
-                            Util.PlaySound("DroidHead", body.gameObject);
+                            Util.PlaySound("SS2UDroidHead", body.gameObject);
                         }
                     }
                 }

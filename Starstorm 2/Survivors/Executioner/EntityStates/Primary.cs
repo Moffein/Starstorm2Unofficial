@@ -175,7 +175,7 @@ namespace EntityStates.SS2UStates.Executioner
                 bool isCrit = base.RollCrit();
 
                 //Util.PlaySound(Commando.CommandoWeapon.FirePistol2.firePistolSoundString, base.gameObject);
-                string soundString = "ExecutionerPrimary";
+                string soundString = "SS2UExecutionerPrimary";
                 if (isCrit) soundString += "Crit";
                 //Util.PlaySound(soundString, base.gameObject);
                 base.AddRecoil(-0.4f * recoil, -0.8f * recoil, -0.3f * recoil, 0.3f * recoil);

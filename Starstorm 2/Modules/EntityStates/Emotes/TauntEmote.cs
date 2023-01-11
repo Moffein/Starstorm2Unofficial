@@ -14,7 +14,7 @@ namespace EntityStates.SS2UStates.Common.Emotes
             {
                 if (effectComponent.hasSheath)
                 {
-                    this.soundString = "SpawnMGR";
+                    this.soundString = "SS2USpawnMGR";
                     this.duration = 12f;
                 }
             }

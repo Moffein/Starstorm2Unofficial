@@ -281,7 +281,7 @@ localScale = new Vector3(0.001F, 0.001F, 0.001F)
                 {
                     alive = false;
 
-                    Util.PlaySound("StirringSoul", this.gameObject);
+                    Util.PlaySound("SS2UStirringSoul", this.gameObject);
 
                     // this should not be any higher than 3, in its current state
                     if (Util.CheckRoll(StaticValues.soulChance, body.master))

@@ -82,7 +82,7 @@ namespace EntityStates.SS2UStates.Executioner
         private void Shoot()
         {
             //Util.PlayAttackSpeedSound(base.effectComponent.ionShootSound, base.gameObject, this.attackSpeedStat);
-            Util.PlaySound("ExecutionerSecondaryClassic", base.gameObject);
+            Util.PlaySound("SS2UExecutionerSecondaryClassic", base.gameObject);
             base.AddRecoil(-2f * recoil, -3f * recoil, -1f * recoil, 1f * recoil);
             //base.characterBody.AddSpreadBloom(Commando.CommandoWeapon.FirePistol2.spreadBloomValue * 1.0f);
             EffectManager.SimpleMuzzleFlash(ExecutionerIonGun.muzzlePrefab, base.gameObject, this.muzzleString, false);

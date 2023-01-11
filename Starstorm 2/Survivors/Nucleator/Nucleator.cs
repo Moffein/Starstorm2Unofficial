@@ -11,6 +11,8 @@ using RoR2.Skills;
 using RoR2.UI;
 using Starstorm2Unofficial.Cores;
 using Starstorm2Unofficial.Cores.States.Nucleator;
+using Starstorm2Unofficial.Survivors.Nucleator.Components;
+using Starstorm2Unofficial.Survivors.Nucleator.Components.Crosshair;
 using System;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
@@ -23,6 +25,7 @@ namespace Starstorm2Unofficial.Modules.Survivors
 {
     internal class Nucleator : SurvivorBase
     {
+        public static BodyIndex bodyIndex;
         internal override string bodyName { get; set; } = "SS2UNucleator";
         internal override string modelName { get; set; } = "mdlNucleator";
         internal override string displayName { get; set; } = "NucleatorDisplay";
@@ -78,10 +81,19 @@ namespace Starstorm2Unofficial.Modules.Survivors
 
             base.InitializeCharacter();
             R2API.ItemAPI.DoNotAutoIDRSFor(bodyPrefab);
+
+            CharacterBody cb = bodyPrefab.GetComponent<CharacterBody>();
+            cb._defaultCrosshairPrefab = BuildCrosshair();
+
+            CharacterMotor cm = bodyPrefab.GetComponent<CharacterMotor>();
+            cm.mass = 300f;
+
+            bodyPrefab.AddComponent<NucleatorChargeComponent>();
             
             CameraTargetParams cameraTargetParams = bodyPrefab.GetComponent<CameraTargetParams>();
             cameraTargetParams.cameraParams.data.idealLocalCameraPos = new Vector3(0f, 1.2f, -11f);   //0 1 -11 han-d
 
+            RoR2Application.onLoad += SetBodyIndex;
             if (StarstormPlugin.emoteAPILoaded) EmoteAPICompat();
         }
 
@@ -2944,6 +2956,25 @@ localScale = new Vector3(0.1233F, 0.1233F, 0.1233F),
             newRendererInfos[0].defaultMaterial = materials[0];
 
             return newRendererInfos;
+        }
+
+        private static GameObject BuildCrosshair()
+        {
+            GameObject crosshairPrefab = Modules.Assets.mainAssetBundle.LoadAsset<UnityEngine.GameObject>("crosshairNucleator.prefab").InstantiateClone("SS2UNucleatorCrosshair", false);
+            crosshairPrefab.AddComponent<HudElement>();
+
+            CrosshairController cc = crosshairPrefab.AddComponent<CrosshairController>();
+            cc.maxSpreadAngle = 0f;
+
+            crosshairPrefab.AddComponent<NucleatorCrosshairController>();
+
+            return crosshairPrefab;
+        }
+
+        private void SetBodyIndex()
+        {
+            bodyIndex = BodyCatalog.FindBodyIndex("SS2UNucleatorBody");
+            if (bodyIndex != BodyIndex.None) IgnoreSprintCrosshair.bodies.Add(bodyIndex);
         }
     }
 }

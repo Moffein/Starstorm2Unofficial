@@ -60,7 +60,7 @@ namespace EntityStates.SS2UStates.Nemmando
             main.startDelay = this.chargeDuration;
 
             this.swordVFX.Play();
-            this.chargePlayID = Util.PlayAttackSpeedSound("NemmandoDecisiveStrikeCharge", base.gameObject, this.attackSpeedStat);
+            this.chargePlayID = Util.PlayAttackSpeedSound("SS2UNemmandoDecisiveStrikeCharge", base.gameObject, this.attackSpeedStat);
             base.PlayAnimation("FullBody, Override", "DecisiveStrikeCharge", "DecisiveStrike.playbackRate", this.chargeDuration);
 
             if (cameraTargetParams)
@@ -94,7 +94,7 @@ namespace EntityStates.SS2UStates.Nemmando
                 this.finishedCharge = true;
 
                 AkSoundEngine.StopPlayingID(this.chargePlayID);
-                Util.PlaySound("NemmandoDecisiveStrikeReady", base.gameObject);
+                Util.PlaySound("SS2UNemmandoDecisiveStrikeReady", base.gameObject);
 
                 if (this.nemmandoController) this.nemmandoController.CoverScreen();
             }

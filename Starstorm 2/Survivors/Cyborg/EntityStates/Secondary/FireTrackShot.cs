@@ -81,7 +81,7 @@ namespace EntityStates.SS2UStates.Cyborg.Secondary
 
             }
 
-            string soundString = "CyborgSecondary";//base.effectComponent.shootSound;
+            string soundString = "SS2UCyborgSecondary";//base.effectComponent.shootSound;
             //if (isCrit) soundString += "Crit";
             Util.PlaySound(soundString, base.gameObject);
             if (base.isAuthority)

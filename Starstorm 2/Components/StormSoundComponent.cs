@@ -10,9 +10,9 @@ namespace Starstorm2Unofficial.Components
         private void Awake()
         {
             // someone else can clean this up i cba LOL
-            string soundString = "SS_RainAmbience";
+            string soundString = "SS2U_RainAmbience";
             string sceneName = UnityEngine.SceneManagement.SceneManager.GetActiveScene().name;
-            if (sceneName == "frozenwall" || sceneName == "goolake" || sceneName == "dampcavesimple") soundString = "SS_WindAmbience";
+            if (sceneName == "frozenwall" || sceneName == "goolake" || sceneName == "dampcavesimple") soundString = "SS2U_WindAmbience";
             this.playID = Util.PlaySound(soundString, this.gameObject);
         }
 

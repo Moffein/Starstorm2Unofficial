@@ -34,7 +34,7 @@ namespace EntityStates.SS2UStates.Executioner
             this.duration = ExecutionerAxe.baseDuration;// / this.attackSpeedStat;
             base.PlayAnimation("FullBody, Override", "Special1", "Special.playbackRate", 0.9f * this.duration);
 
-            Util.PlaySound("ExecutionerSpecialCast", base.gameObject);
+            Util.PlaySound("SS2UExecutionerSpecialCast", base.gameObject);
 
             if (this.exeController) this.exeController.PlayAxeSpawnEffect();
 
@@ -204,7 +204,7 @@ namespace EntityStates.SS2UStates.Executioner
             base.SmallHop(base.characterMotor, 10f);
 
             base.PlayAnimation("FullBody, Override", "Special4", "Special.playbackRate", 0.4f);
-            Util.PlayAttackSpeedSound("ExecutionerSpecialImpact", base.gameObject, this.attackSpeedStat);
+            Util.PlayAttackSpeedSound("SS2UExecutionerSpecialImpact", base.gameObject, this.attackSpeedStat);
             //Util.PlayAttackSpeedSound(Engi.EngiWeapon.FireGrenades.attackSoundString, base.gameObject, this.attackSpeedStat);
             EffectManager.SpawnEffect(slamEffect, slamEffectData, true);
             EffectManager.SpawnEffect(Starstorm2Unofficial.Modules.Assets.exeAxeSlamEffect, slamEffectData, true);

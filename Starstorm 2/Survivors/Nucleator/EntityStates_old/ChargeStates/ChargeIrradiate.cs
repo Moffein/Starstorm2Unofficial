@@ -12,7 +12,7 @@ namespace Starstorm2Unofficial.Cores.States.Nucleator
             base.OnEnter();
 
             base.PlayAnimation("Gesture, Override", "PrimaryCharge", "Primary.playbackRate", 0.8f * this.maxChargeTime);
-            this.chargePlayID = Util.PlaySound("NucleatorChargePrimary", this.gameObject);
+            this.chargePlayID = Util.PlaySound("SS2UNucleatorChargePrimary", this.gameObject);
         }
 
         public override void OnExit()

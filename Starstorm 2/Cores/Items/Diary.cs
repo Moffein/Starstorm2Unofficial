@@ -185,7 +185,7 @@ namespace Starstorm2Unofficial.Cores.Items
             {
                 if (GetCount(self) > 0)
                 {
-                    Util.PlaySound("DiaryLevelUp", self.gameObject);
+                    Util.PlaySound("SS2UDiaryLevelUp", self.gameObject);
                 }
             }
         }

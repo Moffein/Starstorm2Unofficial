@@ -200,7 +200,7 @@ namespace Starstorm2Unofficial.Cores.Items
                         };
                         DotController.InflictDot(ref dotInfo);
                         attackerBody.master.GiveMoney((uint)(coinCount * (Run.instance.stageClearCount + (1 * StaticValues.coinMoneyGained))));
-                        Util.PlaySound("MoltenCoin", victim.gameObject);
+                        Util.PlaySound("SS2UMoltenCoin", victim.gameObject);
                     }
                 }
             }

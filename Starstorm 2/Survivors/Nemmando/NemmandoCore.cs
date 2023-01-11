@@ -50,7 +50,7 @@ namespace Starstorm2Unofficial.Survivors.Nemmando
             jumpCount = 1,
             maxHealth = 110f,
             subtitleNameToken = "SS2UNEMMANDO_SUBTITLE",
-            menuSoundString = "NemmandoCSS"
+            menuSoundString = "SS2UNemmandoCSS"
         };
 
         internal static Material nemmandoMat = Modules.Assets.CreateMaterial("matNemmando");

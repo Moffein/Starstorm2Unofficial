@@ -71,7 +71,7 @@ namespace EntityStates.SS2UStates.Nemmando
 
             this.swordMat = base.GetModelTransform().GetComponent<CharacterModel>().baseRendererInfos[1].defaultMaterial;
 
-            Util.PlaySound("NemmandoFireBeam2", base.gameObject);
+            Util.PlaySound("SS2UNemmandoFireBeam2", base.gameObject);
         }
 
         public override void OnExit()

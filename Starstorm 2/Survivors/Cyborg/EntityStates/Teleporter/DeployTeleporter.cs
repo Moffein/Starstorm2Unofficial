@@ -35,7 +35,7 @@ namespace EntityStates.SS2UStates.Cyborg.Special
 
         private void FireTeleportProjectile()
         {
-            Util.PlaySound("CyborgSpecialPlace", base.gameObject);
+            Util.PlaySound("SS2UCyborgSpecialPlace", base.gameObject);
             if (base.isAuthority)
             {
                 Ray aimRay = base.GetAimRay();

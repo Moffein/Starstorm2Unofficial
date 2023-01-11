@@ -54,7 +54,7 @@ namespace EntityStates.SS2UStates.Nemmando
 
             this.swordMat = base.GetModelTransform().GetComponent<CharacterModel>().baseRendererInfos[1].defaultMaterial;
 
-            this.chargePlayID = Util.PlaySound("NemmandoChargeBeam2", base.gameObject);
+            this.chargePlayID = Util.PlaySound("SS2UNemmandoChargeBeam2", base.gameObject);
         }
 
         public override void FixedUpdate()

@@ -99,7 +99,7 @@ namespace EntityStates.SS2UStates.Nemmando
             if (this.charge >= 0.6f)
             {
                 base.PlayAnimation("FullBody, Override", "DecisiveStrikeMax", "DecisiveStrike.playbackRate", this.duration);
-                Util.PlaySound("NemmandoDecisiveStrikeFire", base.gameObject);
+                Util.PlaySound("SS2UNemmandoDecisiveStrikeFire", base.gameObject);
             }
             else
             {

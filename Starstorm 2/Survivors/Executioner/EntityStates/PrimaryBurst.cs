@@ -11,8 +11,8 @@ namespace EntityStates.SS2UStates.Executioner
         public static float force = 100f;
         public static float baseDuration = 0.5f;
         public static float baseShotDuration = 0.12f;
-        public static string attackSoundString = "ExecutionerPrimaryClassic";//"ExecutionerPrimary";
-        public static string critSoundString = "ExecutionerPrimaryClassic";//"ExecutionerPrimaryCrit";
+        public static string attackSoundString = "SS2UExecutionerPrimaryClassic";//"ExecutionerPrimary";
+        public static string critSoundString = "SS2UExecutionerPrimaryClassic";//"ExecutionerPrimaryCrit";
         public static int baseShotCount = 2;
         public static string muzzleString = "Muzzle";
         public static float spreadBloom = 0.4f;

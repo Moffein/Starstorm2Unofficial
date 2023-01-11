@@ -33,7 +33,7 @@ namespace EntityStates.SS2UStates.Chirr
             base.OnEnter();
             this.duration = baseDuration / this.attackSpeedStat;
             this.fireDuration = baseFireDuration / this.attackSpeedStat;
-            Util.PlayAttackSpeedSound("ChirrHealStart", base.gameObject, this.attackSpeedStat);
+            Util.PlayAttackSpeedSound("SS2UChirrHealStart", base.gameObject, this.attackSpeedStat);
 
             base.PlayAnimation("Gesture, Additive", "Utility", "Utility.playbackRate", this.duration);
         }
@@ -47,7 +47,7 @@ namespace EntityStates.SS2UStates.Chirr
         {
             if (!this.hasFired)
             {
-                Util.PlaySound("ChirrHealTrigger", base.gameObject);
+                Util.PlaySound("SS2UChirrHealTrigger", base.gameObject);
                 hasFired = true;
                 if (NetworkServer.active)
                 {

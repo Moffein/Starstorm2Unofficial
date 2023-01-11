@@ -25,7 +25,7 @@ namespace EntityStates.SS2UStates.Nemmando
             this.modelBaseTransform = base.GetModelBaseTransform();
             this.animator = base.GetModelAnimator();
             this.hasFinishedCharging = false;
-            this.chargePlayID = Util.PlaySound("NemmandoSubmissionCharge", base.gameObject);
+            this.chargePlayID = Util.PlaySound("SS2UNemmandoSubmissionCharge", base.gameObject);
 
             this.chargeEffect = this.childLocator.FindChild("GunChargeEffect").gameObject;
 
@@ -42,7 +42,7 @@ namespace EntityStates.SS2UStates.Nemmando
                 if (!this.hasFinishedCharging)
                 {
                     this.hasFinishedCharging = true;
-                    Util.PlaySound("NemmandoSubmissionReady", base.gameObject);
+                    Util.PlaySound("SS2UNemmandoSubmissionReady", base.gameObject);
                 }
             }
 

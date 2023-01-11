@@ -67,7 +67,7 @@ namespace EntityStates.SS2UStates.Nemmando
 
             EffectManager.SimpleMuzzleFlash(EntityStates.Commando.CommandoWeapon.FireBarrage.effectPrefab, base.gameObject, muzzleName, false);
             base.PlayCrossfade("UpperBody, Override", "Special", "Special.rate", this.durationBetweenShots, 0.05f);
-            Util.PlaySound("NemmandoSubmissionFire", base.gameObject);
+            Util.PlaySound("SS2UNemmandoSubmissionFire", base.gameObject);
             Util.PlaySound(EntityStates.GolemMonster.FireLaser.attackSoundString, base.gameObject);
 
             float recoil = ScepterBarrageFire.recoil / this.attackSpeedStat;

@@ -127,7 +127,7 @@ namespace Starstorm2Unofficial.Modules
             //RemoveEffect(lightJetBootsFX.transform.Find("Point Light"));
 
             jetBootsFX.GetComponent<ShakeEmitter>().radius *= 0.5f;
-            jetBootsFX.GetComponent<EffectComponent>().soundName = "JetBootsExplosion";
+            jetBootsFX.GetComponent<EffectComponent>().soundName = "SS2UJetBootsExplosion";
             jetBootsFX.AddComponent<NetworkIdentity>();
             var jetBootsDef = new EffectDef(jetBootsFX);
             effectDefs.Add(jetBootsDef);
@@ -148,7 +148,7 @@ namespace Starstorm2Unofficial.Modules
             //RemoveEffect(lightJetBootsFX.transform.Find("Point Light"));
 
             lightJetBootsFX.GetComponent<ShakeEmitter>().radius = 0f;
-            lightJetBootsFX.GetComponent<EffectComponent>().soundName = "JetBootsExplosion";
+            lightJetBootsFX.GetComponent<EffectComponent>().soundName = "SS2UJetBootsExplosion";
             lightJetBootsFX.AddComponent<NetworkIdentity>();
             var lightJetBootsDef = new EffectDef(lightJetBootsFX);
             effectDefs.Add(lightJetBootsDef);
@@ -162,9 +162,9 @@ namespace Starstorm2Unofficial.Modules
 
         internal static void LoadExecutionerEffects()
         {
-            exeChargeGainSoundDef = CreateNetworkSoundEventDef("ExecutionerGainCharge");
-            exeChargeMaxSoundDef = CreateNetworkSoundEventDef("ExecutionerMaxCharge");
-            exeSuperchargeSoundDef = CreateNetworkSoundEventDef("ExecutionerSupercharge");
+            exeChargeGainSoundDef = CreateNetworkSoundEventDef("SS2UExecutionerGainCharge");
+            exeChargeMaxSoundDef = CreateNetworkSoundEventDef("SS2UExecutionerMaxCharge");
+            exeSuperchargeSoundDef = CreateNetworkSoundEventDef("SS2UExecutionerSupercharge");
 
             exeGunTracer = LegacyResourcesAPI.Load<GameObject>("Prefabs/Effects/Tracers/TracerCommandoDefault").InstantiateClone("TracerExecutionerDefault", true);
 
@@ -241,7 +241,7 @@ namespace Starstorm2Unofficial.Modules
 
         internal static void LoadNemmandoEffects()
         {
-            nemImpactSoundDef = CreateNetworkSoundEventDef("NemmandoSaberHit");
+            nemImpactSoundDef = CreateNetworkSoundEventDef("SS2UNemmandoSaberHit");
 
             nemmandoCameraCover = mainAssetBundle.LoadAsset<GameObject>("NemmandoCameraCover");
             pureBlackMaterial = mainAssetBundle.LoadAsset<Material>("matPureBlack");

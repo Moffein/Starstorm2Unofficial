@@ -23,9 +23,9 @@ namespace EntityStates.SS2UStates.Cyborg.ChargeRifle
         public static GameObject perfectTracerEffectPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Huntress/TracerHuntressSnipe.prefab").WaitForCompletion();
         public static GameObject muzzleflashEffectPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Mage/MuzzleflashMageLightning.prefab").WaitForCompletion();
 
-        public static string attackSoundString = "CyborgPrimary";
-        public static string fullSoundString = "CyborgSecondary";
-        public static string perfectSoundString = "CyborgUtility";
+        public static string attackSoundString = "SS2UCyborgPrimary";
+        public static string fullSoundString = "SS2UCyborgSecondary";
+        public static string perfectSoundString = "SS2UCyborgUtility";
 
         public GameObject crosshairPrefab;
         public float charge;

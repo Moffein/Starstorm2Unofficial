@@ -25,7 +25,7 @@ namespace EntityStates.SS2UStates.Cyborg.Secondary
         private CyborgChargeComponent chargeComponent;
 
         public static float minDuration = 0.5f;
-        public static string attackSoundString = "CyborgSpecialTeleport";
+        public static string attackSoundString = "SS2UCyborgSpecialTeleport";
         public static GameObject projectileDeletionEffectPrefab;
         public static GameObject matrixPrefab;
         public static float ticksPerSecond = 30;

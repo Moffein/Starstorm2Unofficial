@@ -15,9 +15,9 @@ namespace EntityStates.SS2UStates.Chirr
 {
     public class ChirrMain : GenericCharacterMain
     {
-        public static string wingSoundStart = "ChirrSprintStart";
-        public static string wingSoundLoop = "ChirrSprintLoop";
-        public static string wingSoundStop  = "ChirrSprintStop";
+        public static string wingSoundStart = "SS2UChirrSprintStart";
+        public static string wingSoundLoop = "SS2UChirrSprintLoop";
+        public static string wingSoundStop  = "SS2UChirrSprintStop";
 
         private ChirrFriendController friendController;
         private uint wingSoundID;

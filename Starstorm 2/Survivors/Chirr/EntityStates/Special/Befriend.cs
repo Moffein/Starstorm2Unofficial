@@ -21,7 +21,7 @@ namespace EntityStates.SS2UStates.Chirr.Special
         public override void OnEnter()
         {
             base.OnEnter();
-            Util.PlaySound("ChirrSpecial", base.gameObject);
+            Util.PlaySound("SS2UChirrSpecial", base.gameObject);
             friendController = base.GetComponent<ChirrFriendController>();
             if (NetworkServer.active && friendController && !friendController.HasFriend())
             {

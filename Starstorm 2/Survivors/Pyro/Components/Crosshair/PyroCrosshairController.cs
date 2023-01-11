@@ -19,7 +19,6 @@ namespace Starstorm2Unofficial.Survivors.Pyro.Components.Crosshair
         {
             hudElement = base.GetComponent<HudElement>();
             heatBar = base.GetComponent<Image>();
-            heatController = base.GetComponent<HeatController>();
         }
 
         private void FixedUpdate()

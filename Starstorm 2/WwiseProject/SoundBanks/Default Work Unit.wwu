@@ -5,25 +5,35 @@
 			<ChildrenList>
 				<SoundBank Name="Starstorm2" ID="{DC589FB5-179B-4F6B-A813-9721922E9529}">
 					<ObjectInclusionList>
+						<ObjectRef Name="SS2UNucleatorSkill3b" ID="{06A4E4B5-2CF3-4068-BBD0-8737CBF47A13}" WorkUnitID="{39C9FF65-90F2-4516-9F65-D552D7641167}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Elites" ID="{07167070-930F-407B-BD3D-C1E053C44F12}" WorkUnitID="{39C9FF65-90F2-4516-9F65-D552D7641167}" Origin="Manual" Filter="7"/>
-						<ObjectRef Name="ChirrSpecial" ID="{3C8C2453-34F3-40A4-86F7-DC1008C3A501}" WorkUnitID="{39C9FF65-90F2-4516-9F65-D552D7641167}" Origin="Manual" Filter="7"/>
-						<ObjectRef Name="ChirrHealStart" ID="{46705C7E-D5CD-413B-945E-2BF9EEC91D97}" WorkUnitID="{39C9FF65-90F2-4516-9F65-D552D7641167}" Origin="Manual" Filter="7"/>
-						<ObjectRef Name="NucleatorChargePrimary" ID="{A1380BFA-5319-4157-8830-078E2EF0103E}" WorkUnitID="{39C9FF65-90F2-4516-9F65-D552D7641167}" Origin="Manual" Filter="7"/>
-						<ObjectRef Name="ExecutionerPrimaryClassic" ID="{4D0A86FF-E315-428F-BAFA-C3655751B6B3}" WorkUnitID="{39C9FF65-90F2-4516-9F65-D552D7641167}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="SS2UChirrSpecial" ID="{3C8C2453-34F3-40A4-86F7-DC1008C3A501}" WorkUnitID="{39C9FF65-90F2-4516-9F65-D552D7641167}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="SS2UChirrHealStart" ID="{46705C7E-D5CD-413B-945E-2BF9EEC91D97}" WorkUnitID="{39C9FF65-90F2-4516-9F65-D552D7641167}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="SS2UNucleatorChargePrimary" ID="{A1380BFA-5319-4157-8830-078E2EF0103E}" WorkUnitID="{39C9FF65-90F2-4516-9F65-D552D7641167}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="SS2UNucleatorSkill3a" ID="{FB8C0B2D-B17F-4198-A1B1-3FE08ADCDFD1}" WorkUnitID="{39C9FF65-90F2-4516-9F65-D552D7641167}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="SS2UNucleatorSkill3c" ID="{1ED2AE32-90BF-4226-95FE-F076585715B4}" WorkUnitID="{39C9FF65-90F2-4516-9F65-D552D7641167}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="SS2UExecutionerPrimaryClassic" ID="{4D0A86FF-E315-428F-BAFA-C3655751B6B3}" WorkUnitID="{39C9FF65-90F2-4516-9F65-D552D7641167}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Executioner" ID="{9030097D-7AC3-42AC-87F9-7B4B83C4CF1D}" WorkUnitID="{39C9FF65-90F2-4516-9F65-D552D7641167}" Origin="Manual" Filter="7"/>
-						<ObjectRef Name="ChirrPrimary" ID="{15DEF0F6-AEC1-4399-BE54-827B8D0B35DD}" WorkUnitID="{39C9FF65-90F2-4516-9F65-D552D7641167}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="SS2UNucleatorSkill4b" ID="{3194B0ED-3113-4333-AF12-C2B9C5FD0DB9}" WorkUnitID="{39C9FF65-90F2-4516-9F65-D552D7641167}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="SS2UChirrPrimary" ID="{15DEF0F6-AEC1-4399-BE54-827B8D0B35DD}" WorkUnitID="{39C9FF65-90F2-4516-9F65-D552D7641167}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Cyborg" ID="{BB947F6D-1D6C-43B6-86BE-AADC74CC6283}" WorkUnitID="{39C9FF65-90F2-4516-9F65-D552D7641167}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="SS2UNucleatorSkill2" ID="{A38154A0-53D6-44EC-84F3-00A73D086D97}" WorkUnitID="{39C9FF65-90F2-4516-9F65-D552D7641167}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Items" ID="{8FE38003-1836-45DA-B28F-70061676663E}" WorkUnitID="{39C9FF65-90F2-4516-9F65-D552D7641167}" Origin="Manual" Filter="7"/>
-						<ObjectRef Name="CyborgPerfectCharge" ID="{554998A9-FBF1-46C6-876B-922EA4BCDC68}" WorkUnitID="{39C9FF65-90F2-4516-9F65-D552D7641167}" Origin="Manual" Filter="7"/>
-						<ObjectRef Name="VoidAmbient" ID="{096E8867-684C-49FD-9847-D8B99D9E53EC}" WorkUnitID="{39C9FF65-90F2-4516-9F65-D552D7641167}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="SS2UCyborgPerfectCharge" ID="{554998A9-FBF1-46C6-876B-922EA4BCDC68}" WorkUnitID="{39C9FF65-90F2-4516-9F65-D552D7641167}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="SS2UNucleatorSkill1c" ID="{8155A85E-3729-496B-A6D0-F13B62EFD3D4}" WorkUnitID="{39C9FF65-90F2-4516-9F65-D552D7641167}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="SS2UNucleatorSkill4c" ID="{34ABAC75-861A-49ED-8312-1C2746C13830}" WorkUnitID="{39C9FF65-90F2-4516-9F65-D552D7641167}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="SS2UVoidAmbient" ID="{096E8867-684C-49FD-9847-D8B99D9E53EC}" WorkUnitID="{39C9FF65-90F2-4516-9F65-D552D7641167}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="SS2UNucleatorAlarm" ID="{3638A055-E4E2-4A49-9F19-4FCD956695C0}" WorkUnitID="{39C9FF65-90F2-4516-9F65-D552D7641167}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Chirr" ID="{D5F0274D-E43B-4A96-B053-3B7A7E1A1D38}" WorkUnitID="{39C9FF65-90F2-4516-9F65-D552D7641167}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Play_SS2U_RoR1Lightning" ID="{DCC575E6-3496-4AC6-996C-78B9580A6963}" WorkUnitID="{39C9FF65-90F2-4516-9F65-D552D7641167}" Origin="Manual" Filter="7"/>
-						<ObjectRef Name="ChirrHealTrigger" ID="{1925FA66-71A3-4B39-9E16-C94E371631A7}" WorkUnitID="{39C9FF65-90F2-4516-9F65-D552D7641167}" Origin="Manual" Filter="7"/>
-						<ObjectRef Name="ExecutionerSecondaryClassic" ID="{70B6DFED-7E53-4B96-BB2B-13314B708D2B}" WorkUnitID="{39C9FF65-90F2-4516-9F65-D552D7641167}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="SS2UChirrHealTrigger" ID="{1925FA66-71A3-4B39-9E16-C94E371631A7}" WorkUnitID="{39C9FF65-90F2-4516-9F65-D552D7641167}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="SS2UNucleatorSkill4a" ID="{9200B119-818B-4B77-97B4-6CB321610F4E}" WorkUnitID="{39C9FF65-90F2-4516-9F65-D552D7641167}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="SS2UExecutionerSecondaryClassic" ID="{70B6DFED-7E53-4B96-BB2B-13314B708D2B}" WorkUnitID="{39C9FF65-90F2-4516-9F65-D552D7641167}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Nucleator" ID="{B1FE5094-3E9D-4BA2-9E60-922603707F9E}" WorkUnitID="{39C9FF65-90F2-4516-9F65-D552D7641167}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Wayfarer" ID="{5152EE09-9763-4C4B-A053-05266A17B0D5}" WorkUnitID="{39C9FF65-90F2-4516-9F65-D552D7641167}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Environment" ID="{5A905D16-CDA3-4C4D-A313-B2D1F88E4629}" WorkUnitID="{39C9FF65-90F2-4516-9F65-D552D7641167}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Events" ID="{A474E84B-734A-4D97-946C-9B5E3E5C502A}" WorkUnitID="{39C9FF65-90F2-4516-9F65-D552D7641167}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="SS2UNucleatorSkill1" ID="{71E0F1D0-ACF5-4E00-A3BC-31BD5DBE01BA}" WorkUnitID="{39C9FF65-90F2-4516-9F65-D552D7641167}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Nemmando" ID="{DA78C131-F6C3-4EB0-9817-B54B8C36B2A4}" WorkUnitID="{39C9FF65-90F2-4516-9F65-D552D7641167}" Origin="Manual" Filter="7"/>
 					</ObjectInclusionList>
 					<ObjectExclusionList>
@@ -46,7 +56,7 @@
 						<ObjectRef Name="Canticum_Vitae_Start_B" ID="{18CA27B5-6308-42AE-B87F-5F56F25A8078}" WorkUnitID="{F233C913-3B4E-4D63-9074-90CE5295641F}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Canticum_Vitae_Transition_A" ID="{02F5B1B0-C0E2-4321-8A2C-C6FC5A82E99D}" WorkUnitID="{F233C913-3B4E-4D63-9074-90CE5295641F}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Canticum_Vitae_Loop_A" ID="{72E0C779-AE96-43B5-A098-A1C8C2A37852}" WorkUnitID="{F233C913-3B4E-4D63-9074-90CE5295641F}" Origin="Manual" Filter="7"/>
-						<ObjectRef Name="Play_SS2_Music_System" ID="{BF7B07E2-724A-43BF-BC66-D0B342EA6200}" WorkUnitID="{39C9FF65-90F2-4516-9F65-D552D7641167}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Play_SS2U_Music_System" ID="{BF7B07E2-724A-43BF-BC66-D0B342EA6200}" WorkUnitID="{39C9FF65-90F2-4516-9F65-D552D7641167}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Canticum_Vitae_Start_C" ID="{F620E63D-41F3-43D6-B86B-4A78B4A17901}" WorkUnitID="{F233C913-3B4E-4D63-9074-90CE5295641F}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Canticum_Vitae_Loop_B" ID="{A5DA992A-8A2B-4479-81B7-2A1E8A46FD1A}" WorkUnitID="{F233C913-3B4E-4D63-9074-90CE5295641F}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Canticum_Vitae_Transition_A" ID="{E180E711-0101-45B3-9CF4-36BD16A99CAE}" WorkUnitID="{F233C913-3B4E-4D63-9074-90CE5295641F}" Origin="Manual" Filter="7"/>

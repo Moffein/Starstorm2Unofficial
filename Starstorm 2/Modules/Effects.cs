@@ -18,30 +18,30 @@ namespace Starstorm2Unofficial.Modules
             skinList.Add(new SkinEffectData
             {
                 skinNameToken = "SS2UEXECUTIONER_DEFAULT_SKIN_NAME",
-                shootSound = "ExecutionerPrimary",
-                ionShootSound = "ExecutionerSecondary",
+                shootSound = "SS2UExecutionerPrimary",
+                ionShootSound = "SS2UExecutionerSecondary",
                 bodyName = "SS2UEXECUTIONER_NAME"
             });
 
             skinList.Add(new SkinEffectData
             {
                 skinNameToken = "SS2UEXECUTIONER_MASTERY_SKIN_NAME",
-                shootSound = "ExecutionerPrimary",
-                ionShootSound = "ExecutionerSecondary"
+                shootSound = "SS2UExecutionerPrimary",
+                ionShootSound = "SS2UExecutionerSecondary"
             });
 
             skinList.Add(new SkinEffectData
             {
                 skinNameToken = "SS2UEXECUTIONER_KNIGHT_SKIN_NAME",
-                shootSound = "ExecutionerPrimary",
-                ionShootSound = "ExecutionerSecondary"
+                shootSound = "SS2UExecutionerPrimary",
+                ionShootSound = "SS2UExecutionerSecondary"
             });
 
             skinList.Add(new SkinEffectData
             {
                 skinNameToken = "SS2UEXECUTIONER_WASTELANDER_SKIN_NAME",
-                shootSound = "WastelanderPrimary",
-                ionShootSound = "WastelanderSecondary"
+                shootSound = "SS2UWastelanderPrimary",
+                ionShootSound = "SS2UWastelanderSecondary"
             });
             #endregion
             #region Nemmando
@@ -55,8 +55,8 @@ namespace Starstorm2Unofficial.Modules
                 chargeAttackEffect = Assets.nemChargedSlashStartFX,
                 chargeAttackLoopEffect = Assets.nemChargedSlashFX,
                 swingEffect = Assets.nemSaberSwingFX,
-                swingSound = "NemmandoSwingSaber",
-                shootSound = "NemmandoShoot",
+                swingSound = "SS2UNemmandoSwingSaber",
+                shootSound = "SS2UNemmandoShoot",
                 bodyName = "SS2UNEMMANDO_NAME"
             });
 
@@ -70,8 +70,8 @@ namespace Starstorm2Unofficial.Modules
                 chargeAttackEffect = Assets.nemChargedSlashStartFX,
                 chargeAttackLoopEffect = Assets.nemChargedSlashFX,
                 swingEffect = Assets.nemSaberSwingFX,
-                swingSound = "NemmandoSwingSaber",
-                shootSound = "NemmandoShootClassic",
+                swingSound = "SS2UNemmandoSwingSaber",
+                shootSound = "SS2UNemmandoShootClassic",
                 hasSheath = true
             });
 
@@ -85,8 +85,8 @@ namespace Starstorm2Unofficial.Modules
                 chargeAttackEffect = Assets.nemChargedSlashStartFX,
                 chargeAttackLoopEffect = Assets.nemChargedSlashFX,
                 swingEffect = Assets.nemSaberSwingFX,
-                swingSound = "NemmandoSwingSaber",
-                shootSound = "NemmandoShootClassic"
+                swingSound = "SS2UNemmandoSwingSaber",
+                shootSound = "SS2UNemmandoShootClassic"
             });
 
             skinList.Add(new SkinEffectData
@@ -114,8 +114,8 @@ namespace Starstorm2Unofficial.Modules
                 chargeAttackLoopEffect = Assets.nemChargedSlashFXBlue,
                 hasSheath = true,
                 swingEffect = Assets.mercSwingFX,
-                swingSound = "NemmandoSwingSaber",
-                shootSound = "NemmandoShoot"
+                swingSound = "SS2UNemmandoSwingSaber",
+                shootSound = "SS2UNemmandoShoot"
             });
             #endregion
 

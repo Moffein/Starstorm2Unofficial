@@ -9,7 +9,7 @@ namespace EntityStates.SS2UStates.Cyborg.ChargeRifle
 {
     public class ChargeBeam : BaseState, SteppedSkillDef.IStepSetter
     {
-        public static string fullChargeSound = "CyborgPerfectCharge";
+        public static string fullChargeSound = "SS2UCyborgPerfectCharge";
         public static string beginChargeSound = "Play_mage_m2_charge";
         public static GameObject chargeupVfxPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Loader/ChargeLoaderFist.prefab").WaitForCompletion();
         public static GameObject holdChargeVfxPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Captain/SpearChargedVFX.prefab").WaitForCompletion();

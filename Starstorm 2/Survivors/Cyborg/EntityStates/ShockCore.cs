@@ -16,7 +16,7 @@ namespace EntityStates.SS2UStates.Cyborg
             base.StartAimMode(aimRay, 2f, false);
             base.PlayAnimation("Gesture, Override", "FireM2", "FireArrow.playbackRate", this.duration);
 
-            Util.PlaySound("CyborgUtility", base.gameObject);
+            Util.PlaySound("SS2UCyborgUtility", base.gameObject);
             base.PlayAnimation("Gesture, Override", "FireSpecial", "FireArrow.playbackRate", this.duration);
 
             EffectManager.SimpleMuzzleFlash(muzzleflashEffectPrefab, base.gameObject, "Lowerarm.L_end", false);

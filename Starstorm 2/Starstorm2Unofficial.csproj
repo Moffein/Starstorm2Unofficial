@@ -252,6 +252,8 @@
     <Compile Include="Modules\States.cs" />
     <Compile Include="Survivors\Executioner\ExecutionerCore.cs" />
     <Compile Include="Survivors\Nemmando\NemmandoCore.cs" />
+    <Compile Include="Survivors\Nucleator\Components\Crosshair\NucleatorCrosshairController.cs" />
+    <Compile Include="Survivors\Nucleator\Components\NucleatorChargeComponent.cs" />
     <Compile Include="Survivors\Nucleator\EntityStates\BaseChargeState.cs" />
     <Compile Include="Survivors\Nucleator\EntityStates_old\ApplyRadionuclideSurge.cs" />
     <Compile Include="Survivors\Nucleator\EntityStates_old\ChargeController.cs" />
@@ -291,7 +293,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Cores\Enemies\" />
-    <Folder Include="Survivors\Nucleator\Components\" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="0Harmony">
