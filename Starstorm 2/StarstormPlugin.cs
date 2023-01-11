@@ -49,7 +49,7 @@ namespace Starstorm2Unofficial
     {
         internal const string guid = "com.ChirrLover.Starstorm2Unofficial";
         internal const string modName = "Starstorm 2 Unofficial";
-        internal const string version = "0.9.3";
+        internal const string version = "0.9.4";
 
         public static StarstormPlugin instance;
 
@@ -128,7 +128,7 @@ namespace Starstorm2Unofficial
             if (Modules.Config.EnableChirr.Value) new ChirrCore();
             if (Modules.Config.EnablePyro.Value) new PyroCore();
 
-            new Survivors.Nucleator.NucleatorCore().Initialize();
+            //new Survivors.Nucleator.NucleatorCore().Initialize();
         }
 
         private void Initialize()
