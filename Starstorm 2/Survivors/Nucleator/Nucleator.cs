@@ -15,6 +15,7 @@ using System;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
 using UnityEngine.Networking;
 using UnityEngine.UI;
 
@@ -45,11 +46,10 @@ namespace Starstorm2Unofficial.Modules.Survivors
             jumpCount = 1,
             maxHealth = 180f,
             subtitleNameToken = "SS2UNUCLEATOR_SUBTITLE",
-            podPrefab = LegacyResourcesAPI.Load<GameObject>("Prefabs/NetworkedObjects/SurvivorPod"),
-            cameraParams = Modules.CameraParams.NewCameraParams("ccpNucleator", new Vector3(0f, 0f, -4.7f))
+            podPrefab = LegacyResourcesAPI.Load<GameObject>("Prefabs/NetworkedObjects/SurvivorPod")
         };
 
-        internal static Material nucleatorMat = Modules.Assets.CreateMaterial("matNucleator", 1f, Color.white);
+        internal static Material nucleatorMat = Modules.Assets.CreateMaterial("matNucleator", 1.2f, new Color32(219, 201, 245, 255));
         internal override int mainRendererIndex { get; set; } = 0;
 
         internal override CustomRendererInfo[] customRendererInfos { get; set; } = new CustomRendererInfo[] {
@@ -77,11 +77,10 @@ namespace Starstorm2Unofficial.Modules.Survivors
             //Modules.Assets.LoadNucleatorEffects();
 
             base.InitializeCharacter();
-
-            bodyPrefab.AddComponent<CustomEffectComponent>();
-
-            CreateUiChargeWidget();
-            CreatePrimaryProjectile();
+            R2API.ItemAPI.DoNotAutoIDRSFor(bodyPrefab);
+            
+            CameraTargetParams cameraTargetParams = bodyPrefab.GetComponent<CameraTargetParams>();
+            cameraTargetParams.cameraParams.data.idealLocalCameraPos = new Vector3(0f, 1.2f, -11f);   //0 1 -11 han-d
 
             if (StarstormPlugin.emoteAPILoaded) EmoteAPICompat();
         }
@@ -113,164 +112,21 @@ namespace Starstorm2Unofficial.Modules.Survivors
             //grandMasterySkinUnlockableDef = Modules.Unlockables.AddUnlockable<Cores.Unlockables.Achievements.NucleatorGrandMasteryAchievement>(true);
         }
 
-        private void CreateUiChargeWidget()
-        {
-            chargeCrosshair = Modules.Assets.LoadCrosshair("Sniper");
-
-            UnityEngine.Object.Destroy(chargeCrosshair.GetComponent<RawImage>());
-            UnityEngine.Object.Destroy(chargeCrosshair.GetComponent<SniperScopeChargeIndicatorController>());
-            UnityEngine.Object.Destroy(chargeCrosshair.GetComponent<SniperRangeIndicator>());
-            UnityEngine.Object.Destroy(chargeCrosshair.GetComponent<DisplayStock>());
-            var chargeController = chargeCrosshair.AddComponent<ChargeController>();
-
-            foreach (Transform child in chargeCrosshair.transform)
-            {
-                if (child.name == "ChargeIndicator")
-                    chargeController.image = child.GetComponent<Image>();
-                else if (child.name != "Image")
-                {
-                    child.SetParent(null);
-                    UnityEngine.Object.Destroy(child.gameObject);
-                }
-            }
-        }
-
-        private void CreatePrimaryProjectile()
-        {
-            primaryProjectile = PrefabAPI.InstantiateClone(LegacyResourcesAPI.Load<GameObject>("prefabs/projectiles/DaggerProjectile"), "NucleatorProjectile");
-
-            UnityEngine.Object.Destroy(primaryProjectile.GetComponent<ProjectileSingleTargetImpact>());
-            UnityEngine.Object.Destroy(primaryProjectile.GetComponent<AwakeEvent>());
-            UnityEngine.Object.Destroy(primaryProjectile.GetComponent<DaggerController>());
-            UnityEngine.Object.Destroy(primaryProjectile.GetComponent<AwakeEvent>());
-            primaryProjectile.AddComponent<NucleatorProjectile>();
-
-            primaryProjectile.GetComponent<ProjectileController>().ghostPrefab = LegacyResourcesAPI.Load<GameObject>("prefabs/projectileghosts/BeetleQueenSpitGhost");
-
-            var impact = primaryProjectile.AddComponent<ProjectileImpactExplosion>();
-            impact.blastAttackerFiltering = RoR2.AttackerFiltering.Default;
-            impact.blastDamageCoefficient = 1f;
-            impact.blastProcCoefficient = 1;
-            impact.blastRadius = 0f;
-            impact.childrenCount = 0;
-            impact.childrenDamageCoefficient = 0;
-            impact.childrenProjectilePrefab = null;
-            impact.destroyOnEnemy = true;
-            impact.destroyOnWorld = true;
-            impact.falloffModel = RoR2.BlastAttack.FalloffModel.None;
-            impact.fireChildren = false;
-            impact.impactEffect = LegacyResourcesAPI.Load<GameObject>("prefabs/effects/impacteffects/BeetleAcidImpact");
-            impact.lifetime = 10;
-            impact.lifetimeAfterImpact = 0;
-            impact.lifetimeRandomOffset = 0;
-
-            var targetFinder = primaryProjectile.GetComponent<ProjectileDirectionalTargetFinder>();
-            targetFinder.lookCone = 90;
-            targetFinder.lookRange = 45f;
-            targetFinder.allowTargetLoss = true;
-            targetFinder.enabled = false;
-
-            var targetTracker = primaryProjectile.GetComponent<ProjectileSteerTowardTarget>();
-            targetTracker.rotationSpeed = 45f;
-            targetTracker.enabled = false;
-
-            if (primaryProjectile.HasComponent<ProjectileController>())
-            {
-                Modules.Prefabs.projectilePrefabs.Add(primaryProjectile);
-            }
-        }
 
         internal override void InitializeSkills()
         {
-            Modules.Skills.CreateSkillFamilies(bodyPrefab);
-
-            #region Primary
-            Modules.Skills.AddPrimarySkill(bodyPrefab, Modules.Skills.CreatePrimarySkillDef(new SerializableEntityStateType(typeof(Cores.States.Nucleator.ChargeIrradiate)), "Weapon", "NUCLEATOR_PRIMARY_NAME", "NUCLEATOR_PRIMARY_DESCRIPTION", Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("texNucleatorPrimary"), false));
-            #endregion
-
-            #region Secondary
-            SkillDef secondarySkillDef = Modules.Skills.CreateSkillDef(new SkillDefInfo
+            foreach (GenericSkill sk in bodyPrefab.GetComponentsInChildren<GenericSkill>())
             {
-                skillName = "NUCLEATOR_SECONDARY_NAME",
-                skillNameToken = "NUCLEATOR_SECONDARY_NAME",
-                skillDescriptionToken = "NUCLEATOR_SECONDARY_DESCRIPTION",
-                skillIcon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("texNucleatorSecondary"),
-                activationState = new SerializableEntityStateType(typeof(Cores.States.Nucleator.ChargeQuarantine)),
-                activationStateMachineName = "Weapon",
-                baseMaxStock = 1,
-                baseRechargeInterval = 3f,
-                beginSkillCooldownOnSkillEnd = true,
-                canceledFromSprinting = false,
-                forceSprintDuringState = false,
-                fullRestockOnAssign = false,
-                interruptPriority = InterruptPriority.Skill,
-                resetCooldownTimerOnUse = false,
-                isCombatSkill = true,
-                mustKeyPress = false,
-                cancelSprintingOnActivation = true,
-                rechargeStock = 1,
-                requiredStock = 1,
-                stockToConsume = 1
-            });
+                UnityEngine.Object.DestroyImmediate(sk);
+            }
 
-            Modules.Skills.AddSecondarySkills(bodyPrefab, secondarySkillDef);
-            #endregion
-
-            #region Utility
-            SkillDef utilitySkillDef = Modules.Skills.CreateSkillDef(new SkillDefInfo
-            {
-                skillName = "NUCLEATOR_UTILITY_NAME",
-                skillNameToken = "NUCLEATOR_UTILITY_NAME",
-                skillDescriptionToken = "NUCLEATOR_UTILITY_DESCRIPTION",
-                skillIcon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("texNucleatorUtility"),
-                activationState = new SerializableEntityStateType(typeof(Cores.States.Nucleator.ChargeFissionImpulse)),
-                activationStateMachineName = "Body",
-                baseMaxStock = 1,
-                baseRechargeInterval = 6f,
-                beginSkillCooldownOnSkillEnd = true,
-                canceledFromSprinting = false,
-                forceSprintDuringState = false,
-                fullRestockOnAssign = true,
-                interruptPriority = InterruptPriority.PrioritySkill,
-                resetCooldownTimerOnUse = false,
-                isCombatSkill = false,
-                mustKeyPress = false,
-                cancelSprintingOnActivation = false,
-                rechargeStock = 1,
-                requiredStock = 1,
-                stockToConsume = 1
-            });
-
-            Modules.Skills.AddUtilitySkills(bodyPrefab, utilitySkillDef);
-            #endregion
-
-            #region Special
-            SkillDef specialSkillDef = Modules.Skills.CreateSkillDef(new SkillDefInfo
-            {
-                skillName = "NUCLEATOR_SPECIAL_NAME",
-                skillNameToken = "NUCLEATOR_SPECIAL_NAME",
-                skillDescriptionToken = "NUCLEATOR_SPECIAL_DESCRIPTION",
-                skillIcon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("texNucleatorSpecial"),
-                activationState = new SerializableEntityStateType(typeof(Cores.States.Nucleator.ApplyRadionuclideSurge)),
-                activationStateMachineName = "Slide",
-                baseMaxStock = 1,
-                baseRechargeInterval = 12f,
-                beginSkillCooldownOnSkillEnd = true,
-                canceledFromSprinting = false,
-                forceSprintDuringState = false,
-                fullRestockOnAssign = true,
-                interruptPriority = InterruptPriority.PrioritySkill,
-                resetCooldownTimerOnUse = false,
-                isCombatSkill = true,
-                mustKeyPress = false,
-                cancelSprintingOnActivation = false,
-                rechargeStock = 1,
-                requiredStock = 1,
-                stockToConsume = 1
-            });
-
-            Modules.Skills.AddSpecialSkills(bodyPrefab, specialSkillDef);
-            #endregion
+            SkillDef squawkDef = Addressables.LoadAssetAsync<SkillDef>("RoR2/Base/Heretic/HereticDefaultAbility.asset").WaitForCompletion();
+            SkillFamily.Variant squawkVariant = Utils.RegisterSkillVariant(squawkDef);
+            SkillLocator skillLocator = bodyPrefab.GetComponent<SkillLocator>();
+            skillLocator.primary = Utils.RegisterSkillsToFamily(bodyPrefab, new SkillFamily.Variant[] { squawkVariant });
+            skillLocator.secondary = Utils.RegisterSkillsToFamily(bodyPrefab, new SkillFamily.Variant[] { squawkVariant });
+            skillLocator.utility = Utils.RegisterSkillsToFamily(bodyPrefab, new SkillFamily.Variant[] { squawkVariant });
+            skillLocator.special = Utils.RegisterSkillsToFamily(bodyPrefab, new SkillFamily.Variant[] { squawkVariant });
         }
 
         internal override void RegisterTokens()
@@ -282,7 +138,7 @@ namespace Starstorm2Unofficial.Modules.Survivors
                 " < ! > x\n\n" +
                 " < ! > y\n\n" +
                 " < ! > z\n");
-            LanguageAPI.Add("SS2UNUCLEATOR_OUTRO_FLAVOR", "..and so he left, soul and bones crackling with radiation.");
+            LanguageAPI.Add("SS2UNUCLEATOR_OUTRO_FLAVOR", "..and so he left, health status undisclosed.");
             LanguageAPI.Add("SS2UNUCLEATOR_OUTRO_FAILURE", "..and so he vanished, an uninhabitable wasteland in his wake.");
             LanguageAPI.Add("SS2UNUCLEATOR_LORE", "laugh and grow fat");
             LanguageAPI.Add("SS2UNUCLEATOR_DEFAULT_SKIN_NAME", "Default");
@@ -330,8 +186,8 @@ namespace Starstorm2Unofficial.Modules.Survivors
             List<SkinDef> skins = new List<SkinDef>();
 
             #region DefaultSkin
-            SkinDef defaultSkin = Modules.Skins.CreateSkinDef("NUCLEATOR_DEFAULT_SKIN_NAME",
-                Assets.mainAssetBundle.LoadAsset<Sprite>("texNucleatorSkin"),
+            SkinDef defaultSkin = Modules.Skins.CreateSkinDef("SS2UNUCLEATOR_DEFAULT_SKIN_NAME",
+                LoadoutAPI.CreateSkinIcon(new Color32(219, 201, 245, 255), new Color32(92, 97, 69, 255), new Color32(71, 59, 63, 255), new Color32(180, 174, 104, 255)),
                 defaultRenderers,
                 mainRenderer,
                 model);

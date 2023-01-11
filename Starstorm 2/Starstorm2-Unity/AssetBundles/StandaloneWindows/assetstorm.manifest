@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 220853408
+CRC: 3836263680
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 91600b5e75bb3575918e443c1c7f7c3c
+    Hash: 128dce83ecb49263f219d792cbde5e82
   TypeTreeHash:
     serializedVersion: 2
     Hash: e085efc3cec39229c22603e1a47b8115
@@ -458,6 +458,7 @@ Assets:
 - Assets/AssetBundle/Cyborg/Animations/CharSelectIdle.anim
 - Assets/AssetBundle/Nemmando/VFX/Materials/matAmmo.mat
 - Assets/AssetBundle/Chirr/Animations/WalkRHT.anim
+- Assets/AssetBundle/Nucleator/Textures/UI/texNucleatorBar.png
 - Assets/AssetBundle/Executioner/Animations/RunLFT.anim
 - Assets/AssetBundle/Cyborg/Animations/animCyborgTele.controller
 - Assets/AssetBundle/Executioner/Materials/matExecutionerKnight.mat
@@ -528,6 +529,7 @@ Assets:
 - Assets/AssetBundle/Nemmando/Textures/texNemmandoClassic.png
 - Assets/AssetBundle/Executioner/VFX/Exe trail.png
 - Assets/AssetBundle/Executioner/Icons/texExecutionerSecondary.png
+- Assets/AssetBundle/Nucleator/UI/crosshairNucleator.prefab
 - Assets/AssetBundle/Nemmando/Animations/DecisiveStrikeMax.anim
 - Assets/AssetBundle/Nemmando/Animations/LightImpact.anim
 - Assets/AssetBundle/Nemmando/Mesh/meshNemmandoGun.mesh
@@ -734,6 +736,7 @@ Assets:
 - Assets/AssetBundle/Items/HottestSauce/MDLHottestSauce.prefab
 - Assets/AssetBundle/Cyborg/Meshes/meshCyborgRock.mesh
 - Assets/AssetBundle/Executioner/Mesh/meshWastelander.mesh
+- Assets/AssetBundle/GeneralAssets/Textures/UI/texCrosshairBarGeneric.png
 - Assets/AssetBundle/Nucleator/Animations/Clips/AimPitch.anim
 - Assets/AssetBundle/Executioner/Animations/Special4.anim
 - Assets/AssetBundle/Nemmando/VFX/Materials/matNemmandoDistortionLight.mat

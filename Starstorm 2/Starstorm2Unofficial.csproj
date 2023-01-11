@@ -291,6 +291,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Cores\Enemies\" />
+    <Folder Include="Survivors\Nucleator\Components\" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="0Harmony">
