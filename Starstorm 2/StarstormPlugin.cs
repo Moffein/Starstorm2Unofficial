@@ -31,17 +31,18 @@ namespace Starstorm2Unofficial
     [BepInPlugin(guid, modName, version)]
     [R2APISubmoduleDependency(new string[]
     {
-        "PrefabAPI",
-        "LoadoutAPI",
-        "LanguageAPI",
-        "DirectorAPI",
-        "NetworkingAPI",
-        "CommandHelper",
-        "DamageAPI",
-        "RecalculateStatsAPI",
-        "ContentAddition",
-        "EliteAPI",
-        "ItemAPI"
+        nameof(R2API.Utils.CommandHelper),
+        nameof(R2API.Networking.NetworkingHelpers),
+        nameof(R2API.Networking.NetworkingAPI),
+        nameof(R2API.PrefabAPI),
+        nameof(R2API.LoadoutAPI),
+        nameof(R2API.LanguageAPI),
+        nameof(R2API.DirectorAPI),
+        nameof(R2API.DamageAPI),
+        nameof(R2API.RecalculateStatsAPI),
+        nameof(R2API.ContentAddition),
+        nameof(R2API.EliteAPI),
+        nameof(R2API.ItemAPI),
     })]
 
     public class StarstormPlugin : BaseUnityPlugin
@@ -69,7 +70,6 @@ namespace Starstorm2Unofficial
         EquipmentCore equipmentCore;
         DoTCore dotCore;
         TyphoonCore typhoonCore;
-        //EtherealCore etherealCore;
         EventsCore eventsCore;
         DamageTypeCore damageTypeCore;
         public static NemesisInvasionCore nemesisInvasionCore;
@@ -128,7 +128,7 @@ namespace Starstorm2Unofficial
             if (Modules.Config.EnableChirr.Value) new ChirrCore();
             if (Modules.Config.EnablePyro.Value) new PyroCore();
 
-            new Modules.Survivors.Nucleator().Initialize();
+            new Survivors.Nucleator.NucleatorCore().Initialize();
         }
 
         private void Initialize()

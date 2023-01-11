@@ -9,14 +9,16 @@ namespace EntityStates.SS2UStates.Nucleator
     public abstract class BaseChargeState : BaseState
     {
         public static float overchargeFraction = 2f / 3f;
+        public static string overchargeSoundString = "SS2UNucleatorAlarm";
 
         public float baseDuration = 1f;
-        public float overchargeHealthFraction = 0.2f;
+        public float overchargeHealthFraction = 0.15f;
         public float overchargeDamageFrequency = 10f;
 
+        private bool playedOverchargeSound = false;
         private float overchargeDamageDuration;
         private float overchargeDamageStopwatch;
-        private float duration;
+        protected float duration;
         private NucleatorChargeComponent chargeComponent;
 
         public float chargeFraction;
@@ -28,7 +30,7 @@ namespace EntityStates.SS2UStates.Nucleator
             duration = baseDuration / this.attackSpeedStat;
 
             overchargeDamageStopwatch = 0f;
-            overchargeDamageDuration = (1f / overchargeDamageFrequency) / this.attackSpeedStat;
+            overchargeDamageDuration = 1f / (overchargeDamageFrequency * this.attackSpeedStat);
 
             chargeComponent = base.GetComponent<NucleatorChargeComponent>();
             if (chargeComponent)
@@ -46,42 +48,36 @@ namespace EntityStates.SS2UStates.Nucleator
             {
                 chargeComponent.SetCharge(chargeFraction, overchargeFraction);
             }
-            
+
             if (chargeFraction >= overchargeFraction)
             {
-                if (NetworkServer.active)
+                bool immuneToSelfDamage = base.characterBody && base.characterBody.HasBuff(BuffCore.nucleatorSpecialBuff);
+                if (!playedOverchargeSound)
                 {
-                    if (base.characterBody && base.healthComponent && !base.characterBody.HasBuff(BuffCore.nucleatorSpecialBuff))
+                    playedOverchargeSound = true;
+                    Util.PlaySound(overchargeSoundString, base.gameObject);
+                    if (base.isAuthority && !immuneToSelfDamage) HurtSelf();
+                }
+                else if (base.isAuthority && base.healthComponent && !immuneToSelfDamage)
+                {
+                    overchargeDamageStopwatch += Time.fixedDeltaTime;
+                    if (overchargeDamageStopwatch >= overchargeDamageDuration)
                     {
-                        overchargeDamageStopwatch += Time.fixedDeltaTime;
-                        if (overchargeDamageStopwatch >= overchargeDamageDuration)
-                        {
-                            overchargeDamageStopwatch -= overchargeDamageDuration;
+                        overchargeDamageStopwatch -= overchargeDamageDuration;
 
-                            DamageInfo damageInfo = new DamageInfo();
-                            damageInfo.damage = base.healthComponent.combinedHealth * overchargeHealthFraction;
-                            damageInfo.position = base.characterBody.corePosition;
-                            damageInfo.force = Vector3.zero;
-                            damageInfo.damageColorIndex = DamageColorIndex.Default;
-                            damageInfo.crit = false;
-                            damageInfo.attacker = null;
-                            damageInfo.inflictor = null;
-                            damageInfo.damageType = (DamageType.NonLethal | DamageType.BypassArmor);
-                            damageInfo.procCoefficient = 0f;
-                            damageInfo.procChainMask = default(ProcChainMask);
-                            base.healthComponent.TakeDamage(damageInfo);
-                        }
+                        HurtSelf();
                     }
                 }
             }
 
             if (base.isAuthority)
             {
+
                 if (chargeFraction >= 1f || !GetInputPressed())
                 {
                     if (chargeFraction >= overchargeFraction)
                     {
-                        SetNextStateOvercharged();
+                        SetNextStateOvercharge();
                         return;
                     }
                     else
@@ -93,12 +89,41 @@ namespace EntityStates.SS2UStates.Nucleator
             }
         }
 
+        public override void OnExit()
+        {
+            if (chargeComponent)
+            {
+                chargeComponent.Reset();
+            }
+            base.OnExit();
+        }
+
+        private void HurtSelf()
+        {
+            DamageInfo damageInfo = new DamageInfo();
+            damageInfo.damage = base.healthComponent.combinedHealth * overchargeHealthFraction;
+            damageInfo.position = base.characterBody.corePosition;
+            damageInfo.force = Vector3.zero;
+            damageInfo.damageColorIndex = DamageColorIndex.Default;
+            damageInfo.crit = false;
+            damageInfo.attacker = null;
+            damageInfo.inflictor = null;
+            damageInfo.damageType = (DamageType.NonLethal | DamageType.BypassArmor);
+            damageInfo.procCoefficient = 0f;
+            damageInfo.procChainMask = default(ProcChainMask);
+
+            if (base.characterBody && base.characterBody.mainHurtBox)
+            {
+                R2API.Networking.NetworkingHelpers.DealDamage(damageInfo, base.characterBody.mainHurtBox, true, false, false);
+            }
+        }
+
         protected virtual bool GetInputPressed()
         {
             return false;
         }
 
         protected virtual void SetNextState() { this.outer.SetNextStateToMain(); }
-        protected virtual void SetNextStateOvercharged() { this.outer.SetNextStateToMain(); }
+        protected virtual void SetNextStateOvercharge() { this.outer.SetNextStateToMain(); }
     }
 }

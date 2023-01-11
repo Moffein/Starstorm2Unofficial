@@ -36,11 +36,11 @@ namespace Starstorm2Unofficial.Cores.States.Nucleator
             this.playerHealth = this.characterBody.healthComponent.combinedHealth;
             this.playerHealthFinal = playerHealth - playerHealth * maxOverchargePlayerDamageDealt;
             this.defaultCrosshair = this.characterBody._defaultCrosshairPrefab;
-            this.characterBody._defaultCrosshairPrefab = Modules.Survivors.Nucleator.chargeCrosshair;
+            this.characterBody._defaultCrosshairPrefab = Survivors.Nucleator.NucleatorCore.chargeCrosshair;
 
             if(!isCrosshairInitialized)
             {
-                foreach (Transform child in Modules.Survivors.Nucleator.chargeCrosshair.transform)
+                foreach (Transform child in Survivors.Nucleator.NucleatorCore.chargeCrosshair.transform)
                 {
                     if (child.name == "Zoom Amount") Destroy(child.gameObject);
                 }

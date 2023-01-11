@@ -20,15 +20,6 @@ namespace Starstorm2Unofficial.Modules
             AddState(typeof(BaseCustomMainState));
             AddState(typeof(BaseCustomSkillState));
             AddState(typeof(BaseMeleeAttack));
-
-            AddState(typeof(Cores.States.Nucleator.ApplyRadionuclideSurge));
-            AddState(typeof(Cores.States.Nucleator.ChargeFissionImpulse));
-            AddState(typeof(Cores.States.Nucleator.ChargeIrradiate));
-            AddState(typeof(Cores.States.Nucleator.ChargeQuarantine));
-            AddState(typeof(Cores.States.Nucleator.FireFissionImpulse));
-            AddState(typeof(Cores.States.Nucleator.FireIrradiate));
-            AddState(typeof(Cores.States.Nucleator.FireQuarantine));
-            AddState(typeof(Cores.States.Nucleator.NucleatorSkillStateBase));
         }
 
         internal static void AddState(Type t)

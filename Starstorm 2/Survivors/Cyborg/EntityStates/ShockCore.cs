@@ -14,7 +14,6 @@ namespace EntityStates.SS2UStates.Cyborg
 
             Ray aimRay = base.GetAimRay();
             base.StartAimMode(aimRay, 2f, false);
-            base.PlayAnimation("Gesture, Override", "FireM2", "FireArrow.playbackRate", this.duration);
 
             Util.PlaySound("SS2UCyborgUtility", base.gameObject);
             base.PlayAnimation("Gesture, Override", "FireSpecial", "FireArrow.playbackRate", this.duration);

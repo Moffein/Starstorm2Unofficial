@@ -255,6 +255,9 @@
     <Compile Include="Survivors\Nucleator\Components\Crosshair\NucleatorCrosshairController.cs" />
     <Compile Include="Survivors\Nucleator\Components\NucleatorChargeComponent.cs" />
     <Compile Include="Survivors\Nucleator\EntityStates\BaseChargeState.cs" />
+    <Compile Include="Survivors\Nucleator\EntityStates\Primary\ChargeIrradiate.cs" />
+    <Compile Include="Survivors\Nucleator\EntityStates\Primary\FireIrradiate.cs" />
+    <Compile Include="Survivors\Nucleator\EntityStates\Primary\FireIrradiateOvercharge.cs" />
     <Compile Include="Survivors\Nucleator\EntityStates_old\ApplyRadionuclideSurge.cs" />
     <Compile Include="Survivors\Nucleator\EntityStates_old\ChargeController.cs" />
     <Compile Include="Survivors\Nucleator\EntityStates_old\ChargeStates\ChargeFissionImpulse.cs" />
@@ -265,12 +268,13 @@
     <Compile Include="Survivors\Nucleator\EntityStates_old\FireStates\FireIrradiate.cs" />
     <Compile Include="Survivors\Nucleator\EntityStates_old\FireStates\FireQuarantine.cs" />
     <Compile Include="Survivors\Nucleator\EntityStates_old\NucleatorProjectile.cs" />
-    <Compile Include="Survivors\Nucleator\Nucleator.cs" />
+    <Compile Include="Survivors\Nucleator\NucleatorCore.cs" />
     <Compile Include="Modules\Survivors\SurvivorBase.cs" />
     <Compile Include="Modules\Unlockables.cs" />
     <Compile Include="StarstormPlugin.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="StaticValues.cs" />
+    <Compile Include="Survivors\Nucleator\NucleatorProjectiles.cs" />
     <Compile Include="Survivors\Pyro\Components\Crosshair\PyroCrosshairController.cs" />
     <Compile Include="Survivors\Pyro\Components\FlamethrowerController.cs" />
     <Compile Include="Survivors\Pyro\Components\HeatController.cs" />

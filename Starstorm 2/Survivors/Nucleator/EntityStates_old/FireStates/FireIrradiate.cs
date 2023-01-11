@@ -88,7 +88,7 @@ namespace Starstorm2Unofficial.Cores.States.Nucleator
                 if (base.isAuthority)
                 {
                     var baseRadius = this.charge * 10;
-                    GameObject nucleatorProjectile = Modules.Survivors.Nucleator.primaryProjectile;
+                    GameObject nucleatorProjectile = Survivors.Nucleator.NucleatorCore.primaryProjectile;
                     nucleatorProjectile.GetComponent<NucleatorProjectile>().baseRadius = baseRadius;
                     nucleatorProjectile.GetComponent<NucleatorProjectile>().charge = this.charge;
 
