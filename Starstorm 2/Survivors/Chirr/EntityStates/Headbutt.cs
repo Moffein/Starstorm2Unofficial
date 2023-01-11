@@ -62,6 +62,7 @@ namespace EntityStates.SS2UStates.Chirr
             if(this.attack != null)
             {
                 this.attack.AddModdedDamageType(DamageTypeCore.ModdedDamageTypes.ScaleForceToMass);
+                this.attack.AddModdedDamageType(DamageTypeCore.ModdedDamageTypes.ResetVictimForce);
 
                 Ray aimRay = base.GetAimRay();
                 attackDirection = aimRay.direction;

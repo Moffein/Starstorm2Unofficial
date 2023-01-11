@@ -19,6 +19,7 @@ namespace Starstorm2Unofficial.Cores
             public static DamageAPI.ModdedDamageType GougeOnHit;
             public static DamageAPI.ModdedDamageType ExtendFear;
             public static DamageAPI.ModdedDamageType GuaranteedFearOnHit;   //Used for Exe Scepter
+            public static DamageAPI.ModdedDamageType ResetVictimForce;
         }
 
         //public static DamageType
@@ -29,7 +30,8 @@ namespace Starstorm2Unofficial.Cores
         public DamageTypeCore()
         {
             instance = this;
-
+            
+            ModdedDamageTypes.ResetVictimForce = DamageAPI.ReserveDamageType();
             ModdedDamageTypes.CyborgPrimary = DamageAPI.ReserveDamageType();
             ModdedDamageTypes.ScaleForceToMass = DamageAPI.ReserveDamageType();
             ModdedDamageTypes.GougeOnHit = DamageAPI.ReserveDamageType();
@@ -79,6 +81,24 @@ namespace Starstorm2Unofficial.Cores
             bool triggerGougeProc = false;
             if (NetworkServer.active)
             {
+                CharacterBody cb = self.body;
+                //This will only work on things that are run on the server.
+                if (damageInfo.HasModdedDamageType(ModdedDamageTypes.ResetVictimForce))
+                {
+                    if (cb.rigidbody)
+                    {
+                        cb.rigidbody.velocity = new Vector3(0f, cb.rigidbody.velocity.y, 0f);
+                        cb.rigidbody.angularVelocity = new Vector3(0f, cb.rigidbody.angularVelocity.y, 0f);
+                    }
+                    if (cb.characterMotor != null)
+                    {
+                        cb.characterMotor.velocity.x = 0f;
+                        cb.characterMotor.velocity.z = 0f;
+                        cb.characterMotor.rootMotion.x = 0f;
+                        cb.characterMotor.rootMotion.z = 0f;
+                    }
+                }
+
                 if (damageInfo.dotIndex == DoTCore.gougeIndex && damageInfo.procCoefficient == 0f)
                 {
                     if (damageInfo.attacker)
@@ -100,7 +120,6 @@ namespace Starstorm2Unofficial.Cores
 
                 if (damageInfo.HasModdedDamageType(ModdedDamageTypes.ScaleForceToMass))
                 {
-                    CharacterBody cb = self.body;
                     if (!cb.isFlying && cb.characterMotor != null)
                     {
                         if (!cb.characterMotor.isGrounded)    //Multiply launched enemy force

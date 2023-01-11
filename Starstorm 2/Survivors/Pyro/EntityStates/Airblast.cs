@@ -161,6 +161,7 @@ namespace EntityStates.SS2UStates.Pyro
                                     procCoefficient = 0f
                                 };
                                 damageInfo.AddModdedDamageType(DamageTypeCore.ModdedDamageTypes.ScaleForceToMass);
+                                damageInfo.AddModdedDamageType(DamageTypeCore.ModdedDamageTypes.ResetVictimForce);
                                 healthComponent.TakeDamage(damageInfo);
                             }
                         }
