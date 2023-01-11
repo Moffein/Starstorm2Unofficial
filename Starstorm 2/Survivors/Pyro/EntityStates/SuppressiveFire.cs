@@ -65,7 +65,7 @@ namespace EntityStates.SS2UStates.Pyro
             return InterruptPriority.Skill;
         }
 
-        public static float baseSelfForce = 600f;
+        public static float baseSelfForce = 450f;
         public static GameObject muzzleflashEffectPrefab = Resources.Load<GameObject>("prefabs/effects/impacteffects/missileexplosionvfx");
         public static GameObject projectilePrefab;
         public static float damageCoefficient = 0.84f;
