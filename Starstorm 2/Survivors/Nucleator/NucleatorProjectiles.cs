@@ -3,6 +3,7 @@ using UnityEngine.AddressableAssets;
 using RoR2;
 using RoR2.Projectile;
 using R2API;
+using Starstorm2Unofficial.Survivors.Nucleator.Components.Projectile;
 
 namespace Starstorm2Unofficial.Survivors.Nucleator
 {
@@ -14,10 +15,15 @@ namespace Starstorm2Unofficial.Survivors.Nucleator
             GameObject projectilePrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Mage/MageLightningboltBasic.prefab").WaitForCompletion().InstantiateClone("SS2UNucleatorPrimaryProjectile", true);
             Modules.Prefabs.projectilePrefabs.Add(projectilePrefab);
 
-            GameObject projectileGhost = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Beetle/BeetleQueenSpitGhost.prefab").WaitForCompletion().InstantiateClone("SS2UNucleatorPrimaryGhost", false);
+            GameObject projectileGhost = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Lemurian/FireballGhost.prefab").WaitForCompletion().InstantiateClone("SS2UNucleatorPrimaryGhost", false);
+            projectileGhost.AddComponent<GhostScaleOverTime>();
 
             ProjectileController pc = projectilePrefab.GetComponent<ProjectileController>();
             pc.ghostPrefab = projectileGhost;
+
+            ProjectileSimple ps = projectilePrefab.GetComponent<ProjectileSimple>();
+            ps.desiredForwardSpeed = 80f;
+            ps.lifetime = 10f;
 
             return projectilePrefab;
         }

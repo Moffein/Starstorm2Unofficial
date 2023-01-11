@@ -52,13 +52,13 @@ namespace EntityStates.SS2UStates.Nucleator.Primary
         public static GameObject muzzleflashEffectPrefab;
         public static GameObject projectilePrefab;
 
-        public static float minDamageCoefficient = 5f;
-        public static float maxDamageCoefficient = 9f;
+        public static float minDamageCoefficient = 3f;
+        public static float maxDamageCoefficient = 6f;
 
         public static float minForce = 0f;
         public static float maxForce = 2000f;
 
-        public static float baseDuration = 0.3f;
+        public static float baseDuration = 0.4f;
 
         public float charge = 0f;
         private float duration;
