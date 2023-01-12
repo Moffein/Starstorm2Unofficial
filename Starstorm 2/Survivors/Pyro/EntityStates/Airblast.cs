@@ -33,7 +33,7 @@ namespace EntityStates.SS2UStates.Pyro
 
             base.StartAimMode(aimRay, 2f, false);
 
-            if (base.characterBody && base.characterMotor && !base.characterMotor.isGrounded)
+            if (base.isAuthority && base.characterBody && base.characterMotor && !base.characterMotor.isGrounded)
             {
                 if (base.characterMotor.velocity.y < 0f)
                 {
@@ -57,7 +57,7 @@ namespace EntityStates.SS2UStates.Pyro
                 DeflectServer();
             }
 
-            if (base.fixedAge >= Airblast.baseDuration)
+            if (base.isAuthority && base.fixedAge >= Airblast.baseDuration)
             {
                 this.outer.SetNextStateToMain();
                 return;
