@@ -1136,7 +1136,7 @@ namespace Starstorm2Unofficial.Survivors.Nemmando
                 });
 
                 SkinDef commandoJokeSkin = Modules.Skins.CreateSkinDef("SS2UNEMMANDO_COMMANDO_SKIN_NAME",
-                    LegacyResourcesAPI.Load<GameObject>("Prefabs/CharacterBodies/CommandoBody").GetComponentInChildren<ModelSkinController>().skins[0].icon,
+                    Assets.mainAssetBundle.LoadAsset<Sprite>("texNemmandoCommandoSkin"),
                     commandoJokeRendererInfos,
                     mainRenderer,
                     model,
