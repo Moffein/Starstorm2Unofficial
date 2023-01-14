@@ -42,7 +42,9 @@ namespace Starstorm2Unofficial.Survivors.Chirr.Components
             "FreeChest",
             "TreasureCache",
             "TreasureCacheVoid",
-            "ITEM_BLUELEMURIAN"
+            "ITEM_BLUELEMURIAN",
+            "CIScepter",
+            "ITEM_ANCIENT_SCEPTER"
             //"ShockNearby",
             //"Icicle",
             //"SiphonOnLowHealth"
@@ -263,7 +265,7 @@ namespace Starstorm2Unofficial.Survivors.Chirr.Components
                             ai.currentEnemy.gameObject = pingBody.gameObject;
                             ai.currentEnemy.bestHurtBox = pingBody.mainHurtBox;
                             ai.enemyAttention = ai.enemyAttentionDuration;
-                            ai.targetRefreshTimer = 5f;
+                            ai.targetRefreshTimer = 10f;
                             ai.BeginSkillDriver(ai.EvaluateSkillDrivers());
                         }
                     }
@@ -452,8 +454,9 @@ namespace Starstorm2Unofficial.Survivors.Chirr.Components
                         bool isDecay = hbBody.inventory && hbBody.inventory.GetItemCount(RoR2Content.Items.HealthDecay) > 0;
                         bool isDestroy = (hbBody.GetComponent<DestroyOnTimer>() != null) || (hbBody.master && hbBody.master.GetComponent<DestroyOnTimer> () != null);
                         bool isAlreadyFriended = hbBody.HasBuff(BuffCore.chirrFriendBuff) || hbBody.HasBuff(BuffCore.chirrSelfBuff);
+                        bool isMasterless = hbBody.bodyFlags.HasFlag(CharacterBody.BodyFlags.Masterless);
 
-                        if (!isPlayerControlled && !isDecay && !isDestroy && !isAlreadyFriended && (((!isChampion && !isBoss) || canBefriendChampion) || (hbBody.bodyIndex == EnemyCore.brotherHurtIndex && (canBefriendChampion || HasLunarTrinket()))) && !isBlacklisted)
+                        if (!isPlayerControlled && !isMasterless && !isDecay && !isDestroy && !isAlreadyFriended && (((!isChampion && !isBoss) || canBefriendChampion) || (hbBody.bodyIndex == EnemyCore.brotherHurtIndex && (canBefriendChampion || HasLunarTrinket()))) && !isBlacklisted)
                         {
                             validTargets.Add(hb);
                         }
@@ -473,11 +476,13 @@ namespace Starstorm2Unofficial.Survivors.Chirr.Components
                 _canBefriendTarget = false;
                 _hasFriend = true;
 
-                //Make sure Mithrix returns your items
-                ItemStealController isc = targetBody.GetComponent<ItemStealController>();
-                if (isc)
+                ReturnStolenItemsOnGettingHit rsi = targetBody.GetComponent<ReturnStolenItemsOnGettingHit>();
+                if (rsi)
                 {
-                    isc.ForceReclaimAllItemsImmediately();
+                    if (rsi.itemStealController)
+                    {
+                        rsi.itemStealController.ForceReclaimAllItemsImmediately();
+                    }
                 }
 
                 //Prevent Chirr from softlocking the teleporter and other kill objectives.
@@ -602,7 +607,6 @@ namespace Starstorm2Unofficial.Survivors.Chirr.Components
                     if (networkUser)
                     {
                         networkUser.AwardLunarCoins(10);
-                        return;
                     }
                 }
             }

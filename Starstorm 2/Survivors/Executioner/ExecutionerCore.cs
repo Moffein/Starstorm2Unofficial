@@ -334,7 +334,7 @@ namespace Starstorm2Unofficial.Survivors.Executioner
         {
             LanguageAPI.Add("SS2UEXECUTIONER_NAME", "Executioner");
             LanguageAPI.Add("SS2UEXECUTIONER_SUBTITLE", "Dreaded Guillotine");
-            LanguageAPI.Add("SS2UEXECUTIONER_DESCRIPTION", "The Executioner's goal is to spill as much blood as possible in the shortest amount of time. Bullets loaded, ion manipulators charged.\r\n\r\n" +
+            LanguageAPI.Add("SS2UEXECUTIONER_DESCRIPTION", "The Executioner's goal is to spill as much blood as possible in the shortest amount of time. Bullets loaded, ion manipulators charged.<style=cSub>\r\n\r\n" +
                 " < ! > Ion Burst deals massive damage, but does not regenerate stocks over time.\r\n\r\n" +
                 " < ! > Crowd Disperion interrupts enemy attacks, providing you with a window of opportunity.\r\n\r\n" +
                 " < ! > Feared enemies give extra Ion Burst charges when killed.\r\n\r\n" +

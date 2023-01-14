@@ -290,8 +290,7 @@ namespace Starstorm2Unofficial.Survivors.Nemmando
             bossEffect.transform.GetChild(0).localScale = Vector3.one * 2f;
 
             bossBodyPrefab.AddComponent<Components.NemmandoUnlockComponent>();
-            bossBodyPrefab.AddComponent<Components.NemmandoSpecialSwapComponent>();
-            bossBodyPrefab.AddComponent<Starstorm2Unofficial.Components.NemesisBossComponent>();
+            bossBodyPrefab.AddComponent<Components.NemmandoBossSpecialSwapComponent>();
 
             Modules.Prefabs.bodyPrefabs.Add(bossBodyPrefab);
             Modules.Prefabs.masterPrefabs.Add(bossMasterPrefab);
@@ -783,7 +782,7 @@ namespace Starstorm2Unofficial.Survivors.Nemmando
         {
             LanguageAPI.Add("SS2UNEMMANDO_NAME", "Nemesis Commando");
             LanguageAPI.Add("SS2UNEMMANDO_SUBTITLE", "Lone Echo");
-            LanguageAPI.Add("SS2UNEMMANDO_DESCRIPTION", "The Nemesis Commando's origins are unknown, but something is clear: he's no longer who he once was.\r\n\r\n" +
+            LanguageAPI.Add("SS2UNEMMANDO_DESCRIPTION", "The Nemesis Commando's origins are unknown, but something is clear: he's no longer who he once was.<style=cSub>\r\n\r\n" +
                 "< ! > Blade of Cessation is risky but can build up a lot of damage by stacking Gouge.\r\n\r\n" +
                 "< ! > Distant Gash can be used to safely apply stacks of Gouge to groups of enemies - take advantage of its piercing!\r\n\r\n" +
                 "< ! > Proper balance of melee and ranged combat is key, and Tactical Roll grants high armor to help enter and exit battles.\r\n\r\n" +

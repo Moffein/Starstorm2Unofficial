@@ -84,10 +84,12 @@ namespace EntityStates.SS2UStates.Chirr
                 {
                     friendController.canBefriendChampion = true;
                 }
-                else
+
+                //Dont set it to false, in case Mithrix steals scepter (I think it's already blacklisted from stealing)
+                /*else
                 {
                     friendController.canBefriendChampion = false;
-                }
+                }*/
             }
         }
 

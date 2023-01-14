@@ -109,7 +109,7 @@ namespace Starstorm2Unofficial.Cores
                             damageInfo.crit = Util.CheckRoll(attackerBody.crit, attackerBody.master);
                         }
                     }
-                    damageInfo.procCoefficient = 1f;
+                    damageInfo.procCoefficient = 0.7f;
                     triggerGougeProc = true;
                 }
 
@@ -155,7 +155,7 @@ namespace Starstorm2Unofficial.Cores
                 if (triggerGougeProc)
                 {
                     GlobalEventManager.instance.OnHitEnemy(damageInfo, self.gameObject);
-                    GlobalEventManager.instance.OnHitAll(damageInfo, self.gameObject);
+                    //GlobalEventManager.instance.OnHitAll(damageInfo, self.gameObject);
                 }
             }
         }

@@ -4,7 +4,7 @@ using UnityEngine;
 namespace Starstorm2Unofficial.Survivors.Nemmando.Components
 {
     // this is such a hack but if it works it works(for now)
-    public class NemmandoSpecialSwapComponent : MonoBehaviour
+    public class NemmandoBossSpecialSwapComponent : MonoBehaviour
     {
         private CharacterBody body;
 
@@ -18,7 +18,8 @@ namespace Starstorm2Unofficial.Survivors.Nemmando.Components
         {
             if (this.body)
             {
-                if (this.body.teamComponent && this.body.teamComponent.teamIndex != TeamIndex.Player) this.body.skillLocator.special.SetBaseSkill(Survivors.Nemmando.NemmandoCore.decisiveStrikeSkillDef);
+                if (this.body.teamComponent) // && this.body.teamComponent.teamIndex != TeamIndex.Player
+                    this.body.skillLocator.special.SetBaseSkill(Survivors.Nemmando.NemmandoCore.decisiveStrikeSkillDef);
             }
 
             Destroy(this);
