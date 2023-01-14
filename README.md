@@ -28,7 +28,8 @@ The SS2 team is free to use any of the new code from this mod as long as this re
 ## Installation
 
 **If updating from 0.8.0 and below, uninstall the previous version before installing the latest version.**
-**If installing manually without r2modman, be sure you place the Assets folder in the same folder as the dll**
+
+**If installing manually without r2modman, be sure you place the Assets folder in the same folder as the dll.**
 
 1. Download the latest zip from [Releases](https://github.com/Moffein/Starstorm2Unofficial/releases).
 2. In r2modman, go to Settings -> Import Local Mod
