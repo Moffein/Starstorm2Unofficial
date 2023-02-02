@@ -2,12 +2,14 @@
 using EntityStates.SS2UStates.Common;
 using RoR2;
 using RoR2.Orbs;
+using R2API;
 using Starstorm2Unofficial.Components;
 using Starstorm2Unofficial.Survivors.Nemmando.Components;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.Networking;
+using Starstorm2Unofficial.Cores;
 
 namespace EntityStates.SS2UStates.Nemmando
 {
@@ -102,7 +104,8 @@ namespace EntityStates.SS2UStates.Nemmando
                         damageInfo.procCoefficient = 1f;
                         damageInfo.position = hurtbox.transform.position;
                         damageInfo.crit = this.isCrit;
-                        damageInfo.damageType = DamageType.BlightOnHit;
+                        damageInfo.damageType = DamageType.Generic;
+                        damageInfo.AddModdedDamageType(DamageTypeCore.ModdedDamageTypes.GougeOnHit);
 
                         hurtbox.healthComponent.TakeDamage(damageInfo);
 
