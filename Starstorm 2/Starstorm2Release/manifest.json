@@ -1,7 +1,7 @@
 {
 	"author": "ChirrLover",
     "name": "Starstorm2_Unofficial",
-    "version_number": "0.9.8",
+    "version_number": "0.9.9",
     "website_url": "https://github.com/Moffein/Starstorm2Unofficial",
     "description": "A restoration of the pre-SotV version of Starstorm 2. Compatible with the official Starstorm 2!",
     "dependencies": [

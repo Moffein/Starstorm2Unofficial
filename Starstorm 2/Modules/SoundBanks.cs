@@ -24,8 +24,8 @@ namespace Starstorm2Unofficial.Modules
             initialized = true;
             AKRESULT akResult = AkSoundEngine.AddBasePath(SoundBankDirectory);
 
-            AkSoundEngine.LoadBank("SS2Music.bnk", out _);
-            AkSoundEngine.LoadBank("Starstorm2.bnk", out _);
+            AkSoundEngine.LoadBank("SS2UMusic.bnk", out _);
+            AkSoundEngine.LoadBank("Starstorm2Unofficial.bnk", out _);
         }
     }
 }

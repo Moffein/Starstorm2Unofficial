@@ -3,7 +3,7 @@
 	<SoundBanks>
 		<WorkUnit Name="Default Work Unit" ID="{32ED3846-0306-4669-A984-6D336441CE0F}" PersistMode="Standalone">
 			<ChildrenList>
-				<SoundBank Name="Starstorm2" ID="{DC589FB5-179B-4F6B-A813-9721922E9529}">
+				<SoundBank Name="Starstorm2Unofficial" ID="{DC589FB5-179B-4F6B-A813-9721922E9529}">
 					<ObjectInclusionList>
 						<ObjectRef Name="SS2UNucleatorSkill3b" ID="{06A4E4B5-2CF3-4068-BBD0-8737CBF47A13}" WorkUnitID="{39C9FF65-90F2-4516-9F65-D552D7641167}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Elites" ID="{07167070-930F-407B-BD3D-C1E053C44F12}" WorkUnitID="{39C9FF65-90F2-4516-9F65-D552D7641167}" Origin="Manual" Filter="7"/>
@@ -44,7 +44,7 @@
 					</ObjectExclusionList>
 					<GameSyncExclusionList/>
 				</SoundBank>
-				<SoundBank Name="SS2Music" ID="{E98EF75B-C3C3-4AFF-A6A3-8570CA483C99}">
+				<SoundBank Name="SS2UMusic" ID="{E98EF75B-C3C3-4AFF-A6A3-8570CA483C99}">
 					<ObjectInclusionList>
 						<ObjectRef Name="Canticum_Vitae_Transition_B" ID="{8C8594D8-684F-400F-9470-5959F9D1A862}" WorkUnitID="{F233C913-3B4E-4D63-9074-90CE5295641F}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Canticum_Vitae_Main" ID="{3F84CA5E-5741-408C-9A9B-04B207732823}" WorkUnitID="{F233C913-3B4E-4D63-9074-90CE5295641F}" Origin="Manual" Filter="7"/>
