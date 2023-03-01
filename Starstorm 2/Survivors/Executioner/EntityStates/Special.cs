@@ -106,7 +106,7 @@ namespace EntityStates.SS2UStates.Executioner
 
         public override InterruptPriority GetMinimumInterruptPriority()
         {
-            return InterruptPriority.PrioritySkill;
+            return InterruptPriority.Pain;
         }
     }
 
