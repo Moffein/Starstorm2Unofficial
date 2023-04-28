@@ -20,6 +20,12 @@ namespace Starstorm2Unofficial.Cores.NemesisInvasion.Components
 
         private bool playedEventStartChatMessage = false;
         private bool playedEventEndChatMessage = false;
+        public static bool scaleHPWithPlayercount = true;
+
+        public static float hpMult = 1f;
+        public static float damageMult = 1f;
+        public static float speedMult = 1f;
+        public static float hpMultPerPlayer = 0.3f;
 
         private List<NemesisCard> remainingCards;
         public bool voidClearedSuccessfully;
@@ -210,6 +216,35 @@ namespace Starstorm2Unofficial.Cores.NemesisInvasion.Components
                                 GrantItems(resultMaster.inventory, list, 3, 9);
                                 GrantItems(resultMaster.inventory, list2, 2, 4);
                                 GrantItems(resultMaster.inventory, list3, 1, 1);
+                            }
+
+                            //There's no vanilla ReduceHP item, so dont do anything if HPMult < 1
+                            float desiredHPMult = NemesisInvasionManager.hpMult;
+                            if (scaleHPWithPlayercount && Run.instance)
+                            {
+                                desiredHPMult *= 1f + NemesisInvasionManager.hpMultPerPlayer * Mathf.Max(0, Run.instance.participatingPlayerCount - 1);
+                            }
+                            if (desiredHPMult > 1f)
+                            {
+                                int boostHPCount = Mathf.FloorToInt((desiredHPMult - 1f) / 0.1f);
+                                resultMaster.inventory.GiveItem(RoR2Content.Items.BoostHp, boostHPCount);
+                            }
+
+                            //There's no vanilla ReduceDamage item, so dont do anything if DamageMult < 1
+                            float desiredDamageMult = NemesisInvasionManager.damageMult;
+                            if (desiredDamageMult > 1f)
+                            {
+                                int boostDamageCount = Mathf.FloorToInt((desiredDamageMult - 1f) / 0.1f);
+                                resultMaster.inventory.GiveItem(RoR2Content.Items.BoostDamage, boostDamageCount);
+                            }
+
+                            //There's no vanilla ReduceSpeed item, so dont do anything if SpeedMult < 1
+                            float desiredSpeedMult = NemesisInvasionManager.speedMult;
+                            if (desiredSpeedMult > 1f)
+                            {
+                                //No Vanilla BoostSpeed item, so give Hooves instead, hence the 0.14
+                                int boostSpeedCount = Mathf.FloorToInt((desiredDamageMult - 1f) / 0.14f);
+                                resultMaster.inventory.GiveItem(RoR2Content.Items.Hoof, boostSpeedCount);
                             }
                         }
 

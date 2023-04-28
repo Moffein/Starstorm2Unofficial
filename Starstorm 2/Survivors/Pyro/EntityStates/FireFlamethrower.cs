@@ -76,7 +76,7 @@ namespace EntityStates.SS2UStates.Pyro
 					procCoefficient = FireFlamethrower.procCoefficient,
 					maxDistance = FireFlamethrower.maxDistance,
 					smartCollision = true,
-					damageType = (heatController && heatController.IsHighHeat()? DamageType.IgniteOnHit : DamageType.Generic)
+					damageType = (heatController && heatController.IsHighHeat() && flameController && flameController.CheckBurn()? DamageType.IgniteOnHit : DamageType.Generic)
 				}.Fire();
 				heatController.AddHeatAuthority(FireFlamethrower.heatFractionPerTick);
 

@@ -124,6 +124,27 @@ namespace Starstorm2Unofficial.Modules
                             true,
                             "Enables gameplay changes related to the Void Fields hidden realm. Set to false to make Void Fields behave as it does in vanilla RoR2. Note that some unlocks will be unavailable if this is disabled.");
 
+            Cores.NemesisInvasion.Components.NemesisInvasionManager.scaleHPWithPlayercount = StarstormPlugin.instance.Config.Bind("Starstorm 2 :: Void Fields changes",
+                            "Nemesis Invasion - Scale HP with Playercount",
+                            true,
+                            "Nemesis Bosses gain extra HP per connected player.").Value;
+
+            Cores.NemesisInvasion.Components.NemesisInvasionManager.hpMult = StarstormPlugin.instance.Config.Bind("Starstorm 2 :: Void Fields changes",
+                            "Nemesis Invasion - HP Multiplier",
+                            1f,
+                            "Multiplies Nemesis Boss HP. Stacks multiplicatively with Playercount HP Scaling. Must be >= 1.0, and a multiple of 0.1 (will round downwards to the nearest multiple otherwise)").Value;
+
+            Cores.NemesisInvasion.Components.NemesisInvasionManager.damageMult = StarstormPlugin.instance.Config.Bind("Starstorm 2 :: Void Fields changes",
+                            "Nemesis Invasion - Damage Multiplier",
+                            1f,
+                            "Multiplies Nemesis Boss damage. Must be >= 1.0, and a multiple of 0.1 (will round downwards to the nearest multiple otherwise)").Value;
+
+            Cores.NemesisInvasion.Components.NemesisInvasionManager.damageMult = StarstormPlugin.instance.Config.Bind("Starstorm 2 :: Void Fields changes",
+                            "Nemesis Invasion - Speed Multiplier",
+                            1f,
+                            "Multiplies Nemesis Boss movement speed. Must be >= 1.0, and a multiple of 0.14 (will round downwards to the nearest multiple otherwise)").Value;
+
+
             EnableTyphoon =
                 StarstormPlugin.instance.Config.Bind("Starstorm 2 :: Typhoon",
                             "Enabled",

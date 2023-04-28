@@ -19,6 +19,22 @@ namespace Starstorm2Unofficial.Survivors.Pyro.Components
         private float flamethrowerTimer;    //timer before flamethrower effect is destroyed
         private bool firing;
 
+        private int shotCount = 0;
+        private int shotsToBurn = 2;
+
+        //Used to check if the flamethrower should burn.
+        public bool CheckBurn()
+        {
+            bool shouldBurn = false;
+            shotCount++;
+            if (shotCount >= shotsToBurn)
+            {
+                shotCount = 0;
+                shouldBurn = true;
+            }
+            return shouldBurn;
+        }
+
         private void Awake()
         {
             characterBody = base.GetComponent<CharacterBody>();
