@@ -17,6 +17,14 @@ namespace Starstorm2Unofficial.Cores.NemesisInvasion
     public class NemesisInvasionCore
     {
         public static List<BodyIndex> prioritizePlayersList = new List<BodyIndex>();
+        public static ItemDef NemesisMarkerItem;
+
+        public static float hpMult = 1f;
+        public static float damageMult = 1f;
+        public static float speedMult = 1f;
+        public static float hpMultPerPlayer = 0.3f;
+        public static float bonusArmor = 0f;
+        public static bool scaleHPWithPlayercount = true;
 
         public NemesisInvasionCore()
         {
@@ -25,9 +33,77 @@ namespace Starstorm2Unofficial.Cores.NemesisInvasion
             LanguageAPI.Add("NEMESIS_MODE_ACTIVE_WARNING", "<style=cIsHealth>An unnatural force emanates from the void...</style>");
             LanguageAPI.Add("NEMESIS_MODE_DEACTIVATED", "<style=cWorldEvent>The void's influence fades...</style>");
 
+            BuildNemesisItem();
+
             RoR2.RoR2Application.onLoad += NemforcerMinibossCompat;
             RoR2.RoR2Application.onLoad += BlacklistItemsFromNemesisInvader;
             On.RoR2.CharacterAI.BaseAI.UpdateTargets += NemesisInvasionCore.AttemptTargetPlayer;
+        }
+
+        //TODO: Move this to Items section if I ever get around to doing them. (probably not)
+        private void BuildNemesisItem()
+        {
+            NemesisMarkerItem = ScriptableObject.CreateInstance<ItemDef>();
+            NemesisMarkerItem.name = "SS2UNemesisMarkerItem";
+            NemesisMarkerItem.deprecatedTier = ItemTier.NoTier;
+            NemesisMarkerItem.nameToken = "SS2UNemesisMarkerItem";
+            NemesisMarkerItem.pickupToken = "Applies Nemesis Invader stat boosts.";
+            NemesisMarkerItem.descriptionToken = "Applies Nemesis Invader stat boosts.";
+            NemesisMarkerItem.tags = new[]
+            {
+                ItemTag.WorldUnique,
+                ItemTag.BrotherBlacklist,
+                ItemTag.CannotSteal
+            };
+            (NemesisMarkerItem as ScriptableObject).name = "SS2UNemesisMarkerItem";
+            ItemDisplayRule[] idr = new ItemDisplayRule[0];
+            ItemAPI.Add(new CustomItem(NemesisMarkerItem, idr)); //TODO: Make this use the ContentPack instead.
+
+            R2API.RecalculateStatsAPI.GetStatCoefficients += (sender, args) =>
+            {
+                if (sender.inventory && sender.inventory.GetItemCount(NemesisMarkerItem) > 0)
+                {
+                    float desiredHPMult = 1f;
+                    if (scaleHPWithPlayercount)
+                    {
+                        desiredHPMult += hpMultPerPlayer * Mathf.Max(0, Run.instance.participatingPlayerCount - 1);
+                    }
+                    desiredHPMult *= hpMult;
+                    if (desiredHPMult > 1f)
+                    {
+                        args.healthMultAdd += desiredHPMult - 1f;
+                    }
+
+                    if (damageMult > 1f)
+                    {
+                        args.damageMultAdd += damageMult - 1f;
+                    }
+
+                    if (speedMult > 1f)
+                    {
+                        args.moveSpeedMultAdd += speedMult - 1f;
+                    }
+
+                    args.armorAdd += bonusArmor;
+                }
+            };
+
+            On.RoR2.HealthComponent.TakeDamage += (orig, self, damageInfo) =>
+            {
+                if (NetworkServer.active)
+                {
+                    if (self.body && self.body.inventory && self.body.inventory.GetItemCount(NemesisMarkerItem) > 0)
+                    {
+                        if (damageInfo.damageType.HasFlag(DamageType.FallDamage))
+                        {
+                            damageInfo.damage = 0f;
+                            damageInfo.rejected = true;
+                        }
+                    }
+                }
+
+                orig(self, damageInfo);
+            };
         }
 
         private void NemforcerMinibossCompat()
@@ -36,7 +112,7 @@ namespace Starstorm2Unofficial.Cores.NemesisInvasion
             if (masterPrefab)
             {
                 Debug.Log("Starstorm 2 Unofficial: Adding Nemforcer Miniboss to Nemesis invader list.");
-                AddNemesisBoss(masterPrefab, null, "ShinyPearl", true, true);
+                AddNemesisBoss(masterPrefab, null, string.Empty, true, true);
 
                 CharacterMaster cm = masterPrefab.GetComponent<CharacterMaster>();
                 if (cm && cm.bodyPrefab)
@@ -44,16 +120,21 @@ namespace Starstorm2Unofficial.Cores.NemesisInvasion
                     CharacterBody cb = cm.bodyPrefab.GetComponent<CharacterBody>();
                     if (cb)
                     {
-                        cb.baseMaxHealth = 3200f;
-                        cb.levelMaxHealth = 960f;
+                        cb.baseMaxHealth = 6000f;
+                        cb.levelMaxHealth = 1800f;
 
-                        cb.baseDamage = 4f;
-                        cb.levelDamage = 0.8f;
+                        cb.baseDamage = 4.5f;
+                        cb.levelDamage = 0.9f;
 
                         cb.baseRegen = 0f;
                         cb.levelRegen = 0f;
 
                         cb.isChampion = true;
+
+                        cb.bodyFlags |= CharacterBody.BodyFlags.IgnoreFallDamage;
+                        cb.bodyFlags |= CharacterBody.BodyFlags.OverheatImmune;
+                        cb.bodyFlags |= CharacterBody.BodyFlags.Void;
+                        cb.bodyFlags |= CharacterBody.BodyFlags.ImmuneToVoidDeath;
 
                         BodyIndex bi = BodyCatalog.FindBodyIndex(cb);
                         if (bi != BodyIndex.None)

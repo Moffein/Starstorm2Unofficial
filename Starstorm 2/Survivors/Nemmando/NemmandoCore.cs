@@ -257,13 +257,18 @@ namespace Starstorm2Unofficial.Survivors.Nemmando
             bossBodyPrefab = PrefabAPI.InstantiateClone(bodyPrefab, "SS2UNemmandoMonsterBody", true);
 
             var body = bossBodyPrefab.GetComponent<CharacterBody>();
-            body.baseMaxHealth = 3200f;
-            body.levelMaxHealth =  960f;
+            body.baseMaxHealth = 6000f;
+            body.levelMaxHealth =  1800f;
             body.baseRegen = 0;
             body.levelRegen = 0;
             body.baseDamage = 3f;
             body.levelDamage = 0.6f;
             body.isChampion = true;
+
+            body.bodyFlags |= CharacterBody.BodyFlags.IgnoreFallDamage;
+            body.bodyFlags |= CharacterBody.BodyFlags.OverheatImmune;
+            body.bodyFlags |= CharacterBody.BodyFlags.Void;
+            body.bodyFlags |= CharacterBody.BodyFlags.ImmuneToVoidDeath;
 
             R2API.ItemAPI.DoNotAutoIDRSFor(bossBodyPrefab);
 
@@ -391,7 +396,7 @@ namespace Starstorm2Unofficial.Survivors.Nemmando
                 false,
                 null);
 
-            NemesisInvasionCore.AddNemesisBoss(bossMasterPrefab, null, "ShinyPearl", true, true); //Replace if Stirring Soul ever gets fixed
+            NemesisInvasionCore.AddNemesisBoss(bossMasterPrefab, null, string.Empty, true, true); //Replace if Stirring Soul ever gets fixed
         }
 
         internal override void InitializeUnlockables()
