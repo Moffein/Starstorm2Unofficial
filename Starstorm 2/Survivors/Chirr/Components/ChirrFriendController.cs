@@ -25,6 +25,8 @@ namespace Starstorm2Unofficial.Survivors.Chirr.Components
         public static GameObject indicatorReadyToBefriendPrefab;
         public static GameObject indicatorFriendPrefab;
 
+        public static bool allowBefriendNemesis = false;
+
         public static Dictionary<BodyIndex, float> bodyDamageValueOverrides = new Dictionary<BodyIndex, float>();
 
         public static void AddBodyDamageValueOverride(BodyIndex bodyIndex, float value)
@@ -456,7 +458,13 @@ namespace Starstorm2Unofficial.Survivors.Chirr.Components
                         bool isAlreadyFriended = hbBody.HasBuff(BuffCore.chirrFriendBuff) || hbBody.HasBuff(BuffCore.chirrSelfBuff);
                         bool isMasterless = hbBody.bodyFlags.HasFlag(CharacterBody.BodyFlags.Masterless);
 
-                        if (!isPlayerControlled && !isMasterless && !isDecay && !isDestroy && !isAlreadyFriended && (((!isChampion && !isBoss) || canBefriendChampion) || (hbBody.bodyIndex == EnemyCore.brotherHurtIndex && (canBefriendChampion || HasLunarTrinket()))) && !isBlacklisted)
+                        bool isNemesis = false;
+                        if (hbBody.inventory)
+                        {
+                            isNemesis = hbBody.inventory.GetItemCount(Starstorm2Unofficial.Cores.NemesisInvasion.NemesisInvasionCore.NemesisMarkerItem) > 0;
+                        }
+
+                        if (!isPlayerControlled && !isMasterless && !isDecay && !isDestroy && !isAlreadyFriended && (((!isChampion && !isBoss) || canBefriendChampion) || (hbBody.bodyIndex == EnemyCore.brotherHurtIndex && (canBefriendChampion || HasLunarTrinket()))) && !isBlacklisted && !(isNemesis && !allowBefriendNemesis))
                         {
                             validTargets.Add(hb);
                         }
