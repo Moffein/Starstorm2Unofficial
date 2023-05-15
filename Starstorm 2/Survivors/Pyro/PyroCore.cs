@@ -16,6 +16,8 @@ using Starstorm2Unofficial.Survivors.Pyro.Components.Crosshair;
 using RoR2.Projectile;
 using Starstorm2Unofficial.Survivors.Pyro.Components.Projectile;
 using RoR2.CharacterAI;
+using HG;
+using RoR2.ContentManagement;
 
 namespace Starstorm2Unofficial.Survivors.Pyro
 {
@@ -50,6 +52,7 @@ namespace Starstorm2Unofficial.Survivors.Pyro
 
             RegisterStates();
             SetUpSkills();
+            RoR2.ContentManagement.ContentManager.onContentPacksAssigned += LateSetup;
             PyroSkins.RegisterSkins();
             CreateDoppelganger();
 
@@ -63,6 +66,11 @@ namespace Starstorm2Unofficial.Survivors.Pyro
             BuildFlaregunScepterProjectile(sound);
             BuildSuppressiveFireProjectile();
             Airblast.reflectSound = Modules.Assets.CreateNetworkSoundEventDef("Play_captain_drone_zap");
+        }
+
+        private void LateSetup(ReadOnlyArray<ReadOnlyContentPack> obj)
+        {
+            PyroItemDisplays.RegisterDisplays();
         }
 
         private void BuildSuppressiveFireProjectile()

@@ -88,6 +88,7 @@ namespace Starstorm2Unofficial.Survivors.Chirr
             RegisterProjectiles();
             RegisterStates();
             SetUpSkills();
+            RoR2.ContentManagement.ContentManager.onContentPacksAssigned += LateSetup;
             CreateDoppelganger();
 
             survivorDef = Modules.Prefabs.RegisterNewSurvivor(chirrPrefab, Cores.PrefabCore.CreateDisplayPrefab("ChirrDisplay", chirrPrefab), Color.green, "SS2UCHIRR", 40.2f);
@@ -120,6 +121,10 @@ namespace Starstorm2Unofficial.Survivors.Chirr
                     }
                 }
             };
+        }
+        private void LateSetup(HG.ReadOnlyArray<RoR2.ContentManagement.ReadOnlyContentPack> obj)
+        {
+            ChirrItemDisplays.RegisterDisplays();
         }
 
         private void GlobalEventManager_onCharacterDeathGlobal(DamageReport report)

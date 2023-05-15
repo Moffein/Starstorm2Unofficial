@@ -87,6 +87,7 @@
     <Compile Include="Modules\Files.cs" />
     <Compile Include="Modules\SoundBanks.cs" />
     <Compile Include="Survivors\Chirr\BefriendSkillDef.cs" />
+    <Compile Include="Survivors\Chirr\ChirrItemDisplays.cs" />
     <Compile Include="Survivors\Chirr\ChirrSkins.cs" />
     <Compile Include="Survivors\Chirr\Components\ChirrFriendController.cs" />
     <Compile Include="Survivors\Chirr\Components\ChirrLeashSkillOverrideController.cs" />
@@ -129,6 +130,7 @@
     <Compile Include="Components\NemesisMusicComponent.cs" />
     <Compile Include="Components\NemesisMusicComponentMaster.cs" />
     <Compile Include="Survivors\Executioner\EntityStates\SpecialScepter.cs" />
+    <Compile Include="Survivors\Executioner\ExecutionerItemDisplays.cs" />
     <Compile Include="Survivors\Nemmando\Achievements\NemmandoKillSelfAchievement.cs" />
     <Compile Include="Survivors\Nemmando\Achievements\NemmandoUnlockAchievement.cs" />
     <Compile Include="Survivors\Nemmando\Components\NemmandoAnimationEvents.cs" />
@@ -251,6 +253,7 @@
     <Compile Include="Modules\States.cs" />
     <Compile Include="Survivors\Executioner\ExecutionerCore.cs" />
     <Compile Include="Survivors\Nemmando\NemmandoCore.cs" />
+    <Compile Include="Survivors\Nemmando\NemmandoItemDisplays.cs" />
     <Compile Include="Survivors\Nucleator\Components\Crosshair\NucleatorCrosshairController.cs" />
     <Compile Include="Survivors\Nucleator\Components\NucleatorChargeComponent.cs" />
     <Compile Include="Survivors\Nucleator\Components\Projectile\PrimaryGhostScaleOverDistance.cs" />
@@ -275,6 +278,7 @@
     <Compile Include="StarstormPlugin.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="StaticValues.cs" />
+    <Compile Include="Survivors\Nucleator\NucleatorItemDisplays.cs" />
     <Compile Include="Survivors\Nucleator\NucleatorProjectiles.cs" />
     <Compile Include="Survivors\Pyro\Components\Crosshair\PyroCrosshairController.cs" />
     <Compile Include="Survivors\Pyro\Components\FlamethrowerController.cs" />
@@ -287,6 +291,7 @@
     <Compile Include="Survivors\Pyro\EntityStates\Flaregun.cs" />
     <Compile Include="Survivors\Pyro\EntityStates\SuppressiveFire.cs" />
     <Compile Include="Survivors\Pyro\HeatSkillDef.cs" />
+    <Compile Include="Survivors\Pyro\PyroItemDisplays.cs" />
     <Compile Include="Survivors\Pyro\PyroSkins.cs" />
     <Compile Include="Survivors\Pyro\PyroCore.cs" />
   </ItemGroup>

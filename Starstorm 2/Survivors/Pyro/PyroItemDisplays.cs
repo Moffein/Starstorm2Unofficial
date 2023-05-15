@@ -1,112 +1,55 @@
-﻿using RoR2;
-using RoR2.ExpansionManagement;
-using Starstorm2Unofficial.Cores;
-using Starstorm2Unofficial.Survivors.Chirr;
+﻿using UnityEngine;
+using RoR2;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using UnityEngine;
+using Starstorm2Unofficial.Cores;
 
-namespace Starstorm2Unofficial.Modules
+namespace Starstorm2Unofficial.Survivors.Pyro
 {
-    internal static class ItemDisplays
+    internal class PyroItemDisplays
     {
-        private static Dictionary<string, GameObject> itemDisplayPrefabs = new Dictionary<string, GameObject>();
+        public static ItemDisplayRuleSet itemDisplayRuleSet;
 
-        internal static void PopulateDisplays()
+        public static List<ItemDisplayRuleSet.KeyAssetRuleGroup> itemRules;
+
+        public static void RegisterDisplays()
         {
-            PopulateFromBody("Commando");
-            PopulateFromBody("Croco");
-            PopulateFromBody("Mage");
-        }
+            GameObject bodyPrefab = PyroCore.bodyPrefab;
+            GameObject model = bodyPrefab.GetComponentInChildren<ModelLocator>().modelTransform.gameObject;
+            CharacterModel characterModel = model.GetComponent<CharacterModel>();
 
-        private static void PopulateFromBody(string bodyName)
-        {
-            ItemDisplayRuleSet itemDisplayRuleSet = LegacyResourcesAPI.Load<GameObject>("Prefabs/CharacterBodies/" + bodyName + "Body").GetComponent<ModelLocator>().modelTransform.GetComponent<CharacterModel>().itemDisplayRuleSet;
+            itemDisplayRuleSet = ScriptableObject.CreateInstance<ItemDisplayRuleSet>();
+            itemRules = new List<ItemDisplayRuleSet.KeyAssetRuleGroup>();
 
-            ItemDisplayRuleSet.KeyAssetRuleGroup[] item = itemDisplayRuleSet.keyAssetRuleGroups;
-
-            for (int i = 0; i < item.Length; i++)
-            {
-                ItemDisplayRule[] rules = item[i].displayRuleGroup.rules;
-
-                for (int j = 0; j < rules.Length; j++)
-                {
-                    GameObject followerPrefab = rules[j].followerPrefab;
-                    if (followerPrefab)
-                    {
-                        string name = followerPrefab.name;
-                        string key = name?.ToLower();
-                        if (!itemDisplayPrefabs.ContainsKey(key))
-                        {
-                            itemDisplayPrefabs[key] = followerPrefab;
-                        }
-                    }
-                }
-            }
-        }
-
-        internal static GameObject LoadDisplay(string name)
-        {
-            if (itemDisplayPrefabs.ContainsKey(name.ToLower()))
-            {
-                if (itemDisplayPrefabs[name.ToLower()]) return itemDisplayPrefabs[name.ToLower()];
-            }
-
-            return null;
-        }
-
-        internal static void GatherDisplayNames()
-        {
-            StringBuilder sb = HG.StringBuilderPool.RentStringBuilder();
-
-            foreach (var bodyPrefab in BodyCatalog.bodyPrefabs)
-            {
-                ModelLocator modelLocator = bodyPrefab.GetComponent<ModelLocator>();
-                if (!modelLocator) continue;
-                Transform modelTransform = modelLocator.modelTransform;
-                if (!modelTransform) continue;
-                CharacterModel characterModel = modelTransform.GetComponent<CharacterModel>();
-                if (!characterModel) continue;
-                ItemDisplayRuleSet itemDisplayRuleSet = characterModel.itemDisplayRuleSet;
-                if (!itemDisplayRuleSet) continue;
-                ItemDisplayRuleSet.KeyAssetRuleGroup[] item = itemDisplayRuleSet.keyAssetRuleGroups;
-                if (item.Length == 0) continue;
-                sb.AppendLine("====Body: " + bodyPrefab.name);
-
-                for (int i = 0; i < item.Length; i++)
-                {
-                    ItemDisplayRule[] rules = item[i].displayRuleGroup.rules;
-                    for (int j = 0; j < rules.Length; j++)
-                    {
-                        ItemDisplayRule itemDisplayRule = rules[j];
-                        GameObject followerPrefab = itemDisplayRule.followerPrefab;
-                        if (followerPrefab)
-                        {
-                            string name = followerPrefab.name;
-                            string key = name?.ToLower();
-                            if (!itemDisplayPrefabs.ContainsKey(key))
-                            {
-                                itemDisplayPrefabs[key] = followerPrefab;
-                                sb.AppendLine(followerPrefab.name);
-                            }
-                        }
-                    }
-                }
-            }
-            Debug.Log(sb.ToString());
-            HG.StringBuilderPool.ReturnStringBuilder(sb);
-        }
-
-
-
-
-        //This isn't used for anything, unless you want to modify it for that, this is for copypasting
-        //For the ones with group displays, that's a pick and choose for some, like Bear vs BearSit, and the lighting and thorns shit
-        //special ones have a note above them,
-        public static void DefaultItemDisplays()
-        {
             /*
+            Base
+            Root
+            Model
+            Head
+            HeadCenter
+            MainHurtbox
+            Muzzle
+            FootL
+            FootR
+            ThighL
+            CalfL
+            ThighR
+            CalfR
+            Stomach
+            Pelvis
+            Chest
+            ClavicleL
+            ShoulderL
+            ElbowLHandL
+            ClavicleR
+            ShoulderR
+            ElbowR
+            HandR
+            Head = Foot.R*/
+            //Erroneous extra transform pair, is this gonna be an issue?
+            #region DisplayRules
+            //itemRules.Add(ItemDisplayCore.CreateGenericDisplayRule(RoR2Content.Items.Syringe, "DisplaySyringe", "Head", Vector3.zero, Vector3.zero, Vector3.one));
+            //itemRules.Add(ItemDisplayCore.CreateGenericDisplayRule(RoR2Content.Items.Syringe, "DisplaySyringeCluster", "Head", Vector3.zero, Vector3.zero, Vector3.one));
+            //IDRS NOTE: [SYRINGE] = Choose one, but you might just only need SyringeCluster
             //itemRules.Add(ItemDisplayCore.CreateGenericDisplayRule(RoR2Content.Items.Syringe, "DisplaySyringe", "Head", Vector3.zero, Vector3.zero, Vector3.one));
             //itemRules.Add(ItemDisplayCore.CreateGenericDisplayRule(RoR2Content.Items.Syringe, "DisplaySyringeCluster", "Head", Vector3.zero, Vector3.zero, Vector3.one));
             //IDRS NOTE: [SYRINGE] = Choose one, but you might just only need SyringeCluster
@@ -122,9 +65,9 @@ namespace Starstorm2Unofficial.Modules
                             ruleType = ItemDisplayRuleType.ParentedPrefab,
                             followerPrefab = ItemDisplayCore.LoadDisplay("DisplaySyringe"),
                             childName = "Head",
-							localPos = Vector3.zero,
-							localAngles = Vector3.zero,
-							localScale = Vector3.one,
+                            localPos = Vector3.zero,
+                            localAngles = Vector3.zero,
+                            localScale = Vector3.one,
                             limbMask = LimbFlags.None
                         },
                         new ItemDisplayRule
@@ -132,9 +75,9 @@ namespace Starstorm2Unofficial.Modules
                             ruleType = ItemDisplayRuleType.ParentedPrefab,
                             followerPrefab = ItemDisplayCore.LoadDisplay("DisplaySyringeCluster"),
                             childName = "Head",
-							localPos = Vector3.zero,
-							localAngles = Vector3.zero,
-							localScale = Vector3.one,
+                            localPos = Vector3.zero,
+                            localAngles = Vector3.zero,
+                            localScale = Vector3.one,
                             limbMask = LimbFlags.None
                         }
                     }
@@ -155,9 +98,9 @@ namespace Starstorm2Unofficial.Modules
                             ruleType = ItemDisplayRuleType.ParentedPrefab,
                             followerPrefab = ItemDisplayCore.LoadDisplay("DisplayBear"),
                             childName = "Head",
-							localPos = Vector3.zero,
-							localAngles = Vector3.zero,
-							localScale = Vector3.one,
+                            localPos = Vector3.zero,
+                            localAngles = Vector3.zero,
+                            localScale = Vector3.one,
                             limbMask = LimbFlags.None
                         },
                         new ItemDisplayRule
@@ -165,9 +108,9 @@ namespace Starstorm2Unofficial.Modules
                             ruleType = ItemDisplayRuleType.ParentedPrefab,
                             followerPrefab = ItemDisplayCore.LoadDisplay("DisplayBearSit"),
                             childName = "Head",
-							localPos = Vector3.zero,
-							localAngles = Vector3.zero,
-							localScale = Vector3.one,
+                            localPos = Vector3.zero,
+                            localAngles = Vector3.zero,
+                            localScale = Vector3.one,
                             limbMask = LimbFlags.None
                         }
                     }
@@ -192,9 +135,9 @@ namespace Starstorm2Unofficial.Modules
                             ruleType = ItemDisplayRuleType.ParentedPrefab,
                             followerPrefab = ItemDisplayCore.LoadDisplay("DisplayToothNecklaceDecal"),
                             childName = "Head",
-							localPos = Vector3.zero,
-							localAngles = Vector3.zero,
-							localScale = Vector3.one,
+                            localPos = Vector3.zero,
+                            localAngles = Vector3.zero,
+                            localScale = Vector3.one,
                             limbMask = LimbFlags.None
                         },
                         new ItemDisplayRule
@@ -202,9 +145,9 @@ namespace Starstorm2Unofficial.Modules
                             ruleType = ItemDisplayRuleType.ParentedPrefab,
                             followerPrefab = ItemDisplayCore.LoadDisplay("DisplayToothMeshLarge"),
                             childName = "Head",
-							localPos = Vector3.zero,
-							localAngles = Vector3.zero,
-							localScale = Vector3.one,
+                            localPos = Vector3.zero,
+                            localAngles = Vector3.zero,
+                            localScale = Vector3.one,
                             limbMask = LimbFlags.None
                         },
                         new ItemDisplayRule
@@ -212,9 +155,9 @@ namespace Starstorm2Unofficial.Modules
                             ruleType = ItemDisplayRuleType.ParentedPrefab,
                             followerPrefab = ItemDisplayCore.LoadDisplay("DisplayToothMeshSmall1"),
                             childName = "Head",
-							localPos = Vector3.zero,
-							localAngles = Vector3.zero,
-							localScale = Vector3.one,
+                            localPos = Vector3.zero,
+                            localAngles = Vector3.zero,
+                            localScale = Vector3.one,
                             limbMask = LimbFlags.None
                         },
                         new ItemDisplayRule
@@ -222,9 +165,9 @@ namespace Starstorm2Unofficial.Modules
                             ruleType = ItemDisplayRuleType.ParentedPrefab,
                             followerPrefab = ItemDisplayCore.LoadDisplay("DisplayToothMeshSmall1"),
                             childName = "Head",
-							localPos = Vector3.zero,
-							localAngles = Vector3.zero,
-							localScale = Vector3.one,
+                            localPos = Vector3.zero,
+                            localAngles = Vector3.zero,
+                            localScale = Vector3.one,
                             limbMask = LimbFlags.None
                         },
                         new ItemDisplayRule
@@ -232,9 +175,9 @@ namespace Starstorm2Unofficial.Modules
                             ruleType = ItemDisplayRuleType.ParentedPrefab,
                             followerPrefab = ItemDisplayCore.LoadDisplay("DisplayToothMeshSmall2"),
                             childName = "Head",
-							localPos = Vector3.zero,
-							localAngles = Vector3.zero,
-							localScale = Vector3.one,
+                            localPos = Vector3.zero,
+                            localAngles = Vector3.zero,
+                            localScale = Vector3.one,
                             limbMask = LimbFlags.None
                         },
                         new ItemDisplayRule
@@ -242,9 +185,9 @@ namespace Starstorm2Unofficial.Modules
                             ruleType = ItemDisplayRuleType.ParentedPrefab,
                             followerPrefab = ItemDisplayCore.LoadDisplay("DisplayToothMeshSmall2"),
                             childName = "Head",
-							localPos = Vector3.zero,
-							localAngles = Vector3.zero,
-							localScale = Vector3.one,
+                            localPos = Vector3.zero,
+                            localAngles = Vector3.zero,
+                            localScale = Vector3.one,
                             limbMask = LimbFlags.None
                         },
                     }
@@ -287,7 +230,7 @@ namespace Starstorm2Unofficial.Modules
             itemRules.Add(ItemDisplayCore.CreateGenericDisplayRule(RoR2Content.Items.GoldOnHit, "DisplayBoneCrown", "Head", Vector3.zero, Vector3.zero, Vector3.one));
             itemRules.Add(ItemDisplayCore.CreateGenericDisplayRule(RoR2Content.Items.WarCryOnMultiKill, "DisplayPauldron", "Head", Vector3.zero, Vector3.zero, Vector3.one));
             itemRules.Add(ItemDisplayCore.CreateZMirroredDisplayRule(RoR2Content.Items.ShieldOnly, "DisplayShieldBug", "Head", Vector3.zero, Vector3.zero, Vector3.one));
-            itemRules.Add(ItemDisplayCore.CreateGenericDisplayRule(RoR2Content.Items.AlienHead, "DisplayAlienHead", "Head", Vector3.zero, Vector3.zero, Vector3.one));
+            itemRules.Add(ItemDisplayCore.CreateGenericDisplayRule(RoR2Content.Items.AlienHead, "DisplayAlienHead", "Head", new Vector3(-0.00385F, 0.69388F, -0.05922F), new Vector3(316.6957F, 0.78372F, 356.7524F), new Vector3(8.15906F, 8.15906F, 8.15906F)));
             itemRules.Add(ItemDisplayCore.CreateFollowerDisplayRule(RoR2Content.Items.Talisman, "DisplayTalisman", Vector3.zero, Vector3.zero, Vector3.one));
             itemRules.Add(ItemDisplayCore.CreateGenericDisplayRule(RoR2Content.Items.Knurl, "DisplayKnurl", "Head", Vector3.zero, Vector3.zero, Vector3.one));
             itemRules.Add(ItemDisplayCore.CreateGenericDisplayRule(RoR2Content.Items.BeetleGland, "DisplayBeetleGland", "Head", Vector3.zero, Vector3.zero, Vector3.one));
@@ -316,9 +259,9 @@ namespace Starstorm2Unofficial.Modules
                             ruleType = ItemDisplayRuleType.ParentedPrefab,
                             followerPrefab = ItemDisplayCore.LoadDisplay("DisplayAfterburner"),
                             childName = "Head",
-							localPos = Vector3.zero,
-							localAngles = Vector3.zero,
-							localScale = Vector3.one,
+                            localPos = Vector3.zero,
+                            localAngles = Vector3.zero,
+                            localScale = Vector3.one,
                             limbMask = LimbFlags.None
                         },
                         new ItemDisplayRule
@@ -326,15 +269,15 @@ namespace Starstorm2Unofficial.Modules
                             ruleType = ItemDisplayRuleType.ParentedPrefab,
                             followerPrefab = ItemDisplayCore.LoadDisplay("DisplayAfterburnerShoulderRing"),
                             childName = "Head",
-							localPos = Vector3.zero,
-							localAngles = Vector3.zero,
-							localScale = Vector3.one,
+                            localPos = Vector3.zero,
+                            localAngles = Vector3.zero,
+                            localScale = Vector3.one,
                             limbMask = LimbFlags.None
                         }
                     }
                 }
             });
-            
+
             itemRules.Add(ItemDisplayCore.CreateGenericDisplayRule(RoR2Content.Items.HeadHunter, "DisplaySkullcrown", "Head", Vector3.zero, Vector3.zero, Vector3.one));
             itemRules.Add(ItemDisplayCore.CreateGenericDisplayRule(RoR2Content.Items.KillEliteFrenzy, "DisplayBrainstalk", "Head", Vector3.zero, Vector3.zero, Vector3.one));
             itemRules.Add(ItemDisplayCore.CreateGenericDisplayRule(RoR2Content.Items.RepeatHeal, "DisplayCorpseflower", "Head", Vector3.zero, Vector3.zero, Vector3.one));
@@ -369,9 +312,9 @@ namespace Starstorm2Unofficial.Modules
                             ruleType = ItemDisplayRuleType.ParentedPrefab,
                             followerPrefab = ItemDisplayCore.LoadDisplay("DisplayRazorwireCoiled"),
                             childName = "Head",
-							localPos = Vector3.zero,
-							localAngles = Vector3.zero,
-							localScale = Vector3.one,
+                            localPos = Vector3.zero,
+                            localAngles = Vector3.zero,
+                            localScale = Vector3.one,
                             limbMask = LimbFlags.None
                         },
                         new ItemDisplayRule
@@ -379,9 +322,9 @@ namespace Starstorm2Unofficial.Modules
                             ruleType = ItemDisplayRuleType.ParentedPrefab,
                             followerPrefab = ItemDisplayCore.LoadDisplay("DisplayRazorwireLeft"),
                             childName = "Head",
-							localPos = Vector3.zero,
-							localAngles = Vector3.zero,
-							localScale = Vector3.one,
+                            localPos = Vector3.zero,
+                            localAngles = Vector3.zero,
+                            localScale = Vector3.one,
                             limbMask = LimbFlags.None
                         },
                         new ItemDisplayRule
@@ -389,9 +332,9 @@ namespace Starstorm2Unofficial.Modules
                             ruleType = ItemDisplayRuleType.ParentedPrefab,
                             followerPrefab = ItemDisplayCore.LoadDisplay("DisplayRazorwireLeftVoidSurvivor"),
                             childName = "Head",
-							localPos = Vector3.zero,
-							localAngles = Vector3.zero,
-							localScale = Vector3.one,
+                            localPos = Vector3.zero,
+                            localAngles = Vector3.zero,
+                            localScale = Vector3.one,
                             limbMask = LimbFlags.None
                         },
                         new ItemDisplayRule
@@ -399,9 +342,9 @@ namespace Starstorm2Unofficial.Modules
                             ruleType = ItemDisplayRuleType.ParentedPrefab,
                             followerPrefab = ItemDisplayCore.LoadDisplay("DisplayRazorwireRight"),
                             childName = "Head",
-							localPos = Vector3.zero,
-							localAngles = Vector3.zero,
-							localScale = Vector3.one,
+                            localPos = Vector3.zero,
+                            localAngles = Vector3.zero,
+                            localScale = Vector3.one,
                             limbMask = LimbFlags.None
                         },
                     }
@@ -422,9 +365,9 @@ namespace Starstorm2Unofficial.Modules
                             ruleType = ItemDisplayRuleType.ParentedPrefab,
                             followerPrefab = ItemDisplayCore.LoadDisplay("DisplaySteakCurved"),
                             childName = "Head",
-							localPos = Vector3.zero,
-							localAngles = Vector3.zero,
-							localScale = Vector3.one,
+                            localPos = Vector3.zero,
+                            localAngles = Vector3.zero,
+                            localScale = Vector3.one,
                             limbMask = LimbFlags.None
                         },
                         new ItemDisplayRule
@@ -432,9 +375,9 @@ namespace Starstorm2Unofficial.Modules
                             ruleType = ItemDisplayRuleType.ParentedPrefab,
                             followerPrefab = ItemDisplayCore.LoadDisplay("DisplaySteakFlat"),
                             childName = "Head",
-							localPos = Vector3.zero,
-							localAngles = Vector3.zero,
-							localScale = Vector3.one,
+                            localPos = Vector3.zero,
+                            localAngles = Vector3.zero,
+                            localScale = Vector3.one,
                             limbMask = LimbFlags.None
                         }
                     }
@@ -464,7 +407,7 @@ namespace Starstorm2Unofficial.Modules
             itemRules.Add(ItemDisplayCore.CreateGenericDisplayRule(RoR2Content.Items.RoboBallBuddy, "DisplayEmpathyChip", "Head", Vector3.zero, Vector3.zero, Vector3.one));
             itemRules.Add(ItemDisplayCore.CreateGenericDisplayRule(RoR2Content.Items.ParentEgg, "DisplayParentEgg", "Head", Vector3.zero, Vector3.zero, Vector3.one));
             //itemRules.Add(ItemDisplayCore.CreateGenericDisplayRule(RoR2Content.Items.SummonedEcho, 
-            
+
             itemRules.Add(ItemDisplayCore.CreateGenericDisplayRule(RoR2Content.Equipment.CommandMissile, "DisplayMissileRack", "Head", Vector3.zero, Vector3.zero, Vector3.one));
             itemRules.Add(ItemDisplayCore.CreateGenericDisplayRule(RoR2Content.Equipment.Fruit, "DisplayFruit", "Head", Vector3.zero, Vector3.zero, Vector3.one));
             itemRules.Add(ItemDisplayCore.CreateFollowerDisplayRule(RoR2Content.Equipment.Meteor, "DisplayMeteor", Vector3.zero, Vector3.zero, Vector3.one));
@@ -477,7 +420,7 @@ namespace Starstorm2Unofficial.Modules
             itemRules.Add(ItemDisplayCore.CreateGenericDisplayRule(RoR2Content.Equipment.DroneBackup, "DisplayRadio", "Head", Vector3.zero, Vector3.zero, Vector3.one));
             itemRules.Add(ItemDisplayCore.CreateGenericDisplayRule(RoR2Content.Equipment.BFG, "DisplayBFG", "Head", Vector3.zero, Vector3.zero, Vector3.one));
             itemRules.Add(ItemDisplayCore.CreateGenericDisplayRule(RoR2Content.Equipment.Jetpack, "DisplayBugWings", "Head", Vector3.zero, Vector3.zero, Vector3.one));
-            
+
             //itemRules.Add(ItemDisplayCore.CreateGenericDisplayRule(RoR2Content.Equipment.Lightning, "DisplayLightningArmLeft", "Head", Vector3.zero, Vector3.zero, Vector3.one));
             //itemRules.Add(ItemDisplayCore.CreateGenericDisplayRule(RoR2Content.Equipment.Lightning, "DisplayLightningArmLeftVoidSurvivor", "Head", Vector3.zero, Vector3.zero, Vector3.one));
             //itemRules.Add(ItemDisplayCore.CreateGenericDisplayRule(RoR2Content.Equipment.Lightning, "DisplayLightningArmRight,Bandit2", "Head", Vector3.zero, Vector3.zero, Vector3.one));
@@ -496,9 +439,9 @@ namespace Starstorm2Unofficial.Modules
                             ruleType = ItemDisplayRuleType.ParentedPrefab,
                             followerPrefab = ItemDisplayCore.LoadDisplay("DisplayLightningArmLeft"),
                             childName = "Head",
-							localPos = Vector3.zero,
-							localAngles = Vector3.zero,
-							localScale = Vector3.one,
+                            localPos = Vector3.zero,
+                            localAngles = Vector3.zero,
+                            localScale = Vector3.one,
                             limbMask = LimbFlags.None
                         },
                         new ItemDisplayRule
@@ -506,9 +449,9 @@ namespace Starstorm2Unofficial.Modules
                             ruleType = ItemDisplayRuleType.ParentedPrefab,
                             followerPrefab = ItemDisplayCore.LoadDisplay("DisplayLightningArmLeftVoidSurvivor"),
                             childName = "Head",
-							localPos = Vector3.zero,
-							localAngles = Vector3.zero,
-							localScale = Vector3.one,
+                            localPos = Vector3.zero,
+                            localAngles = Vector3.zero,
+                            localScale = Vector3.one,
                             limbMask = LimbFlags.None
                         },
                         new ItemDisplayRule
@@ -516,9 +459,9 @@ namespace Starstorm2Unofficial.Modules
                             ruleType = ItemDisplayRuleType.ParentedPrefab,
                             followerPrefab = ItemDisplayCore.LoadDisplay("DisplayLightningArmRight,Bandit2"),
                             childName = "Head",
-							localPos = Vector3.zero,
-							localAngles = Vector3.zero,
-							localScale = Vector3.one,
+                            localPos = Vector3.zero,
+                            localAngles = Vector3.zero,
+                            localScale = Vector3.one,
                             limbMask = LimbFlags.None
                         },
                         new ItemDisplayRule
@@ -526,9 +469,9 @@ namespace Starstorm2Unofficial.Modules
                             ruleType = ItemDisplayRuleType.ParentedPrefab,
                             followerPrefab = ItemDisplayCore.LoadDisplay("DisplayLightningArmRight,Croco"),
                             childName = "Head",
-							localPos = Vector3.zero,
-							localAngles = Vector3.zero,
-							localScale = Vector3.one,
+                            localPos = Vector3.zero,
+                            localAngles = Vector3.zero,
+                            localScale = Vector3.one,
                             limbMask = LimbFlags.None
                         },
                         new ItemDisplayRule
@@ -536,9 +479,9 @@ namespace Starstorm2Unofficial.Modules
                             ruleType = ItemDisplayRuleType.ParentedPrefab,
                             followerPrefab = ItemDisplayCore.LoadDisplay("DisplayLightningArmRight"),
                             childName = "Head",
-							localPos = Vector3.zero,
-							localAngles = Vector3.zero,
-							localScale = Vector3.one,
+                            localPos = Vector3.zero,
+                            localAngles = Vector3.zero,
+                            localScale = Vector3.one,
                             limbMask = LimbFlags.None
                         },
                     }
@@ -588,9 +531,9 @@ namespace Starstorm2Unofficial.Modules
                             ruleType = ItemDisplayRuleType.ParentedPrefab,
                             followerPrefab = ItemDisplayCore.LoadDisplay("DisplayBearVoid"),
                             childName = "Head",
-							localPos = Vector3.zero,
-							localAngles = Vector3.zero,
-							localScale = Vector3.one,
+                            localPos = Vector3.zero,
+                            localAngles = Vector3.zero,
+                            localScale = Vector3.one,
                             limbMask = LimbFlags.None
                         },
                         new ItemDisplayRule
@@ -598,9 +541,9 @@ namespace Starstorm2Unofficial.Modules
                             ruleType = ItemDisplayRuleType.ParentedPrefab,
                             followerPrefab = ItemDisplayCore.LoadDisplay("DisplayBearVoidSit"),
                             childName = "Head",
-							localPos = Vector3.zero,
-							localAngles = Vector3.zero,
-							localScale = Vector3.one,
+                            localPos = Vector3.zero,
+                            localAngles = Vector3.zero,
+                            localScale = Vector3.one,
                             limbMask = LimbFlags.None
                         }
                     }
@@ -646,9 +589,9 @@ namespace Starstorm2Unofficial.Modules
                             ruleType = ItemDisplayRuleType.ParentedPrefab,
                             followerPrefab = ItemDisplayCore.LoadDisplay("DisplaySunHead"),
                             childName = "Head",
-							localPos = Vector3.zero,
-							localAngles = Vector3.zero,
-							localScale = Vector3.one,
+                            localPos = Vector3.zero,
+                            localAngles = Vector3.zero,
+                            localScale = Vector3.one,
                             limbMask = LimbFlags.None
                         },
                         new ItemDisplayRule
@@ -656,9 +599,9 @@ namespace Starstorm2Unofficial.Modules
                             ruleType = ItemDisplayRuleType.ParentedPrefab,
                             followerPrefab = ItemDisplayCore.LoadDisplay("DisplaySunHeadNeck"),
                             childName = "Head",
-							localPos = Vector3.zero,
-							localAngles = Vector3.zero,
-							localScale = Vector3.one,
+                            localPos = Vector3.zero,
+                            localAngles = Vector3.zero,
+                            localScale = Vector3.one,
                             limbMask = LimbFlags.None
                         }
                     }
@@ -689,9 +632,9 @@ namespace Starstorm2Unofficial.Modules
                             ruleType = ItemDisplayRuleType.ParentedPrefab,
                             followerPrefab = ItemDisplayCore.LoadDisplay("DisplayVendingMachine"),
                             childName = "Head",
-							localPos = Vector3.zero,
-							localAngles = Vector3.zero,
-							localScale = Vector3.one,
+                            localPos = Vector3.zero,
+                            localAngles = Vector3.zero,
+                            localScale = Vector3.one,
                             limbMask = LimbFlags.None
                         },
                         new ItemDisplayRule
@@ -699,9 +642,9 @@ namespace Starstorm2Unofficial.Modules
                             ruleType = ItemDisplayRuleType.ParentedPrefab,
                             followerPrefab = ItemDisplayCore.LoadDisplay("DisplayVendingMachine2"),
                             childName = "Head",
-							localPos = Vector3.zero,
-							localAngles = Vector3.zero,
-							localScale = Vector3.one,
+                            localPos = Vector3.zero,
+                            localAngles = Vector3.zero,
+                            localScale = Vector3.one,
                             limbMask = LimbFlags.None
                         }
                     }
@@ -720,9 +663,9 @@ namespace Starstorm2Unofficial.Modules
                             ruleType = ItemDisplayRuleType.ParentedPrefab,
                             followerPrefab = ItemDisplayCore.LoadDisplay("DisplayBlunderbuss"),
                             childName = "Head",
-							localPos = Vector3.zero,
-							localAngles = Vector3.zero,
-							localScale = Vector3.one,
+                            localPos = Vector3.zero,
+                            localAngles = Vector3.zero,
+                            localScale = Vector3.one,
                             limbMask = LimbFlags.None
                         },
                         new ItemDisplayRule
@@ -730,9 +673,9 @@ namespace Starstorm2Unofficial.Modules
                             ruleType = ItemDisplayRuleType.ParentedPrefab,
                             followerPrefab = ItemDisplayCore.LoadDisplay("DisplayTricornGhost"),
                             childName = "Head",
-							localPos = Vector3.zero,
-							localAngles = Vector3.zero,
-							localScale = Vector3.one,
+                            localPos = Vector3.zero,
+                            localAngles = Vector3.zero,
+                            localScale = Vector3.one,
                             limbMask = LimbFlags.None
                         }
                     }
@@ -745,7 +688,16 @@ namespace Starstorm2Unofficial.Modules
             itemRules.Add(ItemDisplayCore.CreateGenericDisplayRule(DLC1Content.Equipment.EliteVoidEquipment, "DisplayAffixVoid", "Head", Vector3.zero, Vector3.zero, Vector3.one));
             //from claymen git
             itemRules.Add(ItemDisplayCore.CreateGenericDisplayRule(DLC1Content.Elites.Earth.eliteEquipmentDef, "DisplayEliteMendingAntlers", "Head", Vector3.zero, Vector3.zero, Vector3.one));
-             */
+            #endregion
+
+
+            ItemDisplayRuleSet.KeyAssetRuleGroup[] item = itemRules.ToArray();
+            itemDisplayRuleSet.keyAssetRuleGroups = item;
+            //itemDisplayRuleSet.GenerateRuntimeValues();
+
+            characterModel.itemDisplayRuleSet = itemDisplayRuleSet;
         }
+
+
     }
 }
