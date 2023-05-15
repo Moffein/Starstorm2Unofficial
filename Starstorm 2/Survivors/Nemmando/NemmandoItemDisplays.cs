@@ -263,7 +263,7 @@ localScale = new Vector3(0.02015F, 0.02015F, 0.02015F),
             //itemRules.Add(ItemDisplayCore.CreateGenericDisplayRule(DLC1Content.Items.DroneWeaponsBoost, 
             //itemRules.Add(ItemDisplayCore.CreateGenericDisplayRule(DLC1Content.Items.DroneWeaponsDisplay1, 
             //itemRules.Add(ItemDisplayCore.CreateGenericDisplayRule(DLC1Content.Items.DroneWeaponsDisplay2, 
-            itemRules.Add(ItemDisplayCore.CreateFollowerDisplayRule(DLC1Content.Items.MinorConstructOnKill, "DisplayDefenseNucleus", Vector3.zero, Vector3.zero, Vector3.one));
+            itemRules.Add(ItemDisplayCore.CreateFollowerDisplayRule(DLC1Content.Items.MinorConstructOnKill, "DisplayDefenseNucleus", new Vector3(0.0006F, -0.00002F, -0.01277F), new Vector3(270F, 0.32262F, 0F), new Vector3(0.4F, 0.4F, 0.4F)));
             itemRules.Add(ItemDisplayCore.CreateGenericDisplayRule(DLC1Content.Items.VoidMegaCrabItem, "DisplayMegaCrabItem", "Chest", new Vector3(0F, -0.00017F, 0.00139F), new Vector3(0F, 0F, 0F), new Vector3(0.00054F, 0.00054F, 0.00054F)));
 
             itemRules.Add(ItemDisplayCore.CreateGenericDisplayRule(DLC1Content.Equipment.Molotov, "DisplayMolotov", "Pelvis", new Vector3(-0.00107F, 0.00036F, -0.00142F), new Vector3(10.22982F, 87.78105F, 153.947F), new Vector3(0.00163F, 0.00163F, 0.00163F)));
@@ -305,7 +305,7 @@ localScale = new Vector3(0.00132F, 0.00132F, 0.00132F),
                             childName = "Gun",
 localPos = new Vector3(-0.00001F, 0.00124F, 0F),
 localAngles = new Vector3(89.44468F, 89.9985F, 204.323F),
-localScale = new Vector3(0.001F, 0.001F, 0.001F),
+localScale = new Vector3(1F, 1F, 1F),
                             limbMask = LimbFlags.None
                         },
                         new ItemDisplayRule
@@ -331,8 +331,17 @@ localScale = new Vector3(0.01089F, 0.01089F, 0.01089F),
 
             itemRules.Add(ItemDisplayCore.CreateGenericDisplayRule(RoR2Content.Items.HealOnCrit, "DisplayScythe", "Sword", new Vector3(-0.00005F, 0.00008F, 0F), new Vector3(86.5349F, 261.7535F, 261.7387F), new Vector3(0.001F, 0.001F, 0.001F)));
             itemRules.Add(ItemDisplayCore.CreateGenericDisplayRule(RoR2Content.Items.LunarSecondaryReplacement, "DisplayBirdClaw", "HandR", new Vector3(0.00141F, -0.0004F, 0.00049F), new Vector3(333.2811F, 351.5399F, 290.5176F), new Vector3(0.00498F, 0.00291F, 0.00619F)));
-            itemRules.Add(ItemDisplayCore.CreateGenericDisplayRule(RoR2Content.Items.LunarSpecialReplacement, "DisplayBirdHeart", "Head", Vector3.zero, Vector3.zero, Vector3.one));
+            itemRules.Add(ItemDisplayCore.CreateFollowerDisplayRule(RoR2Content.Items.LunarSpecialReplacement, "DisplayBirdHeart", new Vector3(-0.00835F, 0.0003F, -0.00748F), new Vector3(0F, 0F, 0F), new Vector3(0.34151F, 0.34151F, 0.34151F)));
             itemRules.Add(ItemDisplayCore.CreateGenericDisplayRule(RoR2Content.Items.ParentEgg, "DisplayParentEgg", "Chest", new Vector3(0F, 0.00038F, -0.00145F), new Vector3(0F, 0F, 0F), new Vector3(0.00037F, 0.00037F, 0.00037F)));
+            itemRules.Add(ItemDisplayCore.CreateGenericDisplayRule(DLC1Content.Items.MoveSpeedOnKill, "DisplayGrappleHook", "Pelvis", new Vector3(0.00053F, -0.00106F, 0.00151F), new Vector3(355.1072F, 2.28489F, 180.1681F), new Vector3(0.00171F, 0.00171F, 0.00171F)));
+            itemRules.Add(ItemDisplayCore.CreateGenericDisplayRule(DLC1Content.Items.HealingPotion, "DisplayHealingPotion", "Pelvis", new Vector3(-0.00165F, -0.00058F, -0.00129F), new Vector3(342.3314F, 182.8015F, 155.542F), new Vector3(0.00042F, 0.00042F, 0.00042F)));
+            //itemRules.Add(ItemDisplayCore.CreateGenericDisplayRule(DLC1Content.Items.HealingPotionConsumed, 
+            itemRules.Add(ItemDisplayCore.CreateGenericDisplayRule(DLC1Content.Items.PermanentDebuffOnHit, "DisplayScorpion", "Chest", new Vector3(0.00003F, 0.00004F, -0.00055F), new Vector3(0F, 0F, 0F), new Vector3(0.01F, 0.01F, 0.01F)));
+            itemRules.Add(ItemDisplayCore.CreateGenericDisplayRule(DLC1Content.Items.AttackSpeedAndMoveSpeed, "DisplayCoffee", "ThighL", new Vector3(0.00165F, 0.00162F, 0.00004F), new Vector3(348.787F, 58.97269F, 187.1566F), new Vector3(0.00252F, 0.00252F, 0.00252F)));
+            itemRules.Add(ItemDisplayCore.CreateGenericDisplayRule(DLC1Content.Items.CritDamage, "DisplayLaserSight", "Gun", new Vector3(-0.00087F, 0.00192F, -0.00047F), new Vector3(0F, 335.0365F, 358.1814F), new Vector3(0.00075F, 0.00075F, 0.00075F)));
+            itemRules.Add(ItemDisplayCore.CreateGenericDisplayRule(DLC1Content.Items.BearVoid, "DisplayBearVoid", "Chest", new Vector3(0F, 0.0025F, 0.0025F), new Vector3(0F, 0F, 0F), new Vector3(0.003F, 0.003F, 0.003F)));
+            itemRules.Add(ItemDisplayCore.CreateGenericDisplayRule(RoR2Content.Equipment.AffixLunar, "DisplayEliteLunar,Eye", "Head", new Vector3(0F, 0.00232F, 0.00275F), new Vector3(0F, 0F, 0F), new Vector3(0.00241F, 0.00241F, 0.00241F)));
+            itemRules.Add(ItemDisplayCore.CreateGenericDisplayRule(RoR2Content.Items.LightningStrikeOnHit, "DisplayChargedPerforator", "Sword", new Vector3(-0.00047F, 0.0145F, 0.00052F), new Vector3(344.3029F, 169.2036F, 190.3225F), new Vector3(0.01476F, 0.01476F, 0.01476F)));
             #endregion
 
 
