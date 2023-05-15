@@ -145,72 +145,9 @@ namespace Starstorm2Unofficial.Survivors.Cyborg
             itemRules.Add(ItemDisplayCore.CreateGenericDisplayRule(RoR2Content.Equipment.CritOnUse, "DisplayNeuralImplant", "head", new Vector3(0.01268F, 0.40631F, 0.31288F), new Vector3(0F, 0F, 0F), new Vector3(0.3F, 0.3F, 0.3F)));
             itemRules.Add(ItemDisplayCore.CreateGenericDisplayRule(RoR2Content.Equipment.AffixHaunted, "DisplayEliteStealthCrown", "head_end", new Vector3(0F, 0.38338F, -0.00001F), new Vector3(90F, 180F, 0F), new Vector3(0.05F, 0.05F, 0.05F)));
             itemRules.Add(ItemDisplayCore.CreateGenericDisplayRule(RoR2Content.Equipment.DroneBackup, "DisplayRadio", "Waist", new Vector3(-0.13F, 0F, 0.2F), new Vector3(5.86697F, 349.9574F, 6.95035F), new Vector3(0.6F, 0.6F, 0.6F)));
-            //itemRules.Add(ItemDisplayCore.CreateGenericDisplayRule(RoR2Content.Equipment.Lightning, "DisplayLightningArmLeft", "Head", Vector3.zero, Vector3.zero, Vector3.one));
-            //itemRules.Add(ItemDisplayCore.CreateGenericDisplayRule(RoR2Content.Equipment.Lightning, "DisplayLightningArmLeftVoidSurvivor", "Head", Vector3.zero, Vector3.zero, Vector3.one));
-            //itemRules.Add(ItemDisplayCore.CreateGenericDisplayRule(RoR2Content.Equipment.Lightning, "DisplayLightningArmRight,Bandit2", "Head", Vector3.zero, Vector3.zero, Vector3.one));
-            //itemRules.Add(ItemDisplayCore.CreateGenericDisplayRule(RoR2Content.Equipment.Lightning, "DisplayLightningArmRight,Croco", "Head", Vector3.zero, Vector3.zero, Vector3.one));
-            //itemRules.Add(ItemDisplayCore.CreateGenericDisplayRule(RoR2Content.Equipment.Lightning, "DisplayLightningArmRight", "Head", Vector3.zero, Vector3.zero, Vector3.one));
-            //IDRS NOTE: [LIGHTNING] = Choose one, They use LimbMatchers
-            itemRules.Add(new ItemDisplayRuleSet.KeyAssetRuleGroup
-            {
-                keyAsset = RoR2Content.Equipment.Lightning,
-                displayRuleGroup = new DisplayRuleGroup
-                {
-                    rules = new ItemDisplayRule[]
-                    {
-                        new ItemDisplayRule
-                        {
-                            ruleType = ItemDisplayRuleType.ParentedPrefab,
-                            followerPrefab = ItemDisplayCore.LoadDisplay("DisplayLightningArmLeft"),
-                            childName = "Head",
-                            localPos = Vector3.zero,
-                            localAngles = Vector3.zero,
-                            localScale = Vector3.one,
-                            limbMask = LimbFlags.None
-                        },
-                        new ItemDisplayRule
-                        {
-                            ruleType = ItemDisplayRuleType.ParentedPrefab,
-                            followerPrefab = ItemDisplayCore.LoadDisplay("DisplayLightningArmLeftVoidSurvivor"),
-                            childName = "Head",
-                            localPos = Vector3.zero,
-                            localAngles = Vector3.zero,
-                            localScale = Vector3.one,
-                            limbMask = LimbFlags.None
-                        },
-                        new ItemDisplayRule
-                        {
-                            ruleType = ItemDisplayRuleType.ParentedPrefab,
-                            followerPrefab = ItemDisplayCore.LoadDisplay("DisplayLightningArmRight,Bandit2"),
-                            childName = "Head",
-                            localPos = Vector3.zero,
-                            localAngles = Vector3.zero,
-                            localScale = Vector3.one,
-                            limbMask = LimbFlags.None
-                        },
-                        new ItemDisplayRule
-                        {
-                            ruleType = ItemDisplayRuleType.ParentedPrefab,
-                            followerPrefab = ItemDisplayCore.LoadDisplay("DisplayLightningArmRight,Croco"),
-                            childName = "Head",
-                            localPos = Vector3.zero,
-                            localAngles = Vector3.zero,
-                            localScale = Vector3.one,
-                            limbMask = LimbFlags.None
-                        },
-                        new ItemDisplayRule
-                        {
-                            ruleType = ItemDisplayRuleType.ParentedPrefab,
-                            followerPrefab = ItemDisplayCore.LoadDisplay("DisplayLightningArmRight"),
-                            childName = "Head",
-                            localPos = Vector3.zero,
-                            localAngles = Vector3.zero,
-                            localScale = Vector3.one,
-                            limbMask = LimbFlags.None
-                        },
-                    }
-                }
-            });
+
+            //TODO
+            //RoR2Content.Equipment.Lightning doesn't match any of the childlocators so its crumpled and weird
             //no clue how to do this rob........ :(meru
             itemRules.Add(ItemDisplayCore.CreateGenericDisplayRule(RoR2Content.Equipment.BurnNearby, "DisplayPotion", "Waist", new Vector3(0.14999F, -0.01687F, 0.17782F), new Vector3(12.72614F, 330.7571F, 332.6467F), new Vector3(0.05F, 0.05F, 0.05F)));
             itemRules.Add(ItemDisplayCore.CreateGenericDisplayRule(RoR2Content.Equipment.CrippleWard, "DisplayEffigy", "Waist", new Vector3(-0.16196F, -0.0382F, -0.20261F), new Vector3(3.21876F, 28.06466F, 358.7917F), new Vector3(0.5F, 0.5F, 0.5F)));

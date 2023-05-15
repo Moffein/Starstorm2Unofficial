@@ -125,12 +125,9 @@ namespace Starstorm2Unofficial.Survivors.Executioner
             itemRules.Add(ItemDisplayCore.CreateGenericDisplayRule(RoR2Content.Equipment.CritOnUse, "DisplayNeuralImplant", "Gun", new Vector3(0f, 0.0032f, 0.00f), new Vector3(0f, 90f, 0f), new Vector3(0.003f, 0.003f, 0.003f)));
             itemRules.Add(ItemDisplayCore.CreateGenericDisplayRule(RoR2Content.Equipment.AffixHaunted, "DisplayEliteStealthCrown", "Head", new Vector3(0f, 0.0012f, 0f), new Vector3(90f, 180f, 0f), new Vector3(0.0005f, 0.0005f, 0.0005f)));
             itemRules.Add(ItemDisplayCore.CreateGenericDisplayRule(RoR2Content.Equipment.DroneBackup, "DisplayRadio", "Pelvis", new Vector3(-0.0013f, -0.00f, 0.002f), new Vector3(0f, 345f, 195f), new Vector3(0.006f, 0.006f, 0.006f)));
-            //itemRules.Add(ItemDisplayCore.CreateGenericDisplayRule(RoR2Content.Equipment.Lightning, "DisplayLightningArmLeft", "Head", Vector3.zero, Vector3.zero, Vector3.one));
-            //itemRules.Add(ItemDisplayCore.CreateGenericDisplayRule(RoR2Content.Equipment.Lightning, "DisplayLightningArmLeftVoidSurvivor", "Head", Vector3.zero, Vector3.zero, Vector3.one));
-            //itemRules.Add(ItemDisplayCore.CreateGenericDisplayRule(RoR2Content.Equipment.Lightning, "DisplayLightningArmRight,Bandit2", "Head", Vector3.zero, Vector3.zero, Vector3.one));
-            //itemRules.Add(ItemDisplayCore.CreateGenericDisplayRule(RoR2Content.Equipment.Lightning, "DisplayLightningArmRight,Croco", "Head", Vector3.zero, Vector3.zero, Vector3.one));
-            //itemRules.Add(ItemDisplayCore.CreateGenericDisplayRule(RoR2Content.Equipment.Lightning, "DisplayLightningArmRight", "Head", Vector3.zero, Vector3.zero, Vector3.one));
-            //IDRS NOTE: [LIGHTNING] = Choose one, They use LimbMatchers
+
+            //TODO
+            //RoR2Content.Equipment.Lightning doesn't match any of the childlocators so its crumpled and weird
             itemRules.Add(new ItemDisplayRuleSet.KeyAssetRuleGroup
             {
                 keyAsset = RoR2Content.Equipment.Lightning,

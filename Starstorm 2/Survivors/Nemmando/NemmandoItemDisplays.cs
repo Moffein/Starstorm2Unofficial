@@ -139,7 +139,9 @@ namespace Starstorm2Unofficial.Survivors.Nemmando
             itemRules.Add(ItemDisplayCore.CreateGenericDisplayRule(RoR2Content.Equipment.CritOnUse, "DisplayNeuralImplant", "Head", new Vector3(0f, 0.003f, 0.003f), new Vector3(0f, 0f, 0f), new Vector3(0.003f, 0.003f, 0.003f)));
             itemRules.Add(ItemDisplayCore.CreateGenericDisplayRule(RoR2Content.Equipment.AffixHaunted, "DisplayEliteStealthCrown", "Head", new Vector3(0f, 0.0045f, 0f), new Vector3(270f, 0f, 0f), new Vector3(0.0005f, 0.0005f, 0.0005f)));
             itemRules.Add(ItemDisplayCore.CreateGenericDisplayRule(RoR2Content.Equipment.DroneBackup, "DisplayRadio", "Pelvis", new Vector3(-0.0013f, -0.001f, 0.0015f), new Vector3(0f, 345f, 195f), new Vector3(0.006f, 0.006f, 0.006f)));
-            itemRules.Add(ItemDisplayCore.CreateGenericDisplayRule(RoR2Content.Equipment.Lightning, ItemDisplayCore.capacitorPrefab, "ShoulderR", new Vector3(0f, 0f, 0f), new Vector3(0f, 180f, 0f), new Vector3(0.01f, 0.01f, 0.01f)));
+
+            //TODO
+            //RoR2Content.Equipment.Lightning doesn't match any of the childlocators so its crumpled and weird
             //no clue how to do this rob........ :(meru
             itemRules.Add(ItemDisplayCore.CreateGenericDisplayRule(RoR2Content.Equipment.BurnNearby, "DisplayPotion", "Pelvis", new Vector3(0.002f, 0f, -0.0015f), new Vector3(0f, 0f, 180f), new Vector3(0.0004f, 0.0004f, 0.0004f)));
             itemRules.Add(ItemDisplayCore.CreateGenericDisplayRule(RoR2Content.Equipment.CrippleWard, "DisplayEffigy", "Pelvis", new Vector3(-0.0012f, 0.001f, -0.0015f), new Vector3(0f, 30f, 180f), new Vector3(0.005f, 0.005f, 0.005f)));
