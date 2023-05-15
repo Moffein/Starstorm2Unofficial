@@ -134,7 +134,7 @@ MonoBehaviour:
   - name: FootR
     transform: {fileID: 3626405912452286603}
   - name: ThighL
-    transform: {fileID: 3626405912452286603}
+    transform: {fileID: 3626405912452286601}
   - name: CalfL
     transform: {fileID: 3626405912452286603}
   - name: ThighR
