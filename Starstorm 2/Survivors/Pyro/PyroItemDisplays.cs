@@ -63,21 +63,11 @@ namespace Starstorm2Unofficial.Survivors.Pyro
                         new ItemDisplayRule
                         {
                             ruleType = ItemDisplayRuleType.ParentedPrefab,
-                            followerPrefab = ItemDisplayCore.LoadDisplay("DisplaySyringe"),
-                            childName = "Head",
-                            localPos = Vector3.zero,
-                            localAngles = Vector3.zero,
-                            localScale = Vector3.one,
-                            limbMask = LimbFlags.None
-                        },
-                        new ItemDisplayRule
-                        {
-                            ruleType = ItemDisplayRuleType.ParentedPrefab,
                             followerPrefab = ItemDisplayCore.LoadDisplay("DisplaySyringeCluster"),
-                            childName = "Head",
-                            localPos = Vector3.zero,
-                            localAngles = Vector3.zero,
-                            localScale = Vector3.one,
+                            childName = "ThighR",
+                            localPos = new Vector3(2.77146F, -1.15929F, -0.45128F),
+                            localAngles = new Vector3(72.10467F, 138.5806F, 113.0707F),
+                            localScale = new Vector3(1F, 1F, 1F),
                             limbMask = LimbFlags.None
                         }
                     }
@@ -97,33 +87,26 @@ namespace Starstorm2Unofficial.Survivors.Pyro
                         {
                             ruleType = ItemDisplayRuleType.ParentedPrefab,
                             followerPrefab = ItemDisplayCore.LoadDisplay("DisplayBear"),
-                            childName = "Head",
-                            localPos = Vector3.zero,
-                            localAngles = Vector3.zero,
-                            localScale = Vector3.one,
-                            limbMask = LimbFlags.None
-                        },
-                        new ItemDisplayRule
-                        {
-                            ruleType = ItemDisplayRuleType.ParentedPrefab,
-                            followerPrefab = ItemDisplayCore.LoadDisplay("DisplayBearSit"),
-                            childName = "Head",
-                            localPos = Vector3.zero,
-                            localAngles = Vector3.zero,
-                            localScale = Vector3.one,
+                            childName = "Chest",
+                            localPos = new Vector3(3.54657F, -3.67519F, -2.07267F),
+                            localAngles = new Vector3(38.20253F, 326.2767F, 226.8577F),
+                            localScale = new Vector3(1F, 1F, 1F),
                             limbMask = LimbFlags.None
                         }
                     }
                 }
             });
-            itemRules.Add(ItemDisplayCore.CreateGenericDisplayRule(RoR2Content.Items.Behemoth, "DisplayBehemoth", "Head", Vector3.zero, Vector3.zero, Vector3.one));
-            itemRules.Add(ItemDisplayCore.CreateGenericDisplayRule(RoR2Content.Items.Missile, "DisplayMissileLauncher", "Head", Vector3.zero, Vector3.zero, Vector3.one));
-            itemRules.Add(ItemDisplayCore.CreateGenericDisplayRule(RoR2Content.Items.ExplodeOnDeath, "DisplayWilloWisp", "Head", Vector3.zero, Vector3.zero, Vector3.one));
-            itemRules.Add(ItemDisplayCore.CreateGenericDisplayRule(RoR2Content.Items.Dagger, "DisplayDagger", "Head", Vector3.zero, Vector3.zero, Vector3.one));
 
+            itemRules.Add(ItemDisplayCore.CreateGenericDisplayRule(RoR2Content.Items.Behemoth, "DisplayBehemoth", "Chest", new Vector3(5.34509F, -2.36253F, -3.76172F), new Vector3(298.9821F, 26.04325F, 233.4191F), new Vector3(0.3F, 0.3F, 0.3F)));
+            itemRules.Add(ItemDisplayCore.CreateGenericDisplayRule(RoR2Content.Items.Missile, "DisplayMissileLauncher", "Head", new Vector3(7.04976F, -4.26886F, -0.76113F), new Vector3(303.2718F, 68.99702F, 182.6456F), new Vector3(0.5F, 0.5F, 0.5F)));
+            itemRules.Add(ItemDisplayCore.CreateGenericDisplayRule(RoR2Content.Items.ExplodeOnDeath, "DisplayWilloWisp", "Head", new Vector3(-2.49128F, -2.14932F, 0.05371F), new Vector3(2.72966F, 357.7799F, 155.1082F), new Vector3(0.3F, 0.3F, 0.3F)));
+
+            itemRules.Add(ItemDisplayCore.CreateGenericDisplayRule(RoR2Content.Items.Dagger, "DisplayDagger", "Head", new Vector3(5.32713F, -3.62148F, -1.56564F), new Vector3(26.21583F, 65.56944F, 142.9217F), new Vector3(5F, 5F, 5F)));
+
+            //Screw this, stopping here.
             //IDRS NOTE: [TOOTH] = Decal is the 'string' of the necklace and its a projected decal.
             //IDRS NOTE: [TOOTH] = Order is: Small1, Small1, Large, Small2, Small2 on the character
-            itemRules.Add(new ItemDisplayRuleSet.KeyAssetRuleGroup
+            /*itemRules.Add(new ItemDisplayRuleSet.KeyAssetRuleGroup
             {
                 keyAsset = RoR2Content.Items.Tooth,
                 displayRuleGroup = new DisplayRuleGroup
@@ -133,21 +116,11 @@ namespace Starstorm2Unofficial.Survivors.Pyro
                         new ItemDisplayRule
                         {
                             ruleType = ItemDisplayRuleType.ParentedPrefab,
-                            followerPrefab = ItemDisplayCore.LoadDisplay("DisplayToothNecklaceDecal"),
-                            childName = "Head",
-                            localPos = Vector3.zero,
-                            localAngles = Vector3.zero,
-                            localScale = Vector3.one,
-                            limbMask = LimbFlags.None
-                        },
-                        new ItemDisplayRule
-                        {
-                            ruleType = ItemDisplayRuleType.ParentedPrefab,
                             followerPrefab = ItemDisplayCore.LoadDisplay("DisplayToothMeshLarge"),
-                            childName = "Head",
-                            localPos = Vector3.zero,
-                            localAngles = Vector3.zero,
-                            localScale = Vector3.one,
+                            childName = "Chest",
+                            localPos = new Vector3(6.20687F, -1.70485F, -1.12978F),
+                            localAngles = new Vector3(292.2699F, 38.90346F, 227.318F),
+                            localScale = new Vector3(10F, 10F, 10F),
                             limbMask = LimbFlags.None
                         },
                         new ItemDisplayRule
@@ -192,7 +165,7 @@ namespace Starstorm2Unofficial.Survivors.Pyro
                         },
                     }
                 }
-            });
+            });*/
             //might also be able to just do this but thats not the spirit of it
             //itemRules.Add(ItemDisplayCore.CreateGenericDisplayRule(RoR2Content.Items.Tooth, RoR2/Base/Tooth/mdlToothNecklaceDisplay.fbx
             itemRules.Add(ItemDisplayCore.CreateGenericDisplayRule(RoR2Content.Items.CritGlasses, "DisplayGlasses", "Head", Vector3.zero, Vector3.zero, Vector3.one));

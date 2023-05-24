@@ -124,7 +124,6 @@ namespace Starstorm2Unofficial.Survivors.Cyborg
             itemRules.Add(ItemDisplayCore.CreateGenericDisplayRule(RoR2Content.Items.HeadHunter, "DisplaySkullCrown", "head_end", new Vector3(0.00386F, 0.05454F, -0.0082F), new Vector3(320F, 0F, 0F), new Vector3(0.71195F, 0.28478F, 0.28478F)));
             itemRules.Add(ItemDisplayCore.CreateGenericDisplayRule(RoR2Content.Items.EnergizedOnEquipmentUse, "DisplayWarHorn", "Waist", new Vector3(0F, 0F, 0.23F), new Vector3(0F, 0F, 180F), new Vector3(0.5F, 0.5F, 0.5F)));
             itemRules.Add(ItemDisplayCore.CreateGenericDisplayRule(RoR2Content.Items.FlatHealth, "DisplaySteakCurved", "Chest", new Vector3(-0.00031F, 0.22606F, 0.2602F), new Vector3(330F, 0F, 0F), new Vector3(0.16F, 0.16F, 0.16F)));
-            itemRules.Add(ItemDisplayCore.CreateGenericDisplayRule(RoR2Content.Items.Tooth, "DisplayToothMeshLarge", "Chest", new Vector3(-0.32488F, 0.50417F, -0.09858F), new Vector3(348.6591F, 343.4745F, 46.56552F), new Vector3(7F, 7F, 7F)));
             itemRules.Add(ItemDisplayCore.CreateGenericDisplayRule(RoR2Content.Items.Pearl, "DisplayPearl", "Lowerarm.L_end", new Vector3(0F, 0F, 0F), new Vector3(90F, 0F, 0F), new Vector3(0.08F, 0.08F, 0.08F)));
             itemRules.Add(ItemDisplayCore.CreateGenericDisplayRule(RoR2Content.Items.ShinyPearl, "DisplayShinyPearl", "Lowerarm.L_end", new Vector3(0F, -0.1233998F, 0F), new Vector3(90F, 0F, 0F), new Vector3(0.08F, 0.08F, 0.08F)));
             itemRules.Add(ItemDisplayCore.CreateGenericDisplayRule(RoR2Content.Items.BonusGoldPackOnKill, "DisplayTome", "Waist", new Vector3(0F, 0F, 0.2F), new Vector3(0F, 0F, 0F), new Vector3(0.1F, 0.1F, 0.1F)));
@@ -207,6 +206,68 @@ localScale = new Vector3(0.37162F, 0.37162F, 0.52027F),
                     }
                 }
             });
+
+            itemRules.Add(new ItemDisplayRuleSet.KeyAssetRuleGroup
+            {
+                keyAsset = RoR2Content.Items.Tooth,
+                displayRuleGroup = new DisplayRuleGroup
+                {
+                    rules = new ItemDisplayRule[]
+                                {
+                        new ItemDisplayRule
+                        {
+                            ruleType = ItemDisplayRuleType.ParentedPrefab,
+                            followerPrefab = ItemDisplayCore.LoadDisplay("DisplayToothMeshLarge"),
+                            childName = "Chest",
+                            localPos = new Vector3(0.00433F, 0.20132F, 0.30872F),
+                            localAngles = new Vector3(18.49107F, 177.311F, 1.37142F),
+                            localScale = new Vector3(2.39344F, 3.73495F, 2.39344F),
+                            limbMask = LimbFlags.None
+                        },
+                        new ItemDisplayRule
+                        {
+                            ruleType = ItemDisplayRuleType.ParentedPrefab,
+                            followerPrefab = ItemDisplayCore.LoadDisplay("DisplayToothMeshSmall1"),
+                            childName = "Chest",
+                            localPos = new Vector3(-0.05689F, 0.19684F, 0.31104F),
+                            localAngles = new Vector3(353.4888F, 187.836F, 8.51722F),
+                            localScale = new Vector3(1.43896F, 1.43896F, 1.43896F),
+                            limbMask = LimbFlags.None
+                        },
+                        new ItemDisplayRule
+                        {
+                            ruleType = ItemDisplayRuleType.ParentedPrefab,
+                            followerPrefab = ItemDisplayCore.LoadDisplay("DisplayToothMeshSmall1"),
+                            childName = "Chest",
+                            localPos = new Vector3(-0.1014F, 0.2132F, 0.30587F),
+                            localAngles = new Vector3(18.632F, 13.77735F, 333.1451F),
+                            localScale = new Vector3(1.31001F, 1.31001F, 1.31001F),
+                            limbMask = LimbFlags.None
+                        },
+                        new ItemDisplayRule
+                        {
+                            ruleType = ItemDisplayRuleType.ParentedPrefab,
+                            followerPrefab = ItemDisplayCore.LoadDisplay("DisplayToothMeshSmall1"),
+                            childName = "Chest",
+                            localPos = new Vector3(0.05689F, 0.19684F, 0.31104F),
+                            localAngles = new Vector3(353.4888F, 187.836F, -8.51722F),
+                            localScale = new Vector3(1.43896F, 1.43896F, 1.43896F),
+                            limbMask = LimbFlags.None
+                        },
+                        new ItemDisplayRule
+                        {
+                            ruleType = ItemDisplayRuleType.ParentedPrefab,
+                            followerPrefab = ItemDisplayCore.LoadDisplay("DisplayToothMeshSmall1"),
+                            childName = "Chest",
+                            localPos = new Vector3(0.1014F, 0.2132F, 0.30587F),
+                            localAngles = new Vector3(18.632F, 13.77735F, -333.1451F),
+                            localScale = new Vector3(1.31001F, 1.31001F, 1.31001F),
+                            limbMask = LimbFlags.None
+                        },
+                    }
+                }
+            });
+
             #endregion
             #region DLC1Content
             itemRules.Add(ItemDisplayCore.CreateGenericDisplayRule(DLC1Content.Items.MoveSpeedOnKill, "DisplayGrappleHook", "Upperarm.R", new Vector3(-0.0407F, 0.05762F, 0.04535F), new Vector3(5.22303F, 328.7101F, 178.185F), new Vector3(0.2271F, 0.2271F, 0.2271F)));

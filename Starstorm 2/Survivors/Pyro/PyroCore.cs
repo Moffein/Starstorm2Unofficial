@@ -70,7 +70,8 @@ namespace Starstorm2Unofficial.Survivors.Pyro
 
         private void LateSetup(ReadOnlyArray<ReadOnlyContentPack> obj)
         {
-            PyroItemDisplays.RegisterDisplays();
+            //TODO: Uncomment and finish this.
+            //PyroItemDisplays.RegisterDisplays();
         }
 
         private void BuildSuppressiveFireProjectile()
