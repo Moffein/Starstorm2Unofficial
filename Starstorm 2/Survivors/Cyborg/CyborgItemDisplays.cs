@@ -165,17 +165,17 @@ namespace Starstorm2Unofficial.Survivors.Cyborg
             //equipmentRules.Add(ItemDisplayCore.CreateGenericDisplayRule("Lightning", "???", "Chest", new Vector3(0f, 0.004f, -0.002f), new Vector3(70f, 180f, 0f), new Vector3(0.007f, 0.007f, 0.007f)));
             //I have no clue what the model name is for the Capacitator, and both the Miner / Enforcer gits do some weird fucky shit.
 
-            itemRules.Add(ItemDisplayCore.CreateGenericDisplayRule(RoR2Content.Items.Icicle, "DisplayFrostRelic", "head", new Vector3(-0.49036F, 0.80385F, -0.10177F), new Vector3(63.39054F, 2.82026F, 1.80769F), new Vector3(1F, 1F, 1F)));
-            itemRules.Add(ItemDisplayCore.CreateGenericDisplayRule(RoR2Content.Items.Talisman, "DisplayTalisman", "head", new Vector3(0.92099F, 0.19093F, -0.24115F), new Vector3(0F, 0F, 0F), new Vector3(1F, 1F, 1F)));
-            itemRules.Add(ItemDisplayCore.CreateGenericDisplayRule(RoR2Content.Items.FocusConvergence, "DisplayFocusedConvergence", "head", new Vector3(0.41061F, 0.81408F, -0.09813F), new Vector3(0F, 0F, 0F), new Vector3(0.1F, 0.1F, 0.1F)));
-            itemRules.Add(ItemDisplayCore.CreateGenericDisplayRule(RoR2Content.Equipment.Meteor, "DisplayMeteor", "head", new Vector3(-0.05565F, 0.58127F, -0.8698F), new Vector3(0F, 0F, 0F), new Vector3(1F, 1F, 1F)));
-            itemRules.Add(ItemDisplayCore.CreateGenericDisplayRule(RoR2Content.Equipment.Blackhole, "DisplayGravCube", "head", new Vector3(-0.05565F, 0.58127F, -0.8698F), new Vector3(0F, 0F, 0F), new Vector3(1F, 1F, 1F)));
+            itemRules.Add(ItemDisplayCore.CreateFollowerDisplayRule(RoR2Content.Items.Icicle, "DisplayFrostRelic", new Vector3(-0.53413F, -0.30894F, 0.93299F), new Vector3(0, 0, 0), new Vector3(1f, 1f, 1f)));
+            itemRules.Add(ItemDisplayCore.CreateFollowerDisplayRule(RoR2Content.Items.Talisman, "DisplayTalisman", new Vector3(0.72272F, -0.64198F, 1.18925F), new Vector3(90f, 0, 0), new Vector3(1f, 1f, 1f)));
+            itemRules.Add(ItemDisplayCore.CreateFollowerDisplayRule(RoR2Content.Items.FocusConvergence, "DisplayFocusedConvergence", new Vector3(0.6043F, 0.50282F, 0.97912F), new Vector3(0, 0, 0), new Vector3(0.1f, 0.1f, 0.1f)));
+            itemRules.Add(ItemDisplayCore.CreateFollowerDisplayRule(RoR2Content.Equipment.Meteor, "DisplayMeteor", new Vector3(-0.56186F, 0.76804F, 1.25989F), new Vector3(0f, 0f, 0f), new Vector3(1f, 1f, 1f)));
+            itemRules.Add(ItemDisplayCore.CreateFollowerDisplayRule(RoR2Content.Equipment.Blackhole, "DisplayGravCube", new Vector3(-0.56186F, 0.76804F, 1.25989F), new Vector3(0f, 0f, 0f), new Vector3(1f, 1f, 1f)));
+            itemRules.Add(ItemDisplayCore.CreateFollowerDisplayRule(RoR2Content.Equipment.Saw, "DisplaySawmerang", new Vector3(-0.56186F, 0.76804F, 1.25989F), new Vector3(0, 0, 0), new Vector3(0.2f, 0.2f, 0.2f)));
 
             itemRules.Add(ItemDisplayCore.CreateGenericDisplayRule(RoR2Content.Equipment.Jetpack, "DisplayBugWings", "Chest", new Vector3(-0.00124F, 0.09531F, -0.20699F), new Vector3(0F, 0F, 0F), new Vector3(0.2F, 0.2F, 0.2F)));
             itemRules.Add(ItemDisplayCore.CreateGenericDisplayRule(RoR2Content.Equipment.GoldGat, "DisplayGoldGat", "Chest", new Vector3(0.34165F, 0.55398F, -0.07725F), new Vector3(15.88125F, 79.78722F, 326.7364F), new Vector3(0.1F, 0.1F, 0.1F)));
             itemRules.Add(ItemDisplayCore.CreateGenericDisplayRule(RoR2Content.Equipment.BFG, "DisplayBFG", "Chest", new Vector3(0.24595F, 0.29929F, -0.00278F), new Vector3(359.8722F, 0.2585F, 326.2169F), new Vector3(0.3F, 0.3F, 0.3F)));
             itemRules.Add(ItemDisplayCore.CreateGenericDisplayRule(RoR2Content.Equipment.QuestVolatileBattery, "DisplayBatteryArray", "Chest", new Vector3(0F, 0.2F, -0.33F), new Vector3(0F, 0F, 0F), new Vector3(0.3F, 0.3F, 0.3F)));
-            itemRules.Add(ItemDisplayCore.CreateGenericDisplayRule(RoR2Content.Equipment.Saw, "DisplaySawmerang", "head", new Vector3(-0.72531F, 0.06584F, -0.46914F), new Vector3(275.8587F, 318.1681F, 44.29575F), new Vector3(0.2F, 0.2F, 0.2F)));
             itemRules.Add(new ItemDisplayRuleSet.KeyAssetRuleGroup
             {
                 keyAsset = RoR2Content.Items.FallBoots,
