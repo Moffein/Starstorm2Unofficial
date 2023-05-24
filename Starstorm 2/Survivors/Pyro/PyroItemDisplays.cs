@@ -98,10 +98,10 @@ namespace Starstorm2Unofficial.Survivors.Pyro
             });
 
             itemRules.Add(ItemDisplayCore.CreateGenericDisplayRule(RoR2Content.Items.Behemoth, "DisplayBehemoth", "Chest", new Vector3(5.34509F, -2.36253F, -3.76172F), new Vector3(298.9821F, 26.04325F, 233.4191F), new Vector3(0.3F, 0.3F, 0.3F)));
-            itemRules.Add(ItemDisplayCore.CreateGenericDisplayRule(RoR2Content.Items.Missile, "DisplayMissileLauncher", "Head", new Vector3(7.04976F, -4.26886F, -0.76113F), new Vector3(303.2718F, 68.99702F, 182.6456F), new Vector3(0.5F, 0.5F, 0.5F)));
-            itemRules.Add(ItemDisplayCore.CreateGenericDisplayRule(RoR2Content.Items.ExplodeOnDeath, "DisplayWilloWisp", "Head", new Vector3(-2.49128F, -2.14932F, 0.05371F), new Vector3(2.72966F, 357.7799F, 155.1082F), new Vector3(0.3F, 0.3F, 0.3F)));
+            itemRules.Add(ItemDisplayCore.CreateGenericDisplayRule(RoR2Content.Items.Missile, "DisplayMissileLauncher", "Chest", new Vector3(7.04976F, -4.26886F, -0.76113F), new Vector3(303.2718F, 68.99702F, 182.6456F), new Vector3(0.5F, 0.5F, 0.5F)));
+            itemRules.Add(ItemDisplayCore.CreateGenericDisplayRule(RoR2Content.Items.ExplodeOnDeath, "DisplayWilloWisp", "Chest", new Vector3(-2.49128F, -2.14932F, 0.05371F), new Vector3(2.72966F, 357.7799F, 155.1082F), new Vector3(0.3F, 0.3F, 0.3F)));
 
-            itemRules.Add(ItemDisplayCore.CreateGenericDisplayRule(RoR2Content.Items.Dagger, "DisplayDagger", "Head", new Vector3(5.32713F, -3.62148F, -1.56564F), new Vector3(26.21583F, 65.56944F, 142.9217F), new Vector3(5F, 5F, 5F)));
+            itemRules.Add(ItemDisplayCore.CreateGenericDisplayRule(RoR2Content.Items.Dagger, "DisplayDagger", "Chest", new Vector3(5.32713F, -3.62148F, -1.56564F), new Vector3(26.21583F, 65.56944F, 142.9217F), new Vector3(5F, 5F, 5F)));
 
             //Screw this, stopping here.
             //IDRS NOTE: [TOOTH] = Decal is the 'string' of the necklace and its a projected decal.
