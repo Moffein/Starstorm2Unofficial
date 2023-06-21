@@ -52,7 +52,6 @@ namespace Starstorm2Unofficial.Survivors.Cyborg
             SkinDef defaultSkin = SkinsCore.CreateSkinDef("CYBORG_DEFAULT_SKIN_NAME",
                                                           LoadoutAPI.CreateSkinIcon(new Color32(234, 231, 212, 255), new Color32(33, 51, 49, 255), new Color32(32, 40, 53, 255), new Color32(56, 79, 77, 255)),
                                                           defaultRenderers,
-                                                          mainRenderer,
                                                           model, 
                                                           null);
 
@@ -84,8 +83,7 @@ namespace Starstorm2Unofficial.Survivors.Cyborg
             LanguageAPI.Add("CYBORG_MASTERY_SKIN_NAME", "Cybersteam");
             SkinDef masterySkin = SkinsCore.CreateSkinDef("CYBORG_MASTERY_SKIN_NAME",
                                                           LoadoutAPI.CreateSkinIcon(new Color32(234, 231, 212, 255), new Color32(125, 92, 39, 255), new Color32(26, 17, 22, 255), new Color32(57, 33, 33, 255)),
-                                                          masteryRendererInfos, 
-                                                          mainRenderer, 
+                                                          masteryRendererInfos,
                                                           model,
                                                           Modules.Config.ForceUnlockSkins.Value ? null : masterySkinUnlockableDef);
 
@@ -118,7 +116,6 @@ namespace Starstorm2Unofficial.Survivors.Cyborg
             SkinDef grandMasterySkin = SkinsCore.CreateSkinDef("CYBORG_GRANDMASTERY_SKIN_NAME",
                                                           LoadoutAPI.CreateSkinIcon(new Color32(255, 134, 122, 255), new Color32(7, 14, 30, 255), new Color32(7, 12, 25, 255), new Color32(10, 22, 36, 255)),
                                                           grandMasteryRendererInfos,
-                                                          mainRenderer,
                                                           model,
                                                           Modules.Config.ForceUnlockSkins.Value ? null : grandmasterySkinUnlockableDef);
 

@@ -5,7 +5,7 @@ set pluginpath=C:\Program Files (x86)\Steam\steamapps\common\Risk of Rain 2\BepI
 if %username% == Flan	set pluginpath=F:\SteamLibrary\steamapps\common\Risk of Rain 2\BepInEx\plugins\Starstorm 2
 if %username% == kurog	set pluginpath=E:\Steam\steamapps\common\Risk of Rain 2\BepInEx\plugins\Starstorm 2
 if %username% == pmble	set pluginpath=D:\Steam\steamapps\common\Risk of Rain 2\BepInEx\plugins\Starstorm 2
-if %username% == Erikbir set pluginpath=C:\Users\Erikbir\AppData\Roaming\r2modmanPlus-local\mods\profiles\Blinx\BepInEx\plugins\TeamMoonstorm-Starstorm2
+if %username% == Erikbir set pluginpath=E:\r2Profiles\Blinx Returns\BepInEx\plugins\ChirrLover-Starstorm2_Unofficial\ChirrLover-Starstorm2Unofficial
 if %username% == Node	set pluginpath=D:\SteamLibrary\steamapps\common\Risk of Rain 2\BepInEx\plugins
 
 rem weaver patch for mp compatibility
@@ -23,3 +23,5 @@ rem copy the mod to your game plugins directory for testing
 mkdir "%pluginpath%\"
 copy Starstorm2Unofficial.dll "%pluginpath%\"
 rem copy starstorm2.language "%pluginpath%\"
+
+if %username% == Erikbir Xcopy /E /I /Y  Assets "%pluginpath%\Assets"

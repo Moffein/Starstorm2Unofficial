@@ -1,66 +1,179 @@
 fileFormatVersion: 2
 guid: b5cbca6c8f9a0db459be724ba7b291d4
 ModelImporter:
-  serializedVersion: 23
-  fileIDToRecycleName:
-    100000: Camera.001
-    100002: Empty
-    100004: Fire
-    100006: //RootNode
-    100008: LampBossMesh.003
-    100010: LampBossMesh.006
-    100012: LampBossMesh.008
-    400000: Camera.001
-    400002: Empty
-    400004: Fire
-    400006: //RootNode
-    400008: LampBossMesh.003
-    400010: LampBossMesh.006
-    400012: LampBossMesh.008
-    2000000: Camera.001
-    2100000: material_atlas_30703_1.002
-    2100002: Fire
-    2300000: Fire
-    2300002: LampBossMesh.003
-    2300004: LampBossMesh.006
-    2300006: LampBossMesh.008
-    3300000: Fire
-    3300002: LampBossMesh.003
-    3300004: LampBossMesh.006
-    3300006: LampBossMesh.008
-    4300000: LampBossMesh.003
-    4300002: LampBossMesh.006
-    4300004: LampBossMesh.008
-    4300006: Fire
-    7400000: LampBossMesh.003|EmptyAction
-    7400002: LampBossMesh.003|IcosphereAction.001
-    7400004: LampBossMesh.003|LampBossMesh.003Action
-    7400006: LampBossMesh.003|LampBossMesh.008Action
-    7400008: LampBossMesh.006|EmptyAction
-    7400010: LampBossMesh.006|IcosphereAction.001
-    7400012: LampBossMesh.006|LampBossMesh.003Action
-    7400014: LampBossMesh.006|LampBossMesh.008Action
-    7400016: LampBossMesh.008|EmptyAction
-    7400018: LampBossMesh.008|IcosphereAction.001
-    7400020: LampBossMesh.008|LampBossMesh.003Action
-    7400022: LampBossMesh.008|LampBossMesh.008Action
-    7400024: Fire|EmptyAction
-    7400026: Fire|IcosphereAction.001
-    7400028: Fire|LampBossMesh.003Action
-    7400030: Fire|LampBossMesh.008Action
-    7400032: Empty|EmptyAction
-    7400034: Empty|IcosphereAction.001
-    7400036: Empty|LampBossMesh.003Action
-    7400038: Empty|LampBossMesh.008Action
-    7400040: Camera.001|EmptyAction
-    7400042: Camera.001|IcosphereAction.001
-    7400044: Camera.001|LampBossMesh.003Action
-    7400046: Camera.001|LampBossMesh.008Action
-    9500000: //RootNode
-    2186277476908879412: ImportLogs
+  serializedVersion: 19301
+  internalIDToNameTable:
+  - first:
+      1: 100000
+    second: Camera.001
+  - first:
+      1: 100002
+    second: Empty
+  - first:
+      1: 100004
+    second: Fire
+  - first:
+      1: 100006
+    second: //RootNode
+  - first:
+      1: 100008
+    second: LampBossMesh.003
+  - first:
+      1: 100010
+    second: LampBossMesh.006
+  - first:
+      1: 100012
+    second: LampBossMesh.008
+  - first:
+      4: 400000
+    second: Camera.001
+  - first:
+      4: 400002
+    second: Empty
+  - first:
+      4: 400004
+    second: Fire
+  - first:
+      4: 400006
+    second: //RootNode
+  - first:
+      4: 400008
+    second: LampBossMesh.003
+  - first:
+      4: 400010
+    second: LampBossMesh.006
+  - first:
+      4: 400012
+    second: LampBossMesh.008
+  - first:
+      20: 2000000
+    second: Camera.001
+  - first:
+      21: 2100000
+    second: material_atlas_30703_1.002
+  - first:
+      21: 2100002
+    second: Fire
+  - first:
+      23: 2300000
+    second: Fire
+  - first:
+      23: 2300002
+    second: LampBossMesh.003
+  - first:
+      23: 2300004
+    second: LampBossMesh.006
+  - first:
+      23: 2300006
+    second: LampBossMesh.008
+  - first:
+      33: 3300000
+    second: Fire
+  - first:
+      33: 3300002
+    second: LampBossMesh.003
+  - first:
+      33: 3300004
+    second: LampBossMesh.006
+  - first:
+      33: 3300006
+    second: LampBossMesh.008
+  - first:
+      43: 4300000
+    second: LampBossMesh.003
+  - first:
+      43: 4300002
+    second: LampBossMesh.006
+  - first:
+      43: 4300004
+    second: LampBossMesh.008
+  - first:
+      43: 4300006
+    second: Fire
+  - first:
+      74: 7400000
+    second: LampBossMesh.003|EmptyAction
+  - first:
+      74: 7400002
+    second: LampBossMesh.003|IcosphereAction.001
+  - first:
+      74: 7400004
+    second: LampBossMesh.003|LampBossMesh.003Action
+  - first:
+      74: 7400006
+    second: LampBossMesh.003|LampBossMesh.008Action
+  - first:
+      74: 7400008
+    second: LampBossMesh.006|EmptyAction
+  - first:
+      74: 7400010
+    second: LampBossMesh.006|IcosphereAction.001
+  - first:
+      74: 7400012
+    second: LampBossMesh.006|LampBossMesh.003Action
+  - first:
+      74: 7400014
+    second: LampBossMesh.006|LampBossMesh.008Action
+  - first:
+      74: 7400016
+    second: LampBossMesh.008|EmptyAction
+  - first:
+      74: 7400018
+    second: LampBossMesh.008|IcosphereAction.001
+  - first:
+      74: 7400020
+    second: LampBossMesh.008|LampBossMesh.003Action
+  - first:
+      74: 7400022
+    second: LampBossMesh.008|LampBossMesh.008Action
+  - first:
+      74: 7400024
+    second: Fire|EmptyAction
+  - first:
+      74: 7400026
+    second: Fire|IcosphereAction.001
+  - first:
+      74: 7400028
+    second: Fire|LampBossMesh.003Action
+  - first:
+      74: 7400030
+    second: Fire|LampBossMesh.008Action
+  - first:
+      74: 7400032
+    second: Empty|EmptyAction
+  - first:
+      74: 7400034
+    second: Empty|IcosphereAction.001
+  - first:
+      74: 7400036
+    second: Empty|LampBossMesh.003Action
+  - first:
+      74: 7400038
+    second: Empty|LampBossMesh.008Action
+  - first:
+      74: 7400040
+    second: Camera.001|EmptyAction
+  - first:
+      74: 7400042
+    second: Camera.001|IcosphereAction.001
+  - first:
+      74: 7400044
+    second: Camera.001|LampBossMesh.003Action
+  - first:
+      74: 7400046
+    second: Camera.001|LampBossMesh.008Action
+  - first:
+      95: 9500000
+    second: //RootNode
+  - first:
+      41386430: 2186277476908879412
+    second: ImportLogs
+  - first:
+      74: -623603649343465320
+    second: Scene
   externalObjects: {}
   materials:
-    importMaterials: 1
+    materialImportMode: 1
     materialName: 0
     materialSearch: 1
     materialLocation: 1
@@ -93,25 +206,28 @@ ModelImporter:
     meshCompression: 0
     addColliders: 0
     useSRGBMaterialColor: 1
+    sortHierarchyByName: 1
     importVisibility: 1
     importBlendShapes: 1
     importCameras: 1
     importLights: 1
+    fileIdsGeneration: 1
     swapUVChannels: 0
     generateSecondaryUV: 0
     useFileUnits: 1
-    optimizeMeshForGPU: 1
     keepQuads: 0
     weldVertices: 1
     preserveHierarchy: 0
+    skinWeightsMode: 0
+    maxBonesPerVertex: 4
+    minBoneWeight: 0.001
+    meshOptimizationFlags: -1
     indexFormat: 0
     secondaryUVAngleDistortion: 8
     secondaryUVAreaDistortion: 15.000001
     secondaryUVHardAngle: 88
     secondaryUVPackMargin: 4
     useFileScale: 1
-    previousCalculatedGlobalScale: 1
-    hasPreviousCalculatedGlobalScale: 1
   tangentSpace:
     normalSmoothAngle: 60
     normalImportMode: 0
@@ -120,10 +236,10 @@ ModelImporter:
     legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
     blendShapeNormalImportMode: 1
     normalSmoothingSource: 0
+  referencedClips: []
   importAnimation: 1
-  copyAvatar: 0
   humanDescription:
-    serializedVersion: 2
+    serializedVersion: 3
     human: []
     skeleton: []
     armTwist: 0.5
@@ -133,13 +249,16 @@ ModelImporter:
     armStretch: 0.05
     legStretch: 0.05
     feetSpacing: 0
+    globalScale: 1
     rootMotionBoneName: 
     hasTranslationDoF: 0
     hasExtraRoot: 0
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
+  autoGenerateAvatarMappingIfUnspecified: 1
   animationType: 2
   humanoidOversampling: 1
+  avatarSetup: 1
   additionalBone: 0
   userData: 
   assetBundleName: 
