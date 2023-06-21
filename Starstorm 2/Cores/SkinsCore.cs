@@ -8,6 +8,7 @@ using System.Reflection;
 using UnityEngine;
 using UnityEngine.Networking;
 using Starstorm2Unofficial.Cores.Skins;
+using Starstorm2Unofficial.Modules;
 
 namespace Starstorm2Unofficial.Cores
 {
@@ -29,7 +30,7 @@ namespace Starstorm2Unofficial.Cores
             }
         }
 
-        public static SkinDef CreateSkinDef(string skinName, Sprite skinIcon, CharacterModel.RendererInfo[] rendererInfos, SkinnedMeshRenderer mainRenderer, GameObject root, UnlockableDef unlockDef) {
+        public static SkinDef CreateSkinDef(string skinName, Sprite skinIcon, CharacterModel.RendererInfo[] rendererInfos, GameObject root, UnlockableDef unlockDef) {
             LoadoutAPI.SkinDefInfo skinDefInfo = new LoadoutAPI.SkinDefInfo {
                 BaseSkins = Array.Empty<SkinDef>(),
                 GameObjectActivations = new SkinDef.GameObjectActivation[0],

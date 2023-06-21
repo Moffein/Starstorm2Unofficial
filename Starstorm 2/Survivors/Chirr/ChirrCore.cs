@@ -603,7 +603,12 @@ namespace Starstorm2Unofficial.Survivors.Chirr
                 new CustomRendererInfo
                 {
                     childName = "Model",
-                    material = Modules.Assets.CreateMaterial("matChirrOld")
+                    material = Modules.Assets.CreateMaterial("matChirr")
+                },
+                new CustomRendererInfo
+                {
+                    childName = "ModelDress",
+                    material = Modules.Assets.CreateMaterial("matChirrMaidDress")
                 }
             }, 0);
 

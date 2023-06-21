@@ -57,7 +57,6 @@ namespace Starstorm2Unofficial.Cores.Skins
             SkinDef classicSkin = SkinsCore.CreateSkinDef("COMMANDO_GRANDMASTERY_SKIN_NAME",
                                                           Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("texCommandoSkinGrandMaster"),
                                                           commandoRendererInfos,
-                                                          mainRenderer,
                                                           model,
                                                           VanillaSurvivorUnlockables.commandoGrandMastery);
 
@@ -102,7 +101,6 @@ namespace Starstorm2Unofficial.Cores.Skins
             SkinDef lunarSkin = SkinsCore.CreateSkinDef("TOOLBOT_GRANDMASTERY_SKIN_NAME",
                                                           Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("texToolbotSkinGrandMaster"),
                                                           toolbotRendererInfos,
-                                                          mainRenderer,
                                                           model,
                                                           VanillaSurvivorUnlockables.toolbotGrandMastery);
 
@@ -180,7 +178,6 @@ namespace Starstorm2Unofficial.Cores.Skins
             SkinDef armoredSkin = SkinsCore.CreateSkinDef("ACRID_GRANDMASTERY_SKIN_NAME",
                                                           Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("texAcridSkinGrandMaster"),
                                                           crocoRendererInfos,
-                                                          mainRenderer,
                                                           model,
                                                           VanillaSurvivorUnlockables.acridGrandMastery);
 
