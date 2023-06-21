@@ -38,14 +38,10 @@ namespace Starstorm2Unofficial.Survivors.Chirr
             List<SkinDef> skinDefs = new List<SkinDef>();
             
             #region DefaultSkin
-
-            //TODO: CHANGE TO meshChirr and matChirr. matChirr is set in ChirrCore for some reason.
-            //meshChirr turns into a weird skeleton thingy
-
             CharacterModel.RendererInfo[] defaultRenderers = characterModel.baseRendererInfos;
 
-            LanguageAPI.Add("CHIRR_DEFAULT_SKIN_NAME", "Default");
-            SkinDef defaultSkin = SkinsCore.CreateSkinDef("CHIRR_DEFAULT_SKIN_NAME",
+            LanguageAPI.Add("SS2UCHIRR_DEFAULT_SKIN_NAME", "Default");
+            SkinDef defaultSkin = SkinsCore.CreateSkinDef("SS2UCHIRR_DEFAULT_SKIN_NAME",
                                                           LoadoutAPI.CreateSkinIcon(new Color32(255, 255, 255, 255), new Color32(76, 116, 114, 255), new Color32(83, 118, 99, 255), new Color32(120, 147, 90, 255)),
                                                           defaultRenderers,
                                                           model,
@@ -66,44 +62,42 @@ namespace Starstorm2Unofficial.Survivors.Chirr
             #endregion
 
             #region MaidSkin
-            //Untested, disable this for now.
-            if (true)
-            {
-                LanguageAPI.Add("ACHIEVEMENT_SS2UCHIRRGCLEARGAMEMONSOON_NAME", "Chirr: Mastery");
-                LanguageAPI.Add("ACHIEVEMENT_SS2UCHIRRCLEARGAMEMONSOON_DESCRIPTION", "As Chirr, beat the game or obliterate on Monsoon.");
+            Sprite maidSkinIcon = LoadoutAPI.CreateSkinIcon(new Color32(255, 255, 255, 255), new Color32(139, 139, 139, 255), new Color32(0, 0, 0, 255), new Color32(120, 147, 90, 255));
 
-                /*UnlockableDef masterySkinUnlockableDef = ScriptableObject.CreateInstance<UnlockableDef>();
-                masterySkinUnlockableDef.cachedName = "Skins.SS2UChirr.Mastery";
-                masterySkinUnlockableDef.nameToken = "ACHIEVEMENT_SS2UCHIRRCLEARGAMEMONSOON_NAME";
-                masterySkinUnlockableDef.achievementIcon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("cyborgsecondary");
-                Unlockables.unlockableDefs.Add(masterySkinUnlockableDef);*/
+            LanguageAPI.Add("ACHIEVEMENT_SS2UCHIRRCLEARGAMEMONSOON_NAME", "Chirr: Mastery");
+            LanguageAPI.Add("ACHIEVEMENT_SS2UCHIRRCLEARGAMEMONSOON_DESCRIPTION", "As Chirr, beat the game or obliterate on Monsoon.");
 
-                CharacterModel.RendererInfo[] masteryRendererInfos = new CharacterModel.RendererInfo[defaultRenderers.Length];
-                defaultRenderers.CopyTo(masteryRendererInfos, 0);
+            UnlockableDef masterySkinUnlockableDef = ScriptableObject.CreateInstance<UnlockableDef>();
+            masterySkinUnlockableDef.cachedName = "Skins.SS2UChirr.Mastery";
+            masterySkinUnlockableDef.nameToken = "ACHIEVEMENT_SS2UCHIRRCLEARGAMEMONSOON_NAME";
+            masterySkinUnlockableDef.achievementIcon = maidSkinIcon;
+            Unlockables.unlockableDefs.Add(masterySkinUnlockableDef);
 
-                masteryRendererInfos[0].defaultMaterial = Modules.Assets.CreateMaterial("matChirr", 0, new Color(1f, 1f, 1f), 1);
-                masteryRendererInfos[1].defaultMaterial = Modules.Assets.CreateMaterial("matChirrMaidDress", 0, new Color(1f, 1f, 1f), 0);
+            CharacterModel.RendererInfo[] masteryRendererInfos = new CharacterModel.RendererInfo[defaultRenderers.Length];
+            defaultRenderers.CopyTo(masteryRendererInfos, 0);
 
-                LanguageAPI.Add("CHIRR_MASTERY_SKIN_NAME", "Maid");
-                SkinDef masterySkin = SkinsCore.CreateSkinDef("CHIRR_MASTERY_SKIN_NAME",
-                                                              LoadoutAPI.CreateSkinIcon(new Color32(234, 231, 212, 255), new Color32(125, 92, 39, 255), new Color32(26, 17, 22, 255), new Color32(57, 33, 33, 255)),
-                                                              masteryRendererInfos,
-                                                              model,
-                                                              null);
+            masteryRendererInfos[0].defaultMaterial = Modules.Assets.CreateMaterial("matChirr", 0, new Color(1f, 1f, 1f), 1);
+            masteryRendererInfos[1].defaultMaterial = Modules.Assets.CreateMaterial("matChirrMaidDress", 0, new Color(1f, 1f, 1f), 0);
 
-                masterySkin.meshReplacements = SkinsCore.CreateMeshReplacements(masteryRendererInfos,
-                                                                                meshChirrMaid,
-                                                                                meshChirrMaidDress);
+            LanguageAPI.Add("SS2UCHIRR_MASTERY_SKIN_NAME", "Maid");
+            SkinDef masterySkin = SkinsCore.CreateSkinDef("SS2UCHIRR_MASTERY_SKIN_NAME",
+                                                          maidSkinIcon,
+                                                          masteryRendererInfos,
+                                                          model,
+                                                          Modules.Config.ForceUnlockSkins.Value ? null : masterySkinUnlockableDef);
 
-                masterySkin.gameObjectActivations = new SkinDef.GameObjectActivation[] {
+            masterySkin.meshReplacements = SkinsCore.CreateMeshReplacements(masteryRendererInfos,
+                                                                            meshChirrMaid,
+                                                                            meshChirrMaidDress);
+
+            masterySkin.gameObjectActivations = new SkinDef.GameObjectActivation[] {
                     new SkinDef.GameObjectActivation {
                         gameObject = childLocator.FindChildGameObject("ModelDress"),
                         shouldActivate = true,
                     }
                 };
 
-                skinDefs.Add(masterySkin);
-            }
+            skinDefs.Add(masterySkin);
             #endregion
 
             skinController.skins = skinDefs.ToArray();

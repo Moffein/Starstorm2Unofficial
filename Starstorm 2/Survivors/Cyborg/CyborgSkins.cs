@@ -48,8 +48,8 @@ namespace Starstorm2Unofficial.Survivors.Cyborg
 
             CharacterModel.RendererInfo[] defaultRenderers = characterModel.baseRendererInfos;
 
-            LanguageAPI.Add("CYBORG_DEFAULT_SKIN_NAME", "Default");
-            SkinDef defaultSkin = SkinsCore.CreateSkinDef("CYBORG_DEFAULT_SKIN_NAME",
+            LanguageAPI.Add("SS2UCYBORG_DEFAULT_SKIN_NAME", "Default");
+            SkinDef defaultSkin = SkinsCore.CreateSkinDef("SS2UCYBORG_DEFAULT_SKIN_NAME",
                                                           LoadoutAPI.CreateSkinIcon(new Color32(234, 231, 212, 255), new Color32(33, 51, 49, 255), new Color32(32, 40, 53, 255), new Color32(56, 79, 77, 255)),
                                                           defaultRenderers,
                                                           model, 
@@ -80,8 +80,8 @@ namespace Starstorm2Unofficial.Survivors.Cyborg
             //masteryRendererInfos[1].defaultMaterial = AssetsCore.CreateMaterial("matCyborg", 1, Color.white, 0);
             //masteryRendererInfos[2].defaultMaterial = AssetsCore.CreateMaterial("matCyborg", 1, Color.white, 0);
 
-            LanguageAPI.Add("CYBORG_MASTERY_SKIN_NAME", "Cybersteam");
-            SkinDef masterySkin = SkinsCore.CreateSkinDef("CYBORG_MASTERY_SKIN_NAME",
+            LanguageAPI.Add("SS2UCYBORG_MASTERY_SKIN_NAME", "Cybersteam");
+            SkinDef masterySkin = SkinsCore.CreateSkinDef("SS2UCYBORG_MASTERY_SKIN_NAME",
                                                           LoadoutAPI.CreateSkinIcon(new Color32(234, 231, 212, 255), new Color32(125, 92, 39, 255), new Color32(26, 17, 22, 255), new Color32(57, 33, 33, 255)),
                                                           masteryRendererInfos,
                                                           model,
@@ -112,8 +112,8 @@ namespace Starstorm2Unofficial.Survivors.Cyborg
             //masteryRendererInfos[1].defaultMaterial = AssetsCore.CreateMaterial("matCyborg", 1, Color.white, 0);
             //masteryRendererInfos[2].defaultMaterial = AssetsCore.CreateMaterial("matCyborg", 1, Color.white, 0);
 
-            LanguageAPI.Add("CYBORG_GRANDMASTERY_SKIN_NAME", "Metamorphic");
-            SkinDef grandMasterySkin = SkinsCore.CreateSkinDef("CYBORG_GRANDMASTERY_SKIN_NAME",
+            LanguageAPI.Add("SS2UCYBORG_GRANDMASTERY_SKIN_NAME", "Metamorphic");
+            SkinDef grandMasterySkin = SkinsCore.CreateSkinDef("SS2UCYBORG_GRANDMASTERY_SKIN_NAME",
                                                           LoadoutAPI.CreateSkinIcon(new Color32(255, 134, 122, 255), new Color32(7, 14, 30, 255), new Color32(7, 12, 25, 255), new Color32(10, 22, 36, 255)),
                                                           grandMasteryRendererInfos,
                                                           model,
