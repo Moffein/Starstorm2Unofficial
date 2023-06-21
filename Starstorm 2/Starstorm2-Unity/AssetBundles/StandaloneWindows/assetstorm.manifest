@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 531585118
+CRC: 3233207577
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 34cd9c99d546499275e11d096b9c5931
+    Hash: db7e85ff1bc8634a94d21aff83065f83
   TypeTreeHash:
     serializedVersion: 2
     Hash: e085efc3cec39229c22603e1a47b8115
@@ -120,6 +120,7 @@ Assets:
 - Assets/AssetBundle/Nemmando/Animations/SprintF.anim
 - Assets/AssetBundle/Executioner/animExecutionerEmote.prefab
 - Assets/AssetBundle/Nemmando/Animations/2Special12.anim
+- Assets/AssetBundle/Chirr/Textures_Old/texChirrDiffuse.png
 - Assets/AssetBundle/Items/GreaterWarbanner/greater_warbanner_prop.fbx
 - Assets/AssetBundle/Cyborg/Animations/Landing.anim
 - Assets/AssetBundle/Enemies/Spooder/matSpooder.mat
@@ -141,7 +142,7 @@ Assets:
 - Assets/AssetBundle/Items/CloakingHeadband/cloakbandtex.png
 - Assets/AssetBundle/matPureBlack.mat
 - Assets/AssetBundle/Nemmando/Animations/Descending.anim
-- Assets/AssetBundle/Chirr/Textures/T_Chirr_C.png
+- Assets/AssetBundle/Chirr/Textures_Old/T_Chirr_C.png
 - Assets/AssetBundle/Nemmando/Animations/AltSprintF.anim
 - Assets/AssetBundle/Nemmando/Animations/maskNemmandoImpact.mask
 - Assets/AssetBundle/Chirr/Textures/texChirrDiffuse.png
@@ -167,7 +168,6 @@ Assets:
 - Assets/AssetBundle/Chirr/Animations/ChirrGesture.mask
 - Assets/AssetBundle/Executioner/Mesh/meshExecutionerKnightAxe.mesh
 - Assets/AssetBundle/Nemmando/Icons/texDecisiveStrikeScepter.png
-- Assets/AssetBundle/Chirr/Meshes/meshChirr.mesh
 - Assets/AssetBundle/Nemmando/VFX/Textures/texNemmandoChargeShadow.png
 - Assets/AssetBundle/Enemies/Spooder/Animations/Descend.anim
 - Assets/AssetBundle/Nemmando/VFX/Textures/matNemmandoChargeFull.png
@@ -180,7 +180,7 @@ Assets:
 - Assets/AssetBundle/Nemmando/Materials/matGuardianGun.mat
 - Assets/AssetBundle/Items/CloakingHeadband/CloakingHeadband_Icon.png
 - Assets/AssetBundle/BuffIcons/Status_NemesisBleed.png
-- Assets/AssetBundle/Chirr/Materials/matChirr.mat
+- Assets/AssetBundle/Chirr/Materials/matChirrOld.mat
 - Assets/AssetBundle/Nemmando/VFX/Mesh/meshDecisiveStrike.fbx
 - Assets/AssetBundle/Skins/Icons/texCommandoSkinGrandMaster.png
 - Assets/AssetBundle/Items/MoltenCoin/matMoltenCoin.mat
@@ -194,13 +194,16 @@ Assets:
 - Assets/AssetBundle/Nemmando/VFX/Materials/matSheatheSpark.mat
 - Assets/AssetBundle/Nemmando/Textures/texVergil.png
 - Assets/AssetBundle/Executioner/Textures/texWastelander.png
+- Assets/AssetBundle/Chirr/Meshes/meshChirrMaid.mesh
 - Assets/AssetBundle/Nemmando/VFX/ImpactScepterStrike.prefab
 - Assets/AssetBundle/Nemmando/Mesh/meshCommandoMesh.mesh
 - Assets/AssetBundle/Items/BloodTester/BloodTester_Icon.png
 - Assets/AssetBundle/Nucleator/Animations/Clips/Jump.anim
 - Assets/AssetBundle/Skins/Textures/texCrocoDiffuse.png
+- Assets/AssetBundle/Chirr/Materials/matChirr.mat
 - Assets/AssetBundle/Cyborg/Animations/jump.001.anim
 - Assets/AssetBundle/Chirr/Animations/Ascending.anim
+- Assets/AssetBundle/Chirr/Meshes/meshChirrMaidDress.mesh
 - Assets/AssetBundle/Nemmando/Animations/Special.anim
 - Assets/AssetBundle/Enemies/Spooder/mdlSpooder.prefab
 - Assets/AssetBundle/Nemmando/Animations/RestLoop.anim
@@ -444,6 +447,7 @@ Assets:
 - Assets/AssetBundle/Enemies/Wayfarer/Collider.prefab
 - Assets/AssetBundle/Items/HottestSauce/matHottestSauceGlass.mat
 - Assets/AssetBundle/Items/GreenChocolate/GreenChocolate_Icon.png
+- Assets/AssetBundle/Chirr/Textures/texMaidChirrDressDiffuse.png
 - Assets/AssetBundle/Executioner/Textures/texWastelanderEmission.png
 - Assets/AssetBundle/Cyborg/Animations/RestIdle.anim
 - Assets/AssetBundle/Elites/buffAffixVoid.png
@@ -541,6 +545,7 @@ Assets:
 - Assets/AssetBundle/Pyro/Animations/Old/Firing.anim
 - Assets/AssetBundle/Executioner/Materials/matExecutionerMastery.mat
 - Assets/AssetBundle/Pyro/Textures/texPyro.png
+- Assets/AssetBundle/Chirr/Materials/matChirrMaidDress.mat
 - Assets/AssetBundle/Items/GreaterWarbanner/GreaterWarbanner_Icon.png
 - Assets/AssetBundle/Nemmando/Animations/ScepterSpecialEnd 1.anim
 - Assets/AssetBundle/Cyborg/Animations/animCyborg2.controller
@@ -605,12 +610,13 @@ Assets:
 - Assets/AssetBundle/Cyborg/Animations/CyborgGestureMask.mask
 - Assets/AssetBundle/FX/StormFXOptimized.prefab
 - Assets/AssetBundle/Nucleator/Icons/texNucleatorSpecial.png
-- Assets/AssetBundle/Chirr/Meshes/ChirrMesh.mesh
+- Assets/AssetBundle/Chirr/Meshes/meshChirrOld.mesh
 - Assets/AssetBundle/Enemies/Wayfarer/Materials/LampBoss.mat
 - Assets/AssetBundle/Items/HottestSauce/matHottestSauce.mat
 - Assets/AssetBundle/Pyro/Animations/Old/animPyroOld.controller
 - Assets/AssetBundle/Nemmando/Animations/Secondary3(weak).anim
 - Assets/AssetBundle/Pyro/Animations/Old/Jump.anim
+- Assets/AssetBundle/Chirr/Meshes/meshChirr.mesh
 - Assets/AssetBundle/Items/Malice/Malice_Icon.png
 - Assets/AssetBundle/Items/JetBoots/JetBoots_Icon.png
 - Assets/AssetBundle/Nemmando/VFX/Materials/metNemmandoChargeBlue.mat
@@ -742,7 +748,7 @@ Assets:
 - Assets/AssetBundle/Nemmando/VFX/Materials/matNemmandoDistortionLight.mat
 - Assets/AssetBundle/Items/NkotasHeritage/MDLNkotasHeritage.prefab
 - Assets/AssetBundle/Cyborg/Materials/matSteamborg.mat
-- Assets/AssetBundle/Chirr/Textures/texChirrNormal.png
+- Assets/AssetBundle/Chirr/Textures_Old/texChirrNormal.png
 - Assets/AssetBundle/Items/JetBoots/matJetBoots.mat
 - Assets/AssetBundle/Items/MoltenCoin/MoltenCoinDiffuse.png
 - Assets/AssetBundle/Nemmando/Animations/WalkBWD.anim
