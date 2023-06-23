@@ -25,7 +25,7 @@ The SS2 team is free to use any of the new code from this mod as long as this re
  
  *Items/Equipments are currently disabled.*
  
- *If unlock achievements arent' working, you can force unlock them in the config.*
+ *If unlock achievements aren't working, you can force unlock them in the config.*
 
 ## Installation
 
