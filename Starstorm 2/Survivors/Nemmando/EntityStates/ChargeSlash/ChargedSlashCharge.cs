@@ -137,7 +137,7 @@ namespace EntityStates.SS2UStates.Nemmando
             if (this.nemmandoController) this.nemmandoController.chargingDecisiveStrike = false;
             if (this.chargeEffectInstance) EntityState.Destroy(this.chargeEffectInstance);
 
-            base.PlayAnimation("Gesture, Override", "BufferEmpty");
+            if (!this.outer.destroying) base.PlayAnimation("FullBody, Override", "BufferEmpty");
 
             AkSoundEngine.StopPlayingID(this.chargePlayID);
         }

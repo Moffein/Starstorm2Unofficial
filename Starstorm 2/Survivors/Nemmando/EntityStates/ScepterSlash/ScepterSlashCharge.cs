@@ -119,7 +119,7 @@ namespace EntityStates.SS2UStates.Nemmando
             this.swordVFX.gameObject.SetActive(true);
             if (this.nemmandoController) this.nemmandoController.chargingDecisiveStrike = false;
 
-            base.PlayAnimation("Gesture, Override", "BufferEmpty");
+            if (!this.outer.destroying) base.PlayAnimation("FullBody, Override", "BufferEmpty");
 
             AkSoundEngine.StopPlayingID(this.chargePlayID);
         }

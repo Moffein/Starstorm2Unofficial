@@ -162,6 +162,7 @@ namespace EntityStates.SS2UStates.Nemmando
             }
             this.swordMat.SetFloat("_EmPower", this.minimumEmission);
             //if (this.nemmandoController) this.nemmandoController.UncoverScreen();
+            if (!this.outer.destroying) base.PlayAnimation("FullBody, Override", "BufferEmpty");
             base.OnExit();
         }
     }

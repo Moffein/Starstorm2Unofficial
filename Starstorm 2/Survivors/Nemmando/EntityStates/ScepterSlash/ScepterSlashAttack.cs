@@ -206,6 +206,8 @@ namespace EntityStates.SS2UStates.Nemmando
             if (this.nemmandoController) this.nemmandoController.UncoverScreen();
             if (NetworkServer.active) base.characterBody.RemoveBuff(RoR2Content.Buffs.HiddenInvincibility);
 
+            if (!this.outer.destroying) base.PlayAnimation("FullBody, Override", "BufferEmpty");
+
             base.characterBody.hideCrosshair = false;
             base.OnExit();
         }
