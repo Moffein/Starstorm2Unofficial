@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 3978640192
+CRC: 2103362762
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 8d7a1b70104c47b355e76a09c3f69c73
+    Hash: 2e9cc9f92b0a8fa8e6cba4df71ca8f2e
   TypeTreeHash:
     serializedVersion: 2
     Hash: e085efc3cec39229c22603e1a47b8115
@@ -145,7 +145,6 @@ Assets:
 - Assets/AssetBundle/Chirr/Textures_Old/T_Chirr_C.png
 - Assets/AssetBundle/Nemmando/Animations/AltSprintF.anim
 - Assets/AssetBundle/Nemmando/Animations/maskNemmandoImpact.mask
-- Assets/AssetBundle/Chirr/Textures/texChirrDiffuse.png
 - Assets/AssetBundle/Nucleator/Icons/texNucleatorUtility.png
 - Assets/AssetBundle/GeneralAssets/Textures/texDistortionNormal.jpg
 - Assets/AssetBundle/Nemmando/Animations/Ascending.anim
@@ -553,6 +552,7 @@ Assets:
 - Assets/AssetBundle/Pyro/Animations/Old/animPyroDisplayOld.controller
 - Assets/AssetBundle/Cyborg/Animations/animCyTP_Default.anim
 - Assets/AssetBundle/Nucleator/Animations/Clips/maskNucleatorPitch.mask
+- Assets/AssetBundle/Chirr/Textures/texChirrDiffuse.png
 - Assets/AssetBundle/Nemmando/Mesh/meshMercSword.mesh
 - Assets/AssetBundle/Cyborg/Animations/Tele/animCyborgTele2.controller
 - Assets/AssetBundle/FX/NemmandoBossEffect.prefab
