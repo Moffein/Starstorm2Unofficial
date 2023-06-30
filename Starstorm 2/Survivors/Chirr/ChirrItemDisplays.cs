@@ -354,13 +354,16 @@ localScale = new Vector3(1.47632F, 1.47632F, 1.47632F),
             itemRules.Add(ItemDisplayCore.CreateGenericDisplayRule(DLC1Content.Items.FreeChest, "DisplayShippingRequestForm", "Pelvis", new Vector3(-0.32823F, 0.45358F, -0.04389F), new Vector3(315.7032F, 145.4739F, 301.5168F), new Vector3(1F, 1F, 1F)));
             //itemRules.Add(ItemDisplayCore.CreateGenericDisplayRule(DLC1Content.Items.ConvertCritChanceToCritDamage, 
             itemRules.Add(ItemDisplayCore.CreateGenericDisplayRule(DLC1Content.Items.ElementalRingVoid, "DisplayVoidRing", "ShoulderR", new Vector3(0.00463F, 0.76168F, 0.0238F), new Vector3(273.7516F, 207.0382F, 133.05F), new Vector3(1.18541F, 1.18541F, 1.18541F)));
-            itemRules.Add(new ItemDisplayRuleSet.KeyAssetRuleGroup
+
+            if (Modules.Config.ChirrEgoFullHeadReplacement.Value)
             {
-                keyAsset = DLC1Content.Items.LunarSun,
-                displayRuleGroup = new DisplayRuleGroup
+                itemRules.Add(new ItemDisplayRuleSet.KeyAssetRuleGroup
                 {
-                    rules = new ItemDisplayRule[]
+                    keyAsset = DLC1Content.Items.LunarSun,
+                    displayRuleGroup = new DisplayRuleGroup
                     {
+                        rules = new ItemDisplayRule[]
+                        {
                         new ItemDisplayRule
                         {
                             ruleType = ItemDisplayRuleType.ParentedPrefab,
@@ -381,9 +384,44 @@ localScale = new Vector3(1.47632F, 1.47632F, 1.47632F),
                             localScale = new Vector3(3.20744F, 2.59127F, 3.20744F),
                             limbMask = LimbFlags.None
                         }
+                        }
                     }
-                }
-            });
+                });
+            }
+            else
+            {
+                itemRules.Add(new ItemDisplayRuleSet.KeyAssetRuleGroup
+                {
+                    keyAsset = DLC1Content.Items.LunarSun,
+                    displayRuleGroup = new DisplayRuleGroup
+                    {
+                        rules = new ItemDisplayRule[]
+                        {
+                        new ItemDisplayRule
+                        {
+                            ruleType = ItemDisplayRuleType.ParentedPrefab,
+                            followerPrefab = ItemDisplayCore.LoadDisplay("DisplaySunHead"),
+                            childName = "Head",
+                            localPos = new Vector3(0.00675F, 0.50966F, 0.05856F),
+                            localAngles = new Vector3(75.00004F, 0F, 0F),
+                            localScale = new Vector3(0.75F, 0.75F, 0.75F),
+                            limbMask = LimbFlags.None
+                        },
+                        new ItemDisplayRule
+                        {
+                            ruleType = ItemDisplayRuleType.ParentedPrefab,
+                            followerPrefab = ItemDisplayCore.LoadDisplay("DisplaySunHeadNeck"),
+                            childName = "Neck",
+                            localPos = new Vector3(0.02074F, 0.07013F, 0.05536F),
+                            localAngles = new Vector3(4.97696F, 5.94505F, 8.78821F),
+                            localScale = new Vector3(3.20744F, 2.59127F, 3.20744F),
+                            limbMask = LimbFlags.None
+                        }
+                        }
+                    }
+                });
+            }
+
             itemRules.Add(ItemDisplayCore.CreateFollowerDisplayRule(DLC1Content.Items.MinorConstructOnKill, "DisplayDefenseNucleus", new Vector3(0.55F, -1.83803F, -1.30853F), new Vector3(326.9531F, 0F, 0.32262F), new Vector3(0.4F, 0.4F, 0.4F)));
             itemRules.Add(ItemDisplayCore.CreateGenericDisplayRule(DLC1Content.Items.VoidMegaCrabItem, "DisplayMegaCrabItem", "Head", new Vector3(-0.01446F, -0.79292F, 0.51989F), new Vector3(335.283F, 0.40798F, 359.7498F), new Vector3(0.24436F, 0.24436F, 0.24436F)));
 

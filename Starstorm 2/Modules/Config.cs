@@ -31,6 +31,8 @@ namespace Starstorm2Unofficial.Modules
         internal static ConfigEntry<bool> EnableEquipment;
         internal static ConfigEntry<bool> EnableFunnyCanister;
 
+        internal static ConfigEntry<bool> ChirrEgoFullHeadReplacement;
+
         internal static ConfigEntry<bool> EnableTyphoon;
         internal static ConfigEntry<bool> TyphoonIncreaseSpawnCap;
         internal static ConfigEntry<bool> EnableEvents;
@@ -186,6 +188,11 @@ namespace Starstorm2Unofficial.Modules
                             "Disable Storm Visuals",
                             false,
                             "Removes storm particle effects entirely if they're still hurting your computer. Doesn't disable environment fog/filter");
+
+            ChirrEgoFullHeadReplacement = StarstormPlugin.instance.Config.Bind("Starstorm 2 :: Survivors :: Chirr",
+                             "Egocentrism full head replacement.",
+                             false,
+                             "Egocentrism replaces Chirr's head (looks a bit jank).");
 
             //survivors
             //EnableExecutioner = CharacterEnableConfig("Executioner");
