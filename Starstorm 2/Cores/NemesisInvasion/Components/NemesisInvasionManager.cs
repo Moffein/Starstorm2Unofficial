@@ -26,11 +26,37 @@ namespace Starstorm2Unofficial.Cores.NemesisInvasion.Components
         public static NemesisCard currentCard;
         private int cardSpawnCount;
 
+        public static bool useVoidTeam = false;
+        public static bool useAIBlacklist = true;
+        public static bool useMithrixBlacklist = true;
+        public static bool useEngiTurretBlacklist = true;
+        public static bool useHealingBlacklist = true;
+
+        public static string nemesisItemBlacklistString;
+
         public static void Initialize()
         {
-            On.RoR2.Run.Start += RunStart_VoidInvasionManagerSetup;
+            RoR2.Run.onRunStartGlobal += VoidInvasionManagerSetup;
             On.RoR2.ArenaMissionController.MissionCompleted.OnEnter += MissionCompleted_OnEnter;
             RoR2.Stage.onStageStartGlobal += Stage_onStageStartGlobal;
+            RoR2.RoR2Application.onLoad += InitNemesisBlacklist;
+        }
+
+        private static void VoidInvasionManagerSetup(Run run)
+        {
+            if (NemesisInvasionManager.instance != null) Destroy(NemesisInvasionManager.instance);
+            NemesisInvasionManager.instance = run.AddComponent<NemesisInvasionManager>();
+        }
+
+        private static void InitNemesisBlacklist()
+        {
+            //Build vengeanceBlacklist
+            nemesisItemBlacklistString = new string(nemesisItemBlacklistString.ToCharArray().Where(c => !System.Char.IsWhiteSpace(c)).ToArray());
+            string[] vsplitBlacklist = nemesisItemBlacklistString.Split(',');
+            foreach (string str in vsplitBlacklist)
+            {
+                NemesisInvasionManager.BlacklistItem(str);
+            }
         }
 
         private static void Stage_onStageStartGlobal(Stage obj)
@@ -58,13 +84,6 @@ namespace Starstorm2Unofficial.Cores.NemesisInvasion.Components
         {
             orig(self);
             if (NemesisInvasionManager.instance) NemesisInvasionManager.instance.voidClearedSuccessfully = true;
-        }
-
-        private static void RunStart_VoidInvasionManagerSetup(On.RoR2.Run.orig_Start orig, RoR2.Run self)
-        {
-            orig(self);
-            if (NemesisInvasionManager.instance != null) Destroy(NemesisInvasionManager.instance);
-            NemesisInvasionManager.instance = self.AddComponent<NemesisInvasionManager>();
         }
 
         private void Awake()
@@ -167,7 +186,7 @@ namespace Starstorm2Unofficial.Cores.NemesisInvasion.Components
                 };
 
                 DirectorSpawnRequest directorSpawnRequest = new DirectorSpawnRequest(card.spawnCard, directorPlacementRule, rng);
-                directorSpawnRequest.teamIndexOverride = TeamIndex.Void;
+                directorSpawnRequest.teamIndexOverride = useVoidTeam ? TeamIndex.Void : TeamIndex.Monster;
                 directorSpawnRequest.ignoreTeamMemberLimit = true;
 
                 CombatSquad combatSquad = UnityEngine.Object.Instantiate<GameObject>(LegacyResourcesAPI.Load<GameObject>("Prefabs/NetworkedObjects/Encounters/ShadowCloneEncounter")).GetComponent<CombatSquad>();
@@ -256,7 +275,10 @@ namespace Starstorm2Unofficial.Cores.NemesisInvasion.Components
             }
             ItemDef itemDef = ItemCatalog.GetItemDef(pickupDef.itemIndex);
             return !(itemDef == null)
-                && itemDef.DoesNotContainTag(ItemTag.AIBlacklist)
+                 && (!useAIBlacklist || itemDef.DoesNotContainTag(ItemTag.AIBlacklist))
+                && (!useMithrixBlacklist || itemDef.DoesNotContainTag(ItemTag.BrotherBlacklist))
+                && (!useEngiTurretBlacklist || itemDef.DoesNotContainTag(ItemTag.CannotCopy))
+                && (!useHealingBlacklist || itemDef.DoesNotContainTag(ItemTag.Healing))
                 && itemDef.DoesNotContainTag(ItemTag.EquipmentRelated)
                 && itemDef.DoesNotContainTag(ItemTag.HoldoutZoneRelated)
                 && itemDef.DoesNotContainTag(ItemTag.ObliterationRelated)

@@ -35,7 +35,7 @@ namespace Starstorm2Unofficial.Survivors.Cyborg
             // ThighL : Upperleg.L
             // ThighR : Upperleg.R
             // CalfL : lowerleg.L
-            // CalfR : lowerleg.R
+            // CalfR : lowerleg.RchildName = "Lowerarm.L_end",
             // FootL : lowerleg.L_end
             // FootR : lowerleg.R_end
             #region Display Rules
@@ -63,7 +63,7 @@ namespace Starstorm2Unofficial.Survivors.Cyborg
             itemRules.Add(ItemDisplayCore.CreateGenericDisplayRule(RoR2Content.Items.FireRing, "DisplayFireRing", "Lowerarm.R_end", new Vector3(0.015F, -0.00026F, -0.00709F), new Vector3(89.29308F, 180F, 180F), new Vector3(0.3F, 0.3F, 0.3F)));
             //itemRules.Add(ItemDisplayCore.CreateMirroredDisplayRule("UtilitySkillMagazine", "DisplayAfterburnerUpperarm.Ring", "Chest", new Vector3(0f, 0f, 0f), new Vector3(0f, 0f, 0f), new Vector3(0f, 0f, 0f)));
             itemRules.Add(ItemDisplayCore.CreateGenericDisplayRule(RoR2Content.Items.JumpBoost, "DisplayWaxBird", "head_end", new Vector3(0F, -0.21348F, -0.1F), new Vector3(0F, 0F, 0F), new Vector3(0.8F, 0.8F, 0.8F)));
-            itemRules.Add(ItemDisplayCore.CreateGenericDisplayRule(RoR2Content.Items.ArmorReductionOnHit, "DisplayWarhammer", "Lowerarm.L_end", new Vector3(0.01818F, 0.6F, 0F), new Vector3(270F, 0F, 0F), new Vector3(0.5F, 0.5F, 0.5F)));
+            itemRules.Add(ItemDisplayCore.CreateGenericDisplayRule(RoR2Content.Items.ArmorReductionOnHit, "DisplayWarhammer", "Lowerarm.L_end", new Vector3(0.0228F, 0.25497F, -0.00535F), new Vector3(270F, 0F, 0F), new Vector3(0.25F, 0.25F, 0.25F)));
             itemRules.Add(ItemDisplayCore.CreateGenericDisplayRule(RoR2Content.Items.ArmorPlate, "DisplayRepulsionArmorPlate", "Upperleg.R", new Vector3(-0.00551F, 0.29786F, -0.11933F), new Vector3(90F, 0F, 0F), new Vector3(0.3F, 0.3F, 0.3F)));
             itemRules.Add(ItemDisplayCore.CreateGenericDisplayRule(RoR2Content.Items.Feather, "DisplayFeather", "Upperarm.R", new Vector3(0F, -0.15612F, 0F), new Vector3(0F, 180F, 180F), new Vector3(0.03F, 0.03F, 0.03F)));
             itemRules.Add(ItemDisplayCore.CreateGenericDisplayRule(RoR2Content.Items.Crowbar, "DisplayCrowbar", "Waist", new Vector3(-0.25759F, 0.00044F, 0.10041F), new Vector3(310F, 30F, 0F), new Vector3(0.3F, 0.3F, 0.3F)));

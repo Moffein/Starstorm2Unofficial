@@ -151,6 +151,36 @@ namespace Starstorm2Unofficial.Modules
                             0f,
                             "Additional armor that Nemesis Bosses recieve.").Value;
 
+            Cores.NemesisInvasion.Components.NemesisInvasionManager.useVoidTeam = StarstormPlugin.instance.Config.Bind("Starstorm 2 :: Void Fields changes",
+                            "Nemesis Invasion - Use Void Team",
+                            false,
+                            "Invaders are a part of the void team.").Value;
+
+            Cores.NemesisInvasion.Components.NemesisInvasionManager.useAIBlacklist = StarstormPlugin.instance.Config.Bind("Starstorm 2 :: Void Fields changes :: Item Blacklists",
+                             "Nemesis Invasion  - Blacklist AIBlacklist items.",
+                             true,
+                             "Prevents invaders from getting items with this tag.").Value;
+
+            Cores.NemesisInvasion.Components.NemesisInvasionManager.useMithrixBlacklist = StarstormPlugin.instance.Config.Bind("Starstorm 2 :: Void Fields changes :: Item Blacklists",
+                             "Nemesis Invasion - Item Blacklists - Blacklist BrotherBlacklist (Mithrix) items.",
+                             true,
+                             "Prevents invaders from getting items with this tag.").Value;
+
+            Cores.NemesisInvasion.Components.NemesisInvasionManager.useEngiTurretBlacklist = StarstormPlugin.instance.Config.Bind("Starstorm 2 :: Void Fields changes :: Item Blacklists",
+                             "Nemesis Invasion - Item Blacklists - Blacklist CannotCopy (Engi Turret) items.",
+                             true,
+                             "Prevents invaders from getting items with this tag.").Value;
+
+            Cores.NemesisInvasion.Components.NemesisInvasionManager.useHealingBlacklist = StarstormPlugin.instance.Config.Bind("Starstorm 2 :: Void Fields changes :: Item Blacklists",
+                             "Nemesis Invasion - Item Blacklists - Blacklist Healing items.",
+                             true,
+                             "Prevents invaders from getting items with this tag.").Value;
+
+            Cores.NemesisInvasion.Components.NemesisInvasionManager.nemesisItemBlacklistString = StarstormPlugin.instance.Config.Bind("Starstorm 2 :: Void Fields changes :: Item Blacklists",
+                             "Nemesis Invasion - Additional Item Blacklist",
+                             "IceRing, FireRing, ElementalRingVoid, FlatHealth, PersonalShield, ArmorPlate, MushroomVoid, Bear, BearVoid, ITEM_BLOODMASK, BleedOnHit, BleedOnHitVoid, BleedOnHitAndExplode, Missile, MissileVoid, PrimarySkillShuriken, ShockNearby, NovaOnHeal, Thorns, DroneWeapons, Icicle, ImmuneToDebuff, CaptainDefenseMatrix, ExtraLife, ExtraLifeVoid, ExplodeOnDeathVoid",
+                             "List item codenames separated by commas (ex. Behemoth, ShockNearby, Clover). List of item codenames can be found by using the list_item console command from the DebugToolKit mod.").Value;
+
             Starstorm2Unofficial.Survivors.Chirr.Components.ChirrFriendController.allowBefriendNemesis = StarstormPlugin.instance.Config.Bind("Starstorm 2 :: Void Fields changes",
                             "Nemesis Invasion - Allow Chirr Befriend",
                             false,

@@ -40,8 +40,8 @@ namespace Starstorm2Unofficial.Cores
 
             SetUpVisualsPrefab();
 
-            On.RoR2.Run.Start += Run_Start;
-            On.RoR2.Run.OnDestroy += Run_OnDestroy;
+            RoR2.Run.onRunStartGlobal += Run_Start;
+            RoR2.Run.onRunDestroyGlobal += Run_OnDestroy;
             On.RoR2.SceneCatalog.OnActiveSceneChanged += SceneCatalog_OnActiveSceneChanged;
         }
 
@@ -62,10 +62,8 @@ namespace Starstorm2Unofficial.Cores
             }
         }
 
-        private void Run_Start(On.RoR2.Run.orig_Start orig, Run run)
+        private void Run_Start(Run run)
         {
-            orig(run);
-
             currentRun = run;
 
             //warning timer is needed by server to set up storm card but clients also need it to decide how long visuals take to fade in
@@ -110,9 +108,8 @@ namespace Starstorm2Unofficial.Cores
             director.eventCards = events;
         }
 
-        private void Run_OnDestroy(On.RoR2.Run.orig_OnDestroy orig, Run self) {
-            orig(self);
-
+        private void Run_OnDestroy(Run self)
+        {
             if (director)
             {
                 director.StopAllEvents();

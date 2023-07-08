@@ -2,6 +2,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Mono.Cecil.Cil;
+using MonoMod.Cil;
 using R2API;
 using RoR2;
 using RoR2.CharacterAI;
@@ -36,8 +38,25 @@ namespace Starstorm2Unofficial.Cores.NemesisInvasion
             BuildNemesisItem();
 
             RoR2.RoR2Application.onLoad += NemforcerMinibossCompat;
-            RoR2.RoR2Application.onLoad += BlacklistItemsFromNemesisInvader;
             On.RoR2.CharacterAI.BaseAI.UpdateTargets += NemesisInvasionCore.AttemptTargetPlayer;
+
+            ApplyInfestationFix();
+        }
+
+        private void ApplyInfestationFix()
+        {
+            IL.EntityStates.VoidInfestor.Infest.FixedUpdate += (il) =>
+            {
+                ILCursor c = new ILCursor(il);
+                c.GotoNext(MoveType.After,
+                     x => x.MatchCallvirt<CharacterBody>("get_isPlayerControlled")
+                    );
+                c.Emit(OpCodes.Ldloc_3);
+                c.EmitDelegate<Func<bool, CharacterBody, bool>>((playerControlled, body) =>
+                {
+                    return playerControlled || (body.inventory && body.inventory.GetItemCount(NemesisMarkerItem) > 0);
+                });
+            };
         }
 
         //TODO: Move this to Items section if I ever get around to doing them. (probably not)
@@ -144,36 +163,6 @@ namespace Starstorm2Unofficial.Cores.NemesisInvasion
                     }
                 }
             }
-        }
-
-        private void BlacklistItemsFromNemesisInvader()
-        {
-            NemesisInvasionManager.BlacklistItem("IceRing");
-            NemesisInvasionManager.BlacklistItem("FireRing");
-            NemesisInvasionManager.BlacklistItem("ElementalRingVoid");
-            NemesisInvasionManager.BlacklistItem("FlatHealth");
-            NemesisInvasionManager.BlacklistItem("PersonalShield");
-            NemesisInvasionManager.BlacklistItem("ArmorPlate");
-            NemesisInvasionManager.BlacklistItem("MushroomVoid");
-            NemesisInvasionManager.BlacklistItem("Bear");
-            NemesisInvasionManager.BlacklistItem("BearVoid");
-            NemesisInvasionManager.BlacklistItem("ITEM_BLOODMASK");
-            NemesisInvasionManager.BlacklistItem("BleedOnHit");
-            NemesisInvasionManager.BlacklistItem("BleedOnHitVoid");
-            NemesisInvasionManager.BlacklistItem("BleedOnHitAndExplode");
-            NemesisInvasionManager.BlacklistItem("Missile");
-            NemesisInvasionManager.BlacklistItem("MissileVoid");
-            NemesisInvasionManager.BlacklistItem("PrimarySkillShuriken");
-            NemesisInvasionManager.BlacklistItem("ShockNearby");
-            NemesisInvasionManager.BlacklistItem("NovaOnHeal");
-            NemesisInvasionManager.BlacklistItem("Thorns");
-            NemesisInvasionManager.BlacklistItem("DroneWeapons");
-            NemesisInvasionManager.BlacklistItem("Icicle");
-            NemesisInvasionManager.BlacklistItem("ImmuneToDebuff");
-            NemesisInvasionManager.BlacklistItem("CaptainDefenseMatrix");
-            NemesisInvasionManager.BlacklistItem("ExtraLife");
-            NemesisInvasionManager.BlacklistItem("ExtraLifeVoid");
-            NemesisInvasionManager.BlacklistItem("ExplodeOnDeathVoid");
         }
 
         public static void AddNemesisBoss(GameObject masterPrefab, int[] itemStacks, string itemDropName, bool shouldGrantRandomItems, bool autoMusicSetup)
