@@ -22,6 +22,34 @@ namespace Starstorm2Unofficial.Cores.NemesisInvasion.Components.Body
             characterBody = base.GetComponent<CharacterBody>();
         }
 
+        //Remove Blacklisted Items added via EWI
+        public void Start()
+        {
+            if (NetworkServer.active && NemesisInvasionManager.forceRemoveBlacklistedItems && characterBody.inventory)
+            {
+                for (int i = 0; i< characterBody.inventory.itemStacks.Length; i++)
+                {
+                    if (characterBody.inventory.itemStacks[i] > 0)
+                    {
+                        ItemDef id = ItemCatalog.GetItemDef((ItemIndex)i);
+                        if (id)
+                        {
+                            if ((id.ContainsTag(ItemTag.AIBlacklist) && NemesisInvasionManager.useAIBlacklist)
+                                || (id.ContainsTag(ItemTag.BrotherBlacklist) && NemesisInvasionManager.useMithrixBlacklist)
+                                || (id.ContainsTag(ItemTag.CannotCopy) && NemesisInvasionManager.useEngiTurretBlacklist)
+                                || (id.ContainsTag(ItemTag.Healing) && NemesisInvasionManager.useHealingBlacklist)
+                                || NemesisInvasionManager.itemBlacklist.Contains(id.itemIndex))
+                            {
+                                int itemcount = characterBody.inventory.GetItemCount(id.itemIndex);
+                                if (itemcount > 0) characterBody.inventory.RemoveItem(id, itemcount);
+                            }
+                        }
+
+                    }
+                }
+            }
+        }
+
         public void FixedUpdate()
         {
             if (NetworkServer.active && !droppedItem)

@@ -32,6 +32,8 @@ namespace Starstorm2Unofficial.Cores.NemesisInvasion.Components
         public static bool useEngiTurretBlacklist = true;
         public static bool useHealingBlacklist = true;
 
+        public static bool forceRemoveBlacklistedItems = true;
+
         public static string nemesisItemBlacklistString;
 
         public static void Initialize()

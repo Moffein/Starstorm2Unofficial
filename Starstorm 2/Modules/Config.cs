@@ -181,6 +181,11 @@ namespace Starstorm2Unofficial.Modules
                              "IceRing, FireRing, ElementalRingVoid, FlatHealth, PersonalShield, ArmorPlate, MushroomVoid, Bear, BearVoid, ITEM_BLOODMASK, BleedOnHit, BleedOnHitVoid, BleedOnHitAndExplode, Missile, MissileVoid, PrimarySkillShuriken, ShockNearby, NovaOnHeal, Thorns, DroneWeapons, Icicle, ImmuneToDebuff, CaptainDefenseMatrix, ExtraLife, ExtraLifeVoid, ExplodeOnDeathVoid",
                              "List item codenames separated by commas (ex. Behemoth, ShockNearby, Clover). List of item codenames can be found by using the list_item console command from the DebugToolKit mod.").Value;
 
+            Cores.NemesisInvasion.Components.NemesisInvasionManager.forceRemoveBlacklistedItems = StarstormPlugin.instance.Config.Bind("Starstorm 2 :: Void Fields changes :: Item Blacklists",
+                             "Nemesis Invasion - Item Blacklists - Force Remove Blacklisted Items",
+                             true,
+                             "Removes blacklisted items even if they were added from other sources (ex. EnemiesWithItems).").Value;
+
             Starstorm2Unofficial.Survivors.Chirr.Components.ChirrFriendController.allowBefriendNemesis = StarstormPlugin.instance.Config.Bind("Starstorm 2 :: Void Fields changes",
                             "Nemesis Invasion - Allow Chirr Befriend",
                             false,
