@@ -158,7 +158,6 @@ namespace Starstorm2Unofficial.Cores
 
         private GameObject SetUpVisuals()
         {
-            Debug.Log("0");
             var fog = ScriptableObject.CreateInstance<RampFog>();
             fog.enabled.value = true;
             fog.enabled.overrideState = true;
@@ -177,7 +176,7 @@ namespace Starstorm2Unofficial.Cores
             fog.skyboxStrength.value = 0;
             fog.skyboxStrength.overrideState = true;
 
-            GameObject stormFXObj = stormFXOBjprefab ? stormFXOBjprefab.InstantiateClone("stormFX", false) : new GameObject("stormFXsimple");
+            GameObject stormFXObj = stormFXOBjprefab ? stormFXOBjprefab.InstantiateClone("stormFX", false) : new GameObject("stormFXsimple");   //stormFXOBjprefab is null if storm vfx disabled
             stormFXObj.AddComponent<Components.StormSoundComponent>();
 
             stormFXObj.SetActive(false);
