@@ -49,7 +49,7 @@ namespace Starstorm2Unofficial.Cores
 
             if (Modules.Config.disableStormVisuals.Value) {
 
-                stormFXOBjprefab = new GameObject("stormFXsimple");
+                stormFXOBjprefab = new GameObject("stormFXsimple"); //This nullrefs, gameobject isn't actually saved?
             } else {
 
                 if (Modules.Config.enableOptimizedStormVisuals.Value) {
@@ -158,6 +158,7 @@ namespace Starstorm2Unofficial.Cores
 
         private GameObject SetUpVisuals()
         {
+            Debug.Log("0");
             var fog = ScriptableObject.CreateInstance<RampFog>();
             fog.enabled.value = true;
             fog.enabled.overrideState = true;
@@ -176,12 +177,12 @@ namespace Starstorm2Unofficial.Cores
             fog.skyboxStrength.value = 0;
             fog.skyboxStrength.overrideState = true;
 
-            GameObject stormFXObj = stormFXOBjprefab.InstantiateClone("stormFX", false);
+            GameObject stormFXObj = stormFXOBjprefab ? stormFXOBjprefab.InstantiateClone("stormFX", false) : new GameObject("stormFXsimple");
             stormFXObj.AddComponent<Components.StormSoundComponent>();
 
             stormFXObj.SetActive(false);
             stormFXObj.layer = 20;
-                                                                                    
+
             PostProcessProfile prof = ScriptableObject.CreateInstance<PostProcessProfile>();
             prof.settings.Add(fog);
 
