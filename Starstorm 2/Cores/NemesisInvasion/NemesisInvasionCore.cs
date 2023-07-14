@@ -71,7 +71,6 @@ namespace Starstorm2Unofficial.Cores.NemesisInvasion
             NemesisMarkerItem.tags = new[]
             {
                 ItemTag.WorldUnique,
-                ItemTag.BrotherBlacklist,
                 ItemTag.CannotSteal
             };
             (NemesisMarkerItem as ScriptableObject).name = "SS2UNemesisMarkerItem";

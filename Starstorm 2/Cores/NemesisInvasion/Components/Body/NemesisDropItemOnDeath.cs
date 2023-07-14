@@ -34,11 +34,11 @@ namespace Starstorm2Unofficial.Cores.NemesisInvasion.Components.Body
                         ItemDef id = ItemCatalog.GetItemDef((ItemIndex)i);
                         if (id)
                         {
-                            if ((id.ContainsTag(ItemTag.AIBlacklist) && NemesisInvasionManager.useAIBlacklist)
+                            if (((id.ContainsTag(ItemTag.AIBlacklist) && NemesisInvasionManager.useAIBlacklist)
                                 || (id.ContainsTag(ItemTag.BrotherBlacklist) && NemesisInvasionManager.useMithrixBlacklist)
                                 || (id.ContainsTag(ItemTag.CannotCopy) && NemesisInvasionManager.useEngiTurretBlacklist)
                                 || (id.ContainsTag(ItemTag.Healing) && NemesisInvasionManager.useHealingBlacklist)
-                                || NemesisInvasionManager.itemBlacklist.Contains(id.itemIndex))
+                                || NemesisInvasionManager.itemBlacklist.Contains(id.itemIndex)) && id != RoR2Content.Items.UseAmbientLevel && id != NemesisInvasionCore.NemesisMarkerItem)
                             {
                                 int itemcount = characterBody.inventory.GetItemCount(id.itemIndex);
                                 if (itemcount > 0) characterBody.inventory.RemoveItem(id, itemcount);
