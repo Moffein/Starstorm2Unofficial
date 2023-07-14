@@ -1,9 +1,8 @@
 {
-	"author": "ChirrLover",
-    "name": "Starstorm2_Unofficial",
+    "name": "Videogame_Mod_2_Unofficial",
     "version_number": "0.12.6",
     "website_url": "https://github.com/Moffein/Starstorm2Unofficial",
-    "description": "A restoration of the pre-SotV version of Starstorm 2. Compatible with the official Starstorm 2!",
+    "description": "A restoration of the pre-SotV Videogame Mod 2. Compatible with the official Videogame Mod 2!",
     "dependencies": [
         "bbepis-BepInExPack-5.4.1905",
 		"tristanmcpherson-R2API-4.4.1"
