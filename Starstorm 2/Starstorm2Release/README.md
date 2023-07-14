@@ -32,4 +32,4 @@ The SS2 team is free to use any of the new code from this mod as long as this re
 `0.12.7`
 
 - Nemesis Invasion
-	- Fixed UseAmbientLevel item and NemesisMarkerItem getting removed by the blacklist.
+	- Fixed internal Nemesis stat items getting removed by the item blacklist.

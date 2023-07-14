@@ -17,6 +17,7 @@ namespace Starstorm2Unofficial.Cores.NemesisInvasion.Components
         public static List<NemesisCard> nemesisCards = new List<NemesisCard>();
         public static NemesisInvasionManager instance;
         public static HashSet<ItemIndex> itemBlacklist = new HashSet<ItemIndex>();
+        public static HashSet<ItemIndex> itemWhitelist = new HashSet<ItemIndex>();
 
         private bool playedEventStartChatMessage = false;
         private bool playedEventEndChatMessage = false;
@@ -59,6 +60,11 @@ namespace Starstorm2Unofficial.Cores.NemesisInvasion.Components
             {
                 NemesisInvasionManager.BlacklistItem(str);
             }
+
+            itemWhitelist.Add(RoR2Content.Items.UseAmbientLevel.itemIndex);
+            itemWhitelist.Add(RoR2Content.Items.TeleportWhenOob.itemIndex);
+            itemWhitelist.Add(RoR2Content.Items.AdaptiveArmor.itemIndex);
+            itemWhitelist.Add(NemesisInvasionCore.NemesisMarkerItem.itemIndex);
         }
 
         private static void Stage_onStageStartGlobal(Stage obj)

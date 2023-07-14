@@ -38,13 +38,12 @@ namespace Starstorm2Unofficial.Cores.NemesisInvasion.Components.Body
                                 || (id.ContainsTag(ItemTag.BrotherBlacklist) && NemesisInvasionManager.useMithrixBlacklist)
                                 || (id.ContainsTag(ItemTag.CannotCopy) && NemesisInvasionManager.useEngiTurretBlacklist)
                                 || (id.ContainsTag(ItemTag.Healing) && NemesisInvasionManager.useHealingBlacklist)
-                                || NemesisInvasionManager.itemBlacklist.Contains(id.itemIndex)) && id != RoR2Content.Items.UseAmbientLevel && id != NemesisInvasionCore.NemesisMarkerItem)
+                                || NemesisInvasionManager.itemBlacklist.Contains(id.itemIndex)) && !NemesisInvasionManager.itemWhitelist.Contains(id.itemIndex))
                             {
                                 int itemcount = characterBody.inventory.GetItemCount(id.itemIndex);
                                 if (itemcount > 0) characterBody.inventory.RemoveItem(id, itemcount);
                             }
                         }
-
                     }
                 }
             }
