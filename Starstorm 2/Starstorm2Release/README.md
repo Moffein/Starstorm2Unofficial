@@ -29,6 +29,11 @@ The SS2 team is free to use any of the new code from this mod as long as this re
 
 ## Changelog
 
+`0.12.8`
+
+- Executioner
+	- Fixed giant Royal Capacitor display.
+
 `0.12.7`
 
 - Nemesis Invasion

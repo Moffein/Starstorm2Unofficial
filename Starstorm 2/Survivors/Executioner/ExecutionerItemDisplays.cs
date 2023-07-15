@@ -139,52 +139,11 @@ namespace Starstorm2Unofficial.Survivors.Executioner
                         {
                             ruleType = ItemDisplayRuleType.ParentedPrefab,
                             followerPrefab = ItemDisplayCore.LoadDisplay("DisplayLightningArmLeft"),
-                            childName = "Head",
-                            localPos = Vector3.zero,
-                            localAngles = Vector3.zero,
-                            localScale = Vector3.one,
-                            limbMask = LimbFlags.None
-                        },
-                        new ItemDisplayRule
-                        {
-                            ruleType = ItemDisplayRuleType.ParentedPrefab,
-                            followerPrefab = ItemDisplayCore.LoadDisplay("DisplayLightningArmLeftVoidSurvivor"),
-                            childName = "Head",
-                            localPos = Vector3.zero,
-                            localAngles = Vector3.zero,
-                            localScale = Vector3.one,
-                            limbMask = LimbFlags.None
-                        },
-                        new ItemDisplayRule
-                        {
-                            ruleType = ItemDisplayRuleType.ParentedPrefab,
-                            followerPrefab = ItemDisplayCore.LoadDisplay("DisplayLightningArmRight,Bandit2"),
-                            childName = "Head",
-                            localPos = Vector3.zero,
-                            localAngles = Vector3.zero,
-                            localScale = Vector3.one,
-                            limbMask = LimbFlags.None
-                        },
-                        new ItemDisplayRule
-                        {
-                            ruleType = ItemDisplayRuleType.ParentedPrefab,
-                            followerPrefab = ItemDisplayCore.LoadDisplay("DisplayLightningArmRight,Croco"),
-                            childName = "Head",
-                            localPos = Vector3.zero,
-                            localAngles = Vector3.zero,
-                            localScale = Vector3.one,
-                            limbMask = LimbFlags.None
-                        },
-                        new ItemDisplayRule
-                        {
-                            ruleType = ItemDisplayRuleType.ParentedPrefab,
-                            followerPrefab = ItemDisplayCore.LoadDisplay("DisplayLightningArmRight"),
-                            childName = "Head",
-                            localPos = Vector3.zero,
-                            localAngles = Vector3.zero,
-                            localScale = Vector3.one,
-                            limbMask = LimbFlags.None
-                        },
+                            childName = "ShoulderL",
+                            localPos = new Vector3(0.00027F, 0.00402F, 0.00073F),
+                            localAngles = new Vector3(272.9691F, 352.6442F, 9.14557F),
+                            localScale = new Vector3(0.01F, 0.01F, 0.01F)
+                        }
                     }
                 }
             });//no clue how to do this rob........ :(meru
