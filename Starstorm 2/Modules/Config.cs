@@ -146,6 +146,11 @@ namespace Starstorm2Unofficial.Modules
                             1f,
                             "Multiplies Nemesis Boss movement speed. Must be > 1").Value;
 
+            Cores.NemesisInvasion.NemesisInvasionCore.moveSpeedCap = StarstormPlugin.instance.Config.Bind("Starstorm 2 :: Void Fields changes",
+                            "Nemesis Invasion - Speed Cap",
+                            0f,
+                            "Maximum raw movement speed value for Nemesis Bosses. Set to 0 to disable this check.").Value;
+
             Cores.NemesisInvasion.NemesisInvasionCore.bonusArmor = StarstormPlugin.instance.Config.Bind("Starstorm 2 :: Void Fields changes",
                             "Nemesis Invasion - Bonus Armor",
                             0f,

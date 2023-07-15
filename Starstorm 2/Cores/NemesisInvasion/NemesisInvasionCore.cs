@@ -27,6 +27,7 @@ namespace Starstorm2Unofficial.Cores.NemesisInvasion
         public static float hpMultPerPlayer = 0.3f;
         public static float bonusArmor = 0f;
         public static bool scaleHPWithPlayercount = true;
+        public static float moveSpeedCap = 0f;
 
         public NemesisInvasionCore()
         {
@@ -39,8 +40,18 @@ namespace Starstorm2Unofficial.Cores.NemesisInvasion
 
             RoR2.RoR2Application.onLoad += NemforcerMinibossCompat;
             On.RoR2.CharacterAI.BaseAI.UpdateTargets += NemesisInvasionCore.AttemptTargetPlayer;
+            if (moveSpeedCap > 0f) On.RoR2.CharacterBody.FixedUpdate += CapMoveSpeed;
 
             ApplyInfestationFix();
+        }
+
+        private void CapMoveSpeed(On.RoR2.CharacterBody.orig_FixedUpdate orig, CharacterBody self)
+        {
+            orig(self);
+            if (self.inventory && self.inventory.GetItemCount(NemesisInvasionCore.NemesisMarkerItem) > 0)
+            {
+                if (self.moveSpeed > moveSpeedCap) self.moveSpeed = moveSpeedCap;
+            }
         }
 
         private void ApplyInfestationFix()

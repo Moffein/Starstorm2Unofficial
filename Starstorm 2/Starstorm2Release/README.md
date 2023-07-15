@@ -29,6 +29,11 @@ The SS2 team is free to use any of the new code from this mod as long as this re
 
 ## Changelog
 
+`0.12.9`
+
+- Nemesis Invasion
+	- Added Move Speed Cap config option to prevent boss move speed from passing a specified threshold. (Disabled by default)
+
 `0.12.8`
 
 - Executioner
