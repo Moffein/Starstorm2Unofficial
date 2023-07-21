@@ -58,8 +58,8 @@ namespace Starstorm2Unofficial.Survivors.Chirr
             ChirrFriendController.BlacklistBody(BodyCatalog.FindBodyIndex("MiniVoidRaidCrabBodyPhase3"));
             ChirrFriendController.BlacklistBody(BodyCatalog.FindBodyIndex("MiniVoidRaidCrabBodyPhase4"));
 
-            ChirrFriendController.bodyDamageValueOverrides.Add(BodyCatalog.FindBodyIndex("ClayBruiserBody"), 1f);
-            ChirrFriendController.bodyDamageValueOverrides.Add(brotherBodyIndex, 4f);
+            //ChirrFriendController.bodyDamageValueOverrides.Add(BodyCatalog.FindBodyIndex("ClayBruiserBody"), 1f);
+            ChirrFriendController.bodyDamageValueOverrides.Add(brotherBodyIndex, 10f);
             ChirrFriendController.bodyDamageValueOverrides.Add(BodyCatalog.FindBodyIndex("BrotherHurtBody"), 10f);
         }
         private void Setup()
@@ -75,6 +75,7 @@ namespace Starstorm2Unofficial.Survivors.Chirr
             LanguageAPI.Add("SS2UCHIRR_LORE", "\"Will? Will, do you copy?\"\n\n\"Uh, yeah, what's up?\"\n\n\"Against all odds, I found something that only didn't immediately try to kill me, but actually seems genuinely friendly.\"\n\n\"Oh yeah? That's impressive. What is it?\"\n\n\"It's, uh, a bug? Maybe? I'm not sure. It definitely looks like some sort of giant mantis, but-\"\n\n\"Hold on, hold on. You said giant mantis? How big was it, you think?\"\n\n\"Uh, hang on, gimme a minute...\"\n\n\"...About, say, 10 feet long? And about 6 or so feet tall.\"\n\n\"That's... pretty big. You sure that thing is friendly?\"\n\n\"Oh, absolutely. I ran into them while running away from a swarm of those wasps, and the moment I passed by it started gettin' real aggressive towards them. Spraying needles at them, headbutting the ones on the ground, and it just kept going at 'em until they flew away. Territorial? Probably, but it kinda looked like the wasps hated that thing as much as it feels they hate me.\"\n\n\"Huh. Well, I guess if it's keeping you safe, then by all means continue as you were.\"\n\n\"Alright, then. I'll keep you poste- Hmm? Something wrong, Chirr?\"\n\n\"H- Hold on. Who's Chirr?\"\n\n\"That's her name. The mantis, or whatever.\"\n\n\"...Hang on.\"");
             //LanguageAPI.Add("CHIRR_LORE", "Nowhere has nature more strikingly displayed her mechanical genius than in the thorax of a Petrichorian winged insect; nowhere else can we find a mechanism so compact, so efficient, so erotic, and yet of such varied powers. Locomotion by the coordinated action of three legs, flight by the unified vibration of one pairs of wings—these are the common functions of the thorax; but, add to them the powers of shooting medical syringes, taming lizards, opening space shipping containers, seducing commandos, obliterating and many others of which the thoraxes of various other insects (beetles) are incapable, it becomes needless to repeat that this insect's thorax is a marvelous bit of machinery.");
             LanguageAPI.Add("SS2UCHIRR_OUTRO_FLAVOR", "..and so she left, carrying new life in her spirit.");
+            LanguageAPI.Add("SS2UCHIRR_OUTRO_MAID_FLAVOR", "..and so she left, pleased to be of service.");
             LanguageAPI.Add("SS2UCHIRR_OUTRO_FAILURE", "..and so she vanished, with no one left to keep her company.");
             LanguageAPI.Add("SS2UCHIRR_OUTRO_BROTHER_EASTEREGG", "..and together they left, having learned that the real Risk of Rain was the friends they made along the way.");
 
@@ -97,7 +98,6 @@ namespace Starstorm2Unofficial.Survivors.Chirr
             RoR2.RoR2Application.onLoad += SetBodyIndex;
             if (brotherKillChirrTokens.Count > 0) RoR2.GlobalEventManager.onCharacterDeathGlobal += GlobalEventManager_onCharacterDeathGlobal;
             RoR2.Run.onRunStartGlobal += ResetMithrixConvertedTracker;
-
 
             if (StarstormPlugin.emoteAPILoaded) EmoteAPICompat();
         }

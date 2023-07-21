@@ -14,6 +14,8 @@ namespace Starstorm2Unofficial.Survivors.Chirr
         public static Mesh meshChirrMaid;
         public static Mesh meshChirrMaidDress;
 
+        public static SkinDef maidSkin;
+
         public static void LoadMeshes(AssetBundle assetBundle)
         {
             meshChirr = assetBundle.LoadAsset<Mesh>("meshChirr");
@@ -98,6 +100,8 @@ namespace Starstorm2Unofficial.Survivors.Chirr
                 };
 
             skinDefs.Add(masterySkin);
+
+            ChirrSkins.maidSkin = masterySkin;
             #endregion
 
             skinController.skins = skinDefs.ToArray();

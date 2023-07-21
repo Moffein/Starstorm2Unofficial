@@ -167,7 +167,19 @@ namespace Starstorm2Unofficial.Survivors.Chirr.Components
 
         private void Start()
         {
-            if (ownerBody) ownerMaster = ownerBody.master;
+            if (ownerBody)
+            {
+                ownerMaster = ownerBody.master;
+
+                //Very bad way to do this, this is a mess.
+                SkinDef equippedSkin = SkinCatalog.FindCurrentSkinDefForBodyInstance(ownerBody.gameObject);
+                bool isMaid = equippedSkin == ChirrSkins.maidSkin;
+                if (ChirrCore.survivorDef && ChirrCore.survivorDef.outroFlavorToken != "SS2UCHIRR_OUTRO_BROTHER_EASTEREGG")
+                {
+                    ChirrCore.survivorDef.outroFlavorToken = "SS2UCHIRR_OUTRO_FLAVOR";
+                    if (base.hasAuthority && isMaid) ChirrCore.survivorDef.outroFlavorToken ="SS2UCHIRR_OUTRO_MAID_FLAVOR";
+                }
+            }
             if (NetworkServer.active) TryGetSavedMaster();
         }
 
@@ -532,6 +544,8 @@ namespace Starstorm2Unofficial.Survivors.Chirr.Components
                     if (baseAI)
                     {
                         baseAI.leader.gameObject = base.gameObject;
+                        baseAI.aimVectorDampTime = 0.01f;
+                        baseAI.aimVectorMaxSpeed = 360f;
                     }
 
                     if (!masterFriendController)
@@ -656,7 +670,7 @@ namespace Starstorm2Unofficial.Survivors.Chirr.Components
         [ClientRpc]
         private void RpcSetMithrixConverted()
         {
-            ChirrCore.survivorDef.outroFlavorToken = "CHIRR_OUTRO_BROTHER_EASTEREGG";
+            ChirrCore.survivorDef.outroFlavorToken = "SS2UCHIRR_OUTRO_BROTHER_EASTEREGG";
         }
 
         [Server]
