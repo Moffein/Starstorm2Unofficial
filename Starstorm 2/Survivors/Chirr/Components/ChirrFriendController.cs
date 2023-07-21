@@ -733,6 +733,7 @@ namespace Starstorm2Unofficial.Survivors.Chirr.Components
             }
 
             //Distract enemies on leash.
+            targetBody.AddTimedBuff(RoR2Content.Buffs.HiddenInvincibility, 1f);
             MinionDistractComponent mdc = targetBody.GetComponent<MinionDistractComponent>();
             if (mdc)
             {
