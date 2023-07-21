@@ -42,17 +42,23 @@ The SS2 team is free to use any of the new code from this mod as long as this re
 		
 	- Natural Link
 		- Allies no longer passively absorb damage.
-		
-	- Unbreakable Bond (Leash)
-		- Increased cooldown from 3s -> 15s
+		- Increased cooldown from 3s -> 10s
+		- Leashing allies now causes all non-Champion (boss) enemies to target them temporarily.
 		
 	- Allies
 		- Significantly reduced aim delay.
-		- Removed unique stat scaling. Now just uses Player level, with HP and Skill Damage scaled to AmbientLevel. (TODO: TEST)
+		- Removed old stat scaling.
+		- New stat scaling:
+			- HP scales with AmbientLevel
+			- Skill damage scales with AmbientLevel
+			- Base damage scales with Player Level
+			- 1.25x HP/Skill Damage multiplier on top of this.
+		- Reduced knockback taken by 75%.
+		- Added a 0.5s grace period between damage taken. (Excludes DoTs)
 
 - Chirr (todo)
-	- Leash distracts enemies.
 	- Ping stuff.
+	- Balance.
 
 `0.12.9`
 

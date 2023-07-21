@@ -93,6 +93,7 @@
     <Compile Include="Survivors\Chirr\Components\ChirrFriendController.cs" />
     <Compile Include="Survivors\Chirr\Components\ChirrLeashSkillOverrideController.cs" />
     <Compile Include="Survivors\Chirr\Components\MasterFriendController.cs" />
+    <Compile Include="Survivors\Chirr\Components\MinionDistractComponent.cs" />
     <Compile Include="Survivors\Chirr\EntityStates\ChirrPrimary.cs" />
     <Compile Include="Survivors\Chirr\EntityStates\Headbutt.cs" />
     <Compile Include="Survivors\Chirr\EntityStates\JetpackOn.cs" />

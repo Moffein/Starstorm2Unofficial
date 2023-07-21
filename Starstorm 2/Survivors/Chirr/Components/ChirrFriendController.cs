@@ -707,7 +707,6 @@ namespace Starstorm2Unofficial.Survivors.Chirr.Components
         [Server]
         public void LeashFriendServer(Vector3 newPos)
         {
-            //if (CanLeash())
             SpawnCard spawnCard = ScriptableObject.CreateInstance<SpawnCard>();
             spawnCard.hullSize = targetBody.hullClassification;
             spawnCard.nodeGraphType = (targetBody.isFlying ? MapNodeGroup.GraphType.Air : MapNodeGroup.GraphType.Ground);
@@ -731,6 +730,17 @@ namespace Starstorm2Unofficial.Survivors.Chirr.Components
                     EffectManager.SimpleEffect(teleportEffectPrefab, position, Quaternion.identity, true);
                 }
                 UnityEngine.Object.Destroy(gameObject);
+            }
+
+            //Distract enemies on leash.
+            MinionDistractComponent mdc = targetBody.GetComponent<MinionDistractComponent>();
+            if (mdc)
+            {
+                mdc.ResetLifetime();
+            }
+            else
+            {
+                targetBody.AddComponent<MinionDistractComponent>();
             }
         }
     }

@@ -29,6 +29,7 @@ namespace Starstorm2Unofficial.Cores
 
         public static BuffDef chirrFriendBuff;
         public static BuffDef chirrSelfBuff;
+        public static BuffDef chirrFriendDistractBuff;
 
         private GameObject greenChocPrefab;
         private GameObject greenChocEffect;
@@ -136,6 +137,7 @@ namespace Starstorm2Unofficial.Cores
 
             chirrFriendBuff = CreateBuffDef("SS2UChirrFriendBuff", false, false, false, new Color32(245, 123, 145, 255), Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("buffChirrSoulLink"));
             chirrSelfBuff = CreateBuffDef("SS2UChirrSelfBuff", false, false, false, new Color32(245, 123, 145, 255), Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("buffChirrSoulLink"));
+            chirrFriendDistractBuff = CreateBuffDef("SS2UChirrFriendDistractBuff", false, false, false, new Color(210f / 255f, 50f / 255f, 22f / 255f), LegacyResourcesAPI.Load<Sprite>("textures/bufficons/texBuffCloakIcon"));
 
             #region Executioner
             fearDebuff = ScriptableObject.CreateInstance<BuffDef>();
@@ -218,6 +220,23 @@ namespace Starstorm2Unofficial.Cores
                 else
                 {
                     Debug.LogError("Starstorm 2 Unofficial: Failed to set up Chirr Friend Buff overlay IL Hook.");
+                }
+
+                c = new ILCursor(il);
+                if (c.TryGotoNext(
+                     x => x.MatchLdsfld(typeof(RoR2Content.Buffs), "FullCrit")
+                    ))
+                {
+                    c.Index += 2;
+                    c.Emit(OpCodes.Ldarg_0);
+                    c.EmitDelegate<Func<bool, CharacterModel, bool>>((hasBuff, self) =>
+                    {
+                        return hasBuff || (self.body.HasBuff(chirrFriendDistractBuff));
+                    });
+                }
+                else
+                {
+                    Debug.LogError("Starstorm 2 Unofficial: Failed to set up Chirr Friend Distract Buff overlay IL Hook.");
                 }
             };
 
@@ -323,9 +342,22 @@ namespace Starstorm2Unofficial.Cores
                         damageInfo.damage = 0f;
                         damageInfo.rejected = true;
                     }
+
+                    if (!damageInfo.canRejectForce) damageInfo.force *= 0.25f;
                 }
             }
             orig(self, damageInfo);
+
+            if (NetworkServer.active)
+            {
+                if (self.body.HasBuff(BuffCore.chirrFriendBuff))
+                {
+                    if (damageInfo.damage > 0f && !damageInfo.rejected && !damageInfo.damageType.HasFlag(DamageType.DoT) && !self.body.HasBuff(RoR2Content.Buffs.HiddenInvincibility))
+                    {
+                        self.body.AddTimedBuff(RoR2Content.Buffs.HiddenInvincibility, 0.5f);
+                    }
+                }
+            }
         }
 
         private void RecalculateStatsAPI_GetStatCoefficients(CharacterBody sender, RecalculateStatsAPI.StatHookEventArgs args)
@@ -383,7 +415,7 @@ namespace Starstorm2Unofficial.Cores
                     effectData.start = transform.position;
                     EffectManager.SpawnEffect(greenChocPrefab, effectData, true);
                     */
-        greenChocEffect = Object.Instantiate(greenChocPrefab, transform.position, Quaternion.identity, transform);
+                    greenChocEffect = Object.Instantiate(greenChocPrefab, transform.position, Quaternion.identity, transform);
                 }
             }
             if (!self.HasBuff(greenChocBuff) && greenChocEffect)
