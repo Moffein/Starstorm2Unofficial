@@ -251,6 +251,7 @@ namespace Starstorm2Unofficial.Cores
                     {
                         self.damageStat *= (0.8f + 0.2f * Run.instance.ambientLevel) / (0.8f + 0.2f * self.characterBody.level);
                     }
+                    self.damageStat *= 1.25f;
                 }
             }
         }
@@ -276,6 +277,7 @@ namespace Starstorm2Unofficial.Cores
 
                     if (!self.bodyFlags.HasFlag(CharacterBody.BodyFlags.ImmuneToVoidDeath)) self.bodyFlags |= CharacterBody.BodyFlags.ImmuneToVoidDeath;
                     if (!self.bodyFlags.HasFlag(CharacterBody.BodyFlags.ImmuneToExecutes)) self.bodyFlags |= CharacterBody.BodyFlags.ImmuneToExecutes;
+                    if (!self.bodyFlags.HasFlag(CharacterBody.BodyFlags.IgnoreFallDamage)) self.bodyFlags |= CharacterBody.BodyFlags.IgnoreFallDamage;
                 }
             }
         }
@@ -284,7 +286,7 @@ namespace Starstorm2Unofficial.Cores
         {
             if (NetworkServer.active)
             {
-                if (self.body.HasBuff(BuffCore.chirrSelfBuff) && !damageInfo.rejected && damageInfo.attacker && !(damageInfo.damageType.HasFlag(DamageType.BypassArmor) || damageInfo.damageType.HasFlag(DamageType.BypassBlock) || damageInfo.damageType.HasFlag(DamageType.BypassOneShotProtection)))
+                /*if (self.body.HasBuff(BuffCore.chirrSelfBuff) && !damageInfo.rejected && damageInfo.attacker && !(damageInfo.damageType.HasFlag(DamageType.BypassArmor) || damageInfo.damageType.HasFlag(DamageType.BypassBlock) || damageInfo.damageType.HasFlag(DamageType.BypassOneShotProtection)))
                 {
                     ChirrFriendController friendController = self.GetComponent<ChirrFriendController>();
                     if (friendController && friendController.HasFriend())
@@ -309,7 +311,7 @@ namespace Starstorm2Unofficial.Cores
                         };
                         friendController.HurtFriend(minionDamageInfo);
                     }
-                }
+                }*/
 
                 //Chirr Friends dont take void fog damage
                 if (self.body.HasBuff(BuffCore.chirrFriendBuff))
@@ -354,6 +356,8 @@ namespace Starstorm2Unofficial.Cores
                     float levelDiff = Run.instance.ambientLevel - sender.level;
                     if (levelDiff > 0f)
                     {
+                        args.healthMultAdd += 0.25f;
+
                         args.baseHealthAdd += levelDiff * sender.levelMaxHealth;
                         args.baseShieldAdd = levelDiff * sender.levelMaxShield;
                         args.armorAdd += levelDiff * sender.levelArmor;

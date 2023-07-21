@@ -370,7 +370,7 @@ namespace Starstorm2Unofficial.Survivors.Chirr
             LanguageAPI.Add("KEYWORD_SS2U_CHIRR_PING", "<style=cKeywordName>Ping Command</style><style=cSub>Your friend will attempt to attack pinged enemies.</style>");
 
             LanguageAPI.Add("SS2UCHIRR_BEFRIEND_NAME", "Natural Link");
-            LanguageAPI.Add("SS2UCHIRR_BEFRIEND_DESCRIPTION", "<style=cIsUtility>Befriend</style> the targeted enemy if it's below <style=cIsHealth>50% health</style>. Friends <style=cIsUtility>inherit all your items</style> and absorb <style=cIsUtility>30% of damage taken</style>.");
+            LanguageAPI.Add("SS2UCHIRR_BEFRIEND_DESCRIPTION", "<style=cIsUtility>Befriend</style> the targeted enemy if it's below <style=cIsHealth>50% health</style>.\nReactivate to <style>teleport</style> your friend to you and <style>distract nearby enemies</style>.\nFriends <style=cIsUtility>inherit all your items</style>.");
 
             BefriendSkillDef befriendDef = ScriptableObject.CreateInstance<BefriendSkillDef>();
             befriendDef.activationState = new SerializableEntityStateType(typeof(Befriend));
@@ -398,7 +398,7 @@ namespace Starstorm2Unofficial.Survivors.Chirr
             Modules.Skills.FixSkillName(befriendDef);
 
             LanguageAPI.Add("SS2UCHIRR_LEASH_NAME", "Unbreakable Bond");
-            LanguageAPI.Add("SS2UCHIRR_LEASH_DESCRIPTION", "Teleport your friend closer to you. Hold to part ways with your friend.");
+            LanguageAPI.Add("SS2UCHIRR_LEASH_DESCRIPTION", "Teleport your friend to you and <style>distract nearby enemies</style>. Hold to part ways with your friend.");
             SkillDef leashDef = ScriptableObject.CreateInstance<SkillDef>();    //FriendLeashSkillDef   //Don't need the min leash distance.
             leashDef.activationState = new SerializableEntityStateType(typeof(Leash));
             leashDef.activationStateMachineName = "Leash";
@@ -423,7 +423,7 @@ namespace Starstorm2Unofficial.Survivors.Chirr
             Modules.Skills.FixSkillName(leashDef);
 
             LanguageAPI.Add("SS2UCHIRR_BEFRIEND_SCEPTER_NAME", "Prime Natural Link");
-            LanguageAPI.Add("SS2UCHIRR_BEFRIEND_SCEPTER_DESCRIPTION", "<style=cIsUtility>Befriend</style> the targeted enemy if it's below <style=cIsHealth>50% health</style>, or below <style=cIsHealth>30% health</style> if it's a boss. Friends <style=cIsUtility>inherit all your items</style> and absorb <style=cIsUtility>30% of damage taken</style>.");
+            LanguageAPI.Add("SS2UCHIRR_BEFRIEND_SCEPTER_DESCRIPTION", "<style=cIsUtility>Befriend</style> the targeted enemy if it's below <style=cIsHealth>50% health</style>, or below <style=cIsHealth>30% health</style> if it's a boss.\nReactivate to <style>teleport</style> your friend to you and <style>distract nearby enemies</style>.\nFriends <style=cIsUtility>inherit all your items</style>.");
 
             BefriendSkillDef befriendScepterDef = ScriptableObject.CreateInstance<BefriendSkillDef>();
             befriendScepterDef.activationState = new SerializableEntityStateType(typeof(BefriendScepter));

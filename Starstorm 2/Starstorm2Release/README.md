@@ -34,16 +34,24 @@ The SS2 team is free to use any of the new code from this mod as long as this re
 - Chirr
 	- General
 		- Fixed secret ending text being broken.
+		- Adding ending text for Mastery skin.
+		
 	- Sanative Aura
 		- Increased heal over time from 30% -> 75% to match SS1.
 		- Reduced cooldown from 15s -> 12s
 		
+	- Natural Link
+		- Allies no longer passively absorb damage.
+		
+	- Unbreakable Bond (Leash)
+		- Increased cooldown from 3s -> 15s
+		
 	- Allies
-		- Reduced aim delay.
-		- Removed unique stat scaling. Now just uses AmbientLevel for HP and scales skill damage to match AmbientLevel while base damage matches player level. (TODO: TEST)
+		- Significantly reduced aim delay.
+		- Removed unique stat scaling. Now just uses Player level, with HP and Skill Damage scaled to AmbientLevel. (TODO: TEST)
 
 - Chirr (todo)
-	- Increase leash cooldown, leash distracts enemies.
+	- Leash distracts enemies.
 	- Ping stuff.
 
 `0.12.9`
