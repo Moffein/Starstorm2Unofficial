@@ -568,14 +568,7 @@ namespace Starstorm2Unofficial.Survivors.Chirr.Components
 
                 if (targetMaster.inventory)
                 {
-                    //Redundant due to inventory reset
-                    //Remove Elite stat items. Friend buff will handle elite stat bonuses.
-                    targetMaster.inventory.RemoveItem(RoR2Content.Items.UseAmbientLevel, targetMaster.inventory.GetItemCount(RoR2Content.Items.UseAmbientLevel));
-                    if (targetBody.isElite)
-                    {
-                        targetMaster.inventory.RemoveItem(RoR2Content.Items.BoostDamage, targetMaster.inventory.GetItemCount(RoR2Content.Items.BoostDamage));
-                        targetMaster.inventory.RemoveItem(RoR2Content.Items.BoostHp, targetMaster.inventory.GetItemCount(RoR2Content.Items.BoostHp));
-                    }
+                    targetMaster.inventory.RemoveItem(RoR2Content.Items.UseAmbientLevel, targetMaster.inventory.GetItemCount(RoR2Content.Items.UseAmbientLevel)); //Redundant due to inventory reset
 
                     //Save the original inventory
                     if (masterFriendController && masterFriendController.masterItemStacks != null && targetMaster.inventory.itemStacks != null)

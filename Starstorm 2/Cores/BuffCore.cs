@@ -243,30 +243,13 @@ namespace Starstorm2Unofficial.Cores
             {
                 if (self.characterBody.HasBuff(BuffCore.chirrFriendBuff))
                 {
-                    float damageMult;
                     if (ChirrFriendController.bodyDamageValueOverrides.TryGetValue(self.characterBody.bodyIndex, out float value))
                     {
-                        damageMult = value;
+                        self.damageStat *= value;
                     }
-                    else
+                    else if(Run.instance && Run.instance.ambientLevel > self.characterBody.level)
                     {
-                        float minHealth = 100f;
-                        float maxHealth = 1000f;
-                        damageMult = Mathf.Lerp(5f, 2f, ((self.characterBody.baseMaxHealth - minHealth) / (maxHealth - minHealth)));
-                    }
-                    self.damageStat *= damageMult;
-
-
-                    if (self.characterBody.isElite)
-                    {
-                        if (!self.characterBody.HasBuff(DLC1Content.Buffs.EliteVoid) && self.characterBody.equipmentSlot && IsNotT1Elite(self.characterBody.equipmentSlot.equipmentIndex))
-                        {
-                            self.damageStat *= 2f;
-                        }
-                        else
-                        {
-                            self.damageStat *= 1.5f;
-                        }
+                        self.damageStat *= (0.8f + 0.2f * Run.instance.ambientLevel) / (0.8f + 0.2f * self.characterBody.level);
                     }
                 }
             }
@@ -366,42 +349,19 @@ namespace Starstorm2Unofficial.Cores
 
             if (sender.HasBuff(BuffCore.chirrFriendBuff))
             {
-                //args.damageMultAdd += 2f; //affects too many things, hook BaseState instead
-                //args.healthMultAdd += 2f;
-
-                if (sender.baseMaxHealth * 1.5f < 720f)
-                {
-                    args.baseHealthAdd += (720f - sender.baseMaxHealth);
-                    if (sender.levelMaxHealth < 216f)//720 * 0.3
-                    {
-                        float levelMult = sender.level - 1f;
-                        args.baseHealthAdd += levelMult * (216f - sender.levelMaxHealth);
-                    }
-                }
-                else
-                {
-                    args.healthMultAdd += 0.5f;
-                    if (sender.isElite)
-                    {
-                        if (!sender.HasBuff(DLC1Content.Buffs.EliteVoid) && sender.equipmentSlot && IsNotT1Elite(sender.equipmentSlot.equipmentIndex))
-                        {
-                            args.healthMultAdd += 1f;
-                        }
-                        else
-                        {
-                            args.healthMultAdd += 0.5f;
-                        }
-                    }
-                }
-
                 if (Run.instance)
                 {
-                    float currentHPCoeff = 0.7f + 0.3f * sender.level;
-                    float ambientHPCoeff = Mathf.Max(currentHPCoeff, 0.85f + 0.15f * Mathf.Floor(Run.instance.ambientLevel));
-                    args.armorAdd += 100f * ((ambientHPCoeff / currentHPCoeff) - 1f);
+                    float levelDiff = Run.instance.ambientLevel - sender.level;
+                    if (levelDiff > 0f)
+                    {
+                        args.baseHealthAdd += levelDiff * sender.levelMaxHealth;
+                        args.baseShieldAdd = levelDiff * sender.levelMaxShield;
+                        args.armorAdd += levelDiff * sender.levelArmor;
+                        args.baseMoveSpeedAdd += levelDiff * sender.levelMoveSpeed;
+                        args.critAdd += levelDiff * sender.levelCrit;
+                        //dont scale base damage to ambientlevel since it will make Razor Wire OP.
+                    }
                 }
-
-                //args.cooldownMultAdd *= 0.5f; //handle in recalculatestats since I don't think this works
             }
         }
 
