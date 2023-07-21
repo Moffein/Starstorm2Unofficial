@@ -29,6 +29,14 @@ The SS2 team is free to use any of the new code from this mod as long as this re
 
 ## Changelog
 
+`0.13.0`
+
+- Chirr (todo)
+	- Reduce cooldown of heal.
+	- Increase leash cooldown, leash distracts enemies.
+	- Rework minion stat bonus. (Remember to test egochirr)
+	- Ping stuff.
+
 `0.12.9`
 
 - Nemesis Invasion

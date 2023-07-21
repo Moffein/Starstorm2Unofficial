@@ -22,7 +22,7 @@ namespace EntityStates.SS2UStates.Chirr
         public static float recoil = 1f;
         public static float radius = 30f;
         public static float healFraction = .25f;
-        public static float regenDuration = 3f;
+        public static float regenDuration = 7.5f;
 
         private float duration;
         private float fireDuration;
@@ -40,50 +40,40 @@ namespace EntityStates.SS2UStates.Chirr
 
         public override void OnExit()
         {
+            if (!hasFired) FireHeal();
             base.OnExit();
         }
 
         private void FireHeal()
         {
-            if (!this.hasFired)
+            if (this.hasFired) return;
+            Util.PlaySound("SS2UChirrHealTrigger", base.gameObject);
+            hasFired = true;
+            if (NetworkServer.active)
             {
-                Util.PlaySound("SS2UChirrHealTrigger", base.gameObject);
-                hasFired = true;
-                if (NetworkServer.active)
+                EffectManager.SpawnEffect(healEffectPrefab, new EffectData
                 {
-                    EffectManager.SpawnEffect(healEffectPrefab, new EffectData
-                    {
-                        origin = base.transform.position,
-                        scale = ChirrHeal.radius,
-                        rootObject = base.gameObject
-                    }, true);
+                    origin = base.transform.position,
+                    scale = ChirrHeal.radius,
+                    rootObject = base.gameObject
+                }, true);
 
 
-                    List<HealthComponent> hcList = new List<HealthComponent>();
-                    Collider[] array = Physics.OverlapSphere(base.transform.position, radius, LayerIndex.entityPrecise.mask);
-                    for (int i = 0; i < array.Length; i++)
+                List<HealthComponent> hcList = new List<HealthComponent>();
+                Collider[] array = Physics.OverlapSphere(base.transform.position, radius, LayerIndex.entityPrecise.mask);
+                for (int i = 0; i < array.Length; i++)
+                {
+                    HurtBox hurtBox = array[i].GetComponent<HurtBox>();
+                    if (hurtBox && hurtBox.healthComponent && !hcList.Contains(hurtBox.healthComponent))
                     {
-                        HurtBox hurtBox = array[i].GetComponent<HurtBox>();
-                        if (hurtBox && hurtBox.healthComponent && !hcList.Contains(hurtBox.healthComponent))
+                        hcList.Add(hurtBox.healthComponent);
+                        if (hurtBox.healthComponent.body.teamComponent && hurtBox.healthComponent.body.teamComponent.teamIndex == base.GetTeam())
                         {
-                            hcList.Add(hurtBox.healthComponent);
-                            if (hurtBox.healthComponent.body.teamComponent && hurtBox.healthComponent.body.teamComponent.teamIndex == base.GetTeam())
-                            {
-                                float healAmount = hurtBox.healthComponent.fullCombinedHealth * healFraction;   //was fullHealth, makes it bad when healing Vanilla Overloading
-                                /*if (component.body.mainHurtBox && !component.body.disablingHurtBoxes)
-                                {
-                                    HealOrb healOrb = new HealOrb();
-                                    healOrb.origin = base.transform.position;
-                                    healOrb.target = component.body.mainHurtBox;
-                                    healOrb.healValue = healAmount;
-                                    healOrb.overrideDuration = 0.3f;
-                                    OrbManager.instance.AddOrb(healOrb);
-                                }*/
-                                hurtBox.healthComponent.HealFraction(healFraction, default);
-                                if (hurtBox.healthComponent.body != base.characterBody) hurtBox.healthComponent.body.AddTimedBuff(RoR2Content.Buffs.CrocoRegen, regenDuration);
+                            float healAmount = hurtBox.healthComponent.fullCombinedHealth * healFraction;   //was fullHealth, makes it bad when healing Vanilla Overloading
+                            hurtBox.healthComponent.Heal(healAmount, default);
+                            if (hurtBox.healthComponent.body != base.characterBody) hurtBox.healthComponent.body.AddTimedBuff(RoR2Content.Buffs.CrocoRegen, regenDuration);
 
-                                Util.CleanseBody(hurtBox.healthComponent.body, true, false, false, true, true, false);
-                            }
+                            Util.CleanseBody(hurtBox.healthComponent.body, true, false, false, true, true, false);
                         }
                     }
                 }
