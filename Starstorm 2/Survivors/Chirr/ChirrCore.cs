@@ -334,7 +334,7 @@ namespace Starstorm2Unofficial.Survivors.Chirr
             SkillLocator skill = chirrPrefab.GetComponent<SkillLocator>();
 
             LanguageAPI.Add("SS2UCHIRR_HEAL_NAME", "Sanative Aura");
-            LanguageAPI.Add("SS2UCHIRR_HEAL_DESCRIPTION", "Heal yourself and nearby allies for <style=cIsHealing>25%</style> of their total health and <style=cIsUtility>cleanse all debuffs</style>. Allies gain <style=cIsHealing>increased health regeneration</style> for a short period.");
+            LanguageAPI.Add("SS2UCHIRR_HEAL_DESCRIPTION", "Heal yourself and nearby allies for <style=cIsHealing>30%</style> of their total health and <style=cIsUtility>cleanse all debuffs</style>. Allies gain <style=cIsHealing>increased health regeneration</style> for a short period.");
 
             SkillDef utilityDef1 = ScriptableObject.CreateInstance<SkillDef>();
             utilityDef1.activationState = new SerializableEntityStateType(typeof(ChirrHeal));

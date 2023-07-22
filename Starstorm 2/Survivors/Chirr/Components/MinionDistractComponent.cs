@@ -91,7 +91,7 @@ namespace Starstorm2Unofficial.Survivors.Chirr.Components
                             {
                                 ai.currentEnemy.gameObject = base.gameObject;
                                 ai.currentEnemy.bestHurtBox = ownerBody.mainHurtBox;
-                                ai.enemyAttention = ai.enemyAttentionDuration;
+                                ai.enemyAttention = distractDuration;
                                 ai.targetRefreshTimer = distractDuration;
                                 ai.BeginSkillDriver(ai.EvaluateSkillDrivers());
                             }
@@ -102,7 +102,7 @@ namespace Starstorm2Unofficial.Survivors.Chirr.Components
                         {
                             HealOrb healOrb = new HealOrb
                             {
-                                healValue = ownerBody.healthComponent ? ownerBody.healthComponent.fullCombinedHealth * 0.02f : 10f,
+                                healValue = ownerBody.healthComponent ? ownerBody.healthComponent.fullCombinedHealth * 0.025f : 10f,
                                 target = ownerBody.mainHurtBox,
                                 origin = cb.mainHurtBox && cb.mainHurtBox.transform ? cb.mainHurtBox.transform.position : cb.corePosition
                             };

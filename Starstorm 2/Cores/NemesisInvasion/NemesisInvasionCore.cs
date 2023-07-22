@@ -33,8 +33,8 @@ namespace Starstorm2Unofficial.Cores.NemesisInvasion
         {
             NemesisInvasionManager.Initialize();
 
-            LanguageAPI.Add("NEMESIS_MODE_ACTIVE_WARNING", "<style=cIsHealth>An unnatural force emanates from the void...</style>");
-            LanguageAPI.Add("NEMESIS_MODE_DEACTIVATED", "<style=cWorldEvent>The void's influence fades...</style>");
+            LanguageAPI.Add("SS2UNEMESIS_MODE_ACTIVE_WARNING", "<style=cIsHealth>An unnatural force emanates from the void...</style>");
+            LanguageAPI.Add("SS2UNEMESIS_MODE_DEACTIVATED", "<style=cWorldEvent>The void's influence fades...</style>");
 
             BuildNemesisItem();
 

@@ -37,7 +37,7 @@ The SS2 team is free to use any of the new code from this mod as long as this re
 		- Adding ending text for Mastery skin.
 		
 	- Sanative Aura
-		- Increased heal over time from 30% -> 75% to match SS1.
+		- Increased heal from 25% + 30% -> 30% + 70%
 		- Reduced cooldown from 15s -> 12s
 		
 	- Natural Link
@@ -46,6 +46,7 @@ The SS2 team is free to use any of the new code from this mod as long as this re
 		- Leashing allies now causes all non-Champion (boss) enemies to target them temporarily.
 		
 	- Allies
+		- When pinging enemies, maintains attention until it dies or you ping something else.
 		- Significantly reduced aim delay.
 		- Removed old stat scaling.
 		- New stat scaling:
@@ -57,8 +58,10 @@ The SS2 team is free to use any of the new code from this mod as long as this re
 		- Added a 0.5s grace period between damage taken. (Excludes DoTs)
 
 - Chirr (todo)
-	- Ping stuff.
 	- Balance.
+	
+- Nemesis Invasion
+	- Bosses no longer spawn in the bazaar (can be re-enabled in config).
 
 `0.12.9`
 

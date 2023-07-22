@@ -21,8 +21,8 @@ namespace EntityStates.SS2UStates.Chirr
         public static float baseFireDuration = 1.3f;
         public static float recoil = 1f;
         public static float radius = 30f;
-        public static float healFraction = .25f;
-        public static float regenDuration = 7.5f;
+        public static float healFraction = .3f;
+        public static float regenDuration = 7f;
 
         private float duration;
         private float fireDuration;

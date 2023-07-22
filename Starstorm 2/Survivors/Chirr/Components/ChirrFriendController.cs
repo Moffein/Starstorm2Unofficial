@@ -106,6 +106,7 @@ namespace Starstorm2Unofficial.Survivors.Chirr.Components
 
         private CharacterBody targetBody;
         private CharacterMaster targetMaster;
+        private float minionTargetResetStopwatch;
 
         public float trackerUpdateFrequency = 4f;
         public float maxTrackingDistance = 90f;
@@ -135,6 +136,7 @@ namespace Starstorm2Unofficial.Survivors.Chirr.Components
             teamComponent = base.GetComponent<TeamComponent>();
             inputBank = base.GetComponent<InputBankTest>();
 
+            minionTargetResetStopwatch = 0f;
             trackerUpdateStopwatch = 0f;
             RoR2.Inventory.onServerItemGiven += UpdateMinionInventory;//Is there a better way with onInventoryChangedGlobal?
             On.RoR2.PingerController.SetCurrentPing += MinionPingRetarget;
@@ -278,8 +280,8 @@ namespace Starstorm2Unofficial.Survivors.Chirr.Components
                             BaseAI ai = targetMaster.aiComponents[i];
                             ai.currentEnemy.gameObject = pingBody.gameObject;
                             ai.currentEnemy.bestHurtBox = pingBody.mainHurtBox;
-                            ai.enemyAttention = ai.enemyAttentionDuration;
-                            ai.targetRefreshTimer = 10f;
+                            ai.enemyAttention = 10000f;
+                            ai.targetRefreshTimer = 10000f;
                             ai.BeginSkillDriver(ai.EvaluateSkillDrivers());
                         }
                     }
@@ -395,6 +397,33 @@ namespace Starstorm2Unofficial.Survivors.Chirr.Components
             {
                 bool newCanLeash = CanLeashServer();
                 if (newCanLeash != _canLeash) _canLeash = newCanLeash;
+            }
+
+            CheckFriendTargetAliveServer();
+        }
+
+        //Need this to break out of ping retarget if target is dead.
+        [Server]
+        private void CheckFriendTargetAliveServer()
+        {
+            minionTargetResetStopwatch += Time.fixedDeltaTime;
+            if (minionTargetResetStopwatch >= 1f)
+            {
+                minionTargetResetStopwatch -= 1f;
+
+                if (targetMaster && targetMaster.aiComponents != null)
+                {
+                    foreach (BaseAI ai in targetMaster.aiComponents)
+                    {
+                        //Use arbitrary number 600f (5 minutes) to check if target was set via Ping Retarget. Bad way of doing it.
+                        if ((ai.targetRefreshTimer > 600f || ai.enemyAttentionDuration > 600f) && !ai.currentEnemy.gameObject || !ai.currentEnemy.healthComponent || !ai.currentEnemy.healthComponent.alive)
+                        {
+                            ai.enemyAttention = 0f;
+                            ai.targetRefreshTimer = 0f;
+                            ai.currentEnemy.Reset();
+                        }
+                    }
+                }
             }
         }
 

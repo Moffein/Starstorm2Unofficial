@@ -18,6 +18,8 @@ namespace Starstorm2Unofficial.Cores.NemesisInvasion.Components
         public static NemesisInvasionManager instance;
         public static HashSet<ItemIndex> itemBlacklist = new HashSet<ItemIndex>();
         public static HashSet<ItemIndex> itemWhitelist = new HashSet<ItemIndex>();
+        public static bool allowSpawnInBazaar = false;
+        private static SceneDef bazaarSceneDef = Addressables.LoadAssetAsync<SceneDef>("RoR2/Base/bazaar/bazaar.asset").WaitForCompletion();
 
         private bool playedEventStartChatMessage = false;
         private bool playedEventEndChatMessage = false;
@@ -105,9 +107,11 @@ namespace Starstorm2Unofficial.Cores.NemesisInvasion.Components
         {
             if (Run.instance && cardSpawnCount < nemesisCards.Count)
             {
+                SceneDef sceneDef = SceneCatalog.GetSceneDefForCurrentScene();
+                if (sceneDef == bazaarSceneDef && !allowSpawnInBazaar) return;
+
                 cardSpawnCount++;
 
-                //Todo: give items and spawn
                 if (NetworkServer.active)
                 {
                     if (remainingCards.Count > 0)
@@ -145,7 +149,7 @@ namespace Starstorm2Unofficial.Cores.NemesisInvasion.Components
             playedEventEndChatMessage = true;
             Chat.SendBroadcastChat(new Chat.SimpleChatMessage
             {
-                baseToken = "NEMESIS_MODE_DEACTIVATED"
+                baseToken = "SS2UNEMESIS_MODE_DEACTIVATED"
             });
             yield return null;
         }
@@ -160,7 +164,7 @@ namespace Starstorm2Unofficial.Cores.NemesisInvasion.Components
                 playedEventStartChatMessage = true;
                 Chat.SendBroadcastChat(new Chat.SimpleChatMessage
                 {
-                    baseToken = "NEMESIS_MODE_ACTIVE_WARNING"
+                    baseToken = "SS2UNEMESIS_MODE_ACTIVE_WARNING"
                 });
             }
             yield return new WaitForSeconds(12f);
