@@ -41,24 +41,22 @@ The SS2 team is free to use any of the new code from this mod as long as this re
 		- Reduced cooldown from 15s -> 12s
 		
 	- Natural Link
-		- Allies no longer passively absorb damage.
-		- Increased cooldown from 3s -> 10s
 		- Leashing allies now causes all non-Champion (boss) enemies to target them temporarily.
+			- Ally periodically heals for every enemy distracted.
+		- Increased cooldown from 3s -> 10s
+		- Allies no longer passively absorb damage.
 		
 	- Allies
 		- When pinging enemies, maintains attention until it dies or you ping something else.
-		- Significantly reduced aim delay.
-		- Removed old stat scaling.
+		- Significantly improved aim speed.
+		- Redid stat scaling since the old system was too convoluted.
 		- New stat scaling:
-			- HP scales with AmbientLevel
+			- HP scales with AmbientLevel (but uses +20% per level so that it matches enemy damage scaling)
 			- Skill damage scales with AmbientLevel
 			- Base damage scales with Player Level
-			- 1.25x HP/Skill Damage multiplier on top of this.
-		- Reduced knockback taken by 75%.
-		- Added a 0.5s grace period between damage taken. (Excludes DoTs)
-
-- Chirr (todo)
-	- Balance.
+			- +100% HP and +100% Skill damage for non-elites.
+			- +200% HP and +200% Skill damage for elites (overrides elite stats)
+		- Reduced knockback taken by 90%.
 	
 - Nemesis Invasion
 	- Bosses no longer spawn in the bazaar (can be re-enabled in config).

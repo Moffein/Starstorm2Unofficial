@@ -260,6 +260,7 @@ namespace Starstorm2Unofficial.Survivors.Chirr.Components
                     this.targetMaster.inventory.AddItemsFrom(masterFriendController.masterItemStacks, x => x != ItemIndex.None);
                 }
                 RemoveBlacklistedItems(targetMaster.inventory);
+                targetMaster.inventory.RemoveItem(RoR2Content.Items.MinionLeash, targetMaster.inventory.GetItemCount(RoR2Content.Items.MinionLeash));
             }
         }
 
@@ -611,7 +612,28 @@ namespace Starstorm2Unofficial.Survivors.Chirr.Components
 
                 if (targetMaster.inventory)
                 {
-                    targetMaster.inventory.RemoveItem(RoR2Content.Items.UseAmbientLevel, targetMaster.inventory.GetItemCount(RoR2Content.Items.UseAmbientLevel)); //Redundant due to inventory reset
+                    targetMaster.inventory.RemoveItem(RoR2Content.Items.UseAmbientLevel, targetMaster.inventory.GetItemCount(RoR2Content.Items.UseAmbientLevel));
+
+                    //Remove Elite passive stats. New stat boost is tied to Friend Buff.
+                    EquipmentIndex ei = targetMaster.inventory.GetEquipmentIndex();
+                    if (ei != EquipmentIndex.None)
+                    {
+                        EquipmentDef eq = EquipmentCatalog.GetEquipmentDef(ei);
+                        if (eq && eq.passiveBuffDef && eq.passiveBuffDef.eliteDef)
+                        {
+                            int boostHP = Mathf.FloorToInt((eq.passiveBuffDef.eliteDef.healthBoostCoefficient - 1f) * 10f);
+                            if (boostHP > 0)
+                            {
+                                targetMaster.inventory.RemoveItem(RoR2Content.Items.BoostHp, boostHP);
+                            }
+
+                            int boostDmg = Mathf.FloorToInt((eq.passiveBuffDef.eliteDef.damageBoostCoefficient - 1f) * 10f);
+                            if (boostDmg > 0)
+                            {
+                                targetMaster.inventory.RemoveItem(RoR2Content.Items.BoostDamage, boostDmg);
+                            }
+                        }
+                    }
 
                     //Save the original inventory
                     if (masterFriendController && masterFriendController.masterItemStacks != null && targetMaster.inventory.itemStacks != null)

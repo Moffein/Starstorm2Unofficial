@@ -102,7 +102,7 @@ namespace Starstorm2Unofficial.Survivors.Chirr.Components
                         {
                             HealOrb healOrb = new HealOrb
                             {
-                                healValue = ownerBody.healthComponent ? ownerBody.healthComponent.fullCombinedHealth * 0.025f : 10f,
+                                healValue = ownerBody.healthComponent ? ownerBody.healthComponent.fullCombinedHealth * 0.01f : 10f,
                                 target = ownerBody.mainHurtBox,
                                 origin = cb.mainHurtBox && cb.mainHurtBox.transform ? cb.mainHurtBox.transform.position : cb.corePosition
                             };

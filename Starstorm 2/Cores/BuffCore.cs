@@ -43,42 +43,6 @@ namespace Starstorm2Unofficial.Cores
             Hook();
         }
 
-        public static bool IsNotT1Elite(EquipmentIndex equipmentIndex)
-        {
-            if (equipmentIndex != EquipmentIndex.None)
-            {
-                return IsNotT1Elite(EquipmentCatalog.GetEquipmentDef(equipmentIndex));
-            }
-            return false;
-        }
-
-        public static bool IsNotT1Elite(EquipmentDef equipmentDef)
-        {
-            if (equipmentDef && equipmentDef.passiveBuffDef && equipmentDef.passiveBuffDef.isElite && equipmentDef.passiveBuffDef.eliteDef)
-            {
-                if (!TierHasEliteDef(equipmentDef.passiveBuffDef.eliteDef, EliteAPI.VanillaFirstTierDef) && !TierHasEliteDef(equipmentDef.passiveBuffDef.eliteDef, EliteAPI.VanillaEliteOnlyFirstTierDef))
-                {
-                    return true;
-                }
-            }
-            return false;
-        }
-
-        private static bool TierHasEliteDef(EliteDef eliteDef, CombatDirector.EliteTierDef tierDef)
-        {
-            if (tierDef != null && tierDef.eliteTypes != null)
-            {
-                for (int i = 0; i < tierDef.eliteTypes.Length; i++)
-                {
-                    if (tierDef.eliteTypes[i] == eliteDef)
-                    {
-                        return true;
-                    }
-                }
-            }
-            return false;
-        }
-
         protected void RegisterBuffs()
         {
             //LogCore.LogInfo("Initializing Core: " + base.ToString());
@@ -255,26 +219,6 @@ namespace Starstorm2Unofficial.Cores
             };
         }
 
-        private void BaseState_OnEnter(On.EntityStates.BaseState.orig_OnEnter orig, EntityStates.BaseState self)
-        {
-            orig(self);
-            if (self.characterBody)
-            {
-                if (self.characterBody.HasBuff(BuffCore.chirrFriendBuff))
-                {
-                    if (ChirrFriendController.bodyDamageValueOverrides.TryGetValue(self.characterBody.bodyIndex, out float value))
-                    {
-                        self.damageStat *= value;
-                    }
-                    else if(Run.instance && Run.instance.ambientLevel > self.characterBody.level)
-                    {
-                        self.damageStat *= (0.8f + 0.2f * Run.instance.ambientLevel) / (0.8f + 0.2f * self.characterBody.level);
-                    }
-                    self.damageStat *= 1.25f;
-                }
-            }
-        }
-
         private void CharacterBody_RecalculateStats(On.RoR2.CharacterBody.orig_RecalculateStats orig, CharacterBody self)
         {
             orig(self);
@@ -305,33 +249,6 @@ namespace Starstorm2Unofficial.Cores
         {
             if (NetworkServer.active)
             {
-                /*if (self.body.HasBuff(BuffCore.chirrSelfBuff) && !damageInfo.rejected && damageInfo.attacker && !(damageInfo.damageType.HasFlag(DamageType.BypassArmor) || damageInfo.damageType.HasFlag(DamageType.BypassBlock) || damageInfo.damageType.HasFlag(DamageType.BypassOneShotProtection)))
-                {
-                    ChirrFriendController friendController = self.GetComponent<ChirrFriendController>();
-                    if (friendController && friendController.HasFriend())
-                    {
-                        float minionDamage = damageInfo.damage * 0.3f;
-                        damageInfo.damage *= 0.7f;
-
-                        DamageInfo minionDamageInfo = new DamageInfo
-                        {
-                            damage = minionDamage,
-                            procCoefficient = 0f,
-                            procChainMask = damageInfo.procChainMask,
-                            position = damageInfo.position,
-                            attacker = damageInfo.attacker,
-                            inflictor = damageInfo.inflictor,
-                            canRejectForce = true,
-                            crit = damageInfo.crit,
-                            damageColorIndex = damageInfo.damageColorIndex,
-                            damageType = damageInfo.damageType,
-                            dotIndex = damageInfo.dotIndex,
-                            force = Vector3.zero
-                        };
-                        friendController.HurtFriend(minionDamageInfo);
-                    }
-                }*/
-
                 //Chirr Friends dont take void fog damage
                 if (self.body.HasBuff(BuffCore.chirrFriendBuff))
                 {
@@ -343,18 +260,70 @@ namespace Starstorm2Unofficial.Cores
                         damageInfo.rejected = true;
                     }
 
-                    if (!damageInfo.canRejectForce) damageInfo.force *= 0.25f;
+                    //Set a damage cap to prevent allies from instadying lategame.
+                    if ((damageInfo.damage != 0f || !damageInfo.rejected) && !damageInfo.damageType.HasFlag(DamageType.BypassArmor) && !damageInfo.damageType.HasFlag(DamageType.BypassBlock) && !damageInfo.damageType.HasFlag(DamageType.BypassOneShotProtection) && !damageInfo.damageType.HasFlag(DamageType.VoidDeath))
+                    {
+                        float maxHpDamage = self.fullCombinedHealth / 3f; 
+                        float expectedDamage = damageInfo.damage;
+                        if (damageInfo.crit)
+                        {
+                            float critMult = 2f;
+                            if (damageInfo.attacker)
+                            {
+                                CharacterBody attackerBody = damageInfo.attacker.GetComponent<CharacterBody>();
+                                if (attackerBody)
+                                {
+                                    critMult = attackerBody.critMultiplier;
+                                }
+                            }
+                            expectedDamage *= critMult;
+                        }
+                        expectedDamage *= 100f / (100f + self.body.armor + self.adaptiveArmorValue);
+                        if (expectedDamage > maxHpDamage) damageInfo.damage *= expectedDamage / maxHpDamage;
+                    }
+
+                    if (!damageInfo.canRejectForce) damageInfo.force *= 0.1f;
                 }
             }
+
             orig(self, damageInfo);
 
-            if (NetworkServer.active)
+            //Allies aren't dying, too strong on actually tanky allies.
+            /*if (NetworkServer.active)
             {
                 if (self.body.HasBuff(BuffCore.chirrFriendBuff))
                 {
                     if (damageInfo.damage > 0f && !damageInfo.rejected && !damageInfo.damageType.HasFlag(DamageType.DoT) && !self.body.HasBuff(RoR2Content.Buffs.HiddenInvincibility))
                     {
                         self.body.AddTimedBuff(RoR2Content.Buffs.HiddenInvincibility, 0.5f);
+                    }
+                }
+            }*/
+        }
+
+        private void BaseState_OnEnter(On.EntityStates.BaseState.orig_OnEnter orig, EntityStates.BaseState self)
+        {
+            orig(self);
+            if (self.characterBody)
+            {
+                if (self.characterBody.HasBuff(BuffCore.chirrFriendBuff))
+                {
+                    if (ChirrFriendController.bodyDamageValueOverrides.TryGetValue(self.characterBody.bodyIndex, out float value))
+                    {
+                        self.damageStat *= value;
+                    }
+                    else if (Run.instance && Run.instance.ambientLevel > self.characterBody.level)
+                    {
+                        self.damageStat *= (0.8f + 0.2f * Run.instance.ambientLevel) / (0.8f + 0.2f * self.characterBody.level);
+                    }
+
+                    if (!self.characterBody.isElite)
+                    {
+                        self.damageStat *= 2f;
+                    }
+                    else
+                    {
+                        self.damageStat *= 3f;
                     }
                 }
             }
@@ -388,10 +357,17 @@ namespace Starstorm2Unofficial.Cores
                     float levelDiff = Run.instance.ambientLevel - sender.level;
                     if (levelDiff > 0f)
                     {
-                        args.healthMultAdd += 0.25f;
+                        if (!sender.isElite)
+                        {
+                            args.healthMultAdd += 1f;
+                        }
+                        else
+                        {
+                            args.healthMultAdd += 2f;
+                        }
 
-                        args.baseHealthAdd += levelDiff * sender.levelMaxHealth;
-                        args.baseShieldAdd = levelDiff * sender.levelMaxShield;
+                        args.baseHealthAdd += levelDiff * sender.levelMaxHealth * 2f / 3f;
+                        args.baseShieldAdd += levelDiff * sender.levelMaxShield;
                         args.armorAdd += levelDiff * sender.levelArmor;
                         args.baseMoveSpeedAdd += levelDiff * sender.levelMoveSpeed;
                         args.critAdd += levelDiff * sender.levelCrit;

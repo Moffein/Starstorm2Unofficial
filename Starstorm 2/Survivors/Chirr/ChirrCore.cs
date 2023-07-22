@@ -380,7 +380,7 @@ namespace Starstorm2Unofficial.Survivors.Chirr
             befriendDef.skillDescriptionToken = "SS2UCHIRR_BEFRIEND_DESCRIPTION";
             befriendDef.icon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("ChirrSpecial1");
             befriendDef.baseMaxStock = 1;
-            befriendDef.baseRechargeInterval = 10f;
+            befriendDef.baseRechargeInterval = 5f;
             befriendDef.beginSkillCooldownOnSkillEnd = false;
             befriendDef.canceledFromSprinting = false;
             befriendDef.fullRestockOnAssign = true;
@@ -433,7 +433,7 @@ namespace Starstorm2Unofficial.Survivors.Chirr
             befriendScepterDef.skillDescriptionToken = "SS2UCHIRR_BEFRIEND_SCEPTER_DESCRIPTION";
             befriendScepterDef.icon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("ChirrSpecialScepter");
             befriendScepterDef.baseMaxStock = 1;
-            befriendScepterDef.baseRechargeInterval = 10f;
+            befriendScepterDef.baseRechargeInterval = 5f;
             befriendScepterDef.beginSkillCooldownOnSkillEnd = true;
             befriendScepterDef.canceledFromSprinting = false;
             befriendScepterDef.fullRestockOnAssign = true;
