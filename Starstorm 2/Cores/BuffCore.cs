@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
 using UnityEngine.Networking;
 using Object = UnityEngine.Object;
 
@@ -101,7 +102,7 @@ namespace Starstorm2Unofficial.Cores
 
             chirrFriendBuff = CreateBuffDef("SS2UChirrFriendBuff", false, false, false, new Color32(245, 123, 145, 255), Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("buffChirrSoulLink"));
             chirrSelfBuff = CreateBuffDef("SS2UChirrSelfBuff", false, false, false, new Color32(245, 123, 145, 255), Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("buffChirrSoulLink"));
-            chirrFriendDistractBuff = CreateBuffDef("SS2UChirrFriendDistractBuff", false, false, false, new Color(210f / 255f, 50f / 255f, 22f / 255f), LegacyResourcesAPI.Load<Sprite>("textures/bufficons/texBuffCloakIcon"));
+            chirrFriendDistractBuff = CreateBuffDef("SS2UChirrFriendDistractBuff", false, false, false, new Color(210f / 255f, 50f / 255f, 22f / 255f), Addressables.LoadAssetAsync<Sprite>("RoR2/Base/Common/texBuffCloakIcon.tif").WaitForCompletion());
 
             #region Executioner
             fearDebuff = ScriptableObject.CreateInstance<BuffDef>();
@@ -238,6 +239,7 @@ namespace Starstorm2Unofficial.Cores
                     if (self.skillLocator.utility) self.skillLocator.utility.cooldownScale *= 0.66f;
                     if (self.skillLocator.special) self.skillLocator.special.cooldownScale *= 0.66f;
 
+                    if (!self.bodyFlags.HasFlag(CharacterBody.BodyFlags.OverheatImmune)) self.bodyFlags |= CharacterBody.BodyFlags.OverheatImmune;
                     if (!self.bodyFlags.HasFlag(CharacterBody.BodyFlags.ImmuneToVoidDeath)) self.bodyFlags |= CharacterBody.BodyFlags.ImmuneToVoidDeath;
                     if (!self.bodyFlags.HasFlag(CharacterBody.BodyFlags.ImmuneToExecutes)) self.bodyFlags |= CharacterBody.BodyFlags.ImmuneToExecutes;
                     if (!self.bodyFlags.HasFlag(CharacterBody.BodyFlags.IgnoreFallDamage)) self.bodyFlags |= CharacterBody.BodyFlags.IgnoreFallDamage;
@@ -261,9 +263,9 @@ namespace Starstorm2Unofficial.Cores
                     }
 
                     //Set a damage cap to prevent allies from instadying lategame.
-                    if ((damageInfo.damage != 0f || !damageInfo.rejected) && !damageInfo.damageType.HasFlag(DamageType.BypassArmor) && !damageInfo.damageType.HasFlag(DamageType.BypassBlock) && !damageInfo.damageType.HasFlag(DamageType.BypassOneShotProtection) && !damageInfo.damageType.HasFlag(DamageType.VoidDeath))
+                    if (damageInfo.damage != 0f && !damageInfo.rejected && !damageInfo.damageType.HasFlag(DamageType.BypassArmor) && !damageInfo.damageType.HasFlag(DamageType.BypassBlock) && !damageInfo.damageType.HasFlag(DamageType.BypassOneShotProtection) && !damageInfo.damageType.HasFlag(DamageType.VoidDeath))
                     {
-                        float maxHpDamage = self.fullCombinedHealth / 3f; 
+                        float maxHpDamage = self.fullCombinedHealth / 4f; 
                         float expectedDamage = damageInfo.damage;
                         if (damageInfo.crit)
                         {
@@ -279,7 +281,7 @@ namespace Starstorm2Unofficial.Cores
                             expectedDamage *= critMult;
                         }
                         expectedDamage *= 100f / (100f + self.body.armor + self.adaptiveArmorValue);
-                        if (expectedDamage > maxHpDamage) damageInfo.damage *= expectedDamage / maxHpDamage;
+                        if (expectedDamage > maxHpDamage) damageInfo.damage *= maxHpDamage / expectedDamage;
                     }
 
                     if (!damageInfo.canRejectForce) damageInfo.force *= 0.1f;
@@ -312,9 +314,9 @@ namespace Starstorm2Unofficial.Cores
                     {
                         self.damageStat *= value;
                     }
-                    else if (Run.instance && Run.instance.ambientLevel > self.characterBody.level)
+                    else if (Run.instance && Run.instance.ambientLevelFloor > self.characterBody.level)
                     {
-                        self.damageStat *= (0.8f + 0.2f * Run.instance.ambientLevel) / (0.8f + 0.2f * self.characterBody.level);
+                        self.damageStat *= (0.8f + 0.2f * Run.instance.ambientLevelFloor) / (0.8f + 0.2f * self.characterBody.level);
                     }
 
                     if (!self.characterBody.isElite)
@@ -354,26 +356,31 @@ namespace Starstorm2Unofficial.Cores
             {
                 if (Run.instance)
                 {
-                    float levelDiff = Run.instance.ambientLevel - sender.level;
+                    float levelDiff = Run.instance.ambientLevelFloor - sender.level;
                     if (levelDiff > 0f)
                     {
                         if (!sender.isElite)
                         {
-                            args.healthMultAdd += 1f;
+                            args.healthMultAdd += 0.5f;
                         }
                         else
                         {
-                            args.healthMultAdd += 2f;
+                            args.healthMultAdd += 1f;
                         }
 
-                        args.baseHealthAdd += levelDiff * sender.levelMaxHealth * 2f / 3f;
+                        /*args.baseHealthAdd += levelDiff * sender.levelMaxHealth * 2f / 3f;
                         args.baseShieldAdd += levelDiff * sender.levelMaxShield;
-                        args.armorAdd += levelDiff * sender.levelArmor;
+                        args.armorAdd += levelDiff * sender.levelArmor ;
                         args.baseMoveSpeedAdd += levelDiff * sender.levelMoveSpeed;
-                        args.critAdd += levelDiff * sender.levelCrit;
+                        args.critAdd += levelDiff * sender.levelCrit;*/
                         //dont scale base damage to ambientlevel since it will make Razor Wire OP.
                     }
                 }
+            }
+
+            if (sender.HasBuff(BuffCore.chirrFriendDistractBuff))
+            {
+                args.armorAdd += 100f;
             }
         }
 

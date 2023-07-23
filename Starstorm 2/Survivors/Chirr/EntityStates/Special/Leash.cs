@@ -21,7 +21,7 @@ namespace EntityStates.SS2UStates.Chirr.Special
         public override void FixedUpdate()
         {
             base.FixedUpdate();
-
+            Util.PlaySound("SS2UChirrSpecial", base.gameObject);
 
             if (base.isAuthority)
             {
@@ -32,7 +32,15 @@ namespace EntityStates.SS2UStates.Chirr.Special
                         leashed = true;
                         if (friendController)// && friendController.CanLeash()
                         {
-                            friendController.LeashFriendClient(base.transform.position);
+                            Vector3 leashPos = base.transform.position;
+                            Ray aimRay = base.GetAimRay();
+                            RaycastHit raycastHit;
+                            if (Physics.Raycast(aimRay, out raycastHit, 2000f, LayerIndex.world.mask))
+                            {
+                                leashPos = raycastHit.point;
+                            }
+
+                            friendController.LeashFriendClient(leashPos);
                         }
                     }
                 }

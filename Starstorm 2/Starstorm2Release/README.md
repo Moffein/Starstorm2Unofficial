@@ -43,6 +43,7 @@ The SS2 team is free to use any of the new code from this mod as long as this re
 	- Natural Link
 		- Leashing allies now causes all non-Champion (boss) enemies to target them temporarily.
 			- Ally periodically heals for every enemy distracted.
+		- Leash now teleports your ally to where your crosshair is pointing.
 		- Increased cooldown from 3s -> 10s
 		- Allies no longer passively absorb damage.
 		
@@ -51,11 +52,13 @@ The SS2 team is free to use any of the new code from this mod as long as this re
 		- Significantly improved aim speed.
 		- Redid stat scaling since the old system was too convoluted.
 		- New stat scaling:
-			- HP scales with AmbientLevel (but uses +20% per level so that it matches enemy damage scaling)
+			- HP scales with player level.
+			- Base damage scales with player level.
 			- Skill damage scales with AmbientLevel
-			- Base damage scales with Player Level
-			- +100% HP and +100% Skill damage for non-elites.
-			- +200% HP and +200% Skill damage for elites (overrides elite stats)
+			- +50% HP and +100% Skill damage for non-elites.
+			- +100% HP and +200% Skill damage for elites (overrides elite stats)
+		- Disabled Void Implosion immunity.
+		- Enabled Grandparent Overheat immunity.
 		- Reduced knockback taken by 90%.
 	
 - Nemesis Invasion

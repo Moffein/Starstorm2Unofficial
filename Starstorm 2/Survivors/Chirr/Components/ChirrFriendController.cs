@@ -758,7 +758,7 @@ namespace Starstorm2Unofficial.Survivors.Chirr.Components
         [Server]
         public void LeashFriendServer(Vector3 newPos)
         {
-            SpawnCard spawnCard = ScriptableObject.CreateInstance<SpawnCard>();
+            /*SpawnCard spawnCard = ScriptableObject.CreateInstance<SpawnCard>();
             spawnCard.hullSize = targetBody.hullClassification;
             spawnCard.nodeGraphType = (targetBody.isFlying ? MapNodeGroup.GraphType.Air : MapNodeGroup.GraphType.Ground);
             spawnCard.prefab = ChirrFriendController.teleportHelperPrefab;
@@ -781,7 +781,9 @@ namespace Starstorm2Unofficial.Survivors.Chirr.Components
                     EffectManager.SimpleEffect(teleportEffectPrefab, position, Quaternion.identity, true);
                 }
                 UnityEngine.Object.Destroy(gameObject);
-            }
+            }*/
+
+            TeleportHelper.TeleportBody(targetBody, newPos);
 
             //Distract enemies on leash.
             targetBody.AddTimedBuff(RoR2Content.Buffs.HiddenInvincibility, 1f);
