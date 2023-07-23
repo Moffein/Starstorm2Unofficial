@@ -35,6 +35,25 @@ namespace EntityStates.SS2UStates.Chirr
             {
                 friendController.TryGetSavedMaster();
             }
+
+            //Set ending text.
+            //Very bad way to do this, this is a mess.
+            if (base.characterBody && base.isAuthority)
+            {
+                CharacterMaster ownerMaster = base.characterBody.master;
+                if (ownerMaster && ownerMaster.loadout != null)
+                {
+                    int skinIndex = (int)ownerMaster.loadout.bodyLoadoutManager.GetSkinIndex(ChirrCore.bodyIndex);
+                    SkinDef equippedSkin = HG.ArrayUtils.GetSafe<SkinDef>(BodyCatalog.GetBodySkins(ChirrCore.bodyIndex), skinIndex);
+                    bool isMaid = equippedSkin == ChirrSkins.maidSkin;
+
+                    if (ChirrCore.survivorDef && ChirrCore.survivorDef.outroFlavorToken != "SS2UCHIRR_OUTRO_BROTHER_EASTEREGG")
+                    {
+                        ChirrCore.survivorDef.outroFlavorToken = "SS2UCHIRR_OUTRO_FLAVOR";
+                        if (base.isAuthority && isMaid) ChirrCore.survivorDef.outroFlavorToken = "SS2UCHIRR_OUTRO_MAID_FLAVOR";
+                    }
+                }
+            }
         }
 
         public override void ProcessJump()

@@ -380,7 +380,7 @@ namespace Starstorm2Unofficial.Survivors.Chirr
             befriendDef.skillDescriptionToken = "SS2UCHIRR_BEFRIEND_DESCRIPTION";
             befriendDef.icon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("ChirrSpecial1");
             befriendDef.baseMaxStock = 1;
-            befriendDef.baseRechargeInterval = 5f;
+            befriendDef.baseRechargeInterval = 3f;
             befriendDef.beginSkillCooldownOnSkillEnd = false;
             befriendDef.canceledFromSprinting = false;
             befriendDef.fullRestockOnAssign = true;
@@ -407,7 +407,7 @@ namespace Starstorm2Unofficial.Survivors.Chirr
             leashDef.skillDescriptionToken = "SS2UCHIRR_LEASH_DESCRIPTION";
             leashDef.icon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("ChirrSpecial2");
             leashDef.baseMaxStock = 1;
-            leashDef.baseRechargeInterval = 10f;
+            leashDef.baseRechargeInterval = 12f;
             leashDef.beginSkillCooldownOnSkillEnd = false;
             leashDef.canceledFromSprinting = false;
             leashDef.fullRestockOnAssign = true;
@@ -433,7 +433,7 @@ namespace Starstorm2Unofficial.Survivors.Chirr
             befriendScepterDef.skillDescriptionToken = "SS2UCHIRR_BEFRIEND_SCEPTER_DESCRIPTION";
             befriendScepterDef.icon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("ChirrSpecialScepter");
             befriendScepterDef.baseMaxStock = 1;
-            befriendScepterDef.baseRechargeInterval = 5f;
+            befriendScepterDef.baseRechargeInterval = 3f;
             befriendScepterDef.beginSkillCooldownOnSkillEnd = true;
             befriendScepterDef.canceledFromSprinting = false;
             befriendScepterDef.fullRestockOnAssign = true;

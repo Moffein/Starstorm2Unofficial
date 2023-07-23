@@ -262,45 +262,11 @@ namespace Starstorm2Unofficial.Cores
                         damageInfo.rejected = true;
                     }
 
-                    //Set a damage cap to prevent allies from instadying lategame.
-                    if (damageInfo.damage != 0f && !damageInfo.rejected && !damageInfo.damageType.HasFlag(DamageType.BypassArmor) && !damageInfo.damageType.HasFlag(DamageType.BypassBlock) && !damageInfo.damageType.HasFlag(DamageType.BypassOneShotProtection) && !damageInfo.damageType.HasFlag(DamageType.VoidDeath))
-                    {
-                        float maxHpDamage = self.fullCombinedHealth / 4f; 
-                        float expectedDamage = damageInfo.damage;
-                        if (damageInfo.crit)
-                        {
-                            float critMult = 2f;
-                            if (damageInfo.attacker)
-                            {
-                                CharacterBody attackerBody = damageInfo.attacker.GetComponent<CharacterBody>();
-                                if (attackerBody)
-                                {
-                                    critMult = attackerBody.critMultiplier;
-                                }
-                            }
-                            expectedDamage *= critMult;
-                        }
-                        expectedDamage *= 100f / (100f + self.body.armor + self.adaptiveArmorValue);
-                        if (expectedDamage > maxHpDamage) damageInfo.damage *= maxHpDamage / expectedDamage;
-                    }
-
                     if (!damageInfo.canRejectForce) damageInfo.force *= 0.1f;
                 }
             }
 
             orig(self, damageInfo);
-
-            //Allies aren't dying, too strong on actually tanky allies.
-            /*if (NetworkServer.active)
-            {
-                if (self.body.HasBuff(BuffCore.chirrFriendBuff))
-                {
-                    if (damageInfo.damage > 0f && !damageInfo.rejected && !damageInfo.damageType.HasFlag(DamageType.DoT) && !self.body.HasBuff(RoR2Content.Buffs.HiddenInvincibility))
-                    {
-                        self.body.AddTimedBuff(RoR2Content.Buffs.HiddenInvincibility, 0.5f);
-                    }
-                }
-            }*/
         }
 
         private void BaseState_OnEnter(On.EntityStates.BaseState.orig_OnEnter orig, EntityStates.BaseState self)
@@ -314,10 +280,10 @@ namespace Starstorm2Unofficial.Cores
                     {
                         self.damageStat *= value;
                     }
-                    else if (Run.instance && Run.instance.ambientLevelFloor > self.characterBody.level)
+                    /*else if (Run.instance && Run.instance.ambientLevelFloor > self.characterBody.level)
                     {
                         self.damageStat *= (0.8f + 0.2f * Run.instance.ambientLevelFloor) / (0.8f + 0.2f * self.characterBody.level);
-                    }
+                    }*/
 
                     if (!self.characterBody.isElite)
                     {

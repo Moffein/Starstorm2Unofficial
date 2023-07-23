@@ -37,29 +37,29 @@ The SS2 team is free to use any of the new code from this mod as long as this re
 		- Adding ending text for Mastery skin.
 		
 	- Sanative Aura
-		- Increased heal from 25% + 30% -> 30% + 70%
+		- Increased heal from 25% + 30% -> 30% + 70% to match SS1's total healing amount.
 		- Reduced cooldown from 15s -> 12s
 		
 	- Natural Link
 		- Leashing allies now causes all non-Champion (boss) enemies to target them temporarily.
 			- Ally periodically heals for every enemy distracted.
 		- Leash now teleports your ally to where your crosshair is pointing.
-		- Increased cooldown from 3s -> 10s
+		- Increased cooldown from 3s -> 12s
 		- Allies no longer passively absorb damage.
 		
 	- Allies
 		- When pinging enemies, maintains attention until it dies or you ping something else.
 		- Significantly improved aim speed.
-		- Redid stat scaling since the old system was too convoluted.
+		- Redid stat scaling since the old system was incredibly convoluted.
 		- New stat scaling:
-			- HP scales with player level.
-			- Base damage scales with player level.
-			- Skill damage scales with AmbientLevel
+			- HP/Damage scales with player level. (used to scale with Ambient Level)
 			- +50% HP and +100% Skill damage for non-elites.
 			- +100% HP and +200% Skill damage for elites (overrides elite stats)
 		- Disabled Void Implosion immunity.
 		- Enabled Grandparent Overheat immunity.
 		- Reduced knockback taken by 90%.
+		
+		*Stats need more testing. Did some lategame runs and Golems seemed to be surviving fine even with the lower stat scaling. Earlygame allies seem to be a lot squishier.*
 	
 - Nemesis Invasion
 	- Bosses no longer spawn in the bazaar (can be re-enabled in config).

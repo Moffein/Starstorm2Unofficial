@@ -172,15 +172,6 @@ namespace Starstorm2Unofficial.Survivors.Chirr.Components
             if (ownerBody)
             {
                 ownerMaster = ownerBody.master;
-
-                //Very bad way to do this, this is a mess.
-                SkinDef equippedSkin = SkinCatalog.FindCurrentSkinDefForBodyInstance(ownerBody.gameObject);
-                bool isMaid = equippedSkin == ChirrSkins.maidSkin;
-                if (ChirrCore.survivorDef && ChirrCore.survivorDef.outroFlavorToken != "SS2UCHIRR_OUTRO_BROTHER_EASTEREGG")
-                {
-                    ChirrCore.survivorDef.outroFlavorToken = "SS2UCHIRR_OUTRO_FLAVOR";
-                    if (base.hasAuthority && isMaid) ChirrCore.survivorDef.outroFlavorToken ="SS2UCHIRR_OUTRO_MAID_FLAVOR";
-                }
             }
             if (NetworkServer.active) TryGetSavedMaster();
         }

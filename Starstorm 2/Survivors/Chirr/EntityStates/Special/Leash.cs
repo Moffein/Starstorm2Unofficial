@@ -35,7 +35,7 @@ namespace EntityStates.SS2UStates.Chirr.Special
                             Vector3 leashPos = base.transform.position;
                             Ray aimRay = base.GetAimRay();
                             RaycastHit raycastHit;
-                            if (Physics.Raycast(aimRay, out raycastHit, 2000f, LayerIndex.world.mask))
+                            if (Physics.Raycast(aimRay, out raycastHit, 1000f, LayerIndex.world.mask))
                             {
                                 leashPos = raycastHit.point;
                             }
