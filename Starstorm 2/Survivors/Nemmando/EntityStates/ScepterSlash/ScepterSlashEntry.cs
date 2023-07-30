@@ -106,6 +106,8 @@ namespace EntityStates.SS2UStates.Nemmando
             base.characterBody.bodyFlags &= ~CharacterBody.BodyFlags.IgnoreFallDamage;
             if (!this.outer.destroying) base.PlayAnimation("FullBody, Override", "BufferEmpty");
 
+            if (cameraTargetParams) cameraTargetParams.RemoveParamsOverride(camOverrideHandle, .25f);
+
             base.OnExit();
         }
 
@@ -120,7 +122,7 @@ namespace EntityStates.SS2UStates.Nemmando
                 {
                     ScepterSlashAttack nextState = new ScepterSlashAttack();
                     nextState.charge = charge;
-                    nextState.camOverrideHandle = camOverrideHandle;
+                    //nextState.camOverrideHandle = camOverrideHandle;
                     this.outer.SetNextState(nextState);
                     return;
                 }
@@ -128,7 +130,7 @@ namespace EntityStates.SS2UStates.Nemmando
                 {
                     ChargedSlashAttack nextState = new ChargedSlashAttack();
                     nextState.charge = charge;
-                    nextState.camOverrideHandle = camOverrideHandle;
+                    //nextState.camOverrideHandle = camOverrideHandle;
                     this.outer.SetNextState(nextState);
                     return;
                 }

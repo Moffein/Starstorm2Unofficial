@@ -29,6 +29,15 @@ The SS2 team is free to use any of the new code from this mod as long as this re
 
 ## Changelog
 
+`0.13.1`
+
+- Nemesis Commando
+	- Fixed camera getting permanently changed when using Decisive Strike Scepter.
+		- Fixed other potential areas where this could happen with his specials.
+	
+- Chirr
+	- Re-enabled void death immunity on allies.
+
 `0.13.0`
 
 - Chirr

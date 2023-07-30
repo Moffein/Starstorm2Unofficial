@@ -36,12 +36,22 @@ namespace EntityStates.SS2UStates.Nemmando
         private bool isCrit;
         private bool hidden;
         public CameraTargetParams.CameraParamsOverrideHandle camOverrideHandle;
+        private CharacterCameraParamsData decisiveCameraParams = new CharacterCameraParamsData
+        {
+            maxPitch = 70f,
+            minPitch = -70f,
+            pivotVerticalOffset = 1f, //how far up should the camera go?
+            idealLocalCameraPos = zoomCameraPosition,
+            wallCushion = 0.1f
+        };
+        public static Vector3 zoomCameraPosition = new Vector3(0f, 0f, -5.3f); // how far back should the camera go?
 
         private List<HurtBox> targetList;
 
         public override void OnEnter()
         {
             base.OnEnter();
+
             base.characterBody.isSprinting = false;
             this.hitsFired = 0;
             this.hitCount = (int)(ScepterSlashAttack.baseHitCount * this.attackSpeedStat);
@@ -77,6 +87,17 @@ namespace EntityStates.SS2UStates.Nemmando
             this.GetTargets();
 
             if (this.characterModel) this.characterModel.invisibilityCount++;
+
+            if (cameraTargetParams)
+            {
+                cameraTargetParams.RemoveParamsOverride(camOverrideHandle, .25f);
+                CameraTargetParams.CameraParamsOverrideRequest request = new CameraTargetParams.CameraParamsOverrideRequest
+                {
+                    cameraParamsData = decisiveCameraParams,
+                    priority = 0f
+                };
+                camOverrideHandle = cameraTargetParams.AddParamsOverride(request, duration);
+            }
         }
 
         private void FireAttack()

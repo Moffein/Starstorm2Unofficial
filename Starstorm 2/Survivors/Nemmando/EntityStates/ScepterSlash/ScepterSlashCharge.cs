@@ -114,7 +114,6 @@ namespace EntityStates.SS2UStates.Nemmando
 
         public override void OnExit()
         {
-            base.OnExit();
             this.swordVFX.gameObject.SetActive(false);
             this.swordVFX.gameObject.SetActive(true);
             if (this.nemmandoController) this.nemmandoController.chargingDecisiveStrike = false;
@@ -122,6 +121,9 @@ namespace EntityStates.SS2UStates.Nemmando
             if (!this.outer.destroying) base.PlayAnimation("FullBody, Override", "BufferEmpty");
 
             AkSoundEngine.StopPlayingID(this.chargePlayID);
+
+            if (cameraTargetParams) cameraTargetParams.RemoveParamsOverride(camOverrideHandle, .25f);
+            base.OnExit();
         }
 
         public override InterruptPriority GetMinimumInterruptPriority()

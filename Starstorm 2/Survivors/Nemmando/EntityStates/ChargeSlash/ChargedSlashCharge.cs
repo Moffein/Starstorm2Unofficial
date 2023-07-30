@@ -118,7 +118,7 @@ namespace EntityStates.SS2UStates.Nemmando
             {
                 ChargedSlashEntry nextState = new ChargedSlashEntry();
                 nextState.charge = charge;
-                nextState.camOverrideHandle = this.camOverrideHandle;
+                //nextState.camOverrideHandle = this.camOverrideHandle;
                 this.outer.SetNextState(nextState);
             }
         }
@@ -140,6 +140,7 @@ namespace EntityStates.SS2UStates.Nemmando
             if (!this.outer.destroying) base.PlayAnimation("FullBody, Override", "BufferEmpty");
 
             AkSoundEngine.StopPlayingID(this.chargePlayID);
+            if (cameraTargetParams) cameraTargetParams.RemoveParamsOverride(camOverrideHandle, .25f);
         }
 
         public override InterruptPriority GetMinimumInterruptPriority()
