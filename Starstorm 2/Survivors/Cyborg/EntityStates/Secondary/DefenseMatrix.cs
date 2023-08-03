@@ -29,7 +29,7 @@ namespace EntityStates.SS2UStates.Cyborg.Secondary
         public static GameObject projectileDeletionEffectPrefab;
         public static GameObject matrixPrefab;
         public static float ticksPerSecond = 30;
-        public static float cdrPerProjectile = 1f;
+        public static float cdrPerProjectile = 0f;  //Leaving this in just in case.
 
         public static float blinkTime = 0.5f;
         public static float blinkFrequency = 20f;
@@ -128,7 +128,7 @@ namespace EntityStates.SS2UStates.Cyborg.Secondary
                         EntityState.Destroy(toDelete);
                     }
                 }
-                if (chargeComponent && projectilesDeleted > 0)
+                if (chargeComponent && projectilesDeleted > 0 && DefenseMatrix.cdrPerProjectile > 0f)
                 {
                     chargeComponent.RestoreNonDefenseMatrixCooldownsServer(projectilesDeleted * DefenseMatrix.cdrPerProjectile);
                 }

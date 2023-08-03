@@ -29,6 +29,43 @@ The SS2 team is free to use any of the new code from this mod as long as this re
 
 ## Changelog
 
+`0.14.0`
+
+- Cyborg
+	- Unmaker
+		- Damage increased from 270% -> 300%
+		
+	- Rising Star
+		- Damage increased from 240%-720% -> 300%-900%
+		
+	- Defense Matrix
+		- Reduced base recharge time from 8s -> 7s
+		- Increased meter increase from Backup Mags from +50% -> +100%
+		- Increased base shield duration from 2s -> 3s
+		- Removed cooldown reduction on block.
+		
+	- Shock Core
+		- Reduced cooldown from 12s -> 7s
+		- Moved to Secondary slot so that there's an option for people who don't want to use the shield.
+		- Disabled self-knockback.
+		
+	- Recall
+		- Reduced cooldown from 12s -> 10s
+		
+	- Flight Mode
+		- Reduced cooldown from 12s -> 10s
+		
+	- Overheat Redress
+		- Reduced cooldown from 12s -> 7s
+		- Hits per second increased from 5 -> 8
+		- DPS increased from 700% -> 1000%
+		- Full DPS time increased from 0s -> 0.5s
+
+- Executioner
+	- alt primary (single shot) (todo)
+	- Special
+		- Increased damage from 800%-2400% -> 1000%-3000%
+
 `0.13.1`
 
 - Nemesis Commando

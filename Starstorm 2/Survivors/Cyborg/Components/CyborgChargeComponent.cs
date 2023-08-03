@@ -7,7 +7,7 @@ namespace Starstorm2Unofficial.Survivors.Cyborg.Components
     //Crosshair gets charge info from this component.
     public class CyborgChargeComponent : NetworkBehaviour
     {
-        public static float baseMaxShieldDuration = 2f;
+        public static float baseMaxShieldDuration = 3f;
         public static float delayBeforeShieldRecharge = 1f;
 
         private float shieldRechargeDelayStopwatch;
@@ -73,7 +73,7 @@ namespace Starstorm2Unofficial.Survivors.Cyborg.Components
             if (skillLocator && skillLocator.secondary && skillLocator.secondary.skillDef == CyborgCore.defenseMatrixDef)
             {
                 int extraStocks = Mathf.Max(0, skillLocator.secondary.maxStock - 1);
-                duration += 1f * extraStocks;
+                duration += CyborgChargeComponent.baseMaxShieldDuration * extraStocks;
             }
             return duration;
         }

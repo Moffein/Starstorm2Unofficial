@@ -112,7 +112,7 @@ namespace EntityStates.SS2UStates.Executioner
 
     public class ExecutionerAxeSlam : BaseSkillState
     {
-        public static float damageCoefficient = 8f;
+        public static float damageCoefficient = 10f;
         public static float procCoefficient = 1.0f;
         //shorter value if axe slam should be finite
         //public static float baseDuration = 0.4f;

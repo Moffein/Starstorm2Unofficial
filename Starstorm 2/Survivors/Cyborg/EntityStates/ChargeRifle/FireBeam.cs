@@ -12,8 +12,8 @@ namespace EntityStates.SS2UStates.Cyborg.ChargeRifle
     public class FireBeam : BaseState
     {
         public static float perfectChargeDamageMultiplier = 1.333334f;
-        public static float minDamageCoefficient = 2.4f;
-        public static float maxDamageCoefficient = 7.2f;
+        public static float minDamageCoefficient = 3f;
+        public static float maxDamageCoefficient = 9f;
         public static float minForce = 1000f;
         public static float maxForce = 2000f;
         public static float baseDuration = 0.5f;

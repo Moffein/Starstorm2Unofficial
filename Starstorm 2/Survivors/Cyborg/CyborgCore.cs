@@ -39,7 +39,7 @@ namespace Starstorm2Unofficial.Survivors.Cyborg
         public static SkillDef overheatDef;
         public static SkillDef overheatScepterDef;
         public static SkillDef shockDef;
-        public static SkillDef shockScepterDef;
+        //public static SkillDef shockScepterDef;
 
         public CyborgCore() => Setup();
         private void SetBodyIndex()
@@ -356,11 +356,12 @@ namespace Starstorm2Unofficial.Survivors.Cyborg
             bfgProjectileSimple.desiredForwardSpeed = 15f;
             bfgProjectileSimple.lifetime = 3f;
 
+            float hitRate = 1f / 8f;
             ProjectileProximityBeamController bfgPbc = projectilePrefab.AddComponent<ProjectileProximityBeamController>();
             bfgPbc.attackRange = 12f;
-            bfgPbc.listClearInterval = 0.2f;
+            bfgPbc.listClearInterval = hitRate;
             bfgPbc.attackInterval = bfgPbc.listClearInterval;
-            bfgPbc.damageCoefficient = 0.2f;
+            bfgPbc.damageCoefficient = hitRate;
             bfgPbc.procCoefficient = 0.7f;
             bfgPbc.inheritDamageType = true;
             bfgPbc.bounces = bounceCount;
@@ -471,7 +472,7 @@ namespace Starstorm2Unofficial.Survivors.Cyborg
             SkillFamily.Variant primaryVariant1 = Utils.RegisterSkillVariant(primaryDef1);
 
             LanguageAPI.Add("SS2UCYBORG_PRIMARY_CHARGE_NAME", "Rising Star");
-            LanguageAPI.Add("SS2UCYBORG_PRIMARY_CHARGE_DESCRIPTION", $"Charge up a <style=cIsUtility>slowing</style> beam that pierces for <style=cIsDamage>250%-750% damage</style>. Deals <style=cIsDamage>33%</style> more damage when <style=cIsDamage>perfectly charged</style>.");
+            LanguageAPI.Add("SS2UCYBORG_PRIMARY_CHARGE_DESCRIPTION", $"Charge up a <style=cIsUtility>slowing</style> beam that pierces for <style=cIsDamage>300%-900% damage</style>. Deals <style=cIsDamage>33%</style> more damage when <style=cIsDamage>perfectly charged</style>.");
             SteppedSkillDef primaryDef2 = ScriptableObject.CreateInstance<SteppedSkillDef>();
             primaryDef2.activationState = new SerializableEntityStateType(typeof(ChargeBeam));
             primaryDef2.activationStateMachineName = "Weapon";
@@ -504,7 +505,7 @@ namespace Starstorm2Unofficial.Survivors.Cyborg
         private void SetUpSecondaries(SkillLocator skillLocator)
         {
              LanguageAPI.Add("SS2UCYBORG_SECONDARY_DEFENSEMATRIX_NAME", "Defense Matrix");
-             LanguageAPI.Add("SS2UCYBORG_SECONDARY_DEFENSEMATRIX_DESCRIPTION", "Project an energy field that <style=cIsUtility>neutralizes ranged attacks</style>. Reduce skill cooldowns by <style=cIsUtility>1s</style> for every <style=cIsUtility>projectile</style> deleted.");
+             LanguageAPI.Add("SS2UCYBORG_SECONDARY_DEFENSEMATRIX_DESCRIPTION", "Project an energy field that <style=cIsUtility>neutralizes ranged attacks</style>.");
              DefenseMatrixSkillDef defenseMatrixDef = ScriptableObject.CreateInstance<DefenseMatrixSkillDef>();
              defenseMatrixDef.activationState = new SerializableEntityStateType(typeof(DefenseMatrix));
              defenseMatrixDef.activationStateMachineName = "DefenseMatrix";
@@ -513,7 +514,7 @@ namespace Starstorm2Unofficial.Survivors.Cyborg
              defenseMatrixDef.skillDescriptionToken = "SS2UCYBORG_SECONDARY_DEFENSEMATRIX_DESCRIPTION";
              defenseMatrixDef.icon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("cyborgsecondary");
              defenseMatrixDef.baseMaxStock = 1;
-             defenseMatrixDef.baseRechargeInterval = 8f;
+             defenseMatrixDef.baseRechargeInterval = 7f;
              defenseMatrixDef.beginSkillCooldownOnSkillEnd = true;
              defenseMatrixDef.canceledFromSprinting = false;
              defenseMatrixDef.fullRestockOnAssign = true;
@@ -530,7 +531,34 @@ namespace Starstorm2Unofficial.Survivors.Cyborg
              SkillFamily.Variant secondaryVariant1 = Utils.RegisterSkillVariant(defenseMatrixDef);
             CyborgCore.defenseMatrixDef = defenseMatrixDef;
 
-            skillLocator.secondary = Utils.RegisterSkillsToFamily(cybPrefab, new SkillFamily.Variant[] { secondaryVariant1 });
+            LanguageAPI.Add("SS2UCYBORG_SHOCKCORE_NAME", "Shock Core");
+            LanguageAPI.Add("SS2UCYBORG_SHOCKCORE_DESCRIPTION", "<style=cIsDamage>Shocking</style>. Fire an energy core for <style=cIsDamage>800% damage</style>. Shoot the core to implode it for <style=cIsDamage>1600% damage</style>.");
+            SkillDef shockCoreDef = ScriptableObject.CreateInstance<SkillDef>();
+            shockCoreDef.activationState = new SerializableEntityStateType(typeof(ShockCore));
+            shockCoreDef.activationStateMachineName = "Weapon";
+            shockCoreDef.skillName = "SS2UCYBORG_SHOCKCORE_NAME";
+            shockCoreDef.skillNameToken = "SS2UCYBORG_SHOCKCORE_NAME";
+            shockCoreDef.skillDescriptionToken = "SS2UCYBORG_SHOCKCORE_DESCRIPTION";
+            shockCoreDef.icon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("cyborgutility");
+            shockCoreDef.baseMaxStock = 1;
+            shockCoreDef.baseRechargeInterval = 7f;
+            shockCoreDef.beginSkillCooldownOnSkillEnd = false;
+            shockCoreDef.canceledFromSprinting = false;
+            shockCoreDef.fullRestockOnAssign = true;
+            shockCoreDef.interruptPriority = EntityStates.InterruptPriority.Skill;
+            shockCoreDef.isCombatSkill = true;
+            shockCoreDef.mustKeyPress = true;
+            shockCoreDef.cancelSprintingOnActivation = true;
+            shockCoreDef.rechargeStock = 1;
+            shockCoreDef.requiredStock = 1;
+            shockCoreDef.stockToConsume = 1;
+            shockCoreDef.keywordTokens = new string[] { "KEYWORD_SHOCKING" };
+            Modules.Skills.FixSkillName(shockCoreDef);
+            Utils.RegisterSkillDef(shockCoreDef);
+            SkillFamily.Variant shockVariant = Utils.RegisterSkillVariant(shockCoreDef);
+            CyborgCore.shockDef = shockCoreDef;
+
+            skillLocator.secondary = Utils.RegisterSkillsToFamily(cybPrefab, new SkillFamily.Variant[] { secondaryVariant1, shockVariant });
         }
 
         private void SetUpUtilities(SkillLocator skillLocator)
@@ -547,7 +575,7 @@ namespace Starstorm2Unofficial.Survivors.Cyborg
             teleDeploy.skillDescriptionToken = "SS2UCYBORG_UTILITY_TELEPORT_DESCRIPTION";
             teleDeploy.icon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("cyborgspecial");
             teleDeploy.baseMaxStock = 1;
-            teleDeploy.baseRechargeInterval = 12f;
+            teleDeploy.baseRechargeInterval = 10f;
             teleDeploy.beginSkillCooldownOnSkillEnd = true;
             teleDeploy.canceledFromSprinting = false;
             teleDeploy.fullRestockOnAssign = true;
@@ -598,7 +626,7 @@ namespace Starstorm2Unofficial.Survivors.Cyborg
             flightMode.skillDescriptionToken = "SS2UCYBORG_UTILITY_FLIGHT_DESCRIPTION";
             flightMode.icon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("cyborgpassive");
             flightMode.baseMaxStock = 1;
-            flightMode.baseRechargeInterval = 12f;
+            flightMode.baseRechargeInterval = 10f;
             flightMode.beginSkillCooldownOnSkillEnd = true;
             flightMode.canceledFromSprinting = false;
             flightMode.fullRestockOnAssign = true;
@@ -641,7 +669,7 @@ namespace Starstorm2Unofficial.Survivors.Cyborg
             overheat.skillDescriptionToken = "SS2UCYBORG_OVERHEAT_DESCRIPTION";
             overheat.icon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("cyborgutility");
             overheat.baseMaxStock = 1;
-            overheat.baseRechargeInterval = 12f;
+            overheat.baseRechargeInterval = 7f;
             overheat.beginSkillCooldownOnSkillEnd = false;
             overheat.canceledFromSprinting = false;
             overheat.fullRestockOnAssign = true;
@@ -657,34 +685,7 @@ namespace Starstorm2Unofficial.Survivors.Cyborg
             Modules.Skills.FixSkillName(overheat);
             SkillFamily.Variant specialVariant = Utils.RegisterSkillVariant(overheat);
 
-            LanguageAPI.Add("SS2UCYBORG_SHOCKCORE_NAME", "Shock Core");
-            LanguageAPI.Add("SS2UCYBORG_SHOCKCORE_DESCRIPTION", "<style=cIsDamage>Shocking</style>. <style=cIsUtility>Blast yourself backwards</style> and fire an energy core for <style=cIsDamage>800% damage</style>. Shoot the core to implode it for <style=cIsDamage>1600% damage</style>.");
-            SkillDef shockCoreDef = ScriptableObject.CreateInstance<SkillDef>();
-            shockCoreDef.activationState = new SerializableEntityStateType(typeof(ShockCore));
-            shockCoreDef.activationStateMachineName = "Weapon";
-            shockCoreDef.skillName = "SS2UCYBORG_SHOCKCORE_NAME";
-            shockCoreDef.skillNameToken = "SS2UCYBORG_SHOCKCORE_NAME";
-            shockCoreDef.skillDescriptionToken = "SS2UCYBORG_SHOCKCORE_DESCRIPTION";
-            shockCoreDef.icon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("cyborgutility");
-            shockCoreDef.baseMaxStock = 1;
-            shockCoreDef.baseRechargeInterval = 12;
-            shockCoreDef.beginSkillCooldownOnSkillEnd = false;
-            shockCoreDef.canceledFromSprinting = false;
-            shockCoreDef.fullRestockOnAssign = true;
-            shockCoreDef.interruptPriority = EntityStates.InterruptPriority.Skill;
-            shockCoreDef.isCombatSkill = true;
-            shockCoreDef.mustKeyPress = true;
-            shockCoreDef.cancelSprintingOnActivation = true;
-            shockCoreDef.rechargeStock = 1;
-            shockCoreDef.requiredStock = 1;
-            shockCoreDef.stockToConsume = 1;
-            shockCoreDef.keywordTokens = new string[] { "KEYWORD_SHOCKING" };
-            Modules.Skills.FixSkillName(shockCoreDef);
-            Utils.RegisterSkillDef(shockCoreDef);
-            SkillFamily.Variant shockVariant = Utils.RegisterSkillVariant(shockCoreDef);
-            CyborgCore.shockDef = shockCoreDef;
-
-            skillLocator.special = Utils.RegisterSkillsToFamily(cybPrefab, new SkillFamily.Variant[] { specialVariant, shockVariant });
+            skillLocator.special = Utils.RegisterSkillsToFamily(cybPrefab, new SkillFamily.Variant[] { specialVariant});
 
             SkillDef overheatScepter = ScriptableObject.CreateInstance<SkillDef>();
             overheatScepter.activationState = new SerializableEntityStateType(typeof(OverheatScepter));
@@ -694,7 +695,7 @@ namespace Starstorm2Unofficial.Survivors.Cyborg
             overheatScepter.skillDescriptionToken = "SS2UCYBORG_OVERHEAT_SCEPTER_DESCRIPTION";
             overheatScepter.icon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("cyborgutilityscepter");
             overheatScepter.baseMaxStock = 1;
-            overheatScepter.baseRechargeInterval = 12f;
+            overheatScepter.baseRechargeInterval = 7f;
             overheatScepter.beginSkillCooldownOnSkillEnd = false;
             overheatScepter.canceledFromSprinting = false;
             overheatScepter.fullRestockOnAssign = true;
@@ -709,7 +710,7 @@ namespace Starstorm2Unofficial.Survivors.Cyborg
             CyborgCore.overheatScepterDef = overheatScepter;
             Modules.Skills.FixSkillName(overheatScepter);
 
-            LanguageAPI.Add("SS2UCYBORG_SHOCKCORE_SCEPTER_NAME", "Gamma Shock Core");
+            /*LanguageAPI.Add("SS2UCYBORG_SHOCKCORE_SCEPTER_NAME", "Gamma Shock Core");
             LanguageAPI.Add("SS2UCYBORG_SHOCKCORE_SCEPTER_DESCRIPTION", "<style=cIsDamage>Shocking</style>. <style=cIsUtility>Blast yourself backwards</style> and fire an energy core for <style=cIsDamage>1200% damage</style>. Shoot the core to implode it for <style=cIsDamage>2400% damage</style>.");
             CyborgCore.defenseMatrixDef = defenseMatrixDef;
             SkillDef shockCoreScepterDef = ScriptableObject.CreateInstance<SkillDef>();
@@ -720,7 +721,7 @@ namespace Starstorm2Unofficial.Survivors.Cyborg
             shockCoreScepterDef.skillDescriptionToken = "SS2UCYBORG_SHOCKCORE_SCEPTER_DESCRIPTION";
             shockCoreScepterDef.icon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("cyborgutilityscepter");
             shockCoreScepterDef.baseMaxStock = 1;
-            shockCoreScepterDef.baseRechargeInterval = 12;
+            shockCoreScepterDef.baseRechargeInterval = 7;
             shockCoreScepterDef.beginSkillCooldownOnSkillEnd = false;
             shockCoreScepterDef.canceledFromSprinting = false;
             shockCoreScepterDef.fullRestockOnAssign = true;
@@ -733,7 +734,7 @@ namespace Starstorm2Unofficial.Survivors.Cyborg
             shockCoreScepterDef.stockToConsume = 1;
             shockCoreScepterDef.keywordTokens = new string[] { "KEYWORD_SHOCKING" };
             Modules.Skills.FixSkillName(shockCoreScepterDef);
-            CyborgCore.shockScepterDef = shockCoreScepterDef;
+            CyborgCore.shockScepterDef = shockCoreScepterDef;*/
 
             if (StarstormPlugin.scepterPluginLoaded)
             {
@@ -750,14 +751,14 @@ namespace Starstorm2Unofficial.Survivors.Cyborg
         {
 
             AncientScepter.AncientScepterItem.instance.RegisterScepterSkill(overheatScepterDef, "SS2UCyborgBody", SkillSlot.Special, 0);
-            AncientScepter.AncientScepterItem.instance.RegisterScepterSkill(shockScepterDef, "SS2UCyborgBody", SkillSlot.Special, 1);
+            //AncientScepter.AncientScepterItem.instance.RegisterScepterSkill(shockScepterDef, "SS2UCyborgBody", SkillSlot.Special, 1);
         }
 
         [MethodImpl(MethodImplOptions.NoInlining | MethodImplOptions.NoOptimization)]
         private void ClassicScepterSetup()
         {
             ThinkInvisible.ClassicItems.Scepter.instance.RegisterScepterSkill(overheatScepterDef, "SS2UCyborgBody", SkillSlot.Special, overheatDef);
-            ThinkInvisible.ClassicItems.Scepter.instance.RegisterScepterSkill(shockScepterDef, "SS2UCyborgBody", SkillSlot.Special, shockDef);
+            //ThinkInvisible.ClassicItems.Scepter.instance.RegisterScepterSkill(shockScepterDef, "SS2UCyborgBody", SkillSlot.Special, shockDef);
         }
 
         internal static void CreateDoppelganger()
