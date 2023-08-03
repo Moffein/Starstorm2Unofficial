@@ -45,9 +45,11 @@ The SS2 team is free to use any of the new code from this mod as long as this re
 		- Removed cooldown reduction on block.
 		
 	- Shock Core
+		- Reduced damage from 800%-1600% -> 600%-1200%
 		- Reduced cooldown from 12s -> 7s
 		- Moved to Secondary slot so that there's an option for people who don't want to use the shield.
 		- Disabled self-knockback.
+		- Can now instantly fire your primary after releasing the button.
 		
 	- Recall
 		- Reduced cooldown from 12s -> 10s
@@ -56,15 +58,24 @@ The SS2 team is free to use any of the new code from this mod as long as this re
 		- Reduced cooldown from 12s -> 10s
 		
 	- Overheat Redress
-		- Reduced cooldown from 12s -> 7s
+		- Reduced cooldown from 12s -> 10s
 		- Hits per second increased from 5 -> 8
-		- DPS increased from 700% -> 1000%
-		- Full DPS time increased from 0s -> 0.5s
+		- DPS increased from 700% -> 1200%
+		- Full DPS time increased from 0s -> 1s
+		- Max DPS falloff reduced from -90% -> -80%
+		- Increased pull force.
+		- Increased AoE range from 12m -> 15m
+		- Increased pull force from 300 -> 600
 
 - Executioner
-	- alt primary (single shot) (todo)
+	- New Primary: Standard Issue Pistol
+		- It's the same as his default primary, except it fires 1 shot instead of 2 (still is 4 shots per second)
 	- Special
 		- Increased damage from 800%-2400% -> 1000%-3000%
+		
+- Nemmando
+	- Decisive Strike
+		- Increased slash damage from 300% -> 360%
 
 `0.13.1`
 

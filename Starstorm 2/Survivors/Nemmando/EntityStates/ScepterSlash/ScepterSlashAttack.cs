@@ -19,7 +19,7 @@ namespace EntityStates.SS2UStates.Nemmando
 
         public static float baseDuration = 2.5f;
         public static int baseHitCount = 12;
-        public static float damageCoefficient = 3f;
+        public static float damageCoefficient = 3.6f;
         public static float radius = 64f;
         public static float swordEmission = 350f;
 

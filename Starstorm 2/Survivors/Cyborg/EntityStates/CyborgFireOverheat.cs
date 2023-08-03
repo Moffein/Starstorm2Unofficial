@@ -8,7 +8,7 @@ namespace EntityStates.SS2UStates.Cyborg
 {
     public class CyborgFireOverheat : BaseSkillState
     {
-        public static float damageCoefficient = 10f;
+        public static float damageCoefficient = 12f;
         public static float baseDuration = 0.5f;
         public static float recoil = 1f;
         public static GameObject projectilePrefab;

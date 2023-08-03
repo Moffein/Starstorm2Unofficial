@@ -17,8 +17,8 @@ namespace EntityStates.SS2UStates.Nemmando
         public static float baseDuration = 0.6f;
         public static int maxHits = 6;
         public static int minHits = 1;
-        public static float maxDamageCoefficient = 3f;
-        public static float minDamageCoefficient = 3f;
+        public static float maxDamageCoefficient = 3.6f;
+        public static float minDamageCoefficient = 3.6f;
         public static float maxRadius = 20f;
         public static float minRadius = 8f;
         public static float maxEmission = 150f;
@@ -65,7 +65,7 @@ namespace EntityStates.SS2UStates.Nemmando
             }
 
             this.hitsFired = 0;
-            this.hitCount = Mathf.RoundToInt(Util.Remap(this.charge, 0f, 1f, ChargedSlashAttack.minHits, ChargedSlashAttack.maxHits));
+            this.hitCount = Mathf.FloorToInt(Util.Remap(this.charge, 0f, 1f, ChargedSlashAttack.minHits, ChargedSlashAttack.maxHits));
             this.damageCoefficient = Util.Remap(this.charge, 0f, 1f, ChargedSlashAttack.minDamageCoefficient, ChargedSlashAttack.maxDamageCoefficient);
             this.radius = Util.Remap(this.charge, 0f, 1f, ChargedSlashAttack.minRadius, ChargedSlashAttack.maxRadius);
             this.emission = Util.Remap(this.charge, 0f, 1f, ChargedSlashAttack.minEmission, ChargedSlashAttack.maxEmission);

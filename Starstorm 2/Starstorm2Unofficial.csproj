@@ -131,6 +131,7 @@
     <Compile Include="Components\MenuSound.cs" />
     <Compile Include="Components\NemesisMusicComponent.cs" />
     <Compile Include="Components\NemesisMusicComponentMaster.cs" />
+    <Compile Include="Survivors\Executioner\EntityStates\PrimarySingle.cs" />
     <Compile Include="Survivors\Executioner\EntityStates\SpecialScepter.cs" />
     <Compile Include="Survivors\Executioner\ExecutionerItemDisplays.cs" />
     <Compile Include="Survivors\Nemmando\Achievements\NemmandoKillSelfAchievement.cs" />
@@ -192,7 +193,6 @@
     <Compile Include="Modules\EntityStates\Emotes\RestEmote.cs" />
     <Compile Include="Modules\EntityStates\Emotes\TauntEmote.cs" />
     <Compile Include="Survivors\Executioner\EntityStates\ExecutionerMain.cs" />
-    <Compile Include="Survivors\Executioner\EntityStates\Primary.cs" />
     <Compile Include="Survivors\Executioner\EntityStates\Secondary.cs" />
     <Compile Include="Survivors\Executioner\EntityStates\Special.cs" />
     <Compile Include="Survivors\Executioner\EntityStates\Utility.cs" />

@@ -48,23 +48,31 @@ namespace EntityStates.SS2UStates.Cyborg
         public override void FixedUpdate()
         {
             base.FixedUpdate();
-            if (base.fixedAge >= this.duration && base.isAuthority)
+            if (base.isAuthority)
             {
-                this.outer.SetNextStateToMain();
-                return;
+                if (!buttonReleased && base.inputBank)
+                {
+                    if (!base.inputBank.skill2.down) buttonReleased = true;
+                }
+                if (base.fixedAge >= this.duration)
+                {
+                    this.outer.SetNextStateToMain();
+                    return;
+                }
             }
         }
 
         public override InterruptPriority GetMinimumInterruptPriority()
         {
-            return InterruptPriority.PrioritySkill;
+            return buttonReleased ? InterruptPriority.Any : InterruptPriority.PrioritySkill;
         }
 
         public static GameObject muzzleflashEffectPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Captain/CaptainChargeTazer.prefab").WaitForCompletion();
         public static GameObject projectilePrefab;
-        public static float damageCoefficient = 8f;
+        public static float damageCoefficient = 6f;
         public static float baseDuration = 0.5f;
 
         private float duration;
+        private bool buttonReleased = false;
     }
 }

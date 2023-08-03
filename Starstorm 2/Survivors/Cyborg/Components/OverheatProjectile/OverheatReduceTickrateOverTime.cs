@@ -11,8 +11,8 @@ namespace Starstorm2Unofficial.Survivors.Cyborg.Components.OverheatProjectile
     [RequireComponent(typeof(ProjectileProximityBeamController))]
     public class OverheatReduceTickrateOverTime : MonoBehaviour
     {
-        public float fullDPSDurationPercent = 1f/6f;
-        public float finalDPSMultiplier = 0.1f;
+        public float fullDPSDurationPercent = 0.3333333334f;
+        public float finalDPSMultiplier = 0.2f;
 
         private float initialResetInterval;
         private float startDecayTime;

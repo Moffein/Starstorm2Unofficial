@@ -161,6 +161,7 @@ namespace Starstorm2Unofficial.Survivors.Cyborg
 
         private void RegisterProjectiles()
         {
+            LightningSoundComponent.lightningSound = Modules.Assets.CreateNetworkSoundEventDef("Play_SS2U_RoR1Lightning");
 
             GameObject overheatGhost = LegacyResourcesAPI.Load<GameObject>("Prefabs/ProjectileGhosts/BeamSphereGhost").InstantiateClone("SS2UCyborgOverheatGhost", false);
             ParticleSystem[] overheatParticles = overheatGhost.GetComponentsInChildren<ParticleSystem>();
@@ -180,10 +181,31 @@ namespace Starstorm2Unofficial.Survivors.Cyborg
                 }
             }
             overheatGhost.AddComponent<BFGGhostReduceSizeOverTime>();
+            CyborgFireOverheat.projectilePrefab = CreateOverheatProjectile("SS2UCyborgOverheatProjectile", overheatGhost, 0, -600f);
+
+            GameObject overheatGhostScepter = LegacyResourcesAPI.Load<GameObject>("Prefabs/ProjectileGhosts/BeamSphereGhost").InstantiateClone("SS2UCyborgOverheatGhostScepter", false);
+            overheatParticles = overheatGhostScepter.GetComponentsInChildren<ParticleSystem>();
+            for (int i = 0; i < overheatParticles.Length; i++)
+            {
+                switch (i)
+                {
+                    case 0: //fire
+                        overheatParticles[i].startColor = Color.white;
+                        break;
+                    case 1: //beams
+                        overheatParticles[i].startColor = new Color(246f / 255f, 169f / 255f, 237f / 255f);
+                        break;
+                    case 2: //lightning
+                        overheatParticles[i].startColor = new Color(246f / 255f, 169f / 255f, 237f / 255f);
+                        break;
+                }
+            }
+            overheatGhostScepter.AddComponent<BFGGhostReduceSizeOverTime>();
+            OverheatScepter.projectileOverride = CreateOverheatProjectile("SS2UCyborgOverheatScepterProjectile", overheatGhostScepter, 2, -900f);
 
             LightningSoundComponent.lightningSound = Modules.Assets.CreateNetworkSoundEventDef("Play_SS2U_RoR1Lightning");
-            CyborgFireOverheat.projectilePrefab = CreateOverheatProjectile("SS2UCyborgOverheatProjectile", overheatGhost, 0, -300f);
-            OverheatScepter.projectileOverride = CreateOverheatProjectile("SS2UCyborgOverheatScepterProjectile", overheatGhost, 2, -900f);
+            CyborgFireOverheat.projectilePrefab = CreateOverheatProjectile("SS2UCyborgOverheatProjectile", overheatGhost, 0, -600f);
+            OverheatScepter.projectileOverride = CreateOverheatProjectile("SS2UCyborgOverheatScepterProjectile", overheatGhostScepter, 2, -900f);
 
             GameObject cyborgPylon = PrefabAPI.InstantiateClone(LegacyResourcesAPI.Load<GameObject>("Prefabs/Projectiles/EngiGrenadeProjectile"), "Prefabs/Projectiles/CyborgTPPylon", true);
 
@@ -358,7 +380,7 @@ namespace Starstorm2Unofficial.Survivors.Cyborg
 
             float hitRate = 1f / 8f;
             ProjectileProximityBeamController bfgPbc = projectilePrefab.AddComponent<ProjectileProximityBeamController>();
-            bfgPbc.attackRange = 12f;
+            bfgPbc.attackRange = 15f;
             bfgPbc.listClearInterval = hitRate;
             bfgPbc.attackInterval = bfgPbc.listClearInterval;
             bfgPbc.damageCoefficient = hitRate;
@@ -531,6 +553,7 @@ namespace Starstorm2Unofficial.Survivors.Cyborg
              SkillFamily.Variant secondaryVariant1 = Utils.RegisterSkillVariant(defenseMatrixDef);
             CyborgCore.defenseMatrixDef = defenseMatrixDef;
 
+            SkillDef artiM2Def = Addressables.LoadAssetAsync<SkillDef>("RoR2/Base/Mage/MageBodyNovaBomb.asset").WaitForCompletion();
             LanguageAPI.Add("SS2UCYBORG_SHOCKCORE_NAME", "Shock Core");
             LanguageAPI.Add("SS2UCYBORG_SHOCKCORE_DESCRIPTION", "<style=cIsDamage>Shocking</style>. Fire an energy core for <style=cIsDamage>800% damage</style>. Shoot the core to implode it for <style=cIsDamage>1600% damage</style>.");
             SkillDef shockCoreDef = ScriptableObject.CreateInstance<SkillDef>();
@@ -539,7 +562,7 @@ namespace Starstorm2Unofficial.Survivors.Cyborg
             shockCoreDef.skillName = "SS2UCYBORG_SHOCKCORE_NAME";
             shockCoreDef.skillNameToken = "SS2UCYBORG_SHOCKCORE_NAME";
             shockCoreDef.skillDescriptionToken = "SS2UCYBORG_SHOCKCORE_DESCRIPTION";
-            shockCoreDef.icon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("cyborgutility");
+            shockCoreDef.icon = artiM2Def.icon;
             shockCoreDef.baseMaxStock = 1;
             shockCoreDef.baseRechargeInterval = 7f;
             shockCoreDef.beginSkillCooldownOnSkillEnd = false;
@@ -669,7 +692,7 @@ namespace Starstorm2Unofficial.Survivors.Cyborg
             overheat.skillDescriptionToken = "SS2UCYBORG_OVERHEAT_DESCRIPTION";
             overheat.icon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("cyborgutility");
             overheat.baseMaxStock = 1;
-            overheat.baseRechargeInterval = 7f;
+            overheat.baseRechargeInterval = 10f;
             overheat.beginSkillCooldownOnSkillEnd = false;
             overheat.canceledFromSprinting = false;
             overheat.fullRestockOnAssign = true;
@@ -695,7 +718,7 @@ namespace Starstorm2Unofficial.Survivors.Cyborg
             overheatScepter.skillDescriptionToken = "SS2UCYBORG_OVERHEAT_SCEPTER_DESCRIPTION";
             overheatScepter.icon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("cyborgutilityscepter");
             overheatScepter.baseMaxStock = 1;
-            overheatScepter.baseRechargeInterval = 7f;
+            overheatScepter.baseRechargeInterval = 10f;
             overheatScepter.beginSkillCooldownOnSkillEnd = false;
             overheatScepter.canceledFromSprinting = false;
             overheatScepter.fullRestockOnAssign = true;

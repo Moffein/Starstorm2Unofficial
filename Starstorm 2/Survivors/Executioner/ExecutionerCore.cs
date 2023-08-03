@@ -173,6 +173,7 @@ namespace Starstorm2Unofficial.Survivors.Executioner
             #region Primary
             //Modules.Skills.AddPrimarySkill(bodyPrefab, Modules.Skills.CreatePrimarySkillDef(new SerializableEntityStateType(typeof(EntityStates.Starstorm2States.Executioner.ExecutionerPistol)), "Weapon", "EXECUTIONER_PISTOL_NAME", "EXECUTIONER_PISTOL_DESCRIPTION", Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("texExecutionerPrimary"), false));
             Modules.Skills.AddPrimarySkill(bodyPrefab, Modules.Skills.CreatePrimarySkillDef(new SerializableEntityStateType(typeof(EntityStates.SS2UStates.Executioner.ExecutionerBurstPistol)), "Weapon", "SS2UEXECUTIONER_PISTOL_NAME", "SS2UEXECUTIONER_PISTOL_DESCRIPTION", Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("texExecutionerPrimary"), false));
+            Modules.Skills.AddPrimarySkill(bodyPrefab, Modules.Skills.CreatePrimarySkillDef(new SerializableEntityStateType(typeof(EntityStates.SS2UStates.Executioner.ExecutionerSinglePistol)), "Weapon", "SS2UEXECUTIONER_PISTOL_SINGLE_NAME", "SS2UEXECUTIONER_PISTOL_SINGLE_DESCRIPTION", Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("texExecutionerPrimary"), false));
             //if (Modules.Config.ss_test.Value) Modules.Skills.AddPrimarySkill(bodyPrefab, Modules.Skills.CreatePrimarySkillDef(new SerializableEntityStateType(typeof(EntityStates.Starstorm2States.Executioner.ExecutionerTaser)), "Weapon", "EXECUTIONER_TASER_NAME", "EXECUTIONER_TASER_DESCRIPTION", Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("texExecutionerPrimary"), false));
             #endregion
 
@@ -319,9 +320,8 @@ namespace Starstorm2Unofficial.Survivors.Executioner
         private void RegisterStates()
         {
             Modules.States.AddState(typeof(ExecutionerMain));
-            Modules.States.AddState(typeof(ExecutionerPistol));
             Modules.States.AddState(typeof(ExecutionerBurstPistol));
-            Modules.States.AddState(typeof(ExecutionerTaser));
+            Modules.States.AddState(typeof(ExecutionerSinglePistol));
             Modules.States.AddState(typeof(ExecutionerIonGun));
             Modules.States.AddState(typeof(ExecutionerDash));
             Modules.States.AddState(typeof(ExecutionerAxe));
@@ -356,12 +356,10 @@ namespace Starstorm2Unofficial.Survivors.Executioner
 
             LanguageAPI.Add("SS2UEXECUTIONER_PISTOL_NAME", "Service Pistol");
             LanguageAPI.Add("SS2UEXECUTIONER_PISTOL_DESCRIPTION", $"Fire your pistol for <style=cIsDamage>{shotCount}x{dmg}% damage</style>.");
-            //LanguageAPI.Add("EXECUTIONER_PISTOL_DESCRIPTION", $"Fire your pistol for <style=cIsDamage>{dmg}% damage</style>.");
 
-            dmg = ExecutionerTaser.damageCoefficient * 100f;
-
-            LanguageAPI.Add("SS2UEXECUTIONER_TASER_NAME", "Deadly Voltage");
-            LanguageAPI.Add("SS2UEXECUTIONER_TASER_DESCRIPTION", $"Release an arc of lightning forward for <style=cIsDamage>{dmg}% damage</style>.");
+            dmg = ExecutionerSinglePistol.damageCoefficient * 100f;
+            LanguageAPI.Add("SS2UEXECUTIONER_PISTOL_SINGLE_NAME", "Standard Issue Pistol");
+            LanguageAPI.Add("SS2UEXECUTIONER_PISTOL_SINGLE_DESCRIPTION", $"Fire your pistol for <style=cIsDamage>{dmg}% damage</style>.");
 
             dmg = ExecutionerIonGun.damageCoefficient * 100f;
 
