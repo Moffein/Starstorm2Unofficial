@@ -29,6 +29,11 @@ The SS2 team is free to use any of the new code from this mod as long as this re
 
 ## Changelog
 
+`0.14.1`
+
+- Chirr
+	- Added config option to disable Minion ping targeting in case you want to use other mods that add this.
+
 `0.14.0`
 
 - Cyborg
@@ -63,7 +68,6 @@ The SS2 team is free to use any of the new code from this mod as long as this re
 		- DPS increased from 700% -> 1200%
 		- Full DPS time increased from 0s -> 1s
 		- Max DPS falloff reduced from -90% -> -80%
-		- Increased pull force.
 		- Increased AoE range from 12m -> 15m
 		- Increased pull force from 300 -> 600
 

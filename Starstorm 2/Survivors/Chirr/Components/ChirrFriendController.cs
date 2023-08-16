@@ -17,6 +17,7 @@ namespace Starstorm2Unofficial.Survivors.Chirr.Components
     [RequireComponent(typeof(CharacterBody))]
     public class ChirrFriendController : NetworkBehaviour
     {
+        public static bool minionPingRetarget = true;
         public static float befriendHealthFraction = 0.5f;
         public static float befriendChampionHealthFraction = 0.3f;
 
@@ -139,7 +140,7 @@ namespace Starstorm2Unofficial.Survivors.Chirr.Components
             minionTargetResetStopwatch = 0f;
             trackerUpdateStopwatch = 0f;
             RoR2.Inventory.onServerItemGiven += UpdateMinionInventory;//Is there a better way with onInventoryChangedGlobal?
-            On.RoR2.PingerController.SetCurrentPing += MinionPingRetarget;
+            if (minionPingRetarget) On.RoR2.PingerController.SetCurrentPing += MinionPingRetarget;
 
             RoR2.Stage.onServerStageComplete += SyncInventoryOnStageTransition;
             On.EntityStates.Missions.BrotherEncounter.Phase1.OnEnter += BrotherEncounterActions;
@@ -214,7 +215,7 @@ namespace Starstorm2Unofficial.Survivors.Chirr.Components
         private void OnDestroy()
         {
             RoR2.Inventory.onServerItemGiven -= UpdateMinionInventory;
-            On.RoR2.PingerController.SetCurrentPing -= MinionPingRetarget;
+            if (minionPingRetarget) On.RoR2.PingerController.SetCurrentPing -= MinionPingRetarget;
 
             RoR2.Stage.onServerStageComplete -= SyncInventoryOnStageTransition;
             On.EntityStates.Missions.BrotherEncounter.Phase1.OnEnter -= BrotherEncounterActions;
