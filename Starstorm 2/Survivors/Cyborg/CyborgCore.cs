@@ -553,7 +553,6 @@ namespace Starstorm2Unofficial.Survivors.Cyborg
              SkillFamily.Variant secondaryVariant1 = Utils.RegisterSkillVariant(defenseMatrixDef);
             CyborgCore.defenseMatrixDef = defenseMatrixDef;
 
-            SkillDef artiM2Def = Addressables.LoadAssetAsync<SkillDef>("RoR2/Base/Mage/MageBodyNovaBomb.asset").WaitForCompletion();
             LanguageAPI.Add("SS2UCYBORG_SHOCKCORE_NAME", "Shock Core");
             LanguageAPI.Add("SS2UCYBORG_SHOCKCORE_DESCRIPTION", "<style=cIsDamage>Shocking</style>. Fire an energy core for <style=cIsDamage>800% damage</style>. Shoot the core to implode it for <style=cIsDamage>1600% damage</style>.");
             SkillDef shockCoreDef = ScriptableObject.CreateInstance<SkillDef>();
@@ -562,7 +561,7 @@ namespace Starstorm2Unofficial.Survivors.Cyborg
             shockCoreDef.skillName = "SS2UCYBORG_SHOCKCORE_NAME";
             shockCoreDef.skillNameToken = "SS2UCYBORG_SHOCKCORE_NAME";
             shockCoreDef.skillDescriptionToken = "SS2UCYBORG_SHOCKCORE_DESCRIPTION";
-            shockCoreDef.icon = artiM2Def.icon;
+            shockCoreDef.icon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("cyborgshockcore");
             shockCoreDef.baseMaxStock = 1;
             shockCoreDef.baseRechargeInterval = 7f;
             shockCoreDef.beginSkillCooldownOnSkillEnd = false;

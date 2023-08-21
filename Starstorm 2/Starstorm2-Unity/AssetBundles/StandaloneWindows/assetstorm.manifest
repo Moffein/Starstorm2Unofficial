@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 2103362762
+CRC: 1701794926
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 2e9cc9f92b0a8fa8e6cba4df71ca8f2e
+    Hash: c0948e249f0f9b0a135c2a676a0b7cf6
   TypeTreeHash:
     serializedVersion: 2
     Hash: e085efc3cec39229c22603e1a47b8115
@@ -166,6 +166,7 @@ Assets:
 - Assets/AssetBundle/Nemmando/VFX/Materials/matDashingNemmando.mat
 - Assets/AssetBundle/Chirr/Animations/ChirrGesture.mask
 - Assets/AssetBundle/Executioner/Mesh/meshExecutionerKnightAxe.mesh
+- Assets/AssetBundle/Items/CoffeeBag/Materials/CoffeeBag_Icon.mat
 - Assets/AssetBundle/Nemmando/Icons/texDecisiveStrikeScepter.png
 - Assets/AssetBundle/Nemmando/VFX/Textures/texNemmandoChargeShadow.png
 - Assets/AssetBundle/Enemies/Spooder/Animations/Descend.anim
@@ -291,6 +292,7 @@ Assets:
 - Assets/AssetBundle/Pyro/Animations/Old/RunF.anim
 - Assets/AssetBundle/Cyborg/Animations/PitchYAW.anim
 - Assets/AssetBundle/Items/Diary/Diary_Icon.png
+- Assets/AssetBundle/Items/DetritiveTrematode/Materials/DetritiveTrematode_Icon.mat
 - Assets/AssetBundle/Items/RelicOfMass/matRelicOfMass.mat
 - Assets/AssetBundle/Nemmando/Animations/Secondary2.anim
 - Assets/AssetBundle/Nemmando/Icons/texPhaseCharge.png
@@ -692,6 +694,7 @@ Assets:
 - Assets/AssetBundle/Chirr/Meshes/meshChirrMaid.mesh
 - Assets/AssetBundle/FX/Textures/matSigil.mat
 - Assets/AssetBundle/Cyborg/cyborgicon.png
+- Assets/AssetBundle/Cyborg/cyborgshockcore.png
 - Assets/AssetBundle/Nemmando/VFX/NemmandoSwingEffectMerc.prefab
 - Assets/AssetBundle/Nemmando/Animations/NemmandoPitchMask.mask
 - Assets/AssetBundle/Nemmando/VFX/NemmandoChargeSlashStartEffectBlue.prefab

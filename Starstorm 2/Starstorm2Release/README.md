@@ -29,6 +29,10 @@ The SS2 team is free to use any of the new code from this mod as long as this re
 
 ## Changelog
 
+`0.14.2`
+
+- Added skill icon for Cyborg's Shock Core (Thanks Littera!)
+
 `0.14.1`
 
 - Chirr
