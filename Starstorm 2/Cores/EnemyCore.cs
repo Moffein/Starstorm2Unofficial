@@ -50,11 +50,11 @@ namespace Starstorm2Unofficial.Cores
         //Super bootleg code.
         public static void FakeMithrixChatMessageServer(string token)
         {
-            string fullMessage = "<color=#c6d5ff>";
+            string fullMessage = "<color=#c6d5ff><size=120%>";
             fullMessage += Language.GetString("BROTHER_BODY_NAME");
             fullMessage += ":";
             fullMessage += Language.GetString(token);
-            fullMessage += "</color>";
+            fullMessage += "</color></size>";
             Chat.SendBroadcastChat(new Chat.SimpleChatMessage
             {
                 baseToken = fullMessage
