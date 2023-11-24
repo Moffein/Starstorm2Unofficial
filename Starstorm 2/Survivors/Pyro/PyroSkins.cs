@@ -47,9 +47,6 @@ namespace Starstorm2Unofficial.Survivors.Pyro
                                                           model,
                                                           null);
 
-            defaultSkin.meshReplacements = CreateMeshReplacements(defaultRenderers,
-                                                                  meshPyro);
-
             skinDefs.Add(defaultSkin);
             #endregion
 

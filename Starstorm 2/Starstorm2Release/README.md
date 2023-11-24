@@ -29,6 +29,10 @@ The SS2 team is free to use any of the new code from this mod as long as this re
 
 ## Changelog
 
+`0.14.5`
+
+- Fixed in-game Pyro model using an older version of the mesh. (Thanks Rob!)
+
 `0.14.4`
 
 - Fixed a niche bug where enemy Nemmandos could permanently change team after falling off the map.
