@@ -901,9 +901,10 @@ namespace Starstorm2Unofficial.Survivors.Nemmando
                         {
                             if (teamComponent.teamIndex != TeamIndex.Player)
                             {
+                                TeamIndex origIndex = teamComponent.teamIndex;
                                 teamComponent.teamIndex = TeamIndex.Player;
                                 orig(self, other);
-                                teamComponent.teamIndex = TeamIndex.Monster;
+                                teamComponent.teamIndex = origIndex;
                                 return;
                             }
                         }
