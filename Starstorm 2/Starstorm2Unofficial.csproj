@@ -173,7 +173,7 @@
     <Compile Include="Items\Trashbin\ErraticGadget.cs" />
     <Compile Include="Items\Common\Fork.cs" />
     <Compile Include="Items\Rare\GreenChocolate.cs" />
-    <Compile Include="Items\Uncommon\HottestSauce.cs" />
+    <Compile Include="Items\Unimplemented\Uncommon\HottestSauce.cs" />
     <Compile Include="Items\Unimplemented\Uncommon\HuntersSigil.cs" />
     <Compile Include="Items\Unimplemented\Common\Malice.cs" />
     <Compile Include="Items\Common\MoltenCoin.cs" />
