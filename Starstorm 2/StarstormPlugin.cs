@@ -183,10 +183,10 @@ namespace Starstorm2Unofficial
 
                 AddItemIfEnabled(new Fork(), ItemCore.instance.items);
                 AddItemIfEnabled(new MoltenCoin(), ItemCore.instance.items);
+                AddItemIfEnabled(new Diary(), ItemCore.instance.items);
 
                 //AddItemIfEnabled(new DormantFungus(), ItemCore.instance.items);
                 //AddItemIfEnabled(new DetritiveTrematode(), ItemCore.instance.items);
-                //AddItemIfEnabled(new Diary(), ItemCore.instance.items);
                 //AddItemIfEnabled(new Malice(), ItemCore.instance.items);
                 //AddItemIfEnabled(new CoffeeBag(), ItemCore.instance.items);
                 //AddItemIfEnabled(new BrokenBloodTester(), ItemCore.instance.items);
