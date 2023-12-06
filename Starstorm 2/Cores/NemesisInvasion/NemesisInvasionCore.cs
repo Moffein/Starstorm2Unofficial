@@ -141,7 +141,7 @@ namespace Starstorm2Unofficial.Cores.NemesisInvasion
             if (masterPrefab)
             {
                 Debug.Log("Starstorm 2 Unofficial: Adding Nemforcer Miniboss to Nemesis invader list.");
-                AddNemesisBoss(masterPrefab, null, string.Empty, true, true);
+                AddNemesisBoss(masterPrefab, null, "SS2U_StirringSoul", true, true);
 
                 CharacterMaster cm = masterPrefab.GetComponent<CharacterMaster>();
                 if (cm && cm.bodyPrefab)

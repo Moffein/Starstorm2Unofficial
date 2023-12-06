@@ -22,8 +22,6 @@ namespace Starstorm2Unofficial
         public static float gadgetDamage;
         public static float gadgetCrit;
 
-        public static float soulChance;
-
         public static float bootsBase;
         public static float bootsStack;
         public static float bootsRadius;
@@ -93,8 +91,6 @@ namespace Starstorm2Unofficial
 
             gadgetDamage = 0.5f;
             gadgetCrit = 10f;
-
-            soulChance = 3f;
         }
 
         // helper for ez item stat config

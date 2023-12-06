@@ -396,7 +396,7 @@ namespace Starstorm2Unofficial.Survivors.Nemmando
                 false,
                 null);
 
-            NemesisInvasionCore.AddNemesisBoss(bossMasterPrefab, null, string.Empty, true, true); //Replace if Stirring Soul ever gets fixed
+            NemesisInvasionCore.AddNemesisBoss(bossMasterPrefab, null, "SS2U_StirringSoul", true, true);
         }
 
         internal override void InitializeUnlockables()

@@ -180,7 +180,7 @@
     <Compile Include="Items\Trashbin\NkotasHeritage.cs" />
     <Compile Include="Items\Trashbin\PrototypeJetBoots.cs" />
     <Compile Include="Items\Trashbin\RelicOfMass.cs" />
-    <Compile Include="Items\Unimplemented\Nemesis\StirringSoul.cs" />
+    <Compile Include="Items\Nemesis\StirringSoul.cs" />
     <Compile Include="Items\Unimplemented\Uncommon\StrangeCan.cs" />
     <Compile Include="Items\Uncommon\WatchMetronome.cs" />
     <Compile Include="Cores\EnemyCore.cs" />

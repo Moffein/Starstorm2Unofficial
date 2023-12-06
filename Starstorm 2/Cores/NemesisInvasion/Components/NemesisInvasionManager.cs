@@ -253,7 +253,8 @@ namespace Starstorm2Unofficial.Cores.NemesisInvasion.Components
                             if (card.itemDropName != string.Empty)
                             {
                                 ItemIndex toDrop = ItemCatalog.FindItemIndex(card.itemDropName);
-                                ndi.itemToDrop = toDrop;
+                                if (Run.instance.availableItems.Contains(toDrop))
+                                    ndi.itemToDrop = toDrop;
                             }
                             else
                             {

@@ -12,18 +12,21 @@ namespace Starstorm2Unofficial.Cores.Items
 {
     class StirringSoul : SS2Item<StirringSoul>
     {
+        public static NetworkSoundEventDef procSound;
         public static GameObject MonsterSoulPickup;
 
-        public override string NameInternal => "SoulOnKill";
+        public override string NameInternal => "SS2U_StirringSoul";
         public override string Name => "<color=#FFCCED>Stirring Soul</color>";
         public override string Pickup => "<color=#FFCCED>What am I fighting for?</color>";
-        public override string Description => $"Slain monsters leave a <style=cIsUtility>soul</style> which has a <style=cIsUtility>{StaticValues.soulChance}%</style> chance to <style=cIsUtility>spawn an item</style> on contact.";
+        public override string Description => "Slain monsters leave a <style=cIsUtility>soul</style> which has a <style=cIsUtility>3%</style> chance to <style=cIsUtility>spawn an item</style> on contact.";
         public override string Lore => "A spirit of determination..\n<color=#FFCCED>...A spirit to be stopped</color>\nAn unwavering will to survive...\n<color=#FFCCED>...A flickering will to survive</color>\nWilling to desecrate their identity...\n<color=#FFCCED>...Willing to desecrate their memory</color>\nWilling to sacrifice their civilization...\n<color=#FFCCED>...Willing to sacrifice their humanity</color>\n\nTo what lengths will they go to live?\n<color=#FFCCED>To what lengths will they go to bring themselves ruin?</color>\nTo what lengths will they go to escape?\n<color=#FFCCED>To what lengths will they go to destroy?</color>\nAll in the name of self preservation...\n<color=#FFCCED>...All in the name of narcissism</color>\nAll for the sake of an uncertain hope...\n<color=#FFCCED>...All for the sake of a null chance</color>\n\nWhat would happen if given an opportunity?\n<color=#FFCCED>What would happen if given an ally?</color>\nWhat would happen if their fire was stoked?\n<color=#FFCCED>What would happen if they were given false hope?</color>\nMaybe they should be given a chance.\n<color=#FFCCED>Maybe they should be given strength.</color>\nMaybe they should be given an offer.\n<color=#FFCCED>Maybe they should be taken first.</color>";
         public override bool CanRemove => false;
-        public override ItemTier Tier => ItemTier.Boss;
+        public override ItemTier Tier => ItemTier.Boss;//todo: custom tier
         public override ItemTag[] Tags => new ItemTag[]
         {
             ItemTag.WorldUnique,
+            ItemTag.CannotDuplicate,
+            ItemTag.OnKillEffect
         };
         public override string PickupIconPath => "StirringSoul_Icon";
         public override string PickupModelPath => "StirlingSoul.prefab";
@@ -33,11 +36,11 @@ namespace Starstorm2Unofficial.Cores.Items
         {
             base.Init();
             SetUpSoulPickup();
+            procSound = Modules.Assets.CreateNetworkSoundEventDef("SS2UStirringSoul");
         }
 
         public override void RegisterHooks()
         {
-            GlobalEventManager.onCharacterDeathGlobal += GlobalEventManager_onCharacterDeathGlobal;
             SharedHooks.OnCharacterDeathGlobal.OnCharacterDeathInventoryActions += ProcSoul;
         }
 
@@ -241,26 +244,14 @@ localScale = new Vector3(0.001F, 0.001F, 0.001F)
 
         private void ProcSoul(GlobalEventManager self, DamageReport damageReport, CharacterBody attackerBody, Inventory attackerInventory, CharacterBody victimBody)
         {
-            throw new NotImplementedException();
-        }
+            int itemCount = attackerInventory.GetItemCount(itemDef);
+            if (itemCount <= 0) return;
+            if (Run.instance.isRunStopwatchPaused || !victimBody.master || victimBody.bodyFlags.HasFlag(CharacterBody.BodyFlags.Masterless)) return;
 
-        private void GlobalEventManager_onCharacterDeathGlobal(DamageReport rpt)
-        {
-            if (NetworkServer.active && !Run.instance.isRunStopwatchPaused)
-            {
-                CharacterBody victimBody = rpt.victimBody;
-                CharacterBody attackerBody = rpt.attackerBody;
-                if (victimBody && attackerBody && attackerBody.inventory)
-                {
-                    if (GetCount(attackerBody) > 0 && victimBody.master)
-                    {
-                        GameObject soul = UnityEngine.Object.Instantiate(MonsterSoulPickup, victimBody.corePosition, UnityEngine.Random.rotation);
-                        soul.GetComponent<TeamFilter>().teamIndex = rpt.attackerTeamIndex;
-                        soul.GetComponentInChildren<SoulPickup>().team = soul.GetComponent<TeamFilter>();
-                        NetworkServer.Spawn(soul);
-                    }
-                }
-            }
+            GameObject soul = UnityEngine.Object.Instantiate(MonsterSoulPickup, victimBody.corePosition, UnityEngine.Random.rotation);
+            soul.GetComponent<TeamFilter>().teamIndex = attackerBody.teamComponent ? attackerBody.teamComponent.teamIndex : TeamIndex.None;
+            soul.GetComponentInChildren<SoulPickup>().team = soul.GetComponent<TeamFilter>();
+            NetworkServer.Spawn(soul);
         }
     }
 
@@ -285,10 +276,10 @@ localScale = new Vector3(0.001F, 0.001F, 0.001F)
                 {
                     alive = false;
 
-                    Util.PlaySound("SS2UStirringSoul", this.gameObject);
+                    EffectManager.SimpleSoundEffect(StirringSoul.procSound.index, base.transform.position, true);
 
                     // this should not be any higher than 3, in its current state
-                    if (Util.CheckRoll(StaticValues.soulChance, body.master))
+                    if (Util.CheckRoll(3f, null))
                     {
                         //~1% red, ~16% green
                         ItemCore.DropShipCall(this.transform, 1, 5);
