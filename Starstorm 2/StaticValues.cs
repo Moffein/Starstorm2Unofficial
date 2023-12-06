@@ -25,10 +25,6 @@ namespace Starstorm2Unofficial
         public static float gadgetDamage;
         public static float gadgetCrit;
 
-        public static float droidLife;
-        public static float droidDamage;
-        public static float droidSpeed;
-
         public static float soulChance;
 
         public static float bootsBase;
@@ -111,10 +107,6 @@ namespace Starstorm2Unofficial
 
             gadgetDamage = 0.5f;
             gadgetCrit = 10f;
-
-            droidLife = 15f;
-            droidDamage = 1f;
-            droidSpeed = 2f;
 
             soulChance = 3f;
         }

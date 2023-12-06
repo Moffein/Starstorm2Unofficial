@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using R2API;
 using RoR2;
+using Starstorm2Unofficial.Modules;
 using UnityEngine;
 using UnityEngine.Networking;
 
@@ -12,10 +13,11 @@ namespace Starstorm2Unofficial.Cores.Items
 {
     class DroidHead : SS2Item<DroidHead>
     {
-        public override string NameInternal => "DroneOnEliteKill";
+        public static NetworkSoundEventDef procSound;
+        public override string NameInternal => "SS2U_DroidHead";
         public override string Name => "Droid Head";
-        public override string Pickup => "Spawn a temporary drone upon killing an elite enemy.";
-        public override string Description => $"Killing an elite enemy spawns a <style=cIsDamage>Strike Drone</style> for <style=cIsDamage>{StaticValues.droidLife}s</style>. The drone has <style=cIsDamage>14 base damage</style> <style=cStack>(+7 per stack)</style> and <style=cIsUtility>200% movement speed</style>.";
+        public override string Pickup => "Summon a Strike Drone on killing an elite.";
+        public override string Description => "Killing elite monsters summons a <style=cIsDamage>Strike Drone</style> with bonus <style=cIsDamage>100% damage</style> <style=cStack>(+50% damage per stack)</style> for <style=cIsDamage>30s</style>. Limited to <style=cIsUtility>3</style>.";
         public override string Lore => "Order: Security Robot\nTracking Number: 1138***\nEstimated Delivery: 5/14/2056\nShipping Method: Priority / Fragile\nShipping Address: RaCom Robotics, Asimov, Mars\nShipping Details:\n\nThis was one of the few complete bits we could salvage from those stolen security robots... That militant group on Pluto had stolen a bunch of those ER-14s, and had been using 'em at their bases for a while. This one specifically, ER-14XPC5VVUFF, lines up with the ones you'd tried to recall a while back. I don't know this history, I just know there was a big bounty for whoever could find the remains for this batch. There's other remnants, too, but they're much less complete... Shouldn't be any danger anymore, at least. Gimme a heads up if you want those shipped your way, too.\n";
         public override ItemTier Tier => ItemTier.Tier3;
         public override ItemTag[] Tags => new ItemTag[]
@@ -29,7 +31,15 @@ namespace Starstorm2Unofficial.Cores.Items
 
         public override void RegisterHooks()
         {
-            GlobalEventManager.onCharacterDeathGlobal += GlobalEventManager_onCharacterDeathGlobal;
+            procSound = Assets.CreateNetworkSoundEventDef("SS2UDroidHead");
+            On.RoR2.CharacterBody.OnInventoryChanged += CharacterBody_OnInventoryChanged;
+            SharedHooks.OnCharacterDeathGlobal.OnCharacterDeathInventoryActions += ProcDroidHead;
+        }
+        private void CharacterBody_OnInventoryChanged(On.RoR2.CharacterBody.orig_OnInventoryChanged orig, CharacterBody self)
+        {
+            orig(self);
+            if (self && self.inventory)
+                self.AddItemBehavior<DroidHeadBehavior>(GetCount(self));
         }
 
         public override ItemDisplayRuleDict CreateDisplayRules()
@@ -197,37 +207,76 @@ localScale = new Vector3(0.0013F, 0.0013F, 0.0013F)
             return rules;
         }
 
-
-        private void GlobalEventManager_onCharacterDeathGlobal(DamageReport rpt)
+        private void ProcDroidHead(GlobalEventManager self, DamageReport damageReport, CharacterBody attackerBody, Inventory attackerInventory, CharacterBody victimBody)
         {
-            if (NetworkServer.active)
+            if (!victimBody.isElite) return;
+            int itemCount = attackerInventory.GetItemCount(itemDef);
+            if (itemCount <= 0) return;
+
+            DroidHeadBehavior dhb = attackerBody.GetComponent<DroidHeadBehavior>();
+            if (!dhb || !dhb.CanSpawnDroid()) return;
+
+            MasterSummon droneSummon = new MasterSummon();
+            droneSummon.position = victimBody.corePosition;
+            droneSummon.masterPrefab = LegacyResourcesAPI.Load<GameObject>("Prefabs/CharacterMasters/DroneBackupMaster");
+            droneSummon.summonerBodyObject = attackerBody.gameObject;
+            droneSummon.ignoreTeamMemberLimit = true;
+            droneSummon.useAmbientLevel = true;
+
+            CharacterMaster droneMaster = droneSummon.Perform();
+            if (droneMaster)
             {
-                CharacterBody victimBody = rpt.victimBody;
-                CharacterBody attackerBody = rpt.attackerBody;
-                if (victimBody && attackerBody)
+                dhb.AddDroid(droneMaster);
+                if (droneMaster.inventory)
                 {
-                    //droid head
-                    int droidHeadCount = GetCount(attackerBody);
-                    if (droidHeadCount > 0 && victimBody.isElite)
+                    float damageBoost = 0.5f + itemCount * 0.5f;
+                    int boostDamageCount = Mathf.RoundToInt(damageBoost / 0.1f);
+                    if (boostDamageCount > 0) droneMaster.inventory.GiveItem(RoR2Content.Items.BoostDamage, boostDamageCount);
+
+                    if (ModCompat.RiskyMod.AllyMarkerItem != ItemIndex.None)
+                        droneMaster.inventory.GiveItem(ModCompat.RiskyMod.AllyMarkerItem, 1);
+                    if (ModCompat.RiskyMod.AllyAllowVoidDeathItem != ItemIndex.None)
+                        droneMaster.inventory.GiveItem(ModCompat.RiskyMod.AllyAllowVoidDeathItem, 1);
+                    if (ModCompat.RiskyMod.AllyAllowOverheatDeathItem != ItemIndex.None)
+                        droneMaster.inventory.GiveItem(ModCompat.RiskyMod.AllyAllowOverheatDeathItem, 1);
+                    if (ModCompat.RiskyMod.AllyScalingItem != ItemIndex.None)
+                        droneMaster.inventory.GiveItem(ModCompat.RiskyMod.AllyScalingItem, 1);
+
+                    if (victimBody.inventory)
                     {
-                        var droneSummon = new MasterSummon();
-                        droneSummon.position = victimBody.corePosition;
-                        droneSummon.masterPrefab = LegacyResourcesAPI.Load<GameObject>("Prefabs/CharacterMasters/DroneBackupMaster");
-                        droneSummon.summonerBodyObject = attackerBody.gameObject;
-                        var droneMaster = droneSummon.Perform();
-                        if (droneMaster)
+                        EquipmentDef ed = EquipmentCatalog.GetEquipmentDef(victimBody.inventory.currentEquipmentIndex);
+                        if (ed && ed.passiveBuffDef && ed.passiveBuffDef.isElite)
                         {
-                            droneMaster.gameObject.AddComponent<MasterSuicideOnTimer>().lifeTimer = StaticValues.droidLife;
-
-                            CharacterBody body = droneMaster.GetBody();
-                            body.baseMoveSpeed *= StaticValues.droidSpeed;
-                            body.baseDamage *= StaticValues.droidDamage + droidHeadCount;
-                            body.levelDamage *= 1 + droidHeadCount;
-
-                            Util.PlaySound("SS2UDroidHead", body.gameObject);
+                            droneMaster.inventory.SetEquipmentIndex(victimBody.inventory.currentEquipmentIndex);
                         }
                     }
                 }
+
+                droneMaster.gameObject.AddComponent<MasterSuicideOnTimer>().lifeTimer = 30f;
+
+                EffectManager.SimpleSoundEffect(procSound.index, victimBody.corePosition, true);
+            }
+        }
+
+        public class DroidHeadBehavior : CharacterBody.ItemBehavior
+        {
+            public static int maxDroids = 3;
+            private List<CharacterMaster> activeDroids = new List<CharacterMaster>();
+
+            public bool CanSpawnDroid()
+            {
+                ClearDeadDroids();
+                return activeDroids.Count < DroidHeadBehavior.maxDroids;
+            }
+
+            public void AddDroid(CharacterMaster master)
+            {
+                activeDroids.Add(master);
+            }
+
+            private void ClearDeadDroids()
+            {
+                activeDroids = activeDroids.Where(master => (master != null && !master.IsDeadAndOutOfLivesServer())).ToList();
             }
         }
     }

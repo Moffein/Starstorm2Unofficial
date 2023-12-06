@@ -82,12 +82,14 @@
     <Compile Include="Cores\NemesisInvasion\Components\NemesisInvasionManager.cs" />
     <Compile Include="Cores\NemesisInvasion\NemesisInvasionCore.cs" />
     <Compile Include="IgnoreSprintCrosshair.cs" />
+    <Compile Include="ModCompat.cs" />
     <Compile Include="Modules\BazaarChecker.cs" />
     <Compile Include="Modules\CameraParams.cs" />
     <Compile Include="Modules\EntityStates\BaseMeleeAttack.cs" />
     <Compile Include="Modules\Files.cs" />
     <Compile Include="Modules\SoundBanks.cs" />
     <Compile Include="SharedHooks\GetStatCoefficients.cs" />
+    <Compile Include="SharedHooks\OnCharacterDeathGlobal.cs" />
     <Compile Include="SharedHooks\OnHitEnemy.cs" />
     <Compile Include="Survivors\Chirr\Achievements\ChirrMasteryAchievement.cs" />
     <Compile Include="Survivors\Chirr\BefriendSkillDef.cs" />
@@ -153,7 +155,7 @@
     <Compile Include="Survivors\Chirr\ChirrCore.cs" />
     <Compile Include="Cores\ItemDisplays\PyroItemDisplays.cs" />
     <Compile Include="Survivors\Cyborg\CyborgItemDisplays.cs" />
-    <Compile Include="Items\Unimplemented\Rare\BabyToys.cs" />
+    <Compile Include="Items\Trashbin\BabyToys.cs" />
     <Compile Include="Items\Boss\ShackledLamp.cs" />
     <Compile Include="Cores\PrefabCore.cs" />
     <Compile Include="Cores\SkinsCore.cs" />
@@ -167,7 +169,7 @@
     <Compile Include="Items\Unimplemented\Common\DetritiveTrematode.cs" />
     <Compile Include="Items\Common\Diary.cs" />
     <Compile Include="Items\Trashbin\DormantFungus.cs" />
-    <Compile Include="Items\Unimplemented\Rare\DroidHead.cs" />
+    <Compile Include="Items\Rare\DroidHead.cs" />
     <Compile Include="Items\Trashbin\ErraticGadget.cs" />
     <Compile Include="Items\Common\Fork.cs" />
     <Compile Include="Items\Unimplemented\Rare\GreenChocolate.cs" />
@@ -175,7 +177,7 @@
     <Compile Include="Items\Unimplemented\Uncommon\HuntersSigil.cs" />
     <Compile Include="Items\Unimplemented\Common\Malice.cs" />
     <Compile Include="Items\Common\MoltenCoin.cs" />
-    <Compile Include="Items\Unimplemented\Rare\NkotasHeritage.cs" />
+    <Compile Include="Items\Trashbin\NkotasHeritage.cs" />
     <Compile Include="Items\Trashbin\PrototypeJetBoots.cs" />
     <Compile Include="Items\Trashbin\RelicOfMass.cs" />
     <Compile Include="Items\Unimplemented\Nemesis\StirringSoul.cs" />
@@ -308,7 +310,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Cores\Enemies\" />
-    <Folder Include="Items\Rare\" />
     <Folder Include="Items\Relic\" />
   </ItemGroup>
   <ItemGroup>

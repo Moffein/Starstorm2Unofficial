@@ -20,6 +20,7 @@ using UnityEngine;
 
 namespace Starstorm2Unofficial
 {
+    [BepInDependency("com.RiskyLives.RiskyMod", BepInDependency.DependencyFlags.HardDependency)]
     [BepInDependency("com.bepis.r2api", BepInDependency.DependencyFlags.HardDependency)]
     [BepInDependency("com.TeamMoonstorm.Starstorm2-Nightly", BepInDependency.DependencyFlags.SoftDependency)]
     [BepInDependency("com.TeamMoonstorm.Starstorm2", BepInDependency.DependencyFlags.SoftDependency)]
@@ -56,6 +57,7 @@ namespace Starstorm2Unofficial
 
         public static StarstormPlugin instance;
 
+        //These should be moved to ModCompat
         public static bool scrollableLobbyInstalled = false; // putting this here because lazy, move it if you want
         public static bool infernoPluginLoaded = false;
         public static bool riskOfOptionsLoaded = false;
@@ -89,6 +91,7 @@ namespace Starstorm2Unofficial
             kingArenaLoaded = BepInEx.Bootstrap.Chainloader.PluginInfos.ContainsKey("com.Kingpinush.KingKombatArena");
             emoteAPILoaded = BepInEx.Bootstrap.Chainloader.PluginInfos.ContainsKey("com.weliveinasociety.CustomEmotesAPI");
             riskOfOptionsLoaded = BepInEx.Bootstrap.Chainloader.PluginInfos.ContainsKey("com.rune580.riskofoptions");
+            ModCompat.Initialize();
 
             if (kingArenaLoaded)
             {
@@ -186,6 +189,7 @@ namespace Starstorm2Unofficial
                 AddItemIfEnabled(new Diary(), ItemCore.instance.items);
 
                 AddItemIfEnabled(new WatchMetronome(), ItemCore.instance.items);
+                AddItemIfEnabled(new DroidHead(), ItemCore.instance.items);
 
                 //AddItemIfEnabled(new DormantFungus(), ItemCore.instance.items);
                 //AddItemIfEnabled(new DetritiveTrematode(), ItemCore.instance.items);
@@ -199,7 +203,6 @@ namespace Starstorm2Unofficial
                 //AddItemIfEnabled(new NkotasHeritage(), ItemCore.instance.items);
                 //AddItemIfEnabled(new ErraticGadget(), ItemCore.instance.items);
                 //AddItemIfEnabled(new GreenChocolate(), ItemCore.instance.items);
-                //AddItemIfEnabled(new DroidHead(), ItemCore.instance.items);
                 //AddItemIfEnabled(new RelicOfMass(), ItemCore.instance.items);
                 //AddItemIfEnabled(new StirringSoul(), ItemCore.instance.items);
                 //AddItemIfEnabled(new BabyToys(), ItemCore.instance.items);
@@ -221,6 +224,7 @@ namespace Starstorm2Unofficial
             RoR2.Stage.onStageStartGlobal += BazaarChecker.Stage_onStageStartGlobal;
             RecalculateStatsAPI.GetStatCoefficients += GetStatCoefficients.RecalculateStatsAPI_GetStatCoefficients;
             On.RoR2.GlobalEventManager.OnHitEnemy += SharedHooks.OnHitEnemy.GlobalEventManager_OnHitEnemy;
+            On.RoR2.GlobalEventManager.OnCharacterDeath += SharedHooks.OnCharacterDeathGlobal.GlobalEventManager_OnCharacterDeath;
         }
 
         private void AddItemIfEnabled(SS2Item item, List<SS2Item> list)
