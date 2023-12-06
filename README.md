@@ -19,17 +19,35 @@ The SS2 team is free to use any of the new code from this mod as long as this re
   - Pyro
   - Nemesis Commando
   
+- Items:
+	- Common:
+		- Fork
+		- Molten Coin
+		- Diary
+		- Dormant Fungus (Disabled)
+		- Coffee Bag (Disabled)
+
+	- Uncommon:
+		- Watch Metronome
+
+	- Rare:
+		- Droid Head
+		- Green Chocolate
+	
+	- Boss:
+		- Stirring Soul
+
+- Equipment:
+	- Cloaking Headband
+	- Greater Warbanner
+  
  - Storms
  
  - Nemesis Invasion Event (triggered after completing Void Fields)
  
- *Items/Equipments are currently disabled.*
- 
  *If unlock achievements aren't working, you can force unlock them in the config.*
 
 ## Installation
-
-**If updating from 0.8.0 and below, uninstall the previous version before installing the latest version.**
 
 1. Download the latest zip from [Releases](https://github.com/Moffein/Starstorm2Unofficial/releases).
 2. In r2modman, go to Settings -> Import Local Mod

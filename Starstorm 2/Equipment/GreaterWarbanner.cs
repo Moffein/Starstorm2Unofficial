@@ -46,7 +46,7 @@ namespace Starstorm2Unofficial.Cores.Equipment
             greaterWarbannerProp.transform.localScale = new Vector3(6.3f, 6.0f, 6.0f);
             greaterWarbannerProp.transform.localRotation = Quaternion.identity;
 
-            Modules.Assets.networkedObjectPrefabs.Add(bannerObj);
+            //Modules.Assets.networkedObjectPrefabs.Add(bannerObj); //Apparently R2API auto handles this if you InstantiateClone and RegisterNetwork = True?
 
             return bannerObj;
         }

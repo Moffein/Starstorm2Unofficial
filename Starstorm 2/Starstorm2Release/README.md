@@ -19,15 +19,113 @@ The SS2 team is free to use any of the new code from this mod as long as this re
   - Pyro
   - Nemesis Commando
   
+- Items:
+	- Common:
+		- Fork
+		- Molten Coin
+		- Diary
+		- Dormant Fungus (Disabled)
+		- Coffee Bag (Disabled)
+
+	- Uncommon:
+		- Watch Metronome
+
+	- Rare:
+		- Droid Head
+		- Green Chocolate
+	
+	- Boss:
+		- Stirring Soul
+
+- Equipment:
+	- Cloaking Headband
+	- Greater Warbanner
+  
  - Storms
  
  - Nemesis Invasion Event (triggered after completing Void Fields)
  
- *Items/Equipments are currently disabled.*
- 
  *If unlock achievements aren't working, you can force unlock them in the config.*
 
 ## Changelog
+
+`0.15.1`
+
+- Readme update.
+
+`0.15.0`
+
+- Items
+	- Common
+		- Fork
+			- Increase base damage by 2.4 (+2.4 per stack).
+			
+			*Increases base damage by Commando's damage per level, same as in the original Starstorm.*
+			
+		- Molten Coin
+			- 6% chance to ignite for 300% (+300%) base damage and earn $1. Scales with time.
+				- Does not gain money in Bazaar.
+			
+		- Diary (Rework)
+			- Increases move speed by 10% (+10%) and armor by 3 (+3).
+			
+			*Meant to be another way to boost your move speed stat while being a lower priority item than mainstays like Hoofs/Coffee/Energy Drinks. Numberwise it's comparable to 2/3 of a Hoof and 1/3 of a Hermit's Scarf.*
+			
+	- Uncommon
+		- Watch Metronome
+			- Walking on the ground charges up the speed of your next sprint by up to 200%. Decays over 4s (+2s per stack) of sprinting.
+			
+	- Rare
+		- Droid Head
+			- Killing Elites summons a Strike Drone with 100% damage (+50% damage per stack) that inherits the Elite type. Lasts 30s, limited to 3 active.
+			
+		- Green Chocolate
+			- When receiving 20% or more of your max health as damage, any damage over the threshold is reduced by 50%. Gain +50% damage for 7s upon triggering this effect, stacks up to 1 (+1 per stack) time.
+			
+	- Boss
+		- Stirring Soul
+			- Dropped by Nemmando.
+		
+- Equipment
+	- Cloaking Headband
+		- Become invisible for 10 seconds. (45s CD)
+
+	- Greater Warbanner
+		- Place a greater warbanner that strengthens allies within 25m. Raises critical chance by 25%. Every second, reduces skill cooldowns by 0.5s and heals for 2.5% of your max health.
+		
+		*Is this networked? Attempted to fix some of the bugs from the old implementation.*
+		
+- Disabled by Default
+	- Common
+		- Dormant Fungus
+		- Coffee Bag
+		
+		*These are vanilla, but left in the mod in case you want to use them for whatever reason.*
+		
+- Currently Unimplemented Items
+	- Detritive Trematode/Strange Can
+		- These are items based around dealing %HP damage. Should this be a thing?
+		
+	- Hunter's Sigil
+		- Sharp Anchor from StormysItems does this better, and without the RNG crit chance.
+		- Considered reworking it to give storable guaranteed crits when standing still, but this would mainly just be a buff to already strong single-hit characters.
+		
+	- Malice
+		- I always felt this was way too strong in RoR2 in all iterations of it, due to free targeting being a thing in RoR2 as well as AoE attacks being more common in general.
+		
+	- Broken Blood Tester/Prototype Jet Boots
+		- Useless.
+		
+	- Nkota's Heritage
+		- Was only good in the SS ruleset due to Command + Sac and reds being more common on Stage 1.
+		
+	- Erratic Gadget/Relic of Mass
+		- Already a part of Vanilla.
+
+	- Pressurized Canister
+		- Even if bugs are fixed, it inherently doesnt work with Gesture and is an equipment that would always get swapped for literally any other.
+
+<details>
 
 `0.14.5`
 
@@ -155,3 +253,5 @@ The SS2 team is free to use any of the new code from this mod as long as this re
 
 - Nemesis Invasion
 	- Fixed internal Nemesis stat items getting removed by the item blacklist.
+	
+</details>

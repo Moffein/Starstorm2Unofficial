@@ -257,12 +257,6 @@ localScale = new Vector3(0.001F, 0.001F, 0.001F)
 
     class SoulPickup : MonoBehaviour
     {
-        /* per shooty's suggestion:
-         * - store drop chance on ss2item object
-         * - start drop chance at 1%, increase by 1 on every kill up to 20
-         * - if pickup drops item, reset drop chance to 1
-         * there are flaws to this implementation that would make it unworkable. if we nerf the item it'd be better to just reduce the drop chance for now
-         */
         public GameObject baseObject;
         public TeamFilter team;
         private bool alive = true;
