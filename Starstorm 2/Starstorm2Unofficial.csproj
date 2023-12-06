@@ -153,7 +153,7 @@
     <Compile Include="Survivors\Chirr\ChirrCore.cs" />
     <Compile Include="Cores\ItemDisplays\PyroItemDisplays.cs" />
     <Compile Include="Survivors\Cyborg\CyborgItemDisplays.cs" />
-    <Compile Include="Items\Rare\BabyToys.cs" />
+    <Compile Include="Items\Unimplemented\Rare\BabyToys.cs" />
     <Compile Include="Items\Boss\ShackledLamp.cs" />
     <Compile Include="Cores\PrefabCore.cs" />
     <Compile Include="Cores\SkinsCore.cs" />
@@ -162,25 +162,25 @@
     <Compile Include="Cores\Equipment\PressurizedCanister.cs" />
     <Compile Include="Cores\EventsCore.cs" />
     <Compile Include="Cores\ItemDisplayCore.cs" />
-    <Compile Include="Items\Uncommon\BrokenBloodTester.cs" />
-    <Compile Include="Items\Common\CoffeeBag.cs" />
-    <Compile Include="Items\Common\DetritiveTrematode.cs" />
+    <Compile Include="Items\Trashbin\BrokenBloodTester.cs" />
+    <Compile Include="Items\Trashbin\CoffeeBag.cs" />
+    <Compile Include="Items\Unimplemented\Common\DetritiveTrematode.cs" />
     <Compile Include="Items\Common\Diary.cs" />
-    <Compile Include="Items\Common\DormantFungus.cs" />
-    <Compile Include="Items\Rare\DroidHead.cs" />
-    <Compile Include="Items\Rare\ErraticGadget.cs" />
+    <Compile Include="Items\Trashbin\DormantFungus.cs" />
+    <Compile Include="Items\Unimplemented\Rare\DroidHead.cs" />
+    <Compile Include="Items\Trashbin\ErraticGadget.cs" />
     <Compile Include="Items\Common\Fork.cs" />
-    <Compile Include="Items\Rare\GreenChocolate.cs" />
-    <Compile Include="Items\Rare\HottestSauce.cs" />
-    <Compile Include="Items\Rare\HuntersSigil.cs" />
-    <Compile Include="Items\Common\Malice.cs" />
+    <Compile Include="Items\Unimplemented\Rare\GreenChocolate.cs" />
+    <Compile Include="Items\Unimplemented\Uncommon\HottestSauce.cs" />
+    <Compile Include="Items\Unimplemented\Uncommon\HuntersSigil.cs" />
+    <Compile Include="Items\Unimplemented\Common\Malice.cs" />
     <Compile Include="Items\Common\MoltenCoin.cs" />
-    <Compile Include="Items\Rare\NkotasHeritage.cs" />
-    <Compile Include="Items\Uncommon\PrototypeJetBoots.cs" />
-    <Compile Include="Items\Relic\RelicOfMass.cs" />
-    <Compile Include="Items\Nemesis\StirringSoul.cs" />
-    <Compile Include="Items\Uncommon\StrangeCan.cs" />
-    <Compile Include="Items\Uncommon\WatchMetronome.cs" />
+    <Compile Include="Items\Unimplemented\Rare\NkotasHeritage.cs" />
+    <Compile Include="Items\Trashbin\PrototypeJetBoots.cs" />
+    <Compile Include="Items\Trashbin\RelicOfMass.cs" />
+    <Compile Include="Items\Unimplemented\Nemesis\StirringSoul.cs" />
+    <Compile Include="Items\Unimplemented\Uncommon\StrangeCan.cs" />
+    <Compile Include="Items\Unimplemented\Uncommon\WatchMetronome.cs" />
     <Compile Include="Cores\EnemyCore.cs" />
     <Compile Include="Cores\DamageTypeCore.cs" />
     <Compile Include="Survivors\Cyborg\CyborgSkins.cs" />
@@ -308,6 +308,9 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Cores\Enemies\" />
+    <Folder Include="Items\Rare\" />
+    <Folder Include="Items\Relic\" />
+    <Folder Include="Items\Uncommon\" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="0Harmony">

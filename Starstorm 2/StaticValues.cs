@@ -16,8 +16,6 @@ namespace Starstorm2Unofficial
         public static float trematodeDuration;
         public static float trematodeCritical;
 
-        public static float diaryTime;
-
         public static float massFactor;
         public static float massHealthGain;
 
@@ -104,8 +102,6 @@ namespace Starstorm2Unofficial
             trematodeDamage = 1f;
             trematodeDuration = 3f;
             trematodeCritical = 0.4f;
-
-            diaryTime = 2f;
 
             massFactor = 8f;
             massHealthGain = 1f;
