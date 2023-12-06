@@ -4,8 +4,6 @@ namespace Starstorm2Unofficial
 {
     public static class StaticValues
     {
-        public static float forkDamageValue;
-
         public static float coffeeAttackSpeedValue;
         public static float coffeeMoveSpeedValue;
 
@@ -99,8 +97,6 @@ namespace Starstorm2Unofficial
             bootsRadius = 7.5f;
             bootsProc = 0f;
             timbsQuality = JetBootsEffectQuality.Default;
-
-            forkDamageValue = 0.07f;
 
             coffeeAttackSpeedValue = 0.075f;
             coffeeMoveSpeedValue = 0.07f;

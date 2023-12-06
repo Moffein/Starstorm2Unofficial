@@ -1,5 +1,6 @@
 ﻿using BepInEx;
 using BepInEx.Configuration;
+using R2API;
 using R2API.Utils;
 using RoR2;
 using Starstorm2Unofficial.Components.Projectiles;
@@ -7,6 +8,8 @@ using Starstorm2Unofficial.Cores;
 using Starstorm2Unofficial.Cores.Equipment;
 using Starstorm2Unofficial.Cores.Items;
 using Starstorm2Unofficial.Cores.NemesisInvasion;
+using Starstorm2Unofficial.Modules;
+using Starstorm2Unofficial.SharedHooks;
 using Starstorm2Unofficial.Survivors.Chirr;
 using Starstorm2Unofficial.Survivors.Cyborg;
 using Starstorm2Unofficial.Survivors.Pyro;
@@ -177,12 +180,14 @@ namespace Starstorm2Unofficial
             if (Modules.Config.EnableItems.Value)
             {
                 itemCore = new ItemCore();
+
+                AddItemIfEnabled(new Fork(), ItemCore.instance.items);
+
                 //AddItemIfEnabled(new DormantFungus(), ItemCore.instance.items);
                 //AddItemIfEnabled(new DetritiveTrematode(), ItemCore.instance.items);
                 //AddItemIfEnabled(new Diary(), ItemCore.instance.items);
                 //AddItemIfEnabled(new MoltenCoin(), ItemCore.instance.items);
                 //AddItemIfEnabled(new Malice(), ItemCore.instance.items);
-                //AddItemIfEnabled(new Fork(), ItemCore.instance.items);
                 //AddItemIfEnabled(new CoffeeBag(), ItemCore.instance.items);
                 //AddItemIfEnabled(new BrokenBloodTester(), ItemCore.instance.items);
                 //AddItemIfEnabled(new HottestSauce(), ItemCore.instance.items);
@@ -211,6 +216,9 @@ namespace Starstorm2Unofficial
             {
                 eventsCore = new EventsCore();
             }
+
+            RoR2.Stage.onStageStartGlobal += BazaarChecker.Stage_onStageStartGlobal;
+            RecalculateStatsAPI.GetStatCoefficients += GetStatCoefficients.RecalculateStatsAPI_GetStatCoefficients;
         }
 
         private void AddItemIfEnabled(SS2Item item, List<SS2Item> list)

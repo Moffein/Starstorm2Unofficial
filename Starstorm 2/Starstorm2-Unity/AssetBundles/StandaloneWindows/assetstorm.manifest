@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 1701794926
+CRC: 835232990
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: c0948e249f0f9b0a135c2a676a0b7cf6
+    Hash: a4f8004d2fb671ad54ec1588e120a4a5
   TypeTreeHash:
     serializedVersion: 2
     Hash: e085efc3cec39229c22603e1a47b8115
@@ -527,6 +527,7 @@ Assets:
 - Assets/AssetBundle/Cyborg/Meshes/meshCyborg.mesh
 - Assets/AssetBundle/Chirr/Animations/ChirrGestureAdd.mask
 - Assets/AssetBundle/Nemmando/VFX/Mesh/SwordSwipe.asset
+- Assets/AssetBundle/Items/Fork/fork.blend
 - Assets/AssetBundle/Items/Fork/matFork.mat
 - Assets/AssetBundle/Chirr/Animations/animChirr.controller
 - Assets/AssetBundle/Nemmando/Mesh/meshVergil.mesh
