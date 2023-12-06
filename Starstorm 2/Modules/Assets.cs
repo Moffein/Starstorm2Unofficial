@@ -18,6 +18,7 @@ namespace Starstorm2Unofficial.Modules
         // lists of assets to add to contentpack
         internal static List<NetworkSoundEventDef> networkSoundEventDefs = new List<NetworkSoundEventDef>();
         internal static List<EffectDef> effectDefs = new List<EffectDef>();
+        internal static List<GameObject> networkedObjectPrefabs = new List<GameObject>();
 
         // cache these and use to create our own materials
         internal static Shader hotpoo = LegacyResourcesAPI.Load<Shader>("Shaders/Deferred/HGStandard");

@@ -59,10 +59,11 @@ namespace Starstorm2Unofficial.Cores
             detritiveBuff.name = "SS2UInfested";
             buffDefs.Add(detritiveBuff);
 
+
             greaterBannerBuff = ScriptableObject.CreateInstance<BuffDef>();
             //buffIndex = BuffIndex.Count,
             greaterBannerBuff.canStack = false;
-            greaterBannerBuff.iconSprite = LegacyResourcesAPI.Load<Sprite>("textures/bufficons/texBuffWarbannerIcon");
+            greaterBannerBuff.iconSprite = Addressables.LoadAssetAsync<Sprite>("RoR2/Base/WardOnLevel/texBuffWarbannerIcon.tif").WaitForCompletion();
             greaterBannerBuff.name = "SS2UGreaterWarbanner";
             greaterBannerBuff.buffColor = new Color(0.8392157f, 0.4882353f, 0.22745098f);
             buffDefs.Add(greaterBannerBuff);
@@ -225,13 +226,6 @@ namespace Starstorm2Unofficial.Cores
             orig(self);
             if (self.skillLocator)
             {
-                if (self.HasBuff(greaterBannerBuff))
-                {
-                    if(self.skillLocator.primary) self.skillLocator.primary.cooldownScale *= 0.5f;
-                    if (self.skillLocator.secondary) self.skillLocator.secondary.cooldownScale *= 0.5f;
-                    if (self.skillLocator.utility) self.skillLocator.utility.cooldownScale *= 0.5f;
-                    if (self.skillLocator.special) self.skillLocator.special.cooldownScale *= 0.5f;
-                }
                 if (self.HasBuff(chirrFriendBuff))
                 {
                     if (self.skillLocator.primary) self.skillLocator.primary.cooldownScale *= 0.66f;
@@ -301,9 +295,7 @@ namespace Starstorm2Unofficial.Cores
         {
             if (sender.HasBuff(greaterBannerBuff))
             {
-                //args.cooldownMultAdd *= 0.5f; //handle in recalculatestats since I don't think this works
-                args.critAdd += 20f;
-                args.regenMultAdd += 0.5f;
+                args.critAdd += 25f;
             }
 
             int chocStack = sender.GetBuffCount(greenChocBuff);

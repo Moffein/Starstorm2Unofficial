@@ -168,14 +168,14 @@ namespace Starstorm2Unofficial
             Modules.Effects.Initialize();
 
             //equipment must be loaded before items so hottest sauce interacts correctly with ss2 equips
-            /*if (Modules.Config.EnableEquipment.Value)
+            if (Modules.Config.EnableEquipment.Value)
             {
                 equipmentCore = new EquipmentCore();
                 AddEquipmentIfEnabled(new CloakingHeadband(), EquipmentCore.instance.equipment);
                 AddEquipmentIfEnabled(new GreaterWarbanner(), EquipmentCore.instance.equipment);
-                AddEquipmentIfEnabled(new PressurizedCanister(), EquipmentCore.instance.equipment);
+                //AddEquipmentIfEnabled(new PressurizedCanister(), EquipmentCore.instance.equipment);   //fuck this equipment in particular
                 EquipmentCore.instance.InitEquipment();
-            }*/
+            }
 
             //enemyCore = new EnemyCore();
             RoR2.RoR2Application.onLoad += EnemyCore.StoreBodyIndexes;

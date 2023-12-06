@@ -159,9 +159,9 @@
     <Compile Include="Items\Boss\ShackledLamp.cs" />
     <Compile Include="Cores\PrefabCore.cs" />
     <Compile Include="Cores\SkinsCore.cs" />
-    <Compile Include="Cores\Equipment\CloakingHeadband.cs" />
-    <Compile Include="Cores\Equipment\GreaterWarbanner.cs" />
-    <Compile Include="Cores\Equipment\PressurizedCanister.cs" />
+    <Compile Include="Equipment\CloakingHeadband.cs" />
+    <Compile Include="Equipment\GreaterWarbanner.cs" />
+    <Compile Include="Equipment\PressurizedCanister.cs" />
     <Compile Include="Cores\EventsCore.cs" />
     <Compile Include="Cores\ItemDisplayCore.cs" />
     <Compile Include="Items\Trashbin\BrokenBloodTester.cs" />
@@ -204,7 +204,7 @@
     <Compile Include="Survivors\Cyborg\CyborgCore.cs" />
     <Compile Include="Items\ItemCore.cs" />
     <Compile Include="Cores\DotCore.cs" />
-    <Compile Include="Cores\EquipmentCore.cs" />
+    <Compile Include="Equipment\EquipmentCore.cs" />
     <Compile Include="Cores\BuffCore.cs" />
     <Compile Include="Modules\EntityStates\BaseCustomSkillState.cs" />
     <Compile Include="Modules\EntityStates\BaseCustomMainState.cs" />
@@ -241,7 +241,7 @@
     <Compile Include="Cores\Unlockables\Achievements\Vanilla\VanillaGrandMasteryAchievements.cs" />
     <Compile Include="Modules\Achievements\BaseGrandMasteryAchievement.cs" />
     <Compile Include="Cores\Unlockables\VanillaSurvivorUnlockables.cs" />
-    <Compile Include="FUCKACCESSMODIFIERS.cs" />
+    <Compile Include="Publicize.cs" />
     <Compile Include="Modules\Assets.cs" />
     <Compile Include="Modules\Config.cs" />
     <Compile Include="Modules\ContentPacks.cs" />

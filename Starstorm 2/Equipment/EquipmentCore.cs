@@ -15,7 +15,7 @@ namespace Starstorm2Unofficial.Cores
         //protected internal EquipmentIndex cloakIndex;
         //protected internal EquipmentIndex canisterIndex;
 
-        private const string modPrefix = "@Starstorm2:";
+        private const string modPrefix = "@Starstorm2Unofficial:";
         private const string prefabPath = modPrefix + "Assets/AssetBundle/Items/";
 
         //private GameObject greaterWarbanner;

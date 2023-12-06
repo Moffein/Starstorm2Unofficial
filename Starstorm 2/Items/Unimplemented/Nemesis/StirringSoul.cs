@@ -38,9 +38,8 @@ namespace Starstorm2Unofficial.Cores.Items
         public override void RegisterHooks()
         {
             GlobalEventManager.onCharacterDeathGlobal += GlobalEventManager_onCharacterDeathGlobal;
+            SharedHooks.OnCharacterDeathGlobal.OnCharacterDeathInventoryActions += ProcSoul;
         }
-
-        
 
         public override ItemDisplayRuleDict CreateDisplayRules()
         {
@@ -238,6 +237,11 @@ localScale = new Vector3(0.001F, 0.001F, 0.001F)
             var pulseMat = soulPulseGlow.GetComponent<ParticleSystem>().main;
             pulseMat.startColor = soulColor;
             UnityEngine.Object.Destroy(soulFx.transform.Find("TrailParent").gameObject);
+        }
+
+        private void ProcSoul(GlobalEventManager self, DamageReport damageReport, CharacterBody attackerBody, Inventory attackerInventory, CharacterBody victimBody)
+        {
+            throw new NotImplementedException();
         }
 
         private void GlobalEventManager_onCharacterDeathGlobal(DamageReport rpt)
