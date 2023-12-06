@@ -191,6 +191,8 @@ namespace Starstorm2Unofficial
                 AddItemIfEnabled(new WatchMetronome(), ItemCore.instance.items);
                 AddItemIfEnabled(new DroidHead(), ItemCore.instance.items);
 
+                AddItemIfEnabled(new GreenChocolate(), ItemCore.instance.items);
+
                 AddItemIfEnabled(new StirringSoul(), ItemCore.instance.items);
 
                 //Disabled by default
@@ -206,7 +208,7 @@ namespace Starstorm2Unofficial
                 //AddItemIfEnabled(new HuntersSigil(), ItemCore.instance.items);
                 //AddItemIfEnabled(new NkotasHeritage(), ItemCore.instance.items);
                 //AddItemIfEnabled(new ErraticGadget(), ItemCore.instance.items);
-                //AddItemIfEnabled(new GreenChocolate(), ItemCore.instance.items);
+                //
                 //AddItemIfEnabled(new RelicOfMass(), ItemCore.instance.items);
                 //AddItemIfEnabled(new BabyToys(), ItemCore.instance.items);
                 ItemCore.instance.InitItems();

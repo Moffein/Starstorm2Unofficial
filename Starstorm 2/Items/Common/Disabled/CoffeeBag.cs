@@ -10,7 +10,7 @@ namespace Starstorm2Unofficial.Cores.Items
         public override string NameInternal => "SS2U_Coffee";
         public override string Name => "Coffee Bag";
         public override string Pickup => "Move and attack faster.";
-        public override string Description => $"Increase your movement speed by <style=cIsUtility>7%</style> <style=cStack>(+7% per stack)</style> and your attack speed by <style=cIsDamage>7.5%</style> <style=cStack>(+7.5% per stack)</style>.";
+        public override string Description => "Increases <style=cIsUtility>movement speed</style> by <style=cIsUtility>7%</style> <style=cStack>(+7% per stack)</style> and <style=cIsDamage>attack speed</style> by <style=cIsDamage>7.5%</style> <style=cStack>(+7.5% per stack)</style>.";
         public override string Lore => "Order: Coffee\nTracking Number: 917****\nEstimated Delivery: 12/06/2056\nShipping Method: Standard\nShipping Address: 6430 Deer Lane, Pennsylvania, Earth\nShipping Details:\n\nHi, Mom!\n\nI've been out traveling, just as you did in your youth... I remember all the stories you used to tell me from when you were my age. Going to places like Jamacia, Romania, pretty much everywhere on Earth! I hope I can visit home soon so I can tell you about all the places I've been.\n\nI remember there was this great coffee you used to get us back home... was it \"Neik Dark Roast\"? Anyway, there's this great place out on Titan that grows their own coffee, and it's some of the best! Reminds me of being home with you.\n\nI hope I can see you soon. I miss you, and I miss the cats. Eleni says hi, and I can't wait to tell you about everything!\n\nLove, Hanan\n";
         public override ItemTier Tier => ItemTier.Tier1;
         public override ItemTag[] Tags => new ItemTag[]

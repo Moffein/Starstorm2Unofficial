@@ -128,9 +128,7 @@ namespace Starstorm2Unofficial.Cores
 
         private void RegisterEffects()
         {
-            //TODO: register in content pack?
-            greenChocPrefab = PrefabAPI.InstantiateClone(LegacyResourcesAPI.Load<GameObject>("Prefabs/Effects/WarCryEffect"), "SS2UGreenChocEffect", true);
-            greenChocPrefab.AddComponent<NetworkIdentity>();
+            greenChocPrefab = PrefabAPI.InstantiateClone(LegacyResourcesAPI.Load<GameObject>("Prefabs/Effects/WarCryEffect"), "SS2UGreenChocEffect", false);
             var particles = greenChocPrefab.GetComponentInChildren<ParticleSystem>();
             if (particles)
             {
@@ -138,6 +136,7 @@ namespace Starstorm2Unofficial.Cores
                 //this doesn't do anything :(
                 mainmod.startColor = new Color(0.58f, 0.90f, 0.66f);
             }
+            Modules.Assets.AddEffect(greenChocPrefab);
         }
 
         private void Hook()
@@ -301,7 +300,6 @@ namespace Starstorm2Unofficial.Cores
             int chocStack = sender.GetBuffCount(greenChocBuff);
             if (chocStack > 0)
             {
-                args.critAdd += 20f * chocStack;
                 args.damageMultAdd += 0.5f * chocStack;
             }
 

@@ -33,10 +33,6 @@ namespace Starstorm2Unofficial
         public static float canDuration;
         public static float canDamage;
 
-        public static float choccyThreshold;
-        public static float choccyBaseTime;
-        public static float choccyStackTime;
-
         public static float hottestSusRadius;
         public static float hottestSusHit;
         public static float hottestSusDuration;
@@ -58,10 +54,6 @@ namespace Starstorm2Unofficial
             hottestSusRadius = 30f;
             hottestSusDuration = 6f;
             hottestSusDamage = 1f;
-
-            choccyThreshold = 0.2f;
-            choccyBaseTime = 5f;
-            choccyStackTime = 10f;
 
             canBaseChance = 8.5f;
             canStackChance = 5f;
