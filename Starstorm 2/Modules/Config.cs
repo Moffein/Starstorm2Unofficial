@@ -68,22 +68,22 @@ namespace Starstorm2Unofficial.Modules
                             "Enabled",
                             false,
                             "Enables Starstorm 2's lesser serious features, featuring content ranging from skins that slightly clash with lore to high quality shitposts - here be dragons!.");
-            /*EnableItems =
-                Starstorm.instance.Config.Bind("Starstorm 2 :: Items",
+            EnableItems =
+                StarstormPlugin.instance.Config.Bind("Starstorm 2 :: Items",
                             "Enabled",
                             true,
                             "Enables Starstorm 2's items. Set to false to disable all of Starstorm 2's items.");
             EnableEquipment =
-                Starstorm.instance.Config.Bind("Starstorm 2 :: Equipment",
+                StarstormPlugin.instance.Config.Bind("Starstorm 2 :: Equipment",
                             "Enabled",
                             true,
                             "Enables Starstorm 2's equipment. Set to false to disable all of Starstorm 2's equipment.");
             EnableFunnyCanister =
-                Starstorm.instance.Config.Bind("Starstorm 2 :: Equipment",
+                StarstormPlugin.instance.Config.Bind("Starstorm 2 :: Equipment",
                             "Pressurized Canister No Jump Control",
                             false,
                             "Set to true to disable jump control on Pressurized Canister - activating the equipment will apply constant upward force regardless of whether you hold the jump button. This may lead to Funny and Memorable (tm) moments, especially if you like picking up Gestures of the Drowned.");
-             */
+             
 
             EnableExecutioner = StarstormPlugin.instance.Config.Bind("Starstorm 2 :: Survivors",
                             "Executioner",
