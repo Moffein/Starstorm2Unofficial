@@ -58,9 +58,9 @@ namespace Starstorm2Unofficial.Cores.Equipment
 
         protected override bool ActivateEquipment(EquipmentSlot equip)
         {
-            if (!equip.characterBody) return false;
+            if (!equip.characterBody || !equip.characterBody.masterObject) return false;
 
-            GreaterWarbannerBodyTracker tracker = equip.characterBody.AddOrGetComponent<GreaterWarbannerBodyTracker>();
+            GreaterWarbannerBodyTracker tracker = equip.characterBody.masterObject.AddOrGetComponent<GreaterWarbannerBodyTracker>();
             if (tracker.banner != null) NetworkServer.Destroy(tracker.banner);
 
             GameObject gameObject = UnityEngine.Object.Instantiate<GameObject>(warbannerObj, equip.characterBody.transform.position, Quaternion.identity);

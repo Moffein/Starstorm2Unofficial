@@ -49,6 +49,10 @@ The SS2 team is free to use any of the new code from this mod as long as this re
 
 ## Changelog
 
+`0.15.2`
+
+- Fixed being able to ignore the Greater Warbanner cap when respawning.
+
 `0.15.1`
 
 - Readme update.
