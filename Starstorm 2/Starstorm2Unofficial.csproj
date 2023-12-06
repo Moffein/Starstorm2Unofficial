@@ -180,7 +180,7 @@
     <Compile Include="Items\Trashbin\RelicOfMass.cs" />
     <Compile Include="Items\Unimplemented\Nemesis\StirringSoul.cs" />
     <Compile Include="Items\Unimplemented\Uncommon\StrangeCan.cs" />
-    <Compile Include="Items\Unimplemented\Uncommon\WatchMetronome.cs" />
+    <Compile Include="Items\Uncommon\WatchMetronome.cs" />
     <Compile Include="Cores\EnemyCore.cs" />
     <Compile Include="Cores\DamageTypeCore.cs" />
     <Compile Include="Survivors\Cyborg\CyborgSkins.cs" />
@@ -310,7 +310,6 @@
     <Folder Include="Cores\Enemies\" />
     <Folder Include="Items\Rare\" />
     <Folder Include="Items\Relic\" />
-    <Folder Include="Items\Uncommon\" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="0Harmony">

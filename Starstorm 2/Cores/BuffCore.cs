@@ -97,7 +97,7 @@ namespace Starstorm2Unofficial.Cores
             watchMetronomeBuff.iconSprite = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("Status_WatchMetronome");
             watchMetronomeBuff.name = "SS2UWatchMetronome";
             watchMetronomeBuff.isDebuff = false;
-            watchMetronomeBuff.buffColor = Color.cyan;
+            watchMetronomeBuff.buffColor = new Color(0.376f, 0.843f, 0.898f, 1f);
             buffDefs.Add(watchMetronomeBuff);
 
             chirrFriendBuff = CreateBuffDef("SS2UChirrFriendBuff", false, false, false, new Color32(245, 123, 145, 255), Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("buffChirrSoulLink"));

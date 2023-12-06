@@ -185,6 +185,8 @@ namespace Starstorm2Unofficial
                 AddItemIfEnabled(new MoltenCoin(), ItemCore.instance.items);
                 AddItemIfEnabled(new Diary(), ItemCore.instance.items);
 
+                AddItemIfEnabled(new WatchMetronome(), ItemCore.instance.items);
+
                 //AddItemIfEnabled(new DormantFungus(), ItemCore.instance.items);
                 //AddItemIfEnabled(new DetritiveTrematode(), ItemCore.instance.items);
                 //AddItemIfEnabled(new Malice(), ItemCore.instance.items);
@@ -193,7 +195,6 @@ namespace Starstorm2Unofficial
                 //AddItemIfEnabled(new HottestSauce(), ItemCore.instance.items);
                 //AddItemIfEnabled(new StrangeCan(), ItemCore.instance.items);
                 //AddItemIfEnabled(new PrototypeJetBoots(), ItemCore.instance.items);
-                //AddItemIfEnabled(new WatchMetronome(), ItemCore.instance.items);
                 //AddItemIfEnabled(new HuntersSigil(), ItemCore.instance.items);
                 //AddItemIfEnabled(new NkotasHeritage(), ItemCore.instance.items);
                 //AddItemIfEnabled(new ErraticGadget(), ItemCore.instance.items);

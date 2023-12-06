@@ -41,6 +41,7 @@ public abstract class SS2Item
         itemDef.pickupModelPrefab = PickupModelPath != "" ? Starstorm2Unofficial.Modules.Assets.mainAssetBundle.LoadAsset<GameObject>(PickupModelPath) : null;
         itemDef.tags = Tags;
         itemDef.tier = Tier;
+        itemDef.deprecatedTier = Tier;
         Starstorm2Unofficial.Modules.Items.itemDefs.Add(itemDef);
 
         LanguageAPI.Add(itemDef.nameToken, Name);
