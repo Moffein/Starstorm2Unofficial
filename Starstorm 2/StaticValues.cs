@@ -4,9 +4,6 @@ namespace Starstorm2Unofficial
 {
     public static class StaticValues
     {
-        public static float coffeeAttackSpeedValue;
-        public static float coffeeMoveSpeedValue;
-
         public static float maliceRangeValue;
         public static float maliceRangeStackValue;
         public static float maliceDmgReductionValue;
@@ -38,10 +35,6 @@ namespace Starstorm2Unofficial
         public static float canDuration;
         public static float canDamage;
 
-        public static float dungusBase;
-        public static float dungusStack;
-        public static float dungusTime;
-
         public static float choccyThreshold;
         public static float choccyBaseTime;
         public static float choccyStackTime;
@@ -72,10 +65,6 @@ namespace Starstorm2Unofficial
             choccyBaseTime = 5f;
             choccyStackTime = 10f;
 
-            dungusBase = 0.015f;
-            dungusStack = 0.005f;
-            dungusTime = 1f;
-
             canBaseChance = 8.5f;
             canStackChance = 5f;
             canDuration = 3.5f;
@@ -86,9 +75,6 @@ namespace Starstorm2Unofficial
             bootsRadius = 7.5f;
             bootsProc = 0f;
             timbsQuality = JetBootsEffectQuality.Default;
-
-            coffeeAttackSpeedValue = 0.075f;
-            coffeeMoveSpeedValue = 0.07f;
 
             maliceRangeValue = 9f;
             maliceRangeStackValue = 1f;

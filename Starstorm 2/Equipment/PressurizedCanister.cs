@@ -12,7 +12,7 @@ namespace Starstorm2Unofficial.Cores.Equipment
 {
     class PressurizedCanister : SS2Equipment<PressurizedCanister>
     {
-        public override string NameInternal => "Canister";
+        public override string NameInternal => "SS2U_Canister";
         public override string Name => "Pressurized Canister";
         public override string Pickup => "Launch yourself into the air. Gain upward momentum by holding the jump button.";
         public override string Description => "Launch yourself into the air. Gain upward momentum by holding the jump button.";

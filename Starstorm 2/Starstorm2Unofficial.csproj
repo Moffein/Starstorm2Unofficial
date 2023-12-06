@@ -165,10 +165,10 @@
     <Compile Include="Cores\EventsCore.cs" />
     <Compile Include="Cores\ItemDisplayCore.cs" />
     <Compile Include="Items\Trashbin\BrokenBloodTester.cs" />
-    <Compile Include="Items\Trashbin\CoffeeBag.cs" />
+    <Compile Include="Items\Common\Disabled\CoffeeBag.cs" />
     <Compile Include="Items\Unimplemented\Common\DetritiveTrematode.cs" />
     <Compile Include="Items\Common\Diary.cs" />
-    <Compile Include="Items\Trashbin\DormantFungus.cs" />
+    <Compile Include="Items\Common\Disabled\DormantFungus.cs" />
     <Compile Include="Items\Rare\DroidHead.cs" />
     <Compile Include="Items\Trashbin\ErraticGadget.cs" />
     <Compile Include="Items\Common\Fork.cs" />

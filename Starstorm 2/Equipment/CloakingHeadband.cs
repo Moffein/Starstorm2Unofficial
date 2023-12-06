@@ -12,7 +12,7 @@ namespace Starstorm2Unofficial.Cores.Equipment
 {
     class CloakingHeadband : SS2Equipment<CloakingHeadband>
     {
-        public override string NameInternal => "Cloak";
+        public override string NameInternal => "SS2U_CloakingHeaband";
         public override string Name => "Cloaking Headband";
         public override string Pickup => "Become temporarily invisible.";
         public override string Description => "Become <style=cIsUtility>invisible</style> for 10 seconds.";

@@ -191,10 +191,12 @@ namespace Starstorm2Unofficial
                 AddItemIfEnabled(new WatchMetronome(), ItemCore.instance.items);
                 AddItemIfEnabled(new DroidHead(), ItemCore.instance.items);
 
-                //AddItemIfEnabled(new DormantFungus(), ItemCore.instance.items);
+                //Disabled by default
+                AddItemIfEnabled(new DormantFungus(), ItemCore.instance.items, false);
+                AddItemIfEnabled(new CoffeeBag(), ItemCore.instance.items, false);
+
                 //AddItemIfEnabled(new DetritiveTrematode(), ItemCore.instance.items);
                 //AddItemIfEnabled(new Malice(), ItemCore.instance.items);
-                //AddItemIfEnabled(new CoffeeBag(), ItemCore.instance.items);
                 //AddItemIfEnabled(new BrokenBloodTester(), ItemCore.instance.items);
                 //AddItemIfEnabled(new HottestSauce(), ItemCore.instance.items);
                 //AddItemIfEnabled(new StrangeCan(), ItemCore.instance.items);
@@ -227,9 +229,9 @@ namespace Starstorm2Unofficial
             On.RoR2.GlobalEventManager.OnCharacterDeath += SharedHooks.OnCharacterDeathGlobal.GlobalEventManager_OnCharacterDeath;
         }
 
-        private void AddItemIfEnabled(SS2Item item, List<SS2Item> list)
+        private void AddItemIfEnabled(SS2Item item, List<SS2Item> list, bool enableByDefault = true)
         {
-            var enabled = Config.Bind<bool>("Starstorm 2 :: Items", $"Enable {item.NameInternal}", true);
+            var enabled = Config.Bind<bool>("Starstorm 2 :: Items", $"Enable {item.NameInternal}", enableByDefault);
             if (enabled.Value)
             {
                 list.Add(item);
