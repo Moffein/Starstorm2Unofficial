@@ -18,11 +18,6 @@ namespace Starstorm2Unofficial
 
         public static float diaryTime;
 
-        public static float coinChance;
-        public static float coinDuration;
-        public static float coinDamage;
-        public static float coinMoneyGained;
-
         public static float massFactor;
         public static float massHealthGain;
 
@@ -111,11 +106,6 @@ namespace Starstorm2Unofficial
             trematodeCritical = 0.4f;
 
             diaryTime = 2f;
-
-            coinChance = 6f;
-            coinDuration = 4f;
-            coinDamage = 1f;
-            coinMoneyGained = 1f;
 
             massFactor = 8f;
             massHealthGain = 1f;

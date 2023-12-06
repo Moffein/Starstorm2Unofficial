@@ -182,11 +182,11 @@ namespace Starstorm2Unofficial
                 itemCore = new ItemCore();
 
                 AddItemIfEnabled(new Fork(), ItemCore.instance.items);
+                AddItemIfEnabled(new MoltenCoin(), ItemCore.instance.items);
 
                 //AddItemIfEnabled(new DormantFungus(), ItemCore.instance.items);
                 //AddItemIfEnabled(new DetritiveTrematode(), ItemCore.instance.items);
                 //AddItemIfEnabled(new Diary(), ItemCore.instance.items);
-                //AddItemIfEnabled(new MoltenCoin(), ItemCore.instance.items);
                 //AddItemIfEnabled(new Malice(), ItemCore.instance.items);
                 //AddItemIfEnabled(new CoffeeBag(), ItemCore.instance.items);
                 //AddItemIfEnabled(new BrokenBloodTester(), ItemCore.instance.items);
@@ -219,6 +219,7 @@ namespace Starstorm2Unofficial
 
             RoR2.Stage.onStageStartGlobal += BazaarChecker.Stage_onStageStartGlobal;
             RecalculateStatsAPI.GetStatCoefficients += GetStatCoefficients.RecalculateStatsAPI_GetStatCoefficients;
+            On.RoR2.GlobalEventManager.OnHitEnemy += SharedHooks.OnHitEnemy.GlobalEventManager_OnHitEnemy;
         }
 
         private void AddItemIfEnabled(SS2Item item, List<SS2Item> list)

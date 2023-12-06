@@ -88,6 +88,7 @@
     <Compile Include="Modules\Files.cs" />
     <Compile Include="Modules\SoundBanks.cs" />
     <Compile Include="SharedHooks\GetStatCoefficients.cs" />
+    <Compile Include="SharedHooks\OnHitEnemy.cs" />
     <Compile Include="Survivors\Chirr\Achievements\ChirrMasteryAchievement.cs" />
     <Compile Include="Survivors\Chirr\BefriendSkillDef.cs" />
     <Compile Include="Survivors\Chirr\ChirrItemDisplays.cs" />
