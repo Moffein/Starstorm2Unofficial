@@ -7,33 +7,27 @@ namespace Starstorm2Unofficial.Cores
     public class Starstorm2ItemManager : NetworkBehaviour
     {
         public HealthComponent health;
-        [SyncVar]
-        public float metroCharge;
+        public CharacterBody body;
 
         public void Awake()
         {
             health = gameObject.GetComponent<HealthComponent>();
+            body = gameObject.GetComponent<CharacterBody>();
         }
 
         #region Dungus
         public void HealFractionAuthority(float frac)
         {
-            if (NetworkServer.active)
+            if (this.hasAuthority)
             {
-                HealFractionInternal(frac);
-                return;
+                CmdHealFractionInternal(frac);
             }
-            CmdHealFractionInternal(frac);
         }
 
         [Server]
         private void HealFractionInternal(float frac)
         {
-            if (!health)
-            {
-                health = gameObject.GetComponent<HealthComponent>();
-                LogCore.LogError(gameObject.name + "'s health component was null!");
-            }
+            if (!NetworkServer.active || !health) return;
             health.HealFraction(frac, default);
         }
 
@@ -43,49 +37,75 @@ namespace Starstorm2Unofficial.Cores
             HealFractionInternal(frac);
         }
         #endregion
-        #region Diary
-        public void AddExperienceAuthority(uint experience)
-        {
-            if (NetworkServer.active)
-            {
-                AddExperienceInternal(experience);
-                return;
-            }
-            CmdAddExperienceInternal(experience);
-        }
 
-        [Server]
-        private void AddExperienceInternal(uint experience)
-        {
-            TeamManager.instance.GiveTeamExperience(TeamIndex.Player, experience);
-        }
-
-        [Command]
-        private void CmdAddExperienceInternal(uint experience)
-        {
-            AddExperienceInternal(experience);
-        }
-        #endregion
         #region watch metronome
-        public void SetMetronomeChargeAuthority(float value)
+        public void SetMetronomeBuffsAuthority(int count)
+        {
+            if (this.hasAuthority)
+            {
+                CmdSetMetronomeBuffs(count);
+            }
+        }
+
+        [Command]
+        private void CmdSetMetronomeBuffs(int count)
+        {
+            if (!body || !NetworkServer.active) return;
+            int buffCount = body.GetBuffCount(BuffCore.watchMetronomeBuff.buffIndex);
+
+            if (buffCount > count)
+            {
+                do
+                {
+                   body.RemoveBuff(BuffCore.watchMetronomeBuff);
+                   buffCount--;
+                } while (buffCount > count);
+            }
+            else if (buffCount < count)
+            {
+                do
+                {
+                    body.AddBuff(BuffCore.watchMetronomeBuff);
+                    buffCount++;
+                } while (buffCount < count);
+            }
+        }
+
+        public void ClearMetronomeBuffsAuthority()
+        {
+            if (this.hasAuthority)
+            {
+                CmdClearMetronomeBuffs();
+            }
+        }
+
+        [Command]
+        private void CmdClearMetronomeBuffs()
+        {
+            if (!body) return;
+            ClearMetronomeBuffsServer();
+        }
+
+        [Server]
+        public void ClearMetronomeBuffsServer()
+        {
+            if (!NetworkServer.active) return;
+            int buffCount = body.GetBuffCount(BuffCore.watchMetronomeBuff.buffIndex);
+
+            for (int i = 0; i < buffCount; i++)
+            {
+                body.RemoveBuff(BuffCore.watchMetronomeBuff);
+            }
+        }
+        #endregion
+
+
+        private void OnDestroy()
         {
             if (NetworkServer.active)
             {
-                SetMetronomeChargeInternal(value);
-                return;
+                ClearMetronomeBuffsServer();
             }
-            CmdSetMetronomeChargeInternal(value);
         }
-        [Server]
-        private void SetMetronomeChargeInternal(float value)
-        {
-            metroCharge = value;
-        }
-        [Command]
-        private void CmdSetMetronomeChargeInternal(float value)
-        {
-            SetMetronomeChargeInternal(value);
-        }
-        #endregion
     }
 }

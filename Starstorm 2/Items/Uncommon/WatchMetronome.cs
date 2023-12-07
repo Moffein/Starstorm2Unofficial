@@ -196,76 +196,59 @@ namespace Starstorm2Unofficial.Cores.Items
         public Starstorm2ItemManager manager;
 
         private float notSprintingStopwatch;
+        private float clientCharge;
+
 
         public void Awake()
         {
             notSprintingStopwatch = 0f;
             body = gameObject.GetComponent<CharacterBody>();
             manager = body.gameObject.AddOrGetComponent<Starstorm2ItemManager>();
-            manager.SetMetronomeChargeAuthority(0);
+            clientCharge = 0f;
         }
 
         public void FixedUpdate()
         {
             float newcharge;
 
-            if (body && !body.isSprinting)
+            //Calculate buffs clientside
+            if (body.hasEffectiveAuthority)
             {
-                if (body.characterMotor && body.characterMotor.isGrounded) notSprintingStopwatch += Time.fixedDeltaTime;
-            }
-            else
-            {
-                notSprintingStopwatch = 0f;
-            }
-
-            if (notSprintingStopwatch > 0f)
-            {
-                if (manager.metroCharge < 1.0f)
+                bool isGrounded = body.characterMotor && body.characterMotor.isGrounded;
+                if (body && !body.isSprinting)
                 {
-                    newcharge = manager.metroCharge + (Time.fixedDeltaTime / MetronomeBehavior.chargeDuration);
-                    manager.SetMetronomeChargeAuthority(Math.Min(newcharge, 1));
+                    if (isGrounded) notSprintingStopwatch += Time.fixedDeltaTime;
                 }
-            }
-            else if (manager.metroCharge > 0f)
-            {
-                newcharge = manager.metroCharge - (Time.fixedDeltaTime / (2.0f + 2.0f * stack));
-                manager.SetMetronomeChargeAuthority(Math.Max(newcharge, 0f));
-                body.statsDirty = true;
-            }
+                else
+                {
+                    notSprintingStopwatch = 0f;
+                }
 
-            if (NetworkServer.active)
-            {
+                if (notSprintingStopwatch > 0f)
+                {
+                    if (isGrounded && clientCharge < 1.0f)
+                    {
+                        newcharge = clientCharge + (Time.fixedDeltaTime / MetronomeBehavior.chargeDuration);
+                        clientCharge = Math.Min(newcharge, 1);
+                    }
+                }
+                else if (clientCharge > 0f)
+                {
+                    newcharge = clientCharge - (Time.fixedDeltaTime / (2.0f + 2.0f * stack));
+                    clientCharge = Math.Max(newcharge, 0f);
+                }
+
+                //Only notify server if buffcount needs to change
+                //This method has an authority check built-in.
                 int buffCount = body.GetBuffCount(BuffCore.watchMetronomeBuff.buffIndex);
-                int metroChargeRounded = Mathf.FloorToInt(manager.metroCharge * 10);
-
-                while (buffCount != metroChargeRounded)
-                {
-
-                    if (buffCount < metroChargeRounded)
-                    {
-                        body.AddBuff(BuffCore.watchMetronomeBuff);
-                        buffCount++;
-                    }
-                    if (buffCount > metroChargeRounded)
-                    {
-                        body.RemoveBuff(BuffCore.watchMetronomeBuff);
-                        buffCount--;
-                    }
-                }
+                int metroChargeRounded = Mathf.FloorToInt(clientCharge * 10);
+                if (buffCount != metroChargeRounded) manager.SetMetronomeBuffsAuthority(metroChargeRounded);
             }
         }
 
         private void OnDestroy()
         {
-            if (NetworkServer.active)
-            {
-                int buffCount = body.GetBuffCount(BuffCore.watchMetronomeBuff);
-                while (buffCount > 0)
-                {
-                    body.RemoveBuff(BuffCore.watchMetronomeBuff);
-                    buffCount--;
-                }
-            }
+            if (body && body.hasEffectiveAuthority) manager.ClearMetronomeBuffsAuthority();
         }
     }
 }

@@ -225,6 +225,7 @@ localScale = new Vector3(0.001F, 0.001F, 0.001F)
 
         public void FixedUpdate()
         {
+            if (!body.hasEffectiveAuthority) return;
             if (body.isSprinting)
             {
                 timer += Time.deltaTime;
