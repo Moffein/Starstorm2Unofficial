@@ -87,7 +87,7 @@ namespace Starstorm2Unofficial.Cores
         }
 
         [Server]
-        public void ClearMetronomeBuffsServer()
+        private void ClearMetronomeBuffsServer()
         {
             if (!NetworkServer.active) return;
             int buffCount = body.GetBuffCount(BuffCore.watchMetronomeBuff.buffIndex);
