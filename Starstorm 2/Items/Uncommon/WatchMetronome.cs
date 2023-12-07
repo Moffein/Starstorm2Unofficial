@@ -210,38 +210,37 @@ namespace Starstorm2Unofficial.Cores.Items
         public void FixedUpdate()
         {
             //Calculate buffs clientside
-            if (body && body.hasEffectiveAuthority)
+            if (!body || !body.hasEffectiveAuthority) return;
+
+            bool isGrounded = body.characterMotor && body.characterMotor.isGrounded;
+            if (!body.isSprinting)
             {
-                bool isGrounded = body.characterMotor && body.characterMotor.isGrounded;
-                if (!body.isSprinting)
-                {
-                    if (isGrounded) notSprintingStopwatch += Time.fixedDeltaTime;
-                }
-                else
-                {
-                    notSprintingStopwatch = 0f;
-                }
-
-                if (notSprintingStopwatch > 0f)
-                {
-                    if (isGrounded && clientCharge < 1.0f)
-                    {
-                        float newcharge = clientCharge + (Time.fixedDeltaTime / MetronomeBehavior.chargeDuration);
-                        clientCharge = Math.Min(newcharge, 1);
-                    }
-                }
-                else if (clientCharge > 0f)
-                {
-                    float newcharge = clientCharge - (Time.fixedDeltaTime / (2.0f + 2.0f * stack));
-                    clientCharge = Math.Max(newcharge, 0f);
-                }
-
-                //Only notify server if buffcount needs to change
-                //This method has an authority check built-in.
-                int buffCount = body.GetBuffCount(BuffCore.watchMetronomeBuff.buffIndex);
-                int metroChargeRounded = Mathf.FloorToInt(clientCharge * 10);
-                if (buffCount != metroChargeRounded) manager.SetMetronomeBuffsAuthority(metroChargeRounded);
+                if (isGrounded) notSprintingStopwatch += Time.fixedDeltaTime;
             }
+            else
+            {
+                notSprintingStopwatch = 0f;
+            }
+
+            if (notSprintingStopwatch > 0f)
+            {
+                if (isGrounded && clientCharge < 1f)
+                {
+                    float newcharge = clientCharge + (Time.fixedDeltaTime / MetronomeBehavior.chargeDuration);
+                    clientCharge = Math.Min(newcharge, 1f);
+                }
+            }
+            else if (clientCharge > 0f)
+            {
+                float newcharge = clientCharge - (Time.fixedDeltaTime / (2.0f + 2.0f * stack));
+                clientCharge = Math.Max(newcharge, 0f);
+            }
+
+            //Only notify server if buffcount needs to change
+            //This method has an authority check built-in.
+            int buffCount = body.GetBuffCount(BuffCore.watchMetronomeBuff.buffIndex);
+            int desiredBuffCount = Mathf.FloorToInt(clientCharge * 10);
+            if (buffCount != desiredBuffCount) manager.SetMetronomeBuffsAuthority(desiredBuffCount);
         }
 
         private void OnDestroy()
