@@ -170,7 +170,7 @@
     <Compile Include="Items\Common\Diary.cs" />
     <Compile Include="Items\Common\Disabled\DormantFungus.cs" />
     <Compile Include="Items\Rare\DroidHead.cs" />
-    <Compile Include="Items\Trashbin\ErraticGadget.cs" />
+    <Compile Include="Items\Rare\Disabled\ErraticGadget.cs" />
     <Compile Include="Items\Common\Fork.cs" />
     <Compile Include="Items\Rare\GreenChocolate.cs" />
     <Compile Include="Items\Unimplemented\Uncommon\HottestSauce.cs" />
@@ -179,7 +179,7 @@
     <Compile Include="Items\Common\MoltenCoin.cs" />
     <Compile Include="Items\Trashbin\NkotasHeritage.cs" />
     <Compile Include="Items\Trashbin\PrototypeJetBoots.cs" />
-    <Compile Include="Items\Trashbin\RelicOfMass.cs" />
+    <Compile Include="Items\Relic\Disabled\RelicOfMass.cs" />
     <Compile Include="Items\Nemesis\StirringSoul.cs" />
     <Compile Include="Items\Unimplemented\Uncommon\StrangeCan.cs" />
     <Compile Include="Items\Uncommon\WatchMetronome.cs" />
@@ -310,7 +310,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Cores\Enemies\" />
-    <Folder Include="Items\Relic\" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="0Harmony">

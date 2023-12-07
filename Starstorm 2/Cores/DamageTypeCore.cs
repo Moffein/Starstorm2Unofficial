@@ -20,6 +20,7 @@ namespace Starstorm2Unofficial.Cores
             public static DamageAPI.ModdedDamageType ExtendFear;
             public static DamageAPI.ModdedDamageType GuaranteedFearOnHit;   //Used for Exe Scepter
             public static DamageAPI.ModdedDamageType ResetVictimForce;
+            public static DamageAPI.ModdedDamageType ErraticGadget;
         }
 
         //public static DamageType
@@ -37,6 +38,7 @@ namespace Starstorm2Unofficial.Cores
             ModdedDamageTypes.GougeOnHit = DamageAPI.ReserveDamageType();
             ModdedDamageTypes.ExtendFear = DamageAPI.ReserveDamageType();
             ModdedDamageTypes.GuaranteedFearOnHit = DamageAPI.ReserveDamageType();
+            ModdedDamageTypes.ErraticGadget = DamageAPI.ReserveDamageType();
 
             On.RoR2.HealthComponent.TakeDamage += HealthComponent_TakeDamage;
             On.RoR2.GlobalEventManager.OnHitEnemy += GlobalEventManager_OnHitEnemy;

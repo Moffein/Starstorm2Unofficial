@@ -6,7 +6,7 @@ Executioner and Nemesis Commando are based on the version from the pre-SotV buil
 
 This mod can be used alongside the official version of Starstorm 2. Be sure to go through your configs to disable duplicated features.
 
-I've gotten permission to work on this project and host it here, and permission to upload it to Thunderstore as a hidden mod.
+I've gotten permission to work on this project and host it here, and permission to upload it to Thunderstore.
 
 The SS2 team is free to use any of the new code from this mod as long as this repo is allowed to stay up and credit is given.
 
@@ -33,21 +33,34 @@ The SS2 team is free to use any of the new code from this mod as long as this re
 	- Rare:
 		- Droid Head
 		- Green Chocolate
+		- Erratic Gadget (Disabled)
 	
 	- Boss:
 		- Stirring Soul
+	
+	- Lunar:
+		- Relic of Mass (Disabled)
 
 - Equipment:
 	- Cloaking Headband
 	- Greater Warbanner
   
- - Storms
+ - Storm Events
  
  - Nemesis Invasion Event (triggered after completing Void Fields)
  
  *If unlock achievements aren't working, you can force unlock them in the config.*
 
 ## Changelog
+
+`0.15.4`
+
+- Fixed Dungus healing 100x more than intended.
+
+`0.15.3`
+
+- Added Erratic Gadget (Disabled by Default)
+- Added Relic of Mass (Disabled by Default)
 
 `0.15.2`
 

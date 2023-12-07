@@ -11,10 +11,11 @@ namespace Starstorm2Unofficial.Cores.Items
 {
     class ErraticGadget : SS2Item<ErraticGadget>
     {
-        public override string NameInternal => "ErraticGadget";
+        public static GameObject tracerEffectPrefab = LegacyResourcesAPI.Load<GameObject>("prefabs/effects/tracers/TracerCaptainDefenseMatrix");
+        public override string NameInternal => "SS2U_ErraticGadget";
         public override string Name => "Erratic Gadget";
-        public override string Pickup => "Critical strikes deal extra damage.";
-        public override string Description => $"Gain <style=cIsDamage>{StaticValues.gadgetCrit}% critical chance</style>. Critical strikes deal <style=cIsDamage>{StaticValues.gadgetDamage * 100}%</style> <style=cStack>(+{StaticValues.gadgetDamage * 100}% per stack)</style> extra damage.";
+        public override string Pickup => "Critical strikes hit an additional time.";
+        public override string Description => "Gain <style=cIsDamage>10% critical chance</style>. <style=cIsDamage>Critical strikes</style> hit an additional time for <style=cIsDamage>50%</style> <style=cStack>(+50% per stack)</style> TOTAL damage.";
         public override string Lore => "<style=cMono>==========================\n========  CallCutter ========\n===== ALPHA 0.1354.1.12 =====\n==========================\n\nCutting into call TdiM3c4fcQQA.34074... done\nAcquiring audio input from Caller A... done\nCaller B........ done\nEncrypting line... done\nEnable live TTS output?\n>Y\n\n==========================\nTEXT-TO-SPEECH OUTPUT BELOW\n==========================\n</style>\nCaller A: Hey, do you still have the gadget?\nCaller B: Yeah, right here, are we still good to go?\nCaller A: Yes, the deal's still on...\nCaller A: You haven't told anyone about this, right?\nCaller B: What, you think I'm stupid? Of course not!\nCaller A: Good. Keep it that way.\nCaller B: I will, I will... Say, are you sure this thing's safe to just, like, send through the system?\nCaller B: This gadget's some sort of high-end weapon modification, isn't it?\nCaller A: Don't sweat it, the gadget's perfectly safe. UES doesn't check their packages. I've used their mailing system loads before, and I'm still doing just fine.\nCaller B: Eh, if you say so. I'll send it through, and I'm expecting fifteen-thousand credits within the next twenty-four hours, as planned.\nCaller A: As planned. Good doing business with you.\n\n<style=cMono>==========================\n=====CALL DISCONNECTED=====\n==========================\n\nSevering line..... done\nBacking up recording........ done\nSave text output?\n>Y\n";
         public override ItemTier Tier => ItemTier.Tier3;
         public override ItemTag[] Tags => new ItemTag[]
@@ -26,8 +27,8 @@ namespace Starstorm2Unofficial.Cores.Items
 
         public override void RegisterHooks()
         {
-            On.RoR2.GlobalEventManager.OnHitEnemy += GlobalEventManager_OnHitEnemy;
-            On.RoR2.CharacterBody.RecalculateStats += CharacterBody_RecalculateStats;
+            SharedHooks.OnHitEnemy.OnHitAttackerInventoryActions += ProcGadget;
+            SharedHooks.GetStatCoefficients.HandleStatsInventoryActions += HandleStats;
         }
 
         public override ItemDisplayRuleDict CreateDisplayRules()
@@ -170,44 +171,48 @@ namespace Starstorm2Unofficial.Cores.Items
         }
 
 
-        private void GlobalEventManager_OnHitEnemy(On.RoR2.GlobalEventManager.orig_OnHitEnemy orig, GlobalEventManager self, DamageInfo damageInfo, GameObject victim)
+        private void ProcGadget(DamageInfo damageInfo, CharacterBody victimBody, CharacterBody attackerBody, Inventory attackerInventory)
         {
-            GameObject attacker = damageInfo.attacker;
-            if (self && attacker)
-            {
-                var attackerBody = attacker.GetComponent<CharacterBody>();
-                var victimBody = victim.GetComponent<CharacterBody>();
+            if (!damageInfo.crit || damageInfo.procCoefficient <= 0f || damageInfo.HasModdedDamageType(DamageTypeCore.ModdedDamageTypes.ErraticGadget) || !victimBody.healthComponent) return;
 
-                int gadgetCount = GetCount(attackerBody);
-                if (gadgetCount > 0)
+            int gadgetCount = attackerInventory.GetItemCount(itemDef);
+            if (gadgetCount <= 0) return;
+
+            if (ErraticGadget.tracerEffectPrefab)
+            {
+                EffectData effectData = new EffectData
                 {
-                    if (damageInfo.crit)
-                    {
-                        GameObject erraticGadgetEffectPrefab = LegacyResourcesAPI.Load<GameObject>("prefabs/effects/tracers/TracerCaptainDefenseMatrix");
-                        if (erraticGadgetEffectPrefab)
-                        {
-                            EffectData effectData = new EffectData
-                            {
-                                origin = victimBody.corePosition,
-                                start = attackerBody.corePosition
-                            };
-                            EffectManager.SpawnEffect(erraticGadgetEffectPrefab, effectData, true);
-                        }
-                        DamageInfo newDamageInfo = damageInfo;
-                        newDamageInfo.damage = damageInfo.damage * (StaticValues.gadgetDamage * gadgetCount);
-                        victim.GetComponent<HealthComponent>().TakeDamage(newDamageInfo);
-                        //This needs to be edited so that the effect actually originates from a body attachment
-                    }
-                }
+                    origin = victimBody.corePosition,
+                    start = attackerBody.corePosition
+                };
+                EffectManager.SpawnEffect(ErraticGadget.tracerEffectPrefab, effectData, true);
             }
-            orig(self, damageInfo, victim);
+
+            DamageInfo newDamageInfo = new DamageInfo
+            {
+                attacker = damageInfo.attacker,
+                inflictor = damageInfo.inflictor,
+                crit = damageInfo.crit,
+                canRejectForce = damageInfo.canRejectForce,
+                damageType = DamageType.Generic,
+                damageColorIndex = DamageColorIndex.Item,
+                dotIndex = damageInfo.dotIndex,
+                force = damageInfo.force * 0.5f,
+                position = damageInfo.position,
+                procChainMask = damageInfo.procChainMask,
+                rejected = damageInfo.rejected,
+                procCoefficient = damageInfo.procCoefficient * 0.5f
+            };
+            newDamageInfo.AddModdedDamageType(DamageTypeCore.ModdedDamageTypes.ErraticGadget);
+            newDamageInfo.damage = damageInfo.damage * gadgetCount * 0.5f;
+
+            victimBody.healthComponent.TakeDamage(newDamageInfo);
+            GlobalEventManager.instance.OnHitEnemy(newDamageInfo, victimBody.gameObject);
         }
 
-        private void CharacterBody_RecalculateStats(On.RoR2.CharacterBody.orig_RecalculateStats orig, CharacterBody self)
+        private void HandleStats(CharacterBody sender, RecalculateStatsAPI.StatHookEventArgs args, Inventory inventory)
         {
-            orig(self);
-            if (GetCount(self) > 0)
-                self.crit += StaticValues.gadgetCrit;
+            if (inventory.GetItemCount(itemDef) > 0) args.critAdd += 10f;
         }
     }
 }

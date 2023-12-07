@@ -53,7 +53,7 @@ namespace Starstorm2Unofficial
     {
         internal const string guid = "com.ChirrLover.Starstorm2Unofficial";
         internal const string modName = "Starstorm 2 Unofficial";
-        internal const string version = "0.15.2";
+        internal const string version = "0.15.4";
 
         public static StarstormPlugin instance;
 
@@ -198,6 +198,8 @@ namespace Starstorm2Unofficial
                 //Disabled by default
                 AddItemIfEnabled(new DormantFungus(), ItemCore.instance.items, false);
                 AddItemIfEnabled(new CoffeeBag(), ItemCore.instance.items, false);
+                AddItemIfEnabled(new RelicOfMass(), ItemCore.instance.items, false);
+                AddItemIfEnabled(new ErraticGadget(), ItemCore.instance.items, false);
 
                 //AddItemIfEnabled(new DetritiveTrematode(), ItemCore.instance.items);
                 //AddItemIfEnabled(new Malice(), ItemCore.instance.items);
@@ -207,9 +209,6 @@ namespace Starstorm2Unofficial
                 //AddItemIfEnabled(new PrototypeJetBoots(), ItemCore.instance.items);
                 //AddItemIfEnabled(new HuntersSigil(), ItemCore.instance.items);
                 //AddItemIfEnabled(new NkotasHeritage(), ItemCore.instance.items);
-                //AddItemIfEnabled(new ErraticGadget(), ItemCore.instance.items);
-                //
-                //AddItemIfEnabled(new RelicOfMass(), ItemCore.instance.items);
                 //AddItemIfEnabled(new BabyToys(), ItemCore.instance.items);
                 ItemCore.instance.InitItems();
             }

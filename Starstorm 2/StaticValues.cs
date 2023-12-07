@@ -13,14 +13,8 @@ namespace Starstorm2Unofficial
         public static float trematodeDuration;
         public static float trematodeCritical;
 
-        public static float massFactor;
-        public static float massHealthGain;
-
         public static float testerGold;
         public static float testerHealing;
-
-        public static float gadgetDamage;
-        public static float gadgetCrit;
 
         public static float bootsBase;
         public static float bootsStack;
@@ -75,14 +69,8 @@ namespace Starstorm2Unofficial
             trematodeDuration = 3f;
             trematodeCritical = 0.4f;
 
-            massFactor = 8f;
-            massHealthGain = 1f;
-
             testerGold = 5f;
             testerHealing = 15f;
-
-            gadgetDamage = 0.5f;
-            gadgetCrit = 10f;
         }
 
         // helper for ez item stat config

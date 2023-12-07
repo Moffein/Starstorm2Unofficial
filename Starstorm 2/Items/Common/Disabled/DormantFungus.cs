@@ -230,7 +230,7 @@ localScale = new Vector3(0.001F, 0.001F, 0.001F)
                 timer += Time.deltaTime;
                 if (timer >= 1f)
                 {
-                    manager.HealFractionAuthority(0.6f + 0.6f * stack);
+                    manager.HealFractionAuthority(0.006f + 0.006f * stack);
                     timer = 0;
                 }
             }
