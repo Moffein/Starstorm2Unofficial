@@ -209,13 +209,11 @@ namespace Starstorm2Unofficial.Cores.Items
 
         public void FixedUpdate()
         {
-            float newcharge;
-
             //Calculate buffs clientside
-            if (body.hasEffectiveAuthority)
+            if (body && body.hasEffectiveAuthority)
             {
                 bool isGrounded = body.characterMotor && body.characterMotor.isGrounded;
-                if (body && !body.isSprinting)
+                if (!body.isSprinting)
                 {
                     if (isGrounded) notSprintingStopwatch += Time.fixedDeltaTime;
                 }
@@ -228,13 +226,13 @@ namespace Starstorm2Unofficial.Cores.Items
                 {
                     if (isGrounded && clientCharge < 1.0f)
                     {
-                        newcharge = clientCharge + (Time.fixedDeltaTime / MetronomeBehavior.chargeDuration);
+                        float newcharge = clientCharge + (Time.fixedDeltaTime / MetronomeBehavior.chargeDuration);
                         clientCharge = Math.Min(newcharge, 1);
                     }
                 }
                 else if (clientCharge > 0f)
                 {
-                    newcharge = clientCharge - (Time.fixedDeltaTime / (2.0f + 2.0f * stack));
+                    float newcharge = clientCharge - (Time.fixedDeltaTime / (2.0f + 2.0f * stack));
                     clientCharge = Math.Max(newcharge, 0f);
                 }
 

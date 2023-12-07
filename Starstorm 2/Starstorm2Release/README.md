@@ -55,11 +55,14 @@ The SS2 team is free to use any of the new code from this mod as long as this re
 
 `0.15.6`
 
-- Attempted to fix reported lag with Watch Metronome.
+- Watch Metronome
 	- No longer calls RecalculateStats every frame.
 	- Reduced network commands it sends (now only notifies server when buffcount needs to change, instead of every frame).
 	- Fixed item logic being duplicated across all clients, potentially resulting in lots of lag (due to recalculate stats every frame and potentially 4-16 network commands being sent every frame).
 	- Fixed jumping not pausing the charge (was only pausing the initial charge delay).
+
+- Dormant Fungus
+	- Tweaked network code a bit to be more failsafe.
 
 `0.15.5`
 
