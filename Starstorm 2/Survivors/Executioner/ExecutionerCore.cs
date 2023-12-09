@@ -186,8 +186,8 @@ namespace Starstorm2Unofficial.Survivors.Executioner
                 skillIcon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("texExecutionerSecondary"),
                 activationState = new SerializableEntityStateType(typeof(ExecutionerIonGun)),
                 activationStateMachineName = "Weapon",
-                baseMaxStock = 10,
-                baseRechargeInterval = 0f,
+                baseMaxStock = 5,
+                baseRechargeInterval = 12f,
                 beginSkillCooldownOnSkillEnd = true,
                 canceledFromSprinting = false,
                 forceSprintDuringState = false,
@@ -197,7 +197,7 @@ namespace Starstorm2Unofficial.Survivors.Executioner
                 isCombatSkill = true,
                 mustKeyPress = false,
                 cancelSprintingOnActivation = true,
-                rechargeStock = 0,
+                rechargeStock = 1,
                 requiredStock = 1,
                 stockToConsume = 0,
                 keywordTokens = new string[] { "KEYWORD_SHOCKING" }
@@ -231,6 +231,7 @@ namespace Starstorm2Unofficial.Survivors.Executioner
                 stockToConsume = 1,
                 keywordTokens = new string[]
                 {
+                    "KEYWORD_STUNNING",
                     "KEYWORD_SS2U_FEAR"
                 }
             });
@@ -335,9 +336,9 @@ namespace Starstorm2Unofficial.Survivors.Executioner
             LanguageAPI.Add("SS2UEXECUTIONER_NAME", "Executioner");
             LanguageAPI.Add("SS2UEXECUTIONER_SUBTITLE", "Dreaded Guillotine");
             LanguageAPI.Add("SS2UEXECUTIONER_DESCRIPTION", "The Executioner's goal is to spill as much blood as possible in the shortest amount of time. Bullets loaded, ion manipulators charged.<style=cSub>\r\n\r\n" +
-                " < ! > Ion Burst deals massive damage, but does not regenerate stocks over time.\r\n\r\n" +
+                " < ! > Ion Burst deals massive damage but regenerates stocks slowly. Kill weak enemies to charge it up quickly, then unload it into stronger enemies.\r\n\r\n" +
                 " < ! > Crowd Disperion interrupts enemy attacks, providing you with a window of opportunity.\r\n\r\n" +
-                " < ! > Feared enemies give extra Ion Burst charges when killed.\r\n\r\n" +
+                " < ! > Feared enemies are executed at low health.\r\n\r\n" +
                 " < ! > Combine Execution with Crowd Dispersion to quickly kill groups of enemies.\r\n\r\n");
             LanguageAPI.Add("SS2UEXECUTIONER_OUTRO_FLAVOR", "..and so he left, bloodlust unfulfilled.");
             LanguageAPI.Add("SS2UEXECUTIONER_OUTRO_FAILURE", "..and so he vanished, escaping what he'd believed was inevitable.");
@@ -358,18 +359,18 @@ namespace Starstorm2Unofficial.Survivors.Executioner
             LanguageAPI.Add("SS2UEXECUTIONER_PISTOL_DESCRIPTION", $"Fire your pistol for <style=cIsDamage>{shotCount}x{dmg}% damage</style>.");
 
             dmg = ExecutionerSinglePistol.damageCoefficient * 100f;
-            LanguageAPI.Add("SS2UEXECUTIONER_PISTOL_SINGLE_NAME", "Standard Issue Pistol");
+            LanguageAPI.Add("SS2UEXECUTIONER_PISTOL_SINGLE_NAME", "Standard-Issue Pistol");
             LanguageAPI.Add("SS2UEXECUTIONER_PISTOL_SINGLE_DESCRIPTION", $"Fire your pistol for <style=cIsDamage>{dmg}% damage</style>.");
 
             dmg = ExecutionerIonGun.damageCoefficient * 100f;
-
+            int shots = ExecutionerIonGun.shotCount;
             LanguageAPI.Add("SS2UEXECUTIONER_IONGUN_NAME", "Ion Burst");
-            LanguageAPI.Add("SS2UEXECUTIONER_IONGUN_DESCRIPTION", $"<style=cIsDamage>Shocking</style>. Unload a barrage of ionized bullets for <style=cIsDamage>{dmg}% damage</style> each. Every slain enemy <style=cIsUtility>adds a bullet</style>.");
+            LanguageAPI.Add("SS2UEXECUTIONER_IONGUN_DESCRIPTION", $"<style=cIsDamage>Shocking</style>. Unload a barrage of ionized bullets for <style=cIsDamage>{shots}x{dmg}% damage</style> each. Every slain enemy <style=cIsUtility>adds a stock</style>. Hold up to 5.");
 
             LanguageAPI.Add("KEYWORD_SS2U_FEAR", "<style=cKeywordName>Fear</style><style=cSub>Reduce movement speed by <style=cIsDamage>50%</style>. Feared enemies are <style=cIsHealth>instantly killed</style> if below <style=cIsHealth>15%</style> health.</style>");
 
             LanguageAPI.Add("SS2UEXECUTIONER_DASH_NAME", "Crowd Dispersion");
-            LanguageAPI.Add("SS2UEXECUTIONER_DASH_DESCRIPTION", $"<style=cIsUtility>Dash forward</style> and <style=cIsDamage>Fear</style> nearby enemies.");
+            LanguageAPI.Add("SS2UEXECUTIONER_DASH_DESCRIPTION", $"<style=cIsDamage>Stunning</style>. <style=cIsUtility>Dash forward</style> and <style=cIsDamage>Fear</style> nearby enemies.");
 
             dmg = ExecutionerAxeSlam.damageCoefficient * 100f;
 
@@ -636,33 +637,15 @@ namespace Starstorm2Unofficial.Survivors.Executioner
                     if (damageReport.attackerBody && damageReport.attackerBody.bodyIndex == ExecutionerCore.bodyIndex)
                     {
                         int orbCount = GetIonCountFromBody(victimBody);
-                        if (victimFeared) orbCount *= 2;
-                            //if (damageReport.damageInfo.damageType.HasFlag(DamageType.BypassOneShotProtection)) orbCount *= 2;    //Was used to make exe axe give double charges on kill. Unnecessary.
+                        //if (victimFeared) orbCount *= 2;
 
-                            for (int i = 0; i < orbCount; i++)
-                            {
-                                Modules.Orbs.ExecutionerIonOrb ionOrb = new Modules.Orbs.ExecutionerIonOrb();
-                                ionOrb.origin = victimBody.corePosition;
-                                ionOrb.target = Util.FindBodyMainHurtBox(damageReport.attackerBody);
-                                OrbManager.instance.AddOrb(ionOrb);
-                            }
-
-                        //These aren't used anymore because the hardcoded Ion Burst value list was ridiculous.
-                        /*if (orbCount >= 50 && orbCount < 110)
+                        for (int i = 0; i < orbCount; i++)
                         {
-                            Modules.Orbs.ExecutionerIonTempSuperOrb tempSuperIonOrb = new Modules.Orbs.ExecutionerIonTempSuperOrb();
-                            tempSuperIonOrb.origin = victimBody.corePosition;
-                            tempSuperIonOrb.target = Util.FindBodyMainHurtBox(damageReport.attackerBody);
-                            OrbManager.instance.AddOrb(tempSuperIonOrb);
+                            Modules.Orbs.ExecutionerIonOrb ionOrb = new Modules.Orbs.ExecutionerIonOrb();
+                            ionOrb.origin = victimBody.corePosition;
+                            ionOrb.target = Util.FindBodyMainHurtBox(damageReport.attackerBody);
+                            OrbManager.instance.AddOrb(ionOrb);
                         }
-
-                        if (orbCount >= 110)
-                        {
-                            Modules.Orbs.ExecutionerIonSuperOrb superIonOrb = new Modules.Orbs.ExecutionerIonSuperOrb();
-                            superIonOrb.origin = victimBody.corePosition;
-                            superIonOrb.target = Util.FindBodyMainHurtBox(damageReport.attackerBody);
-                            OrbManager.instance.AddOrb(superIonOrb);
-                        }*/
                     }
                 }
             }
@@ -670,7 +653,7 @@ namespace Starstorm2Unofficial.Survivors.Executioner
 
         internal static int GetIonCountFromBody(CharacterBody body)
         {
-            if (body.isChampion) return 10;
+            if (body.isChampion) return 5;
             return 1;
         }
 

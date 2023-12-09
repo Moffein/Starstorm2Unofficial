@@ -13,7 +13,8 @@ namespace EntityStates.SS2UStates.Executioner
 {
     public class ExecutionerIonGun : BaseCustomSkillState
     {
-        public static float damageCoefficient = 3.2f;
+        public static int shotCount = 2;
+        public static float damageCoefficient = 2.5f;
         public static float procCoefficient = 1.0f;
         public static float baseDuration = 0.12f;
         public static float recoil = 1f;
@@ -41,8 +42,15 @@ namespace EntityStates.SS2UStates.Executioner
             //how do we get this skill's slot without hardcoding like this
             // doesn't really matter
             skill = base.characterBody.skillLocator.GetSkill(SkillSlot.Secondary);
-            this.shotsToFire = skill.stock;
-            //if (shotsToFire > 10) shotsToFire = 10;
+            if (skill)
+            {
+                this.shotsToFire = skill.stock * shotCount;
+
+                if (!base.characterBody.HasBuff(Starstorm2Unofficial.Cores.BuffCore.exeSuperchargedBuff))
+                {
+                    skill.stock = 0;
+                }
+            }
             this.duration = baseDuration;// / this.attackSpeedStat;
             base.characterBody.SetAimTimer(2f);
             this.muzzleString = "Muzzle";
@@ -50,7 +58,6 @@ namespace EntityStates.SS2UStates.Executioner
             isCrit = base.RollCrit();
 
             Shoot();
-            shotsToFire--;
         }
 
         public override void OnExit()
@@ -70,7 +77,6 @@ namespace EntityStates.SS2UStates.Executioner
                 if (this.shotsToFire > 0)
                 {
                     this.Shoot();
-                    this.shotsToFire--;
                 }
                 else
                 {
@@ -81,6 +87,7 @@ namespace EntityStates.SS2UStates.Executioner
 
         private void Shoot()
         {
+            this.shotsToFire--;
             //Util.PlayAttackSpeedSound(base.effectComponent.ionShootSound, base.gameObject, this.attackSpeedStat);
             Util.PlaySound("SS2UExecutionerSecondaryClassic", base.gameObject);
             base.AddRecoil(-2f * recoil, -3f * recoil, -1f * recoil, 1f * recoil);
@@ -130,8 +137,6 @@ namespace EntityStates.SS2UStates.Executioner
                 };
                 bullet.AddModdedDamageType(DamageTypeCore.ModdedDamageTypes.ExtendFear);
                 bullet.Fire();
-
-                if (!base.characterBody.HasBuff(Starstorm2Unofficial.Cores.BuffCore.exeSuperchargedBuff)) skill.DeductStock(1);
             }
         }
 

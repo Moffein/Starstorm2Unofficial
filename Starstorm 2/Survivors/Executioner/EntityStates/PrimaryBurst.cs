@@ -7,7 +7,7 @@ namespace EntityStates.SS2UStates.Executioner
 {
     public class ExecutionerBurstPistol : BaseState
     {
-        public static float damageCoefficient = 1.5f;
+        public static float damageCoefficient = 1.8f;
         public static float force = 100f;
         public static float baseDuration = 0.5f;
         public static float baseShotDuration = 0.12f;

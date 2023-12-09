@@ -49,7 +49,7 @@ namespace Starstorm2Unofficial.Survivors.Executioner.Components
                         int orbCount = 1;
                         CharacterBody body = this.GetComponent<CharacterBody>();
                         if (body) orbCount = Executioner.ExecutionerCore.GetIonCountFromBody(body);
-                        if (body.HasBuff(Cores.BuffCore.fearDebuff)) orbCount *= 2;
+                        //if (body.HasBuff(Cores.BuffCore.fearDebuff)) orbCount *= 2;
 
                         for (int i = 0; i < orbCount; i++)
                         {

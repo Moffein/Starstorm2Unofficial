@@ -124,7 +124,8 @@ namespace EntityStates.SS2UStates.Executioner
                         Type state = ssoh.targetStateMachine.state.GetType();
                         if (state != typeof(EntityStates.StunState) && state != typeof(EntityStates.ShockState) && state != typeof(EntityStates.FrozenState))
                         {
-                            ssoh.SetStun(-1f);
+                            //ssoh.SetStun(-1f);    //-1f = stagger
+                            ssoh.SetStun(2f);
                         }
                     }
 

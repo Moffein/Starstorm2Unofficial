@@ -53,6 +53,25 @@ The SS2 team is free to use any of the new code from this mod as long as this re
 
 ## Changelog
 
+`0.16.0`
+
+- Executioner
+	- Primaries
+		- Increased damage from 150% -> 180%
+		
+		*4 shots to kill a Lemurian on stage 1.*
+		
+	- Ion Burst
+		- Increased damage from 320% -> 2x250%.
+		- Reduced stocks from 10 -> 5 (3200% damage total -> 2500% damage total)
+		- Recharges stocks every 12s, on top of the on-kill restock.
+		- No longer gains double stocks from killing Feared enemies.
+		
+		*This skill struggled in MP, and often ended up requiring too much time to build up for too little payoff. Should be able to fire off big bursts more frequently now.*
+		
+	- Crowd Dispersion
+		- Now fully Stuns instead of just Staggering.
+
 `0.15.6`
 
 - Watch Metronome
