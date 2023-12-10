@@ -53,6 +53,12 @@ The SS2 team is free to use any of the new code from this mod as long as this re
 
 ## Changelog
 
+`0.16.2`
+
+- Pyro
+	- Fixed normals on model. (Thanks FORCED_REASSEMBLY!)
+	- Updated character select icon.
+
 `0.16.1`
 
 - Executioner
