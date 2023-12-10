@@ -176,15 +176,6 @@ namespace Starstorm2Unofficial.Cores.NemesisInvasion.Components
                 });
             }
             yield return new WaitForSeconds(12f);
-
-            if (nemesisMusic)
-            {
-                NemesisMusicController nmc = nemesisMusic.GetComponent<NemesisMusicController>();
-                if (nmc)
-                {
-                    nmc.StartMusicServer("Play_SS2U_NemesisTheme");
-                }
-            }
             Transform spawnOnTarget = null;
             DirectorCore.MonsterSpawnDistance input = DirectorCore.MonsterSpawnDistance.Far;
             if (TeleporterInteraction.instance)
@@ -281,7 +272,17 @@ namespace Starstorm2Unofficial.Cores.NemesisInvasion.Components
                 }));
                 GameObject spawnedObject = DirectorCore.instance.TrySpawnObject(directorSpawnRequest);
 
-                combatSquad.onDefeatedServer += StopNemesisMusic;
+
+
+                if (nemesisMusic)
+                {
+                    NemesisMusicController nmc = nemesisMusic.GetComponent<NemesisMusicController>();
+                    if (nmc)
+                    {
+                        nmc.StartMusicServer();
+                    }
+                    combatSquad.onDefeatedServer += StopNemesisMusic;
+                }
 
                 NetworkServer.Spawn(combatSquad.gameObject);
             }

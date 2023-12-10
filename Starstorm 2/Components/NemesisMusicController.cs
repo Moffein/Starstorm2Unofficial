@@ -6,13 +6,14 @@ namespace Starstorm2Unofficial.Components
 {
     public class NemesisMusicController : NetworkBehaviour
     {
+        public string soundName = "Play_SS2U_NemesisTheme";
         private bool isPlaying = false;
         private uint playID;
 
-        public void StartMusicServer(string soundName)
+        public void StartMusicServer()
         {
             if (!NetworkServer.active) return;
-            RpcStartMusic(soundName);
+            RpcStartMusic();
         }
 
         public void StopMusicServer()
@@ -22,12 +23,9 @@ namespace Starstorm2Unofficial.Components
         }
 
         [ClientRpc]
-        private void RpcStartMusic(string soundName)
+        private void RpcStartMusic()
         {
-            StopMusic();
-            isPlaying = true;
-            Modules.Music.musicSources++;
-            playID = Util.PlaySound(soundName, base.gameObject);
+            StartMusic();
         }
 
         [ClientRpc]
@@ -36,12 +34,20 @@ namespace Starstorm2Unofficial.Components
             StopMusic();
         }
 
+        private void StartMusic()
+        {
+            StopMusic();
+            isPlaying = true;
+            Modules.Music.musicSources++;
+            playID = Util.PlaySound(soundName, base.gameObject);
+        }
+
         private void StopMusic()
         {
             if (!isPlaying) return;
             isPlaying = false;
             Modules.Music.musicSources--;
-            AkSoundEngine.StopPlayingID(this.playID);
+            AkSoundEngine.StopPlayingID(playID);
         }
 
         private void OnDestroy()
