@@ -9,6 +9,7 @@ using RoR2;
 using RoR2.CharacterAI;
 using Starstorm2Unofficial.Components;
 using Starstorm2Unofficial.Cores.NemesisInvasion.Components;
+using Starstorm2Unofficial.Modules;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.Networking;
@@ -20,6 +21,7 @@ namespace Starstorm2Unofficial.Cores.NemesisInvasion
     {
         public static List<BodyIndex> prioritizePlayersList = new List<BodyIndex>();
         public static ItemDef NemesisMarkerItem;
+        public static GameObject NemesisMusicPrefab;
 
         public static float hpMult = 1f;
         public static float damageMult = 1f;
@@ -31,6 +33,7 @@ namespace Starstorm2Unofficial.Cores.NemesisInvasion
 
         public NemesisInvasionCore()
         {
+            BuildNemesisMusicController();
             NemesisInvasionManager.Initialize();
 
             LanguageAPI.Add("SS2UNEMESIS_MODE_ACTIVE_WARNING", "<style=cIsHealth>An unnatural force emanates from the void...</style>");
@@ -43,6 +46,16 @@ namespace Starstorm2Unofficial.Cores.NemesisInvasion
             if (moveSpeedCap > 0f) On.RoR2.CharacterBody.FixedUpdate += CapMoveSpeed;
 
             ApplyInfestationFix();
+        }
+
+        private void BuildNemesisMusicController()
+        {
+            if (NemesisMusicPrefab) return;
+            NemesisMusicPrefab = Assets.mainAssetBundle.LoadAsset<GameObject>("EmptyGameObject").InstantiateClone("NemesisMusicObject", false);
+            NemesisMusicPrefab.AddComponent<NetworkIdentity>();
+            NemesisMusicPrefab.AddComponent<NemesisMusicController>();
+            NemesisMusicPrefab.RegisterNetworkPrefab();
+            //Assets.networkedObjectPrefabs.Add(NemesisMusicPrefab);
         }
 
         private void CapMoveSpeed(On.RoR2.CharacterBody.orig_FixedUpdate orig, CharacterBody self)
@@ -141,7 +154,7 @@ namespace Starstorm2Unofficial.Cores.NemesisInvasion
             if (masterPrefab)
             {
                 Debug.Log("Starstorm 2 Unofficial: Adding Nemforcer Miniboss to Nemesis invader list.");
-                AddNemesisBoss(masterPrefab, null, string.Empty, true, true);
+                AddNemesisBoss(masterPrefab, null, string.Empty, true);
 
                 CharacterMaster cm = masterPrefab.GetComponent<CharacterMaster>();
                 if (cm && cm.bodyPrefab)
@@ -175,9 +188,9 @@ namespace Starstorm2Unofficial.Cores.NemesisInvasion
             }
         }
 
-        public static void AddNemesisBoss(GameObject masterPrefab, int[] itemStacks, string itemDropName, bool shouldGrantRandomItems, bool autoMusicSetup)
+        public static void AddNemesisBoss(GameObject masterPrefab, int[] itemStacks, string itemDropName, bool shouldGrantRandomItems)
         {
-            NemesisCard nc = CreateNemesisBossCard(masterPrefab, itemStacks, itemDropName, shouldGrantRandomItems, autoMusicSetup);
+            NemesisCard nc = CreateNemesisBossCard(masterPrefab, itemStacks, itemDropName, shouldGrantRandomItems);
             AddNemesisBoss(nc);
         }
 
@@ -186,16 +199,9 @@ namespace Starstorm2Unofficial.Cores.NemesisInvasion
             if (card != null) NemesisInvasionManager.nemesisCards.Add(card);
         }
 
-        public static NemesisCard CreateNemesisBossCard(GameObject masterPrefab, int[] itemStacks, string itemDropName, bool shouldGrantRandomItems, bool autoMusicSetup)
+        public static NemesisCard CreateNemesisBossCard(GameObject masterPrefab, int[] itemStacks, string itemDropName, bool shouldGrantRandomItems)
         {
             if (!masterPrefab) return null;
-
-            if (autoMusicSetup)
-            {
-                NemesisMusicComponentMaster masterMusic = masterPrefab.GetComponent<NemesisMusicComponentMaster>();
-                if (!masterMusic) masterMusic = masterPrefab.AddComponent<NemesisMusicComponentMaster>();
-                masterMusic.musicString = "Play_SS2U_NemesisTheme";    //Lazy workaround since I can't figure out how to get the music system to work.
-            }
 
             CharacterSpawnCard csc = ScriptableObject.CreateInstance<CharacterSpawnCard>();
             csc.forbiddenAsBoss = false;

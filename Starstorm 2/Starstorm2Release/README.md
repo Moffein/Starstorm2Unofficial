@@ -57,7 +57,12 @@ The SS2 team is free to use any of the new code from this mod as long as this re
 
 - Pyro
 	- Fixed normals on model. (Thanks FORCED_REASSEMBLY!)
-	- Updated character select icon.
+	- Updated character select icon to the new model.
+	
+- Nemesis Invasion
+	- Music is handled in a less jank way now.
+		- Is tied to a NetworkBehavior instead of the Nemesis body.
+		- Nemesis Music will no longer play when you spawn them in via DebugToolkit, and it won't overlap if multiple Nemeses are alive.
 
 `0.16.1`
 

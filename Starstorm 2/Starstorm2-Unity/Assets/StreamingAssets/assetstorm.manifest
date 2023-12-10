@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 2073631001
+CRC: 1614111378
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: e90b9e19fd67fd8b4065d6e8bceb8772
+    Hash: ac30dd11867a94080241ff543e094212
   TypeTreeHash:
     serializedVersion: 2
     Hash: e085efc3cec39229c22603e1a47b8115
@@ -467,6 +467,7 @@ Assets:
 - Assets/AssetBundle/Nucleator/Animations/Clips/maskNucleatorGesture.mask
 - Assets/AssetBundle/Nemmando/Icons/texNemmandoSkinMaster.png
 - Assets/AssetBundle/BuffIcons/surprised-skull.png
+- Assets/AssetBundle/EmptyGameObject.prefab
 - Assets/AssetBundle/Items/MoltenCoin/MDLMoltenCoin.prefab
 - Assets/AssetBundle/Cyborg/Animations/CharSelectIdle.anim
 - Assets/AssetBundle/Nemmando/VFX/Materials/matAmmo.mat

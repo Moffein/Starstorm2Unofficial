@@ -78,6 +78,7 @@
     <Compile Include="API\ComponentHelpers.cs" />
     <Compile Include="API\LogCore.cs" />
     <Compile Include="API\Utils.cs" />
+    <Compile Include="Components\NemesisMusicController.cs" />
     <Compile Include="Cores\NemesisInvasion\Components\Body\NemesisDropItemOnDeath.cs" />
     <Compile Include="Cores\NemesisInvasion\Components\NemesisInvasionManager.cs" />
     <Compile Include="Cores\NemesisInvasion\NemesisInvasionCore.cs" />
@@ -134,8 +135,6 @@
     <Compile Include="Survivors\Executioner\Components\ExecutionerController.cs" />
     <Compile Include="Survivors\Executioner\Components\ExecutionerKillComponent.cs" />
     <Compile Include="Components\MenuSound.cs" />
-    <Compile Include="Components\NemesisMusicComponent.cs" />
-    <Compile Include="Components\NemesisMusicComponentMaster.cs" />
     <Compile Include="Survivors\Executioner\EntityStates\PrimarySingle.cs" />
     <Compile Include="Survivors\Executioner\EntityStates\SpecialScepter.cs" />
     <Compile Include="Survivors\Executioner\ExecutionerItemDisplays.cs" />
@@ -301,12 +300,6 @@
     <Compile Include="Survivors\Pyro\PyroItemDisplays.cs" />
     <Compile Include="Survivors\Pyro\PyroSkins.cs" />
     <Compile Include="Survivors\Pyro\PyroCore.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Assets\Starstorm2.bnk" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Assets\assetstorm" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Cores\Enemies\" />
@@ -672,9 +665,6 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>libs\Zio.dll</HintPath>
     </Reference>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Assets\SS2Music.bnk" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using RoR2;
+using Starstorm2Unofficial.Components;
 using Starstorm2Unofficial.Cores.NemesisInvasion.Components.Body;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
@@ -13,6 +14,8 @@ namespace Starstorm2Unofficial.Cores.NemesisInvasion.Components
 {
     public class NemesisInvasionManager : MonoBehaviour
     {
+        public GameObject nemesisMusic;
+
         public static PostProcessProfile voidPostProcess = Addressables.LoadAssetAsync<PostProcessProfile>("RoR2/DLC1/Common/Void/ppSceneVoidStage.asset").WaitForCompletion();
         public static List<NemesisCard> nemesisCards = new List<NemesisCard>();
         public static NemesisInvasionManager instance;
@@ -76,7 +79,7 @@ namespace Starstorm2Unofficial.Cores.NemesisInvasion.Components
                 SceneDef sd = SceneCatalog.GetSceneDefForCurrentScene();
                 if (sd && !sd.isFinalStage)
                 {
-                    if (NemesisInvasionManager.instance.voidClearedSuccessfully)
+                    if (true || NemesisInvasionManager.instance.voidClearedSuccessfully)
                     {
                         NemesisInvasionManager.instance.SpawnNemesis();
                     }
@@ -105,6 +108,8 @@ namespace Starstorm2Unofficial.Cores.NemesisInvasion.Components
 
         public void SpawnNemesis()
         {
+            if (NetworkServer.active && nemesisMusic) Destroy(nemesisMusic);
+
             if (Run.instance && cardSpawnCount < nemesisCards.Count)
             {
                 SceneDef sceneDef = SceneCatalog.GetSceneDefForCurrentScene();
@@ -114,6 +119,9 @@ namespace Starstorm2Unofficial.Cores.NemesisInvasion.Components
 
                 if (NetworkServer.active)
                 {
+                    nemesisMusic = UnityEngine.GameObject.Instantiate(NemesisInvasionCore.NemesisMusicPrefab);
+                    NetworkServer.Spawn(nemesisMusic);
+
                     if (remainingCards.Count > 0)
                     {
                         int spawnIndex = new Xoroshiro128Plus(Run.instance.spawnRng).RangeInt(0, remainingCards.Count);
@@ -169,6 +177,14 @@ namespace Starstorm2Unofficial.Cores.NemesisInvasion.Components
             }
             yield return new WaitForSeconds(12f);
 
+            if (nemesisMusic)
+            {
+                NemesisMusicController nmc = nemesisMusic.GetComponent<NemesisMusicController>();
+                if (nmc)
+                {
+                    nmc.StartMusicServer("Play_SS2U_NemesisTheme");
+                }
+            }
             Transform spawnOnTarget = null;
             DirectorCore.MonsterSpawnDistance input = DirectorCore.MonsterSpawnDistance.Far;
             if (TeleporterInteraction.instance)
@@ -264,9 +280,24 @@ namespace Starstorm2Unofficial.Cores.NemesisInvasion.Components
                     }
                 }));
                 GameObject spawnedObject = DirectorCore.instance.TrySpawnObject(directorSpawnRequest);
+
+                combatSquad.onDefeatedServer += StopNemesisMusic;
+
                 NetworkServer.Spawn(combatSquad.gameObject);
             }
             yield return null;
+        }
+
+        private void StopNemesisMusic()
+        {
+            if (nemesisMusic)
+            {
+                NemesisMusicController nmc = nemesisMusic.GetComponent<NemesisMusicController>();
+                if (nmc)
+                {
+                    nmc.StopMusicServer();
+                }
+            }
         }
 
         private static void GrantItems(Inventory inventory, List<PickupIndex> list, int types, int stackSize)
