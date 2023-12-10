@@ -79,7 +79,7 @@ namespace Starstorm2Unofficial.Cores.NemesisInvasion.Components
                 SceneDef sd = SceneCatalog.GetSceneDefForCurrentScene();
                 if (sd && !sd.isFinalStage)
                 {
-                    if (true || NemesisInvasionManager.instance.voidClearedSuccessfully)
+                    if (NemesisInvasionManager.instance.voidClearedSuccessfully)
                     {
                         NemesisInvasionManager.instance.SpawnNemesis();
                     }
