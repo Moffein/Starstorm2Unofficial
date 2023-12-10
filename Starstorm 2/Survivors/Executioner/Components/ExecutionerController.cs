@@ -39,8 +39,6 @@ namespace Starstorm2Unofficial.Survivors.Executioner.Components
                 this.superchargeEffectLoop = this.childLocator.FindChild("SuperchargePassiveEffect").GetComponentInChildren<ParticleSystem>();
             }
 
-            // disable dynamic bones on mastery skin
-            Invoke("VigilanteCheck", 2f);
             Invoke("CheckInventory", 0.2f);
         }
 
@@ -48,6 +46,9 @@ namespace Starstorm2Unofficial.Survivors.Executioner.Components
         //Duplicated from ExecutionerMain. This makes special stock get set before he exits his pod.
         private void Start()
         {
+            //Running this makes EVERYTHING look so much less jank AAAAAAAAAAAAAAAAAAAAAAAAA
+            DisableDynamicBones();
+
             SkillLocator skillLocator = base.GetComponent<SkillLocator>();
             if (skillLocator)
             {
@@ -122,17 +123,12 @@ namespace Starstorm2Unofficial.Survivors.Executioner.Components
             }
         }
 
-        private void VigilanteCheck()
+        private void DisableDynamicBones()
         {
-            if (this.model)
+            if (!this.model) return;
+            foreach (DynamicBone i in this.model.GetComponents<DynamicBone>())
             {
-                if (this.characterBody.skinIndex == 1)
-                {
-                    foreach (DynamicBone i in this.model.GetComponents<DynamicBone>())
-                    {
-                        if (i) i.enabled = false;
-                    }
-                }
+                if (i) i.enabled = false;
             }
         }
 

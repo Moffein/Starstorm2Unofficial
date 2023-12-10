@@ -53,6 +53,11 @@ The SS2 team is free to use any of the new code from this mod as long as this re
 
 ## Changelog
 
+`0.16.1`
+
+- Executioner
+	- Disabled Dynamic Bones on skins. His model should look a LOT less jank when in motion now.
+
 `0.16.0`
 
 - Executioner
