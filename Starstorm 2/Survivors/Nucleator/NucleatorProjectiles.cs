@@ -15,7 +15,7 @@ namespace Starstorm2Unofficial.Survivors.Nucleator
             GameObject projectilePrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Mage/MageLightningboltBasic.prefab").WaitForCompletion().InstantiateClone("SS2UNucleatorPrimaryProjectile", true);
             Modules.Prefabs.projectilePrefabs.Add(projectilePrefab);
 
-            GameObject projectileGhost = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Lemurian/FireballGhost.prefab").WaitForCompletion().InstantiateClone("SS2UNucleatorPrimaryGhost", false);
+            GameObject projectileGhost = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Beetle/BeetleQueenSpitGhost.prefab").WaitForCompletion().InstantiateClone("SS2UNucleatorPrimaryGhost", false);
             projectileGhost.AddComponent<GhostScaleOverTime>();
 
             ProjectileController pc = projectilePrefab.GetComponent<ProjectileController>();
@@ -24,6 +24,9 @@ namespace Starstorm2Unofficial.Survivors.Nucleator
             ProjectileSimple ps = projectilePrefab.GetComponent<ProjectileSimple>();
             ps.desiredForwardSpeed = 60f;
             ps.lifetime = 10f;
+
+            ProjectileImpactExplosion pie = projectilePrefab.GetComponent<ProjectileImpactExplosion>();
+            pie.impactEffect = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Beetle/BeetleSpitExplosion.prefab").WaitForCompletion();
 
             projectilePrefab.AddComponent<PrimaryProjectileComponent>();
 

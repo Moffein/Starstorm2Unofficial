@@ -14,7 +14,7 @@ namespace EntityStates.SS2UStates.Executioner
     public class ExecutionerIonGun : BaseCustomSkillState
     {
         public static int shotCount = 2;
-        public static float damageCoefficient = 2.5f;
+        public static float damageCoefficient = 3f;
         public static float procCoefficient = 1.0f;
         public static float baseDuration = 0.12f;
         public static float recoil = 1f;

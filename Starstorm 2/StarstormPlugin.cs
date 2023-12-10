@@ -160,9 +160,6 @@ namespace Starstorm2Unofficial
 
             skinsCore = new SkinsCore();
 
-            //if (EnableNemmando.Value) Cores.Unlockables.NemmandoUnlockables.RegisterUnlockables();
-            //if (EnableExecutioner.Value) Cores.Unlockables.ExecutionerUnlockables.RegisterUnlockables();
-
             InitializeSurvivors();
 
             Modules.Effects.Initialize();
