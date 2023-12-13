@@ -417,13 +417,12 @@ namespace Starstorm2Unofficial.Survivors.Executioner
                     {
                         if (attackerBody.bodyIndex == ExecutionerCore.bodyIndex)
                         {
-                            //self.body.AddTimedBuff(Starstorm2.Cores.BuffCoreexeAssistBuff, 5f);
                             Components.ExecutionerKillComponent killComponent = self.GetComponent<Components.ExecutionerKillComponent>();
                             if (!killComponent)
                             {
-                                self.AddComponent<Components.ExecutionerKillComponent>().AddTimer(attackerBody, 5f);
+                                killComponent = self.AddComponent<Components.ExecutionerKillComponent>();
                             }
-                            else killComponent.AddTimer(attackerBody, 5f);
+                            killComponent.AddTimer(attackerBody, 5f);
                         }
                     }
                 }
@@ -615,37 +614,36 @@ namespace Starstorm2Unofficial.Survivors.Executioner
         private static void GlobalEventManager_onCharacterDeathGlobal(DamageReport damageReport)
         {
             // create the orb for ion gun stock
+            if (!damageReport.victimBody) return;
             CharacterBody victimBody = damageReport.victimBody;
-            if (victimBody)
+
+            bool victimFeared = victimBody.HasBuff(BuffCore.fearDebuff);
+            if (victimFeared)
             {
-                bool victimFeared = victimBody.HasBuff(BuffCore.fearDebuff);
-                if (victimFeared)
+                EffectManager.SpawnEffect(ExecutionerCore.fearKillEffect, new EffectData
                 {
-                    EffectManager.SpawnEffect(ExecutionerCore.fearKillEffect, new EffectData
-                    {
-                        origin = damageReport.damageInfo.position
-                    }, true);
-                }
+                    origin = damageReport.damageInfo.position
+                }, true);
+            }
 
-                Components.ExecutionerKillComponent killComponent = victimBody.GetComponent<Components.ExecutionerKillComponent>();
-                if (killComponent)
+            Components.ExecutionerKillComponent killComponent = victimBody.GetComponent<Components.ExecutionerKillComponent>();
+            if (killComponent)
+            {
+                killComponent.TriggerEffects(damageReport.attackerBody, damageReport.damageInfo.damageType);
+            }
+            else
+            {
+                if (damageReport.attackerBody && damageReport.attackerBody.bodyIndex == ExecutionerCore.bodyIndex)
                 {
-                    killComponent.TriggerEffects(damageReport.attackerBody, damageReport.damageInfo.damageType);
-                }
-                else
-                {
-                    if (damageReport.attackerBody && damageReport.attackerBody.bodyIndex == ExecutionerCore.bodyIndex)
-                    {
-                        int orbCount = GetIonCountFromBody(victimBody);
-                        //if (victimFeared) orbCount *= 2;
+                    int orbCount = GetIonCountFromBody(victimBody);
+                    //if (victimFeared) orbCount *= 2;
 
-                        for (int i = 0; i < orbCount; i++)
-                        {
-                            Modules.Orbs.ExecutionerIonOrb ionOrb = new Modules.Orbs.ExecutionerIonOrb();
-                            ionOrb.origin = victimBody.corePosition;
-                            ionOrb.target = Util.FindBodyMainHurtBox(damageReport.attackerBody);
-                            OrbManager.instance.AddOrb(ionOrb);
-                        }
+                    for (int i = 0; i < orbCount; i++)
+                    {
+                        Modules.Orbs.ExecutionerIonOrb ionOrb = new Modules.Orbs.ExecutionerIonOrb();
+                        ionOrb.origin = victimBody.corePosition;
+                        ionOrb.target = Util.FindBodyMainHurtBox(damageReport.attackerBody);
+                        OrbManager.instance.AddOrb(ionOrb);
                     }
                 }
             }

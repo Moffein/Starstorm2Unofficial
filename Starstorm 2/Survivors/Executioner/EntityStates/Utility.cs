@@ -133,6 +133,13 @@ namespace EntityStates.SS2UStates.Executioner
                     if (body && body != base.characterBody)
                     {
                         body.AddTimedBuff(BuffCore.fearDebuff, debuffDuration);
+
+                        if (base.characterBody)
+                        {
+                            ExecutionerKillComponent ekc = body.GetComponent<ExecutionerKillComponent>();
+                            if (!ekc) ekc = body.AddComponent<ExecutionerKillComponent>();
+                            ekc.AddTimer(base.characterBody, debuffDuration);
+                        }
                     }
                 }
             }

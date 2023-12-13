@@ -53,6 +53,11 @@ The SS2 team is free to use any of the new code from this mod as long as this re
 
 ## Changelog
 
+`0.16.4`
+
+- Executioner
+	- Applying Fear now counts as a kill assist for charging Ion Burst.
+
 `0.16.3`
 
 - Executioner

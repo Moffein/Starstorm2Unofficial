@@ -80,11 +80,11 @@ namespace Starstorm2Unofficial.Survivors.Executioner.Components
             hitList.Clear();
         }
 
-        public void AddTimer(CharacterBody b, float timer)
+        public void AddTimer(CharacterBody attackerBody, float timer)
         {
-            if (b.skillLocator)
+            if (attackerBody.skillLocator)
             {
-                ExecutionerTimer bt = new ExecutionerTimer(b, timer);
+                ExecutionerTimer bt = new ExecutionerTimer(attackerBody, timer);
                 hitList.Add(bt);
             }
         }
