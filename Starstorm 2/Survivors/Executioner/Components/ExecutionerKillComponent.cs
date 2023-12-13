@@ -58,22 +58,6 @@ namespace Starstorm2Unofficial.Survivors.Executioner.Components
                             ionOrb.target = Util.FindBodyMainHurtBox(b.body);
                             OrbManager.instance.AddOrb(ionOrb);
                         }
-
-                        /*if (orbCount >= 50 && orbCount < 80)
-                        {
-                            Modules.Orbs.ExecutionerIonTempSuperOrb tempSuperIonOrb = new Modules.Orbs.ExecutionerIonTempSuperOrb();
-                            tempSuperIonOrb.origin = this.transform.position;
-                            tempSuperIonOrb.target = Util.FindBodyMainHurtBox(b.body);
-                            OrbManager.instance.AddOrb(tempSuperIonOrb);
-                        }
-
-                        if (orbCount >= 80)
-                        {
-                            Modules.Orbs.ExecutionerIonSuperOrb superIonOrb = new Modules.Orbs.ExecutionerIonSuperOrb();
-                            superIonOrb.origin = this.transform.position;
-                            superIonOrb.target = Util.FindBodyMainHurtBox(b.body);
-                            OrbManager.instance.AddOrb(superIonOrb);
-                        }*/
                     }
                 }
             }
@@ -82,7 +66,7 @@ namespace Starstorm2Unofficial.Survivors.Executioner.Components
 
         public void AddTimer(CharacterBody attackerBody, float timer)
         {
-            if (attackerBody.skillLocator)
+            if (attackerBody && attackerBody.skillLocator)
             {
                 ExecutionerTimer bt = new ExecutionerTimer(attackerBody, timer);
                 hitList.Add(bt);
