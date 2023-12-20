@@ -1,4 +1,5 @@
-﻿using RoR2;
+﻿using R2API;
+using RoR2;
 using Starstorm2Unofficial.Components;
 using Starstorm2Unofficial.Cores;
 using Starstorm2Unofficial.Survivors.Executioner.Components;
@@ -226,9 +227,10 @@ namespace EntityStates.SS2UStates.Executioner
                     damageColorIndex = DamageColorIndex.Default,
                     falloffModel = BlastAttack.FalloffModel.None,
                     attackerFiltering = AttackerFiltering.NeverHitSelf,
-                    damageType = DamageType.BonusToLowHealth,
+                    damageType = DamageType.Generic,
                     bonusForce = Vector3.down * 4000f
                 };
+                blast.AddModdedDamageType(DamageTypeCore.ModdedDamageTypes.SlayerExceptItActuallyWorks);
                 blast = ModifyBlastAttack(blast);
                 blast.Fire();
 

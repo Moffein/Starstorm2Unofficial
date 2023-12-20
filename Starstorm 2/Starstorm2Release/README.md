@@ -53,6 +53,14 @@ The SS2 team is free to use any of the new code from this mod as long as this re
 
 ## Changelog
 
+`0.16.5`
+
+- Executioner
+	- Execution
+		- Slayer (low HP) damage bonus now applies to procs.
+		
+		*If you play with RiskyMod, nothing changes as it already fixes this. This change is done via a custom damagetype so it won't interfere with Vanilla Slayer attacks.*
+
 `0.16.4`
 
 - Executioner
