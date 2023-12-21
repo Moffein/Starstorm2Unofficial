@@ -12,14 +12,16 @@ namespace EntityStates.SS2UStates.Nucleator
         public static string overchargeSoundString = "SS2UNucleatorAlarm";
 
         public float baseDuration = 1f;
-        public float overchargeHealthFraction = 0.15f;
+        public float overchargeHealthFraction = 0.15f;  //Damage per tick when overcharging. Scales off of current health at the time of the tick.
         public float overchargeDamageFrequency = 10f;
+        public float overchargeHealingFraction = 0.05f; //Healing per tick when overcharging. Scales off of total health.
 
         private bool playedOverchargeSound = false;
         private float overchargeDamageDuration;
         private float overchargeDamageStopwatch;
         protected float duration;
         private NucleatorChargeComponent chargeComponent;
+        private NucleatorNetworkComponent networkComponent;
         private ShakeEmitter shakeEmitter;
 
         public float chargeFraction;
@@ -33,6 +35,7 @@ namespace EntityStates.SS2UStates.Nucleator
             overchargeDamageStopwatch = 0f;
             overchargeDamageDuration = 1f / (overchargeDamageFrequency * this.attackSpeedStat);
 
+            networkComponent = base.GetComponent<NucleatorNetworkComponent>();
             chargeComponent = base.GetComponent<NucleatorChargeComponent>();
             if (chargeComponent)
             {
@@ -59,7 +62,7 @@ namespace EntityStates.SS2UStates.Nucleator
 
                     if (base.isAuthority)
                     {
-                        HurtSelf();
+                        HurtSelfAuthority();
                         shakeEmitter = ShakeEmitter.CreateSimpleShakeEmitter(base.transform.position, new Wave() { amplitude = 0.5f , cycleOffset = 0f, frequency = 10f }, 0.4f, 20f, false);
                         shakeEmitter.transform.parent = base.transform;
                     }
@@ -71,7 +74,7 @@ namespace EntityStates.SS2UStates.Nucleator
                     {
                         overchargeDamageStopwatch -= overchargeDamageDuration;
 
-                        HurtSelf();
+                        HurtSelfAuthority();
                     }
                 }
             }
@@ -109,11 +112,12 @@ namespace EntityStates.SS2UStates.Nucleator
             base.OnExit();
         }
 
-        private void HurtSelf()
+        private void HurtSelfAuthority()
         {
-            bool immuneToSelfDamage = base.characterBody && base.characterBody.HasBuff(BuffCore.nucleatorSpecialBuff);
+            if (!base.isAuthority) return;
+            bool specialBuffActive = base.characterBody && base.characterBody.HasBuff(BuffCore.nucleatorSpecialBuff);
 
-            if (!immuneToSelfDamage)
+            if (!specialBuffActive)
             {
                 DamageInfo damageInfo = new DamageInfo();
                 damageInfo.damage = base.healthComponent.combinedHealth * overchargeHealthFraction;
@@ -130,6 +134,18 @@ namespace EntityStates.SS2UStates.Nucleator
                 if (base.characterBody && base.characterBody.mainHurtBox)
                 {
                     R2API.Networking.NetworkingHelpers.DealDamage(damageInfo, base.characterBody.mainHurtBox, true, false, false);
+                }
+            }
+            else
+            {
+                if (!base.healthComponent) return;
+                if (NetworkServer.active)
+                {
+                    base.healthComponent.HealFraction(overchargeHealingFraction, default);
+                }
+                else if (networkComponent)
+                {
+                    networkComponent.HealFractionAuthority(overchargeHealingFraction);
                 }
             }
         }

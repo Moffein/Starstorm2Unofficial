@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 1614111378
+CRC: 68238453
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: ac30dd11867a94080241ff543e094212
+    Hash: d779574c83920932f2e9c89bc28bb724
   TypeTreeHash:
     serializedVersion: 2
     Hash: e085efc3cec39229c22603e1a47b8115
@@ -572,6 +572,7 @@ Assets:
 - Assets/AssetBundle/Nemmando/Mesh/meshMercSword.mesh
 - Assets/AssetBundle/Cyborg/Animations/Tele/animCyborgTele2.controller
 - Assets/AssetBundle/FX/NemmandoBossEffect.prefab
+- Assets/AssetBundle/BuffIcons/radiation_debuff.png
 - Assets/AssetBundle/Items/Fork/Fork_Icon.png
 - Assets/AssetBundle/Nucleator/Animations/Clips/PrimaryBig.anim
 - Assets/AssetBundle/Nemmando/VFX/Materials/matNemmandoWhiteMoon.mat

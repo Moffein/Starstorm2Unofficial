@@ -48,7 +48,7 @@ namespace Starstorm2Unofficial.Cores
         {
             //LogCore.LogInfo("Initializing Core: " + base.ToString());
             exeSuperchargedBuff = CreateBuffDef("SS2UExecutionerSuperchargedBuff", false, false, false, new Color(72 / 255, 1, 1), LegacyResourcesAPI.Load<Sprite>("Textures/BuffIcons/texBuffNullifiedIcon"));
-            nucleatorSpecialBuff = CreateBuffDef("SS2UNucleatorSpecialBuff", false, false, false, Color.green, LegacyResourcesAPI.Load<Sprite>("Textures/BuffIcons/texBuffOverheat"));
+            nucleatorSpecialBuff = CreateBuffDef("SS2UNucleatorSpecialBuff", true, false, false, new Color32(224, 217, 67, 255), Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("radiation_debuff"));
 
             detritiveBuff = ScriptableObject.CreateInstance<BuffDef>();
             detritiveBuff.buffColor = Color.white;

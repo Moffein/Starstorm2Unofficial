@@ -1,6 +1,7 @@
 ﻿using BepInEx.Configuration;
 using EntityStates;
 using EntityStates.SS2UStates.Nucleator.Primary;
+using EntityStates.SS2UStates.Nucleator.Special;
 using Mono.Cecil.Cil;
 using MonoMod.Cil;
 using R2API;
@@ -17,6 +18,7 @@ using Starstorm2Unofficial.Survivors.Nucleator.Components;
 using Starstorm2Unofficial.Survivors.Nucleator.Components.Crosshair;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Runtime.CompilerServices;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
@@ -84,6 +86,13 @@ namespace Starstorm2Unofficial.Survivors.Nucleator
             base.InitializeCharacter();
             R2API.ItemAPI.DoNotAutoIDRSFor(bodyPrefab);
 
+            NetworkStateMachine nsm = bodyPrefab.GetComponent<NetworkStateMachine>();
+            EntityStateMachine specialStateMachine = bodyPrefab.AddComponent<EntityStateMachine>();
+            specialStateMachine.customName = "SpecialBuff";
+            specialStateMachine.initialStateType = new SerializableEntityStateType(typeof(EntityStates.Idle));
+            specialStateMachine.mainStateType = new SerializableEntityStateType(typeof(EntityStates.Idle));
+            nsm.stateMachines = nsm.stateMachines.Append(specialStateMachine).ToArray();
+
             CharacterBody cb = bodyPrefab.GetComponent<CharacterBody>();
             cb._defaultCrosshairPrefab = BuildCrosshair();
 
@@ -91,7 +100,8 @@ namespace Starstorm2Unofficial.Survivors.Nucleator
             cm.mass = 300f;
 
             bodyPrefab.AddComponent<NucleatorChargeComponent>();
-            
+            bodyPrefab.AddComponent<NucleatorNetworkComponent>();
+
             CameraTargetParams cameraTargetParams = bodyPrefab.GetComponent<CameraTargetParams>();
             cameraTargetParams.cameraParams.data.idealLocalCameraPos = new Vector3(0f, 1.2f, -11f);   //0 1 -11 han-d
 
@@ -134,6 +144,7 @@ namespace Starstorm2Unofficial.Survivors.Nucleator
             Modules.States.AddState(typeof(ChargeIrradiate));
             Modules.States.AddState(typeof(FireIrradiate));
             Modules.States.AddState(typeof(FireIrradiateOvercharge));
+            Modules.States.AddState(typeof(BuffSelf));
         }
 
 
@@ -148,13 +159,13 @@ namespace Starstorm2Unofficial.Survivors.Nucleator
             SkillDef squawkDef = Addressables.LoadAssetAsync<SkillDef>("RoR2/Base/Heretic/HereticDefaultAbility.asset").WaitForCompletion();
             SkillFamily.Variant squawkVariant = Utils.RegisterSkillVariant(squawkDef);
             SkillLocator skillLocator = bodyPrefab.GetComponent<SkillLocator>();
-            SetUpPrimaries(skillLocator);
+            SetupPrimaries(skillLocator);
             skillLocator.secondary = Utils.RegisterSkillsToFamily(bodyPrefab, new SkillFamily.Variant[] { squawkVariant });
             skillLocator.utility = Utils.RegisterSkillsToFamily(bodyPrefab, new SkillFamily.Variant[] { squawkVariant });
-            skillLocator.special = Utils.RegisterSkillsToFamily(bodyPrefab, new SkillFamily.Variant[] { squawkVariant });
+            SetupSpecials(skillLocator);
         }
 
-        private void SetUpPrimaries(SkillLocator skillLocator)
+        private void SetupPrimaries(SkillLocator skillLocator)
         {
             SkillDef primaryDef1 = ScriptableObject.CreateInstance<SkillDef>();
             primaryDef1.activationState = new SerializableEntityStateType(typeof(ChargeIrradiate));
@@ -181,6 +192,33 @@ namespace Starstorm2Unofficial.Survivors.Nucleator
             skillLocator.primary = Utils.RegisterSkillsToFamily(bodyPrefab, new SkillFamily.Variant[] { primaryVariant1 });
         }
 
+        private void SetupSpecials(SkillLocator skillLocator)
+        {
+            SkillDef specialDef = ScriptableObject.CreateInstance<SkillDef>();
+            specialDef.activationState = new SerializableEntityStateType(typeof(BuffSelf));
+            specialDef.activationStateMachineName = "SpecialBuff";
+            specialDef.skillName = "SS2UNUCLEATOR_SPECIAL_NAME";
+            specialDef.skillNameToken = "SS2UNUCLEATOR_SPECIAL_NAME";
+            specialDef.skillDescriptionToken = "SS2UNUCLEATOR_SPECIAL_DESCRIPTION";
+            specialDef.icon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("texNucleatorSpecial");
+            specialDef.baseMaxStock = 1;
+            specialDef.baseRechargeInterval = 12f;
+            specialDef.beginSkillCooldownOnSkillEnd = false;
+            specialDef.canceledFromSprinting = false;
+            specialDef.fullRestockOnAssign = true;
+            specialDef.interruptPriority = EntityStates.InterruptPriority.Any;
+            specialDef.isCombatSkill = false;
+            specialDef.mustKeyPress = true;
+            specialDef.cancelSprintingOnActivation = true;
+            specialDef.rechargeStock = 1;
+            specialDef.requiredStock = 1;
+            specialDef.stockToConsume = 1;
+            Modules.Skills.FixSkillName(specialDef);
+            Modules.Skills.skillDefs.Add(specialDef);
+            SkillFamily.Variant specialVariant1 = Utils.RegisterSkillVariant(specialDef);
+            skillLocator.special = Utils.RegisterSkillsToFamily(bodyPrefab, new SkillFamily.Variant[] { specialVariant1 });
+        }
+
         internal override void RegisterTokens()
         {
             LanguageAPI.Add("SS2UNUCLEATOR_NAME", "Nucleator");
@@ -198,7 +236,7 @@ namespace Starstorm2Unofficial.Survivors.Nucleator
             LanguageAPI.Add("SS2UNUCLEATOR_KNIGHT_SKIN_NAME", "Gladiator");
 
             LanguageAPI.Add("SS2UNUCLEATOR_PRIMARY_NAME", "Irradiate");
-            LanguageAPI.Add("SS2UNUCLEATOR_PRIMARY_DESCRIPTION", $"Charge and fire a bullet for up to <style=cIsDamage>{500}% damage</style>, <style=cIsDamage>{900}% damage</style> on <style=cIsUtility>overcharge</style>. The bullet's damage increases <style=cIsUtility>the farther it travels</style>.");
+            LanguageAPI.Add("SS2UNUCLEATOR_PRIMARY_DESCRIPTION", $"Charge and fire a bullet for up to <style=cIsDamage>{500}% damage</style>, <style=cIsDamage>{900}% damage</style> on <style=cIsHealth>Overcharge</style>. The bullet's damage increases <style=cIsUtility>the farther it travels</style>.");
 
             LanguageAPI.Add("SS2UNUCLEATOR_SECONDARY_NAME", "Quarantine");
             LanguageAPI.Add("SS2UNUCLEATOR_SECONDARY_DESCRIPTION", $"Push enemies in front of you for <style=cIsDamage>{500}% piercing damage</style>.");
