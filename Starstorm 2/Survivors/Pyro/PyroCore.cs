@@ -419,7 +419,7 @@ namespace Starstorm2Unofficial.Survivors.Pyro
         private void ScepterSetup()
         {
 
-            AncientScepter.AncientScepterItem.instance.RegisterScepterSkill(Skills.specialFlareScepter, "SS2UPyroBody", SkillSlot.Special, 0);
+            AncientScepter.AncientScepterItem.instance.RegisterScepterSkill(Skills.specialFlareScepter, "SS2UPyroBody", Skills.specialFlare);
         }
 
         [MethodImpl(MethodImplOptions.NoInlining | MethodImplOptions.NoOptimization)]

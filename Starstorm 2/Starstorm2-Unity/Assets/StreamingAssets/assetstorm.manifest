@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 68238453
+CRC: 2791599476
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: d779574c83920932f2e9c89bc28bb724
+    Hash: e99849f3fbfda8f295ee54860b9f007e
   TypeTreeHash:
     serializedVersion: 2
     Hash: e085efc3cec39229c22603e1a47b8115
@@ -255,6 +255,7 @@ Assets:
 - Assets/AssetBundle/Nemmando/Icons/texNemmandoIcon.png
 - Assets/AssetBundle/Nemmando/Animations/2Special4.anim
 - Assets/AssetBundle/Nemmando/Materials/matNemmandoAlt.mat
+- Assets/AssetBundle/Nucleator/Icons/texNucleatorSpecialScepter.png
 - Assets/AssetBundle/Items/HuntersSigil/sigiltexemission.png
 - Assets/AssetBundle/Cyborg/Materials/matCyborgDefenseMatrix.mat
 - Assets/AssetBundle/FX/DustMobile.mat

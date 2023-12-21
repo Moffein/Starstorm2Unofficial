@@ -8,43 +8,63 @@ namespace EntityStates.SS2UStates.Nucleator.Special
 
     public class BuffSelf : BaseState
     {
-        public static float buffDuration = 6f;
+        public static float baseBuffDuration = 6f;
+        protected float buffDurationRemaining;
 
         public override void OnEnter()
         {
             base.OnEnter();
 
+            SetBuffDuration();
+            if (NetworkServer.active) SetBuffsServer();
+        }
+
+        public virtual void SetBuffDuration()
+        {
+            buffDurationRemaining = BuffSelf.baseBuffDuration;
             Util.PlaySound("SS2UNucleatorSkill4a", base.gameObject);
-            if (NetworkServer.active)
-            {
-                SetBuffs(GetBuffDuration());
-            }
-
-            if (base.isAuthority)
-            {
-                this.outer.SetNextStateToMain();
-            }
         }
 
-        public virtual float GetBuffDuration()
+        public override void FixedUpdate()
         {
-            return buffDuration;
+            base.FixedUpdate();
+
+            buffDurationRemaining -= Time.fixedDeltaTime;
+
+            if (NetworkServer.active) SetBuffsServer();
+
+            if (base.isAuthority && buffDurationRemaining <= 0f) this.outer.SetNextStateToMain();
         }
 
-        public void SetBuffs(float duration)
+        public override void OnExit()
         {
-            if (!base.characterBody) return;
+            buffDurationRemaining = 0f;
+            if (NetworkServer.active) SetBuffsServer();
+            base.OnExit();
+        }
 
-            base.characterBody.ClearTimedBuffs(BuffCore.nucleatorSpecialBuff);
+        public void SetBuffsServer()
+        {
+            if (!base.characterBody || !NetworkServer.active) return;
 
-            float buffTimeAccumulated = 0f;
-            while (duration > 0f)
+            int currentBuffs = base.characterBody.GetBuffCount(BuffCore.nucleatorSpecialBuff);
+            int desiredBuffs = Mathf.CeilToInt(buffDurationRemaining);
+
+            if (desiredBuffs < currentBuffs)
             {
-                float toSubtract = Mathf.Min(1f, duration);
-                duration -= toSubtract;
-                buffTimeAccumulated += toSubtract;
-
-                base.characterBody.AddTimedBuff(BuffCore.nucleatorSpecialBuff, buffTimeAccumulated);
+                int toSubtract = currentBuffs - desiredBuffs;
+                for (int i = 0; i < toSubtract; i++)
+                {
+                    base.characterBody.RemoveBuff(BuffCore.nucleatorSpecialBuff);
+                }
+            }
+            else if (desiredBuffs > currentBuffs)
+            {
+                int toAdd = desiredBuffs - currentBuffs;
+                for (int i = 0; i < toAdd; i++)
+                {
+                    base.characterBody.AddBuff(BuffCore.nucleatorSpecialBuff);
+                }
             }
         }
     }

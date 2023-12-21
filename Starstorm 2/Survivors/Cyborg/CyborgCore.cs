@@ -772,7 +772,7 @@ namespace Starstorm2Unofficial.Survivors.Cyborg
         private void ScepterSetup()
         {
 
-            AncientScepter.AncientScepterItem.instance.RegisterScepterSkill(overheatScepterDef, "SS2UCyborgBody", SkillSlot.Special, 0);
+            AncientScepter.AncientScepterItem.instance.RegisterScepterSkill(overheatScepterDef, "SS2UCyborgBody", overheatDef);
             //AncientScepter.AncientScepterItem.instance.RegisterScepterSkill(shockScepterDef, "SS2UCyborgBody", SkillSlot.Special, 1);
         }
 

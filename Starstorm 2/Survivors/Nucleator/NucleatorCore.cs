@@ -29,6 +29,11 @@ namespace Starstorm2Unofficial.Survivors.Nucleator
 {
     internal class NucleatorCore : SurvivorBase
     {
+        public static class SkillDefs
+        {
+            public static SkillDef Primary, Secondary, Utiltiy, Special, SpecialScepter;
+        }
+
         public static BodyIndex bodyIndex;
         internal override string bodyName { get; set; } = "SS2UNucleator";
         internal override string modelName { get; set; } = "mdlNucleator";
@@ -190,6 +195,7 @@ namespace Starstorm2Unofficial.Survivors.Nucleator
             Modules.Skills.skillDefs.Add(primaryDef1);
             SkillFamily.Variant primaryVariant1 = Utils.RegisterSkillVariant(primaryDef1);
             skillLocator.primary = Utils.RegisterSkillsToFamily(bodyPrefab, new SkillFamily.Variant[] { primaryVariant1 });
+            SkillDefs.Primary = primaryDef1;
         }
 
         private void SetupSpecials(SkillLocator skillLocator)
@@ -202,8 +208,8 @@ namespace Starstorm2Unofficial.Survivors.Nucleator
             specialDef.skillDescriptionToken = "SS2UNUCLEATOR_SPECIAL_DESCRIPTION";
             specialDef.icon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("texNucleatorSpecial");
             specialDef.baseMaxStock = 1;
-            specialDef.baseRechargeInterval = 12f;
-            specialDef.beginSkillCooldownOnSkillEnd = false;
+            specialDef.baseRechargeInterval = 6f;
+            specialDef.beginSkillCooldownOnSkillEnd = true;
             specialDef.canceledFromSprinting = false;
             specialDef.fullRestockOnAssign = true;
             specialDef.interruptPriority = EntityStates.InterruptPriority.Any;
@@ -217,6 +223,52 @@ namespace Starstorm2Unofficial.Survivors.Nucleator
             Modules.Skills.skillDefs.Add(specialDef);
             SkillFamily.Variant specialVariant1 = Utils.RegisterSkillVariant(specialDef);
             skillLocator.special = Utils.RegisterSkillsToFamily(bodyPrefab, new SkillFamily.Variant[] { specialVariant1 });
+            SkillDefs.Special = specialDef;
+
+            SkillDef specialScepterDef = ScriptableObject.CreateInstance<SkillDef>();
+            specialScepterDef.activationState = new SerializableEntityStateType(typeof(BuffSelfScepter));
+            specialScepterDef.activationStateMachineName = "SpecialBuff";
+            specialScepterDef.skillName = "SS2UNUCLEATOR_SPECIAL_SCEPTER_NAME";
+            specialScepterDef.skillNameToken = "SS2UNUCLEATOR_SPECIAL_SCEPTER_NAME";
+            specialScepterDef.skillDescriptionToken = "SS2UNUCLEATOR_SPECIAL_SCEPTER_DESCRIPTION";
+            specialScepterDef.icon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("texNucleatorSpecialScepter");
+            specialScepterDef.baseMaxStock = 1;
+            specialScepterDef.baseRechargeInterval = 6f;
+            specialScepterDef.beginSkillCooldownOnSkillEnd = true;
+            specialScepterDef.canceledFromSprinting = false;
+            specialScepterDef.fullRestockOnAssign = true;
+            specialScepterDef.interruptPriority = EntityStates.InterruptPriority.Any;
+            specialScepterDef.isCombatSkill = false;
+            specialScepterDef.mustKeyPress = true;
+            specialScepterDef.cancelSprintingOnActivation = true;
+            specialScepterDef.rechargeStock = 1;
+            specialScepterDef.requiredStock = 1;
+            specialScepterDef.stockToConsume = 1;
+            Modules.Skills.FixSkillName(specialScepterDef);
+            SkillDefs.SpecialScepter = specialScepterDef;
+
+            if (StarstormPlugin.scepterPluginLoaded)
+            {
+                ScepterSetup();
+            }
+            if (StarstormPlugin.classicItemsLoaded)
+            {
+                ClassicScepterSetup();
+            }
+        }
+
+
+        [MethodImpl(MethodImplOptions.NoInlining | MethodImplOptions.NoOptimization)]
+        private void ScepterSetup()
+        {
+
+            AncientScepter.AncientScepterItem.instance.RegisterScepterSkill(SkillDefs.SpecialScepter, bodyInfo.bodyName, SkillDefs.Special);
+        }
+
+        [MethodImpl(MethodImplOptions.NoInlining | MethodImplOptions.NoOptimization)]
+        private void ClassicScepterSetup()
+        {
+            ThinkInvisible.ClassicItems.Scepter.instance.RegisterScepterSkill(SkillDefs.SpecialScepter, bodyInfo.bodyName, SkillSlot.Special, SkillDefs.Special);
         }
 
         internal override void RegisterTokens()
@@ -245,7 +297,10 @@ namespace Starstorm2Unofficial.Survivors.Nucleator
             LanguageAPI.Add("SS2UNUCLEATOR_UTILITY_DESCRIPTION", $"<style=cIsUtility>Hold</style> to <style=cIsUtility>launch yourself</style>, dealing style=cIsDamage>{550}% damage</style>. Control the direction using the movement keys.");
 
             LanguageAPI.Add("SS2UNUCLEATOR_SPECIAL_NAME", "Radionuclide Surge");
-            LanguageAPI.Add("SS2UNUCLEATOR_SPECIAL_DESCRIPTION", $"Enter a nuclear state for <style=cIsUtility>6 seconds</style>, adding <style=cIsHealing>radiation</style> to every attack while becoming <style=cIsUtility>invulnerable to overcharging skills</style>.");
+            LanguageAPI.Add("SS2UNUCLEATOR_SPECIAL_DESCRIPTION", $"Enter a nuclear state for <style=cIsUtility>6 seconds</style>, adding <style=cIsHealing>radiation</style> to every attack while becoming <style=cIsUtility>immune to Overcharge damage</style>.");
+
+            LanguageAPI.Add("SS2UNUCLEATOR_SPECIAL_SCEPTER_NAME", "Radionuclide Efflux");
+            LanguageAPI.Add("SS2UNUCLEATOR_SPECIAL_SCEPTER_DESCRIPTION", $"Enter a nuclear state for <style=cIsUtility>12 seconds</style>, adding <style=cIsHealing>radiation</style> to every attack while becoming <style=cIsUtility>immune to Overcharge damage</style>.");
 
             LanguageAPI.Add("SS2UNUCLEATOR_UNLOCKUNLOCKABLE_ACHIEVEMENT_NAME", "Overkill");
             LanguageAPI.Add("SS2UNUCLEATOR_UNLOCKUNLOCKABLE_ACHIEVEMENT_DESC", "Collect 5 Legendary items in one run.");

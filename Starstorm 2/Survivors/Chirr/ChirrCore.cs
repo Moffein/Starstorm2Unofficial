@@ -462,7 +462,7 @@ namespace Starstorm2Unofficial.Survivors.Chirr
         private void ScepterSetup()
         {
 
-            AncientScepter.AncientScepterItem.instance.RegisterScepterSkill(specialScepterDef, "SS2UChirrBody", SkillSlot.Special, 0);
+            AncientScepter.AncientScepterItem.instance.RegisterScepterSkill(specialScepterDef, "SS2UChirrBody", specialDef);
         }
 
         [MethodImpl(MethodImplOptions.NoInlining | MethodImplOptions.NoOptimization)]
