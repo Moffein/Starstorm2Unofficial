@@ -111,7 +111,7 @@ namespace Starstorm2Unofficial.Survivors.Nucleator
             cameraTargetParams.cameraParams.data.idealLocalCameraPos = new Vector3(0f, 1.2f, -11f);   //0 1 -11 han-d
 
             FireIrradiate.projectilePrefab = NucleatorProjectiles.BuildPrimary();
-            FireIrradiateOvercharge.projectilePrefab = FireIrradiate.projectilePrefab;//TODO: UNIQUE PROJECTILE
+            FireIrradiateOvercharge.projectilePrefab = NucleatorProjectiles.BuildPrimaryOvercharge();
 
             RoR2Application.onLoad += SetBodyIndex;
             if (StarstormPlugin.emoteAPILoaded) EmoteAPICompat();
@@ -284,11 +284,9 @@ namespace Starstorm2Unofficial.Survivors.Nucleator
             LanguageAPI.Add("SS2UNUCLEATOR_OUTRO_FAILURE", "..and so he vanished, an uninhabitable wasteland in his wake.");
             LanguageAPI.Add("SS2UNUCLEATOR_LORE", "laugh and grow fat");
             LanguageAPI.Add("SS2UNUCLEATOR_DEFAULT_SKIN_NAME", "Default");
-            LanguageAPI.Add("SS2UNUCLEATOR_MASTERY_SKIN_NAME", "Blastproof");
-            LanguageAPI.Add("SS2UNUCLEATOR_KNIGHT_SKIN_NAME", "Gladiator");
 
             LanguageAPI.Add("SS2UNUCLEATOR_PRIMARY_NAME", "Irradiate");
-            LanguageAPI.Add("SS2UNUCLEATOR_PRIMARY_DESCRIPTION", $"Charge and fire a bullet for up to <style=cIsDamage>{500}% damage</style>, <style=cIsDamage>{900}% damage</style> on <style=cIsHealth>Overcharge</style>. The bullet's damage increases <style=cIsUtility>the farther it travels</style>.");
+            LanguageAPI.Add("SS2UNUCLEATOR_PRIMARY_DESCRIPTION", "Charge and fire a glob of nuclear waste for <style=cIsDamage>200%-800% damage</style>, up to <style=cIsDamage>1200% damage</style> on <style=cIsHealth>Overcharge</style>.");
 
             LanguageAPI.Add("SS2UNUCLEATOR_SECONDARY_NAME", "Quarantine");
             LanguageAPI.Add("SS2UNUCLEATOR_SECONDARY_DESCRIPTION", $"Push enemies in front of you for <style=cIsDamage>{500}% piercing damage</style>.");

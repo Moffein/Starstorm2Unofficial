@@ -36,9 +36,9 @@ namespace Starstorm2Unofficial.Cores
         //private static int CustomDotCount => dotDefs.Length - VanillaDotCount;
         //private static readonly Dictionary<DotController, bool[]> ActiveCustomDots = new Dictionary<DotController, bool[]>();
 
-        static internal DotIndex detritive;
-        static internal DotIndex strangeCanPoison;
-        static internal DotIndex gougeIndex;
+        public static DotIndex DetritiveTrematodeInfection;
+        public static DotIndex StrangeCanPoison;
+        public static DotIndex NemmandoGouge;
 
         public DoTCore()
         {
@@ -153,9 +153,9 @@ namespace Starstorm2Unofficial.Cores
             //strangeCanPoison = RegisterDot(.5f, 0.5f, DamageColorIndex.Item, BuffCore.strangeCanPoisonBuff);
             //gougeIndex = RegisterDot(0.5f, 0.33f, DamageColorIndex.Bleed, BuffCore.gougeBuff);
 
-            detritive = DotAPI.RegisterDotDef(1, 0.5f, DamageColorIndex.Item, BuffCore.detritiveBuff);
-            strangeCanPoison = DotAPI.RegisterDotDef(0.5f, 0.5f, DamageColorIndex.Item, BuffCore.strangeCanPoisonBuff);
-            gougeIndex = DotAPI.RegisterDotDef(0.25f, 0.25f, DamageColorIndex.Bleed, BuffCore.gougeBuff);//0.5f, 0.33f
+            DetritiveTrematodeInfection = DotAPI.RegisterDotDef(1, 0.5f, DamageColorIndex.Item, BuffCore.detritiveBuff);
+            StrangeCanPoison = DotAPI.RegisterDotDef(0.5f, 0.5f, DamageColorIndex.Item, BuffCore.strangeCanPoisonBuff);
+            NemmandoGouge = DotAPI.RegisterDotDef(0.25f, 0.25f, DamageColorIndex.Bleed, BuffCore.gougeBuff);//0.5f, 0.33f
         }
 
         //private DotIndex RegisterDot(float interval, float damageCoefficient, DamageColorIndex colorIndex, BuffDef associatedBuff)

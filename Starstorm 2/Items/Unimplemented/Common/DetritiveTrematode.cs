@@ -188,7 +188,7 @@ namespace Starstorm2Unofficial.Cores.Items
                         bool hasDot = false;
                         if (dotController)
                         {
-                            hasDot = dotController.HasDotActive(DoTCore.detritive);
+                            hasDot = dotController.HasDotActive(DoTCore.DetritiveTrematodeInfection);
                         }
 
                         if (self.combinedHealthFraction < StaticValues.trematodeCritical && trematodeCount > 0 && !hasDot)
@@ -197,7 +197,7 @@ namespace Starstorm2Unofficial.Cores.Items
                             {
                                 attackerObject = attacker,
                                 victimObject = self.gameObject,
-                                dotIndex = DoTCore.detritive,
+                                dotIndex = DoTCore.DetritiveTrematodeInfection,
                                 duration = damageInfo.procCoefficient * (StaticValues.trematodeDuration * trematodeCount),
                                 damageMultiplier = StaticValues.trematodeDamage,
                             };

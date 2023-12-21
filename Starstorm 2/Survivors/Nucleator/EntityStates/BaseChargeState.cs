@@ -14,7 +14,7 @@ namespace EntityStates.SS2UStates.Nucleator
         public float baseDuration = 1f;
         public float overchargeHealthFraction = 0.15f;  //Damage per tick when overcharging. Scales off of current health at the time of the tick.
         public float overchargeDamageFrequency = 10f;
-        public float overchargeHealingFraction = 0.05f; //Healing per tick when overcharging. Scales off of total health.
+        public float overchargeHealingFraction = 0.1f/3f; //Healing per tick when overcharging. Scales off of total health.
 
         private bool playedOverchargeSound = false;
         private float overchargeDamageDuration;

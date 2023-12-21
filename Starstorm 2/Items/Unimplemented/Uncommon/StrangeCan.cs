@@ -188,7 +188,7 @@ namespace Starstorm2Unofficial.Cores.Items
                         {
                             attackerObject = attacker,
                             victimObject = victim,
-                            dotIndex = DoTCore.strangeCanPoison,
+                            dotIndex = DoTCore.StrangeCanPoison,
                             duration = StaticValues.canDuration,
                             damageMultiplier = StaticValues.canDamage
                         };

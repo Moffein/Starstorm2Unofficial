@@ -22,6 +22,7 @@ namespace Starstorm2Unofficial.Cores
             public static DamageAPI.ModdedDamageType ResetVictimForce;
             public static DamageAPI.ModdedDamageType ErraticGadget;
             public static DamageAPI.ModdedDamageType SlayerExceptItActuallyWorks;
+            public static DamageAPI.ModdedDamageType NucleatorCanApplyRadiation; //Used for Nucleator
         }
 
         //public static DamageType
@@ -41,9 +42,19 @@ namespace Starstorm2Unofficial.Cores
             ModdedDamageTypes.ExtendFear = DamageAPI.ReserveDamageType();
             ModdedDamageTypes.GuaranteedFearOnHit = DamageAPI.ReserveDamageType();
             ModdedDamageTypes.ErraticGadget = DamageAPI.ReserveDamageType();
+            ModdedDamageTypes.NucleatorCanApplyRadiation = DamageAPI.ReserveDamageType();
 
             On.RoR2.HealthComponent.TakeDamage += HealthComponent_TakeDamage;
             On.RoR2.GlobalEventManager.OnHitEnemy += GlobalEventManager_OnHitEnemy;
+            SharedHooks.OnHitEnemy.OnHitAttackerActions += OnHitAttacker;
+        }
+
+        private void OnHitAttacker(DamageInfo damageInfo, CharacterBody victimBody, CharacterBody attackerBody)
+        {
+            if (damageInfo.HasModdedDamageType(ModdedDamageTypes.NucleatorCanApplyRadiation) && attackerBody.HasBuff(BuffCore.nucleatorSpecialBuff))
+            {
+                //todo: set up radiation
+            }
         }
 
         private void GlobalEventManager_OnHitEnemy(On.RoR2.GlobalEventManager.orig_OnHitEnemy orig, GlobalEventManager self, DamageInfo damageInfo, GameObject victim)
@@ -58,7 +69,7 @@ namespace Starstorm2Unofficial.Cores
                     {
                         attackerObject = damageInfo.attacker,
                         victimObject = victim,
-                        dotIndex = DoTCore.gougeIndex,
+                        dotIndex = DoTCore.NemmandoGouge,
                         duration = 2,
                         damageMultiplier = DamageTypeCore.gougeDamageCoefficient
                     };
@@ -109,7 +120,7 @@ namespace Starstorm2Unofficial.Cores
                     }
                 }
 
-                if (damageInfo.dotIndex == DoTCore.gougeIndex && damageInfo.procCoefficient == 0f)
+                if (damageInfo.dotIndex == DoTCore.NemmandoGouge && damageInfo.procCoefficient == 0f)
                 {
                     if (damageInfo.attacker)
                     {
