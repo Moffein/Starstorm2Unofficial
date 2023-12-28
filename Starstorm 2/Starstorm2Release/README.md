@@ -53,6 +53,16 @@ The SS2 team is free to use any of the new code from this mod as long as this re
 
 ## Changelog
 
+`0.16.6`
+
+- Chirr
+	- Now autosprints when flying.
+	- Headbutt
+		- Lunge distance increased by 71%.
+		- Lunge can now travel vertically if started airborne.
+		- Increased knockback force from 2400 -> 2700
+		- Increased cooldown from 4s -> 7s
+
 `0.16.5`
 
 - Executioner

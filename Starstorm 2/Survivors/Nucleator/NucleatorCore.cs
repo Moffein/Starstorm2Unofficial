@@ -2,7 +2,6 @@
 using EntityStates;
 using EntityStates.SS2UStates.Nucleator.Primary;
 using EntityStates.SS2UStates.Nucleator.Special;
-using EntityStates.SS2UStates.Nucleator.U;
 using EntityStates.SS2UStates.Nucleator.Utility;
 using Mono.Cecil.Cil;
 using MonoMod.Cil;

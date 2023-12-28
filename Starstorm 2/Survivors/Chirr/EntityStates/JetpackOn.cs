@@ -18,7 +18,8 @@ namespace EntityStates.SS2UStates.Chirr
 				float num = base.characterMotor.velocity.y;
 				num = Mathf.MoveTowards(num, JetpackOn.hoverVelocity, JetpackOn.hoverAcceleration * Time.fixedDeltaTime);
 				base.characterMotor.velocity = new Vector3(base.characterMotor.velocity.x, num, base.characterMotor.velocity.z);
-			}
+                if (base.characterBody && !base.characterBody.isSprinting) base.characterBody.isSprinting = true;
+            }
 		}
 
         public override void OnExit()

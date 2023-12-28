@@ -17,14 +17,18 @@ namespace EntityStates.SS2UStates.Chirr
         public static float momentumStartPercent = 0.3f;
         public static float momentumFadePercent = 0.6f;
         public static float momentumEndPercent = 0.8f;
-        public static float forwardSpeed = 30f;
-        public static float knockbackForce = 2400f;
+        public static float forwardSpeed = 36f;
+        public static float baseStateDuration = 1f;   //was 0.7f
+        public static float knockbackForce = 2700f;
         public static float yForce = 1200f;
 
         private Vector3 attackDirection;
+        private Vector3 attackDirectionFlat;
         private float momentumStartTime;
         private float momentumFadeTime;
         private float momentumEndTime;
+
+        private bool startedGrounded;
 
         public override void OnEnter()
         {
@@ -40,7 +44,7 @@ namespace EntityStates.SS2UStates.Chirr
             this.hitboxName = "HeadbuttHitbox";
             base.damageCoefficient = Headbutt.damageCoefficient;
             this.procCoefficient = 1f;
-            this.baseDuration = 0.7f;
+            this.baseDuration = Headbutt.baseStateDuration;
             this.attackStartTime = 0.3f;
             this.attackEndTime = 0.8f;
             this.pushForce = 0f;
@@ -55,6 +59,8 @@ namespace EntityStates.SS2UStates.Chirr
 
             base.OnEnter();
 
+            startedGrounded = base.isGrounded;
+
             if (base.characterBody)
             {
                 base.characterBody.SetAimTimer(2f);
@@ -66,10 +72,15 @@ namespace EntityStates.SS2UStates.Chirr
 
                 Ray aimRay = base.GetAimRay();
                 attackDirection = aimRay.direction;
-                attackDirection.y = 0;
-                attackDirection.Normalize();
-                this.attack.forceVector = attackDirection * Headbutt.knockbackForce;
+
+                attackDirectionFlat = attackDirection;
+                attackDirectionFlat.y = 0;
+                attackDirectionFlat.Normalize();
+
+                this.attack.forceVector = attackDirectionFlat * Headbutt.knockbackForce;
                 this.attack.forceVector.y += Headbutt.yForce;
+
+                this.attack.forceVector = attackDirection * Headbutt.knockbackForce;
             }
         }
 
@@ -82,12 +93,14 @@ namespace EntityStates.SS2UStates.Chirr
             {
                 Ray aimRay = base.GetAimRay();
                 attackDirection = aimRay.direction;
-                attackDirection.y = 0;
-                attackDirection.Normalize();
+
+                attackDirectionFlat = attackDirection;
+                attackDirectionFlat.y = 0;
+                attackDirectionFlat.Normalize();
 
                 if (this.attack != null)
                 {
-                    this.attack.forceVector = attackDirection * Headbutt.knockbackForce;
+                    this.attack.forceVector = attackDirectionFlat * Headbutt.knockbackForce;
                     this.attack.forceVector.y += Headbutt.yForce;
                 }
 
@@ -116,14 +129,17 @@ namespace EntityStates.SS2UStates.Chirr
                     {
                         evaluatedForwardSpeed *= Mathf.Lerp(1f, 0f, (this.stopwatch - this.momentumFadeTime)/(this.momentumEndTime - this.momentumFadeTime));
                     }
-                    if (evaluatedForwardSpeed > 0f)
+                    if (base.characterMotor && evaluatedForwardSpeed > 0f)
                     {
                         if (base.characterDirection)
                         {
                             base.characterDirection.forward = attackDirection;
                         }
                         Vector3 evaluatedForwardVector = attackDirection * evaluatedForwardSpeed;
-                        base.characterMotor.AddDisplacement(new Vector3(evaluatedForwardVector.x, 0f, evaluatedForwardVector.z));
+
+                        base.characterMotor.AddDisplacement(new Vector3(evaluatedForwardVector.x, evaluatedForwardVector.y, evaluatedForwardVector.z));
+
+                        if (!startedGrounded && base.characterMotor.velocity.y < 0f) base.characterMotor.velocity.y = 0f;
                     }
                     else
                     {
