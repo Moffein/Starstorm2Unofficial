@@ -270,6 +270,8 @@
     <Compile Include="Survivors\Nucleator\EntityStates\Primary\FireIrradiateOvercharge.cs" />
     <Compile Include="Survivors\Nucleator\EntityStates\Special\BuffSelf.cs" />
     <Compile Include="Survivors\Nucleator\EntityStates\Special\BuffSelfScepter.cs" />
+    <Compile Include="Survivors\Nucleator\EntityStates\Utility\ChargeLeap.cs" />
+    <Compile Include="Survivors\Nucleator\EntityStates\Utility\FireLeap.cs" />
     <Compile Include="Survivors\Nucleator\EntityStates_old\ApplyRadionuclideSurge.cs" />
     <Compile Include="Survivors\Nucleator\EntityStates_old\ChargeController.cs" />
     <Compile Include="Survivors\Nucleator\EntityStates_old\ChargeStates\ChargeFissionImpulse.cs" />

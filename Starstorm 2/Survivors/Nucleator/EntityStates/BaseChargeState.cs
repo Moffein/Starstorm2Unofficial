@@ -155,7 +155,7 @@ namespace EntityStates.SS2UStates.Nucleator
             return false;
         }
 
-        protected virtual void SetNextState() { this.outer.SetNextStateToMain(); }
-        protected virtual void SetNextStateOvercharge() { this.outer.SetNextStateToMain(); }
+        protected abstract void SetNextState();
+        protected abstract void SetNextStateOvercharge();
     }
 }

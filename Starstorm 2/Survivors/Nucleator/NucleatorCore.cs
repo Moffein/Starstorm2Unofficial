@@ -2,6 +2,8 @@
 using EntityStates;
 using EntityStates.SS2UStates.Nucleator.Primary;
 using EntityStates.SS2UStates.Nucleator.Special;
+using EntityStates.SS2UStates.Nucleator.U;
+using EntityStates.SS2UStates.Nucleator.Utility;
 using Mono.Cecil.Cil;
 using MonoMod.Cil;
 using R2API;
@@ -149,6 +151,9 @@ namespace Starstorm2Unofficial.Survivors.Nucleator
             Modules.States.AddState(typeof(ChargeIrradiate));
             Modules.States.AddState(typeof(FireIrradiate));
             Modules.States.AddState(typeof(FireIrradiateOvercharge));
+
+            Modules.States.AddState(typeof(ChargeLeap));
+
             Modules.States.AddState(typeof(BuffSelf));
         }
 
@@ -167,6 +172,7 @@ namespace Starstorm2Unofficial.Survivors.Nucleator
             SetupPrimaries(skillLocator);
             skillLocator.secondary = Utils.RegisterSkillsToFamily(bodyPrefab, new SkillFamily.Variant[] { squawkVariant });
             skillLocator.utility = Utils.RegisterSkillsToFamily(bodyPrefab, new SkillFamily.Variant[] { squawkVariant });
+            SetupUtilities(skillLocator);
             SetupSpecials(skillLocator);
         }
 
@@ -196,6 +202,11 @@ namespace Starstorm2Unofficial.Survivors.Nucleator
             SkillFamily.Variant primaryVariant1 = Utils.RegisterSkillVariant(primaryDef1);
             skillLocator.primary = Utils.RegisterSkillsToFamily(bodyPrefab, new SkillFamily.Variant[] { primaryVariant1 });
             SkillDefs.Primary = primaryDef1;
+        }
+
+        private void SetupUtilities(SkillLocator skillLocator)
+        {
+
         }
 
         private void SetupSpecials(SkillLocator skillLocator)
