@@ -128,9 +128,7 @@ namespace EntityStates.SS2UStates.Common.Emotes
                 }
             }
 
-            if (this.duration > 0 && base.fixedAge >= this.duration) flag = true;
-
-            if (flag)
+            if (this.duration > 0 && base.fixedAge >= this.duration)
             {
                 this.outer.SetNextStateToMain();
             }

@@ -52,6 +52,12 @@ namespace EntityStates.SS2UStates.Chirr
         public override void FixedUpdate()
         {
             base.FixedUpdate();
+
+            if (base.characterDirection)
+            {
+                base.characterDirection.forward = base.GetAimRay().direction;
+            }
+
             if (shotCount < ChirrPrimary.baseShotCount)
             {
                 shotStopwatch += Time.fixedDeltaTime;

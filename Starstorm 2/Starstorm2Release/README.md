@@ -57,6 +57,7 @@ The SS2 team is free to use any of the new code from this mod as long as this re
 
 - Chirr
 	- Now autosprints when flying.
+	- Enabled taunts.
 	- Headbutt
 		- Lunge distance increased by 71%.
 		- Lunge can now travel vertically if started airborne.
