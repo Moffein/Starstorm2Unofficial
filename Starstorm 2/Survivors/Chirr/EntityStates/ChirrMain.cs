@@ -112,6 +112,25 @@ namespace EntityStates.SS2UStates.Chirr
             }
         }
 
+        public override void Update()
+        {
+            base.Update();
+
+            if (base.isAuthority && base.characterMotor.isGrounded)
+            {
+                if (Input.GetKeyDown(Starstorm2Unofficial.Modules.Config.restKeybind))
+                {
+                    this.outer.SetInterruptState(new EntityStates.SS2UStates.Common.Emotes.RestEmote(), InterruptPriority.Any);
+                    return;
+                }
+                else if (Input.GetKeyDown(Starstorm2Unofficial.Modules.Config.tauntKeybind))
+                {
+                    this.outer.SetInterruptState(new EntityStates.SS2UStates.Common.Emotes.TauntEmote(), InterruptPriority.Any);
+                    return;
+                }
+            }
+        }
+
         public override void OnExit()
         {
             Util.PlaySound(wingSoundStop, base.gameObject);

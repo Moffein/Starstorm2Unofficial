@@ -62,6 +62,8 @@ The SS2 team is free to use any of the new code from this mod as long as this re
 		- Lunge can now travel vertically if started airborne.
 		- Increased knockback force from 2400 -> 2700
 		- Increased cooldown from 4s -> 7s
+		
+	*Small QoL stuff rom SS2O Chirr, but no plans to turn her into that since they're fundamentally very different characters.*
 
 `0.16.5`
 
