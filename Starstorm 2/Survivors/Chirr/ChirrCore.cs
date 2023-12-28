@@ -309,7 +309,7 @@ namespace Starstorm2Unofficial.Survivors.Chirr
             secondaryDef1.skillDescriptionToken = "SS2UCHIRR_HEADBUTT_DESCRIPTION";
             secondaryDef1.icon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("ChirrSecondary");
             secondaryDef1.baseMaxStock = 1;
-            secondaryDef1.baseRechargeInterval = 7f;
+            secondaryDef1.baseRechargeInterval = 6f;
             secondaryDef1.beginSkillCooldownOnSkillEnd = false;
             secondaryDef1.canceledFromSprinting = false;
             secondaryDef1.fullRestockOnAssign = true;

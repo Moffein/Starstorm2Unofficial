@@ -57,14 +57,14 @@ The SS2 team is free to use any of the new code from this mod as long as this re
 
 - Chirr
 	- Now autosprints when flying.
-	- Enabled taunts.
+	- Added 2 taunts.
 	- Headbutt
 		- Lunge distance increased by 71%.
 		- Lunge can now travel vertically if started airborne.
 		- Increased knockback force from 2400 -> 2700
-		- Increased cooldown from 4s -> 7s
+		- Increased cooldown from 4s -> 6s
 		
-	*Small QoL stuff rom SS2O Chirr, but no plans to turn her into that since they're fundamentally very different characters.*
+	*Small QoL stuff from SS2O Chirr, but no plans to turn her into that since they're fundamentally very different characters.*
 
 `0.16.5`
 
