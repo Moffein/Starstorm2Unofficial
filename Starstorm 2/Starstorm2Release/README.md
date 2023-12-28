@@ -57,8 +57,8 @@ The SS2 team is free to use any of the new code from this mod as long as this re
 
 - Taunts
 	- Tweaked taunt code to be less jank.
-		- Special skin effects like the MGR music on Nemmando's Mastery isn't hardcoded into the main emote state anymore.
-			- A side effect of this is that you can no longer use other taunts while already in a taunt state. (Taunt cancels were hardcoded the exact base emote states, but special effects are now in inherited states).
+		- Special skin effects like the MGR music on Nemmando's Mastery aren't hardcoded into the main emote state anymore.
+			- A side effect of this is that you can no longer use other taunts while already in a taunt state. (Taunt cancels were hardcoded to swap to the exact base emote states, but special effects are now in inherited states so they would be skipped).
 		- Let me know if anything else broke.
 	- Keybinds can now be changed in-game via Risk of Options. (This will reset your previous config setting)
 	
