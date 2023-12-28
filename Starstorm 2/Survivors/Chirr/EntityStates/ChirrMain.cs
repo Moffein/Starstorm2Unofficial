@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using UnityEngine.Networking;
 using Starstorm2Unofficial.Survivors.Chirr;
 using Starstorm2Unofficial.Survivors.Chirr.Components;
+using EntityStates.SS2UStates.Chirr.Taunt;
 
 
 //TODO: should check that secondary is ion gun before attempting to store/load charges
@@ -118,14 +119,14 @@ namespace EntityStates.SS2UStates.Chirr
 
             if (base.isAuthority && base.characterMotor.isGrounded)
             {
-                if (Input.GetKeyDown(Starstorm2Unofficial.Modules.Config.restKeybind))
+                if (Starstorm2Unofficial.Modules.Config.GetKeyPressed(Starstorm2Unofficial.Modules.Config.RestKeybind))
                 {
-                    this.outer.SetInterruptState(new EntityStates.SS2UStates.Common.Emotes.RestEmote() { animDuration = 8f }, InterruptPriority.Any);
+                    this.outer.SetInterruptState(new ChirrRestEmote(), InterruptPriority.Any);
                     return;
                 }
-                else if (Input.GetKeyDown(Starstorm2Unofficial.Modules.Config.tauntKeybind))
+                else if (Starstorm2Unofficial.Modules.Config.GetKeyPressed(Starstorm2Unofficial.Modules.Config.TauntKeybind))
                 {
-                    this.outer.SetInterruptState(new EntityStates.SS2UStates.Common.Emotes.TauntEmote() { duration = 0f }, InterruptPriority.Any);
+                    this.outer.SetInterruptState(new ChirrTauntLoopEmote(), InterruptPriority.Any);
                     return;
                 }
             }

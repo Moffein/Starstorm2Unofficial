@@ -12,10 +12,8 @@ namespace Starstorm2Unofficial.Modules
         internal static ConfigEntry<bool> ss_test;
         internal static ConfigEntry<bool> cursed;
 
-        internal static ConfigEntry<KeyCode> RestKeybind;
-        internal static KeyCode restKeybind;
-        internal static ConfigEntry<KeyCode> TauntKeybind;
-        internal static KeyCode tauntKeybind;
+        internal static ConfigEntry<KeyboardShortcut> RestKeybind;
+        internal static ConfigEntry<KeyboardShortcut> TauntKeybind;
 
         internal static ConfigEntry<bool> EnableGrandMasteryCommando;
         internal static ConfigEntry<bool> EnableGrandMasteryToolbot;
@@ -242,11 +240,9 @@ namespace Starstorm2Unofficial.Modules
             //EnableEnemies = Config.Bind("Starstorm 2 :: Enemies", "Enabled", true, "Enables Starstorm 2's enemies. Set to false to disable all enemies added by Starstorm 2.");
 
             //emotes
-            RestKeybind = StarstormPlugin.instance.Config.Bind("Starstorm 2 :: Keybinds", "Rest Emote", KeyCode.Alpha1, "Keybind used for the Rest emote.");
-            restKeybind = RestKeybind.Value;// cache it for performance
+            RestKeybind = StarstormPlugin.instance.Config.Bind("Starstorm 2 :: Keybinds", "Rest Emote", new KeyboardShortcut(KeyCode.Alpha1), "Keybind used for the Rest emote.");
 
-            TauntKeybind = StarstormPlugin.instance.Config.Bind("Starstorm 2 :: Keybinds", "Taunt Emote", KeyCode.Alpha2, "Keybind used for the Taunt emote.");
-            tauntKeybind = TauntKeybind.Value;// cache it for performance
+            TauntKeybind = StarstormPlugin.instance.Config.Bind("Starstorm 2 :: Keybinds", "Taunt Emote", new KeyboardShortcut(KeyCode.Alpha2), "Keybind used for the Taunt emote.");
 
             if (StarstormPlugin.riskOfOptionsLoaded)
             {
@@ -267,7 +263,9 @@ namespace Starstorm2Unofficial.Modules
         [MethodImpl(MethodImplOptions.NoInlining | MethodImplOptions.NoOptimization)]
         private static void RiskOfOptionsCompat()
         {
-            //NEED TO CONVERT EMOTES TO USE KEYBOARDSHORTCUT AND GETKEYPRESSED
+            ModSettingsManager.SetModIcon(Assets.mainAssetBundle.LoadAsset<Sprite>("modIcon.png"));
+            ModSettingsManager.AddOption(new RiskOfOptions.Options.KeyBindOption(RestKeybind));
+            ModSettingsManager.AddOption(new RiskOfOptions.Options.KeyBindOption(TauntKeybind));
         }
 
         //Taken from https://github.com/ToastedOven/CustomEmotesAPI/blob/main/CustomEmotesAPI/CustomEmotesAPI/CustomEmotesAPI.cs

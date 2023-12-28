@@ -936,6 +936,11 @@ namespace Starstorm2Unofficial.Survivors.Nemmando
         }
         #endregion
 
+        public static class SkinDefs
+        {
+            public static SkinDef Default, Mastery, Grandmastery, Commando, CommandoJoke, Vergil;
+        }
+
         internal override void InitializeSkins()
         {
             GameObject model = bodyPrefab.GetComponentInChildren<ModelLocator>().modelTransform.gameObject;
@@ -999,6 +1004,7 @@ namespace Starstorm2Unofficial.Survivors.Nemmando
             defaultSkin.gameObjectActivations = defaultActivations;
 
             skins.Add(defaultSkin);
+            SkinDefs.Default = defaultSkin;
             #endregion
 
             #region MasterySkin
@@ -1041,6 +1047,7 @@ namespace Starstorm2Unofficial.Survivors.Nemmando
             masterySkin.gameObjectActivations = defaultActivations;
 
             skins.Add(masterySkin);
+            SkinDefs.Mastery = masterySkin;
             #endregion
 
             #region GrandMasterySkin
@@ -1080,6 +1087,7 @@ namespace Starstorm2Unofficial.Survivors.Nemmando
             grandMasterySkin.gameObjectActivations = defaultActivations;
 
             skins.Add(grandMasterySkin);
+            SkinDefs.Grandmastery = grandMasterySkin;
             #endregion
 
             #region CommandoSkin
@@ -1131,6 +1139,7 @@ namespace Starstorm2Unofficial.Survivors.Nemmando
             commandoSkin.gameObjectActivations = defaultActivations;
 
             skins.Add(commandoSkin);
+            SkinDefs.Commando = commandoSkin;
             #endregion
 
             #region Cursed
@@ -1174,6 +1183,7 @@ namespace Starstorm2Unofficial.Survivors.Nemmando
                 commandoJokeSkin.gameObjectActivations = defaultActivations;
 
                 skins.Add(commandoJokeSkin);
+                SkinDefs.CommandoJoke = commandoJokeSkin;
                 #endregion
 
                 #region VergilSkin
@@ -1223,6 +1233,7 @@ namespace Starstorm2Unofficial.Survivors.Nemmando
                 };*/
 
                 skins.Add(vergilSkin);
+                SkinDefs.Vergil = vergilSkin;
                 #endregion
             }
             #endregion

@@ -46,6 +46,7 @@ namespace EntityStates.SS2UStates.Common.Emotes
             this.animator.SetLayerWeight(animator.GetLayerIndex("AimYaw"), 0);
 
             if (this.animDuration == 0 && this.duration != 0) this.animDuration = this.duration;
+            else if (this.animDuration == 0f && this.duration == 0f) this.animDuration = 1f;
 
             base.PlayAnimation("FullBody, Override", this.animString, "Emote.playbackRate", this.animDuration);
 

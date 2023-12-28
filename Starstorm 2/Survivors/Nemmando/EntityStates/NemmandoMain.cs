@@ -1,5 +1,6 @@
 ﻿using EntityStates;
 using EntityStates.SS2UStates.Common;
+using EntityStates.SS2UStates.Nemmando.Taunt;
 using UnityEngine;
 
 namespace EntityStates.SS2UStates.Nemmando
@@ -20,14 +21,14 @@ namespace EntityStates.SS2UStates.Nemmando
 
             if (base.isAuthority && base.characterMotor.isGrounded)
             {
-                if (Input.GetKeyDown(Starstorm2Unofficial.Modules.Config.restKeybind))
+                if (Starstorm2Unofficial.Modules.Config.GetKeyPressed(Starstorm2Unofficial.Modules.Config.RestKeybind))
                 {
-                    this.outer.SetInterruptState(new Common.Emotes.RestEmote() { animDuration = 8f }, InterruptPriority.Any);
+                    this.outer.SetInterruptState(new NemmandoRestEmote(), InterruptPriority.Any);
                     return;
                 }
-                else if (Input.GetKeyDown(Starstorm2Unofficial.Modules.Config.tauntKeybind))
+                else if (Starstorm2Unofficial.Modules.Config.GetKeyPressed(Starstorm2Unofficial.Modules.Config.TauntKeybind))
                 {
-                    this.outer.SetInterruptState(new Common.Emotes.TauntEmote() { duration = 4f }, InterruptPriority.Any);
+                    this.outer.SetInterruptState(new NemmandoTauntEmote(), InterruptPriority.Any);
                     return;
                 }
             }

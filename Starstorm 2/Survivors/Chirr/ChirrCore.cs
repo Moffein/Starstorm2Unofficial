@@ -15,6 +15,7 @@ using System.Runtime.CompilerServices;
 using Starstorm2Unofficial.Cores;
 using System.Collections.Generic;
 using RoR2.CharacterAI;
+using EntityStates.SS2UStates.Chirr.Taunt;
 
 namespace Starstorm2Unofficial.Survivors.Chirr
 {
@@ -153,6 +154,10 @@ namespace Starstorm2Unofficial.Survivors.Chirr
             Modules.States.AddState(typeof(Befriend));
             Modules.States.AddState(typeof(BefriendScepter));
             Modules.States.AddState(typeof(Leash));
+
+
+            Modules.States.AddState(typeof(ChirrRestEmote));
+            Modules.States.AddState(typeof(ChirrTauntLoopEmote));
         }
 
         private void RegisterProjectiles()

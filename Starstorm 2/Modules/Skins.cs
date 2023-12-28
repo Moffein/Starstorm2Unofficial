@@ -6,6 +6,7 @@ namespace Starstorm2Unofficial.Modules
 {
     internal static class Skins
     {
+
         internal static SkinDef CreateSkinDef(string skinName, Sprite skinIcon, CharacterModel.RendererInfo[] rendererInfos, SkinnedMeshRenderer mainRenderer, GameObject root)
         {
             return CreateSkinDef(skinName, skinIcon, rendererInfos, mainRenderer, root, null);

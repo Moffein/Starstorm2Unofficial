@@ -1,10 +1,6 @@
 ﻿using EntityStates.SS2UStates.Common.Emotes;
-using Starstorm2Unofficial.Modules;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using RoR2;
+using Starstorm2Unofficial.Survivors.Nemmando;
 
 namespace EntityStates.SS2UStates.Nemmando.Taunt
 {
@@ -14,10 +10,10 @@ namespace EntityStates.SS2UStates.Nemmando.Taunt
         {
             this.duration = 4f;
 
-            CustomEffectComponent effectComponent = base.GetComponent<CustomEffectComponent>();
-            if (effectComponent)
+            if (base.characterBody)
             {
-                if (effectComponent.hasSheath)
+                SkinDef currentSkin = SkinCatalog.GetBodySkinDef(base.characterBody.bodyIndex, (int)base.characterBody.skinIndex);
+                if (currentSkin && (currentSkin == NemmandoCore.SkinDefs.Mastery || currentSkin == NemmandoCore.SkinDefs.Vergil))
                 {
                     this.soundString = "SS2USpawnMGR";
                     this.duration = 12f;

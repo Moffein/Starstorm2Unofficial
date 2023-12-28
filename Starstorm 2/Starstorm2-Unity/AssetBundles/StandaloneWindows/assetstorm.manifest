@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 1613170524
+CRC: 3499690953
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 901dd9afccdd6687ea6b1b14cd8c8fbc
+    Hash: 9fb353b50b3c03e2114ec298b5de61c6
   TypeTreeHash:
     serializedVersion: 2
     Hash: e085efc3cec39229c22603e1a47b8115
@@ -411,6 +411,7 @@ Assets:
 - Assets/AssetBundle/BuffIcons/Status_Sigil.png
 - Assets/AssetBundle/Nemmando/VFX/Materials/metNemmandoCharge.mat
 - Assets/AssetBundle/Executioner/Mesh/meshExecutionerGun.mesh
+- Assets/AssetBundle/modIcon.png
 - Assets/AssetBundle/GeneralAssets/Textures/UI/texCrosshairChargeRifleCharge.png
 - Assets/AssetBundle/Cyborg/Animations/Primary2.anim
 - Assets/AssetBundle/Chirr/ChirrPassive.png

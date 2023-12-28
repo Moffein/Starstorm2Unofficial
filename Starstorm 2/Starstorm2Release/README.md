@@ -55,9 +55,12 @@ The SS2 team is free to use any of the new code from this mod as long as this re
 
 `0.16.6`
 
-- Tweaked emote code to be slightly less jank.
-	- You can no longer use emotes while already being in an emote state. The specific reason behind this is that a lot of skin-specific emote logic was hardcoded into a generic shared emote state, and this was updated to fix that but ended up breaking this as a result.
-	- Let me know if anything else broke.
+- Taunts
+	- Tweaked taunt code to be less jank.
+		- Special skin effects like the MGR music on Nemmando's Mastery isn't hardcoded into the main emote state anymore.
+			- A side effect of this is that you can no longer use other taunts while already in a taunt state. (Taunt cancels were hardcoded the exact base emote states, but special effects are now in inherited states).
+		- Let me know if anything else broke.
+	- Keybinds can now be changed in-game via Risk of Options. (This will reset your previous config setting)
 	
 - Chirr
 	- Now autosprints when flying.
