@@ -258,6 +258,8 @@
     <Compile Include="Modules\Skins.cs" />
     <Compile Include="Modules\States.cs" />
     <Compile Include="Survivors\Executioner\ExecutionerCore.cs" />
+    <Compile Include="Survivors\Nemmando\EntityStates\Taunt\NemmandoRestEmote.cs" />
+    <Compile Include="Survivors\Nemmando\EntityStates\Taunt\NemmandoTauntEmote.cs" />
     <Compile Include="Survivors\Nemmando\NemmandoCore.cs" />
     <Compile Include="Survivors\Nemmando\NemmandoItemDisplays.cs" />
     <Compile Include="Survivors\Nucleator\Components\Crosshair\NucleatorCrosshairController.cs" />

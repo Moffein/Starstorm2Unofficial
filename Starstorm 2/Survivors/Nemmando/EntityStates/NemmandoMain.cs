@@ -22,12 +22,12 @@ namespace EntityStates.SS2UStates.Nemmando
             {
                 if (Input.GetKeyDown(Starstorm2Unofficial.Modules.Config.restKeybind))
                 {
-                    this.outer.SetInterruptState(new Common.Emotes.RestEmote(), InterruptPriority.Any);
+                    this.outer.SetInterruptState(new Common.Emotes.RestEmote() { animDuration = 8f }, InterruptPriority.Any);
                     return;
                 }
                 else if (Input.GetKeyDown(Starstorm2Unofficial.Modules.Config.tauntKeybind))
                 {
-                    this.outer.SetInterruptState(new Common.Emotes.TauntEmote(), InterruptPriority.Any);
+                    this.outer.SetInterruptState(new Common.Emotes.TauntEmote() { duration = 4f }, InterruptPriority.Any);
                     return;
                 }
             }

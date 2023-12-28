@@ -120,12 +120,12 @@ namespace EntityStates.SS2UStates.Chirr
             {
                 if (Input.GetKeyDown(Starstorm2Unofficial.Modules.Config.restKeybind))
                 {
-                    this.outer.SetInterruptState(new EntityStates.SS2UStates.Common.Emotes.RestEmote(), InterruptPriority.Any);
+                    this.outer.SetInterruptState(new EntityStates.SS2UStates.Common.Emotes.RestEmote() { animDuration = 8f }, InterruptPriority.Any);
                     return;
                 }
                 else if (Input.GetKeyDown(Starstorm2Unofficial.Modules.Config.tauntKeybind))
                 {
-                    this.outer.SetInterruptState(new EntityStates.SS2UStates.Common.Emotes.TauntEmote(), InterruptPriority.Any);
+                    this.outer.SetInterruptState(new EntityStates.SS2UStates.Common.Emotes.TauntEmote() { duration = 0f }, InterruptPriority.Any);
                     return;
                 }
             }

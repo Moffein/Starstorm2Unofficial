@@ -1,6 +1,7 @@
 ﻿using BepInEx.Configuration;
 using EntityStates;
 using EntityStates.SS2UStates.Nemmando;
+using EntityStates.SS2UStates.Nemmando.Taunt;
 using R2API;
 using R2API.Utils;
 using RoR2;
@@ -714,6 +715,9 @@ namespace Starstorm2Unofficial.Survivors.Nemmando
             Modules.States.AddState(typeof(ScepterSlashAttack));
             Modules.States.AddState(typeof(ScepterBarrageCharge));
             Modules.States.AddState(typeof(ScepterBarrageFire));
+
+            Modules.States.AddState(typeof(NemmandoRestEmote));
+            Modules.States.AddState(typeof(NemmandoTauntEmote));
         }
 
         [MethodImpl(MethodImplOptions.NoInlining | MethodImplOptions.NoOptimization)]

@@ -4,22 +4,16 @@ namespace EntityStates.SS2UStates.Common.Emotes
 {
     public class TauntEmote : BaseEmote
     {
+        //this.duration = 4f;   //old default: 4s
         public override void OnEnter()
         {
             this.animString = "Taunt";
-            this.duration = 4f;
-
-            CustomEffectComponent effectComponent = base.GetComponent<CustomEffectComponent>();
-            if (effectComponent)
-            {
-                if (effectComponent.hasSheath)
-                {
-                    this.soundString = "SS2USpawnMGR";
-                    this.duration = 12f;
-                }
-            }
-
             base.OnEnter();
+        }
+
+        public override void SetParams()
+        {
+            this.duration = 4f;
         }
     }
 }

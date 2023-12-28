@@ -13,6 +13,7 @@ namespace EntityStates.SS2UStates.Common.Emotes
         public float duration;
         public float animDuration;
         public bool normalizeModel;
+        public float minDuration = 0.5f;
 
         private uint activePlayID;
         private Animator animator;
@@ -28,8 +29,12 @@ namespace EntityStates.SS2UStates.Common.Emotes
         };
         private CameraParamsOverrideHandle camOverrideHandle;
 
+        public virtual void SetParams() { }
+
         public override void OnEnter()
         {
+            SetParams();
+
             base.OnEnter();
             this.animator = base.GetModelAnimator();
             this.childLocator = base.GetModelChildLocator();
@@ -94,27 +99,27 @@ namespace EntityStates.SS2UStates.Common.Emotes
         {
             base.FixedUpdate();
 
-            bool flag = false;
+            bool shouldCancel = false;
 
             if (base.characterMotor)
             {
-                if (!base.characterMotor.isGrounded) flag = true;
-                if (base.characterMotor.velocity != Vector3.zero) flag = true;
+                if (!base.characterMotor.isGrounded) shouldCancel = true;
+                if (base.characterMotor.velocity != Vector3.zero) shouldCancel = true;
             }
 
             if (base.inputBank)
             {
-                if (base.inputBank.skill1.down) flag = true;
-                if (base.inputBank.skill2.down) flag = true;
-                if (base.inputBank.skill3.down) flag = true;
-                if (base.inputBank.skill4.down) flag = true;
-                if (base.inputBank.jump.down) flag = true;
+                if (base.inputBank.skill1.down) shouldCancel = true;
+                if (base.inputBank.skill2.down) shouldCancel = true;
+                if (base.inputBank.skill3.down) shouldCancel = true;
+                if (base.inputBank.skill4.down) shouldCancel = true;
+                if (base.inputBank.jump.down) shouldCancel = true;
 
-                if (base.inputBank.moveVector != Vector3.zero) flag = true;
+                if (base.inputBank.moveVector != Vector3.zero) shouldCancel = true;
             }
 
             //emote cancels
-            if (base.isAuthority && base.characterMotor.isGrounded)
+            /*if (base.isAuthority && base.characterMotor.isGrounded)
             {
                 if (Input.GetKeyDown(Starstorm2Unofficial.Modules.Config.restKeybind))
                 {
@@ -126,9 +131,9 @@ namespace EntityStates.SS2UStates.Common.Emotes
                     this.outer.SetInterruptState(new TauntEmote(), InterruptPriority.Any);
                     return;
                 }
-            }
+            }*/
 
-            if (this.duration > 0 && base.fixedAge >= this.duration)
+            if (shouldCancel || (this.duration > minDuration && base.fixedAge >= this.duration))
             {
                 this.outer.SetNextStateToMain();
             }
