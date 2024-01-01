@@ -53,6 +53,13 @@ The SS2 team is free to use any of the new code from this mod as long as this re
 
 ## Changelog
 
+`0.16.7`
+
+- Chirr
+	- Flying Autosprint
+		- Now only applies when moving forwards.
+		- M1 orientation correction only happens when flying and moving forwards.
+
 `0.16.6`
 
 - Taunts

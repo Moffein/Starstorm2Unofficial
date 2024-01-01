@@ -53,7 +53,9 @@ namespace EntityStates.SS2UStates.Chirr
         {
             base.FixedUpdate();
 
-            if (base.characterDirection)
+            bool isAirborne = base.characterMotor && !base.characterMotor.isGrounded;
+            bool isSprinting = base.characterBody && base.characterBody.isSprinting;
+            if (isAirborne && isSprinting && base.characterDirection)
             {
                 base.characterDirection.forward = base.GetAimRay().direction;
             }
