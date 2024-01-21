@@ -58,7 +58,7 @@ The SS2 team is free to use any of the new code from this mod as long as this re
 - Nemmando
 	- Fixed Nemmando taking fall damage during his movement skills.
 		- Decisive Strike
-		- Decisive Strike Scepter (TODO)
+		- Decisive Strike Scepter
 		- Roll (TODO)
 	- Added Client-Side options (can be changed in-game with RiskOfOptions)
 		- Decisive Strike dash scales with move speed. (TODO)
