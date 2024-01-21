@@ -15,29 +15,6 @@ namespace Starstorm2Unofficial.Cores
             body = gameObject.GetComponent<CharacterBody>();
         }
 
-        #region Dungus
-        public void HealFractionAuthority(float frac)
-        {
-            if (this.hasAuthority)
-            {
-                CmdHealFractionInternal(frac);
-            }
-        }
-
-        [Server]
-        private void HealFractionInternal(float frac)
-        {
-            if (!NetworkServer.active || !health) return;
-            health.HealFraction(frac, default);
-        }
-
-        [Command]
-        private void CmdHealFractionInternal(float frac)
-        {
-            HealFractionInternal(frac);
-        }
-        #endregion
-
         #region watch metronome
         public void SetMetronomeBuffsAuthority(int count)
         {

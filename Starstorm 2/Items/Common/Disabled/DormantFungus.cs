@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using R2API;
 using RoR2;
 using UnityEngine;
+using UnityEngine.Networking;
 
 namespace Starstorm2Unofficial.Cores.Items
 {
@@ -208,30 +209,24 @@ localScale = new Vector3(0.001F, 0.001F, 0.001F)
 
     public class DormantFungusBehavior : CharacterBody.ItemBehavior
     {
-        //VICE VS YOU
-        //YOUUUUU
-
-        //★ stfu
-
+        private HealthComponent healthComponent;
         private float timer;
-
-        public Starstorm2ItemManager manager;
 
         public void Awake()
         {
             body = gameObject.GetComponent<CharacterBody>();
-            manager = body.gameObject.AddOrGetComponent<Starstorm2ItemManager>();
+            healthComponent = gameObject.GetComponent<HealthComponent>();
         }
 
         public void FixedUpdate()
         {
-            if (!body.hasEffectiveAuthority) return;
+            if (!NetworkServer.active || !healthComponent) return;
             if (body.isSprinting)
             {
                 timer += Time.deltaTime;
                 if (timer >= 1f)
                 {
-                    manager.HealFractionAuthority(0.006f + 0.006f * stack);
+                    healthComponent.HealFraction(0.006f + 0.006f * stack, default);
                     timer = 0;
                 }
             }
