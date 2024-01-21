@@ -21,7 +21,6 @@ namespace EntityStates.SS2UStates.Nemmando
 
         private float dashSpeed;
         private Vector3 forwardDirection;
-        private Vector3 previousPosition;
         private ChildLocator childLocator;
         private ParticleSystem dashEffect;
 
@@ -64,18 +63,12 @@ namespace EntityStates.SS2UStates.Nemmando
 
             this.RecalculateSpeed();
 
-            if (base.characterMotor && base.characterDirection)
+            if (base.characterMotor)
             {
-                base.characterMotor.velocity.y *= 0.1f;
-                base.characterMotor.velocity = this.forwardDirection * this.dashSpeed;
+                base.characterMotor.velocity = Vector3.zero;
             }
 
             base.PlayAnimation("FullBody, Override", "DecisiveStrikeDash");
-
-            base.characterBody.bodyFlags |= CharacterBody.BodyFlags.IgnoreFallDamage;
-
-            Vector3 b = base.characterMotor ? base.characterMotor.velocity : Vector3.zero;
-            this.previousPosition = base.transform.position - b;
 
             this.dashEffect = this.childLocator.FindChild("DashEffect").GetComponent<ParticleSystem>();
             if (this.dashEffect) this.dashEffect.Play();
@@ -100,11 +93,12 @@ namespace EntityStates.SS2UStates.Nemmando
 
         public override void OnExit()
         {
-            if (base.characterMotor) base.characterMotor.disableAirControlUntilCollision = false;
+            if (base.characterMotor)
+            {
+                base.characterMotor.disableAirControlUntilCollision = false;
+                base.characterMotor.velocity = Vector3.zero;
+            }
 
-            base.characterMotor.velocity = Vector3.zero;
-
-            base.characterBody.bodyFlags &= ~CharacterBody.BodyFlags.IgnoreFallDamage;
             if (!this.outer.destroying) base.PlayAnimation("FullBody, Override", "BufferEmpty");
             if (cameraTargetParams) cameraTargetParams.RemoveParamsOverride(camOverrideHandle, .25f);
 
@@ -130,36 +124,18 @@ namespace EntityStates.SS2UStates.Nemmando
 
             if (base.isAuthority)
             {
-                Vector3 normalized = (base.transform.position - this.previousPosition).normalized;
-
-                if (base.characterDirection)
+                if (base.characterMotor)
                 {
-                    if (normalized != Vector3.zero)
-                    {
-                        Vector3 vector = normalized * this.dashSpeed;
-                        float d = Mathf.Max(Vector3.Dot(vector, this.forwardDirection), 0f);
-                        vector = this.forwardDirection * d;
-                        vector.y = base.characterMotor.velocity.y;
-                        base.characterMotor.velocity = vector;
-                    }
+                    base.characterMotor.velocity = Vector3.zero;
 
-                    base.characterDirection.forward = this.forwardDirection;
+                    Vector3 moveVector = this.forwardDirection * this.dashSpeed;
+                    float distance = Mathf.Max(Vector3.Dot(moveVector, this.forwardDirection), 0f);
+                    moveVector = this.forwardDirection * distance;
+                    base.characterMotor.rootMotion += moveVector * Time.fixedDeltaTime;
                 }
 
-                this.previousPosition = base.transform.position;
+                if (base.characterDirection) base.characterDirection.forward = this.forwardDirection;
             }
-        }
-
-        public override void OnSerialize(NetworkWriter writer)
-        {
-            base.OnSerialize(writer);
-            writer.Write(this.forwardDirection);
-        }
-
-        public override void OnDeserialize(NetworkReader reader)
-        {
-            base.OnDeserialize(reader);
-            forwardDirection = reader.ReadVector3();
         }
 
         public override InterruptPriority GetMinimumInterruptPriority()
