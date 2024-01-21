@@ -15,14 +15,14 @@ namespace EntityStates.SS2UStates.Nemmando
 
         public static float maxEmission = 75f;
         public static float minEmission = 25f;
-        public static float maxDamageCoefficient = 5f;
-        public static float minDamageCoeffficient = 1.6f;
+        public static float maxDamageCoefficient = 6f;
+        public static float minDamageCoeffficient = 2f;
         public static float procCoefficient = 1f;
         public static float maxRecoil = 2f;
         public static float minRecoil = 0.25f;
         public static float maxProjectileSpeed = 120f;
         public static float minProjectileSpeed = 50f;
-        public float baseDuration = 0.6f;
+        public float baseDuration = 0.4f;
         public static GameObject projectilePrefab;
 
         private float emission;

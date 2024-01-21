@@ -56,7 +56,15 @@ The SS2 team is free to use any of the new code from this mod as long as this re
 `0.16.8`
 
 - Nemmando
+	- Distant Gash
+		- Increased damage from 160%-500% -> 200%-600%
+		- Reduced charge time from 1s -> 0.8s
+		- Reduced endlag from 0.6s -> 0.4s
+		
+		*This was getting outperformed hard by gun alt due to having better overall DPS, being hitscan, and being usable alongside the primary.*
+
 	- Fixed fall damage during Decisive Strike when using it online.
+	
 	- Added Client-Side options (can be changed in-game with RiskOfOptions)
 		- Decisive Strike dash scales with move speed.
 			- Default: True

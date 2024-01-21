@@ -10,7 +10,7 @@ namespace EntityStates.SS2UStates.Nemmando
 {
     public class ChargeSwordBeam : BaseCustomSkillState
     {
-        public static float baseChargeDuration = 1f;
+        public static float baseChargeDuration = 0.8f;
 
         public static float maxEmission;
         public static float minEmission;
