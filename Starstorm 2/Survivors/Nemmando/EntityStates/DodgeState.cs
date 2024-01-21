@@ -76,6 +76,8 @@ namespace EntityStates.SS2UStates.Nemmando
 					vector.y = 0f;
 					float d = Mathf.Max(Vector3.Dot(vector, this.forwardDirection), 0f);
 					vector = this.forwardDirection * d;
+
+					if (vector.y < 0f) vector.y = 0f;	//is this necessary?
 					vector.y += Mathf.Max(y, 0f);
 					base.characterMotor.velocity = vector;
 

@@ -72,7 +72,7 @@ namespace EntityStates.SS2UStates.Nemmando
                 this.swordMat.SetColor("_EmColor", Color.white);
             }
 
-            if (base.isAuthority && (charge >= 1f || (!base.IsKeyDownAuthority() && base.fixedAge >= 0.1f)))
+            if (base.isAuthority && (charge >= 1f || (!Starstorm2Unofficial.Modules.Config.NemmandoSecondaryAlwaysFullCharge.Value && !base.IsKeyDownAuthority() && base.fixedAge >= 0.1f)))
             {
                 FireSwordBeam nextState = new FireSwordBeam();
                 nextState.charge = charge;

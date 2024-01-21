@@ -88,7 +88,8 @@ namespace EntityStates.SS2UStates.Nemmando
 
         private void RecalculateSpeed()
         {
-            this.dashSpeed = (4 + 0.25f * this.moveSpeedStat) * this.speedCoefficient;
+            float moveSpeed = Starstorm2Unofficial.Modules.Config.NemmandoDecisiveMoveSpeedScaling.Value ? this.moveSpeedStat : 10.15f;
+            this.dashSpeed = (4 + 0.25f * moveSpeed) * this.speedCoefficient;
         }
 
         public override void OnExit()

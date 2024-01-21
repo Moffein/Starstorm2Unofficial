@@ -31,6 +31,9 @@ namespace Starstorm2Unofficial.Modules
 
         internal static ConfigEntry<bool> ChirrEgoFullHeadReplacement;
 
+        internal static ConfigEntry<bool> NemmandoDecisiveMoveSpeedScaling;
+        internal static ConfigEntry<bool> NemmandoSecondaryAlwaysFullCharge;
+
         internal static ConfigEntry<bool> EnableTyphoon;
         internal static ConfigEntry<bool> TyphoonIncreaseSpawnCap;
         internal static ConfigEntry<bool> EnableEvents;
@@ -230,6 +233,16 @@ namespace Starstorm2Unofficial.Modules
                              true,
                              "Befriended minions attack enemies you ping.").Value;
 
+            NemmandoDecisiveMoveSpeedScaling = StarstormPlugin.instance.Config.Bind("Starstorm 2 :: Survivors :: Nemesis Commando",
+                             "Decisive Strike Move Speed Scaling",
+                             true,
+                             "Decisive Strike's dash distance scales with move speed. (Client-Side)");
+
+            NemmandoSecondaryAlwaysFullCharge = StarstormPlugin.instance.Config.Bind("Starstorm 2 :: Survivors :: Nemesis Commando",
+                             "Distant Gash Always Fully Charges",
+                             false,
+                             "Distant Gash fully charges without holding down the button. (Client-Side)");
+
             //survivors
             //EnableExecutioner = CharacterEnableConfig("Executioner");
             //EnableNemmando = CharacterEnableConfig("Nemmando", "Nemesis Commando");
@@ -266,6 +279,10 @@ namespace Starstorm2Unofficial.Modules
             ModSettingsManager.SetModIcon(Assets.mainAssetBundle.LoadAsset<Sprite>("modIcon.png"));
             ModSettingsManager.AddOption(new RiskOfOptions.Options.KeyBindOption(RestKeybind));
             ModSettingsManager.AddOption(new RiskOfOptions.Options.KeyBindOption(TauntKeybind));
+
+
+            ModSettingsManager.AddOption(new RiskOfOptions.Options.CheckBoxOption(NemmandoSecondaryAlwaysFullCharge));
+            ModSettingsManager.AddOption(new RiskOfOptions.Options.CheckBoxOption(NemmandoDecisiveMoveSpeedScaling));
         }
 
         //Taken from https://github.com/ToastedOven/CustomEmotesAPI/blob/main/CustomEmotesAPI/CustomEmotesAPI/CustomEmotesAPI.cs

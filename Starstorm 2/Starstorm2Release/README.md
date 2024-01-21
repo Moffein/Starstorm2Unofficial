@@ -56,14 +56,11 @@ The SS2 team is free to use any of the new code from this mod as long as this re
 `0.16.8`
 
 - Nemmando
-	- Fixed Nemmando taking fall damage during his movement skills.
-		- Decisive Strike
-		- Decisive Strike Scepter
-		- Roll (TODO)
+	- Fixed fall damage during Decisive Strike when using it online.
 	- Added Client-Side options (can be changed in-game with RiskOfOptions)
-		- Decisive Strike dash scales with move speed. (TODO)
+		- Decisive Strike dash scales with move speed.
 			- Default: True
-		- Distant Gash always full-charges without having to hold the button. (TODO)
+		- Distant Gash always full-charges without having to hold the button.
 			- Default: False
 
 `0.16.7`
