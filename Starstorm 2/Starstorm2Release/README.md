@@ -56,6 +56,8 @@ The SS2 team is free to use any of the new code from this mod as long as this re
 `0.16.9`
 
 - Fixed Dungus not working online.
+- Fixed Watch Metronome not working online.
+- Reduced Watch Metronome charge duration from 8s -> 6s
 
 `0.16.8`
 

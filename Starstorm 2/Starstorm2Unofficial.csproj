@@ -188,7 +188,6 @@
     <Compile Include="Survivors\Cyborg\CyborgSkins.cs" />
     <Compile Include="Cores\Skins\VanillaSurvivorSkins.cs" />
     <Compile Include="Cores\Survivors\SpooderCore.cs" />
-    <Compile Include="Cores\Starstorm2ItemManager.cs" />
     <Compile Include="Survivors\Chirr\EntityStates\ChirrMain.cs" />
     <Compile Include="Survivors\Chirr\EntityStates\ChirrHeal.cs" />
     <Compile Include="Survivors\Cyborg\EntityStates\CyborgMain.cs" />

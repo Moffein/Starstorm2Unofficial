@@ -192,25 +192,22 @@ namespace Starstorm2Unofficial.Cores.Items
 
     public class MetronomeBehavior : CharacterBody.ItemBehavior
     {
-        public static float chargeDuration = 8f;
-        public Starstorm2ItemManager manager;
+        public static float chargeDuration = 6f;
 
         private float notSprintingStopwatch;
-        private float clientCharge;
+        private float charge;
 
 
         public void Awake()
         {
             notSprintingStopwatch = 0f;
             body = gameObject.GetComponent<CharacterBody>();
-            manager = body.gameObject.AddOrGetComponent<Starstorm2ItemManager>();
-            clientCharge = 0f;
+            charge = 0f;
         }
 
         public void FixedUpdate()
         {
-            //Calculate buffs clientside
-            if (!body || !body.hasEffectiveAuthority) return;
+            if (!NetworkServer.active || !body) return;
 
             bool isGrounded = body.characterMotor && body.characterMotor.isGrounded;
             if (!body.isSprinting)
@@ -224,28 +221,63 @@ namespace Starstorm2Unofficial.Cores.Items
 
             if (notSprintingStopwatch > 0f)
             {
-                if (isGrounded && clientCharge < 1f)
+                if (isGrounded && charge < 1f)
                 {
-                    float newcharge = clientCharge + (Time.fixedDeltaTime / MetronomeBehavior.chargeDuration);
-                    clientCharge = Math.Min(newcharge, 1f);
+                    float newcharge = charge + (Time.fixedDeltaTime / MetronomeBehavior.chargeDuration);
+                    charge = Math.Min(newcharge, 1f);
                 }
             }
-            else if (clientCharge > 0f)
+            else if (charge > 0f)
             {
-                float newcharge = clientCharge - (Time.fixedDeltaTime / (2.0f + 2.0f * stack));
-                clientCharge = Math.Max(newcharge, 0f);
+                float newcharge = charge - (Time.fixedDeltaTime / (2.0f + 2.0f * stack));
+                charge = Math.Max(newcharge, 0f);
             }
 
-            //Only notify server if buffcount needs to change
-            //This method has an authority check built-in.
             int buffCount = body.GetBuffCount(BuffCore.watchMetronomeBuff.buffIndex);
-            int desiredBuffCount = Mathf.FloorToInt(clientCharge * 10);
-            if (buffCount != desiredBuffCount) manager.SetMetronomeBuffsAuthority(desiredBuffCount);
+            int desiredBuffCount = Mathf.FloorToInt(charge * 10);
+            if (buffCount != desiredBuffCount) SetMetronomeBuffsServer(desiredBuffCount);
         }
 
         private void OnDestroy()
         {
-            if (body && body.hasEffectiveAuthority) manager.ClearMetronomeBuffsAuthority();
+            if (NetworkServer.active)
+            {
+                ClearMetronomeBuffsServer();
+            }
+        }
+
+        private void SetMetronomeBuffsServer(int count)
+        {
+            if (!NetworkServer.active || !body) return;
+            int buffCount = body.GetBuffCount(BuffCore.watchMetronomeBuff.buffIndex);
+
+            if (buffCount > count)
+            {
+                do
+                {
+                    body.RemoveBuff(BuffCore.watchMetronomeBuff);
+                    buffCount--;
+                } while (buffCount > count);
+            }
+            else if (buffCount < count)
+            {
+                do
+                {
+                    body.AddBuff(BuffCore.watchMetronomeBuff);
+                    buffCount++;
+                } while (buffCount < count);
+            }
+        }
+
+        private void ClearMetronomeBuffsServer()
+        {
+            if (!NetworkServer.active) return;
+            int buffCount = body.GetBuffCount(BuffCore.watchMetronomeBuff.buffIndex);
+
+            for (int i = 0; i < buffCount; i++)
+            {
+                body.RemoveBuff(BuffCore.watchMetronomeBuff);
+            }
         }
     }
 }
