@@ -9,6 +9,7 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.Networking;
+using UnityEngine.UIElements;
 
 namespace Starstorm2Unofficial.Survivors.Chirr.Components
 {
@@ -185,11 +186,53 @@ namespace Starstorm2Unofficial.Survivors.Chirr.Components
                 GameObject masterPrefab = MasterCatalog.GetMasterPrefab(masterFriendController.masterIndex);
                 if (masterPrefab)
                 {
+                    bool isFlying = false;
+                    bool isChampion = false;
+                    HullClassification hullSize = HullClassification.Golem;
+
+                    CharacterMaster potentialMaster = masterPrefab.GetComponent<CharacterMaster>();
+                    if (potentialMaster)
+                    {
+                        GameObject potentialBodyObject = masterPrefab.GetComponent<CharacterMaster>().bodyPrefab;
+                        if (potentialBodyObject)
+                        {
+                            CharacterBody potentialBody = potentialBodyObject.GetComponent<CharacterBody>();
+                            if (potentialBody)
+                            {
+                                isFlying = potentialBody.isFlying;
+                                isChampion = potentialBody.isChampion;
+                            }
+                        }
+                    }
+                    if (isChampion) hullSize = HullClassification.BeetleQueen;
+
+                    //Set spawnpoint
+                    Vector3 spawnPos = ownerBody.corePosition + Vector3.back * 5;
+                    SpawnCard spawnCard = ScriptableObject.CreateInstance<SpawnCard>();
+                    spawnCard.hullSize = hullSize;
+                    spawnCard.nodeGraphType = (isFlying ? MapNodeGroup.GraphType.Air : MapNodeGroup.GraphType.Ground);
+                    spawnCard.prefab = ChirrFriendController.teleportHelperPrefab;
+
+                    GameObject gameObject = DirectorCore.instance.TrySpawnObject(new DirectorSpawnRequest(spawnCard, new DirectorPlacementRule
+                    {
+                        placementMode = DirectorPlacementRule.PlacementMode.NearestNode,
+                        position = ownerBody.corePosition,
+                        minDistance = 12f,
+                        maxDistance = 60f
+                    }, RoR2Application.rng));
+
+                    if (gameObject)
+                    {
+                        spawnPos = gameObject.transform.position;
+                        UnityEngine.Object.Destroy(gameObject);
+                    }
+                    Destroy(spawnCard);
+
                     MasterSummon masterSummon = new MasterSummon
                     {
                         masterPrefab = masterPrefab,
                         ignoreTeamMemberLimit = true,
-                        position = ownerBody.corePosition + Vector3.back * 5,    //todo: properly get random nearby pos
+                        position = spawnPos,
                         summonerBodyObject = (ownerBody ? ownerBody.gameObject : null),
                         useAmbientLevel = false
                     };
