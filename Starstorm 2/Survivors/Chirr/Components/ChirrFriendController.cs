@@ -142,7 +142,6 @@ namespace Starstorm2Unofficial.Survivors.Chirr.Components
             RoR2.Inventory.onServerItemGiven += UpdateMinionInventory;//Is there a better way with onInventoryChangedGlobal?
             if (minionPingRetarget) On.RoR2.PingerController.SetCurrentPing += MinionPingRetarget;
 
-            RoR2.Stage.onServerStageComplete += SyncInventoryOnStageTransition;
             On.EntityStates.Missions.BrotherEncounter.Phase1.OnEnter += BrotherEncounterActions;
 
             this.indicatorCannotBefriend = new Indicator(base.gameObject, indicatorCannotBefriendPrefab);
@@ -157,15 +156,10 @@ namespace Starstorm2Unofficial.Survivors.Chirr.Components
             {
                 if (this._hasFriend)
                 {
-                    SyncInventory();
+                    SyncInventory(targetMaster);
                     LeashFriendServer(base.transform.position);
                 }
             }
-        }
-
-        private void SyncInventoryOnStageTransition(Stage obj)
-        {
-            if (NetworkServer.active) SyncInventory();
         }
 
         private void Start()
@@ -174,40 +168,67 @@ namespace Starstorm2Unofficial.Survivors.Chirr.Components
             {
                 ownerMaster = ownerBody.master;
             }
-            if (NetworkServer.active) TryGetSavedMaster();
+            if (NetworkServer.active) TrySpawnSavedMaster();
         }
 
         [Server]
-        public void TryGetSavedMaster()
+        public void TrySpawnSavedMaster()
         {
-            if (!NetworkServer.active) return;
-            if (ownerMaster)
-            {
-                masterFriendController = ownerMaster.GetComponent<MasterFriendController>();
-                if (!masterFriendController) masterFriendController = ownerMaster.AddComponent<MasterFriendController>();
-                if (masterFriendController.masterNetID != NetworkInstanceId.Invalid.Value)
-                {
-                    _trackingTargetMasterNetID = masterFriendController.masterNetID;
-                    bool hasMaster = ResolveTargetMaster();
-                    if (hasMaster)
-                    {
-                        _hasFriend = true;
-                        _canBefriendTarget = false;
-                        if (!ownerBody.HasBuff(BuffCore.chirrSelfBuff))
-                        {
-                            ownerBody.AddBuff(BuffCore.chirrSelfBuff);
-                        }
-                        if (targetBody)
-                        {
-                            trackingTarget = targetBody.mainHurtBox;
-                            targetBody.AddBuff(BuffCore.chirrFriendBuff);
+            if (!NetworkServer.active || !ownerMaster) return;
 
-                            if (targetBody.bodyIndex == EnemyCore.brotherHurtIndex || targetBody.bodyIndex == EnemyCore.brotherIndex)
-                            {
-                                targetBody.AddBuff(RoR2Content.Buffs.HiddenInvincibility);
-                            }
+            masterFriendController = ownerMaster.GetComponent<MasterFriendController>();
+            if (!masterFriendController) masterFriendController = ownerMaster.AddComponent<MasterFriendController>();
+
+            //Attempt to spawn in body before running usual code. This must be done since the old DontDestroyOnLoad method didn't work on dedicated servers.
+            if (masterFriendController.masterNetID == NetworkInstanceId.Invalid.Value)
+            {
+                GameObject masterPrefab = MasterCatalog.GetMasterPrefab(masterFriendController.masterIndex);
+                if (masterPrefab)
+                {
+                    MasterSummon masterSummon = new MasterSummon
+                    {
+                        masterPrefab = masterPrefab,
+                        ignoreTeamMemberLimit = true,
+                        position = ownerBody.corePosition + Vector3.back * 5,    //todo: properly get random nearby pos
+                        summonerBodyObject = (ownerBody ? ownerBody.gameObject : null),
+                        useAmbientLevel = false
+                    };
+                    CharacterMaster spawnedMaster = masterSummon.Perform();
+
+                    if (spawnedMaster)
+                    {
+                        masterFriendController.masterNetID = spawnedMaster.netId.Value;
+                        if (spawnedMaster.inventory)
+                        {
+                            SyncInventory(spawnedMaster);
                         }
                     }
+                }
+            }
+
+            if (masterFriendController.masterNetID != NetworkInstanceId.Invalid.Value)
+            {
+                _trackingTargetMasterNetID = masterFriendController.masterNetID;
+                bool hasMaster = ResolveTargetMaster();
+                if (hasMaster)
+                {
+                    _hasFriend = true;
+                    _canBefriendTarget = false;
+                    if (!ownerBody.HasBuff(BuffCore.chirrSelfBuff))
+                    {
+                        ownerBody.AddBuff(BuffCore.chirrSelfBuff);
+                    }
+                    if (targetBody)
+                    {
+                        trackingTarget = targetBody.mainHurtBox;
+                        targetBody.AddBuff(BuffCore.chirrFriendBuff);
+
+                        if (targetBody.bodyIndex == EnemyCore.brotherHurtIndex || targetBody.bodyIndex == EnemyCore.brotherIndex)
+                        {
+                            targetBody.AddBuff(RoR2Content.Buffs.HiddenInvincibility);
+                        }
+                    }
+                    return;
                 }
             }
         }
@@ -217,7 +238,6 @@ namespace Starstorm2Unofficial.Survivors.Chirr.Components
             RoR2.Inventory.onServerItemGiven -= UpdateMinionInventory;
             if (minionPingRetarget) On.RoR2.PingerController.SetCurrentPing -= MinionPingRetarget;
 
-            RoR2.Stage.onServerStageComplete -= SyncInventoryOnStageTransition;
             On.EntityStates.Missions.BrotherEncounter.Phase1.OnEnter -= BrotherEncounterActions;
             if (this.indicatorCannotBefriend != null) this.indicatorCannotBefriend.DestroyVisualizer();
             if (this.indicatorReadyToBefriend != null) this.indicatorReadyToBefriend.DestroyVisualizer();
@@ -240,19 +260,19 @@ namespace Starstorm2Unofficial.Survivors.Chirr.Components
             }
         }
 
-        private void SyncInventory()
+        private void SyncInventory(CharacterMaster master)
         {
-            if (this._hasFriend && this.targetMaster && this.targetMaster.inventory && ownerMaster && ownerMaster.inventory)
+            if (master && master.inventory && ownerMaster && ownerMaster.inventory)
             {
                 //CopyItemsFromInventory resets inventory
-                targetMaster.inventory.CopyItemsFrom(ownerMaster.inventory, Inventory.defaultItemCopyFilterDelegate);
+                master.inventory.CopyItemsFrom(ownerMaster.inventory, Inventory.defaultItemCopyFilterDelegate);
 
                 if (masterFriendController && masterFriendController.masterItemStacks != null)
                 {
-                    this.targetMaster.inventory.AddItemsFrom(masterFriendController.masterItemStacks, x => x != ItemIndex.None);
+                    master.inventory.AddItemsFrom(masterFriendController.masterItemStacks, x => x != ItemIndex.None);
                 }
-                RemoveBlacklistedItems(targetMaster.inventory);
-                targetMaster.inventory.RemoveItem(RoR2Content.Items.MinionLeash, targetMaster.inventory.GetItemCount(RoR2Content.Items.MinionLeash));
+                RemoveBlacklistedItems(master.inventory);
+                master.inventory.RemoveItem(RoR2Content.Items.MinionLeash, master.inventory.GetItemCount(RoR2Content.Items.MinionLeash));
             }
         }
 
@@ -429,6 +449,7 @@ namespace Starstorm2Unofficial.Survivors.Chirr.Components
             }
             else
             {
+                if (masterFriendController) masterFriendController.Clear();
                 trackingTarget = null;
                 if (_hasFriend)
                 {
@@ -593,13 +614,16 @@ namespace Starstorm2Unofficial.Survivors.Chirr.Components
                 }
 
                 //Ally persists between stages
-                RpcDontDestroyOnLoad(_trackingTargetMasterNetID);
+                //Doesn't work on Dedicated Servers.
+                //RpcDontDestroyOnLoad(_trackingTargetMasterNetID);
 
-                //Save ally netID so it can be remembered next stage.
+                //Save ally info
                 if (masterFriendController)
                 {
-                    masterFriendController.masterNetID = targetMaster.netId.Value;
+                    masterFriendController.masterNetID = _trackingTargetMasterNetID;
                     masterFriendController.masterItemStacks = ItemCatalog.RequestItemStackArray();
+                    masterFriendController.masterEquipmentIndex = EquipmentIndex.None;
+                    masterFriendController.masterIndex = targetMaster.masterIndex;
                 }
 
                 if (targetMaster.inventory)
@@ -626,6 +650,7 @@ namespace Starstorm2Unofficial.Survivors.Chirr.Components
                             }
                         }
                     }
+                    masterFriendController.masterEquipmentIndex = ei;
 
                     //Save the original inventory
                     if (masterFriendController && masterFriendController.masterItemStacks != null && targetMaster.inventory.itemStacks != null)
@@ -633,7 +658,7 @@ namespace Starstorm2Unofficial.Survivors.Chirr.Components
                         targetMaster.inventory.itemStacks.CopyTo(masterFriendController.masterItemStacks, 0);
                     }
 
-                    SyncInventory();
+                    SyncInventory(targetMaster);
                 }
 
                 //Reset AI targeting

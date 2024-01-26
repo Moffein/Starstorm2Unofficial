@@ -53,11 +53,18 @@ The SS2 team is free to use any of the new code from this mod as long as this re
 
 ## Changelog
 
+`0.16.10`
+
+- Chirr
+	- Rewrote minion persistence code so it works on dedicated servers.
+	
+	*Let me know if anything broke.*
+
 `0.16.9`
 
 - Fixed Dungus not working online.
 - Fixed Watch Metronome not working online.
-- Reduced Watch Metronome charge duration from 8s -> 6s
+- Reduced Watch Metronome chargeup duration from 8s -> 6s
 
 `0.16.8`
 
