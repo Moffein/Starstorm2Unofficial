@@ -14,7 +14,7 @@ namespace Starstorm2Unofficial.Survivors.Pyro.Components.Projectile
         public float initialRadius = 2.4f;
         public NetworkSoundEventDef explosionSound = null;
 
-        public float explosionDamageCoefficient = 0.25f;
+        public float explosionDamageCoefficient = 0.5f;
         public float explosionRadius = 12f;
 
         public float delayBetweenExplosions = 0.3f;

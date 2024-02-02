@@ -80,7 +80,7 @@ namespace Starstorm2Unofficial.Survivors.Pyro
             Modules.Prefabs.projectilePrefabs.Add(projectilePrefab);
             UnityEngine.Object.Destroy(projectilePrefab.GetComponent<ProjectileSingleTargetImpact>());
 
-            projectilePrefab.transform.localScale *= 1.5f;
+            projectilePrefab.transform.localScale *= 2f;
 
             GameObject ghostPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Lemurian/FireballGhost.prefab").WaitForCompletion().InstantiateClone("SS2UPyroSuppressiveFireGhost", false);
             ghostPrefab.transform.localScale *= 0.5f;
@@ -97,7 +97,7 @@ namespace Starstorm2Unofficial.Survivors.Pyro
             pie.blastAttackerFiltering = AttackerFiltering.NeverHitSelf;
             pie.blastDamageCoefficient = 1f;
             pie.blastProcCoefficient = 0.7f;
-            pie.blastRadius = 3f;
+            pie.blastRadius = 4f;
             pie.bonusBlastForce = Vector3.zero;
             pie.canRejectForce = true;
             pie.destroyOnEnemy = true;
@@ -271,7 +271,7 @@ namespace Starstorm2Unofficial.Survivors.Pyro
             Skills.secondaryAirblast = airblast;
 
             LanguageAPI.Add("SS2UPYRO_SECONDARY_ALT_NAME", "\"Suppressive Fire\"");
-            LanguageAPI.Add("SS2UPYRO_SECONDARY_ALT_DESCRIPTION", $"<color=#D78326>Rapidly consume heat</color> to fire a stream of fireballs that deal <style=cIsDamage>840% damage per second</style> and <style=cIsDamage>ignite</style>.");
+            LanguageAPI.Add("SS2UPYRO_SECONDARY_ALT_DESCRIPTION", $"<color=#D78326>Rapidly consume heat</color> to fire a stream of fireballs that deal <style=cIsDamage>1200% damage per second</style> and <style=cIsDamage>ignite</style>.");
 
             HeatSkillDef suppressiveFire = ScriptableObject.CreateInstance<HeatSkillDef>();
             suppressiveFire.activationState = new SerializableEntityStateType(typeof(SuppressiveFire));
@@ -340,7 +340,7 @@ namespace Starstorm2Unofficial.Survivors.Pyro
         private void SetUpSpecials(SkillLocator skillLocator)
         {
             LanguageAPI.Add("SS2UPYRO_SPECIAL_NAME", "Blaze Flare");
-            LanguageAPI.Add("SS2UPYRO_SPECIAL_DESCRIPTION", $"<color=#D78326>Consume all heat</color> and fire a flare for <style=cIsDamage>600% damage</style>. On impact, explodes for up to <style=cIsDamage>8x150% damage</style> based on <color=#D78326>heat</color> consumed.");
+            LanguageAPI.Add("SS2UPYRO_SPECIAL_DESCRIPTION", $"<color=#D78326>Consume all heat</color> and fire a flare for <style=cIsDamage>400% damage</style>. On impact, explodes for up to <style=cIsDamage>8x200% damage</style> based on <color=#D78326>heat</color> consumed.");
 
             HeatSkillDef flareGun = ScriptableObject.CreateInstance<HeatSkillDef>();
             flareGun.activationState = new SerializableEntityStateType(typeof(Flaregun));
@@ -377,7 +377,7 @@ namespace Starstorm2Unofficial.Survivors.Pyro
         private void SetUpScepters(SkillLocator skillLocator)
         {
             LanguageAPI.Add("SS2UPYRO_SPECIAL_SCEPTER_NAME", "Hell Flare");
-            LanguageAPI.Add("SS2UPYRO_SPECIAL_SCEPTER_DESCRIPTION", $"<color=#D78326>Consume all Heat</color> and fire a flare for <style=cIsDamage>600% damage</style>. On impact, it explodes for up to <style=cIsDamage>16x150% damage</style> based on <color=#D78326>heat</color> consumed.");
+            LanguageAPI.Add("SS2UPYRO_SPECIAL_SCEPTER_DESCRIPTION", $"<color=#D78326>Consume all Heat</color> and fire a flare for <style=cIsDamage>400% damage</style>. On impact, it explodes for up to <style=cIsDamage>16x200% damage</style> based on <color=#D78326>heat</color> consumed.");
 
             HeatSkillDef flareScepter = ScriptableObject.CreateInstance<HeatSkillDef>();
             flareScepter.activationState = new SerializableEntityStateType(typeof(Flaregun));

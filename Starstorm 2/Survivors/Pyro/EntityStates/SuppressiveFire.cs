@@ -68,7 +68,7 @@ namespace EntityStates.SS2UStates.Pyro
         public static float baseSelfForce = 450f;
         public static GameObject muzzleflashEffectPrefab = Resources.Load<GameObject>("prefabs/effects/impacteffects/missileexplosionvfx");
         public static GameObject projectilePrefab;
-        public static float damageCoefficient = 0.84f;
+        public static float damageCoefficient = 1.2f;
         public static float baseDuration = 0.1f;
         public static float heatCost = 0.08f;
 

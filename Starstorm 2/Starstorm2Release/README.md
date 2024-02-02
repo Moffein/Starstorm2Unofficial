@@ -53,6 +53,26 @@ The SS2 team is free to use any of the new code from this mod as long as this re
 
 ## Changelog
 
+`0.16.12`
+
+- Chirr
+	- M1 projectile impact effect is now green.
+
+- Pyro
+	- Suppressive Fire
+		- Increased DPS from 840% -> 1200%
+		- Increased projectile size by 33%
+		- Increased blast radius from 3m -> 4m
+		
+		*Should be less of a gap in damage compared to Blaze Flare now. (100% Heat for 1008% damage -> 100% Heat for 1440% damage)*
+		
+	- Blaze Flare
+		- Increased damage from 600% + 150% x 8 -> 400% + 200% x 8
+		
+		*Slight damage increase, but main change is that damage has been shifted to scale off of Heat more.*
+		
+	*Overall damage output of Pyro was lacking, with perfect Heat management only resulting in slightly below average killtimes, so his damage output on his Heat-related skills has been buffed.*
+
 `0.16.11`
 
 - Chirr

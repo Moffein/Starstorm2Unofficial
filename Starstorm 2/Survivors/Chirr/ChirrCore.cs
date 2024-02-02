@@ -230,6 +230,9 @@ namespace Starstorm2Unofficial.Survivors.Chirr
             ProjectileDamage pd = projectilePrefab.GetComponent<ProjectileDamage>();
             pd.damageType = DamageType.Generic;
 
+            ProjectileSingleTargetImpact psti = projectilePrefab.GetComponent<ProjectileSingleTargetImpact>();
+            psti.impactEffect = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Treebot/OmniImpactVFXSlashSyringe.prefab").WaitForCompletion();
+
             Modules.Prefabs.projectilePrefabs.Add(projectilePrefab);
             return projectilePrefab;
         }
