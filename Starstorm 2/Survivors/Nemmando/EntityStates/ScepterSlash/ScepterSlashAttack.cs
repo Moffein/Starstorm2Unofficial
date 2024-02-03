@@ -21,6 +21,7 @@ namespace EntityStates.SS2UStates.Nemmando
         public static int baseHitCount = 12;
         public static float damageCoefficient = 3.6f;
         public static float radius = 64f;
+        public static float radiusEnemy = 32f;  //Nerf this on NPCs
         public static float swordEmission = 350f;
 
         private float hitStopwatch;
@@ -162,6 +163,11 @@ namespace EntityStates.SS2UStates.Nemmando
             search.FilterCandidatesByDistinctHurtBoxEntities();
             search.FilterCandidatesByHurtBoxTeam(TeamMask.GetEnemyTeams(base.teamComponent.teamIndex));
             search.GetHurtBoxes(this.targetList);
+
+            if (base.GetTeam() != TeamIndex.Player && !(base.characterBody && base.characterBody.isPlayerControlled))
+            {
+                search.radius = ScepterSlashAttack.radiusEnemy;
+            }
 
             if (NetworkServer.active)
             {

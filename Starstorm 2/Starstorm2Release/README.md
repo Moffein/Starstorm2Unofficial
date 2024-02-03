@@ -53,6 +53,14 @@ The SS2 team is free to use any of the new code from this mod as long as this re
 
 ## Changelog
 
+`0.16.13`
+
+- Nemmando
+	- Decisive Strike Scepter
+		- Fixed screen overlay persisting until stage end if killed mid-attack.
+		- Fixed a minor dedicated server-specific nullref.
+		- Enemy Nemmando NPCs now have lower range when using this to prevent insta-teamwipes from Vengeance. (64m -> 32m, non-scepter is 25m)
+
 `0.16.12`
 
 - Chirr

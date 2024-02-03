@@ -95,7 +95,12 @@ namespace Starstorm2Unofficial.Survivors.Nemmando.Components
 
         public void CoverScreen()
         {
-            if (this.cameraCoverInstance) return;
+            if (cameraCoverInstance) return;
+            if (!characterBody
+                || !characterBody.master
+                || !characterBody.master.playerCharacterMasterController
+                || !characterBody.master.playerCharacterMasterController.networkUser
+                || !characterBody.master.playerCharacterMasterController.networkUser.cameraRigController) return;
 
             Transform cameraTransform = this.characterBody.master.playerCharacterMasterController.networkUser.cameraRigController.transform;
             this.cameraCoverInstance = GameObject.Instantiate(Modules.Assets.nemmandoCameraCover);
@@ -110,6 +115,11 @@ namespace Starstorm2Unofficial.Survivors.Nemmando.Components
         public void UncoverScreen()
         {
             if (this.cameraCoverInstance) GameObject.Destroy(this.cameraCoverInstance);
+        }
+
+        private void OnDestroy()
+        {
+            UncoverScreen();
         }
 
         private void ApplyOverlays()
