@@ -77,41 +77,52 @@ namespace EntityStates.SS2UStates.Pyro
             for (int i = 0; i < array.Length; i++)
             {
                 ProjectileController pc = array[i].GetComponentInParent<ProjectileController>();
-                if (pc && !pc.cannotBeDeleted)
+                if (pc && !pc.cannotBeDeleted && pc.owner != base.gameObject)
                 {
-                    if (pc.owner != base.gameObject)
+                    if (!(pc.teamFilter && pc.teamFilter.teamIndex == base.GetTeam()))
                     {
-                        Vector3 aimSpot = (aimRay.origin + 90f * aimRay.direction) - pc.gameObject.transform.position;
+                        bool cannotDelete = false;
+                        ProjectileSimple ps = pc.gameObject.GetComponent<ProjectileSimple>();
+                        ProjectileCharacterController pcc = pc.gameObject.GetComponent<ProjectileCharacterController>();
 
-                        pc.owner = base.gameObject;
-                        projectilesReflected++;
-
-                        FireProjectileInfo info = new FireProjectileInfo()
+                        if ((!ps || (ps && ps.desiredForwardSpeed == 0f)) && !pcc)
                         {
-                            projectilePrefab = pc.gameObject,
-                            position = pc.gameObject.transform.position,
-                            rotation = base.transform.rotation * Quaternion.FromToRotation(new Vector3(0, 0, 1), aimSpot),
-                            owner = base.gameObject,
-                            damage = this.damageStat * Airblast.reflectDamageCoefficient,
-                            force = 2000f,
-                            crit = base.RollCrit(),
-                            damageColorIndex = DamageColorIndex.Default,
-                            target = null,
-                            speedOverride = 120f,
-                            useSpeedOverride = true,
-                            fuseOverride = -1f,
-                            useFuseOverride = false
-                        };
-                        ProjectileManager.instance.FireProjectile(info);
+                            cannotDelete = true;
+                        }
 
-                        Destroy(pc.gameObject);
-
-                        if (!reflected)
+                        if (!cannotDelete)
                         {
-                            reflected = true;
-                            if (reflectSound)
+                            Vector3 aimSpot = (aimRay.origin + 90f * aimRay.direction) - pc.gameObject.transform.position;
+                            pc.owner = base.gameObject;
+                            projectilesReflected++;
+
+                            FireProjectileInfo info = new FireProjectileInfo()
                             {
-                                EffectManager.SimpleSoundEffect(reflectSound.index, base.transform.position, true);
+                                projectilePrefab = pc.gameObject,
+                                position = pc.gameObject.transform.position,
+                                rotation = base.transform.rotation * Quaternion.FromToRotation(new Vector3(0, 0, 1), aimSpot),
+                                owner = base.gameObject,
+                                damage = this.damageStat * Airblast.reflectDamageCoefficient,
+                                force = 2000f,
+                                crit = base.RollCrit(),
+                                damageColorIndex = DamageColorIndex.Default,
+                                target = null,
+                                speedOverride = 120f,
+                                useSpeedOverride = true,
+                                fuseOverride = -1f,
+                                useFuseOverride = false
+                            };
+                            ProjectileManager.instance.FireProjectile(info);
+
+                            Destroy(pc.gameObject);
+
+                            if (!reflected)
+                            {
+                                reflected = true;
+                                if (reflectSound)
+                                {
+                                    EffectManager.SimpleSoundEffect(reflectSound.index, base.transform.position, true);
+                                }
                             }
                         }
                     }
