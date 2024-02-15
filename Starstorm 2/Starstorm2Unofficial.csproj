@@ -334,6 +334,9 @@
     <Reference Include="BepInEx.Preloader">
       <HintPath>libs\BepInEx\BepInEx.Preloader.dll</HintPath>
     </Reference>
+    <Reference Include="BlightedElites">
+      <HintPath>libs\SoftDependencies\BlightedElites.dll</HintPath>
+    </Reference>
     <Reference Include="ClassicItems">
       <HintPath>libs\SoftDependencies\ClassicItems.dll</HintPath>
     </Reference>

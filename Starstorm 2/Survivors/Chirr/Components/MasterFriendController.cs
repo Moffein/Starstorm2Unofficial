@@ -1,4 +1,5 @@
 ﻿using RoR2;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
 
@@ -12,6 +13,7 @@ namespace Starstorm2Unofficial.Survivors.Chirr.Components
         public int[] masterItemStacks;
         public MasterCatalog.MasterIndex masterIndex = MasterCatalog.MasterIndex.none;
         public EquipmentIndex masterEquipmentIndex;
+        public HashSet<BuffIndex> EliteBuffs = new HashSet<BuffIndex>();
 
         public void Clear()
         {
@@ -19,6 +21,7 @@ namespace Starstorm2Unofficial.Survivors.Chirr.Components
             masterItemStacks = null;
             masterIndex = MasterCatalog.MasterIndex.none;
             masterEquipmentIndex = EquipmentIndex.None;
+            EliteBuffs.Clear();
         }
 
         private void Awake()

@@ -6,6 +6,7 @@ using Starstorm2Unofficial.Cores;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.Networking;
@@ -241,9 +242,20 @@ namespace Starstorm2Unofficial.Survivors.Chirr.Components
                     if (spawnedMaster)
                     {
                         masterFriendController.masterNetID = spawnedMaster.netId.Value;
+
+                        CharacterBody body = spawnedMaster.GetBody();
+                        if (body)
+                        {
+                            foreach (BuffIndex buff in masterFriendController.EliteBuffs)
+                            {
+                                if (!body.HasBuff(buff)) body.AddBuff(buff);
+                            }
+                        }
+
                         if (spawnedMaster.inventory)
                         {
                             SyncInventory(spawnedMaster);
+                            spawnedMaster.inventory.SetEquipmentIndex(masterFriendController.masterEquipmentIndex);
                         }
                     }
                 }
@@ -695,11 +707,33 @@ namespace Starstorm2Unofficial.Survivors.Chirr.Components
                     }
                     masterFriendController.masterEquipmentIndex = ei;
 
+                    EquipmentDef eliteEquipment = null;
                     //Save the original inventory
-                    if (masterFriendController && masterFriendController.masterItemStacks != null && targetMaster.inventory.itemStacks != null)
+                    if (masterFriendController)
                     {
-                        targetMaster.inventory.itemStacks.CopyTo(masterFriendController.masterItemStacks, 0);
+                        if (masterFriendController.masterItemStacks != null && targetMaster.inventory.itemStacks != null)
+                        {
+                            targetMaster.inventory.itemStacks.CopyTo(masterFriendController.masterItemStacks, 0);
+                        }
+                        masterFriendController.masterEquipmentIndex = targetMaster.inventory.GetEquipmentIndex();
+                        EquipmentDef ed = EquipmentCatalog.GetEquipmentDef(masterFriendController.masterEquipmentIndex);
+                        if (ed && ed.passiveBuffDef && ed.passiveBuffDef.isElite) eliteEquipment = ed;
                     }
+
+                    //Save elite buffs
+                    foreach (EliteDef ed in EliteCatalog.eliteDefs)
+                    {
+                        if (ed.eliteEquipmentDef
+                            && ed.eliteEquipmentDef.passiveBuffDef
+                            && targetBody.HasBuff(ed.eliteEquipmentDef.passiveBuffDef))
+                        {
+                            masterFriendController.EliteBuffs.Add(ed.eliteEquipmentDef.passiveBuffDef.buffIndex);
+                        }
+                    }
+                    //Remove redundant eliteequipment buff from saved buffs
+                    if (eliteEquipment) masterFriendController.EliteBuffs.Remove(eliteEquipment.passiveBuffDef.buffIndex);
+                    //Handle Blighted
+                    if (StarstormPlugin.blightedElitesLoaded) HandleBlighted(targetBody, masterFriendController.EliteBuffs);
 
                     SyncInventory(targetMaster);
                 }
@@ -740,6 +774,16 @@ namespace Starstorm2Unofficial.Survivors.Chirr.Components
             {
                 Debug.LogError("ChirrFriendController: Befriend called without valid target.");
             }
+        }
+
+        [MethodImpl(MethodImplOptions.NoInlining | MethodImplOptions.NoOptimization)]
+        private void HandleBlighted(CharacterBody body, HashSet<BuffIndex> eliteBuffs)
+        {
+            BlightedElites.Components.AffixBlightedComponent abc = body.GetComponent<BlightedElites.Components.AffixBlightedComponent>();
+            if (!abc) return;
+
+            if (abc.buff1) eliteBuffs.Remove(abc.buff1.buffIndex);
+            if (abc.buff2) eliteBuffs.Remove(abc.buff2.buffIndex);
         }
 
         [Client]

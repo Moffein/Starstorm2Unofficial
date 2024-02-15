@@ -1,5 +1,9 @@
 `0.16.14`
 
+- Chirr
+	- Fixed friends losing elite affixes between stages due to 0.16.10
+	- Attempted to make Cruelty elite affixes persist between stages.
+
 - Pyro
 	- Fixed Return to Sender being able to reflect friendly projectiles and stationary projectiles.
 

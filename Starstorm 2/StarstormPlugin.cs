@@ -20,6 +20,7 @@ using UnityEngine;
 
 namespace Starstorm2Unofficial
 {
+    [BepInDependency("com.Moffein.BlightedElites", BepInDependency.DependencyFlags.SoftDependency)]
     [BepInDependency("com.bepis.r2api", BepInDependency.DependencyFlags.HardDependency)]
     [BepInDependency("com.TeamMoonstorm.Starstorm2-Nightly", BepInDependency.DependencyFlags.SoftDependency)]
     [BepInDependency("com.TeamMoonstorm.Starstorm2", BepInDependency.DependencyFlags.SoftDependency)]
@@ -53,7 +54,7 @@ namespace Starstorm2Unofficial
     {
         internal const string guid = "com.ChirrLover.Starstorm2Unofficial";
         internal const string modName = "Starstorm 2 Unofficial";
-        internal const string version = "0.16.13";
+        internal const string version = "0.16.14";
 
         public static StarstormPlugin instance;
 
@@ -65,6 +66,7 @@ namespace Starstorm2Unofficial
         public static bool classicItemsLoaded = false;
         public static bool kingArenaLoaded = false;
         public static bool emoteAPILoaded = false;
+        public static bool blightedElitesLoaded = false;
 
         public static bool kingArenaActive = false;
 
@@ -91,6 +93,8 @@ namespace Starstorm2Unofficial
             kingArenaLoaded = BepInEx.Bootstrap.Chainloader.PluginInfos.ContainsKey("com.Kingpinush.KingKombatArena");
             emoteAPILoaded = BepInEx.Bootstrap.Chainloader.PluginInfos.ContainsKey("com.weliveinasociety.CustomEmotesAPI");
             riskOfOptionsLoaded = BepInEx.Bootstrap.Chainloader.PluginInfos.ContainsKey("com.rune580.riskofoptions");
+            blightedElitesLoaded = BepInEx.Bootstrap.Chainloader.PluginInfos.ContainsKey("com.Moffein.BlightedElites");
+
             ModCompat.Initialize();
 
             if (kingArenaLoaded)
