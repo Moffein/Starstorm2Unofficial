@@ -76,7 +76,7 @@ namespace EntityStates.SS2UStates.Pyro
             Collider[] array = Physics.OverlapBox(base.transform.position + aimRay.direction * Airblast.hitboxOffset, Airblast.hitboxDimensions, Quaternion.LookRotation(aimRay.direction, Vector3.up), LayerIndex.projectile.mask);
             for (int i = 0; i < array.Length; i++)
             {
-                if (!array[i].gameObject) continue;
+                if (!(array[i] && array[i].gameObject)) continue;   //In case a projectile has multiple colliders and it gets deleted early
                 ProjectileController pc = array[i].GetComponentInParent<ProjectileController>();
                 if (pc && !pc.cannotBeDeleted && pc.owner != base.gameObject)
                 {
