@@ -258,8 +258,8 @@ namespace Starstorm2Unofficial.Survivors.Nemmando
             bossBodyPrefab = PrefabAPI.InstantiateClone(bodyPrefab, "SS2UNemmandoMonsterBody", true);
 
             var body = bossBodyPrefab.GetComponent<CharacterBody>();
-            body.baseMaxHealth = 3800f;
-            body.levelMaxHealth =  1140f;
+            body.baseMaxHealth = 3600f;
+            body.levelMaxHealth =  1080f;
             body.baseRegen = 0;
             body.levelRegen = 0;
             body.baseDamage = 3f;

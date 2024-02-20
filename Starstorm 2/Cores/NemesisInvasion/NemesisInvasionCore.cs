@@ -26,7 +26,7 @@ namespace Starstorm2Unofficial.Cores.NemesisInvasion
         public static float hpMult = 1f;
         public static float damageMult = 1f;
         public static float speedMult = 1f;
-        public static float hpMultPerPlayer = 0.3f;
+        public static float hpMultPerPlayer = 0.5f;
         public static float bonusArmor = 0f;
         public static bool scaleHPWithPlayercount = true;
         public static float moveSpeedCap = 0f;
@@ -162,8 +162,8 @@ namespace Starstorm2Unofficial.Cores.NemesisInvasion
                     CharacterBody cb = cm.bodyPrefab.GetComponent<CharacterBody>();
                     if (cb)
                     {
-                        cb.baseMaxHealth = 7600f;
-                        cb.levelMaxHealth = 2280f;
+                        cb.baseMaxHealth = 5400f;
+                        cb.levelMaxHealth = 1620f;
 
                         cb.baseDamage = 8f;
                         cb.levelDamage = 1.6f;

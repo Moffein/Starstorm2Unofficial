@@ -1,3 +1,12 @@
+`0.17.0`
+
+- Nemesis Invasion
+	- Increased per-player HP Multiplier from +30% -> +50%
+	- Nemesis Commando
+		- Reduced HP from 3800 -> 3600
+	- Nemesis Enforcer
+		- Buffed HP from 3800 -> 5400 to match how Nemforcer is tankier than Nemmando
+
 `0.16.14`
 
 - Chirr
