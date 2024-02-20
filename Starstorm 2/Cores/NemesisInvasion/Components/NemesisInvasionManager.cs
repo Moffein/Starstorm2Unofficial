@@ -259,9 +259,45 @@ namespace Starstorm2Unofficial.Cores.NemesisInvasion.Components
 
                             if (card.itemDropName != string.Empty)
                             {
-                                ItemIndex toDrop = ItemCatalog.FindItemIndex(card.itemDropName);
+                                ItemIndex toDrop = ItemIndex.None;
+
+                                //Special case to fix Stirring Soul Duplicate
+                                bool ss2uStirName = card.itemDropName == "SS2U_StirringSoul";
+                                bool ss2oStirName = card.itemDropName == "StirringSoul";
+                                if (ss2uStirName || ss2oStirName)
+                                {
+                                    ItemIndex ss2uStirIndex = ItemCatalog.FindItemIndex("SS2U_StirringSoul");
+                                    ItemIndex ss2oStirIndex = ItemCatalog.FindItemIndex("StirringSoul");
+
+                                    bool ss2uStirEnabled = Run.instance.availableItems.Contains(ss2uStirIndex);
+                                    bool ss2oStirEnabled = Run.instance.availableItems.Contains(ss2oStirIndex);
+
+                                    if (ss2uStirName)
+                                    {
+                                        if (ss2uStirEnabled) toDrop = ss2uStirIndex;
+                                        else if (ss2oStirEnabled) toDrop = ss2oStirIndex;
+                                    }
+                                    else if (ss2oStirName)
+                                    {
+                                        if (ss2oStirEnabled) toDrop = ss2oStirIndex;
+                                        else if (ss2uStirEnabled) toDrop = ss2uStirIndex;
+                                    }
+
+                                }
+                                else
+                                {
+                                    toDrop = ItemCatalog.FindItemIndex(card.itemDropName);
+                                }
+
                                 if (Run.instance.availableItems.Contains(toDrop))
+                                {
                                     ndi.itemToDrop = toDrop;
+                                }
+                                else
+                                {
+                                    ndi.itemToDrop = ItemIndex.None;
+                                }
+                                    
                             }
                             else
                             {

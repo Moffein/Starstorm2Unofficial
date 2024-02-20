@@ -4,6 +4,7 @@
 	- Increased per-player HP Multiplier from +30% -> +50%
 	- Nemesis Commando
 		- Reduced HP from 3800 -> 3600
+		- Now attempts to drop SS2 Official Stirring Soul if SS2U Stirring Soul is disabled.
 	- Nemesis Enforcer
 		- Buffed HP from 3800 -> 5400 to match how Nemforcer is tankier than Nemmando
 
