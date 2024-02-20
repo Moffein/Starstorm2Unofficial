@@ -1,5 +1,8 @@
 `0.17.0`
 
+- Chirr
+	- Disabled flying autosprint due to being jank. (TODO)
+
 - Nemesis Invasion
 	- Increased per-player HP Multiplier from +30% -> +50%
 	- Nemesis Commando
@@ -7,6 +10,7 @@
 		- Now attempts to drop SS2 Official Stirring Soul if SS2U Stirring Soul is disabled.
 	- Nemesis Enforcer
 		- Buffed HP from 3800 -> 5400 to match how Nemforcer is tankier than Nemmando
+	- Added compatibility for SS2 Official Nemeses. (Enabled by default in config)
 
 `0.16.14`
 

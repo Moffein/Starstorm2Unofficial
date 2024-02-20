@@ -83,6 +83,9 @@ namespace Starstorm2Unofficial.Cores.NemesisInvasion
             };
         }
 
+        public delegate void NemesisItemHook(CharacterBody sender, RecalculateStatsAPI.StatHookEventArgs args);
+        public static NemesisItemHook NemesisItemActions;
+
         //TODO: Move this to Items section if I ever get around to doing them. (probably not)
         private void BuildNemesisItem()
         {
@@ -127,6 +130,8 @@ namespace Starstorm2Unofficial.Cores.NemesisInvasion
                     }
 
                     args.armorAdd += bonusArmor;
+
+                    NemesisItemActions?.Invoke(sender, args);
                 }
             };
 
@@ -151,38 +156,36 @@ namespace Starstorm2Unofficial.Cores.NemesisInvasion
         private void NemforcerMinibossCompat()
         {
             GameObject masterPrefab = MasterCatalog.FindMasterPrefab("NemesisEnforcerMiniBossMaster");  //This is mislabeled as requiring BodyName instead of MasterName. HOPOOOOOOOOOOOOOOOOOOOO
-            if (masterPrefab)
+            if (!masterPrefab) return;
+            Debug.Log("Starstorm 2 Unofficial: Adding Nemforcer Miniboss to Nemesis invader list.");
+            AddNemesisBoss(masterPrefab, null, string.Empty, true);
+
+            CharacterMaster cm = masterPrefab.GetComponent<CharacterMaster>();
+            if (cm && cm.bodyPrefab)
             {
-                Debug.Log("Starstorm 2 Unofficial: Adding Nemforcer Miniboss to Nemesis invader list.");
-                AddNemesisBoss(masterPrefab, null, string.Empty, true);
-
-                CharacterMaster cm = masterPrefab.GetComponent<CharacterMaster>();
-                if (cm && cm.bodyPrefab)
+                CharacterBody cb = cm.bodyPrefab.GetComponent<CharacterBody>();
+                if (cb)
                 {
-                    CharacterBody cb = cm.bodyPrefab.GetComponent<CharacterBody>();
-                    if (cb)
+                    cb.baseMaxHealth = 5400f;
+                    cb.levelMaxHealth = 1620f;
+
+                    cb.baseDamage = 8f;
+                    cb.levelDamage = 1.6f;
+
+                    cb.baseRegen = 0f;
+                    cb.levelRegen = 0f;
+
+                    cb.isChampion = true;
+
+                    cb.bodyFlags |= CharacterBody.BodyFlags.IgnoreFallDamage;
+                    cb.bodyFlags |= CharacterBody.BodyFlags.OverheatImmune;
+                    cb.bodyFlags |= CharacterBody.BodyFlags.Void;
+                    cb.bodyFlags |= CharacterBody.BodyFlags.ImmuneToVoidDeath;
+
+                    BodyIndex bi = BodyCatalog.FindBodyIndex(cb);
+                    if (bi != BodyIndex.None)
                     {
-                        cb.baseMaxHealth = 5400f;
-                        cb.levelMaxHealth = 1620f;
-
-                        cb.baseDamage = 8f;
-                        cb.levelDamage = 1.6f;
-
-                        cb.baseRegen = 0f;
-                        cb.levelRegen = 0f;
-
-                        cb.isChampion = true;
-
-                        cb.bodyFlags |= CharacterBody.BodyFlags.IgnoreFallDamage;
-                        cb.bodyFlags |= CharacterBody.BodyFlags.OverheatImmune;
-                        cb.bodyFlags |= CharacterBody.BodyFlags.Void;
-                        cb.bodyFlags |= CharacterBody.BodyFlags.ImmuneToVoidDeath;
-
-                        BodyIndex bi = BodyCatalog.FindBodyIndex(cb);
-                        if (bi != BodyIndex.None)
-                        {
-                            prioritizePlayersList.Add(bi);
-                        }
+                        prioritizePlayersList.Add(bi);
                     }
                 }
             }
@@ -191,6 +194,13 @@ namespace Starstorm2Unofficial.Cores.NemesisInvasion
         public static void AddNemesisBoss(GameObject masterPrefab, int[] itemStacks, string itemDropName, bool shouldGrantRandomItems)
         {
             NemesisCard nc = CreateNemesisBossCard(masterPrefab, itemStacks, itemDropName, shouldGrantRandomItems);
+            AddNemesisBoss(nc);
+        }
+
+        public static void AddSS2ONemesisBoss(GameObject masterPrefab, int[] itemStacks, string itemDropName, bool shouldGrantRandomItems)
+        {
+            NemesisCard nc = CreateNemesisBossCard(masterPrefab, itemStacks, itemDropName, shouldGrantRandomItems);
+            nc.ss2Official = true;
             AddNemesisBoss(nc);
         }
 
@@ -270,6 +280,7 @@ namespace Starstorm2Unofficial.Cores.NemesisInvasion
         public int[] itemStacks;
         public string itemDropName;
         public bool shouldGrantRandomItems;
+        public bool ss2Official;
 
         public NemesisCard(CharacterSpawnCard spawnCard, int[] itemStacks, string itemDropName, bool shouldGrantRandomItems)
         {
@@ -277,6 +288,15 @@ namespace Starstorm2Unofficial.Cores.NemesisInvasion
             this.itemStacks = itemStacks;
             this.itemDropName = itemDropName;
             this.shouldGrantRandomItems = shouldGrantRandomItems;
+            this.ss2Official = false;
+        }
+        public NemesisCard(CharacterSpawnCard spawnCard, int[] itemStacks, string itemDropName, bool shouldGrantRandomItems, bool ss2Official)
+        {
+            this.spawnCard = spawnCard;
+            this.itemStacks = itemStacks;
+            this.itemDropName = itemDropName;
+            this.shouldGrantRandomItems = shouldGrantRandomItems;
+            this.ss2Official = ss2Official;
         }
     }
 }
