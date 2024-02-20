@@ -162,8 +162,8 @@ namespace Starstorm2Unofficial.Cores.NemesisInvasion
                     CharacterBody cb = cm.bodyPrefab.GetComponent<CharacterBody>();
                     if (cb)
                     {
-                        cb.baseMaxHealth = 3800f;
-                        cb.levelMaxHealth = 1140f;
+                        cb.baseMaxHealth = 7600f;
+                        cb.levelMaxHealth = 2280f;
 
                         cb.baseDamage = 8f;
                         cb.levelDamage = 1.6f;
