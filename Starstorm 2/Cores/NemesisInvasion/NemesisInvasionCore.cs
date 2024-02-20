@@ -216,7 +216,7 @@ namespace Starstorm2Unofficial.Cores.NemesisInvasion
         private static void AttemptTargetPlayer(On.RoR2.CharacterAI.BaseAI.orig_UpdateTargets orig, BaseAI self)
         {
             orig(self);
-            if (self.body && self.body.teamComponent && (prioritizePlayersList.Contains(self.body.bodyIndex)))
+            if (self.body && self.body.teamComponent && (self.body.inventory && self.body.inventory.GetItemCount(NemesisMarkerItem) > 0) && (prioritizePlayersList.Contains(self.body.bodyIndex)))
             {
                 if (self.currentEnemy != null
                 && self.currentEnemy.characterBody
