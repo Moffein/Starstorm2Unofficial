@@ -425,6 +425,9 @@
     <Reference Include="SimpleJSON">
       <HintPath>libs\SimpleJSON.dll</HintPath>
     </Reference>
+    <Reference Include="Starstorm2">
+      <HintPath>libs\SoftDependencies\Starstorm2.dll</HintPath>
+    </Reference>
     <Reference Include="System.Drawing" />
     <Reference Include="TILER2">
       <HintPath>libs\SoftDependencies\TILER2.dll</HintPath>

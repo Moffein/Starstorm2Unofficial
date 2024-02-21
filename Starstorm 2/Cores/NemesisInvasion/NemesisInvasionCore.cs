@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using EntityStates.AffixVoid;
 using Mono.Cecil.Cil;
 using MonoMod.Cil;
 using R2API;
@@ -14,6 +15,7 @@ using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.Networking;
 using UnityEngine.Rendering.PostProcessing;
+using UnityEngine.VFX;
 
 namespace Starstorm2Unofficial.Cores.NemesisInvasion
 {
@@ -151,6 +153,12 @@ namespace Starstorm2Unofficial.Cores.NemesisInvasion
 
                 orig(self, damageInfo);
             };
+
+            On.RoR2.CharacterBody.OnInventoryChanged += (orig, self) =>
+            {
+                orig(self);
+                self.AddItemBehavior<NemesisItemBehavior>(self.inventory.GetItemCount(NemesisMarkerItem));
+            };
         }
 
         private void NemforcerMinibossCompat()
@@ -191,16 +199,9 @@ namespace Starstorm2Unofficial.Cores.NemesisInvasion
             }
         }
 
-        public static void AddNemesisBoss(GameObject masterPrefab, int[] itemStacks, string itemDropName, bool shouldGrantRandomItems)
+        public static void AddNemesisBoss(GameObject masterPrefab, int[] itemStacks, string itemDropName, bool shouldGrantRandomItems, bool addEffect = false)
         {
-            NemesisCard nc = CreateNemesisBossCard(masterPrefab, itemStacks, itemDropName, shouldGrantRandomItems);
-            AddNemesisBoss(nc);
-        }
-
-        public static void AddSS2ONemesisBoss(GameObject masterPrefab, int[] itemStacks, string itemDropName, bool shouldGrantRandomItems)
-        {
-            NemesisCard nc = CreateNemesisBossCard(masterPrefab, itemStacks, itemDropName, shouldGrantRandomItems);
-            nc.ss2Official = true;
+            NemesisCard nc = CreateNemesisBossCard(masterPrefab, itemStacks, itemDropName, shouldGrantRandomItems, addEffect);
             AddNemesisBoss(nc);
         }
 
@@ -209,7 +210,7 @@ namespace Starstorm2Unofficial.Cores.NemesisInvasion
             if (card != null) NemesisInvasionManager.nemesisCards.Add(card);
         }
 
-        public static NemesisCard CreateNemesisBossCard(GameObject masterPrefab, int[] itemStacks, string itemDropName, bool shouldGrantRandomItems)
+        public static NemesisCard CreateNemesisBossCard(GameObject masterPrefab, int[] itemStacks, string itemDropName, bool shouldGrantRandomItems, bool addEffect)
         {
             if (!masterPrefab) return null;
 
@@ -219,7 +220,7 @@ namespace Starstorm2Unofficial.Cores.NemesisInvasion
             csc.nodeGraphType = RoR2.Navigation.MapNodeGroup.GraphType.Ground;
             csc.prefab = masterPrefab;
 
-            NemesisCard nc = new NemesisCard(csc, itemStacks, itemDropName, shouldGrantRandomItems);
+            NemesisCard nc = new NemesisCard(csc, itemStacks, itemDropName, shouldGrantRandomItems, addEffect);
             return nc;
         }
 
@@ -280,23 +281,82 @@ namespace Starstorm2Unofficial.Cores.NemesisInvasion
         public int[] itemStacks;
         public string itemDropName;
         public bool shouldGrantRandomItems;
-        public bool ss2Official;
+        public bool addEffect;
 
-        public NemesisCard(CharacterSpawnCard spawnCard, int[] itemStacks, string itemDropName, bool shouldGrantRandomItems)
+        public NemesisCard(CharacterSpawnCard spawnCard, int[] itemStacks, string itemDropName, bool shouldGrantRandomItems, bool addEffect = false)
         {
             this.spawnCard = spawnCard;
             this.itemStacks = itemStacks;
             this.itemDropName = itemDropName;
             this.shouldGrantRandomItems = shouldGrantRandomItems;
-            this.ss2Official = false;
+            this.addEffect = addEffect;
         }
-        public NemesisCard(CharacterSpawnCard spawnCard, int[] itemStacks, string itemDropName, bool shouldGrantRandomItems, bool ss2Official)
+    }
+
+    public class NemesisItemBehavior : RoR2.CharacterBody.ItemBehavior
+    {
+        public static GameObject effectPrefab;
+
+        public delegate void OnNemStart(NemesisItemBehavior self, CharacterBody body);
+        public static OnNemStart NemStartActions;
+
+        public delegate void OnNemDisable(NemesisItemBehavior self, CharacterBody body);
+        public static OnNemDisable NemDisableActions;
+
+        private NemesisCard nemesisCard = null;
+        private bool addEffect = false;
+        CharacterBody.BodyFlags origFlags = CharacterBody.BodyFlags.None;
+
+        private GameObject effectInstance;
+
+        private void Start()
         {
-            this.spawnCard = spawnCard;
-            this.itemStacks = itemStacks;
-            this.itemDropName = itemDropName;
-            this.shouldGrantRandomItems = shouldGrantRandomItems;
-            this.ss2Official = ss2Official;
+            if (!body) return;
+            origFlags = body.bodyFlags;
+            body.bodyFlags = body.bodyFlags | CharacterBody.BodyFlags.IgnoreFallDamage | CharacterBody.BodyFlags.ImmuneToVoidDeath | CharacterBody.BodyFlags.Void | CharacterBody.BodyFlags.OverheatImmune;
+
+            //Find Nemesis Card
+            //Probably a better way to do this
+            if (nemesisCard == null)
+            {
+                foreach (NemesisCard nc in NemesisInvasionManager.nemesisCards)
+                {
+                    if (nc.spawnCard && nc.spawnCard.prefab)
+                    {
+                        CharacterMaster cm = nc.spawnCard.prefab.GetComponent<CharacterMaster>();
+                        if (cm && cm.bodyPrefab)
+                        {
+                            CharacterBody cb = cm.bodyPrefab.GetComponent<CharacterBody>();
+                            if (cb && cb.bodyIndex == body.bodyIndex)
+                            {
+                                if (nc.addEffect) addEffect = true;
+                                break;
+                            }
+                        }
+                    }
+                }
+            }
+
+            if (addEffect && effectPrefab)
+            {
+                effectInstance = GameObject.Instantiate(effectPrefab, body.corePosition, Quaternion.identity, body.transform);
+                effectInstance.transform.localPosition = Vector3.zero;
+                effectInstance.transform.localScale = Vector3.one * 4f;
+            }
+
+            NemStartActions?.Invoke(this, body);
+        }
+
+        private void OnDisable()
+        {
+            if (body)
+            {
+                body.bodyFlags = origFlags;
+                origFlags = CharacterBody.BodyFlags.None;
+                NemDisableActions?.Invoke(this, body);
+            }
+
+            if (effectInstance) Destroy(effectInstance);
         }
     }
 }

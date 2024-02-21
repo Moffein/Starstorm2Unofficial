@@ -7,6 +7,7 @@ using System.IO;
 using System.Collections.Generic;
 using RoR2.UI;
 using RoR2.Projectile;
+using Starstorm2Unofficial.Cores.NemesisInvasion;
 
 namespace Starstorm2Unofficial.Modules
 {
@@ -115,6 +116,8 @@ namespace Starstorm2Unofficial.Modules
             sigilFX.AddComponent<NetworkIdentity>();
 
             PrefabAPI.RegisterNetworkPrefab(sigilFX);
+
+            NemesisItemBehavior.effectPrefab = mainAssetBundle.LoadAsset<GameObject>("NemmandoBossEffect").InstantiateClone("GenericNemesisEffect", false);
 
             //LoadExecutionerEffects();
             //LoadNemmandoEffects();
