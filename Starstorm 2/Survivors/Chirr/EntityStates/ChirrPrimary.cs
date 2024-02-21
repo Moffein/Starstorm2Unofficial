@@ -53,13 +53,6 @@ namespace EntityStates.SS2UStates.Chirr
         {
             base.FixedUpdate();
 
-            bool isAirborne = base.characterMotor && !base.characterMotor.isGrounded;
-            bool isSprinting = base.characterBody && base.characterBody.isSprinting;
-            if (isAirborne && isSprinting && base.characterDirection)
-            {
-                base.characterDirection.forward = base.GetAimRay().direction;
-            }
-
             if (shotCount < ChirrPrimary.baseShotCount)
             {
                 shotStopwatch += Time.fixedDeltaTime;
