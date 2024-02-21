@@ -1,9 +1,10 @@
 `0.17.0`
 
 - Chirr
-	- Disabled flying autosprint due to being jank. (TODO)
+	- Disabled flying autosprint due to being jank.
 
 - Nemesis Invasion
+	- Added config option to allow invasions to start even if you didn't fully complete Void Fields. (Disabled by default)
 	- Increased per-player HP Multiplier from +30% -> +50%
 	- Nemesis Commando
 		- Reduced HP from 3800 -> 3600

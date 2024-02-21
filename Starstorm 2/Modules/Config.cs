@@ -43,6 +43,7 @@ namespace Starstorm2Unofficial.Modules
 
         internal static ConfigEntry<bool> ForceUnlockSkins;
         internal static ConfigEntry<bool> EnableUnlockAll;
+
         internal static ConfigEntry<bool> EnableVoid;
         #endregion
 
@@ -156,6 +157,11 @@ namespace Starstorm2Unofficial.Modules
                             false,
                             "Invaders are a part of the void team.").Value;
 
+            Cores.NemesisInvasion.Components.NemesisInvasionManager.useVoidTeam = StarstormPlugin.instance.Config.Bind("Starstorm 2 :: Void Fields changes",
+                            "Require Void Fields Completion",
+                            true,
+                            "Invasion only starts if Void Fields was successfully cleared. If false, you only need to enter Void Fields to trigger the invasion.").Value;
+
             Cores.NemesisInvasion.Components.NemesisInvasionManager.useAIBlacklist = StarstormPlugin.instance.Config.Bind("Starstorm 2 :: Void Fields changes :: Item Blacklists",
                              "Nemesis Invasion  - Blacklist AIBlacklist items.",
                              true,
@@ -185,6 +191,16 @@ namespace Starstorm2Unofficial.Modules
                              "Nemesis Invasion - Item Blacklists - Force Remove Blacklisted Items",
                              true,
                              "Removes blacklisted items even if they were added from other sources (ex. EnemiesWithItems).").Value;
+
+            ModCompat.SS2OCompat.enableNemCommandoInvasion = StarstormPlugin.instance.Config.Bind("Starstorm 2 :: Void Fields changes :: Compatibility",
+                             "SS2 Official Nemesis Commando",
+                             true,
+                             "Add this survivor to the Nemesis Invasion event.").Value;
+
+            ModCompat.SS2OCompat.enableNemMercInvasion = StarstormPlugin.instance.Config.Bind("Starstorm 2 :: Void Fields changes :: Compatibility",
+                             "SS2 Official Nemesis Mercenary",
+                             true,
+                             "Add this survivor to the Nemesis Invasion event.").Value;
 
             Starstorm2Unofficial.Survivors.Chirr.Components.ChirrFriendController.allowBefriendNemesis = StarstormPlugin.instance.Config.Bind("Starstorm 2 :: Void Fields changes",
                             "Nemesis Invasion - Allow Chirr Befriend",
