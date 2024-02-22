@@ -63,13 +63,15 @@ namespace Starstorm2Unofficial.Cores
 
         public EnemyCore()
         {
-            CreatePrefab();
-            CreateAI();
-            SetUpSkills();
-            RegisterStates();
-            CreateSpawnCards();
+            new SpooderCore();
 
-            new Items.ShackledLamp().Init();
+            //CreatePrefab();
+            //CreateAI();
+            //SetUpSkills();
+            //RegisterStates();
+            //CreateSpawnCards();
+
+            //new Items.ShackledLamp().Init();
         }
 
         internal static void CreatePrefab()

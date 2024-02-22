@@ -83,7 +83,7 @@ namespace Starstorm2Unofficial
         ItemDisplayCore itemDisplayCore;
         SkinsCore skinsCore;
 
-        //EnemyCore enemyCore;
+        EnemyCore enemyCore;
 
         public void Awake()
         {
@@ -166,6 +166,8 @@ namespace Starstorm2Unofficial
             skinsCore = new SkinsCore();
 
             InitializeSurvivors();
+            //enemyCore = new EnemyCore();
+            RoR2.RoR2Application.onLoad += EnemyCore.StoreBodyIndexes;
 
             Modules.Effects.Initialize();
 
@@ -178,9 +180,6 @@ namespace Starstorm2Unofficial
                 //AddEquipmentIfEnabled(new PressurizedCanister(), EquipmentCore.instance.equipment);   //fuck this equipment in particular
                 EquipmentCore.instance.InitEquipment();
             }
-
-            //enemyCore = new EnemyCore();
-            RoR2.RoR2Application.onLoad += EnemyCore.StoreBodyIndexes;
 
             if (Modules.Config.EnableItems.Value)
             {
