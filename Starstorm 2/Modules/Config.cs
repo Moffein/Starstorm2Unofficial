@@ -157,7 +157,7 @@ namespace Starstorm2Unofficial.Modules
                             false,
                             "Invaders are a part of the void team.").Value;
 
-            Cores.NemesisInvasion.Components.NemesisInvasionManager.useVoidTeam = StarstormPlugin.instance.Config.Bind("Starstorm 2 :: Void Fields changes",
+            Cores.NemesisInvasion.Components.NemesisInvasionManager.requireFullVoid = StarstormPlugin.instance.Config.Bind("Starstorm 2 :: Void Fields changes",
                             "Require Void Fields Completion",
                             true,
                             "Invasion only starts if Void Fields was successfully cleared. If false, you only need to enter Void Fields to trigger the invasion.").Value;

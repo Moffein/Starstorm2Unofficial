@@ -1,3 +1,8 @@
+`0.17.1`
+
+- Nemesis Invasion
+	- Fixed Require Void Fields Completion not working. (It was setting the "Use Void Team" option instead)
+
 `0.17.0`
 
 - Chirr
