@@ -100,7 +100,7 @@ namespace EntityStates.SS2UStates.Chirr
             //Technically don't need a network check.
             if (NetworkServer.active)
             {
-                if (friendController && base.skillLocator && base.skillLocator.special && base.skillLocator.special.skillDef == ChirrCore.specialScepterDef)
+                if (friendController && base.skillLocator && base.skillLocator.special && (base.skillLocator.special.skillDef == ChirrCore.specialScepterDef || friendController.HasScepter()))
                 {
                     friendController.canBefriendChampion = true;
                 }

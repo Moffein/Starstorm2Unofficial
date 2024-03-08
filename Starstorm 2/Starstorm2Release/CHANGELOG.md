@@ -1,3 +1,9 @@
+`0.17.2`
+
+- Chirr
+	- Added failsafe for when Scepter fails to replace her Special.
+		- Befriend now checks if your inventory has a Scepter if it doesn't find the Scepter skill.
+
 `0.17.1`
 
 - Nemesis Invasion

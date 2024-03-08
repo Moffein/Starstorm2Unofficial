@@ -116,6 +116,8 @@ namespace Starstorm2Unofficial.Survivors.Chirr.Components
         public float maxTrackingAngle = 90f;
         public bool canBefriendChampion = false;
 
+        private bool hadScepter = false;
+
         public static void BlacklistBody(BodyIndex bodyIndex)
         {
             if (bodyIndex != BodyIndex.None) blacklistedBodies.Add(bodyIndex);
@@ -125,6 +127,20 @@ namespace Starstorm2Unofficial.Survivors.Chirr.Components
         {
             if (!hadBeads) hadBeads = ownerMaster && ownerMaster.inventory && ownerMaster.inventory.GetItemCount(RoR2Content.Items.LunarTrinket) > 0;
             return hadBeads;
+        }
+
+        public bool HasScepter()
+        {
+            int scepterCount = 0;
+            if (ownerMaster && ownerMaster.inventory)
+            {
+                scepterCount += ownerMaster.inventory.GetItemCount(ItemCatalog.FindItemIndex("CIScepter"));
+                scepterCount += ownerMaster.inventory.GetItemCount(ItemCatalog.FindItemIndex("ITEM_ANCIENT_SCEPTER"));
+            }
+
+            bool hasScepter = scepterCount > 0;
+            if (!hadScepter) hadScepter = hasScepter;
+            return hasScepter;
         }
 
         public bool HasFriend() { return _hasFriend; }
@@ -574,7 +590,7 @@ namespace Starstorm2Unofficial.Survivors.Chirr.Components
                             isNemesis = hbBody.inventory.GetItemCount(Starstorm2Unofficial.Cores.NemesisInvasion.NemesisInvasionCore.NemesisMarkerItem) > 0;
                         }
 
-                        if (!isPlayerControlled && !isMasterless && !isDecay && !isDestroy && !isAlreadyFriended && (((!isChampion && !isBoss) || canBefriendChampion) || (hbBody.bodyIndex == EnemyCore.brotherHurtIndex && (canBefriendChampion || HasLunarTrinket()))) && !isBlacklisted && !(isNemesis && !allowBefriendNemesis))
+                        if (!isPlayerControlled && !isMasterless && !isDecay && !isDestroy && !isAlreadyFriended && (((!isChampion && !isBoss) || canBefriendChampion) || (hbBody.bodyIndex == EnemyCore.brotherHurtIndex && (canBefriendChampion || hadScepter || HasLunarTrinket()))) && !isBlacklisted && !(isNemesis && !allowBefriendNemesis))
                         {
                             validTargets.Add(hb);
                         }
