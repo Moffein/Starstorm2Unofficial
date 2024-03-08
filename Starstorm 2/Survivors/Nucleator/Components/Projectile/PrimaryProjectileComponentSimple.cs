@@ -5,6 +5,7 @@ using UnityEngine;
 
 namespace Starstorm2Unofficial.Survivors.Nucleator.Components.Projectile
 {
+    [RequireComponent(typeof(ProjectileImpactExplosion))]
     public class PrimaryProjectileComponentSimple : MonoBehaviour
     {
         public float startDelay = 0f;   //Delay before expansion starts;
@@ -20,11 +21,6 @@ namespace Starstorm2Unofficial.Survivors.Nucleator.Components.Projectile
         {
             stopwatch = 0f;
             pie = base.GetComponent<ProjectileImpactExplosion>();
-            if (!pie)
-            {
-                Destroy(this);
-                return;
-            }
             initialRadius = pie.blastRadius;
 
             ProjectileSimple ps = base.GetComponent<ProjectileSimple>();

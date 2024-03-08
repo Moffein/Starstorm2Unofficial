@@ -39,10 +39,11 @@ namespace Starstorm2Unofficial.Survivors.Nucleator
             pie.blastRadius = 6f;
             pie.falloffModel = BlastAttack.FalloffModel.None;
             pie.blastAttackerFiltering = AttackerFiltering.NeverHitSelf;
+            pie.lifetime = ps.lifetime - 0.1f;
 
             PrimaryProjectileComponentSimple expand = projectilePrefab.AddComponent<PrimaryProjectileComponentSimple>();
             expand.endSizeMultiplier = 2f;
-            expand.startDelay = 0.1f;
+            expand.startDelay = 0.2f;
             expand.endSizeTime = 0.3f;
             expand.baseSpeed = FireIrradiate.minProjectileSpeed;
 
@@ -91,34 +92,23 @@ namespace Starstorm2Unofficial.Survivors.Nucleator
 
             ProjectileSimple ps = projectilePrefab.GetComponent<ProjectileSimple>();
             ps.desiredForwardSpeed = 20f;
-            ps.lifetime = 2.5f;
+            ps.lifetime = 2.1f;
 
-            GameObject impactEffectPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Mage/OmniImpactVFXLightningMage.prefab").WaitForCompletion().InstantiateClone("SS2UNucleatorPrimaryOverchargeImpactEffect", false);
-
-            //Debug.Log("Modifying Nucleator overcharge primary particle color");
-            //ParticleSystem[] particles = impactEffectPrefab.GetComponentsInChildren<ParticleSystem>();
-            /*for (int i = 0; i < particles.Length; i++)
-            {
-                Debug.Log(particles[i].name + ": " + particles[i].startColor);
-                particles[i].startColor = new Color(244f / 255f, 243f / 255f, 183f / 255f);
-            }*/
-            /*
-                [Info   : Unity Log] Flash, Blue: RGBA(0.000, 0.523, 1.000, 1.000)
-                [Info   : Unity Log] Matrix, Dynamic: RGBA(0.279, 0.000, 0.279, 0.000)
-                [Info   : Unity Log] Matrix, Directional: RGBA(0.000, 0.000, 0.000, 0.000)
-                [Info   : Unity Log] Flash, Directional: RGBA(0.000, 0.000, 0.000, 0.000)
-                [Info   : Unity Log] Flash, Distortion: RGBA(1.000, 1.000, 1.000, 1.000)
-                [Info   : Unity Log] Matrix, Billboard: RGBA(0.000, 0.523, 1.000, 1.000)
-                [Info   : Unity Log] Sphere, Expanding: RGBA(0.190, 0.653, 0.708, 1.000)
-             */
-
-            Modules.Assets.AddEffect(impactEffectPrefab);
+            GameObject impactEffectPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Loader/OmniImpactVFXLoaderLightning.prefab").WaitForCompletion().InstantiateClone("SS2UNucleatorPrimaryOverchargeImpactEffect", false);
+            Modules.Assets.AddEffect(impactEffectPrefab, "Play_mage_m2_impact");
 
             ProjectileImpactExplosion pie = projectilePrefab.GetComponent<ProjectileImpactExplosion>();
             pie.impactEffect = impactEffectPrefab;
-            pie.blastRadius = 30f;
+            pie.blastRadius = 10f;
             pie.falloffModel = BlastAttack.FalloffModel.None;
             pie.blastAttackerFiltering = AttackerFiltering.NeverHitSelf;
+            pie.lifetime = ps.lifetime - 0.1f;
+
+            PrimaryProjectileComponentSimple expand = projectilePrefab.AddComponent<PrimaryProjectileComponentSimple>();
+            expand.endSizeMultiplier = 2f;
+            expand.startDelay = 0.5f;
+            expand.endSizeTime = 1.5f;
+            expand.baseSpeed = FireIrradiateOvercharge.minProjectileSpeed;
 
             /*Rigidbody rb = projectilePrefab.GetComponent<Rigidbody>();
             rb.useGravity = true;
@@ -126,8 +116,6 @@ namespace Starstorm2Unofficial.Survivors.Nucleator
             AntiGravityForce agf = projectilePrefab.AddComponent<AntiGravityForce>();
             agf.antiGravityCoefficient = 0.25f;
             agf.rb = rb;*/
-
-            //projectilePrefab.AddComponent<PrimaryProjectileComponent>();
 
             return projectilePrefab;
         }

@@ -457,7 +457,7 @@ namespace Starstorm2Unofficial.Modules
             AddEffect(effectPrefab, "");
         }
 
-        private static void AddEffect(GameObject effectPrefab, string soundName)
+        internal static void AddEffect(GameObject effectPrefab, string soundName)
         {
             EffectDef newEffectDef = new EffectDef();
             newEffectDef.prefab = effectPrefab;
