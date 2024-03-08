@@ -2,7 +2,7 @@
 
 - Chirr
 	- Added failsafe for when Scepter fails to replace her Special.
-		- Befriend now checks if your inventory has a Scepter if it doesn't find the Scepter skill.
+		- Befriend now checks if your inventory has a Scepter if it doesn't find the Scepter skill. Skill icon won't change, but you'll be able to befriend bosses.
 
 `0.17.1`
 
