@@ -126,7 +126,7 @@ namespace Starstorm2Unofficial.Survivors.Chirr.Components
         private bool HasLunarTrinket()
         {
             if (!hadBeads) hadBeads = ownerMaster && ownerMaster.inventory && ownerMaster.inventory.GetItemCount(RoR2Content.Items.LunarTrinket) > 0;
-            return hadBeads;
+            return hadBeads;    //hadBeads is intentional
         }
 
         public bool HasScepter()
