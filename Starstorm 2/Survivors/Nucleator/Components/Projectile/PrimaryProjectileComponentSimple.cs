@@ -1,15 +1,16 @@
 ﻿using RoR2;
 using RoR2.Projectile;
-using UnityEngine;
 using UnityEngine.Networking;
+using UnityEngine;
 
-namespace Starstorm2Unofficial.Components.Projectiles
+namespace Starstorm2Unofficial.Survivors.Nucleator.Components.Projectile
 {
-    public class ProjectileExpandOverTime : MonoBehaviour
+    public class PrimaryProjectileComponentSimple : MonoBehaviour
     {
         public float startDelay = 0f;   //Delay before expansion starts;
         public float endSizeMultiplier = 1f;    //Max size multiplier
         public float endSizeTime = 1f;  //Time it takes to expand to full (after start delay)
+        public float baseSpeed = 60f;   //If projectile is faster than base speed, speed up time scaling to match;
 
         private float stopwatch;
         private float initialRadius;  //Always calculate size off of initial size
@@ -25,6 +26,17 @@ namespace Starstorm2Unofficial.Components.Projectiles
                 return;
             }
             initialRadius = pie.blastRadius;
+
+            ProjectileSimple ps = base.GetComponent<ProjectileSimple>();
+            if (ps)
+            {
+                float speedFactor = ps.desiredForwardSpeed / baseSpeed;
+                if (speedFactor > 0f)
+                {
+                    startDelay /= speedFactor;
+                    endSizeTime /= speedFactor;
+                }
+            }
         }
 
         public void FixedUpdate()

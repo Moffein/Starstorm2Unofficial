@@ -79,7 +79,6 @@
     <Compile Include="API\LogCore.cs" />
     <Compile Include="API\Utils.cs" />
     <Compile Include="Components\NemesisMusicController.cs" />
-    <Compile Include="Components\Projectiles\ProjectileExpandOverTime.cs" />
     <Compile Include="Cores\NemesisInvasion\Components\Body\NemesisDropItemOnDeath.cs" />
     <Compile Include="Cores\NemesisInvasion\Components\NemesisInvasionManager.cs" />
     <Compile Include="Cores\NemesisInvasion\NemesisInvasionCore.cs" />
@@ -267,6 +266,7 @@
     <Compile Include="Survivors\Nucleator\Components\NucleatorChargeComponent.cs" />
     <Compile Include="Survivors\Nucleator\Components\Projectile\PrimaryGhostScaleOverDistance.cs" />
     <Compile Include="Survivors\Nucleator\Components\Projectile\PrimaryProjectileComponent.cs" />
+    <Compile Include="Survivors\Nucleator\Components\Projectile\PrimaryProjectileComponentSimple.cs" />
     <Compile Include="Survivors\Nucleator\EntityStates\BaseChargeState.cs" />
     <Compile Include="Survivors\Nucleator\EntityStates\Primary\ChargeIrradiate.cs" />
     <Compile Include="Survivors\Nucleator\EntityStates\Primary\FireIrradiate.cs" />

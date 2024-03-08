@@ -7,6 +7,7 @@ using Starstorm2Unofficial.Survivors.Nucleator.Components.Projectile;
 using Starstorm2Unofficial.Cores;
 using Starstorm2Unofficial.Components.Projectiles;
 using static R2API.DamageAPI;
+using EntityStates.SS2UStates.Nucleator.Primary;
 
 namespace Starstorm2Unofficial.Survivors.Nucleator
 {
@@ -39,10 +40,11 @@ namespace Starstorm2Unofficial.Survivors.Nucleator
             pie.falloffModel = BlastAttack.FalloffModel.None;
             pie.blastAttackerFiltering = AttackerFiltering.NeverHitSelf;
 
-            ProjectileExpandOverTime expand = projectilePrefab.AddComponent<ProjectileExpandOverTime>();
+            PrimaryProjectileComponentSimple expand = projectilePrefab.AddComponent<PrimaryProjectileComponentSimple>();
             expand.endSizeMultiplier = 2f;
             expand.startDelay = 0.1f;
             expand.endSizeTime = 0.3f;
+            expand.baseSpeed = FireIrradiate.minProjectileSpeed;
 
             Rigidbody rb = projectilePrefab.GetComponent<Rigidbody>();
             rb.useGravity = true;
