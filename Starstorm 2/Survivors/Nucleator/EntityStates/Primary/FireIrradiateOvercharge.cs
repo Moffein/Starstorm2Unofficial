@@ -59,8 +59,8 @@ namespace EntityStates.SS2UStates.Nucleator.Primary
         public static float minForce = 3000f;
         public static float maxForce = 3000f;
 
-        public static float minProjectileSpeed = 30f;
-        public static float maxProjectileSpeed = 30f;
+        public static float minProjectileSpeed = 20f;
+        public static float maxProjectileSpeed = 20f;
 
         public static float baseDuration = 0.4f;
 

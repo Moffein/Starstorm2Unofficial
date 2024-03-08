@@ -66,15 +66,32 @@ namespace Starstorm2Unofficial.Survivors.Nucleator
             DamageAPI.ModdedDamageTypeHolderComponent mdc = projectilePrefab.AddComponent<DamageAPI.ModdedDamageTypeHolderComponent>();
             mdc.Add(DamageTypeCore.ModdedDamageTypes.NucleatorCanApplyRadiation);
 
-            GameObject projectileGhost = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/BFG/BeamSphereGhost.prefab").WaitForCompletion();
-            //projectileGhost.AddComponent<GhostScaleOverTime>();
+            GameObject projectileGhost = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/BFG/BeamSphereGhost.prefab").WaitForCompletion().InstantiateClone("SS2UNucleatorPrimaryOverchargeGhost",false);
+            
+            //Copied from Cyborg
+            ParticleSystem[] particles = projectileGhost.GetComponentsInChildren<ParticleSystem>();
+            for (int i = 0; i < particles.Length; i++)
+            {
+                switch (i)
+                {
+                    case 0: //fire
+                        particles[i].startColor = Color.white;
+                        break;
+                    case 1: //beams
+                        particles[i].startColor = new Color(244f / 255f, 243f / 255f, 183f / 255f);
+                        break;
+                    case 2: //lightning
+                        particles[i].startColor = new Color(244f / 255f, 243f / 255f, 183f / 255f);
+                        break;
+                }
+            }
 
             ProjectileController pc = projectilePrefab.GetComponent<ProjectileController>();
             pc.ghostPrefab = projectileGhost;
 
             ProjectileSimple ps = projectilePrefab.GetComponent<ProjectileSimple>();
-            ps.desiredForwardSpeed = 60f;
-            ps.lifetime = 10f;
+            ps.desiredForwardSpeed = 20f;
+            ps.lifetime = 2.5f;
 
             GameObject impactEffectPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Mage/OmniImpactVFXLightningMage.prefab").WaitForCompletion().InstantiateClone("SS2UNucleatorPrimaryOverchargeImpactEffect", false);
 
