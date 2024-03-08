@@ -10,7 +10,7 @@ namespace EntityStates.SS2UStates.Nucleator.Primary
         public override void OnEnter()
         {
             base.OnEnter();
-            base.PlayCrossfade("Gesture, Override", "PrimaryCharge", "Primary.playbackRate", 0.8f * base.duration, 0.2f);
+            //base.PlayCrossfade("Gesture, Override", "PrimaryCharge", "Primary.playbackRate", 0.8f * base.duration, 0.2f);
             this.chargePlayID = Util.PlaySound("SS2UNucleatorChargePrimary", this.gameObject);
         }
 

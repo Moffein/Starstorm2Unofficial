@@ -32,7 +32,7 @@ namespace Starstorm2Unofficial.Survivors.Nucleator
     {
         public static class SkillDefs
         {
-            public static SkillDef Primary, Secondary, Utiltiy, Special, SpecialScepter;
+            public static SkillDef Primary, Secondary, Utility, Special, SpecialScepter;
         }
 
         public static BodyIndex bodyIndex;
@@ -87,8 +87,6 @@ namespace Starstorm2Unofficial.Survivors.Nucleator
 
         internal override void InitializeCharacter()
         {
-            //Modules.Assets.LoadNucleatorEffects();
-
             base.InitializeCharacter();
             R2API.ItemAPI.DoNotAutoIDRSFor(bodyPrefab);
 
@@ -152,6 +150,7 @@ namespace Starstorm2Unofficial.Survivors.Nucleator
             Modules.States.AddState(typeof(FireIrradiateOvercharge));
 
             Modules.States.AddState(typeof(ChargeLeap));
+            Modules.States.AddState(typeof(FireLeap));
 
             Modules.States.AddState(typeof(BuffSelf));
         }
@@ -170,42 +169,65 @@ namespace Starstorm2Unofficial.Survivors.Nucleator
             SkillLocator skillLocator = bodyPrefab.GetComponent<SkillLocator>();
             SetupPrimaries(skillLocator);
             skillLocator.secondary = Utils.RegisterSkillsToFamily(bodyPrefab, new SkillFamily.Variant[] { squawkVariant });
-            skillLocator.utility = Utils.RegisterSkillsToFamily(bodyPrefab, new SkillFamily.Variant[] { squawkVariant });
             SetupUtilities(skillLocator);
             SetupSpecials(skillLocator);
         }
 
         private void SetupPrimaries(SkillLocator skillLocator)
         {
-            SkillDef primaryDef1 = ScriptableObject.CreateInstance<SkillDef>();
-            primaryDef1.activationState = new SerializableEntityStateType(typeof(ChargeIrradiate));
-            primaryDef1.activationStateMachineName = "Weapon";
-            primaryDef1.skillName = "SS2UNUCLEATOR_PRIMARY_NAME";
-            primaryDef1.skillNameToken = "SS2UNUCLEATOR_PRIMARY_NAME";
-            primaryDef1.skillDescriptionToken = "SS2UNUCLEATOR_PRIMARY_DESCRIPTION";
-            primaryDef1.icon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("texNucleatorPrimary");
-            primaryDef1.baseMaxStock = 1;
-            primaryDef1.baseRechargeInterval = 0f;
-            primaryDef1.beginSkillCooldownOnSkillEnd = false;
-            primaryDef1.canceledFromSprinting = false;
-            primaryDef1.fullRestockOnAssign = true;
-            primaryDef1.interruptPriority = EntityStates.InterruptPriority.Any;
-            primaryDef1.isCombatSkill = true;
-            primaryDef1.mustKeyPress = true;
-            primaryDef1.cancelSprintingOnActivation = true;
-            primaryDef1.rechargeStock = 1;
-            primaryDef1.requiredStock = 1;
-            primaryDef1.stockToConsume = 1;
-            Modules.Skills.FixSkillName(primaryDef1);
-            Modules.Skills.skillDefs.Add(primaryDef1);
-            SkillFamily.Variant primaryVariant1 = Utils.RegisterSkillVariant(primaryDef1);
+            SkillDef primaryDef = ScriptableObject.CreateInstance<SkillDef>();
+            primaryDef.activationState = new SerializableEntityStateType(typeof(ChargeIrradiate));
+            primaryDef.activationStateMachineName = "Weapon";
+            primaryDef.skillName = "SS2UNUCLEATOR_PRIMARY_NAME";
+            primaryDef.skillNameToken = "SS2UNUCLEATOR_PRIMARY_NAME";
+            primaryDef.skillDescriptionToken = "SS2UNUCLEATOR_PRIMARY_DESCRIPTION";
+            primaryDef.icon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("texNucleatorPrimary");
+            primaryDef.baseMaxStock = 1;
+            primaryDef.baseRechargeInterval = 0f;
+            primaryDef.beginSkillCooldownOnSkillEnd = false;
+            primaryDef.canceledFromSprinting = false;
+            primaryDef.fullRestockOnAssign = true;
+            primaryDef.interruptPriority = EntityStates.InterruptPriority.Any;
+            primaryDef.isCombatSkill = true;
+            primaryDef.mustKeyPress = true;
+            primaryDef.cancelSprintingOnActivation = true;
+            primaryDef.rechargeStock = 1;
+            primaryDef.requiredStock = 1;
+            primaryDef.stockToConsume = 1;
+            Modules.Skills.FixSkillName(primaryDef);
+            Modules.Skills.skillDefs.Add(primaryDef);
+            SkillFamily.Variant primaryVariant1 = Utils.RegisterSkillVariant(primaryDef);
             skillLocator.primary = Utils.RegisterSkillsToFamily(bodyPrefab, new SkillFamily.Variant[] { primaryVariant1 });
-            SkillDefs.Primary = primaryDef1;
+            SkillDefs.Primary = primaryDef;
         }
 
         private void SetupUtilities(SkillLocator skillLocator)
         {
 
+            SkillDef utilityDef = ScriptableObject.CreateInstance<SkillDef>();
+            utilityDef.activationState = new SerializableEntityStateType(typeof(ChargeLeap));
+            utilityDef.activationStateMachineName = "Body";
+            utilityDef.skillName = "SS2UNUCLEATOR_UTILITY_NAME";
+            utilityDef.skillNameToken = "SS2UNUCLEATOR_UTILITY_NAME";
+            utilityDef.skillDescriptionToken = "SS2UNUCLEATOR_UTILITY_DESCRIPTION";
+            utilityDef.icon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("texNucleatorUtility");
+            utilityDef.baseMaxStock = 1;
+            utilityDef.baseRechargeInterval = 6f;
+            utilityDef.beginSkillCooldownOnSkillEnd = true;
+            utilityDef.canceledFromSprinting = false;
+            utilityDef.fullRestockOnAssign = true;
+            utilityDef.interruptPriority = EntityStates.InterruptPriority.Any;
+            utilityDef.isCombatSkill = true;
+            utilityDef.mustKeyPress = true;
+            utilityDef.cancelSprintingOnActivation = true;
+            utilityDef.rechargeStock = 1;
+            utilityDef.requiredStock = 1;
+            utilityDef.stockToConsume = 1;
+            Modules.Skills.FixSkillName(utilityDef);
+            Modules.Skills.skillDefs.Add(utilityDef);
+            SkillFamily.Variant utilityVariant1 = Utils.RegisterSkillVariant(utilityDef);
+            skillLocator.utility = Utils.RegisterSkillsToFamily(bodyPrefab, new SkillFamily.Variant[] { utilityVariant1 });
+            SkillDefs.Utility = utilityDef;
         }
 
         private void SetupSpecials(SkillLocator skillLocator)

@@ -20,9 +20,9 @@ namespace EntityStates.SS2UStates.Nucleator.Primary
             base.StartAimMode(aimRay, 2f, false);
 
             Util.PlaySound("SS2UNucleatorSkill1", base.gameObject);
-            base.PlayAnimation("Gesture, Override", "PrimaryLight", "Primary.playbackRate", this.duration);
 
-            if (muzzleflashEffectPrefab) EffectManager.SimpleMuzzleFlash(muzzleflashEffectPrefab, base.gameObject, "Forearm.R", false);
+           // base.PlayAnimation("Gesture, Override", "PrimaryLight", "Primary.playbackRate", this.duration);
+           // if (muzzleflashEffectPrefab) EffectManager.SimpleMuzzleFlash(muzzleflashEffectPrefab, base.gameObject, "Forearm.R", false);
 
             if (base.isAuthority)
             {

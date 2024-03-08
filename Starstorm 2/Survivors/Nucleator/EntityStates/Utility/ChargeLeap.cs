@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace EntityStates.SS2UStates.Nucleator.Utility
 {
@@ -10,12 +6,22 @@ namespace EntityStates.SS2UStates.Nucleator.Utility
     {
         protected override void SetNextState()
         {
-            throw new NotImplementedException();
+            this.outer.SetNextState(new FireLeap() { charge = this.chargeFraction });
         }
 
         protected override void SetNextStateOvercharge()
         {
-            throw new NotImplementedException();
+            this.outer.SetNextState(new FireLeap() { charge = this.chargeFraction });
+        }
+
+        protected override bool GetInputPressed()
+        {
+            return base.inputBank && base.inputBank.skill3.down;
+        }
+
+        public override InterruptPriority GetMinimumInterruptPriority()
+        {
+            return InterruptPriority.Skill;
         }
     }
 }
