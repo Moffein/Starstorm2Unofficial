@@ -6,6 +6,7 @@ using R2API;
 using Starstorm2Unofficial.Survivors.Nucleator.Components.Projectile;
 using Starstorm2Unofficial.Cores;
 using Starstorm2Unofficial.Components.Projectiles;
+using static R2API.DamageAPI;
 
 namespace Starstorm2Unofficial.Survivors.Nucleator
 {
@@ -49,8 +50,6 @@ namespace Starstorm2Unofficial.Survivors.Nucleator
             AntiGravityForce agf = projectilePrefab.AddComponent<AntiGravityForce>();
             agf.antiGravityCoefficient = 0.5f;
             agf.rb = rb;
-
-            //projectilePrefab.AddComponent<PrimaryProjectileComponent>();
 
             return projectilePrefab;
         }

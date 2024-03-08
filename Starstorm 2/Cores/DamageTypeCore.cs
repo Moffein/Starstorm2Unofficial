@@ -46,15 +46,6 @@ namespace Starstorm2Unofficial.Cores
 
             On.RoR2.HealthComponent.TakeDamage += HealthComponent_TakeDamage;
             On.RoR2.GlobalEventManager.OnHitEnemy += GlobalEventManager_OnHitEnemy;
-            SharedHooks.OnHitEnemy.OnHitAttackerActions += OnHitAttacker;
-        }
-
-        private void OnHitAttacker(DamageInfo damageInfo, CharacterBody victimBody, CharacterBody attackerBody)
-        {
-            if (damageInfo.HasModdedDamageType(ModdedDamageTypes.NucleatorCanApplyRadiation) && attackerBody.HasBuff(BuffCore.nucleatorSpecialBuff))
-            {
-                //todo: set up radiation
-            }
         }
 
         private void GlobalEventManager_OnHitEnemy(On.RoR2.GlobalEventManager.orig_OnHitEnemy orig, GlobalEventManager self, DamageInfo damageInfo, GameObject victim)
@@ -120,15 +111,25 @@ namespace Starstorm2Unofficial.Cores
                     }
                 }
 
+                CharacterBody attackerBody = null;
+                if (damageInfo.attacker)
+                {
+                    attackerBody = damageInfo.attacker.GetComponent<CharacterBody>();
+
+                    if (attackerBody)
+                    {
+                        if (damageInfo.HasModdedDamageType(ModdedDamageTypes.NucleatorCanApplyRadiation) && attackerBody.HasBuff(BuffCore.nucleatorSpecialBuff))
+                        {
+                            damageInfo.damageType |= DamageType.PoisonOnHit;
+                        }
+                    }
+                }
+
                 if (damageInfo.dotIndex == DoTCore.NemmandoGouge && damageInfo.procCoefficient == 0f)
                 {
-                    if (damageInfo.attacker)
+                    if (attackerBody)
                     {
-                        CharacterBody attackerBody = damageInfo.attacker.GetComponent<CharacterBody>();
-                        if (attackerBody)
-                        {
-                            damageInfo.crit = Util.CheckRoll(attackerBody.crit, attackerBody.master);
-                        }
+                        damageInfo.crit = Util.CheckRoll(attackerBody.crit, attackerBody.master);
                     }
                     damageInfo.procCoefficient = 0.7f;
                     triggerGougeProc = true;
