@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using RoR2;
+using System;
 
 namespace EntityStates.SS2UStates.Nucleator.Primary
 {
@@ -18,6 +19,12 @@ namespace EntityStates.SS2UStates.Nucleator.Primary
             base.PlayAnimation("Gesture, Override", "BufferEmpty");
             AkSoundEngine.StopPlayingID(this.chargePlayID);
             base.OnExit();
+        }
+
+        public override void FixedUpdate()
+        {
+            base.FixedUpdate();
+            base.StartAimMode(base.GetAimRay(), 2f, false);
         }
 
         protected override bool GetInputPressed()

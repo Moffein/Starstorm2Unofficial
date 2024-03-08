@@ -218,7 +218,7 @@ namespace Starstorm2Unofficial.Survivors.Nucleator
             specialDef.skillDescriptionToken = "SS2UNUCLEATOR_SPECIAL_DESCRIPTION";
             specialDef.icon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("texNucleatorSpecial");
             specialDef.baseMaxStock = 1;
-            specialDef.baseRechargeInterval = 6f;
+            specialDef.baseRechargeInterval = 10f;
             specialDef.beginSkillCooldownOnSkillEnd = true;
             specialDef.canceledFromSprinting = false;
             specialDef.fullRestockOnAssign = true;
@@ -229,6 +229,7 @@ namespace Starstorm2Unofficial.Survivors.Nucleator
             specialDef.rechargeStock = 1;
             specialDef.requiredStock = 1;
             specialDef.stockToConsume = 1;
+            specialDef.keywordTokens = new string[] { "KEYWORD_POISON" };
             Modules.Skills.FixSkillName(specialDef);
             Modules.Skills.skillDefs.Add(specialDef);
             SkillFamily.Variant specialVariant1 = Utils.RegisterSkillVariant(specialDef);
@@ -243,7 +244,7 @@ namespace Starstorm2Unofficial.Survivors.Nucleator
             specialScepterDef.skillDescriptionToken = "SS2UNUCLEATOR_SPECIAL_SCEPTER_DESCRIPTION";
             specialScepterDef.icon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("texNucleatorSpecialScepter");
             specialScepterDef.baseMaxStock = 1;
-            specialScepterDef.baseRechargeInterval = 6f;
+            specialScepterDef.baseRechargeInterval = 10f;
             specialScepterDef.beginSkillCooldownOnSkillEnd = true;
             specialScepterDef.canceledFromSprinting = false;
             specialScepterDef.fullRestockOnAssign = true;
@@ -254,6 +255,7 @@ namespace Starstorm2Unofficial.Survivors.Nucleator
             specialScepterDef.rechargeStock = 1;
             specialScepterDef.requiredStock = 1;
             specialScepterDef.stockToConsume = 1;
+            specialScepterDef.keywordTokens = new string[] { "KEYWORD_POISON" };
             Modules.Skills.FixSkillName(specialScepterDef);
             SkillDefs.SpecialScepter = specialScepterDef;
 
@@ -305,10 +307,10 @@ namespace Starstorm2Unofficial.Survivors.Nucleator
             LanguageAPI.Add("SS2UNUCLEATOR_UTILITY_DESCRIPTION", $"<style=cIsUtility>Hold</style> to <style=cIsUtility>launch yourself</style>, dealing style=cIsDamage>{550}% damage</style>. Control the direction using the movement keys.");
 
             LanguageAPI.Add("SS2UNUCLEATOR_SPECIAL_NAME", "Radionuclide Surge");
-            LanguageAPI.Add("SS2UNUCLEATOR_SPECIAL_DESCRIPTION", $"Enter a nuclear state for <style=cIsUtility>6 seconds</style>, adding <style=cIsHealing>radiation</style> to every attack while becoming <style=cIsUtility>immune to Overcharge damage</style>.");
+            LanguageAPI.Add("SS2UNUCLEATOR_SPECIAL_DESCRIPTION", $"Enter a nuclear state for <style=cIsUtility>6 seconds</style>, adding <style=cIsHealing>Poison</style> to every attack while becoming <style=cIsUtility>immune to Overcharge damage</style>.");
 
             LanguageAPI.Add("SS2UNUCLEATOR_SPECIAL_SCEPTER_NAME", "Radionuclide Efflux");
-            LanguageAPI.Add("SS2UNUCLEATOR_SPECIAL_SCEPTER_DESCRIPTION", $"Enter a nuclear state for <style=cIsUtility>12 seconds</style>, adding <style=cIsHealing>radiation</style> to every attack while becoming <style=cIsUtility>immune to Overcharge damage</style>.");
+            LanguageAPI.Add("SS2UNUCLEATOR_SPECIAL_SCEPTER_DESCRIPTION", $"Enter a nuclear state for <style=cIsUtility>12 seconds</style>, adding <style=cIsHealing>Poison</style> to every attack while becoming <style=cIsUtility>immune to Overcharge damage</style>.");
 
             LanguageAPI.Add("SS2UNUCLEATOR_UNLOCKUNLOCKABLE_ACHIEVEMENT_NAME", "Overkill");
             LanguageAPI.Add("SS2UNUCLEATOR_UNLOCKUNLOCKABLE_ACHIEVEMENT_DESC", "Collect 5 Legendary items in one run.");
@@ -347,74 +349,6 @@ namespace Starstorm2Unofficial.Survivors.Nucleator
 
             skins.Add(defaultSkin);
             #endregion
-            /*
-            #region MasterySkin
-            string materialName = UnityEngine.Random.value < 0.01f ? "matNucleatorMastery" : "matNucleatorMasteryAlt";
-            Material masteryMat = Modules.Assets.CreateMaterial(materialName, 1f, Color.white);
-            CharacterModel.RendererInfo[] masteryRendererInfos = SkinRendererInfos(defaultRenderers, new Material[]
-            {
-                masteryMat,
-                masteryMat,
-                masteryMat
-            });
-
-            SkinDef masterySkin = Modules.Skins.CreateSkinDef("Nucleator_MASTERY_SKIN_NAME",
-                Assets.mainAssetBundle.LoadAsset<Sprite>("texNucleatorSkinMaster"),
-                masteryRendererInfos,
-                mainRenderer,
-                model,
-                masterySkinUnlockableDef);
-
-            masterySkin.meshReplacements = new SkinDef.MeshReplacement[]
-            {
-                new SkinDef.MeshReplacement
-                {
-                    mesh = Modules.Assets.mainAssetBundle.LoadAsset<Mesh>("meshNucleatorMastery"),
-                    renderer = defaultRenderers[0].renderer
-                },
-                new SkinDef.MeshReplacement
-                {
-                    mesh = Modules.Assets.mainAssetBundle.LoadAsset<Mesh>("meshNucleatorGun"),
-                    renderer = defaultRenderers[1].renderer
-                }
-            };
-
-            skins.Add(masterySkin);
-            #endregion
-
-            #region GrandMasterySkin
-            Material grandMasteryMat = Modules.Assets.CreateMaterial("matNucleatorKnight");
-            CharacterModel.RendererInfo[] grandMasteryRendererInfos = SkinRendererInfos(defaultRenderers, new Material[]
-            {
-                grandMasteryMat,
-                grandMasteryMat,
-                grandMasteryMat
-            });
-
-            SkinDef grandMasterySkin = Modules.Skins.CreateSkinDef("Nucleator_KNIGHT_SKIN_NAME",
-                Assets.mainAssetBundle.LoadAsset<Sprite>("texNucleatorSkinGrandMaster"),
-                grandMasteryRendererInfos,
-                mainRenderer,
-                model,
-                grandMasterySkinUnlockableDef);
-
-            grandMasterySkin.meshReplacements = new SkinDef.MeshReplacement[]
-            {
-                new SkinDef.MeshReplacement
-                {
-                    mesh = Modules.Assets.mainAssetBundle.LoadAsset<Mesh>("meshNucleatorKnight"),
-                    renderer = defaultRenderers[0].renderer
-                },
-                new SkinDef.MeshReplacement
-                {
-                    mesh = Modules.Assets.mainAssetBundle.LoadAsset<Mesh>("meshNucleatorGun"),
-                    renderer = defaultRenderers[1].renderer
-                }
-            };
-
-            skins.Add(grandMasterySkin);
-            #endregion
-            */
 
             skinController.skins = skins.ToArray();
         }

@@ -5,6 +5,7 @@ using RoR2.Projectile;
 using R2API;
 using Starstorm2Unofficial.Survivors.Nucleator.Components.Projectile;
 using Starstorm2Unofficial.Cores;
+using Starstorm2Unofficial.Components.Projectiles;
 
 namespace Starstorm2Unofficial.Survivors.Nucleator
 {
@@ -33,9 +34,14 @@ namespace Starstorm2Unofficial.Survivors.Nucleator
 
             ProjectileImpactExplosion pie = projectilePrefab.GetComponent<ProjectileImpactExplosion>();
             pie.impactEffect = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Beetle/BeetleSpitExplosion.prefab").WaitForCompletion();
-            pie.blastRadius = 10f;
+            pie.blastRadius = 6f;
             pie.falloffModel = BlastAttack.FalloffModel.None;
             pie.blastAttackerFiltering = AttackerFiltering.NeverHitSelf;
+
+            ProjectileExpandOverTime expand = projectilePrefab.AddComponent<ProjectileExpandOverTime>();
+            expand.endSizeMultiplier = 2f;
+            expand.startDelay = 0.1f;
+            expand.endSizeTime = 0.3f;
 
             Rigidbody rb = projectilePrefab.GetComponent<Rigidbody>();
             rb.useGravity = true;
