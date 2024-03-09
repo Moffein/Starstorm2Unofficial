@@ -56,6 +56,7 @@ namespace Starstorm2Unofficial.Survivors.Nucleator.Components
                 }
             }
 
+            float damage = characterBody.damage * FireLeapOvercharge.shockDamageCoefficient * characterBody.attackSpeed;
             foreach (HealthComponent hc in targetList)
             {
                 if (hc.body.mainHurtBox == null || !hc.body.mainHurtBox.isActiveAndEnabled) continue;
@@ -65,8 +66,8 @@ namespace Starstorm2Unofficial.Survivors.Nucleator.Components
                     bouncedObjects = null,
                     attacker = base.gameObject,
                     inflictor = base.gameObject,
-                    damageValue = characterBody.damage * FireLeapOvercharge.shockDamageCoefficient,
-                    procCoefficient = 0.5f,
+                    damageValue = damage,
+                    procCoefficient = 1f,
                     teamIndex = characterBody.teamComponent ? characterBody.teamComponent.teamIndex : TeamIndex.None,
                     isCrit = crit,
                     procChainMask = default,

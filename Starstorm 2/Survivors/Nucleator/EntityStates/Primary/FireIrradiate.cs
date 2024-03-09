@@ -14,7 +14,8 @@ namespace EntityStates.SS2UStates.Nucleator.Primary
         public override void OnEnter()
         {
             base.OnEnter();
-            this.duration = baseDuration / this.attackSpeedStat;
+            this.duration = baseDuration;// this.attackSpeedStat;
+            this.damageStat *= this.attackSpeedStat;
 
             Ray aimRay = base.GetAimRay();
             base.StartAimMode(aimRay, 2f, false);

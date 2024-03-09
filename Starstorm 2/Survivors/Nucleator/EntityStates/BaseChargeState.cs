@@ -11,10 +11,10 @@ namespace EntityStates.SS2UStates.Nucleator
         public static float overchargeFraction = 2f / 3f;
         public static string overchargeSoundString = "SS2UNucleatorAlarm";
 
-        public float baseDuration = 1f;
-        public float overchargeHealthFraction = 0.15f;  //Damage per tick when overcharging. Scales off of current health at the time of the tick.
+        public float baseDuration = 1.5f;
+        public float overchargeHealthFraction = 0.1f;  //Damage per tick when overcharging. Scales off of current health at the time of the tick.
         public float overchargeDamageFrequency = 10f;
-        public float overchargeHealingFraction = 0.1f/3f; //Healing per tick when overcharging. Scales off of total health.
+        public float overchargeHealingFraction = 0.2f/9f; //Healing per tick when overcharging. Scales off of total health.
 
         private bool playedOverchargeSound = false;
         private float overchargeDamageDuration;
@@ -30,7 +30,7 @@ namespace EntityStates.SS2UStates.Nucleator
         {
             base.OnEnter();
             chargeFraction = 0f;
-            duration = baseDuration / this.attackSpeedStat;
+            duration = baseDuration; // this.attackSpeedStat;   //Attack speed scaling makes it impossible to time your overcharge properly.
 
             overchargeDamageStopwatch = 0f;
             overchargeDamageDuration = 1f / (overchargeDamageFrequency * this.attackSpeedStat);

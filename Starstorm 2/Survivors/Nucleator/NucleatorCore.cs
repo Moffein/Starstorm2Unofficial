@@ -165,9 +165,16 @@ namespace Starstorm2Unofficial.Survivors.Nucleator
                 UnityEngine.Object.DestroyImmediate(sk);
             }
 
+
             SkillDef squawkDef = Addressables.LoadAssetAsync<SkillDef>("RoR2/Base/Heretic/HereticDefaultAbility.asset").WaitForCompletion();
             SkillFamily.Variant squawkVariant = Utils.RegisterSkillVariant(squawkDef);
             SkillLocator skillLocator = bodyPrefab.GetComponent<SkillLocator>();
+
+            skillLocator.passiveSkill.enabled = true;
+            skillLocator.passiveSkill.icon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("texNucleatorPrimary");   //TODO
+            skillLocator.passiveSkill.skillNameToken = "SS2UNUCLEATOR_PASSIVE_NAME";
+            skillLocator.passiveSkill.skillDescriptionToken = "SS2UNUCLEATOR_PASSIVE_DESCRIPTION";
+
             SetupPrimaries(skillLocator);
             skillLocator.secondary = Utils.RegisterSkillsToFamily(bodyPrefab, new SkillFamily.Variant[] { squawkVariant });
             SetupUtilities(skillLocator);
@@ -320,6 +327,9 @@ namespace Starstorm2Unofficial.Survivors.Nucleator
             LanguageAPI.Add("SS2UNUCLEATOR_LORE", "laugh and grow fat");
             LanguageAPI.Add("SS2UNUCLEATOR_DEFAULT_SKIN_NAME", "Default");
 
+            LanguageAPI.Add("SS2UNUCLEATOR_PASSIVE_NAME", "Total Meltdown");
+            LanguageAPI.Add("SS2UNUCLEATOR_PASSIVE_DESCRIPTION", "The Nucleator's skills are unaffected <style=cIsDamage>Attack Speed</style>. <style=cIsDamage>Attack Speed</style> is converted to <style=cIsDamage>Damage</style> instead.");
+
             LanguageAPI.Add("SS2UNUCLEATOR_PRIMARY_NAME", "Irradiate");
             LanguageAPI.Add("SS2UNUCLEATOR_PRIMARY_DESCRIPTION", "Charge and fire a glob of nuclear waste for <style=cIsDamage>300%-650% damage</style>, up to <style=cIsDamage>1000% damage</style> on <style=cIsHealth>Overcharge</style>.");
 
@@ -327,7 +337,7 @@ namespace Starstorm2Unofficial.Survivors.Nucleator
             LanguageAPI.Add("SS2UNUCLEATOR_SECONDARY_DESCRIPTION", $"Push enemies in front of you for <style=cIsDamage>{500}% piercing damage</style>.");
 
             LanguageAPI.Add("SS2UNUCLEATOR_UTILITY_NAME", "Fission Impulse");
-            LanguageAPI.Add("SS2UNUCLEATOR_UTILITY_DESCRIPTION", "Charge up a leap and gain <style=cIsUtility>200 armor</style>. Deals <style=cIsDamage>800% damage</style> on impact, and also <style=cIsDamage>shocks</style> nearby enemies for <style=cIsDamage>400% damage</style> on <style=cIsHealth>Overcharge</style>.");
+            LanguageAPI.Add("SS2UNUCLEATOR_UTILITY_DESCRIPTION", "Charge up a leap and gain <style=cIsUtility>200 armor</style>. Deals <style=cIsDamage>800% damage</style> on impact, and also <style=cIsDamage>shocks</style> for <style=cIsDamage>400% damage</style> on <style=cIsHealth>Overcharge</style>.");
 
             LanguageAPI.Add("SS2UNUCLEATOR_SPECIAL_NAME", "Radionuclide Surge");
             LanguageAPI.Add("SS2UNUCLEATOR_SPECIAL_DESCRIPTION", $"Enter a nuclear state for <style=cIsUtility>6 seconds</style>, becoming <style=cIsUtility>immune to <style=cIsHealth>Overcharge</style> damage</style> and adding <style=cIsHealing>Poisonous</style> radiation to every attack.");
