@@ -63,7 +63,7 @@ namespace Starstorm2Unofficial.Survivors.Nucleator
             GameObject projectilePrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Mage/MageLightningboltBasic.prefab").WaitForCompletion().InstantiateClone("SS2UNucleatorPrimaryOverchargeProjectile", true);
             Modules.Prefabs.projectilePrefabs.Add(projectilePrefab);
 
-            projectilePrefab.transform.localScale *= 4f;
+            projectilePrefab.transform.localScale *= 3f;
 
             projectilePrefab.AddComponent<ProjectileCheckSpecialBuffComponent>();
             //DamageAPI.ModdedDamageTypeHolderComponent mdc = projectilePrefab.AddComponent<DamageAPI.ModdedDamageTypeHolderComponent>();

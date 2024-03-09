@@ -17,8 +17,7 @@ namespace EntityStates.SS2UStates.Nucleator.Utility
 
         public static GameObject blastEffectPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Loader/LoaderGroundSlam.prefab").WaitForCompletion();
         public static float blastRadius = 12f;
-        public static float minDamageCoefficient = 6f;
-        public static float maxDamageCoefficient = 6f;
+        public static float damageCoefficient = 8f;
         public static float blastForce = 3000f;
 
         public static string soundLoopStartEvent = "Play_acrid_shift_fly_loop";
@@ -28,7 +27,7 @@ namespace EntityStates.SS2UStates.Nucleator.Utility
 
         public float charge;
         private float previousAirControl;
-        private bool isCrit;
+        protected bool isCrit;
         private bool detonateNextFrame;
 
         public override void OnEnter()
@@ -150,19 +149,17 @@ namespace EntityStates.SS2UStates.Nucleator.Utility
                 scale = blastRadius
             }, true);
 
-            float damageCoeff = Mathf.Lerp(minDamageCoefficient, maxDamageCoefficient, charge / BaseChargeState.overchargeFraction);
-
             new BlastAttack
             {
                 attacker = base.gameObject,
                 attackerFiltering = AttackerFiltering.NeverHitSelf,
-                baseDamage = base.damageStat * damageCoeff,
+                baseDamage = base.damageStat * damageCoefficient,
                 baseForce = blastForce,
                 bonusForce = Vector3.zero,
                 canRejectForce = true,
                 crit = this.isCrit,
                 damageColorIndex = DamageColorIndex.Default,
-                damageType = base.characterBody && base.characterBody.HasBuff(BuffCore.nucleatorSpecialBuff) ? DamageType.PoisonOnHit : DamageType.Generic,
+                damageType = base.characterBody && base.characterBody.HasBuff(BuffCore.nucleatorSpecialBuff) ? DamageType.Stun1s | DamageType.PoisonOnHit : DamageType.Stun1s,
                 falloffModel = BlastAttack.FalloffModel.None,
                 inflictor = base.gameObject,
                 losType = BlastAttack.LoSType.None,

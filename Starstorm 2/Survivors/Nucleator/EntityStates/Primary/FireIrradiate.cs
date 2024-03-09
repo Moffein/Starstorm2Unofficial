@@ -53,7 +53,7 @@ namespace EntityStates.SS2UStates.Nucleator.Primary
         public static GameObject projectilePrefab;
 
         public static float minDamageCoefficient = 2f;
-        public static float maxDamageCoefficient = 8f;
+        public static float maxDamageCoefficient = 6f;
 
         public static float minForce = 1000f;
         public static float maxForce = 2000f;

@@ -321,13 +321,13 @@ namespace Starstorm2Unofficial.Survivors.Nucleator
             LanguageAPI.Add("SS2UNUCLEATOR_DEFAULT_SKIN_NAME", "Default");
 
             LanguageAPI.Add("SS2UNUCLEATOR_PRIMARY_NAME", "Irradiate");
-            LanguageAPI.Add("SS2UNUCLEATOR_PRIMARY_DESCRIPTION", "Charge and fire a glob of nuclear waste for <style=cIsDamage>200%-800% damage</style>, up to <style=cIsDamage>1200% damage</style> on <style=cIsHealth>Overcharge</style>.");
+            LanguageAPI.Add("SS2UNUCLEATOR_PRIMARY_DESCRIPTION", "Charge and fire a glob of nuclear waste for <style=cIsDamage>200%-600% damage</style>, up to <style=cIsDamage>900% damage</style> on <style=cIsHealth>Overcharge</style>.");
 
             LanguageAPI.Add("SS2UNUCLEATOR_SECONDARY_NAME", "Quarantine");
             LanguageAPI.Add("SS2UNUCLEATOR_SECONDARY_DESCRIPTION", $"Push enemies in front of you for <style=cIsDamage>{500}% piercing damage</style>.");
 
             LanguageAPI.Add("SS2UNUCLEATOR_UTILITY_NAME", "Fission Impulse");
-            LanguageAPI.Add("SS2UNUCLEATOR_UTILITY_DESCRIPTION", "Charge up a leap and gain <style=cIsUtility>200 armor</style>. Deals <style=cIsDamage>800% damage</style> on impact, and <style=cIsDamage>shocks</style> nearby enemies for <style=cIsDamage>400% damage</style> on <style=cIsHealth>Overcharge</style>.");
+            LanguageAPI.Add("SS2UNUCLEATOR_UTILITY_DESCRIPTION", "Charge up a leap and gain <style=cIsUtility>200 armor</style>. Deals <style=cIsDamage>800% damage</style> on impact, and <style=cIsDamage>shocks</style> nearby enemies for an additional <style=cIsDamage>400% damage</style> on <style=cIsHealth>Overcharge</style>.");
 
             LanguageAPI.Add("SS2UNUCLEATOR_SPECIAL_NAME", "Radionuclide Surge");
             LanguageAPI.Add("SS2UNUCLEATOR_SPECIAL_DESCRIPTION", $"Enter a nuclear state for <style=cIsUtility>6 seconds</style>, adding <style=cIsHealing>Poisonous</style> radiation to every attack while becoming <style=cIsUtility>immune to <style=cIsHealth>Overcharge</style> damage</style>.");
