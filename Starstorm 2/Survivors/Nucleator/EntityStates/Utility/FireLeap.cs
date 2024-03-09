@@ -13,7 +13,7 @@ namespace EntityStates.SS2UStates.Nucleator.Utility
         public static float forwardVelocity = 3f;
         public static float aimVelocity = 4f;
         public static float airControl = 0.15f;
-        //public static float minimumY = 0.05f; //Determines whether leap should be able to be aimed downwards.
+        public static float minimumY = 0.05f; //Determines whether leap should be able to be aimed downwards.
         public static float maxExitYVelocity = 24f; //Prevent yourself from being launched into instadeath fall damage.
 
         public static GameObject blastEffectPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Loader/LoaderGroundSlam.prefab").WaitForCompletion();
@@ -43,30 +43,33 @@ namespace EntityStates.SS2UStates.Nucleator.Utility
             isCrit = base.RollCrit();
             this.damageStat *= this.attackSpeedStat;
 
-            if (base.characterBody)
+            base.characterBody.bodyFlags |= CharacterBody.BodyFlags.IgnoreFallDamage;
+            if (base.isAuthority)
             {
-                base.characterBody.bodyFlags |= CharacterBody.BodyFlags.IgnoreFallDamage;
-                if (base.isAuthority)
-                {
-                    base.characterBody.isSprinting = true;
-                    base.characterBody.RecalculateStats();  //Get sprint bonus
-                    this.moveSpeedStat = base.characterBody.moveSpeed;
+                base.characterBody.isSprinting = true;
+                base.characterBody.RecalculateStats();  //Get sprint bonus
+                this.moveSpeedStat = base.characterBody.moveSpeed;
 
-                    float moveSpeedCoeff = base.characterBody.moveSpeed / (base.characterBody.baseMoveSpeed * (!base.characterBody.isSprinting ? 1f : base.characterBody.sprintingSpeedMultiplier));
-                    moveSpeedCoeff = Mathf.Min(moveSpeedCoeff, 3f);
-                    base.characterMotor.airControl *= moveSpeedCoeff;
-                }
+                float moveSpeedCoeff = base.characterBody.moveSpeed / (base.characterBody.baseMoveSpeed * (!base.characterBody.isSprinting ? 1f : base.characterBody.sprintingSpeedMultiplier));
+                moveSpeedCoeff = Mathf.Min(moveSpeedCoeff, 3f);
+                base.characterMotor.airControl *= moveSpeedCoeff;
+            }
 
-                if (NetworkServer.active)
-                {
-                    base.characterBody.AddBuff(RoR2Content.Buffs.ArmorBoost);
-                }
+            if (NetworkServer.active)
+            {
+                base.characterBody.AddBuff(RoR2Content.Buffs.ArmorBoost);
             }
 
             if (base.isAuthority)
             {
                 Vector3 direction = base.GetAimRay().direction;
-                //direction.y = Mathf.Max(direction.y, minimumY);
+
+                if (base.characterMotor.isGrounded)
+                {
+                    direction.y = Mathf.Max(direction.y, minimumY);
+                }
+                base.characterMotor.jumpCount = base.characterBody.maxJumpCount;
+
                 Vector3 a = direction.normalized * aimVelocity * this.moveSpeedStat * CalculateChargeMultiplier();
                 Vector3 b = Vector3.up * upwardVelocity;
                 Vector3 b2 = new Vector3(direction.x, 0f, direction.z).normalized * forwardVelocity;
@@ -103,13 +106,10 @@ namespace EntityStates.SS2UStates.Nucleator.Utility
                 base.characterMotor.onMovementHit -= this.OnMovementHit;
             }
 
-            if (base.characterBody)
+            base.characterBody.bodyFlags &= ~CharacterBody.BodyFlags.IgnoreFallDamage;
+            if (NetworkServer.active)
             {
-                base.characterBody.bodyFlags &= ~CharacterBody.BodyFlags.IgnoreFallDamage;
-                if (NetworkServer.active)
-                {
-                    base.characterBody.RemoveBuff(RoR2Content.Buffs.ArmorBoost);
-                }
+                base.characterBody.RemoveBuff(RoR2Content.Buffs.ArmorBoost);
             }
 
             Animator modelAnimator = base.GetModelAnimator();

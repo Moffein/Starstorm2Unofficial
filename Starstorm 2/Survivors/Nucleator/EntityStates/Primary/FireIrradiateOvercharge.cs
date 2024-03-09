@@ -20,8 +20,9 @@ namespace EntityStates.SS2UStates.Nucleator.Primary
             Ray aimRay = base.GetAimRay();
             base.StartAimMode(aimRay, 2f, false);
 
-            Util.PlaySound("SS2UNucleatorSkill1", base.gameObject);
-            Util.PlaySound("SS2UNucleatorSkill1c", base.gameObject);
+            //Util.PlaySound("SS2UNucleatorSkill1", base.gameObject);
+            //Util.PlaySound("SS2UNucleatorSkill1c", base.gameObject);
+            Util.PlaySound("SS2UCyborgUtility", base.gameObject);
             base.PlayAnimation("Gesture, Override", "PrimaryBig", "Primary.playbackRate", this.duration);
 
             if (muzzleflashEffectPrefab) EffectManager.SimpleMuzzleFlash(muzzleflashEffectPrefab, base.gameObject, "Forearm.R", false);

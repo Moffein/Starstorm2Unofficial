@@ -54,7 +54,7 @@ namespace Starstorm2Unofficial.Survivors.Nucleator
             bodyColor = new Color(0.8039216f, 0.482352942f, 0.843137264f),
             characterPortrait = Modules.Assets.LoadCharacterIcon("Nucleator"),
             crosshair = Modules.Assets.LoadCrosshair("ToolbotGrenadeLauncherCrosshair"),
-            damage = 12f,
+            damage = 14f,
             healthGrowth = 54f,
             healthRegen = 2.5f,
             jumpCount = 1,
@@ -109,7 +109,7 @@ namespace Starstorm2Unofficial.Survivors.Nucleator
             bodyPrefab.AddComponent<NucleatorNetworkComponent>();
 
             CameraTargetParams cameraTargetParams = bodyPrefab.GetComponent<CameraTargetParams>();
-            cameraTargetParams.cameraParams.data.idealLocalCameraPos = new Vector3(0f, 1.2f, -11f);   //0 1 -11 han-d
+            cameraTargetParams.cameraParams.data.idealLocalCameraPos = new Vector3(0f, 1.2f, -11f);
 
             FireIrradiate.projectilePrefab = NucleatorProjectiles.BuildPrimary();
             FireIrradiateOvercharge.projectilePrefab = NucleatorProjectiles.BuildPrimaryOvercharge();
@@ -172,7 +172,7 @@ namespace Starstorm2Unofficial.Survivors.Nucleator
             SkillLocator skillLocator = bodyPrefab.GetComponent<SkillLocator>();
 
             skillLocator.passiveSkill.enabled = true;
-            skillLocator.passiveSkill.icon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("texNucleatorPrimary");   //TODO
+            skillLocator.passiveSkill.icon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("texNucleatorPassive");   //Threw together a placeholder. Probably want an actual icon later?
             skillLocator.passiveSkill.skillNameToken = "SS2UNUCLEATOR_PASSIVE_NAME";
             skillLocator.passiveSkill.skillDescriptionToken = "SS2UNUCLEATOR_PASSIVE_DESCRIPTION";
 
@@ -214,7 +214,7 @@ namespace Starstorm2Unofficial.Survivors.Nucleator
         {
             SkillDef utilityDef = ScriptableObject.CreateInstance<SkillDef>();
             utilityDef.activationState = new SerializableEntityStateType(typeof(ChargeLeap));
-            utilityDef.activationStateMachineName = "Body";
+            utilityDef.activationStateMachineName = "Weapon";   //Hacky, state forces the body machine to change
             utilityDef.skillName = "SS2UNUCLEATOR_UTILITY_NAME";
             utilityDef.skillNameToken = "SS2UNUCLEATOR_UTILITY_NAME";
             utilityDef.skillDescriptionToken = "SS2UNUCLEATOR_UTILITY_DESCRIPTION";

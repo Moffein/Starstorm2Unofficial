@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 1701976206
+CRC: 2399251535
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 9d4d3ac7d4e9a6b9e32c30b7a9b814d0
+    Hash: 706d33f6648f32b869a45f22deea00f4
   TypeTreeHash:
     serializedVersion: 2
     Hash: e085efc3cec39229c22603e1a47b8115
@@ -288,6 +288,7 @@ Assets:
 - Assets/AssetBundle/Items/GreaterWarbanner/greater_warbanner.fbx
 - Assets/AssetBundle/Items/GreenChocolate/MDLGreenChocolate.prefab
 - Assets/AssetBundle/Executioner/Mesh/meshWastelanderGun.mesh
+- Assets/AssetBundle/Nucleator/Icons/texNucleatorPassive.png
 - Assets/AssetBundle/Items/StrangeCan/Strange_can.blend
 - Assets/AssetBundle/Items/BloodTester/MDLBloodTester.prefab
 - Assets/AssetBundle/Nemmando/Animations/WalkRHT.anim

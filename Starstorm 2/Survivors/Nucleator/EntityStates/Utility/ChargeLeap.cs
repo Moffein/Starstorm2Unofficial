@@ -11,30 +11,61 @@ namespace EntityStates.SS2UStates.Nucleator.Utility
         {
             base.OnEnter();
 
+            Util.PlaySound("Play_loader_shift_activate", base.gameObject);
             base.PlayAnimation("FullBody, Override", "UtilityCharge", "Utility.playbackRate", base.duration);
-            if (NetworkServer.active && base.characterBody)
+
+            if (base.characterBody)
             {
-                base.characterBody.AddBuff(RoR2Content.Buffs.ArmorBoost);
+                if (NetworkServer.active)
+                {
+                    base.characterBody.AddBuff(RoR2Content.Buffs.ArmorBoost);
+                }
             }
         }
+
+        public override void FixedUpdate()
+        {
+            base.FixedUpdate();
+
+            //Don't need this if we're running this in the body state machine.
+            if (base.isAuthority && base.characterMotor)
+            {
+                base.characterMotor.moveDirection = Vector3.zero;
+            }
+        }
+
         public override void OnExit()
         {
+            Util.PlaySound("Play_loader_shift_release", base.gameObject);
             base.PlayAnimation("FullBody, Override", "BufferEmpty");
-            if (NetworkServer.active && base.characterBody)
+            if (base.characterBody)
             {
-                base.characterBody.RemoveBuff(RoR2Content.Buffs.ArmorBoost);
+                if (NetworkServer.active)
+                {
+                    base.characterBody.RemoveBuff(RoR2Content.Buffs.ArmorBoost);
+                }
             }
             base.OnExit();
         }
 
         protected override void SetNextState()
         {
-            this.outer.SetNextState(new FireLeap() { charge = this.chargeFraction });
+            EntityStateMachine bodyMachine = EntityStateMachine.FindByCustomName(base.gameObject, "Body");
+            if (bodyMachine)
+            {
+                bodyMachine.SetNextState(new FireLeap() { charge = this.chargeFraction });
+            }
+            this.outer.SetNextStateToMain();
         }
 
         protected override void SetNextStateOvercharge()
         {
-            this.outer.SetNextState(new FireLeapOvercharge() { charge = this.chargeFraction });
+            EntityStateMachine bodyMachine = EntityStateMachine.FindByCustomName(base.gameObject, "Body");
+            if (bodyMachine)
+            {
+                bodyMachine.SetNextState(new FireLeapOvercharge() { charge = this.chargeFraction });
+            }
+            this.outer.SetNextStateToMain();
         }
 
         protected override bool GetInputPressed()
