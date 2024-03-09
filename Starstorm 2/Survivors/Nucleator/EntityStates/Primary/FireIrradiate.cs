@@ -40,7 +40,7 @@ namespace EntityStates.SS2UStates.Nucleator.Primary
         public override void FixedUpdate()
         {
             base.FixedUpdate();
-            if (base.fixedAge >= this.duration && base.isAuthority)
+            if (base.isAuthority && base.fixedAge >= this.duration)
             {
                 this.outer.SetNextStateToMain();
                 return;

@@ -33,7 +33,7 @@ namespace EntityStates.SS2UStates.Nucleator.Primary
         protected override void OnOverchargeStart()
         {
             playedChargeAnim = true;
-            base.PlayCrossfade("Gesture, Override", "PrimaryCharge", "Primary.playbackRate", base.duration * (1f - overchargeFraction), 0.1f);
+            base.PlayCrossfade("Gesture, Override", "PrimaryCharge", "Primary.playbackRate", base.duration * (1f - overchargeFraction), 0.2f);
         }
 
         protected override bool GetInputPressed()

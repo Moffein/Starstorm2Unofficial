@@ -27,6 +27,7 @@ namespace EntityStates.SS2UStates.Nucleator.Utility
         {
             base.FixedUpdate();
 
+            base.StartAimMode(base.GetAimRay(), 2f, false);
             //Don't need this if we're running this in the body state machine.
             if (base.isAuthority)
             {

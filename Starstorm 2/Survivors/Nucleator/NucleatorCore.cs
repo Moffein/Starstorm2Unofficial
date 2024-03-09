@@ -2,6 +2,7 @@
 using EntityStates;
 using EntityStates.SS2UStates.Nucleator;
 using EntityStates.SS2UStates.Nucleator.Primary;
+using EntityStates.SS2UStates.Nucleator.Secondary;
 using EntityStates.SS2UStates.Nucleator.Special;
 using EntityStates.SS2UStates.Nucleator.Utility;
 using Mono.Cecil.Cil;
@@ -151,6 +152,10 @@ namespace Starstorm2Unofficial.Survivors.Nucleator
             Modules.States.AddState(typeof(FireIrradiate));
             Modules.States.AddState(typeof(FireIrradiateOvercharge));
 
+            Modules.States.AddState(typeof(ChargeSecondary));
+            Modules.States.AddState(typeof(FireSecondary));
+            Modules.States.AddState(typeof(FireSecondaryOvercharge));
+
             Modules.States.AddState(typeof(ChargeLeap));
             Modules.States.AddState(typeof(FireLeap));
             Modules.States.AddState(typeof(FireLeapOvercharge));
@@ -167,8 +172,6 @@ namespace Starstorm2Unofficial.Survivors.Nucleator
                 UnityEngine.Object.DestroyImmediate(sk);
             }
 
-            SkillDef squawkDef = Addressables.LoadAssetAsync<SkillDef>("RoR2/Base/Heretic/HereticDefaultAbility.asset").WaitForCompletion();
-            SkillFamily.Variant squawkVariant = Utils.RegisterSkillVariant(squawkDef);
             SkillLocator skillLocator = bodyPrefab.GetComponent<SkillLocator>();
 
             skillLocator.passiveSkill.enabled = true;
@@ -177,7 +180,7 @@ namespace Starstorm2Unofficial.Survivors.Nucleator
             skillLocator.passiveSkill.skillDescriptionToken = "SS2UNUCLEATOR_PASSIVE_DESCRIPTION";
 
             SetupPrimaries(skillLocator);
-            skillLocator.secondary = Utils.RegisterSkillsToFamily(bodyPrefab, new SkillFamily.Variant[] { squawkVariant });
+            SetupSecondaries(skillLocator);
             SetupUtilities(skillLocator);
             SetupSpecials(skillLocator);
         }
@@ -213,6 +216,35 @@ namespace Starstorm2Unofficial.Survivors.Nucleator
             SkillFamily.Variant primaryVariant1 = Utils.RegisterSkillVariant(primaryDef);
             skillLocator.primary = Utils.RegisterSkillsToFamily(bodyPrefab, new SkillFamily.Variant[] { primaryVariant1 });
             SkillDefs.Primary = primaryDef;
+        }
+
+        private void SetupSecondaries(SkillLocator skillLocator)
+        {
+            SkillDef secondaryDef = ScriptableObject.CreateInstance<SkillDef>();
+            secondaryDef.activationState = new SerializableEntityStateType(typeof(ChargeSecondary));
+            secondaryDef.activationStateMachineName = "Weapon";
+            secondaryDef.skillName = "SS2UNUCLEATOR_SECONDARY_NAME";
+            secondaryDef.skillNameToken = "SS2UNUCLEATOR_SECONDARY_NAME";
+            secondaryDef.skillDescriptionToken = "SS2UNUCLEATOR_SECONDARY_DESCRIPTION";
+            secondaryDef.icon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("texNucleatorSecondary");
+            secondaryDef.baseMaxStock = 1;
+            secondaryDef.baseRechargeInterval = 5f;
+            secondaryDef.beginSkillCooldownOnSkillEnd = true;
+            secondaryDef.canceledFromSprinting = false;
+            secondaryDef.fullRestockOnAssign = true;
+            secondaryDef.interruptPriority = EntityStates.InterruptPriority.Any;
+            secondaryDef.isCombatSkill = true;
+            secondaryDef.mustKeyPress = true;
+            secondaryDef.cancelSprintingOnActivation = true;
+            secondaryDef.rechargeStock = 1;
+            secondaryDef.requiredStock = 1;
+            secondaryDef.stockToConsume = 1;
+            secondaryDef.keywordTokens = new string[] { "KEYWORD_SHOCKING" };
+            Modules.Skills.FixSkillName(secondaryDef);
+            Modules.Skills.skillDefs.Add(secondaryDef);
+            SkillFamily.Variant secondaryVariant1 = Utils.RegisterSkillVariant(secondaryDef);
+            skillLocator.secondary = Utils.RegisterSkillsToFamily(bodyPrefab, new SkillFamily.Variant[] { secondaryVariant1 });
+            SkillDefs.Secondary = secondaryDef;
         }
 
         private void SetupUtilities(SkillLocator skillLocator)
@@ -325,7 +357,7 @@ namespace Starstorm2Unofficial.Survivors.Nucleator
             LanguageAPI.Add("SS2UNUCLEATOR_SUBTITLE", "Walking Fallout");
             LanguageAPI.Add("SS2UNUCLEATOR_DESCRIPTION", "The Nucleator is a radioactive juggernaut with rad-proof armor, which allows him to manipulate nuclear components for long periods of time.\n\n" +
                 "<color=#CCD3E0> < ! > Nucleator can charge his skills for maximum output, but be careful as overcharging them may lead to self-harm!\n\n" +
-                " < ! > Irradiate's projectiles gain increased blast radius with range.\n\n" +
+                " < ! > Irradiate's projectiles gain increased blast radius the further they travel.\n\n" +
                 " < ! > y\n\n" +
                 " < ! > z\n");
             LanguageAPI.Add("SS2UNUCLEATOR_OUTRO_FLAVOR", "..and so he left, health status undisclosed.");
@@ -340,7 +372,7 @@ namespace Starstorm2Unofficial.Survivors.Nucleator
             LanguageAPI.Add("SS2UNUCLEATOR_PRIMARY_DESCRIPTION", "Charge and fire a glob of nuclear waste for <style=cIsDamage>300%-650% damage</style>, up to <style=cIsDamage>1000% damage</style> on <style=cIsHealth>Overcharge</style>.");
 
             LanguageAPI.Add("SS2UNUCLEATOR_SECONDARY_NAME", "Quarantine");
-            LanguageAPI.Add("SS2UNUCLEATOR_SECONDARY_DESCRIPTION", $"Push enemies in front of you for <style=cIsDamage>{500}% piercing damage</style>.");
+            LanguageAPI.Add("SS2UNUCLEATOR_SECONDARY_DESCRIPTION", "Does nothing, for now.");
 
             LanguageAPI.Add("SS2UNUCLEATOR_UTILITY_NAME", "Fission Impulse");
             LanguageAPI.Add("SS2UNUCLEATOR_UTILITY_DESCRIPTION", "Charge up a leap and gain <style=cIsUtility>200 armor</style>. Deals <style=cIsDamage>800% damage</style> on impact, and also <style=cIsDamage>shocks</style> for <style=cIsDamage>400% damage</style> on <style=cIsHealth>Overcharge</style>.");
