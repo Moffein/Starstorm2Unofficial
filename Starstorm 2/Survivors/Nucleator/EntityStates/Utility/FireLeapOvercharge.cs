@@ -22,6 +22,10 @@ namespace EntityStates.SS2UStates.Nucleator.Utility
         {
             return Mathf.Lerp(10f, 15f, (this.charge - BaseChargeState.overchargeFraction) / (1f - BaseChargeState.overchargeFraction));
         }
+        protected override float GetBlastRadius()
+        {
+            return 20f;
+        }
 
         /*protected override void DetonateAuthority()
         {

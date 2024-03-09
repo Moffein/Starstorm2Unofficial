@@ -18,7 +18,6 @@ namespace EntityStates.SS2UStates.Nucleator.Utility
         public static float maxExitYVelocity = 24f; //Prevent yourself from being launched into instadeath fall damage.
 
         public static GameObject blastEffectPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Loader/LoaderGroundSlam.prefab").WaitForCompletion();
-        public static float blastRadius = 12f;
         public static float blastForce = 3000f;
 
         public static string soundLoopStartEvent = "Play_acrid_shift_fly_loop";
@@ -144,10 +143,16 @@ namespace EntityStates.SS2UStates.Nucleator.Utility
             return Mathf.Lerp(5f, 10f, this.charge / BaseChargeState.overchargeFraction);
         }
 
+        protected virtual float GetBlastRadius()
+        {
+            return 12f;
+        }
+
         protected virtual void DetonateAuthority()
         {
             if (!base.isAuthority) return;
 
+            float blastRadius = GetBlastRadius();
             EffectManager.SpawnEffect(blastEffectPrefab, new EffectData
             {
                 rotation = base.transform.rotation,
