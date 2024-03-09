@@ -1,3 +1,11 @@
+`0.18.0`
+
+- Added Nucleator.
+
+- Items
+	- Added Detritive Trematode (todo)
+	- Added Strange Can (todo)
+
 `0.17.2`
 
 - Chirr

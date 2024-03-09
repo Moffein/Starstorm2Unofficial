@@ -2,7 +2,7 @@
 
 Unofficial update to the Pre-SotV version of Starstorm 2. **[Get the official version here!](https://thunderstore.io/package/TeamMoonstorm/Starstorm2/)**
 
-Executioner and Nemesis Commando are based on the version from the pre-SotV build with some tweaks, while Cyborg/Chirr/Pyro have been re-coded from the ground up due to the old code being unworkable.
+Executioner and Nemesis Commando are based on the version from the pre-SotV build with some tweaks, while Cyborg/Chirr/Pyro/Nucleator have been re-coded from the ground up due to the old code being unworkable.
 
 This mod can be used alongside the official version of Starstorm 2. Be sure to go through your configs to disable duplicated features.
 
@@ -17,6 +17,7 @@ The SS2 team is free to use any of the new code from this mod as long as this re
   - Cyborg
   - Chirr
   - Pyro
+  - Nucleator
   - Nemesis Commando
   
 - Items:
