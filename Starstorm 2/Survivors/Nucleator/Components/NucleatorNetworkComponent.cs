@@ -77,7 +77,7 @@ namespace Starstorm2Unofficial.Survivors.Nucleator.Components
                     range = FireLeapOvercharge.shockRadius,
                     origin = base.transform.position,
                     damageType = DamageType.Shock5s,
-                    speed = 30f
+                    speed = 24f
                 };
                 if (characterBody.HasBuff(BuffCore.nucleatorSpecialBuff)) lightning.damageType |= DamageType.PoisonOnHit;
                 lightning.target = targetHurtbox;

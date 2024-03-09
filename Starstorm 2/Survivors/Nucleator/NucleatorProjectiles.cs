@@ -106,13 +106,13 @@ namespace Starstorm2Unofficial.Survivors.Nucleator
 
             ProjectileImpactExplosion pie = projectilePrefab.GetComponent<ProjectileImpactExplosion>();
             pie.impactEffect = impactEffectPrefab;
-            pie.blastRadius = 10f;
+            pie.blastRadius = 8f;
             pie.falloffModel = BlastAttack.FalloffModel.None;
             pie.blastAttackerFiltering = AttackerFiltering.NeverHitSelf;
             pie.lifetime = ps.lifetime - 0.1f;
 
             PrimaryProjectileComponentSimple expand = projectilePrefab.AddComponent<PrimaryProjectileComponentSimple>();
-            expand.endSizeMultiplier = 2f;
+            expand.endSizeMultiplier = 2.5f;
             expand.startDelay = 0.5f;
             expand.endSizeTime = 1.5f;
             expand.baseSpeed = FireIrradiateOvercharge.minProjectileSpeed;

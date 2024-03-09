@@ -169,6 +169,8 @@ namespace EntityStates.SS2UStates.Nucleator.Utility
                 radius = blastRadius,
                 teamIndex = base.GetTeam()
             }.Fire();
+
+            if (base.characterMotor && base.characterMotor.velocity.y < 0f) base.characterMotor.velocity.y = 0f;
         }
     }
 }
