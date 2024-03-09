@@ -29,30 +29,12 @@ namespace EntityStates.SS2UStates.Nucleator.Utility
 
         protected override void SetNextState()
         {
-            Vector3 direction = base.GetAimRay().direction;
-            if (base.characterDirection)
-            {
-                Vector3 initialDirection = direction;
-                initialDirection.y = 0f;
-                initialDirection.Normalize();
-                base.characterDirection.forward = initialDirection;
-            }
-
             this.outer.SetNextState(new FireLeap() { charge = this.chargeFraction });
         }
 
         protected override void SetNextStateOvercharge()
         {
-            Vector3 direction = base.GetAimRay().direction;
-            if (base.characterDirection)
-            {
-                Vector3 initialDirection = direction;
-                initialDirection.y = 0f;
-                initialDirection.Normalize();
-                base.characterDirection.forward = initialDirection;
-            }
-
-            this.outer.SetNextState(new FireLeap() { charge = this.chargeFraction });
+            this.outer.SetNextState(new FireLeapOvercharge() { charge = this.chargeFraction });
         }
 
         protected override bool GetInputPressed()

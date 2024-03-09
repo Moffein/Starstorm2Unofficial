@@ -13,7 +13,15 @@ namespace EntityStates.SS2UStates.Nucleator.Utility
         public static float airControl = 0.15f;
         public static float minimumY = 0.05f;
 
-        public static float maxChargeVelocityMultiplier = 1.5f;
+
+        public static string soundLoopStartEvent = "Play_acrid_shift_fly_loop";
+        public static string soundLoopStopEvent = "Stop_acrid_shift_fly_loop";
+
+        protected virtual float CalculateChargeMultiplier()
+        {
+            float mult = Mathf.Lerp(1f, 1.5f, this.charge / BaseChargeState.overchargeFraction);
+            return mult;
+        }
 
         public static string leapSoundString = "SS2UNucleatorSkill3";
 
@@ -25,6 +33,7 @@ namespace EntityStates.SS2UStates.Nucleator.Utility
         {
             base.OnEnter();
 
+            Util.PlaySound(soundLoopStartEvent, base.gameObject);
             base.PlayAnimation("FullBody, Override", "UtilityRelease");
             isCrit = base.RollCrit();
             previousAirControl = base.characterMotor.airControl;
@@ -53,7 +62,7 @@ namespace EntityStates.SS2UStates.Nucleator.Utility
             {
                 Vector3 direction = base.GetAimRay().direction;
                 direction.y = Mathf.Max(direction.y, minimumY);
-                Vector3 a = direction.normalized * aimVelocity * this.moveSpeedStat * Mathf.Lerp(1f, FireLeap.maxChargeVelocityMultiplier, this.charge / BaseChargeState.overchargeFraction);
+                Vector3 a = direction.normalized * aimVelocity * this.moveSpeedStat * CalculateChargeMultiplier();
                 Vector3 b = Vector3.up * upwardVelocity;
                 Vector3 b2 = new Vector3(direction.x, 0f, direction.z).normalized * forwardVelocity;
                 base.characterMotor.Motor.ForceUnground();
@@ -78,6 +87,7 @@ namespace EntityStates.SS2UStates.Nucleator.Utility
 
         public override void OnExit()
         {
+            Util.PlaySound(soundLoopStopEvent, base.gameObject);
             if (base.characterBody)
             {
                 base.characterBody.bodyFlags &= ~CharacterBody.BodyFlags.IgnoreFallDamage;

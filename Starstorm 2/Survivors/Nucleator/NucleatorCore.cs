@@ -151,6 +151,7 @@ namespace Starstorm2Unofficial.Survivors.Nucleator
 
             Modules.States.AddState(typeof(ChargeLeap));
             Modules.States.AddState(typeof(FireLeap));
+            Modules.States.AddState(typeof(FireLeapOvercharge));
 
             Modules.States.AddState(typeof(BuffSelf));
         }
@@ -211,7 +212,7 @@ namespace Starstorm2Unofficial.Survivors.Nucleator
             utilityDef.skillDescriptionToken = "SS2UNUCLEATOR_UTILITY_DESCRIPTION";
             utilityDef.icon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("texNucleatorUtility");
             utilityDef.baseMaxStock = 1;
-            utilityDef.baseRechargeInterval = 6f;
+            utilityDef.baseRechargeInterval = 7f;
             utilityDef.beginSkillCooldownOnSkillEnd = true;
             utilityDef.canceledFromSprinting = false;
             utilityDef.fullRestockOnAssign = true;
