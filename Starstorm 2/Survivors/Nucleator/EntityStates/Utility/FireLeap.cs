@@ -4,14 +4,16 @@ using RoR2;
 
 namespace EntityStates.SS2UStates.Nucleator.Utility
 {
-    public class FireLeap : GenericCharacterMain
+    public class FireLeap : BaseCharacterMain
     {
         public static float minimumDuration = 0.3f;
         public static float upwardVelocity = 7f;
         public static float forwardVelocity = 3f;
-        public static float aimVelocity = 4f;
+        public static float aimVelocity = 4f;   //4f
         public static float airControl = 0.15f;
         public static float minimumY = 0.05f;
+
+        public static float maxChargeVelocityMultiplier = 1.5f;
 
         public static string leapSoundString = "SS2UNucleatorSkill3";
 
@@ -23,30 +25,39 @@ namespace EntityStates.SS2UStates.Nucleator.Utility
         {
             base.OnEnter();
 
+            base.PlayAnimation("FullBody, Override", "UtilityRelease");
             isCrit = base.RollCrit();
             previousAirControl = base.characterMotor.airControl;
 
-            Vector3 direction = base.GetAimRay().direction;
-            if (base.isAuthority)
+            if (base.characterBody)
             {
-                if (base.characterBody)
+                base.characterBody.bodyFlags |= CharacterBody.BodyFlags.IgnoreFallDamage;
+                if (base.isAuthority)
                 {
                     base.characterBody.isSprinting = true;
                     base.characterBody.RecalculateStats();  //Get sprint bonus
                     this.moveSpeedStat = base.characterBody.moveSpeed;
+
+                    float moveSpeedCoeff = base.characterBody.moveSpeed / (base.characterBody.baseMoveSpeed * (!base.characterBody.isSprinting ? 1f : base.characterBody.sprintingSpeedMultiplier));
+                    moveSpeedCoeff = Mathf.Min(moveSpeedCoeff, 3f);
+                    base.characterMotor.airControl *= moveSpeedCoeff;
                 }
 
+                if (NetworkServer.active)
+                {
+                    base.characterBody.AddBuff(RoR2Content.Buffs.ArmorBoost);
+                }
+            }
+
+            if (base.isAuthority)
+            {
+                Vector3 direction = base.GetAimRay().direction;
                 direction.y = Mathf.Max(direction.y, minimumY);
-                Vector3 a = direction.normalized * aimVelocity * this.moveSpeedStat;
+                Vector3 a = direction.normalized * aimVelocity * this.moveSpeedStat * Mathf.Lerp(1f, FireLeap.maxChargeVelocityMultiplier, this.charge / BaseChargeState.overchargeFraction);
                 Vector3 b = Vector3.up * upwardVelocity;
                 Vector3 b2 = new Vector3(direction.x, 0f, direction.z).normalized * forwardVelocity;
                 base.characterMotor.Motor.ForceUnground();
                 base.characterMotor.velocity = a + b + b2;
-            }
-
-            if (NetworkServer.active && base.characterBody)
-            {
-                base.characterBody.AddBuff(RoR2Content.Buffs.ArmorBoost);
             }
         }
         public override void FixedUpdate()
@@ -54,11 +65,6 @@ namespace EntityStates.SS2UStates.Nucleator.Utility
             base.FixedUpdate();
             if (base.isAuthority)
             {
-                if (base.characterBody)
-                {
-                    base.characterBody.isSprinting = true;
-                }
-
                 if (base.characterMotor)
                 {
                     base.characterMotor.moveDirection = base.inputBank.moveVector;
@@ -72,9 +78,13 @@ namespace EntityStates.SS2UStates.Nucleator.Utility
 
         public override void OnExit()
         {
-            if (NetworkServer.active && base.characterBody)
+            if (base.characterBody)
             {
-                base.characterBody.RemoveBuff(RoR2Content.Buffs.ArmorBoost);
+                base.characterBody.bodyFlags &= ~CharacterBody.BodyFlags.IgnoreFallDamage;
+                if (NetworkServer.active)
+                {
+                    base.characterBody.RemoveBuff(RoR2Content.Buffs.ArmorBoost);
+                }
             }
 
             base.characterMotor.airControl = this.previousAirControl;

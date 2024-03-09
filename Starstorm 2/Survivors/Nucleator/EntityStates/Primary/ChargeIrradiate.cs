@@ -16,7 +16,7 @@ namespace EntityStates.SS2UStates.Nucleator.Primary
 
         public override void OnExit()
         {
-            base.PlayAnimation("Gesture, Override", "BufferEmpty");
+            //base.PlayAnimation("Gesture, Override", "BufferEmpty");
             AkSoundEngine.StopPlayingID(this.chargePlayID);
             base.OnExit();
         }

@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 3499690953
+CRC: 1079520472
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 9fb353b50b3c03e2114ec298b5de61c6
+    Hash: 1c6623a5a4d568e11c5dd8815c821b96
   TypeTreeHash:
     serializedVersion: 2
     Hash: e085efc3cec39229c22603e1a47b8115
@@ -126,7 +126,6 @@ Assets:
 - Assets/AssetBundle/Enemies/Spooder/matSpooder.mat
 - Assets/AssetBundle/Nucleator/Animations/Clips/SecondaryCharge.anim
 - Assets/AssetBundle/GeneralAssets/Textures/texNeedlerEmission.png
-- Assets/AssetBundle/Enemies/Wayfarer/Lamp_Boss.blend
 - Assets/AssetBundle/Enemies/Spooder/Animations/Idle.anim
 - Assets/AssetBundle/Cyborg/Animations/SprintFWD.anim
 - Assets/AssetBundle/Executioner/Textures/texExecutioner.png
@@ -173,6 +172,7 @@ Assets:
 - Assets/AssetBundle/Enemies/Spooder/Animations/Descend.anim
 - Assets/AssetBundle/Nemmando/VFX/Textures/matNemmandoChargeFull.png
 - Assets/AssetBundle/Items/HuntersSigil/MDLSigil.prefab
+- Assets/AssetBundle/Enemies/Wayfarer/Lamp_Boss.blend
 - Assets/AssetBundle/Cyborg/Animations/jump.anim
 - Assets/AssetBundle/Cyborg/Animations/LegsAction.001.anim
 - Assets/AssetBundle/Items/RelicOfMass/RelicOfMassLunar.png
