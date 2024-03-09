@@ -83,7 +83,7 @@ namespace EntityStates.SS2UStates.Nucleator.Utility
                     if (Starstorm2Unofficial.SneedUtils.IsEnemyInSphere(blastRadius, base.transform.position, base.GetTeam(), false)) detonateNextFrame = true;
 
                     base.characterMotor.moveDirection = base.inputBank.moveVector;
-                    if (base.fixedAge >= minimumDuration && (base.characterMotor.Motor.GroundingStatus.IsStableOnGround && !base.characterMotor.Motor.LastGroundingStatus.IsStableOnGround))
+                    if (base.fixedAge >= minimumDuration && (this.detonateNextFrame || (base.characterMotor.Motor.GroundingStatus.IsStableOnGround && !base.characterMotor.Motor.LastGroundingStatus.IsStableOnGround)))
                     {
                         DetonateAuthority();
                         this.outer.SetNextStateToMain();
