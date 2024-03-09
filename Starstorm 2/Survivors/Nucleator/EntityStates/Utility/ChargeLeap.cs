@@ -28,9 +28,10 @@ namespace EntityStates.SS2UStates.Nucleator.Utility
             base.FixedUpdate();
 
             //Don't need this if we're running this in the body state machine.
-            if (base.isAuthority && base.characterMotor)
+            if (base.isAuthority)
             {
                 base.characterMotor.moveDirection = Vector3.zero;
+                base.characterMotor.jumpCount = base.characterBody.maxJumpCount;
             }
         }
 
@@ -38,13 +39,11 @@ namespace EntityStates.SS2UStates.Nucleator.Utility
         {
             Util.PlaySound("Play_loader_shift_release", base.gameObject);
             base.PlayAnimation("FullBody, Override", "BufferEmpty");
-            if (base.characterBody)
+            if (NetworkServer.active)
             {
-                if (NetworkServer.active)
-                {
-                    base.characterBody.RemoveBuff(RoR2Content.Buffs.ArmorBoost);
-                }
+                base.characterBody.RemoveBuff(RoR2Content.Buffs.ArmorBoost);
             }
+            base.characterMotor.jumpCount = 0;
             base.OnExit();
         }
 

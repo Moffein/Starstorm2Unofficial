@@ -184,7 +184,7 @@ namespace Starstorm2Unofficial.Survivors.Nucleator
 
         private void SetupPrimaries(SkillLocator skillLocator)
         {
-            SkillDef primaryDef = ScriptableObject.CreateInstance<SkillDef>();
+            SteppedSkillDef primaryDef = ScriptableObject.CreateInstance<SteppedSkillDef>();
             primaryDef.activationState = new SerializableEntityStateType(typeof(ChargeIrradiate));
             primaryDef.activationStateMachineName = "Weapon";
             primaryDef.skillName = "SS2UNUCLEATOR_PRIMARY_NAME";
@@ -203,6 +203,11 @@ namespace Starstorm2Unofficial.Survivors.Nucleator
             primaryDef.rechargeStock = 1;
             primaryDef.requiredStock = 1;
             primaryDef.stockToConsume = 1;
+
+            //Steps juste used to alternate which arm uncharged primary fires from.
+            primaryDef.stepCount = 2;
+            primaryDef.stepGraceDuration = 60f;
+
             Modules.Skills.FixSkillName(primaryDef);
             Modules.Skills.skillDefs.Add(primaryDef);
             SkillFamily.Variant primaryVariant1 = Utils.RegisterSkillVariant(primaryDef);

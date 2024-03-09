@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
 
 namespace EntityStates.SS2UStates.Nucleator.Primary
 {
@@ -25,7 +26,7 @@ namespace EntityStates.SS2UStates.Nucleator.Primary
             Util.PlaySound("SS2UCyborgUtility", base.gameObject);
             base.PlayAnimation("Gesture, Override", "PrimaryBig", "Primary.playbackRate", this.duration);
 
-            if (muzzleflashEffectPrefab) EffectManager.SimpleMuzzleFlash(muzzleflashEffectPrefab, base.gameObject, "Forearm.R", false);
+            if (muzzleflashEffectPrefab) EffectManager.SimpleMuzzleFlash(muzzleflashEffectPrefab, base.gameObject, "MuzzleR", false);
 
             if (base.isAuthority)
             {
@@ -52,7 +53,7 @@ namespace EntityStates.SS2UStates.Nucleator.Primary
             return InterruptPriority.PrioritySkill;
         }
 
-        public static GameObject muzzleflashEffectPrefab;
+        public static GameObject muzzleflashEffectPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Croco/MuzzleflashCroco.prefab").WaitForCompletion();
         public static GameObject projectilePrefab;
 
         public static float minDamageCoefficient = 6.5f;

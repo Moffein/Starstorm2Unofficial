@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
 
 namespace EntityStates.SS2UStates.Nucleator.Primary
 {
@@ -22,8 +23,9 @@ namespace EntityStates.SS2UStates.Nucleator.Primary
 
             Util.PlaySound("SS2UNucleatorSkill1", base.gameObject);
 
-           // base.PlayAnimation("Gesture, Override", "PrimaryLight", "Primary.playbackRate", this.duration);
-           // if (muzzleflashEffectPrefab) EffectManager.SimpleMuzzleFlash(muzzleflashEffectPrefab, base.gameObject, "Forearm.R", false);
+            string muzzleString = step == 0 ? "MuzzleR" : "MuzzleL";
+            if (muzzleflashEffectPrefab) EffectManager.SimpleMuzzleFlash(muzzleflashEffectPrefab, base.gameObject, muzzleString, false);
+
 
             if (base.isAuthority)
             {
@@ -50,7 +52,7 @@ namespace EntityStates.SS2UStates.Nucleator.Primary
             return InterruptPriority.Skill;
         }
 
-        public static GameObject muzzleflashEffectPrefab;
+        public static GameObject muzzleflashEffectPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Croco/MuzzleflashCroco.prefab").WaitForCompletion();
         public static GameObject projectilePrefab;
 
         public static float minDamageCoefficient = 3f;
@@ -64,6 +66,7 @@ namespace EntityStates.SS2UStates.Nucleator.Primary
 
         public static float baseDuration = 0.4f;
 
+        public int step;
         public float charge = 0f;
         private float duration;
     }

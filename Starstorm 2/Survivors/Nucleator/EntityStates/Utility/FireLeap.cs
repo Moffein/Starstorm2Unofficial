@@ -68,7 +68,6 @@ namespace EntityStates.SS2UStates.Nucleator.Utility
                 {
                     direction.y = Mathf.Max(direction.y, minimumY);
                 }
-                base.characterMotor.jumpCount = base.characterBody.maxJumpCount;
 
                 Vector3 a = direction.normalized * aimVelocity * this.moveSpeedStat * CalculateChargeMultiplier();
                 Vector3 b = Vector3.up * upwardVelocity;

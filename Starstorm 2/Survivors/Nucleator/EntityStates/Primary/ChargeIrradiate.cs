@@ -4,10 +4,11 @@ using System;
 
 namespace EntityStates.SS2UStates.Nucleator.Primary
 {
-    public class ChargeIrradiate : BaseChargeState
+    public class ChargeIrradiate : BaseChargeState, RoR2.Skills.SteppedSkillDef.IStepSetter
     {
         private bool playedChargeAnim;
 
+        private int step;
         private uint chargePlayID;
         public override void OnEnter()
         {
@@ -47,7 +48,7 @@ namespace EntityStates.SS2UStates.Nucleator.Primary
 
         protected override void SetNextState()
         {
-            this.outer.SetNextState(new FireIrradiate() { charge = this.chargeFraction });
+            this.outer.SetNextState(new FireIrradiate() { charge = this.chargeFraction, step = this.step });
         }
         protected override void SetNextStateOvercharge()
         {
@@ -57,6 +58,11 @@ namespace EntityStates.SS2UStates.Nucleator.Primary
         public override InterruptPriority GetMinimumInterruptPriority()
         {
             return InterruptPriority.Skill;
+        }
+
+        public void SetStep(int i)
+        {
+            step = i;
         }
     }
 }
