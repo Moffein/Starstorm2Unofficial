@@ -223,6 +223,7 @@ namespace Starstorm2Unofficial.Survivors.Nucleator
             utilityDef.rechargeStock = 1;
             utilityDef.requiredStock = 1;
             utilityDef.stockToConsume = 1;
+            utilityDef.keywordTokens = new string[] { "KEYWORD_SHOCKING" };
             Modules.Skills.FixSkillName(utilityDef);
             Modules.Skills.skillDefs.Add(utilityDef);
             SkillFamily.Variant utilityVariant1 = Utils.RegisterSkillVariant(utilityDef);
@@ -277,7 +278,7 @@ namespace Starstorm2Unofficial.Survivors.Nucleator
             specialScepterDef.rechargeStock = 1;
             specialScepterDef.requiredStock = 1;
             specialScepterDef.stockToConsume = 1;
-            specialScepterDef.keywordTokens = new string[] { "KEYWORD_POISON" };
+            specialScepterDef.keywordTokens = new string[] { "KEYWORD_POISON"};
             Modules.Skills.FixSkillName(specialScepterDef);
             SkillDefs.SpecialScepter = specialScepterDef;
 
@@ -326,7 +327,7 @@ namespace Starstorm2Unofficial.Survivors.Nucleator
             LanguageAPI.Add("SS2UNUCLEATOR_SECONDARY_DESCRIPTION", $"Push enemies in front of you for <style=cIsDamage>{500}% piercing damage</style>.");
 
             LanguageAPI.Add("SS2UNUCLEATOR_UTILITY_NAME", "Fission Impulse");
-            LanguageAPI.Add("SS2UNUCLEATOR_UTILITY_DESCRIPTION", $"<style=cIsUtility>Hold</style> to <style=cIsUtility>launch yourself</style>, dealing style=cIsDamage>{550}% damage</style>. Control the direction using the movement keys.");
+            LanguageAPI.Add("SS2UNUCLEATOR_UTILITY_DESCRIPTION", "Charge up a leap and gain <style=cIsUtility>200 armor</style>. Deals <style=cIsDamage>800% damage</style> on impact, and <style=cIsDamage>shocks</style> nearby enemies for <style=cIsDamage>400% damage</style> on <style=cIsHealth>Overcharge</style>.");
 
             LanguageAPI.Add("SS2UNUCLEATOR_SPECIAL_NAME", "Radionuclide Surge");
             LanguageAPI.Add("SS2UNUCLEATOR_SPECIAL_DESCRIPTION", $"Enter a nuclear state for <style=cIsUtility>6 seconds</style>, adding <style=cIsHealing>Poisonous</style> radiation to every attack while becoming <style=cIsUtility>immune to <style=cIsHealth>Overcharge</style> damage</style>.");
