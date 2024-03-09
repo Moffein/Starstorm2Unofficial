@@ -1,6 +1,9 @@
 `0.18.0`
 
 - Added Nucleator.
+- Executioner
+	- Execution
+		- Added mass scaling to downwards force.
 
 - Items
 	- Added Detritive Trematode (todo)
