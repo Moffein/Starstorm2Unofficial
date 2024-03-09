@@ -26,7 +26,7 @@ namespace Starstorm2Unofficial.Survivors.Nucleator
             //mdc.Add(DamageTypeCore.ModdedDamageTypes.NucleatorCanApplyRadiation);
 
             GameObject projectileGhost = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Beetle/BeetleQueenSpitGhost.prefab").WaitForCompletion();
-            //projectileGhost.AddComponent<GhostScaleOverTime>();
+
 
             ProjectileController pc = projectilePrefab.GetComponent<ProjectileController>();
             pc.ghostPrefab = projectileGhost;
@@ -70,7 +70,7 @@ namespace Starstorm2Unofficial.Survivors.Nucleator
             //mdc.Add(DamageTypeCore.ModdedDamageTypes.NucleatorCanApplyRadiation);
 
             GameObject projectileGhost = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/BFG/BeamSphereGhost.prefab").WaitForCompletion().InstantiateClone("SS2UNucleatorPrimaryOverchargeGhost",false);
-            
+
             //Copied from Cyborg
             ParticleSystem[] particles = projectileGhost.GetComponentsInChildren<ParticleSystem>();
             for (int i = 0; i < particles.Length; i++)
@@ -97,6 +97,11 @@ namespace Starstorm2Unofficial.Survivors.Nucleator
             ps.lifetime = 2.1f;
 
             GameObject impactEffectPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Loader/OmniImpactVFXLoaderLightning.prefab").WaitForCompletion().InstantiateClone("SS2UNucleatorPrimaryOverchargeImpactEffect", false);
+            VFXAttributes vfxAttributes = impactEffectPrefab.GetComponent<VFXAttributes>();
+            if (vfxAttributes)
+            {
+                vfxAttributes.vfxPriority = VFXAttributes.VFXPriority.Always;
+            }
             Modules.Assets.AddEffect(impactEffectPrefab, "Play_mage_m2_impact");
 
             ProjectileImpactExplosion pie = projectilePrefab.GetComponent<ProjectileImpactExplosion>();

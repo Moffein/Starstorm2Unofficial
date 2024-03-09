@@ -321,7 +321,7 @@ namespace Starstorm2Unofficial.Survivors.Nucleator
             LanguageAPI.Add("SS2UNUCLEATOR_DEFAULT_SKIN_NAME", "Default");
 
             LanguageAPI.Add("SS2UNUCLEATOR_PRIMARY_NAME", "Irradiate");
-            LanguageAPI.Add("SS2UNUCLEATOR_PRIMARY_DESCRIPTION", "Charge and fire a glob of nuclear waste for <style=cIsDamage>200%-650% damage</style>, up to <style=cIsDamage>1000% damage</style> on <style=cIsHealth>Overcharge</style>.");
+            LanguageAPI.Add("SS2UNUCLEATOR_PRIMARY_DESCRIPTION", "Charge and fire a glob of nuclear waste for <style=cIsDamage>300%-650% damage</style>, up to <style=cIsDamage>1000% damage</style> on <style=cIsHealth>Overcharge</style>.");
 
             LanguageAPI.Add("SS2UNUCLEATOR_SECONDARY_NAME", "Quarantine");
             LanguageAPI.Add("SS2UNUCLEATOR_SECONDARY_DESCRIPTION", $"Push enemies in front of you for <style=cIsDamage>{500}% piercing damage</style>.");

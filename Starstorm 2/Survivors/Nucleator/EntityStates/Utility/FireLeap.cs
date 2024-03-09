@@ -80,7 +80,7 @@ namespace EntityStates.SS2UStates.Nucleator.Utility
             {
                 if (base.characterMotor)
                 {
-                    if (Starstorm2Unofficial.SneedUtils.IsEnemyInSphere(blastRadius, base.transform.position, base.GetTeam(), false)) detonateNextFrame = true;
+                    if (Starstorm2Unofficial.SneedUtils.IsEnemyInSphere(4.5f, base.transform.position, base.GetTeam(), false)) detonateNextFrame = true;
 
                     base.characterMotor.moveDirection = base.inputBank.moveVector;
                     if (base.fixedAge >= minimumDuration && (this.detonateNextFrame || (base.characterMotor.Motor.GroundingStatus.IsStableOnGround && !base.characterMotor.Motor.LastGroundingStatus.IsStableOnGround)))
