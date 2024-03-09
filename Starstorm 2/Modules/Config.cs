@@ -23,6 +23,7 @@ namespace Starstorm2Unofficial.Modules
         internal static ConfigEntry<bool> EnableCyborg;
         internal static ConfigEntry<bool> EnableChirr;
         internal static ConfigEntry<bool> EnablePyro;
+        internal static ConfigEntry<bool> EnableNucleator;
 
         internal static ConfigEntry<bool> EnableItems;
         internal static List<ConfigEntry<bool>> ItemToggles;
@@ -103,6 +104,11 @@ namespace Starstorm2Unofficial.Modules
 
             EnablePyro = StarstormPlugin.instance.Config.Bind("Starstorm 2 :: Survivors",
                              "Pyro",
+                             true,
+                             "Enable this survivor.");
+
+            EnableNucleator = StarstormPlugin.instance.Config.Bind("Starstorm 2 :: Survivors",
+                             "Nucleator",
                              true,
                              "Enable this survivor.");
 
