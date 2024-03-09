@@ -179,6 +179,9 @@ namespace EntityStates.SS2UStates.Nucleator.Utility
                     base.characterMotor.velocity.y = 0f;
                 else if (base.characterMotor.velocity.y > maxExitYVelocity)
                     base.characterMotor.velocity.y = maxExitYVelocity;
+
+                base.characterMotor.velocity.x = 0f;
+                base.characterMotor.velocity.z = 0f;
             }
         }
     }
