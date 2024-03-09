@@ -3,6 +3,7 @@ using UnityEngine.Networking;
 using RoR2;
 using UnityEngine.AddressableAssets;
 using Starstorm2Unofficial.Cores;
+using R2API;
 
 namespace EntityStates.SS2UStates.Nucleator.Utility
 {
@@ -150,7 +151,7 @@ namespace EntityStates.SS2UStates.Nucleator.Utility
                 scale = blastRadius
             }, true);
 
-            new BlastAttack
+            BlastAttack ba = new BlastAttack
             {
                 attacker = base.gameObject,
                 attackerFiltering = AttackerFiltering.NeverHitSelf,
@@ -169,7 +170,9 @@ namespace EntityStates.SS2UStates.Nucleator.Utility
                 procCoefficient = 1f,
                 radius = blastRadius,
                 teamIndex = base.GetTeam()
-            }.Fire();
+            };
+            ba.AddModdedDamageType(DamageTypeCore.ModdedDamageTypes.AntiFlyingForce);
+            ba.Fire();
 
             //Prevents Nucleator from flying off and dying to fall damage
             if (base.characterMotor)

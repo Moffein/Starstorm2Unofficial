@@ -1,4 +1,5 @@
 ﻿using R2API;
+using R2API.Utils;
 using RoR2;
 using System;
 using UnityEngine;
@@ -22,7 +23,7 @@ namespace Starstorm2Unofficial.Cores
             public static DamageAPI.ModdedDamageType ResetVictimForce;
             public static DamageAPI.ModdedDamageType ErraticGadget;
             public static DamageAPI.ModdedDamageType SlayerExceptItActuallyWorks;
-            public static DamageAPI.ModdedDamageType NucleatorCanApplyRadiation; //Used for Nucleator
+            public static DamageAPI.ModdedDamageType AntiFlyingForce;
         }
 
         //public static DamageType
@@ -34,6 +35,7 @@ namespace Starstorm2Unofficial.Cores
         {
             instance = this;
 
+            ModdedDamageTypes.AntiFlyingForce = DamageAPI.ReserveDamageType();
             ModdedDamageTypes.SlayerExceptItActuallyWorks = DamageAPI.ReserveDamageType();
             ModdedDamageTypes.ResetVictimForce = DamageAPI.ReserveDamageType();
             ModdedDamageTypes.CyborgPrimary = DamageAPI.ReserveDamageType();
@@ -42,7 +44,6 @@ namespace Starstorm2Unofficial.Cores
             ModdedDamageTypes.ExtendFear = DamageAPI.ReserveDamageType();
             ModdedDamageTypes.GuaranteedFearOnHit = DamageAPI.ReserveDamageType();
             ModdedDamageTypes.ErraticGadget = DamageAPI.ReserveDamageType();
-            ModdedDamageTypes.NucleatorCanApplyRadiation = DamageAPI.ReserveDamageType();
 
             On.RoR2.HealthComponent.TakeDamage += HealthComponent_TakeDamage;
             On.RoR2.GlobalEventManager.OnHitEnemy += GlobalEventManager_OnHitEnemy;
@@ -111,22 +112,10 @@ namespace Starstorm2Unofficial.Cores
                     }
                 }
 
-                CharacterBody attackerBody = null;
-                if (damageInfo.attacker)
-                {
-                    attackerBody = damageInfo.attacker.GetComponent<CharacterBody>();
-
-                    if (attackerBody)
-                    {
-                        if (damageInfo.HasModdedDamageType(ModdedDamageTypes.NucleatorCanApplyRadiation) && attackerBody.HasBuff(BuffCore.nucleatorSpecialBuff))
-                        {
-                            damageInfo.damageType |= DamageType.PoisonOnHit;
-                        }
-                    }
-                }
-
                 if (damageInfo.dotIndex == DoTCore.NemmandoGouge && damageInfo.procCoefficient == 0f)
                 {
+                    CharacterBody attackerBody = null;
+                    if (damageInfo.attacker) attackerBody = damageInfo.attacker.GetComponent<CharacterBody>();
                     if (attackerBody)
                     {
                         damageInfo.crit = Util.CheckRoll(attackerBody.crit, attackerBody.master);
@@ -166,6 +155,22 @@ namespace Starstorm2Unofficial.Cores
                     {
                         float forceMult = Mathf.Max(cb.rigidbody.mass / 100f, 1f);
                         damageInfo.force *= forceMult;
+                    }
+                }
+
+                //Based off of RiskyMod
+                if (damageInfo.HasModdedDamageType(ModdedDamageTypes.AntiFlyingForce))
+                {
+                    float downwardsForce = -1600f;
+                    if (cb && cb.isFlying)
+                    {
+                        //Scale force to match mass
+                        Rigidbody rb = cb.rigidbody;
+                        if (rb)
+                        {
+                            downwardsForce *= Mathf.Min(4f, Mathf.Max(rb.mass / 100f, 1f));  //Greater Wisp 300f, SCU 1000f
+                            if (damageInfo.force.y > downwardsForce) damageInfo.force.y = downwardsForce;
+                        }
                     }
                 }
             }

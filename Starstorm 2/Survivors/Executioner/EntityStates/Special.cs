@@ -231,6 +231,7 @@ namespace EntityStates.SS2UStates.Executioner
                     bonusForce = Vector3.down * 4000f
                 };
                 blast.AddModdedDamageType(DamageTypeCore.ModdedDamageTypes.SlayerExceptItActuallyWorks);
+                blast.AddModdedDamageType(DamageTypeCore.ModdedDamageTypes.AntiFlyingForce);
                 blast = ModifyBlastAttack(blast);
                 blast.Fire();
 
