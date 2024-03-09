@@ -90,12 +90,12 @@ namespace Starstorm2Unofficial.Survivors.Nucleator
             base.InitializeCharacter();
             R2API.ItemAPI.DoNotAutoIDRSFor(bodyPrefab);
 
-            NetworkStateMachine nsm = bodyPrefab.GetComponent<NetworkStateMachine>();
+            /*NetworkStateMachine nsm = bodyPrefab.GetComponent<NetworkStateMachine>();
             EntityStateMachine specialStateMachine = bodyPrefab.AddComponent<EntityStateMachine>();
             specialStateMachine.customName = "SpecialBuff";
             specialStateMachine.initialStateType = new SerializableEntityStateType(typeof(EntityStates.Idle));
             specialStateMachine.mainStateType = new SerializableEntityStateType(typeof(EntityStates.Idle));
-            nsm.stateMachines = nsm.stateMachines.Append(specialStateMachine).ToArray();
+            nsm.stateMachines = nsm.stateMachines.Append(specialStateMachine).ToArray();*/
 
             CharacterBody cb = bodyPrefab.GetComponent<CharacterBody>();
             cb._defaultCrosshairPrefab = BuildCrosshair();
@@ -234,7 +234,7 @@ namespace Starstorm2Unofficial.Survivors.Nucleator
         {
             SkillDef specialDef = ScriptableObject.CreateInstance<SkillDef>();
             specialDef.activationState = new SerializableEntityStateType(typeof(BuffSelf));
-            specialDef.activationStateMachineName = "SpecialBuff";
+            specialDef.activationStateMachineName = "Weapon";
             specialDef.skillName = "SS2UNUCLEATOR_SPECIAL_NAME";
             specialDef.skillNameToken = "SS2UNUCLEATOR_SPECIAL_NAME";
             specialDef.skillDescriptionToken = "SS2UNUCLEATOR_SPECIAL_DESCRIPTION";
@@ -260,7 +260,7 @@ namespace Starstorm2Unofficial.Survivors.Nucleator
 
             SkillDef specialScepterDef = ScriptableObject.CreateInstance<SkillDef>();
             specialScepterDef.activationState = new SerializableEntityStateType(typeof(BuffSelfScepter));
-            specialScepterDef.activationStateMachineName = "SpecialBuff";
+            specialScepterDef.activationStateMachineName = "Weapon";
             specialScepterDef.skillName = "SS2UNUCLEATOR_SPECIAL_SCEPTER_NAME";
             specialScepterDef.skillNameToken = "SS2UNUCLEATOR_SPECIAL_SCEPTER_NAME";
             specialScepterDef.skillDescriptionToken = "SS2UNUCLEATOR_SPECIAL_SCEPTER_DESCRIPTION";

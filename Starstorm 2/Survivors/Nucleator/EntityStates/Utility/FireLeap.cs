@@ -4,7 +4,7 @@ using RoR2;
 
 namespace EntityStates.SS2UStates.Nucleator.Utility
 {
-    public class FireLeap : BaseState
+    public class FireLeap : GenericCharacterMain
     {
         public static float minimumDuration = 0.3f;
         public static float upwardVelocity = 7f;
@@ -29,8 +29,12 @@ namespace EntityStates.SS2UStates.Nucleator.Utility
             Vector3 direction = base.GetAimRay().direction;
             if (base.isAuthority)
             {
-                base.characterBody.isSprinting = true;
-                base.characterBody.RecalculateStats();  //Get sprint bonus
+                if (base.characterBody)
+                {
+                    base.characterBody.isSprinting = true;
+                    base.characterBody.RecalculateStats();  //Get sprint bonus
+                    this.moveSpeedStat = base.characterBody.moveSpeed;
+                }
 
                 direction.y = Mathf.Max(direction.y, minimumY);
                 Vector3 a = direction.normalized * aimVelocity * this.moveSpeedStat;
@@ -48,12 +52,20 @@ namespace EntityStates.SS2UStates.Nucleator.Utility
         public override void FixedUpdate()
         {
             base.FixedUpdate();
-            if (base.isAuthority && base.characterMotor)
+            if (base.isAuthority)
             {
-                base.characterMotor.moveDirection = base.inputBank.moveVector;
-                if (base.fixedAge >= minimumDuration && (base.characterMotor.Motor.GroundingStatus.IsStableOnGround && !base.characterMotor.Motor.LastGroundingStatus.IsStableOnGround))
+                if (base.characterBody)
                 {
-                    this.outer.SetNextStateToMain();
+                    base.characterBody.isSprinting = true;
+                }
+
+                if (base.characterMotor)
+                {
+                    base.characterMotor.moveDirection = base.inputBank.moveVector;
+                    if (base.fixedAge >= minimumDuration && (base.characterMotor.Motor.GroundingStatus.IsStableOnGround && !base.characterMotor.Motor.LastGroundingStatus.IsStableOnGround))
+                    {
+                        this.outer.SetNextStateToMain();
+                    }
                 }
             }
         }
