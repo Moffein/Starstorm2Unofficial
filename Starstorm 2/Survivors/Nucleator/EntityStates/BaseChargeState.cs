@@ -64,6 +64,7 @@ namespace EntityStates.SS2UStates.Nucleator
             {
                 if (!playedOverchargeSound)
                 {
+                    OnOverchargeStart();
                     playedOverchargeSound = true;
                     Util.PlaySound(overchargeSoundString, base.gameObject);
 
@@ -103,6 +104,11 @@ namespace EntityStates.SS2UStates.Nucleator
                     }
                 }
             }
+        }
+
+        protected virtual void OnOverchargeStart()
+        {
+
         }
 
         public override void OnExit()

@@ -1,5 +1,6 @@
 ﻿using BepInEx.Configuration;
 using EntityStates;
+using EntityStates.SS2UStates.Nucleator;
 using EntityStates.SS2UStates.Nucleator.Primary;
 using EntityStates.SS2UStates.Nucleator.Special;
 using EntityStates.SS2UStates.Nucleator.Utility;
@@ -95,6 +96,7 @@ namespace Starstorm2Unofficial.Survivors.Nucleator
             specialStateMachine.customName = "SpecialBuff";
             specialStateMachine.initialStateType = new SerializableEntityStateType(typeof(EntityStates.Idle));
             specialStateMachine.mainStateType = new SerializableEntityStateType(typeof(EntityStates.Idle));
+            
             nsm.stateMachines = nsm.stateMachines.Append(specialStateMachine).ToArray();
 
             CharacterBody cb = bodyPrefab.GetComponent<CharacterBody>();
@@ -164,7 +166,6 @@ namespace Starstorm2Unofficial.Survivors.Nucleator
             {
                 UnityEngine.Object.DestroyImmediate(sk);
             }
-
 
             SkillDef squawkDef = Addressables.LoadAssetAsync<SkillDef>("RoR2/Base/Heretic/HereticDefaultAbility.asset").WaitForCompletion();
             SkillFamily.Variant squawkVariant = Utils.RegisterSkillVariant(squawkDef);

@@ -6,17 +6,19 @@ namespace EntityStates.SS2UStates.Nucleator.Primary
 {
     public class ChargeIrradiate : BaseChargeState
     {
+        private bool playedChargeAnim;
+
         private uint chargePlayID;
         public override void OnEnter()
         {
             base.OnEnter();
-            //base.PlayCrossfade("Gesture, Override", "PrimaryCharge", "Primary.playbackRate", 0.8f * base.duration, 0.2f);
+            playedChargeAnim = false;
             this.chargePlayID = Util.PlaySound("SS2UNucleatorChargePrimary", this.gameObject);
         }
 
         public override void OnExit()
         {
-            //base.PlayAnimation("Gesture, Override", "BufferEmpty");
+            if (playedChargeAnim) base.PlayAnimation("Gesture, Override", "BufferEmpty");
             AkSoundEngine.StopPlayingID(this.chargePlayID);
             base.OnExit();
         }
@@ -25,6 +27,12 @@ namespace EntityStates.SS2UStates.Nucleator.Primary
         {
             base.FixedUpdate();
             base.StartAimMode(base.GetAimRay(), 2f, false);
+        }
+
+        protected override void OnOverchargeStart()
+        {
+            playedChargeAnim = true;
+            base.PlayCrossfade("Gesture, Override", "PrimaryCharge", "Primary.playbackRate", base.duration * (1f - overchargeFraction), 0.1f);
         }
 
         protected override bool GetInputPressed()
