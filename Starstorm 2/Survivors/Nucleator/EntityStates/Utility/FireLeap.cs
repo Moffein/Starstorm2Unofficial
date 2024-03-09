@@ -19,7 +19,6 @@ namespace EntityStates.SS2UStates.Nucleator.Utility
 
         public static GameObject blastEffectPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Loader/LoaderGroundSlam.prefab").WaitForCompletion();
         public static float blastRadius = 12f;
-        public static float damageCoefficient = 8f;
         public static float blastForce = 3000f;
 
         public static string soundLoopStartEvent = "Play_acrid_shift_fly_loop";
@@ -140,6 +139,11 @@ namespace EntityStates.SS2UStates.Nucleator.Utility
             this.detonateNextFrame = true;
         }
 
+        protected virtual float CalcDamageCoefficient()
+        {
+            return Mathf.Lerp(5f, 10f, this.charge / BaseChargeState.overchargeFraction);
+        }
+
         protected virtual void DetonateAuthority()
         {
             if (!base.isAuthority) return;
@@ -155,7 +159,7 @@ namespace EntityStates.SS2UStates.Nucleator.Utility
             {
                 attacker = base.gameObject,
                 attackerFiltering = AttackerFiltering.NeverHitSelf,
-                baseDamage = base.damageStat * damageCoefficient,
+                baseDamage = base.damageStat * CalcDamageCoefficient(),
                 baseForce = blastForce,
                 bonusForce = Vector3.zero,
                 canRejectForce = true,

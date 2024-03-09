@@ -10,16 +10,20 @@ namespace EntityStates.SS2UStates.Nucleator.Utility
 {
     public class FireLeapOvercharge : FireLeap
     {
-        public static float shockDamageCoefficient = 4f;
-        public static float shockRadius = 24f;
+        public static float shockDamageCoefficient = 4f;    //unused
+        public static float shockRadius = 24f;  //unused
 
         protected override float CalculateChargeMultiplier()
         {
             float mult = Mathf.Lerp(1.5f, 2f, (this.charge - BaseChargeState.overchargeFraction) / (1f - BaseChargeState.overchargeFraction));
             return mult;
         }
+        protected override float CalcDamageCoefficient()
+        {
+            return Mathf.Lerp(10f, 15f, (this.charge - BaseChargeState.overchargeFraction) / (1f - BaseChargeState.overchargeFraction));
+        }
 
-        protected override void DetonateAuthority()
+        /*protected override void DetonateAuthority()
         {
             base.DetonateAuthority();
             NucleatorNetworkComponent nnc = base.GetComponent<NucleatorNetworkComponent>();
@@ -27,6 +31,6 @@ namespace EntityStates.SS2UStates.Nucleator.Utility
             {
                 nnc.UtilityShockAuthority(base.transform.position, isCrit);
             }
-        }
+        }*/
     }
 }

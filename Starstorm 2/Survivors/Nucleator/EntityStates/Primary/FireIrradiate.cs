@@ -55,8 +55,8 @@ namespace EntityStates.SS2UStates.Nucleator.Primary
         public static GameObject muzzleflashEffectPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Croco/MuzzleflashCroco.prefab").WaitForCompletion();
         public static GameObject projectilePrefab;
 
-        public static float minDamageCoefficient = 3f;
-        public static float maxDamageCoefficient = 6.5f;
+        public static float minDamageCoefficient = 4f;
+        public static float maxDamageCoefficient = 8f;
 
         public static float minForce = 1000f;
         public static float maxForce = 2000f;

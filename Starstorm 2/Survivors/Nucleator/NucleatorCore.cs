@@ -55,7 +55,7 @@ namespace Starstorm2Unofficial.Survivors.Nucleator
             bodyColor = new Color(0.8039216f, 0.482352942f, 0.843137264f),
             characterPortrait = Modules.Assets.LoadCharacterIcon("Nucleator"),
             crosshair = Modules.Assets.LoadCrosshair("ToolbotGrenadeLauncherCrosshair"),
-            damage = 14f,
+            damage = 12f,
             healthGrowth = 54f,
             healthRegen = 2.5f,
             jumpCount = 1,
@@ -239,7 +239,7 @@ namespace Starstorm2Unofficial.Survivors.Nucleator
             secondaryDef.rechargeStock = 1;
             secondaryDef.requiredStock = 1;
             secondaryDef.stockToConsume = 1;
-            secondaryDef.keywordTokens = new string[] { "KEYWORD_SHOCKING" };
+            secondaryDef.keywordTokens = new string[] { "KEYWORD_STUNNING" };
             Modules.Skills.FixSkillName(secondaryDef);
             Modules.Skills.skillDefs.Add(secondaryDef);
             SkillFamily.Variant secondaryVariant1 = Utils.RegisterSkillVariant(secondaryDef);
@@ -369,13 +369,13 @@ namespace Starstorm2Unofficial.Survivors.Nucleator
             LanguageAPI.Add("SS2UNUCLEATOR_PASSIVE_DESCRIPTION", "The Nucleator's skills are unaffected <style=cIsDamage>Attack Speed</style>. <style=cIsDamage>Attack Speed</style> is converted to <style=cIsDamage>Damage</style> instead.");
 
             LanguageAPI.Add("SS2UNUCLEATOR_PRIMARY_NAME", "Irradiate");
-            LanguageAPI.Add("SS2UNUCLEATOR_PRIMARY_DESCRIPTION", "Charge and fire a glob of nuclear waste for <style=cIsDamage>300%-650% damage</style>, up to <style=cIsDamage>1000% damage</style> on <style=cIsHealth>Overcharge</style>.");
+            LanguageAPI.Add("SS2UNUCLEATOR_PRIMARY_DESCRIPTION", "Charge and fire a glob of nuclear waste for <style=cIsDamage>400%-800% damage</style>, up to <style=cIsDamage>1200% damage</style> on <style=cIsHealth>Overcharge</style>.");
 
             LanguageAPI.Add("SS2UNUCLEATOR_SECONDARY_NAME", "Quarantine");
             LanguageAPI.Add("SS2UNUCLEATOR_SECONDARY_DESCRIPTION", "Does nothing, for now.");
 
             LanguageAPI.Add("SS2UNUCLEATOR_UTILITY_NAME", "Fission Impulse");
-            LanguageAPI.Add("SS2UNUCLEATOR_UTILITY_DESCRIPTION", "Charge up a leap and gain <style=cIsUtility>200 armor</style>. Deals <style=cIsDamage>800% damage</style> on impact, and also <style=cIsDamage>shocks</style> for <style=cIsDamage>400% damage</style> on <style=cIsHealth>Overcharge</style>.");
+            LanguageAPI.Add("SS2UNUCLEATOR_UTILITY_DESCRIPTION", "<style=cIsDamage>Stunning</style>. Charge up a leap and gain <style=cIsUtility>200 armor</style>. Deals <style=cIsDamage>500%-1000% damage</style> on impact, up to <style=cIsDamage>1500% damage</style> on <style=cIsHealth>Overcharge</style>.");
 
             LanguageAPI.Add("SS2UNUCLEATOR_SPECIAL_NAME", "Radionuclide Surge");
             LanguageAPI.Add("SS2UNUCLEATOR_SPECIAL_DESCRIPTION", $"Enter a nuclear state for <style=cIsUtility>6 seconds</style>, becoming <style=cIsUtility>immune to <style=cIsHealth>Overcharge</style> damage</style> and adding <style=cIsHealing>Poisonous</style> radiation to every attack.");
