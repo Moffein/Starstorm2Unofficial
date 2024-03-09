@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using RoR2.UI;
 using RoR2.Projectile;
 using Starstorm2Unofficial.Cores.NemesisInvasion;
+using Starstorm2Unofficial.Survivors.Cyborg.Components.OverheatProjectile;
 
 namespace Starstorm2Unofficial.Modules
 {
@@ -34,6 +35,8 @@ namespace Starstorm2Unofficial.Modules
         internal static GameObject sigilFX;
         internal static GameObject jetBootsFX;
         internal static GameObject lightJetBootsFX;
+
+        public static NetworkSoundEventDef ror1LightningSound;
 
         #region Materials
         internal static Material matBlueLightningLong;
@@ -109,6 +112,7 @@ namespace Starstorm2Unofficial.Modules
             matLunarGolem = UnityEngine.Object.Instantiate(LegacyResourcesAPI.Load<GameObject>("Prefabs/CharacterBodies/LunarGolemBody").GetComponentInChildren<CharacterModel>().baseRendererInfos[0].defaultMaterial);
             #endregion
 
+            ror1LightningSound = Modules.Assets.CreateNetworkSoundEventDef("Play_SS2U_RoR1Lightning");
             needlerPrefab = CreateItemDisplay("DisplayNeedler", "matNeedler", Color.white, 3f);
 
             sigilFX = mainAssetBundle.LoadAsset<GameObject>("SigilEffect");

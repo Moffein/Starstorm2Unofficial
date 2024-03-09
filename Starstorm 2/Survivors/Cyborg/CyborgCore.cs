@@ -161,8 +161,6 @@ namespace Starstorm2Unofficial.Survivors.Cyborg
 
         private void RegisterProjectiles()
         {
-            LightningSoundComponent.lightningSound = Modules.Assets.CreateNetworkSoundEventDef("Play_SS2U_RoR1Lightning");
-
             GameObject overheatGhost = LegacyResourcesAPI.Load<GameObject>("Prefabs/ProjectileGhosts/BeamSphereGhost").InstantiateClone("SS2UCyborgOverheatGhost", false);
             ParticleSystem[] overheatParticles = overheatGhost.GetComponentsInChildren<ParticleSystem>();
             for (int i = 0; i < overheatParticles.Length; i++)
@@ -203,7 +201,6 @@ namespace Starstorm2Unofficial.Survivors.Cyborg
             overheatGhostScepter.AddComponent<BFGGhostReduceSizeOverTime>();
             OverheatScepter.projectileOverride = CreateOverheatProjectile("SS2UCyborgOverheatScepterProjectile", overheatGhostScepter, 2, -900f);
 
-            LightningSoundComponent.lightningSound = Modules.Assets.CreateNetworkSoundEventDef("Play_SS2U_RoR1Lightning");
             CyborgFireOverheat.projectilePrefab = CreateOverheatProjectile("SS2UCyborgOverheatProjectile", overheatGhost, 0, -600f);
             OverheatScepter.projectileOverride = CreateOverheatProjectile("SS2UCyborgOverheatScepterProjectile", overheatGhostScepter, 2, -900f);
 

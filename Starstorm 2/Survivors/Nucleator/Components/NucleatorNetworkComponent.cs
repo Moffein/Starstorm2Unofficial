@@ -83,6 +83,8 @@ namespace Starstorm2Unofficial.Survivors.Nucleator.Components
                 lightning.target = targetHurtbox;
                 OrbManager.instance.AddOrb(lightning);
             }
+
+            EffectManager.SimpleSoundEffect(Modules.Assets.ror1LightningSound.index, position, true);
         }
     }
 }

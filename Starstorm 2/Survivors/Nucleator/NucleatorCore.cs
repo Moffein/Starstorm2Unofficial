@@ -311,8 +311,8 @@ namespace Starstorm2Unofficial.Survivors.Nucleator
             LanguageAPI.Add("SS2UNUCLEATOR_NAME", "Nucleator");
             LanguageAPI.Add("SS2UNUCLEATOR_SUBTITLE", "Walking Fallout");
             LanguageAPI.Add("SS2UNUCLEATOR_DESCRIPTION", "The Nucleator is a radioactive juggernaut with rad-proof armor, which allows him to manipulate nuclear components for long periods of time.\n\n" +
-                "<color=#CCD3E0> < ! > Nucleator can charge his skills for maximum output, however, be careful as overcharging them may lead to self-harm!\n\n" +
-                " < ! > x\n\n" +
+                "<color=#CCD3E0> < ! > Nucleator can charge his skills for maximum output, but be careful as overcharging them may lead to self-harm!\n\n" +
+                " < ! > Irradiate's projectiles gain increased blast radius with range.\n\n" +
                 " < ! > y\n\n" +
                 " < ! > z\n");
             LanguageAPI.Add("SS2UNUCLEATOR_OUTRO_FLAVOR", "..and so he left, health status undisclosed.");
@@ -327,7 +327,7 @@ namespace Starstorm2Unofficial.Survivors.Nucleator
             LanguageAPI.Add("SS2UNUCLEATOR_SECONDARY_DESCRIPTION", $"Push enemies in front of you for <style=cIsDamage>{500}% piercing damage</style>.");
 
             LanguageAPI.Add("SS2UNUCLEATOR_UTILITY_NAME", "Fission Impulse");
-            LanguageAPI.Add("SS2UNUCLEATOR_UTILITY_DESCRIPTION", "Charge up a leap and gain <style=cIsUtility>200 armor</style>. Deals <style=cIsDamage>800% damage</style> on impact, and <style=cIsDamage>shocks</style> nearby enemies for an additional <style=cIsDamage>400% damage</style> on <style=cIsHealth>Overcharge</style>.");
+            LanguageAPI.Add("SS2UNUCLEATOR_UTILITY_DESCRIPTION", "Charge up a leap and gain <style=cIsUtility>200 armor</style>. Deals <style=cIsDamage>800% damage</style> on impact, and also <style=cIsDamage>shocks</style> nearby enemies for <style=cIsDamage>400% damage</style> on <style=cIsHealth>Overcharge</style>.");
 
             LanguageAPI.Add("SS2UNUCLEATOR_SPECIAL_NAME", "Radionuclide Surge");
             LanguageAPI.Add("SS2UNUCLEATOR_SPECIAL_DESCRIPTION", $"Enter a nuclear state for <style=cIsUtility>6 seconds</style>, adding <style=cIsHealing>Poisonous</style> radiation to every attack while becoming <style=cIsUtility>immune to <style=cIsHealth>Overcharge</style> damage</style>.");

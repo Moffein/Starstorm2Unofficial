@@ -9,7 +9,6 @@ namespace Starstorm2Unofficial.Survivors.Cyborg.Components.OverheatProjectile
     [RequireComponent(typeof(ProjectileProximityBeamController))]
     public class LightningSoundComponent : MonoBehaviour
     {
-        public static NetworkSoundEventDef lightningSound;
         private ProjectileProximityBeamController pbc;
 
         private void Start()
@@ -24,7 +23,7 @@ namespace Starstorm2Unofficial.Survivors.Cyborg.Components.OverheatProjectile
             {
                 if (pbc.listClearTimer - Time.fixedDeltaTime <= 0f && HasTarget(pbc))
                 {
-                    EffectManager.SimpleSoundEffect(lightningSound.index, base.transform.position, true);
+                    EffectManager.SimpleSoundEffect(Modules.Assets.ror1LightningSound.index, base.transform.position, true);
                 }
             }
         }
