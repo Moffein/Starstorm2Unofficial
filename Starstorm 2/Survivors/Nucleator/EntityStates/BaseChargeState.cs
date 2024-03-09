@@ -53,7 +53,14 @@ namespace EntityStates.SS2UStates.Nucleator
                 chargeComponent.SetCharge(chargeFraction, overchargeFraction);
             }
 
-            if (chargeFraction >= overchargeFraction)
+            bool isOvercharge = chargeFraction >= overchargeFraction;
+            bool isAI = base.characterBody && !base.characterBody.isPlayerControlled;
+            bool isBuffed = base.characterBody && base.characterBody.HasBuff(BuffCore.nucleatorSpecialBuff);
+
+            //AI will always full charge without hurting themselves, and only overcharge if they are buffed by their special.
+            bool forceStateEndAI = isAI && isOvercharge && !isBuffed;
+
+            if (isOvercharge && !forceStateEndAI)
             {
                 if (!playedOverchargeSound)
                 {
@@ -82,7 +89,7 @@ namespace EntityStates.SS2UStates.Nucleator
             if (base.isAuthority)
             {
 
-                if (chargeFraction >= 1f || !GetInputPressed())
+                if (chargeFraction >= 1f || (!GetInputPressed() || forceStateEndAI))
                 {
                     if (chargeFraction >= overchargeFraction)
                     {

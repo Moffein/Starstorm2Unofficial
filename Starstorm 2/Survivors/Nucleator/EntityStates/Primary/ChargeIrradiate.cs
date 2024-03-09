@@ -29,6 +29,11 @@ namespace EntityStates.SS2UStates.Nucleator.Primary
 
         protected override bool GetInputPressed()
         {
+            //Manually handle AIs
+            if (base.characterBody && !base.characterBody.isPlayerControlled)
+            {
+                return true;
+            }
             return base.inputBank && base.inputBank.skill1.down;
         }
 
