@@ -36,6 +36,8 @@ namespace EntityStates.SS2UStates.Nucleator.Primary
                 float force = Mathf.Lerp(minForce, maxForce, chargeScaled);
                 ProjectileManager.instance.FireProjectile(projectilePrefab, aimRay.origin, Util.QuaternionSafeLookRotation(aimRay.direction), base.gameObject, this.damageStat * damageCoefficient, force, base.RollCrit(), DamageColorIndex.Default, null, Mathf.Lerp(minProjectileSpeed, maxProjectileSpeed, chargeScaled));
             }
+            float recoil = 16f;
+            base.AddRecoil(-0.5f * recoil, -0.8f * recoil, -0.3f * recoil, 0.3f * recoil);
         }
 
         public override void FixedUpdate()
@@ -56,8 +58,8 @@ namespace EntityStates.SS2UStates.Nucleator.Primary
         public static GameObject muzzleflashEffectPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Croco/MuzzleflashCroco.prefab").WaitForCompletion();
         public static GameObject projectilePrefab;
 
-        public static float minDamageCoefficient = 8f;
-        public static float maxDamageCoefficient = 12f;
+        public static float minDamageCoefficient = 7.2f;
+        public static float maxDamageCoefficient = 10.8f;
 
         public static float minForce = 3000f;
         public static float maxForce = 3000f;

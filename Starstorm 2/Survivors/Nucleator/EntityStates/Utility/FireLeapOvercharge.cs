@@ -20,7 +20,7 @@ namespace EntityStates.SS2UStates.Nucleator.Utility
         }
         protected override float CalcDamageCoefficient()
         {
-            return Mathf.Lerp(10f, 15f, (this.charge - BaseChargeState.overchargeFraction) / (1f - BaseChargeState.overchargeFraction));
+            return Mathf.Lerp(8f, 12f, (this.charge - BaseChargeState.overchargeFraction) / (1f - BaseChargeState.overchargeFraction));
         }
         protected override float GetBlastRadius()
         {

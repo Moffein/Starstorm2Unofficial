@@ -115,8 +115,27 @@ namespace Starstorm2Unofficial.Survivors.Nucleator
             FireIrradiate.projectilePrefab = NucleatorProjectiles.BuildPrimary();
             FireIrradiateOvercharge.projectilePrefab = NucleatorProjectiles.BuildPrimaryOvercharge();
 
+            GameObject nucleatorMuzzleflash = BuildNucleatorMuzzleflash();
+            FireSecondary.muzzleflashEffectPrefab = nucleatorMuzzleflash;
+
             RoR2Application.onLoad += SetBodyIndex;
             if (StarstormPlugin.emoteAPILoaded) EmoteAPICompat();
+        }
+
+        private GameObject BuildNucleatorMuzzleflash()
+        {
+            GameObject effect = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Croco/CrocoLeapExplosion.prefab").WaitForCompletion().InstantiateClone("SS2UNucleatorMuzzleflash", false);
+
+            UnityEngine.Object.Destroy(effect.GetComponent<ShakeEmitter>());
+
+            ParticleSystem[] particles = effect.GetComponentsInChildren<ParticleSystem>();
+            for (int i = 0; i < particles.Length; i++)
+            {
+                if (particles[i].name == "AreaIndicator") UnityEngine.Object.Destroy(particles[i]);
+            }
+
+            Modules.Assets.AddEffect(effect);
+            return effect;
         }
 
         [MethodImpl(MethodImplOptions.NoInlining | MethodImplOptions.NoOptimization)]
@@ -239,7 +258,7 @@ namespace Starstorm2Unofficial.Survivors.Nucleator
             secondaryDef.rechargeStock = 1;
             secondaryDef.requiredStock = 1;
             secondaryDef.stockToConsume = 1;
-            secondaryDef.keywordTokens = new string[] { "KEYWORD_STUNNING" };
+            secondaryDef.keywordTokens = new string[] { };
             Modules.Skills.FixSkillName(secondaryDef);
             Modules.Skills.skillDefs.Add(secondaryDef);
             SkillFamily.Variant secondaryVariant1 = Utils.RegisterSkillVariant(secondaryDef);
@@ -268,7 +287,7 @@ namespace Starstorm2Unofficial.Survivors.Nucleator
             utilityDef.rechargeStock = 1;
             utilityDef.requiredStock = 1;
             utilityDef.stockToConsume = 1;
-            utilityDef.keywordTokens = new string[] { "KEYWORD_SHOCKING" };
+            utilityDef.keywordTokens = new string[] { "KEYWORD_STUNNING" };
             Modules.Skills.FixSkillName(utilityDef);
             Modules.Skills.skillDefs.Add(utilityDef);
             SkillFamily.Variant utilityVariant1 = Utils.RegisterSkillVariant(utilityDef);
@@ -363,19 +382,18 @@ namespace Starstorm2Unofficial.Survivors.Nucleator
             LanguageAPI.Add("SS2UNUCLEATOR_OUTRO_FLAVOR", "..and so he left, health status undisclosed.");
             LanguageAPI.Add("SS2UNUCLEATOR_OUTRO_FAILURE", "..and so he vanished, an uninhabitable wasteland in his wake.");
             LanguageAPI.Add("SS2UNUCLEATOR_LORE", "laugh and grow fat");
-            LanguageAPI.Add("SS2UNUCLEATOR_DEFAULT_SKIN_NAME", "Default");
 
             LanguageAPI.Add("SS2UNUCLEATOR_PASSIVE_NAME", "Total Meltdown");
             LanguageAPI.Add("SS2UNUCLEATOR_PASSIVE_DESCRIPTION", "The Nucleator's skills are unaffected <style=cIsDamage>Attack Speed</style>. <style=cIsDamage>Attack Speed</style> is converted to <style=cIsDamage>Damage</style> instead.");
 
             LanguageAPI.Add("SS2UNUCLEATOR_PRIMARY_NAME", "Irradiate");
-            LanguageAPI.Add("SS2UNUCLEATOR_PRIMARY_DESCRIPTION", "Charge and fire a glob of nuclear waste for <style=cIsDamage>400%-800% damage</style>, up to <style=cIsDamage>1200% damage</style> on <style=cIsHealth>Overcharge</style>.");
+            LanguageAPI.Add("SS2UNUCLEATOR_PRIMARY_DESCRIPTION", "Charge and fire a glob of nuclear waste for <style=cIsDamage>360%-720% damage</style>, up to <style=cIsDamage>1080% damage</style> on <style=cIsHealth>Overcharge</style>.");
 
             LanguageAPI.Add("SS2UNUCLEATOR_SECONDARY_NAME", "Quarantine");
             LanguageAPI.Add("SS2UNUCLEATOR_SECONDARY_DESCRIPTION", "Does nothing, for now.");
 
             LanguageAPI.Add("SS2UNUCLEATOR_UTILITY_NAME", "Fission Impulse");
-            LanguageAPI.Add("SS2UNUCLEATOR_UTILITY_DESCRIPTION", "<style=cIsDamage>Stunning</style>. Charge up a leap and gain <style=cIsUtility>200 armor</style>. Deals <style=cIsDamage>500%-1000% damage</style> on impact, up to <style=cIsDamage>1500% damage</style> on <style=cIsHealth>Overcharge</style>.");
+            LanguageAPI.Add("SS2UNUCLEATOR_UTILITY_DESCRIPTION", "<style=cIsDamage>Stunning</style>. Charge up a leap and gain <style=cIsUtility>200 armor</style>. Deals <style=cIsDamage>400%-800% damage</style> on impact, up to <style=cIsDamage>1200% damage</style> on <style=cIsHealth>Overcharge</style>.");
 
             LanguageAPI.Add("SS2UNUCLEATOR_SPECIAL_NAME", "Radionuclide Surge");
             LanguageAPI.Add("SS2UNUCLEATOR_SPECIAL_DESCRIPTION", $"Enter a nuclear state for <style=cIsUtility>6 seconds</style>, becoming <style=cIsUtility>immune to <style=cIsHealth>Overcharge</style> damage</style> and adding <style=cIsHealing>Poisonous</style> radiation to every attack.");
@@ -412,11 +430,12 @@ namespace Starstorm2Unofficial.Survivors.Nucleator
             List<SkinDef> skins = new List<SkinDef>();
 
             #region DefaultSkin
-            SkinDef defaultSkin = Modules.Skins.CreateSkinDef("SS2UNUCLEATOR_DEFAULT_SKIN_NAME",
+            SkinDef defaultSkin = Modules.Skins.CreateSkinDef("SS2UNUCLEATOR_DEFAULT_SKIN",
                 LoadoutAPI.CreateSkinIcon(new Color32(219, 201, 245, 255), new Color32(92, 97, 69, 255), new Color32(71, 59, 63, 255), new Color32(180, 174, 104, 255)),
                 defaultRenderers,
                 mainRenderer,
                 model);
+            defaultSkin.nameToken = "DEFAULT_SKIN";
 
             skins.Add(defaultSkin);
             #endregion

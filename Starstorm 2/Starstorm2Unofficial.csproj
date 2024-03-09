@@ -281,16 +281,6 @@
     <Compile Include="Survivors\Nucleator\EntityStates\Utility\ChargeLeap.cs" />
     <Compile Include="Survivors\Nucleator\EntityStates\Utility\FireLeap.cs" />
     <Compile Include="Survivors\Nucleator\EntityStates\Utility\FireLeapOvercharge.cs" />
-    <Compile Include="Survivors\Nucleator\EntityStates_old\ApplyRadionuclideSurge.cs" />
-    <Compile Include="Survivors\Nucleator\EntityStates_old\ChargeController.cs" />
-    <Compile Include="Survivors\Nucleator\EntityStates_old\ChargeStates\ChargeFissionImpulse.cs" />
-    <Compile Include="Survivors\Nucleator\EntityStates_old\ChargeStates\ChargeIrradiate.cs" />
-    <Compile Include="Survivors\Nucleator\EntityStates_old\ChargeStates\ChargeQuarantine.cs" />
-    <Compile Include="Survivors\Nucleator\EntityStates_old\ChargeStates\NucleatorSkillStateBase.cs" />
-    <Compile Include="Survivors\Nucleator\EntityStates_old\FireStates\FireFissionImpulse.cs" />
-    <Compile Include="Survivors\Nucleator\EntityStates_old\FireStates\FireIrradiate.cs" />
-    <Compile Include="Survivors\Nucleator\EntityStates_old\FireStates\FireQuarantine.cs" />
-    <Compile Include="Survivors\Nucleator\EntityStates_old\NucleatorProjectile.cs" />
     <Compile Include="Survivors\Nucleator\NucleatorCore.cs" />
     <Compile Include="Modules\Survivors\SurvivorBase.cs" />
     <Compile Include="Modules\Unlockables.cs" />

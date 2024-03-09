@@ -140,7 +140,7 @@ namespace EntityStates.SS2UStates.Nucleator.Utility
 
         protected virtual float CalcDamageCoefficient()
         {
-            return Mathf.Lerp(5f, 10f, this.charge / BaseChargeState.overchargeFraction);
+            return Mathf.Lerp(4f, 8f, this.charge / BaseChargeState.overchargeFraction);
         }
 
         protected virtual float GetBlastRadius()
