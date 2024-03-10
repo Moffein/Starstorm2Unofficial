@@ -13,6 +13,11 @@ namespace Starstorm2Unofficial.Survivors.Nucleator.Components
             Reset();
         }
 
+        private void OnDestroy()
+        {
+            Reset();
+        }
+
         public void Reset()
         {
             chargeFraction = 0f;
