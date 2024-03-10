@@ -83,10 +83,11 @@ namespace EntityStates.SS2UStates.Nucleator.Utility
             {
                 if (base.characterMotor)
                 {
-                    if (Starstorm2Unofficial.SneedUtils.IsEnemyInSphere(4.5f, base.transform.position, base.GetTeam(), false)) detonateNextFrame = true;
+                    bool passedMinDuration = base.fixedAge >= minimumDuration;
+                    if (passedMinDuration && Starstorm2Unofficial.SneedUtils.IsEnemyInSphere(4f, base.transform.position, base.GetTeam(), false)) detonateNextFrame = true;
 
                     base.characterMotor.moveDirection = base.inputBank.moveVector;
-                    if (base.fixedAge >= minimumDuration && (this.detonateNextFrame || (base.characterMotor.Motor.GroundingStatus.IsStableOnGround && !base.characterMotor.Motor.LastGroundingStatus.IsStableOnGround)))
+                    if (passedMinDuration && (this.detonateNextFrame || (base.characterMotor.Motor.GroundingStatus.IsStableOnGround && !base.characterMotor.Motor.LastGroundingStatus.IsStableOnGround)))
                     {
                         DetonateAuthority();
                         this.outer.SetNextStateToMain();
@@ -181,6 +182,7 @@ namespace EntityStates.SS2UStates.Nucleator.Utility
                 teamIndex = base.GetTeam()
             };
             ba.AddModdedDamageType(DamageTypeCore.ModdedDamageTypes.AntiFlyingForce);
+            ba.AddModdedDamageType(DamageTypeCore.ModdedDamageTypes.ResetVictimForce);
             ba.Fire();
 
             //Prevents Nucleator from flying off and dying to fall damage

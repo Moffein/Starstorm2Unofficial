@@ -1,13 +1,19 @@
 ﻿using UnityEngine.AddressableAssets;
 using UnityEngine;
 using RoR2;
+using R2API;
+using Starstorm2Unofficial.Cores;
 
 namespace EntityStates.SS2UStates.Nucleator.Secondary
 {
     public class FireSecondary : BaseState
     {
+        public static float force = 4000f;  //Knockback feels bad if force is not consistent
+        public static float selfKnockbackForce = 1200f; //This is meant to be a really small amount, just a subtle thing for feel.
+        public static float range = 40f;
         public static float baseDuration = 0.4f;
-        public static GameObject muzzleflashEffectPrefab;
+        public static GameObject coneEffectPrefab;
+        public static GameObject hitEffectPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Beetle/BeetleAcidImpact.prefab").WaitForCompletion();
 
         public float charge;
 
@@ -17,8 +23,12 @@ namespace EntityStates.SS2UStates.Nucleator.Secondary
         {
             base.OnEnter();
             this.duration = baseDuration;// this.attackSpeedStat;
+            this.damageStat *= this.attackSpeedStat;
 
-            if (muzzleflashEffectPrefab)
+            Util.PlaySound("Play_acrid_shift_land", base.gameObject);
+
+            Ray aimRay = base.GetAimRay();
+            if (coneEffectPrefab)
             {
                 //EffectManager.SimpleMuzzleFlash(muzzleflashEffectPrefab, base.gameObject, "MuzzleR", false);
                 //EffectManager.SimpleMuzzleFlash(muzzleflashEffectPrefab, base.gameObject, "MuzzleL", false);
@@ -29,16 +39,91 @@ namespace EntityStates.SS2UStates.Nucleator.Secondary
 
                 if (muzzleTransform)
                 {
-                    Ray aimRay = base.GetAimRay();
-                    EffectManager.SpawnEffect(muzzleflashEffectPrefab, new EffectData
+                    GameObject effectPrefab = GetEffectPrefab();
+                    Quaternion rot = Quaternion.LookRotation(aimRay.direction) * Quaternion.Euler(90f, 0f, 0f);
+                    EffectManager.SpawnEffect(effectPrefab, new EffectData
                     {
                         scale = 5f,
-                        rotation = Quaternion.LookRotation(aimRay.direction) * Quaternion.Euler(90f, 0f, 0f),
-                        origin = muzzleTransform.position + aimRay.direction * 3.5f
+                        rotation = rot,
+                        origin = muzzleTransform.position + aimRay.direction * 3.2f
+                    }, false);
+
+                    EffectManager.SpawnEffect(effectPrefab, new EffectData
+                    {
+                        scale = 5f,
+                        rotation = rot * Quaternion.Euler(0f, 60f, 0f),
+                        origin = muzzleTransform.position + aimRay.direction * 9f
+                    }, false);
+
+                    EffectManager.SpawnEffect(effectPrefab, new EffectData
+                    {
+                        scale = 5f,
+                        rotation = rot * Quaternion.Euler(0f, 120f, 0f),
+                        origin = muzzleTransform.position + aimRay.direction * 15f
+                    }, false);
+
+                    EffectManager.SpawnEffect(effectPrefab, new EffectData
+                    {
+                        scale = 5f,
+                        rotation = rot * Quaternion.Euler(0f, 180f, 0f),
+                        origin = muzzleTransform.position + aimRay.direction * 21f
+                    }, false);
+
+                    EffectManager.SpawnEffect(effectPrefab, new EffectData
+                    {
+                        scale = 5f,
+                        rotation = rot * Quaternion.Euler(0f, 240f, 0f),
+                        origin = muzzleTransform.position + aimRay.direction * 27f
                     }, false);
                 }
             }
+            if (base.isAuthority)
+            {
+                BulletAttack ba = new BulletAttack
+                {
+                    aimVector = aimRay.direction,
+                    origin = aimRay.origin,
+                    damage = this.damageStat * GetDamageCoefficient(),
+                    damageType = DamageType.Stun1s,
+                    damageColorIndex = DamageColorIndex.Default,
+                    minSpread = 0f,
+                    maxSpread = 0f,
+                    falloffModel = BulletAttack.FalloffModel.None,
+                    force = 4000f,
+                    isCrit = base.RollCrit(),
+                    owner = base.gameObject,
+                    muzzleName = "MuzzleCenter",
+                    smartCollision = false,
+                    procChainMask = default(ProcChainMask),
+                    procCoefficient = 1f,
+                    radius = 7f,
+                    weapon = base.gameObject,
+                    tracerEffectPrefab = null,
+                    hitEffectPrefab = hitEffectPrefab,
+                    maxDistance = range,
+                    stopperMask = LayerIndex.noCollision.mask
+                };
+                ba.procChainMask.AddProc(ProcType.Rings);   //Prevent this from triggering bands unsuspectingly due to passive.
+                ba.AddModdedDamageType(Starstorm2Unofficial.Cores.DamageTypeCore.ModdedDamageTypes.ScaleForceToMass);
+                ba.AddModdedDamageType(DamageTypeCore.ModdedDamageTypes.ResetVictimForce);
+                ba.AddModdedDamageType(DamageTypeCore.ModdedDamageTypes.GroundedForceCorrection);
+                if (base.characterBody && base.characterBody.HasBuff(Starstorm2Unofficial.Cores.BuffCore.nucleatorSpecialBuff))
+                {
+                    ba.damageType |= DamageType.PoisonOnHit;
+                }
+                ModifyBulletAttack(ba);
+                ba.Fire();
 
+                if (base.characterMotor)
+                {
+                    if (base.characterMotor.velocity.y < 0f) base.characterMotor.velocity.y = 0f;
+                    if (!base.characterMotor.isGrounded && base.characterMotor.velocity != Vector3.zero)
+                        base.characterMotor.ApplyForce(-selfKnockbackForce * aimRay.direction, false, false);
+                }
+            }
+
+            float recoil = 8f;
+            base.AddRecoil(-0.5f * recoil, -0.8f * recoil, -0.3f * recoil, 0.3f * recoil);
             base.PlayAnimation("Gesture, Override", "SecondaryRelease", "Secondary.playbackRate", duration * 2f);
         }
 
@@ -55,6 +140,22 @@ namespace EntityStates.SS2UStates.Nucleator.Secondary
         public override InterruptPriority GetMinimumInterruptPriority()
         {
             return InterruptPriority.Skill;
+        }
+
+        protected virtual float GetDamageCoefficient()
+        {
+            float chargeScaled = charge / BaseChargeState.overchargeFraction;
+            return Mathf.Lerp(4f, 8f, chargeScaled);
+        }
+
+        protected virtual GameObject GetEffectPrefab()
+        {
+            return coneEffectPrefab;
+        }
+
+        protected virtual void ModifyBulletAttack(BulletAttack ba)
+        {
+
         }
     }
 }

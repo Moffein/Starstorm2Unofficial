@@ -1,11 +1,15 @@
-﻿namespace EntityStates.SS2UStates.Nucleator.Secondary
+﻿using RoR2;
+
+namespace EntityStates.SS2UStates.Nucleator.Secondary
 {
     public class ChargeSecondary : BaseChargeState
     {
+        private uint chargePlayID;
         public override void OnEnter()
         {
             base.OnEnter();
             base.PlayCrossfade("Gesture, Override", "SecondaryCharge", "Secondary.playbackRate", base.duration, 0.1f);
+            this.chargePlayID = Util.PlaySound("SS2UNucleatorChargePrimary", this.gameObject);
         }
 
         public override void FixedUpdate()
@@ -16,6 +20,7 @@
 
         public override void OnExit()
         {
+            AkSoundEngine.StopPlayingID(this.chargePlayID);
             base.PlayAnimation("Gesture, Override", "BufferEmpty");
             base.OnExit();
         }

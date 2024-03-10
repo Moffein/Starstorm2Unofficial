@@ -56,10 +56,10 @@ namespace Starstorm2Unofficial.Survivors.Nucleator
             characterPortrait = Modules.Assets.LoadCharacterIcon("Nucleator"),
             crosshair = Modules.Assets.LoadCrosshair("ToolbotGrenadeLauncherCrosshair"),
             damage = 12f,
-            healthGrowth = 54f,
-            healthRegen = 2.5f,
+            healthGrowth = 48f,
+            healthRegen = 1.0f,
             jumpCount = 1,
-            maxHealth = 180f,
+            maxHealth = 160f,
             subtitleNameToken = "SS2UNUCLEATOR_SUBTITLE",
             podPrefab = LegacyResourcesAPI.Load<GameObject>("Prefabs/NetworkedObjects/SurvivorPod")
         };
@@ -115,23 +115,36 @@ namespace Starstorm2Unofficial.Survivors.Nucleator
             FireIrradiate.projectilePrefab = NucleatorProjectiles.BuildPrimary();
             FireIrradiateOvercharge.projectilePrefab = NucleatorProjectiles.BuildPrimaryOvercharge();
 
-            GameObject nucleatorMuzzleflash = BuildNucleatorMuzzleflash();
-            FireSecondary.muzzleflashEffectPrefab = nucleatorMuzzleflash;
+            FireSecondary.coneEffectPrefab = BuildSecondaryVFX("SS2UNucleatorSecondaryEffect", new Color(244f / 255f, 243f / 255f, 183f / 255f));
+            FireSecondaryOvercharge.overchargeEffectPrefab = BuildSecondaryVFX("SS2UNucleatorSecondaryOverchargeEffect", new Color(1f, 0f, 1f));
 
             RoR2Application.onLoad += SetBodyIndex;
             if (StarstormPlugin.emoteAPILoaded) EmoteAPICompat();
         }
 
-        private GameObject BuildNucleatorMuzzleflash()
+        private GameObject BuildSecondaryVFX(string name, Color color)
         {
-            GameObject effect = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Croco/CrocoLeapExplosion.prefab").WaitForCompletion().InstantiateClone("SS2UNucleatorMuzzleflash", false);
+            GameObject effect = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Croco/CrocoLeapExplosion.prefab").WaitForCompletion().InstantiateClone(name, false);
 
             UnityEngine.Object.Destroy(effect.GetComponent<ShakeEmitter>());
+
+            EffectComponent ec = effect.GetComponent<EffectComponent>();
+            ec.soundName = "";
+
+            VFXAttributes vfx = effect.GetComponent<VFXAttributes>();
+            vfx.vfxPriority = VFXAttributes.VFXPriority.Always;
 
             ParticleSystem[] particles = effect.GetComponentsInChildren<ParticleSystem>();
             for (int i = 0; i < particles.Length; i++)
             {
-                if (particles[i].name == "AreaIndicator") UnityEngine.Object.Destroy(particles[i]);
+                if (particles[i].name == "AreaIndicator")
+                {
+                    UnityEngine.Object.Destroy(particles[i]);
+                }
+                else
+                {
+                    particles[i].startColor = color;
+                }
             }
 
             Modules.Assets.AddEffect(effect);
@@ -258,7 +271,7 @@ namespace Starstorm2Unofficial.Survivors.Nucleator
             secondaryDef.rechargeStock = 1;
             secondaryDef.requiredStock = 1;
             secondaryDef.stockToConsume = 1;
-            secondaryDef.keywordTokens = new string[] { };
+            secondaryDef.keywordTokens = new string[] { "KEYWORD_STUNNING" };
             Modules.Skills.FixSkillName(secondaryDef);
             Modules.Skills.skillDefs.Add(secondaryDef);
             SkillFamily.Variant secondaryVariant1 = Utils.RegisterSkillVariant(secondaryDef);
@@ -374,11 +387,7 @@ namespace Starstorm2Unofficial.Survivors.Nucleator
         {
             LanguageAPI.Add("SS2UNUCLEATOR_NAME", "Nucleator");
             LanguageAPI.Add("SS2UNUCLEATOR_SUBTITLE", "Walking Fallout");
-            LanguageAPI.Add("SS2UNUCLEATOR_DESCRIPTION", "The Nucleator is a radioactive juggernaut with rad-proof armor, which allows him to manipulate nuclear components for long periods of time.\n\n" +
-                "<color=#CCD3E0> < ! > Nucleator can charge his skills for maximum output, but be careful as overcharging them may lead to self-harm!\n\n" +
-                " < ! > Irradiate's projectiles gain increased blast radius the further they travel.\n\n" +
-                " < ! > y\n\n" +
-                " < ! > z\n");
+            LanguageAPI.Add("SS2UNUCLEATOR_DESCRIPTION", "The Nucleator is a radioactive juggernaut with rad-proof armor, which allows him to manipulate nuclear components for long periods of time.<style=cSub>\r\n\r\n< ! > Nucleator can charge his skills for maximum output, but be careful as overcharging them may lead to self-harm!\r\n\r\n< ! > Irradiate's projectiles gain increased blast radius the further they travel.\r\n\r\n< ! > Quarantine can root enemies in place when Overcharged, allowing you to make distance to use Irradiate.\r\n\r\n< ! > Strategic use of Radionuclide Surge will allow you to recover health lost from Overcharging skills.\r\n\r\n");
             LanguageAPI.Add("SS2UNUCLEATOR_OUTRO_FLAVOR", "..and so he left, health status undisclosed.");
             LanguageAPI.Add("SS2UNUCLEATOR_OUTRO_FAILURE", "..and so he vanished, an uninhabitable wasteland in his wake.");
             LanguageAPI.Add("SS2UNUCLEATOR_LORE", "laugh and grow fat");
@@ -390,13 +399,13 @@ namespace Starstorm2Unofficial.Survivors.Nucleator
             LanguageAPI.Add("SS2UNUCLEATOR_PRIMARY_DESCRIPTION", "Charge and fire a glob of nuclear waste for <style=cIsDamage>360%-720% damage</style>, up to <style=cIsDamage>1080% damage</style> on <style=cIsHealth>Overcharge</style>.");
 
             LanguageAPI.Add("SS2UNUCLEATOR_SECONDARY_NAME", "Quarantine");
-            LanguageAPI.Add("SS2UNUCLEATOR_SECONDARY_DESCRIPTION", "Does nothing, for now.");
+            LanguageAPI.Add("SS2UNUCLEATOR_SECONDARY_DESCRIPTION", "<style=cIsDamage>Stunning</style>. Charge up and <style=cIsUtility>push</style> enemies for <style=cIsDamage>400%-800% damage</style>, deals up to <style=cIsDamage>1200% damage</style> and <style=cIsDamage>roots</style> on <style=cIsHealth>Overcharge</style>.");
 
             LanguageAPI.Add("SS2UNUCLEATOR_UTILITY_NAME", "Fission Impulse");
             LanguageAPI.Add("SS2UNUCLEATOR_UTILITY_DESCRIPTION", "<style=cIsDamage>Stunning</style>. Charge up a leap and gain <style=cIsUtility>200 armor</style>. Deals <style=cIsDamage>400%-800% damage</style> on impact, up to <style=cIsDamage>1200% damage</style> on <style=cIsHealth>Overcharge</style>.");
 
             LanguageAPI.Add("SS2UNUCLEATOR_SPECIAL_NAME", "Radionuclide Surge");
-            LanguageAPI.Add("SS2UNUCLEATOR_SPECIAL_DESCRIPTION", $"Enter a nuclear state for <style=cIsUtility>6 seconds</style>, becoming <style=cIsUtility>immune to <style=cIsHealth>Overcharge</style> damage</style> and adding <style=cIsHealing>Poisonous</style> radiation to every attack.");
+            LanguageAPI.Add("SS2UNUCLEATOR_SPECIAL_DESCRIPTION", "Go nuclear for <style=cIsUtility>6 seconds</style>, <style=cIsHealing>healing from <style=cIsHealth>Overcharge</style></style> and adding <style=cIsHealing>Poisonous</style> radiation to every attack.");
 
             LanguageAPI.Add("SS2UNUCLEATOR_SPECIAL_SCEPTER_NAME", "Radionuclide Efflux");
             LanguageAPI.Add("SS2UNUCLEATOR_SPECIAL_SCEPTER_DESCRIPTION", $"Enter a nuclear state for <style=cIsUtility>12 seconds</style>, becoming <style=cIsUtility>immune to <style=cIsHealth>Overcharge</style> damage</style> and adding <style=cIsHealing>Poisonous</style> radiation to every attack.");

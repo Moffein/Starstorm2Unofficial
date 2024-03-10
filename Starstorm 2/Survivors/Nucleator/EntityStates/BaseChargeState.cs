@@ -12,9 +12,9 @@ namespace EntityStates.SS2UStates.Nucleator
         public static string overchargeSoundString = "SS2UNucleatorAlarm";
 
         public float baseDuration = 1.5f;
-        public float overchargeHealthFraction = 0.1f;  //Damage per tick when overcharging. Scales off of current health at the time of the tick.
+        public float overchargeHealthFraction = 0.06f;  //Damage per tick when overcharging. Scales off of current health at the time of the tick.
         public float overchargeDamageFrequency = 10f;
-        public float overchargeHealingFraction = 0.2f/9f; //Healing per tick when overcharging. Scales off of total health.
+        public float overchargeHealingFraction = 0.015f; //Healing per tick when overcharging. Scales off of total health.
 
         private bool playedOverchargeSound = false;
         private float overchargeDamageDuration;
@@ -140,7 +140,7 @@ namespace EntityStates.SS2UStates.Nucleator
                 damageInfo.crit = false;
                 damageInfo.attacker = null;
                 damageInfo.inflictor = null;
-                damageInfo.damageType = (DamageType.NonLethal | DamageType.BypassArmor);
+                damageInfo.damageType = (DamageType.NonLethal);
                 damageInfo.procCoefficient = 0f;
                 damageInfo.procChainMask = default(ProcChainMask);
 

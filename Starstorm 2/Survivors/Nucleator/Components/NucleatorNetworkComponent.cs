@@ -32,7 +32,7 @@ namespace Starstorm2Unofficial.Survivors.Nucleator.Components
             healthComponent.HealFraction(healFraction, default);
         }
 
-        public void UtilityShockAuthority(Vector3 position, bool crit)
+        /*public void UtilityShockAuthority(Vector3 position, bool crit)
         {
             if (this.hasAuthority) CmdUtilityShockAuthority(position, crit);
         }
@@ -86,6 +86,6 @@ namespace Starstorm2Unofficial.Survivors.Nucleator.Components
             }
 
             EffectManager.SimpleSoundEffect(Modules.Assets.ror1LightningSound.index, position, true);
-        }
+        }*/
     }
 }

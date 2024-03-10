@@ -232,6 +232,7 @@ namespace EntityStates.SS2UStates.Executioner
                 };
                 blast.AddModdedDamageType(DamageTypeCore.ModdedDamageTypes.SlayerExceptItActuallyWorks);
                 blast.AddModdedDamageType(DamageTypeCore.ModdedDamageTypes.AntiFlyingForce);
+                blast.AddModdedDamageType(DamageTypeCore.ModdedDamageTypes.ResetVictimForce);
                 blast = ModifyBlastAttack(blast);
                 blast.Fire();
 

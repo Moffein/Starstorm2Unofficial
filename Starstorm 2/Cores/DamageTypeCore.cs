@@ -17,6 +17,7 @@ namespace Starstorm2Unofficial.Cores
         {
             public static DamageAPI.ModdedDamageType CyborgPrimary; //Used for Cyborg Shock Rifle combo
             public static DamageAPI.ModdedDamageType ScaleForceToMass;
+            public static DamageAPI.ModdedDamageType GroundedForceCorrection;   //Used to fix scaled knockback force attacks on grounded enemies.
             public static DamageAPI.ModdedDamageType GougeOnHit;
             public static DamageAPI.ModdedDamageType ExtendFear;
             public static DamageAPI.ModdedDamageType GuaranteedFearOnHit;   //Used for Exe Scepter
@@ -24,6 +25,7 @@ namespace Starstorm2Unofficial.Cores
             public static DamageAPI.ModdedDamageType ErraticGadget;
             public static DamageAPI.ModdedDamageType SlayerExceptItActuallyWorks;
             public static DamageAPI.ModdedDamageType AntiFlyingForce;
+            public static DamageAPI.ModdedDamageType Root3s;
         }
 
         //public static DamageType
@@ -35,6 +37,7 @@ namespace Starstorm2Unofficial.Cores
         {
             instance = this;
 
+            ModdedDamageTypes.GroundedForceCorrection = DamageAPI.ReserveDamageType();
             ModdedDamageTypes.AntiFlyingForce = DamageAPI.ReserveDamageType();
             ModdedDamageTypes.SlayerExceptItActuallyWorks = DamageAPI.ReserveDamageType();
             ModdedDamageTypes.ResetVictimForce = DamageAPI.ReserveDamageType();
@@ -44,6 +47,7 @@ namespace Starstorm2Unofficial.Cores
             ModdedDamageTypes.ExtendFear = DamageAPI.ReserveDamageType();
             ModdedDamageTypes.GuaranteedFearOnHit = DamageAPI.ReserveDamageType();
             ModdedDamageTypes.ErraticGadget = DamageAPI.ReserveDamageType();
+            ModdedDamageTypes.Root3s = DamageAPI.ReserveDamageType();
 
             On.RoR2.HealthComponent.TakeDamage += HealthComponent_TakeDamage;
             On.RoR2.GlobalEventManager.OnHitEnemy += GlobalEventManager_OnHitEnemy;
@@ -54,29 +58,37 @@ namespace Starstorm2Unofficial.Cores
             orig(self, damageInfo, victim);
             if (NetworkServer.active && !damageInfo.rejected)
             {
-                if (damageInfo.HasModdedDamageType(ModdedDamageTypes.GougeOnHit))
-                {
-                    //Supposed to have a 0.25 mult for enemy Nemmando.
-                    var dotInfo = new InflictDotInfo()
-                    {
-                        attackerObject = damageInfo.attacker,
-                        victimObject = victim,
-                        dotIndex = DoTCore.NemmandoGouge,
-                        duration = 2,
-                        damageMultiplier = DamageTypeCore.gougeDamageCoefficient
-                    };
-                    DotController.InflictDot(ref dotInfo);
-                }
 
-                if (damageInfo.HasModdedDamageType(ModdedDamageTypes.ExtendFear))
+                if (victim)
                 {
-                    CharacterBody victimBody;
-                    if (victim)
+                    if (damageInfo.HasModdedDamageType(ModdedDamageTypes.GougeOnHit))
                     {
-                        victimBody = victim.GetComponent<CharacterBody>();
-                        if (victimBody && victimBody.HasBuff(BuffCore.fearDebuff))
+                        //Supposed to have a 0.25 mult for enemy Nemmando.
+                        var dotInfo = new InflictDotInfo()
                         {
-                            victimBody.AddTimedBuff(BuffCore.fearDebuff, EntityStates.SS2UStates.Executioner.ExecutionerDash.debuffDuration);
+                            attackerObject = damageInfo.attacker,
+                            victimObject = victim,
+                            dotIndex = DoTCore.NemmandoGouge,
+                            duration = 2,
+                            damageMultiplier = DamageTypeCore.gougeDamageCoefficient
+                        };
+                        DotController.InflictDot(ref dotInfo);
+                    }
+
+                    CharacterBody victimBody = victim.GetComponent<CharacterBody>();
+                    if (victimBody)
+                    {
+                        if (damageInfo.HasModdedDamageType(ModdedDamageTypes.ExtendFear))
+                        {
+                            if (victimBody && victimBody.HasBuff(BuffCore.fearDebuff))
+                            {
+                                victimBody.AddTimedBuff(BuffCore.fearDebuff, EntityStates.SS2UStates.Executioner.ExecutionerDash.debuffDuration);
+                            }
+                        }
+
+                        if (damageInfo.HasModdedDamageType(ModdedDamageTypes.Root3s))
+                        {
+                            victimBody.AddTimedBuff(RoR2Content.Buffs.LunarSecondaryRoot, 3f);
                         }
                     }
                 }
@@ -127,6 +139,14 @@ namespace Starstorm2Unofficial.Cores
                 if (damageInfo.HasModdedDamageType(ModdedDamageTypes.GuaranteedFearOnHit))
                 {
                     self.body.AddTimedBuff(BuffCore.fearDebuff, EntityStates.SS2UStates.Executioner.ExecutionerDash.debuffDuration);
+                }
+
+                if (damageInfo.HasModdedDamageType(ModdedDamageTypes.GroundedForceCorrection))
+                {
+                    if (cb.characterMotor != null && cb.characterMotor.isGrounded)
+                    {
+                        if (damageInfo.force.y <= 1200f) damageInfo.force.y = 1200f;
+                    }
                 }
 
                 if (damageInfo.HasModdedDamageType(ModdedDamageTypes.ScaleForceToMass))

@@ -10,8 +10,8 @@ namespace EntityStates.SS2UStates.Nucleator.Utility
 {
     public class FireLeapOvercharge : FireLeap
     {
-        public static float shockDamageCoefficient = 4f;    //unused
-        public static float shockRadius = 24f;  //unused
+        //public static float shockDamageCoefficient = 4f;    //unused
+        //public static float shockRadius = 24f;  //unused
 
         protected override float CalculateChargeMultiplier()
         {
