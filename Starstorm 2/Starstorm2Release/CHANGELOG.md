@@ -4,11 +4,7 @@
 - Executioner
 	- Execution
 		- Added mass scaling to downwards force.
-
-- Items
-	- Added Detritive Trematode (todo)
-	- Added Strange Can (todo)
-
+		
 `0.17.2`
 
 - Chirr

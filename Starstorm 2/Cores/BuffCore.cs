@@ -179,7 +179,7 @@ namespace Starstorm2Unofficial.Cores
                     c.Emit(OpCodes.Ldarg_0);
                     c.EmitDelegate<Func<bool, CharacterModel, bool>>((hasBuff, self) =>
                     {
-                        return hasBuff || (self.body.HasBuff(chirrFriendBuff));
+                        return hasBuff || self.body.HasBuff(chirrFriendBuff) || self.body.HasBuff(nucleatorSpecialBuff);
                     });
                 }
                 else
