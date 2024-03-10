@@ -103,7 +103,6 @@ namespace EntityStates.SS2UStates.Nucleator.Secondary
                     maxDistance = range,
                     stopperMask = LayerIndex.noCollision.mask
                 };
-                ba.procChainMask.AddProc(ProcType.Rings);   //Prevent this from triggering bands unsuspectingly due to passive.
                 ba.AddModdedDamageType(Starstorm2Unofficial.Cores.DamageTypeCore.ModdedDamageTypes.ScaleForceToMass);
                 ba.AddModdedDamageType(DamageTypeCore.ModdedDamageTypes.ResetVictimForce);
                 ba.AddModdedDamageType(DamageTypeCore.ModdedDamageTypes.GroundedForceCorrection);
