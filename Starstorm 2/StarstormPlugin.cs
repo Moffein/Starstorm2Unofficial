@@ -187,6 +187,7 @@ namespace Starstorm2Unofficial
                 AddItemIfEnabled(new Fork(), ItemCore.instance.items);
                 AddItemIfEnabled(new MoltenCoin(), ItemCore.instance.items);
                 AddItemIfEnabled(new Diary(), ItemCore.instance.items);
+                AddItemIfEnabled(new DetritiveTrematode(), ItemCore.instance.items);
 
                 AddItemIfEnabled(new WatchMetronome(), ItemCore.instance.items);
                 AddItemIfEnabled(new StrangeCan(), ItemCore.instance.items);

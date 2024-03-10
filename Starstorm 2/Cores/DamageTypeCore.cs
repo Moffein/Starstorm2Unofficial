@@ -133,13 +133,37 @@ namespace Starstorm2Unofficial.Cores
                         damageInfo.crit = Util.CheckRoll(attackerBody.crit, attackerBody.master);
                     }
                     damageInfo.procCoefficient = 0.7f;
+                    damageInfo.procChainMask.AddProc(ProcType.Rings);
                     triggerGougeProc = true;
                 }
-
-                if (damageInfo.dotIndex == DoTCore.StrangeCanPoison)
+                else if (damageInfo.dotIndex == DoTCore.StrangeCanPoison)
                 {
-                    damageInfo.damage = self.combinedHealth * 0.03f;
+                    damageInfo.damage = self.combinedHealth * 0.025f;
                     EffectManager.SimpleEffect(DoTCore.StrangeCanHitEffect, damageInfo.position, self.transform.rotation, true);
+                }
+                else if (damageInfo.dotIndex == DoTCore.DetritiveTrematodeInfection)
+                {
+                    //DoT disappears if target heals above 25% HP
+                    if (self.combinedHealthFraction > 0.25f)
+                    {
+                        damageInfo.damage = 0f;
+                        damageInfo.rejected = true;
+
+                        DotController dot = DotController.FindDotController(self.gameObject);
+                        if (dot)
+                        {
+                            int trematodeIndex = -1;
+                            for (int i = 0; i < dot.dotStackList.Count; i++)
+                            {
+                                if (dot.dotStackList[i].dotIndex == DoTCore.DetritiveTrematodeInfection)
+                                {
+                                    trematodeIndex = i;
+                                    break;
+                                }
+                            }
+                            if (trematodeIndex >= 0) dot.RemoveDotStackAtServer(trematodeIndex);
+                        }
+                    }
                 }
 
                 if (damageInfo.HasModdedDamageType(ModdedDamageTypes.GuaranteedFearOnHit))

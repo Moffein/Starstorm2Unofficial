@@ -55,10 +55,6 @@ namespace Starstorm2Unofficial
             maliceDmgReductionValue = 0.55f;
             maliceProcCoefValue = 0f;
 
-            trematodeDamage = 1f;
-            trematodeDuration = 3f;
-            trematodeCritical = 0.4f;
-
             testerGold = 5f;
             testerHealing = 15f;
         }

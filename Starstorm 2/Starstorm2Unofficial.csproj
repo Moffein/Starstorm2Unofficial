@@ -167,7 +167,7 @@
     <Compile Include="Cores\ItemDisplayCore.cs" />
     <Compile Include="Items\Trashbin\BrokenBloodTester.cs" />
     <Compile Include="Items\Common\Disabled\CoffeeBag.cs" />
-    <Compile Include="Items\Unimplemented\Common\DetritiveTrematode.cs" />
+    <Compile Include="Items\Common\DetritiveTrematode.cs" />
     <Compile Include="Items\Common\Diary.cs" />
     <Compile Include="Items\Common\Disabled\DormantFungus.cs" />
     <Compile Include="Items\Rare\DroidHead.cs" />

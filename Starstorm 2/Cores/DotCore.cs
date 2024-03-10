@@ -36,6 +36,7 @@ namespace Starstorm2Unofficial.Cores
         public static DotIndex NemmandoGouge;
 
         public static GameObject StrangeCanHitEffect = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Croco/CrocoDiseaseImpactEffect.prefab").WaitForCompletion();
+        public static GameObject TrematodeHitEffect;
 
         public DoTCore()
         {
@@ -52,6 +53,9 @@ namespace Starstorm2Unofficial.Cores
             On.RoR2.DotController.HasDotActive += DotController_HasDotActive;
             IL.RoR2.DotController.InflictDot_refInflictDotInfo += DotController_InflictDot_refInflictDotInfo;
             */
+
+            TrematodeHitEffect = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Beetle/BeetleSpitExplosion.prefab").WaitForCompletion().InstantiateClone("SS2UTrematodeEffect", false);
+            Modules.Assets.AddEffect(TrematodeHitEffect);   //This removes the sound from it
         }
 
         //private bool DotController_HasDotActive(On.RoR2.DotController.orig_HasDotActive orig, DotController self, DotIndex dotIndex)
@@ -151,8 +155,8 @@ namespace Starstorm2Unofficial.Cores
             //strangeCanPoison = RegisterDot(.5f, 0.5f, DamageColorIndex.Item, BuffCore.strangeCanPoisonBuff);
             //gougeIndex = RegisterDot(0.5f, 0.33f, DamageColorIndex.Bleed, BuffCore.gougeBuff);
 
-            DetritiveTrematodeInfection = DotAPI.RegisterDotDef(1, 0.5f, DamageColorIndex.Item, BuffCore.detritiveBuff);
-            StrangeCanPoison = DotAPI.RegisterDotDef(1f, 0.5f, DamageColorIndex.Poison, BuffCore.strangeCanPoisonBuff);
+            DetritiveTrematodeInfection = DotAPI.RegisterDotDef(1f, 1f, DamageColorIndex.Item, BuffCore.detritiveBuff);
+            StrangeCanPoison = DotAPI.RegisterDotDef(1f, 1f, DamageColorIndex.Poison, BuffCore.strangeCanPoisonBuff);
             NemmandoGouge = DotAPI.RegisterDotDef(0.25f, 0.25f, DamageColorIndex.Bleed, BuffCore.gougeBuff);//0.5f, 0.33f
         }
 

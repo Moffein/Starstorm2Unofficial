@@ -11,10 +11,10 @@ namespace Starstorm2Unofficial.Cores.Items
 {
     class StrangeCan : SS2Item<StrangeCan>
     {
-        public override string NameInternal => "SS2UPoisonOnHit";
+        public override string NameInternal => "SS2U_PoisonOnHit";
         public override string Name => "Strange Can";
         public override string Pickup => "Chance to intoxicate enemies, causing heavy damage over time.";
-        public override string Description => "<style=cIsDamage>8.5%</style> <style=cStack>(+5% per stack)</style> chance to <style=cIsDamage>intoxicate</style> enemies, causing them to lose <style=cIsDamage>3%</style> of their <style=cIsHealth>current health</style> every second for <style=cIsDamage>5s</style>.";
+        public override string Description => "<style=cIsDamage>8.5%</style> <style=cStack>(+5% per stack)</style> chance to <style=cIsDamage>intoxicate</style> enemies, causing them to lose <style=cIsDamage>2.5%</style> of their <style=cIsHealth>current health</style> every second for <style=cIsDamage>5s</style>.";
         public override string Lore => "These are as delicious as I told you. I just hope it doesn't crack open on the way there like the last one.\nI should get a job...";
         public override ItemTier Tier => ItemTier.Tier2;
         public override ItemTag[] Tags => new ItemTag[]

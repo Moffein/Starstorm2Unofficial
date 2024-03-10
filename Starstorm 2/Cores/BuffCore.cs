@@ -54,9 +54,9 @@ namespace Starstorm2Unofficial.Cores
             detritiveBuff = ScriptableObject.CreateInstance<BuffDef>();
             detritiveBuff.buffColor = Color.white;
             //detritiveBuff.buffIndex = BuffIndex.Count;
-            detritiveBuff.canStack = false;
+            detritiveBuff.canStack = true;
             detritiveBuff.iconSprite = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("Status_Trematodes");
-            detritiveBuff.isDebuff = false;
+            detritiveBuff.isDebuff = true;
             detritiveBuff.name = "SS2UInfested";
             buffDefs.Add(detritiveBuff);
 

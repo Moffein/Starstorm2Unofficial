@@ -4,10 +4,15 @@
 - Executioner
 	- Execution
 		- Added mass scaling to downwards force.
+- Nemmando
+	- Gouge no longer triggers Bands when stacked.
 		
 - Items
+	- Detritive Trematode
+		- Enemies below 25% health are infested for 100% (+100%) damage per second.
+		
 	- Strange Can
-		- 8.5% (+5%) chance to intoxicate enemies, causing them to lose 3% of their current health every second for 5s.
+		- 8.5% (+5%) chance to intoxicate enemies, causing them to lose 2.5% of their current health every second for 5s.
 		
 `0.17.2`
 
