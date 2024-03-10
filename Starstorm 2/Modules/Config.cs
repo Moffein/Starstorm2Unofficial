@@ -265,6 +265,12 @@ namespace Starstorm2Unofficial.Modules
                              false,
                              "Distant Gash fully charges without holding down the button. (Client-Side)");
 
+            EntityStates.SS2UStates.Nucleator.Utility.FireLeap.leapAirControl = StarstormPlugin.instance.Config.Bind("Starstorm 2 :: Survivors :: Nucleator",
+                             "Utility Air Control",
+                             false,
+                             "Utility gains extra air control at higher movement speeds (this causes momentum to be preserved worse). (Client-Side)");
+
+
             //survivors
             //EnableExecutioner = CharacterEnableConfig("Executioner");
             //EnableNemmando = CharacterEnableConfig("Nemmando", "Nemesis Commando");
@@ -302,9 +308,10 @@ namespace Starstorm2Unofficial.Modules
             ModSettingsManager.AddOption(new RiskOfOptions.Options.KeyBindOption(RestKeybind));
             ModSettingsManager.AddOption(new RiskOfOptions.Options.KeyBindOption(TauntKeybind));
 
-
             ModSettingsManager.AddOption(new RiskOfOptions.Options.CheckBoxOption(NemmandoSecondaryAlwaysFullCharge));
             ModSettingsManager.AddOption(new RiskOfOptions.Options.CheckBoxOption(NemmandoDecisiveMoveSpeedScaling));
+
+            ModSettingsManager.AddOption(new RiskOfOptions.Options.CheckBoxOption(EntityStates.SS2UStates.Nucleator.Utility.FireLeap.leapAirControl));
         }
 
         //Taken from https://github.com/ToastedOven/CustomEmotesAPI/blob/main/CustomEmotesAPI/CustomEmotesAPI/CustomEmotesAPI.cs

@@ -4,11 +4,13 @@ using RoR2;
 using UnityEngine.AddressableAssets;
 using Starstorm2Unofficial.Cores;
 using R2API;
+using BepInEx.Configuration;
 
 namespace EntityStates.SS2UStates.Nucleator.Utility
 {
     public class FireLeap : BaseCharacterMain
     {
+        public static ConfigEntry<bool> leapAirControl;
         public static float minimumDuration = 0.3f;
         public static float upwardVelocity = 7f;
         public static float forwardVelocity = 3f;
@@ -49,9 +51,16 @@ namespace EntityStates.SS2UStates.Nucleator.Utility
                 base.characterBody.RecalculateStats();  //Get sprint bonus
                 this.moveSpeedStat = base.characterBody.moveSpeed;
 
-                float moveSpeedCoeff = base.characterBody.moveSpeed / (base.characterBody.baseMoveSpeed * (!base.characterBody.isSprinting ? 1f : base.characterBody.sprintingSpeedMultiplier));
-                moveSpeedCoeff = Mathf.Min(moveSpeedCoeff, 3f);
-                base.characterMotor.airControl *= moveSpeedCoeff;
+                if (!leapAirControl.Value)
+                {
+                    base.characterMotor.airControl = 0.15f;
+                }
+                else
+                {
+                    float moveSpeedCoeff = base.characterBody.moveSpeed / (base.characterBody.baseMoveSpeed * (!base.characterBody.isSprinting ? 1f : base.characterBody.sprintingSpeedMultiplier));
+                    moveSpeedCoeff = Mathf.Min(moveSpeedCoeff, 3f);
+                    base.characterMotor.airControl *= moveSpeedCoeff;
+                }
             }
 
             if (NetworkServer.active)
