@@ -35,8 +35,8 @@ namespace Starstorm2Unofficial.Cores
         public static DotIndex StrangeCanPoison;
         public static DotIndex NemmandoGouge;
 
-        public static GameObject StrangeCanHitEffect = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Croco/CrocoDiseaseImpactEffect.prefab").WaitForCompletion();
         public static GameObject TrematodeHitEffect;
+        public static GameObject StrangeCanHitEffect = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Croco/CrocoDiseaseImpactEffect.prefab").WaitForCompletion();
 
         public DoTCore()
         {
@@ -54,7 +54,7 @@ namespace Starstorm2Unofficial.Cores
             IL.RoR2.DotController.InflictDot_refInflictDotInfo += DotController_InflictDot_refInflictDotInfo;
             */
 
-            TrematodeHitEffect = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Beetle/BeetleSpitExplosion.prefab").WaitForCompletion().InstantiateClone("SS2UTrematodeEffect", false);
+            TrematodeHitEffect = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Beetle/BeetleSpitExplosion.prefab").WaitForCompletion().InstantiateClone("SS2UTrematodeHitEffect", false);
             Modules.Assets.AddEffect(TrematodeHitEffect);   //This removes the sound from it
         }
 

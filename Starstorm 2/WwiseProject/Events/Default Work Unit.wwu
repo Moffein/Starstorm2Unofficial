@@ -951,17 +951,6 @@
 												</Reference>
 											</ReferenceList>
 										</Action>
-										<Action Name="" ID="{A0931169-6839-4D94-98BC-CF85D93DB4E1}" ShortID="619052964">
-											<PropertyList>
-												<Property Name="ActionType" Type="int16" Value="1"/>
-												<Property Name="FadeTime" Type="Real64" Value="1"/>
-											</PropertyList>
-											<ReferenceList>
-												<Reference Name="Target">
-													<ObjectRef Name="RainAmbience2" ID="{4876730F-BF9C-4299-9007-0260073C59E8}" WorkUnitID="{3D683E44-DAC0-4717-B7E2-3D4C4555FE6A}"/>
-												</Reference>
-											</ReferenceList>
-										</Action>
 									</ChildrenList>
 								</Event>
 								<Event Name="SS2U_WindAmbience" ID="{65141DD0-CAB0-4122-BDE0-3BDE9BF08AA2}">

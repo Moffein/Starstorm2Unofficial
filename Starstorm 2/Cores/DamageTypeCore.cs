@@ -1,6 +1,7 @@
 ﻿using R2API;
 using R2API.Utils;
 using RoR2;
+using Starstorm2Unofficial.Cores.Items;
 using System;
 using UnityEngine;
 using UnityEngine.Networking;

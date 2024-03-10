@@ -37,6 +37,7 @@ The SS2 team is free to use any of the new code from this mod as long as this re
 		- Droid Head
 		- Green Chocolate
 		- Erratic Gadget (Disabled)
+		- Nkota's Heritage (Disabled)
 	
 	- Boss:
 		- Stirring Soul

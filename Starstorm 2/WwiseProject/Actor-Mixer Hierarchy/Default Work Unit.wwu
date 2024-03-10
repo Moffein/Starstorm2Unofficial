@@ -2468,7 +2468,7 @@
 							<ChildrenList>
 								<Sound Name="JetBootsExplosion" ID="{89CD4140-C217-461D-9EBC-B69FA98B6A52}" ShortID="168505324">
 									<PropertyList>
-										<Property Name="3DSpatialization" Type="int16" Value="1"/>
+										<Property Name="3DSpatialization" Type="int16" Value="2"/>
 										<Property Name="OverridePositioning" Type="bool" Value="True"/>
 										<Property Name="Pitch" Type="int32">
 											<ModifierList>
@@ -2515,7 +2515,7 @@
 								</Sound>
 								<Sound Name="item_proc_soulonkillLoop_01" ID="{2C86BB91-694A-481D-B562-DCCBC15841F5}" ShortID="100292715">
 									<PropertyList>
-										<Property Name="3DSpatialization" Type="int16" Value="1"/>
+										<Property Name="3DSpatialization" Type="int16" Value="2"/>
 										<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
 										<Property Name="OverridePositioning" Type="bool" Value="True"/>
 										<Property Name="Volume" Type="Real64">
@@ -2693,7 +2693,7 @@
 								</Sound>
 								<RandomSequenceContainer Name="JetBoot" ID="{789B0CFF-8E5F-4B1C-B301-014B89B6F3E7}" ShortID="442419194">
 									<PropertyList>
-										<Property Name="3DSpatialization" Type="int16" Value="1"/>
+										<Property Name="3DSpatialization" Type="int16" Value="2"/>
 										<Property Name="OverridePositioning" Type="bool" Value="True"/>
 										<Property Name="Pitch" Type="int32">
 											<ModifierList>
@@ -2783,7 +2783,7 @@
 								</RandomSequenceContainer>
 								<RandomSequenceContainer Name="HotSauce" ID="{287F999E-FB96-4E0F-A074-7A028A931BA2}" ShortID="834029613">
 									<PropertyList>
-										<Property Name="3DSpatialization" Type="int16" Value="1"/>
+										<Property Name="3DSpatialization" Type="int16" Value="2"/>
 										<Property Name="OverridePositioning" Type="bool" Value="True"/>
 										<Property Name="Pitch" Type="int32">
 											<ModifierList>
@@ -2864,7 +2864,7 @@
 								</RandomSequenceContainer>
 								<RandomSequenceContainer Name="DroidHead" ID="{95C222F2-ED05-43C7-820F-03DD4F5B63DA}" ShortID="173182753">
 									<PropertyList>
-										<Property Name="3DSpatialization" Type="int16" Value="1"/>
+										<Property Name="3DSpatialization" Type="int16" Value="2"/>
 										<Property Name="OverridePositioning" Type="bool" Value="True"/>
 									</PropertyList>
 									<ReferenceList>
@@ -3137,7 +3137,9 @@
 								</RandomSequenceContainer>
 								<Sound Name="item_proc_greaterBanner_01" ID="{CBC7D7D6-F6B1-435F-8997-84F92DD5940E}" ShortID="796375391">
 									<PropertyList>
+										<Property Name="3DSpatialization" Type="int16" Value="2"/>
 										<Property Name="OverrideEffect" Type="bool" Value="True"/>
+										<Property Name="OverridePositioning" Type="bool" Value="True"/>
 										<Property Name="Pitch" Type="int32">
 											<ValueList>
 												<Value>-150</Value>
@@ -3150,6 +3152,9 @@
 										</Property>
 									</PropertyList>
 									<ReferenceList>
+										<Reference Name="Attenuation">
+											<ObjectRef Name="SurvivorAttenuation" ID="{A986EB11-7B06-4BE3-9630-2DEB2646D5C4}" WorkUnitID="{01E36904-BE25-433F-9547-3A046044CA56}"/>
+										</Reference>
 										<Reference Name="Conversion">
 											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{94E9A332-4F75-42A2-884C-469412070470}"/>
 										</Reference>
@@ -5025,7 +5030,6 @@
 										<Sound Name="WindAmbience1" ID="{36E50105-4915-4BA0-835A-CE6B6E56D89A}" ShortID="846616746">
 											<PropertyList>
 												<Property Name="3DSpatialization" Type="int16" Value="2"/>
-												<Property Name="OverridePositioning" Type="bool" Value="True"/>
 												<Property Name="Volume" Type="Real64">
 													<ValueList>
 														<Value>15</Value>
@@ -5058,8 +5062,9 @@
 										</Sound>
 										<Sound Name="WindAmbience2" ID="{A4EB1D8F-5EBF-4D8C-BEA8-02265AFB7D00}" ShortID="432510388">
 											<PropertyList>
-												<Property Name="3DSpatialization" Type="int16" Value="1"/>
+												<Property Name="3DSpatialization" Type="int16" Value="2"/>
 												<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
+												<Property Name="ListenerRelativeRouting" Type="bool" Value="False"/>
 												<Property Name="OverridePositioning" Type="bool" Value="True"/>
 												<Property Name="Volume" Type="Real64">
 													<ValueList>
@@ -5095,7 +5100,7 @@
 											<PropertyList>
 												<Property Name="3DSpatialization" Type="int16" Value="2"/>
 												<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
-												<Property Name="OverridePositioning" Type="bool" Value="True"/>
+												<Property Name="ListenerRelativeRouting" Type="bool" Value="False"/>
 												<Property Name="Volume" Type="Real64">
 													<ValueList>
 														<Value>-7</Value>
@@ -5131,7 +5136,6 @@
 												<Property Name="3DSpatialization" Type="int16" Value="2"/>
 												<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
 												<Property Name="ListenerRelativeRouting" Type="bool" Value="False"/>
-												<Property Name="OverridePositioning" Type="bool" Value="True"/>
 												<Property Name="Volume" Type="Real64">
 													<ValueList>
 														<Value>-7</Value>

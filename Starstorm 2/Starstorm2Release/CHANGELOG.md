@@ -16,6 +16,10 @@
 	- Strange Can
 		- 8.5% (+5%) chance to intoxicate enemies, causing them to lose 2.5% of their current health every second for 5s.
 		
+	- Nkota's Heritage (Disabled)
+		- Receive an item on level up or starting the Teleporter event. Rerolls for a higher item tier 0 (+1 per stack) times.
+			- Item tier uses same chances as a small chest.
+		
 `0.17.2`
 
 - Chirr

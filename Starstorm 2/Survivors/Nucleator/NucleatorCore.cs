@@ -204,6 +204,7 @@ namespace Starstorm2Unofficial.Survivors.Nucleator
             Modules.States.AddState(typeof(FireLeapOvercharge));
 
             Modules.States.AddState(typeof(BuffSelf));
+            Modules.States.AddState(typeof(BuffSelfScepter));
         }
 
 

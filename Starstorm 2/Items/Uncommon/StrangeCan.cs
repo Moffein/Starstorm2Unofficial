@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using R2API;
 using RoR2;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
 
 namespace Starstorm2Unofficial.Cores.Items
 {
@@ -24,6 +25,14 @@ namespace Starstorm2Unofficial.Cores.Items
         public override string PickupIconPath => "StrangeCan_Icon";
         public override string PickupModelPath => "MDLStrangeCan";
 
+        public static NetworkSoundEventDef procSound;
+
+        public override void Init()
+        {
+            base.Init();
+            procSound = Modules.Assets.CreateNetworkSoundEventDef("SS2UStrangeCan");
+        }
+
         public override void RegisterHooks()
         {
             SharedHooks.OnHitEnemy.OnHitAttackerInventoryActions += ProcItem;
@@ -34,6 +43,8 @@ namespace Starstorm2Unofficial.Cores.Items
             int itemCount = attackerInventory.GetItemCount(itemDef);
             if (itemCount <= 0) return;
             if (!Util.CheckRoll(3.5f + 5f * itemCount, attackerBody.master)) return;
+
+            if (!victimBody.HasBuff(BuffCore.strangeCanPoisonBuff)) EffectManager.SimpleSoundEffect(procSound.index, damageInfo.position, true);
 
             var dotInfo = new InflictDotInfo()
             {

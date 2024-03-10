@@ -75,7 +75,55 @@ namespace Starstorm2Unofficial.Cores
             int item = Run.instance.treasureRng.RangeInt(0, dropList.Count);
 
             PickupDropletController.CreatePickupDroplet(dropList[item], transform.position, new Vector3(0, 0, 0));
+        }
 
+        public static void RollNkota(Transform transform, int itemCount)
+        {
+            int rerollCount = itemCount - 1;
+
+            float t1Chance = 79.2f;
+            float t2Chance = 19.8f;
+            float t3Chance = 1f;
+
+            int tier = RollTierSmallChest();
+            for (int i = 0; i < rerollCount && tier < 3; i++)
+            {
+                int newTier = RollTierSmallChest();
+                if (newTier > tier) tier = newTier;
+            }
+
+            List<PickupIndex> dropList;
+            switch (tier)
+            {
+                case 3:
+                    dropList = Run.instance.availableTier3DropList;
+                    break;
+                case 2:
+                    dropList = Run.instance.availableTier2DropList;
+                    break;
+                default:
+                    dropList = Run.instance.availableTier1DropList;
+                    break;
+            }
+
+            int item = Run.instance.treasureRng.RangeInt(0, dropList.Count);
+            PickupDropletController.CreatePickupDroplet(dropList[item], transform.position, new Vector3(0, 0, 0));
+        }
+
+        private static int RollTierSmallChest()
+        {
+            int tier = 1;
+
+            if (Util.CheckRoll(1))
+            {
+                tier = 3;
+            }
+            else if (Util.CheckRoll(100f * (19.8f/99f)))
+            {
+                tier = 2;
+            }
+
+            return tier;
         }
     }
 }

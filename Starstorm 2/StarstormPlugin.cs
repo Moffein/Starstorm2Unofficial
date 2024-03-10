@@ -202,6 +202,7 @@ namespace Starstorm2Unofficial
                 AddItemIfEnabled(new CoffeeBag(), ItemCore.instance.items, false);
                 AddItemIfEnabled(new RelicOfMass(), ItemCore.instance.items, false);
                 AddItemIfEnabled(new ErraticGadget(), ItemCore.instance.items, false);
+                AddItemIfEnabled(new NkotasHeritage(), ItemCore.instance.items, false);
 
                 //AddItemIfEnabled(new DetritiveTrematode(), ItemCore.instance.items);
                 //AddItemIfEnabled(new Malice(), ItemCore.instance.items);
