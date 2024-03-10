@@ -53,7 +53,7 @@ namespace EntityStates.SS2UStates.Nucleator
                 chargeComponent.SetCharge(chargeFraction, overchargeFraction);
             }
 
-            bool isOvercharge = chargeFraction >= overchargeFraction;
+            bool isOvercharge = chargeFraction > overchargeFraction;
             bool isAI = base.characterBody && !base.characterBody.isPlayerControlled;
             bool isBuffed = base.characterBody && base.characterBody.HasBuff(BuffCore.nucleatorSpecialBuff);
 
@@ -61,7 +61,7 @@ namespace EntityStates.SS2UStates.Nucleator
             bool forceStateEndAI = isAI && isOvercharge && !isBuffed;
             if (forceStateEndAI)
             {
-                this.chargeFraction = overchargeFraction - 0.01f;
+                this.chargeFraction = overchargeFraction;
                 isOvercharge = false;
             }
 
@@ -97,7 +97,7 @@ namespace EntityStates.SS2UStates.Nucleator
 
                 if (chargeFraction >= 1f || (!GetInputPressed() || forceStateEndAI))
                 {
-                    if (chargeFraction >= overchargeFraction)
+                    if (chargeFraction > overchargeFraction)
                     {
                         SetNextStateOvercharge();
                         return;
@@ -111,10 +111,7 @@ namespace EntityStates.SS2UStates.Nucleator
             }
         }
 
-        protected virtual void OnOverchargeStart()
-        {
-
-        }
+        protected virtual void OnOverchargeStart() { }
 
         public override void OnExit()
         {
