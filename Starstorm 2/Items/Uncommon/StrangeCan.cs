@@ -11,11 +11,11 @@ namespace Starstorm2Unofficial.Cores.Items
 {
     class StrangeCan : SS2Item<StrangeCan>
     {
-        public override string NameInternal => "PoisonOnHit";
+        public override string NameInternal => "SS2UPoisonOnHit";
         public override string Name => "Strange Can";
-        public override string Pickup => "Chance to intoxicate enemies, causing damage over time.";
-        public override string Description => $"<style=cIsDamage>{StaticValues.canBaseChance}%</style> <style=cStack>(+{StaticValues.canStackChance}% per stack)</style> chance to <style=cIsDamage>intoxicate</style> enemies dealing <style=cIsDamage>{StaticValues.canDuration * StaticValues.canDamage * 100}% damage over time</style>.";
-        public override string Lore => "Two figures sit, one shivering among a sea of rubble in a frozen burrow. The only lights given are the small remains of a fire, and old sparking wires. Barely any protection against the biting cold.\n\n\"Hey...\" He looks up, distantly hopeful. \"Do you think we'll ever make it off this rock?\"\n\n\"Hard to say.\" She takes a bite of a ration she found.\n\n\"Well there has to be something we've overlooked, right? Some method we just haven't thought of yet?\" He stands up, and begins pacing around anxiously.\n\n\"Could be.\" Another bite.\n\n\"Maybe there's some wreckage with working parts we just haven't found yet, or a problem in the current ones we could fix?\" A shine returning to his eyes, getting himself more hopeful and excited.\n\n\"Definitely possible.\" Another bite.\n\nHe stops as a disgusted look crosses his face. \"Ugh, could you please help me think of something instead of just eating?\"\n\n\"I wouldn't worry about it.\" Another bite.\n\nHis disgust quickly gives way to blatant frustration and anger. \"Why not?! Don't you want to get out of here?!\"\n\nShe sighs, and runs a hand through her hair. \"Well sure. But that doesn't mean we've gotta stress over every little thing. We're alive, ain't we? We're lucky we have that much.\"\n\n\"Well... I suppose you're right... It'd be bad to get worked up right now...\" His expression relaxes as he looks back to the ground.\n\n\"See? Just sit down, relax, and let my old stash warm you up.\" Another bite, as she passes the can.\n";
+        public override string Pickup => "Chance to intoxicate enemies, causing heavy damage over time.";
+        public override string Description => "<style=cIsDamage>8.5%</style> <style=cStack>(+5% per stack)</style> chance to <style=cIsDamage>intoxicate</style> enemies, causing them to lose <style=cIsDamage>2%</style> of their <style=cIsHealth>current health</style> every second for <style=cIsDamage>5s</style>.";
+        public override string Lore => "These are as delicious as I told you. I just hope it doesn't crack open on the way there like the last one.\nI should get a job...";
         public override ItemTier Tier => ItemTier.Tier2;
         public override ItemTag[] Tags => new ItemTag[]
         {
@@ -26,7 +26,25 @@ namespace Starstorm2Unofficial.Cores.Items
 
         public override void RegisterHooks()
         {
-            On.RoR2.GlobalEventManager.OnHitEnemy += GlobalEventManager_OnHitEnemy;
+            SharedHooks.OnHitEnemy.OnHitAttackerInventoryActions += ProcItem;
+        }
+
+        private void ProcItem(DamageInfo damageInfo, CharacterBody victimBody, CharacterBody attackerBody, Inventory attackerInventory)
+        {
+            int itemCount = attackerInventory.GetItemCount(itemDef);
+            if (itemCount <= 0) return;
+            if (!Util.CheckRoll(3.5f + 5f * itemCount, attackerBody.master)) return;
+
+            var dotInfo = new InflictDotInfo()
+            {
+                attackerObject = attackerBody.gameObject,
+                victimObject = victimBody.gameObject,
+                dotIndex = DoTCore.StrangeCanPoison,
+                duration = 5f,
+                damageMultiplier = 1f,
+                maxStacksFromAttacker = 1
+            };
+            DotController.InflictDot(ref dotInfo);
         }
 
         public override ItemDisplayRuleDict CreateDisplayRules()
@@ -166,37 +184,6 @@ namespace Starstorm2Unofficial.Cores.Items
             });
 
             return rules;
-        }
-
-
-        private void GlobalEventManager_OnHitEnemy(On.RoR2.GlobalEventManager.orig_OnHitEnemy orig, GlobalEventManager self, DamageInfo damageInfo, UnityEngine.GameObject victim)
-        {
-            GameObject attacker = damageInfo.attacker;
-            if (self && attacker)
-            {
-                var attackerBody = attacker.GetComponent<CharacterBody>();
-                var victimBody = victim.GetComponent<CharacterBody>();
-                int canCount = GetCount(attackerBody);
-                if (canCount > 0)
-                {
-                    bool flag = (damageInfo.damageType & DamageType.PoisonOnHit) > DamageType.Generic;
-                    if ((canCount > 0 || flag) && (flag || Util.CheckRoll((StaticValues.canBaseChance + (StaticValues.canDamage * (float)canCount)) * damageInfo.procCoefficient, attackerBody.master)))
-                    {
-                        ProcChainMask procChainMask = damageInfo.procChainMask;
-                        procChainMask.AddProc(ProcType.BleedOnHit);
-                        var dotInfo = new InflictDotInfo()
-                        {
-                            attackerObject = attacker,
-                            victimObject = victim,
-                            dotIndex = DoTCore.StrangeCanPoison,
-                            duration = StaticValues.canDuration,
-                            damageMultiplier = StaticValues.canDamage
-                        };
-                        DotController.InflictDot(ref dotInfo);
-                    }
-                }
-            }
-            orig(self, damageInfo, victim);
         }
     }
 }

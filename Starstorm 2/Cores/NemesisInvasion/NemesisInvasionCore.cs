@@ -143,7 +143,11 @@ namespace Starstorm2Unofficial.Cores.NemesisInvasion
                 {
                     if (self.body && self.body.inventory && self.body.inventory.GetItemCount(NemesisMarkerItem) > 0)
                     {
-                        if (damageInfo.damageType.HasFlag(DamageType.FallDamage))
+                        bool isFall = damageInfo.damageType.HasFlag(DamageType.FallDamage);
+                        bool isVoidFog = !damageInfo.attacker && !damageInfo.inflictor
+                            && damageInfo.damageColorIndex == DamageColorIndex.Void
+                            && damageInfo.damageType == (DamageType.BypassArmor | DamageType.BypassBlock);
+                        if (isFall || isVoidFog)
                         {
                             damageInfo.damage = 0f;
                             damageInfo.rejected = true;

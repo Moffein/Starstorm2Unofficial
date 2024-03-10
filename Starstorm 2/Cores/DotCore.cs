@@ -1,13 +1,6 @@
-﻿using Mono.Cecil.Cil;
-using MonoMod.Cil;
-using R2API;
+﻿using R2API;
 using R2API.Utils;
 using RoR2;
-using System;
-using System.Collections.Generic;
-using System.Reflection;
-using UnityEngine;
-using UnityEngine.Networking;
 using static RoR2.DotController;
 
 //FIXME: it's totally fucking fucked mate, big time
@@ -43,6 +36,7 @@ namespace Starstorm2Unofficial.Cores
         public DoTCore()
         {
             RegisterDoTs();
+
             /*
             IL.RoR2.DotController.Awake += DotController_Awake;
             On.RoR2.DotController.Awake += DotController_Awake1;
@@ -92,7 +86,7 @@ namespace Starstorm2Unofficial.Cores
         //    orig(self);
 
         //    ActiveCustomDots.Add(self, new bool[CustomDotCount]);
-            
+
         //}
 
         //private void DotController_OnDestroy(On.RoR2.DotController.orig_OnDestroy orig, DotController self)
@@ -154,7 +148,7 @@ namespace Starstorm2Unofficial.Cores
             //gougeIndex = RegisterDot(0.5f, 0.33f, DamageColorIndex.Bleed, BuffCore.gougeBuff);
 
             DetritiveTrematodeInfection = DotAPI.RegisterDotDef(1, 0.5f, DamageColorIndex.Item, BuffCore.detritiveBuff);
-            StrangeCanPoison = DotAPI.RegisterDotDef(0.5f, 0.5f, DamageColorIndex.Item, BuffCore.strangeCanPoisonBuff);
+            StrangeCanPoison = DotAPI.RegisterDotDef(1f, 0.5f, DamageColorIndex.Poison, BuffCore.strangeCanPoisonBuff);
             NemmandoGouge = DotAPI.RegisterDotDef(0.25f, 0.25f, DamageColorIndex.Bleed, BuffCore.gougeBuff);//0.5f, 0.33f
         }
 

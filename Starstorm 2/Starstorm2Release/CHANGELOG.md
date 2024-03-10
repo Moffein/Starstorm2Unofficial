@@ -5,6 +5,10 @@
 	- Execution
 		- Added mass scaling to downwards force.
 		
+- Items
+	- Strange Can
+		- 8.5% (+5%) chance to intoxicate enemies, causing them to lose 2% of their currenet health every second for 5s.
+		
 `0.17.2`
 
 - Chirr

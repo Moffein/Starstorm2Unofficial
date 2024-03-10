@@ -182,7 +182,7 @@
     <Compile Include="Items\Trashbin\PrototypeJetBoots.cs" />
     <Compile Include="Items\Relic\Disabled\RelicOfMass.cs" />
     <Compile Include="Items\Nemesis\StirringSoul.cs" />
-    <Compile Include="Items\Unimplemented\Uncommon\StrangeCan.cs" />
+    <Compile Include="Items\Uncommon\StrangeCan.cs" />
     <Compile Include="Items\Uncommon\WatchMetronome.cs" />
     <Compile Include="Cores\EnemyCore.cs" />
     <Compile Include="Cores\DamageTypeCore.cs" />

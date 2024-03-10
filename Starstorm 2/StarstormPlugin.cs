@@ -189,6 +189,7 @@ namespace Starstorm2Unofficial
                 AddItemIfEnabled(new Diary(), ItemCore.instance.items);
 
                 AddItemIfEnabled(new WatchMetronome(), ItemCore.instance.items);
+                AddItemIfEnabled(new StrangeCan(), ItemCore.instance.items);
                 AddItemIfEnabled(new DroidHead(), ItemCore.instance.items);
 
                 AddItemIfEnabled(new GreenChocolate(), ItemCore.instance.items);

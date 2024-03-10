@@ -22,11 +22,6 @@ namespace Starstorm2Unofficial
         public static float bootsProc;
         public static JetBootsEffectQuality timbsQuality;
 
-        public static float canBaseChance;
-        public static float canStackChance;
-        public static float canDuration;
-        public static float canDamage;
-
         public static float hottestSusRadius;
         public static float hottestSusHit;
         public static float hottestSusDuration;
@@ -48,11 +43,6 @@ namespace Starstorm2Unofficial
             hottestSusRadius = 30f;
             hottestSusDuration = 6f;
             hottestSusDamage = 1f;
-
-            canBaseChance = 8.5f;
-            canStackChance = 5f;
-            canDuration = 3.5f;
-            canDamage = 1f;
 
             bootsBase = 1.5f;
             bootsStack = 1f;

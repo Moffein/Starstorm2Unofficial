@@ -2,6 +2,7 @@
 using MonoMod.Cil;
 using R2API;
 using RoR2;
+using Starstorm2Unofficial.Cores.NemesisInvasion;
 using Starstorm2Unofficial.Survivors.Chirr.Components;
 using System;
 using System.Collections.Generic;
@@ -74,7 +75,7 @@ namespace Starstorm2Unofficial.Cores
             strangeCanPoisonBuff.iconSprite = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("Status_StrangeCan");
             strangeCanPoisonBuff.name = "SS2UStrangeCanPoison";
             strangeCanPoisonBuff.isDebuff = true;
-            strangeCanPoisonBuff.buffColor = Color.green;
+            strangeCanPoisonBuff.buffColor = new Color32(160, 230, 99, 255);
             buffDefs.Add(strangeCanPoisonBuff);
 
             sigilBuff = ScriptableObject.CreateInstance<BuffDef>();
@@ -245,7 +246,8 @@ namespace Starstorm2Unofficial.Cores
             if (NetworkServer.active)
             {
                 //Chirr Friends dont take void fog damage
-                if (self.body.HasBuff(BuffCore.chirrFriendBuff))
+                bool isChirrFriend = self.body.HasBuff(BuffCore.chirrFriendBuff);
+                if (isChirrFriend)
                 {
                     if (!damageInfo.attacker && !damageInfo.inflictor
                         && damageInfo.damageColorIndex == DamageColorIndex.Void
@@ -254,9 +256,9 @@ namespace Starstorm2Unofficial.Cores
                         damageInfo.damage = 0f;
                         damageInfo.rejected = true;
                     }
-
                     if (!damageInfo.canRejectForce) damageInfo.force *= 0.1f;
                 }
+
             }
 
             orig(self, damageInfo);

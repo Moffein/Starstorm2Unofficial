@@ -136,6 +136,11 @@ namespace Starstorm2Unofficial.Cores
                     triggerGougeProc = true;
                 }
 
+                if (damageInfo.dotIndex == DoTCore.StrangeCanPoison)
+                {
+                    damageInfo.damage = self.combinedHealth * 0.02f;
+                }
+
                 if (damageInfo.HasModdedDamageType(ModdedDamageTypes.GuaranteedFearOnHit))
                 {
                     self.body.AddTimedBuff(BuffCore.fearDebuff, EntityStates.SS2UStates.Executioner.ExecutionerDash.debuffDuration);
