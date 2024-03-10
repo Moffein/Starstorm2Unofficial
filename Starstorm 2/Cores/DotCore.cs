@@ -1,6 +1,8 @@
 ﻿using R2API;
 using R2API.Utils;
 using RoR2;
+using UnityEngine;
+using UnityEngine.AddressableAssets;
 using static RoR2.DotController;
 
 //FIXME: it's totally fucking fucked mate, big time
@@ -32,6 +34,8 @@ namespace Starstorm2Unofficial.Cores
         public static DotIndex DetritiveTrematodeInfection;
         public static DotIndex StrangeCanPoison;
         public static DotIndex NemmandoGouge;
+
+        public static GameObject StrangeCanHitEffect = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Croco/CrocoDiseaseImpactEffect.prefab").WaitForCompletion();
 
         public DoTCore()
         {

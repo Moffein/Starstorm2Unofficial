@@ -138,7 +138,8 @@ namespace Starstorm2Unofficial.Cores
 
                 if (damageInfo.dotIndex == DoTCore.StrangeCanPoison)
                 {
-                    damageInfo.damage = self.combinedHealth * 0.02f;
+                    damageInfo.damage = self.combinedHealth * 0.03f;
+                    EffectManager.SimpleEffect(DoTCore.StrangeCanHitEffect, damageInfo.position, self.transform.rotation, true);
                 }
 
                 if (damageInfo.HasModdedDamageType(ModdedDamageTypes.GuaranteedFearOnHit))

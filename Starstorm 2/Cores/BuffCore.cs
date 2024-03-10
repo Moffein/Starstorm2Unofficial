@@ -75,7 +75,7 @@ namespace Starstorm2Unofficial.Cores
             strangeCanPoisonBuff.iconSprite = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("Status_StrangeCan");
             strangeCanPoisonBuff.name = "SS2UStrangeCanPoison";
             strangeCanPoisonBuff.isDebuff = true;
-            strangeCanPoisonBuff.buffColor = new Color32(160, 230, 99, 255);
+            strangeCanPoisonBuff.buffColor = new Color32(200, 233, 61, 255);
             buffDefs.Add(strangeCanPoisonBuff);
 
             sigilBuff = ScriptableObject.CreateInstance<BuffDef>();
