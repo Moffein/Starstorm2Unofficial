@@ -25,10 +25,12 @@ The SS2 team is free to use any of the new code from this mod as long as this re
 		- Fork
 		- Molten Coin
 		- Diary
-		- Dormant Fungus (Disabled)
+		- Detritive Trematode
 		- Coffee Bag (Disabled)
+		- Dormant Fungus (Disabled)
 
 	- Uncommon:
+		- Strange Can
 		- Watch Metronome
 
 	- Rare:
