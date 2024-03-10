@@ -164,6 +164,10 @@ namespace Starstorm2Unofficial.Cores
                             if (trematodeIndex >= 0) dot.RemoveDotStackAtServer(trematodeIndex);
                         }
                     }
+                    else
+                    {
+                        EffectManager.SimpleEffect(DoTCore.TrematodeHitEffect, damageInfo.position, self.transform.rotation, true);
+                    }
                 }
 
                 if (damageInfo.HasModdedDamageType(ModdedDamageTypes.GuaranteedFearOnHit))

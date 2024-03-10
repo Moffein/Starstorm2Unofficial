@@ -8,8 +8,8 @@ namespace EntityStates.SS2UStates.Nucleator.Secondary
 {
     public class FireSecondary : BaseState
     {
-        public static float force = 4000f;  //Knockback feels bad if force is not consistent
-        public static float selfKnockbackForce = 1200f; //This is meant to be a really small amount, just a subtle thing for feel.
+        public static float force = 3200f;  //Knockback feels bad if force is not consistent
+        public static float selfKnockbackForce = 1600f; //This is meant to be a really small amount, just a subtle thing for feel.
         public static float range = 40f;
         public static float baseDuration = 0.4f;
         public static GameObject coneEffectPrefab;

@@ -109,8 +109,19 @@ namespace Starstorm2Unofficial.Survivors.Nucleator
             bodyPrefab.AddComponent<NucleatorChargeComponent>();
             bodyPrefab.AddComponent<NucleatorNetworkComponent>();
 
-            CameraTargetParams cameraTargetParams = bodyPrefab.GetComponent<CameraTargetParams>();
-            cameraTargetParams.cameraParams.data.idealLocalCameraPos = new Vector3(0f, 1.2f, -11f);
+            /*CameraTargetParams cameraTargetParams = bodyPrefab.GetComponent<CameraTargetParams>();
+            cameraTargetParams.cameraParams.data.idealLocalCameraPos = new Vector3(0f, 1.2f, -11f);*/
+
+            CameraTargetParams ctp = bodyPrefab.GetComponent<CameraTargetParams>();
+
+            var _cameraParams = ScriptableObject.CreateInstance<CharacterCameraParams>();
+            _cameraParams.data.minPitch = -70;
+            _cameraParams.data.maxPitch = 70;
+            _cameraParams.data.wallCushion = 0.1f;
+            _cameraParams.data.pivotVerticalOffset = 1.7f;
+            _cameraParams.data.idealLocalCameraPos = new Vector3(0f, 1.2f, -12f);
+
+            ctp.cameraParams = _cameraParams;
 
             FireIrradiate.projectilePrefab = NucleatorProjectiles.BuildPrimary();
             FireIrradiateOvercharge.projectilePrefab = NucleatorProjectiles.BuildPrimaryOvercharge();
