@@ -59,8 +59,13 @@ namespace EntityStates.SS2UStates.Nucleator
 
             //AI will always full charge without hurting themselves, and only overcharge if they are buffed by their special.
             bool forceStateEndAI = isAI && isOvercharge && !isBuffed;
+            if (forceStateEndAI)
+            {
+                this.chargeFraction = overchargeFraction - 0.01f;
+                isOvercharge = false;
+            }
 
-            if (isOvercharge && !forceStateEndAI)
+            if (isOvercharge)
             {
                 if (!playedOverchargeSound)
                 {
