@@ -92,7 +92,11 @@ namespace Starstorm2Unofficial.Survivors.Nucleator
             base.InitializeCharacter();
             R2API.ItemAPI.DoNotAutoIDRSFor(bodyPrefab);
 
+            EntityStateMachine bodyMachine = EntityStateMachine.FindByCustomName(bodyPrefab, "Body");
+            bodyMachine.mainStateType = new SerializableEntityStateType(typeof(NucleatorMain));
+
             NetworkStateMachine nsm = bodyPrefab.GetComponent<NetworkStateMachine>();
+
             EntityStateMachine specialStateMachine = bodyPrefab.AddComponent<EntityStateMachine>();
             specialStateMachine.customName = "SpecialBuff";
             specialStateMachine.initialStateType = new SerializableEntityStateType(typeof(EntityStates.Idle));
@@ -191,6 +195,8 @@ namespace Starstorm2Unofficial.Survivors.Nucleator
 
         private void RegisterStates()
         {
+            Modules.States.AddState(typeof(NucleatorMain));
+
             Modules.States.AddState(typeof(ChargeIrradiate));
             Modules.States.AddState(typeof(FireIrradiate));
             Modules.States.AddState(typeof(FireIrradiateOvercharge));

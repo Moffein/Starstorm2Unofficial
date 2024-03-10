@@ -270,6 +270,7 @@
     <Compile Include="Survivors\Nucleator\Components\Projectile\PrimaryProjectileComponentSimple.cs" />
     <Compile Include="Survivors\Nucleator\Components\Projectile\ProjectileCheckSpecialBuffComponent.cs" />
     <Compile Include="Survivors\Nucleator\EntityStates\BaseChargeState.cs" />
+    <Compile Include="Survivors\Nucleator\EntityStates\NucleatorMain.cs" />
     <Compile Include="Survivors\Nucleator\EntityStates\Primary\ChargeIrradiate.cs" />
     <Compile Include="Survivors\Nucleator\EntityStates\Primary\FireIrradiate.cs" />
     <Compile Include="Survivors\Nucleator\EntityStates\Primary\FireIrradiateOvercharge.cs" />

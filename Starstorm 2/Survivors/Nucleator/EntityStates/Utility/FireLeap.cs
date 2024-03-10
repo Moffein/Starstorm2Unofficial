@@ -14,7 +14,7 @@ namespace EntityStates.SS2UStates.Nucleator.Utility
         public static float minimumDuration = 0.3f;
         public static float upwardVelocity = 7f;
         public static float forwardVelocity = 3f;
-        public static float aimVelocity = 4f;
+        public static float aimVelocity = 3f;
         public static float airControl = 0.15f;
         public static float minimumY = 0.05f; //Determines whether leap should be able to be aimed downwards.
         public static float maxExitYVelocity = 24f; //Prevent yourself from being launched into instadeath fall damage.
