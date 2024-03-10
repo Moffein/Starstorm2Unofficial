@@ -596,7 +596,7 @@
 								</Sound>
 								<RandomSequenceContainer Name="NemmandoShoot" ID="{2AD7EAF1-2F77-449A-8A03-D4BBFF89B58A}" ShortID="524440372">
 									<PropertyList>
-										<Property Name="3DSpatialization" Type="int16" Value="1"/>
+										<Property Name="3DSpatialization" Type="int16" Value="2"/>
 										<Property Name="OverridePositioning" Type="bool" Value="True"/>
 										<Property Name="Pitch" Type="int32">
 											<ModifierList>
@@ -2325,7 +2325,7 @@
 								</Sound>
 								<Sound Name="superCharge" ID="{7719350E-FE3A-4B1C-B429-D65EACA8038A}" ShortID="601941653">
 									<PropertyList>
-										<Property Name="3DSpatialization" Type="int16" Value="1"/>
+										<Property Name="3DSpatialization" Type="int16" Value="2"/>
 										<Property Name="OverridePositioning" Type="bool" Value="True"/>
 									</PropertyList>
 									<ReferenceList>
@@ -2992,7 +2992,7 @@
 								</RandomSequenceContainer>
 								<RandomSequenceContainer Name="StrangeCan" ID="{D24BBBC9-BC9E-4E4E-AEFD-68D9B8BF561A}" ShortID="73887894">
 									<PropertyList>
-										<Property Name="3DSpatialization" Type="int16" Value="1"/>
+										<Property Name="3DSpatialization" Type="int16" Value="2"/>
 										<Property Name="OverridePositioning" Type="bool" Value="True"/>
 										<Property Name="Pitch" Type="int32">
 											<ModifierList>
@@ -3179,7 +3179,7 @@
 								</Sound>
 								<RandomSequenceContainer Name="SwiftSkateboard" ID="{3E89C16F-2DA5-476C-9205-15783B2D7331}" ShortID="1014774128">
 									<PropertyList>
-										<Property Name="3DSpatialization" Type="int16" Value="1"/>
+										<Property Name="3DSpatialization" Type="int16" Value="2"/>
 										<Property Name="Highpass" Type="int16">
 											<ModifierList>
 												<ModifierInfo>
@@ -3312,7 +3312,7 @@
 							<ChildrenList>
 								<Sound Name="OnlyThingIKnowForRealCatch" ID="{DDFCC984-6725-4358-8CDB-7BB6DC4D4845}" ShortID="563143770">
 									<PropertyList>
-										<Property Name="3DSpatialization" Type="int16" Value="1"/>
+										<Property Name="3DSpatialization" Type="int16" Value="2"/>
 										<Property Name="OverridePositioning" Type="bool" Value="True"/>
 										<Property Name="Volume" Type="Real64">
 											<ValueList>
@@ -3474,7 +3474,7 @@
 							<ChildrenList>
 								<Sound Name="CyborgPrimary" ID="{EDC31990-43B9-4394-AC88-BB664A47D9E8}" ShortID="909712781">
 									<PropertyList>
-										<Property Name="3DSpatialization" Type="int16" Value="1"/>
+										<Property Name="3DSpatialization" Type="int16" Value="2"/>
 										<Property Name="OverridePositioning" Type="bool" Value="True"/>
 										<Property Name="Pitch" Type="int32">
 											<ModifierList>
@@ -3998,7 +3998,7 @@
 								</RandomSequenceContainer>
 								<RandomSequenceContainer Name="sprintLoop" ID="{434EFD57-13AF-4539-A3F0-C50A70224D36}" ShortID="906080026">
 									<PropertyList>
-										<Property Name="3DSpatialization" Type="int16" Value="1"/>
+										<Property Name="3DSpatialization" Type="int16" Value="2"/>
 										<Property Name="OverridePositioning" Type="bool" Value="True"/>
 										<Property Name="PlayMechanismStepOrContinuous" Type="int16" Value="0"/>
 										<Property Name="Volume" Type="Real64">
@@ -4304,7 +4304,7 @@
 							<ChildrenList>
 								<RandomSequenceContainer Name="idleLoop" ID="{913962DE-D6EA-4B72-B41E-65F2E5D80750}" ShortID="314410372">
 									<PropertyList>
-										<Property Name="3DSpatialization" Type="int16" Value="1"/>
+										<Property Name="3DSpatialization" Type="int16" Value="2"/>
 										<Property Name="OverridePositioning" Type="bool" Value="True"/>
 										<Property Name="PlayMechanismStepOrContinuous" Type="int16" Value="0"/>
 										<Property Name="Volume" Type="Real64">
@@ -4650,6 +4650,8 @@
 								</Sound>
 								<Sound Name="skill1" ID="{457D11B5-BC71-40A8-A966-B61FF527B07B}" ShortID="403578640">
 									<PropertyList>
+										<Property Name="3DSpatialization" Type="int16" Value="2"/>
+										<Property Name="OverridePositioning" Type="bool" Value="True"/>
 										<Property Name="Pitch" Type="int32">
 											<ModifierList>
 												<ModifierInfo>
@@ -4670,6 +4672,9 @@
 										</Property>
 									</PropertyList>
 									<ReferenceList>
+										<Reference Name="Attenuation">
+											<ObjectRef Name="SurvivorAttenuation" ID="{A986EB11-7B06-4BE3-9630-2DEB2646D5C4}" WorkUnitID="{01E36904-BE25-433F-9547-3A046044CA56}"/>
+										</Reference>
 										<Reference Name="Conversion">
 											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{94E9A332-4F75-42A2-884C-469412070470}"/>
 										</Reference>
@@ -4978,7 +4983,7 @@
 								</Sound>
 								<Sound Name="alarm" ID="{E91EE288-C317-4589-9A1E-030D28C31398}" ShortID="283261806">
 									<PropertyList>
-										<Property Name="3DSpatialization" Type="int16" Value="1"/>
+										<Property Name="3DSpatialization" Type="int16" Value="2"/>
 										<Property Name="OverridePositioning" Type="bool" Value="True"/>
 									</PropertyList>
 									<ReferenceList>
@@ -5019,7 +5024,7 @@
 									<ChildrenList>
 										<Sound Name="WindAmbience1" ID="{36E50105-4915-4BA0-835A-CE6B6E56D89A}" ShortID="846616746">
 											<PropertyList>
-												<Property Name="3DSpatialization" Type="int16" Value="1"/>
+												<Property Name="3DSpatialization" Type="int16" Value="2"/>
 												<Property Name="OverridePositioning" Type="bool" Value="True"/>
 												<Property Name="Volume" Type="Real64">
 													<ValueList>
@@ -5163,7 +5168,7 @@
 						</Folder>
 						<Sound Name="wChainLightning" ID="{ACDEB48B-F5F2-4187-BBF4-ED9BB377405F}" ShortID="918746608">
 							<PropertyList>
-								<Property Name="3DSpatialization" Type="int16" Value="1"/>
+								<Property Name="3DSpatialization" Type="int16" Value="2"/>
 								<Property Name="OverridePositioning" Type="bool" Value="True"/>
 								<Property Name="Volume" Type="Real64">
 									<ValueList>

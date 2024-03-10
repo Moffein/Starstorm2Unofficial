@@ -1,5 +1,7 @@
 `0.18.0`
 
+- Fixed most sounds not factoring in orientation.
+
 - Added Nucleator.
 - Executioner
 	- Execution
