@@ -27,6 +27,10 @@
 	- Droid Head
 		- Increased max drone count from 3 -> 4
 		
+- Equipment
+	- Greater Warbanner
+		- Added placement sound.
+		
 - Fixes
 	- Fixed most sounds not factoring in orientation.
 	- Storm sounds now play globally, instead of originating from a specific point on the map.

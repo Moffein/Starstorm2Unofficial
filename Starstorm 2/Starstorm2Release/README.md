@@ -4,11 +4,14 @@ Unofficial update to the Pre-SotV version of Starstorm 2. **[Get the official ve
 
 Executioner and Nemesis Commando are based on the version from the pre-SotV build with some tweaks, while Cyborg/Chirr/Pyro/Nucleator have been re-coded from the ground up due to the old code being unworkable.
 
-This mod can be used alongside the official version of Starstorm 2. Be sure to go through your configs to disable duplicated features.
 I've gotten permission to work on this project and host it here, and permission to upload it to Thunderstore.
 The SS2 team is free to use any of the new code from this mod as long as this repo is allowed to stay up and credit is given.
  
-## **If achievements aren't working, you can force unlock them in the config or with RealerCheatUnlocks.**
+### **If achievements aren't working, you can force unlock them in the config or with RealerCheatUnlocks.**
+
+# Compatibility with Starstorm 2 Official
+
+This mod can be used alongside the official version of Starstorm 2. Be sure to go through your configs to disable duplicated items and features.
 
 ## 6 New Survivors
 
@@ -56,11 +59,12 @@ Can be re-enabled in config.
 | ![](https://raw.githubusercontent.com/Moffein/Starstorm2Unofficial/main/README%20Images/itemMass.png) | Relic of Mass | **Increase maximum health** by **100%** *(+100% per stack)*. **Reduce acceleration and deceleration** by a factor of **8** *(+8 per stack)*. Disabled due to being similar to **Stone Flux Pauldron**, though the movement penalty works very differently. |
 
 </details>
-
-- Equipment:
-	- Cloaking Headband
-	- Greater Warbanner
   
  - Storm Events
  
- - Nemesis Invasion Event (triggered after completing Void Fields)
+## Nemesis Invasion
+
+![](https://raw.githubusercontent.com/Moffein/Starstorm2Unofficial/main/README%20Images/screenshotNemesis.png)
+
+Clearing the Void Fields will trigger a series of Nemesis Survivor bossfights that drop powerful items.
+**Compatible with Enforcer and Starstorm 2 Official!**
