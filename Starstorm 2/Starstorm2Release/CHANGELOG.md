@@ -1,3 +1,12 @@
+`0.18.3`
+
+- Pyro
+	- Airblast
+		- Reduced knockback force from 3000 -> 2800
+
+- Pyro/Nucleator
+	- Secondary knockback mass scaling against flying enemies now caps at 7.5x to reduce the likelihood of boss instakills. (Number used for HAN-D's knockback)
+
 `0.18.2`
 
 - Nucleator

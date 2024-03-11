@@ -231,6 +231,8 @@ namespace Starstorm2Unofficial.Cores
                     if (cb.rigidbody)
                     {
                         float forceMult = Mathf.Max(cb.rigidbody.mass / 100f, 1f);
+                        if (cb.isFlying) forceMult = Mathf.Min(forceMult, 7.5f);
+
                         damageInfo.force *= forceMult;
                     }
                 }
