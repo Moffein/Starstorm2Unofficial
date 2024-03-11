@@ -10,7 +10,7 @@ The SS2 team is free to use any of the new code from this mod as long as this re
  
 ## **If achievements aren't working, you can force unlock them in the config or with RealerCheatUnlocks.**
 
-## New Survivors
+## 6 New Survivors
 
 | Icon | Name | Description |
 |:--:|:--:|--|
@@ -21,16 +21,21 @@ The SS2 team is free to use any of the new code from this mod as long as this re
 | ![](https://raw.githubusercontent.com/Moffein/Starstorm2Unofficial/main/README%20Images/portraitPyro.png) | Pyro | The Pyro will stop at nothing to burn down everything in sight. |
 | ![](https://raw.githubusercontent.com/Moffein/Starstorm2Unofficial/main/README%20Images/portraitNucleator.png) | Nucleator | The Nucleator is a radioactive juggernaut with rad-proof armor, which allows him to manipulate nuclear components for long periods of time. |
   
-## New Items
-  
+## 8 New Items
+
 | Icon | Name | Description |
 |:--:|:--:|--|
 | Common | | |
-| ![](https://raw.githubusercontent.com/Moffein/Starstorm2Unofficial/main/README%20Images/itemFork.png) | Fork | Increase your base damage by **2.4** *(+2.4)*. |
+| ![](https://raw.githubusercontent.com/Moffein/Starstorm2Unofficial/main/README%20Images/itemDetritiveTrematode.png) | Detritive Trematode | Enemies below **25% health** are infested for **100%** *(+100% per stack)* base damage per second. |
+| ![](https://raw.githubusercontent.com/Moffein/Starstorm2Unofficial/main/README%20Images/itemDiary.png) | Diary | Increases **movement speed** by **10%** *(+10%)* and **armor** by **3** *(+3)*. |
+| ![](https://raw.githubusercontent.com/Moffein/Starstorm2Unofficial/main/README%20Images/itemFork.png) | Fork | Increases your base damage by **2.4** *(+2.4)*. |
 | ![](https://raw.githubusercontent.com/Moffein/Starstorm2Unofficial/main/README%20Images/itemMoltenCoin.png) | Molten Coin | **6%** chance to **ignite on hit** for **320%** *(+320%)* base damage and earn **$1**. Scales with time. |
 | Uncommon | | |
+| ![](https://raw.githubusercontent.com/Moffein/Starstorm2Unofficial/main/README%20Images/itemStrangeCan.png) | Strange Can | **8.5%** *(+5% per stack)* chance to **intoxicate** enemies, causing them to lose **2.5%** of their **current health** every second for **5s**. |
+| ![](https://raw.githubusercontent.com/Moffein/Starstorm2Unofficial/main/README%20Images/itemMetronome.png) | Watch Metronome | **Walking on the ground** charges the **speed of your next sprint** by up to **200%**. Decays over **4s** *(+2s per stack)*. |
 | Rare | | |
-| Lunar | | |
+| ![](https://raw.githubusercontent.com/Moffein/Starstorm2Unofficial/main/README%20Images/itemDroidHead.png) | Droid Head | Killing elite monsters summons a **Strike Drone** with bonus **100% damage** *(+50% damage per stack)* for **30s**. Limited to **4**. |
+| ![](https://raw.githubusercontent.com/Moffein/Starstorm2Unofficial/main/README%20Images/itemGreenChocolate.png) | Green Chocolate | When receiving **20%** or more of your **max health** as damage, any damage over the threshold is **reduced by 50%**. Gain **50% damage** for **7s** when triggering this effect, stacks up to **1** *(+1 per stack)* time. |
 
 ## Disabled Items
 Can be re-enabled in config.
@@ -39,24 +44,17 @@ Can be re-enabled in config.
 | Icon | Name | Description |
 |:--:|:--:|--|
 | Common | | |
-| Uncommon | | |
+| ![](https://raw.githubusercontent.com/Moffein/Starstorm2Unofficial/main/README%20Images/itemCoffeeBag.png) | Coffee Bag | Increases **movement speed** by **7%** *(+7% per stack)* and **attack speed** by **7.5%** *(+7.5% per stack)*. Disabled due to being officially implemented as **Mocha**. |
+| ![](https://raw.githubusercontent.com/Moffein/Starstorm2Unofficial/main/README%20Images/itemDungus.png) | Dormant Fungus | Heals for **1.2%** *(+0.6% per stack)* of your **health** every second **while sprinting**. Disabled due to being officially implemented as **Weeping Fungus**. |
 | Rare | | |
+| ![](https://raw.githubusercontent.com/Moffein/Starstorm2Unofficial/main/README%20Images/itemErraticGadget.png) | Erratic Gadget | Gain **10% critical chance**. **Critical strikes** hit an additional time for **50%** *(+50% per stack)* TOTAL damage. Disabled due to being similar to **Laser Scope**, same damage boost but applied in a different way. |
+| ![](https://raw.githubusercontent.com/Moffein/Starstorm2Unofficial/main/README%20Images/itemNkota.png) | Nkota's Heritage | **Receive an item** on **level up** or starting the **Teleporter event**. Rerolls for a higher item tier **0** *(+1 per stack)* times. **Unaffected by luck**. |
 | Lunar | | |
+| ![](https://raw.githubusercontent.com/Moffein/Starstorm2Unofficial/main/README%20Images/itemMass.png) | Relic of Mass | **Increase maximum health** by **100%** *(+100% per stack)*. **Reduce acceleration and deceleration** by a factor of **8** *(+8 per stack)*. Disabled due to being similar to **Stone Flux Pauldron**, though the movement penalty works very differently. |
 
 </details>
   
 - Items:
-	- Common:
-		- Fork
-		- Molten Coin
-		- Diary
-		- Detritive Trematode
-		- Coffee Bag (Disabled)
-		- Dormant Fungus (Disabled)
-
-	- Uncommon:
-		- Strange Can
-		- Watch Metronome
 
 	- Rare:
 		- Droid Head
@@ -66,9 +64,6 @@ Can be re-enabled in config.
 	
 	- Boss:
 		- Stirring Soul
-	
-	- Lunar:
-		- Relic of Mass (Disabled)
 
 - Equipment:
 	- Cloaking Headband

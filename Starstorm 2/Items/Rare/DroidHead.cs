@@ -17,7 +17,7 @@ namespace Starstorm2Unofficial.Cores.Items
         public override string NameInternal => "SS2U_DroidHead";
         public override string Name => "Droid Head";
         public override string Pickup => "Summon a Strike Drone on killing an elite.";
-        public override string Description => "Killing elite monsters summons a <style=cIsDamage>Strike Drone</style> with bonus <style=cIsDamage>100% damage</style> <style=cStack>(+50% damage per stack)</style> for <style=cIsDamage>30s</style>. Limited to <style=cIsUtility>3</style>.";
+        public override string Description => "Killing elite monsters summons a <style=cIsDamage>Strike Drone</style> with bonus <style=cIsDamage>100% damage</style> <style=cStack>(+50% damage per stack)</style> for <style=cIsDamage>30s</style>. Limited to <style=cIsUtility>4</style>.";
         public override string Lore => "Order: Security Robot\nTracking Number: 1138***\nEstimated Delivery: 5/14/2056\nShipping Method: Priority / Fragile\nShipping Address: RaCom Robotics, Asimov, Mars\nShipping Details:\n\nThis was one of the few complete bits we could salvage from those stolen security robots... That militant group on Pluto had stolen a bunch of those ER-14s, and had been using 'em at their bases for a while. This one specifically, ER-14XPC5VVUFF, lines up with the ones you'd tried to recall a while back. I don't know this history, I just know there was a big bounty for whoever could find the remains for this batch. There's other remnants, too, but they're much less complete... Shouldn't be any danger anymore, at least. Gimme a heads up if you want those shipped your way, too.\n";
         public override ItemTier Tier => ItemTier.Tier3;
         public override ItemTag[] Tags => new ItemTag[]
@@ -260,7 +260,7 @@ localScale = new Vector3(0.0013F, 0.0013F, 0.0013F)
 
         public class DroidHeadBehavior : CharacterBody.ItemBehavior
         {
-            public static int maxDroids = 3;
+            public static int maxDroids = 4;
             private List<CharacterMaster> activeDroids = new List<CharacterMaster>();
 
             public bool CanSpawnDroid()

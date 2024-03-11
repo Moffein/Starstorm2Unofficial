@@ -1,16 +1,10 @@
 `0.18.0`
 
-- Fixed most sounds not factoring in orientation.
 
-- Added Nucleator
-- Executioner
-	- Execution
-		- Added mass scaling to downwards force.
+- New Survivor
+	- Nucleator
 		
-- Nemmando
-	- Gouge no longer triggers Bands when stacked.
-		
-- Items
+- New Items
 	- Detritive Trematode
 		- Enemies below 25% health are infested for 100% (+100%) damage per second.
 		
@@ -20,6 +14,22 @@
 	- Nkota's Heritage (Disabled)
 		- Receive an item on level up or starting the Teleporter event. Rerolls for a higher item tier 0 (+1 per stack) times.
 			- Item tier uses same chances as a small chest.
+			
+- Survivors
+	- Executioner
+		- Execution
+			- Added mass scaling to downwards force.
+			
+	- Nemmando
+		- Gouge no longer triggers Bands when stacked.			
+
+- Items
+	- Droid Head
+		- Increased max drone count from 3 -> 4
+		
+- Fixes
+	- Fixed most sounds not factoring in orientation.
+	- Storm sounds now play globally, instead of originating from a specific point on the map.
 		
 `0.17.2`
 
