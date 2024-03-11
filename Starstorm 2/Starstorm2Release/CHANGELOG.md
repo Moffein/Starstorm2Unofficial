@@ -2,10 +2,11 @@
 
 - Fixed most sounds not factoring in orientation.
 
-- Added Nucleator.
+- Added Nucleator
 - Executioner
 	- Execution
 		- Added mass scaling to downwards force.
+		
 - Nemmando
 	- Gouge no longer triggers Bands when stacked.
 		
