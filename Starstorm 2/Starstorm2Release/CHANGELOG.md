@@ -1,6 +1,7 @@
 `0.18.2`
 
 - Nucleator
+	- Secondary force reduced from 3200 -> 2800
 	- Special now uses a unique Radiation Poisoning DoT instead of reusing Acrid's poison.
 		- Deals 5% max health (minimum 500% damage) over 5s. Is able to kill enemies.
 		
