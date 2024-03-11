@@ -21,7 +21,7 @@ The SS2 team is free to use any of the new code from this mod as long as this re
 | ![](https://raw.githubusercontent.com/Moffein/Starstorm2Unofficial/main/README%20Images/portraitPyro.png) | Pyro | The Pyro will stop at nothing to burn down everything in sight. |
 | ![](https://raw.githubusercontent.com/Moffein/Starstorm2Unofficial/main/README%20Images/portraitNucleator.png) | Nucleator | The Nucleator is a radioactive juggernaut with rad-proof armor, which allows him to manipulate nuclear components for long periods of time. |
   
-## 8 New Items
+## 10 New Items
 
 | Icon | Name | Description |
 |:--:|:--:|--|
@@ -36,6 +36,9 @@ The SS2 team is free to use any of the new code from this mod as long as this re
 | Rare | | |
 | ![](https://raw.githubusercontent.com/Moffein/Starstorm2Unofficial/main/README%20Images/itemDroidHead.png) | Droid Head | Killing elite monsters summons a **Strike Drone** with bonus **100% damage** *(+50% damage per stack)* for **30s**. Limited to **4**. |
 | ![](https://raw.githubusercontent.com/Moffein/Starstorm2Unofficial/main/README%20Images/itemGreenChocolate.png) | Green Chocolate | When receiving **20%** or more of your **max health** as damage, any damage over the threshold is **reduced by 50%**. Gain **50% damage** for **7s** when triggering this effect, stacks up to **1** *(+1 per stack)* time. |
+| Equipment | | |
+| ![](https://raw.githubusercontent.com/Moffein/Starstorm2Unofficial/main/README%20Images/equipCloakingHeadband.png) | Cloaking Headband | Become **invisible** for 10 seconds. |
+| ![](https://raw.githubusercontent.com/Moffein/Starstorm2Unofficial/main/README%20Images/equipGreaterWarbanner.png) | Greater Warbanner | Place a greater warbanner which strengthens all allies within **25m**. Raises **critical chance** by **25%**. Every second, **reduces skill cooldowns by 0.5s** and **heals** for **2.5%** of your **health**. Only **1** banner may be active at a time. |
 
 ## Disabled Items
 Can be re-enabled in config.
@@ -53,17 +56,6 @@ Can be re-enabled in config.
 | ![](https://raw.githubusercontent.com/Moffein/Starstorm2Unofficial/main/README%20Images/itemMass.png) | Relic of Mass | **Increase maximum health** by **100%** *(+100% per stack)*. **Reduce acceleration and deceleration** by a factor of **8** *(+8 per stack)*. Disabled due to being similar to **Stone Flux Pauldron**, though the movement penalty works very differently. |
 
 </details>
-  
-- Items:
-
-	- Rare:
-		- Droid Head
-		- Green Chocolate
-		- Erratic Gadget (Disabled)
-		- Nkota's Heritage (Disabled)
-	
-	- Boss:
-		- Stirring Soul
 
 - Equipment:
 	- Cloaking Headband

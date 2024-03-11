@@ -43,8 +43,9 @@ namespace Starstorm2Unofficial.Cores.Items
 
         private static NetworkSoundEventDef networkSound;
         private static GameObject effectPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/SurvivorPod/PodGroundImpact.prefab").WaitForCompletion();
-        public void ProcNkota(TeamIndex teamIndex)
+        public void ProcNkotaServer(TeamIndex teamIndex)
         {
+            if (!NetworkServer.active) return;
             ReadOnlyCollection<TeamComponent> teamMembers = TeamComponent.GetTeamMembers(teamIndex);
             foreach(TeamComponent teamComponent in teamMembers)
             {
@@ -67,13 +68,13 @@ namespace Starstorm2Unofficial.Cores.Items
         private void ChargingState_OnEnter(On.RoR2.TeleporterInteraction.ChargingState.orig_OnEnter orig, EntityStates.BaseState self)
         {
             orig(self);
-            ProcNkota(TeamIndex.Player);
+            if (NetworkServer.active) ProcNkotaServer(TeamIndex.Player);
         }
 
         public void GlobalEventManager_OnTeamLevelUp(On.RoR2.GlobalEventManager.orig_OnTeamLevelUp orig, TeamIndex teamIndex)
         {
             orig(teamIndex);
-            ProcNkota(teamIndex);
+            if (NetworkServer.active) ProcNkotaServer(teamIndex);
         }
 
         public override ItemDisplayRuleDict CreateDisplayRules()

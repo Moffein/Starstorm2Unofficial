@@ -23,6 +23,8 @@ namespace Starstorm2Unofficial.Cores.Equipment
         public override string PickupIconPath => "GreaterWarbanner_Icon";
         public override string PickupModelPath => "MDLGreaterWarbanner";
 
+        public static NetworkSoundEventDef networkSound;
+
         private static GameObject CreateWarbanner() {
 
             GameObject bannerObj = LegacyResourcesAPI.Load<GameObject>("Prefabs/NetworkedObjects/WarbannerWard").InstantiateClone("GreaterWarbannerWard", true);
@@ -53,6 +55,7 @@ namespace Starstorm2Unofficial.Cores.Equipment
 
         public override void RegisterHooks()
         {
+            networkSound = Modules.Assets.CreateNetworkSoundEventDef("SS2UGreaterWarbanner");
             warbannerObj = CreateWarbanner();
         }
 
@@ -68,6 +71,8 @@ namespace Starstorm2Unofficial.Cores.Equipment
             gameObject.GetComponent<BuffWard>().radius = 25;
 
             tracker.banner = gameObject;
+
+            EffectManager.SimpleSoundEffect(networkSound.index, equip.characterBody.transform.position, true);
 
             NetworkServer.Spawn(gameObject);
             return true;
