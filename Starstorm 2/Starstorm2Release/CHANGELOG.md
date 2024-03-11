@@ -1,6 +1,5 @@
 `0.18.0`
 
-
 - New Survivor
 	- Nucleator
 		
