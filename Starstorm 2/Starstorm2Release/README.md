@@ -59,12 +59,15 @@ Can be re-enabled in config.
 | ![](https://raw.githubusercontent.com/Moffein/Starstorm2Unofficial/main/README%20Images/itemMass.png) | Relic of Mass | **Increase maximum health** by **100%** *(+100% per stack)*. **Reduce acceleration and deceleration** by a factor of **8** *(+8 per stack)*. Disabled due to being similar to **Stone Flux Pauldron**, though the movement penalty works very differently. |
 
 </details>
-  
- - Storm Events
+
+## Storm Events
+
+At certain intervals, it begins to rain on the planet, sending monsters into a frenzy.
  
 ## Nemesis Invasion
 
-![](https://raw.githubusercontent.com/Moffein/Starstorm2Unofficial/main/README%20Images/screenshotNemesis.png)
+![](https://raw.githubusercontent.com/Moffein/Starstorm2Unofficial/main/README%20Images/screenshotNemesis.jpg)
 
 Clearing the Void Fields will trigger a series of Nemesis Survivor bossfights that drop powerful items.
+
 **Compatible with Enforcer and Starstorm 2 Official!**
