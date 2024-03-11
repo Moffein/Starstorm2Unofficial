@@ -2,6 +2,7 @@
 using RoR2;
 using System.Collections.Generic;
 using Starstorm2Unofficial.Cores;
+using Starstorm2Unofficial.Survivors.Executioner;
 
 namespace Starstorm2Unofficial.Survivors.Nemmando
 {
@@ -18,7 +19,7 @@ namespace Starstorm2Unofficial.Survivors.Nemmando
             CharacterModel characterModel = model.GetComponent<CharacterModel>();
 
             itemDisplayRuleSet = ScriptableObject.CreateInstance<ItemDisplayRuleSet>();
-            itemRules = new List<ItemDisplayRuleSet.KeyAssetRuleGroup>();
+            itemRules = ExecutionerCore.instance.itemDisplayRules;
 
             #region Display Rules
             //i leave the rest to you, swuff. godspeed.

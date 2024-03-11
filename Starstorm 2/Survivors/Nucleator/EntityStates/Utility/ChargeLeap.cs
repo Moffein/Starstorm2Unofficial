@@ -13,14 +13,6 @@ namespace EntityStates.SS2UStates.Nucleator.Utility
 
             Util.PlaySound("Play_loader_shift_activate", base.gameObject);
             base.PlayAnimation("FullBody, Override", "UtilityCharge", "Utility.playbackRate", base.duration);
-
-            if (base.characterBody)
-            {
-                if (NetworkServer.active)
-                {
-                    base.characterBody.AddBuff(RoR2Content.Buffs.ArmorBoost);
-                }
-            }
         }
 
         public override void FixedUpdate()
@@ -40,10 +32,6 @@ namespace EntityStates.SS2UStates.Nucleator.Utility
         {
             Util.PlaySound("Play_loader_shift_release", base.gameObject);
             base.PlayAnimation("FullBody, Override", "BufferEmpty");
-            if (NetworkServer.active)
-            {
-                base.characterBody.RemoveBuff(RoR2Content.Buffs.ArmorBoost);
-            }
             base.characterMotor.jumpCount = 0;
             base.OnExit();
         }
