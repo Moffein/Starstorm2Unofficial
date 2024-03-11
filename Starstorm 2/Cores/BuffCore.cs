@@ -56,7 +56,7 @@ namespace Starstorm2Unofficial.Cores
             //detritiveBuff.buffIndex = BuffIndex.Count;
             detritiveBuff.canStack = true;
             detritiveBuff.iconSprite = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("Status_Trematodes");
-            detritiveBuff.isDebuff = true;
+            detritiveBuff.isDebuff = false;
             detritiveBuff.name = "SS2UInfested";
             buffDefs.Add(detritiveBuff);
 
@@ -74,7 +74,7 @@ namespace Starstorm2Unofficial.Cores
             strangeCanPoisonBuff.canStack = false;
             strangeCanPoisonBuff.iconSprite = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("Status_StrangeCan");
             strangeCanPoisonBuff.name = "SS2UStrangeCanPoison";
-            strangeCanPoisonBuff.isDebuff = true;
+            strangeCanPoisonBuff.isDebuff = false;
             strangeCanPoisonBuff.buffColor = new Color32(200, 233, 61, 255);
             buffDefs.Add(strangeCanPoisonBuff);
 

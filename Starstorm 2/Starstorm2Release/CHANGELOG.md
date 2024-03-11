@@ -1,3 +1,7 @@
+`0.18.1`
+
+- Fixed Strange Can, Detritive Trematode, and Gouge counting as 2 debuffs towards Death Mark.
+
 `0.18.0`
 
 - New Survivor
@@ -5,7 +9,7 @@
 		
 - New Items
 	- Detritive Trematode
-		- Enemies below 25% health are infested for 100% (+100%) damage per second.
+		- Enemies below 25% health are infested for 100% (+100%) base damage per second.
 		
 	- Strange Can
 		- 8.5% (+5%) chance to intoxicate enemies, causing them to lose 2.5% of their current health every second for 5s.
