@@ -21,9 +21,8 @@ namespace Starstorm2Unofficial.Survivors.Nucleator
 
             projectilePrefab.transform.localScale *= 1.5f;
 
+            projectilePrefab.AddComponent<DamageAPI.ModdedDamageTypeHolderComponent>(); //Does nothing until SpecialBuffComponent does its thing.
             projectilePrefab.AddComponent<ProjectileCheckSpecialBuffComponent>();
-            //DamageAPI.ModdedDamageTypeHolderComponent mdc = projectilePrefab.AddComponent<DamageAPI.ModdedDamageTypeHolderComponent>();
-            //mdc.Add(DamageTypeCore.ModdedDamageTypes.NucleatorCanApplyRadiation);
 
             GameObject projectileGhost = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Beetle/BeetleQueenSpitGhost.prefab").WaitForCompletion();
 
@@ -65,9 +64,8 @@ namespace Starstorm2Unofficial.Survivors.Nucleator
 
             projectilePrefab.transform.localScale *= 3f;
 
+            projectilePrefab.AddComponent<DamageAPI.ModdedDamageTypeHolderComponent>(); //Does nothing until SpecialBuffComponent does its thing.
             projectilePrefab.AddComponent<ProjectileCheckSpecialBuffComponent>();
-            //DamageAPI.ModdedDamageTypeHolderComponent mdc = projectilePrefab.AddComponent<DamageAPI.ModdedDamageTypeHolderComponent>();
-            //mdc.Add(DamageTypeCore.ModdedDamageTypes.NucleatorCanApplyRadiation);
 
             GameObject projectileGhost = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/BFG/BeamSphereGhost.prefab").WaitForCompletion().InstantiateClone("SS2UNucleatorPrimaryOverchargeGhost",false);
 

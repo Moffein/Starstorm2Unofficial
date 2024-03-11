@@ -347,7 +347,7 @@ namespace Starstorm2Unofficial.Survivors.Nucleator
             specialDef.rechargeStock = 1;
             specialDef.requiredStock = 1;
             specialDef.stockToConsume = 1;
-            specialDef.keywordTokens = new string[] { "KEYWORD_POISON" };
+            specialDef.keywordTokens = new string[] { "KEYWORD_SS2U_RADIATION" };
             Modules.Skills.FixSkillName(specialDef);
             Modules.Skills.skillDefs.Add(specialDef);
             SkillFamily.Variant specialVariant1 = Utils.RegisterSkillVariant(specialDef);
@@ -373,7 +373,7 @@ namespace Starstorm2Unofficial.Survivors.Nucleator
             specialScepterDef.rechargeStock = 1;
             specialScepterDef.requiredStock = 1;
             specialScepterDef.stockToConsume = 1;
-            specialScepterDef.keywordTokens = new string[] { "KEYWORD_POISON"};
+            specialScepterDef.keywordTokens = new string[] { "KEYWORD_SS2U_RADIATION"};
             Modules.Skills.FixSkillName(specialScepterDef);
             SkillDefs.SpecialScepter = specialScepterDef;
 
@@ -423,14 +423,16 @@ namespace Starstorm2Unofficial.Survivors.Nucleator
             LanguageAPI.Add("SS2UNUCLEATOR_UTILITY_DESCRIPTION", "<style=cIsDamage>Stunning</style>. Charge up a leap and gain <style=cIsUtility>200 armor</style>. Deals <style=cIsDamage>400%-800% damage</style> on impact, up to <style=cIsDamage>1200% damage</style> on <style=cIsHealth>Overcharge</style>.");
 
             LanguageAPI.Add("SS2UNUCLEATOR_SPECIAL_NAME", "Radionuclide Surge");
-            LanguageAPI.Add("SS2UNUCLEATOR_SPECIAL_DESCRIPTION", "Go nuclear for <style=cIsUtility>6 seconds</style>, <style=cIsHealing>healing from <style=cIsHealth>Overcharge</style></style> and adding <style=cIsHealing>Poisonous</style> radiation to every attack.");
+            LanguageAPI.Add("SS2UNUCLEATOR_SPECIAL_DESCRIPTION", "Go nuclear for <style=cIsUtility>6 seconds</style>, <style=cIsHealing>healing from <style=cIsHealth>Overcharge</style></style> and adding <style=cIsDamage>Radiation Poisoning</style> to every attack.");
 
             LanguageAPI.Add("SS2UNUCLEATOR_SPECIAL_SCEPTER_NAME", "Radionuclide Efflux");
-            LanguageAPI.Add("SS2UNUCLEATOR_SPECIAL_SCEPTER_DESCRIPTION", $"Enter a nuclear state for <style=cIsUtility>12 seconds</style>, becoming <style=cIsUtility>immune to <style=cIsHealth>Overcharge</style> damage</style> and adding <style=cIsHealing>Poisonous</style> radiation to every attack.");
+            LanguageAPI.Add("SS2UNUCLEATOR_SPECIAL_SCEPTER_DESCRIPTION", $"Enter a nuclear state for <style=cIsUtility>12 seconds</style>, becoming <style=cIsUtility>immune to <style=cIsHealth>Overcharge</style> damage</style> and adding <style=cIsDamage>Radiation Poisoning</style> to every attack.");
 
             LanguageAPI.Add("SS2UNUCLEATOR_UNLOCKUNLOCKABLE_ACHIEVEMENT_NAME", "Overkill");
             LanguageAPI.Add("SS2UNUCLEATOR_UNLOCKUNLOCKABLE_ACHIEVEMENT_DESC", "Collect 5 Legendary items in one run.");
             LanguageAPI.Add("SS2UNUCLEATOR_UNLOCKUNLOCKABLE_UNLOCKABLE_NAME", "Overkill");
+
+            LanguageAPI.Add("KEYWORD_SS2U_RADIATION", "<style=cKeywordName>Radiation Poisoning</style><style=cSub>Deal damage equivalent to <style=cIsDamage>5%</style> of their maximum health over 5s.</style>");
 
             // todo: make a base class for mastery achievements and simply inherit from it for each character 
             LanguageAPI.Add("SS2UNUCLEATOR_MASTERYUNLOCKABLE_ACHIEVEMENT_NAME", "Nucleator: Mastery");

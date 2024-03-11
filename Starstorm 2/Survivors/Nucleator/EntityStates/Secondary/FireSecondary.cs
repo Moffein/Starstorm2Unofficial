@@ -108,7 +108,7 @@ namespace EntityStates.SS2UStates.Nucleator.Secondary
                 ba.AddModdedDamageType(DamageTypeCore.ModdedDamageTypes.GroundedForceCorrection);
                 if (base.characterBody && base.characterBody.HasBuff(Starstorm2Unofficial.Cores.BuffCore.nucleatorSpecialBuff))
                 {
-                    ba.damageType |= DamageType.PoisonOnHit;
+                    ba.AddModdedDamageType(DamageTypeCore.ModdedDamageTypes.NucleatorRadiationOnHit);
                 }
                 ModifyBulletAttack(ba);
                 ba.Fire();

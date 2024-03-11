@@ -1,3 +1,12 @@
+`0.18.2`
+
+- Nucleator
+	- Special now uses a unique Radiation Poisoning DoT instead of reusing Acrid's poison.
+		- Deals 5% max health (minimum 500% damage) over 5s. Is able to kill enemies.
+		
+- Strange Can
+	- Now plays unique SFX when dealing damage.
+
 `0.18.1`
 
 - Fixed Strange Can, Detritive Trematode, and Gouge counting as 2 debuffs towards Death Mark.

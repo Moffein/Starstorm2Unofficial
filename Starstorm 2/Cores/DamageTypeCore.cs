@@ -27,6 +27,7 @@ namespace Starstorm2Unofficial.Cores
             public static DamageAPI.ModdedDamageType SlayerExceptItActuallyWorks;
             public static DamageAPI.ModdedDamageType AntiFlyingForce;
             public static DamageAPI.ModdedDamageType Root3s;
+            public static DamageAPI.ModdedDamageType NucleatorRadiationOnHit;
         }
 
         //public static DamageType
@@ -90,6 +91,22 @@ namespace Starstorm2Unofficial.Cores
                         if (damageInfo.HasModdedDamageType(ModdedDamageTypes.Root3s))
                         {
                             victimBody.AddTimedBuff(RoR2Content.Buffs.LunarSecondaryRoot, 3f);
+                        }
+
+                        if (damageInfo.HasModdedDamageType(ModdedDamageTypes.NucleatorRadiationOnHit) && victimBody.bodyIndex != Survivors.Nucleator.NucleatorCore.bodyIndex)
+                        {
+                            //Remove existing Radiation DoT
+
+                            var dotInfo = new InflictDotInfo()
+                            {
+                                attackerObject = damageInfo.attacker,
+                                victimObject = victim,
+                                dotIndex = DoTCore.NucleatorRadiation,
+                                duration = 5,
+                                damageMultiplier = 1,
+                                maxStacksFromAttacker = 1
+                            };
+                            DotController.InflictDot(ref dotInfo);
                         }
                     }
                 }
@@ -169,6 +186,11 @@ namespace Starstorm2Unofficial.Cores
                     {
                         EffectManager.SimpleEffect(DoTCore.TrematodeHitEffect, damageInfo.position, self.transform.rotation, true);
                     }
+                }
+                else if (damageInfo.dotIndex == DoTCore.NucleatorRadiation)
+                {
+                    damageInfo.damage = Mathf.Max(damageInfo.damage, self.fullCombinedHealth * 0.01f);
+                    EffectManager.SimpleEffect(DoTCore.TrematodeHitEffect, damageInfo.position, self.transform.rotation, true);
                 }
 
                 if (damageInfo.HasModdedDamageType(ModdedDamageTypes.GuaranteedFearOnHit))

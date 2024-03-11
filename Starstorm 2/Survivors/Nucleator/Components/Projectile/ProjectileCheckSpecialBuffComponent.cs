@@ -3,6 +3,7 @@ using RoR2;
 using RoR2.Projectile;
 using UnityEngine.Networking;
 using Starstorm2Unofficial.Cores;
+using static R2API.DamageAPI;
 
 namespace Starstorm2Unofficial.Survivors.Nucleator.Components.Projectile
 {
@@ -20,8 +21,11 @@ namespace Starstorm2Unofficial.Survivors.Nucleator.Components.Projectile
                     CharacterBody ownerBody = pc.owner.GetComponent<CharacterBody>();
                     if (ownerBody && ownerBody.HasBuff(BuffCore.nucleatorSpecialBuff))
                     {
-                        ProjectileDamage pd = base.GetComponent<ProjectileDamage>();
-                        if (pd) pd.damageType |= DamageType.PoisonOnHit;
+                        ModdedDamageTypeHolderComponent mdc = base.GetComponent<ModdedDamageTypeHolderComponent>();
+                        if (mdc)
+                        {
+                            mdc.Add(DamageTypeCore.ModdedDamageTypes.NucleatorRadiationOnHit);
+                        }
                     }
                 }
             }

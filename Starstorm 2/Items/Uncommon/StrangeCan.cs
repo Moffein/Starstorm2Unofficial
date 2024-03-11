@@ -25,12 +25,9 @@ namespace Starstorm2Unofficial.Cores.Items
         public override string PickupIconPath => "StrangeCan_Icon";
         public override string PickupModelPath => "MDLStrangeCan";
 
-        public static NetworkSoundEventDef procSound;
-
         public override void Init()
         {
             base.Init();
-            procSound = Modules.Assets.CreateNetworkSoundEventDef("SS2UStrangeCan");
         }
 
         public override void RegisterHooks()
@@ -44,8 +41,7 @@ namespace Starstorm2Unofficial.Cores.Items
             if (itemCount <= 0) return;
             if (!Util.CheckRoll(3.5f + 5f * itemCount, attackerBody.master)) return;
 
-            if (!victimBody.HasBuff(BuffCore.strangeCanPoisonBuff)) EffectManager.SimpleSoundEffect(procSound.index, damageInfo.position, true);
-
+            //Remove existing DoT
             var dotInfo = new InflictDotInfo()
             {
                 attackerObject = attackerBody.gameObject,

@@ -180,7 +180,7 @@ namespace EntityStates.SS2UStates.Nucleator.Utility
                 canRejectForce = true,
                 crit = this.isCrit,
                 damageColorIndex = DamageColorIndex.Default,
-                damageType = base.characterBody && base.characterBody.HasBuff(BuffCore.nucleatorSpecialBuff) ? DamageType.Stun1s | DamageType.PoisonOnHit : DamageType.Stun1s,
+                damageType = DamageType.Stun1s,
                 falloffModel = BlastAttack.FalloffModel.None,
                 inflictor = base.gameObject,
                 losType = BlastAttack.LoSType.None,
@@ -190,6 +190,10 @@ namespace EntityStates.SS2UStates.Nucleator.Utility
                 radius = blastRadius,
                 teamIndex = base.GetTeam()
             };
+            if (base.characterBody && base.characterBody.HasBuff(Starstorm2Unofficial.Cores.BuffCore.nucleatorSpecialBuff))
+            {
+                ba.AddModdedDamageType(DamageTypeCore.ModdedDamageTypes.NucleatorRadiationOnHit);
+            }
             ba.AddModdedDamageType(DamageTypeCore.ModdedDamageTypes.AntiFlyingForce);
             ba.AddModdedDamageType(DamageTypeCore.ModdedDamageTypes.ResetVictimForce);
             ba.Fire();
