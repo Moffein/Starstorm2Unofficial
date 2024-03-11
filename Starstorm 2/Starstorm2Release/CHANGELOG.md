@@ -1,3 +1,11 @@
+`0.18.4`
+
+- Nucleator
+	- Irradiate
+		- Damage reduced from 360%-720% -> 200%-720%
+		
+		*Old starting damage was making mashing do way more damage than charging. New starting damage puts mashing DPS in line with normal/Overcharge DPS.*
+
 `0.18.3`
 
 - Pyro
