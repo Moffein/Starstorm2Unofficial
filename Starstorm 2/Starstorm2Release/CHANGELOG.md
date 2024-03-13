@@ -1,3 +1,7 @@
+`0.18.6`
+
+- Fixed a potential nullref related to picking up items(?)
+
 `0.18.5`
 
 - Nucleator/Pyro/Cyborg

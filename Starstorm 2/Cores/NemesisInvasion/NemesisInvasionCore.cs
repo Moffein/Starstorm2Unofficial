@@ -158,11 +158,12 @@ namespace Starstorm2Unofficial.Cores.NemesisInvasion
                 orig(self, damageInfo);
             };
 
-            On.RoR2.CharacterBody.OnInventoryChanged += (orig, self) =>
-            {
-                orig(self);
-                self.AddItemBehavior<NemesisItemBehavior>(self.inventory.GetItemCount(NemesisMarkerItem));
-            };
+            RoR2.CharacterBody.onBodyInventoryChangedGlobal += CharacterBody_onBodyInventoryChangedGlobal;
+        }
+
+        private void CharacterBody_onBodyInventoryChangedGlobal(CharacterBody self)
+        {
+            if (self && self.inventory) self.AddItemBehavior<NemesisItemBehavior>(self.inventory.GetItemCount(NemesisMarkerItem));
         }
 
         private void NemforcerMinibossCompat()
