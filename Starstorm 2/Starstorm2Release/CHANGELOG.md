@@ -1,3 +1,8 @@
+`0.18.5`
+
+- Nucleator/Pyro/Cyborg
+	- Fixed crosshair charge bar breaking after spectating other people playing the same character.
+
 `0.18.4`
 
 - Nucleator

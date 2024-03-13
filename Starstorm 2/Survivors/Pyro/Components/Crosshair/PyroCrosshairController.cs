@@ -14,6 +14,7 @@ namespace Starstorm2Unofficial.Survivors.Pyro.Components.Crosshair
         private HudElement hudElement;
         private HeatController heatController;
         private Image heatBar;
+        private CharacterBody savedCharacterBody;
 
         private void Awake()
         {
@@ -23,18 +24,25 @@ namespace Starstorm2Unofficial.Survivors.Pyro.Components.Crosshair
 
         private void FixedUpdate()
         {
+            if (!hudElement) return;
+
+            bool changedBody = false;
+            if (savedCharacterBody != hudElement.targetCharacterBody)
+            {
+                savedCharacterBody = hudElement.targetCharacterBody;
+                changedBody = true;
+            }
+
+            if (changedBody)
+            {
+                this.heatController = null;
+            }
+
             if (!this.heatController)
             {
-                if (hudElement && hudElement.targetCharacterBody)
-                {
-                    heatController = hudElement.targetCharacterBody.GetComponent<HeatController>();
-                }
+                if (savedCharacterBody) heatController = savedCharacterBody.GetComponent<HeatController>();
             }
-        }
-
-        private void Update()
-        {
-            if (heatController)
+            else
             {
                 if (heatBar)
                 {

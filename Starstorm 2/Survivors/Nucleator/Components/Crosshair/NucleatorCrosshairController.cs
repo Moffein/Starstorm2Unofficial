@@ -16,6 +16,7 @@ namespace Starstorm2Unofficial.Survivors.Nucleator.Components.Crosshair
 
         private Image chargeBar;
         private Image chargeBackground;
+        private CharacterBody savedCharacterBody;
 
         private void Awake()
         {
@@ -39,12 +40,23 @@ namespace Starstorm2Unofficial.Survivors.Nucleator.Components.Crosshair
 
         private void FixedUpdate()
         {
+            if (!hudElement) return;
+
+            bool changedBody = false;
+            if (savedCharacterBody != hudElement.targetCharacterBody)
+            {
+                savedCharacterBody = hudElement.targetCharacterBody;
+                changedBody = true;
+            }
+
+            if (changedBody)
+            {
+                this.chargeComponent = null;
+            }
+
             if (!chargeComponent)
             {
-                if (hudElement && hudElement.targetCharacterBody)
-                {
-                    chargeComponent = hudElement.targetCharacterBody.GetComponent<NucleatorChargeComponent>();
-                }
+                if (savedCharacterBody) chargeComponent = savedCharacterBody.GetComponent<NucleatorChargeComponent>();
             }
             else
             {

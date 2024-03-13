@@ -1,6 +1,8 @@
 ﻿using RoR2.UI;
 using UnityEngine.UI;
 using UnityEngine;
+using Starstorm2Unofficial.Survivors.Nucleator.Components;
+using RoR2;
 
 namespace Starstorm2Unofficial.Survivors.Cyborg.Components.Crosshair
 {
@@ -17,6 +19,7 @@ namespace Starstorm2Unofficial.Survivors.Cyborg.Components.Crosshair
         private Image chargeBar;
         private Image chargeBarBackground;
         private Image shieldBar;
+        private CharacterBody savedCharacterBody;
 
         private void Awake()
         {
@@ -42,18 +45,25 @@ namespace Starstorm2Unofficial.Survivors.Cyborg.Components.Crosshair
 
         private void FixedUpdate()
         {
-            if (!this.chargeComponent)
-            {
-                if (this.hudElement && this.hudElement.targetCharacterBody)
-                {
-                    chargeComponent = this.hudElement.targetCharacterBody.GetComponent<CyborgChargeComponent>();
-                }
-            }
-        }
+            if (!hudElement) return;
 
-        private void Update()
-        {
-            if (this.chargeComponent)
+            bool changedBody = false;
+            if (savedCharacterBody != hudElement.targetCharacterBody)
+            {
+                savedCharacterBody = hudElement.targetCharacterBody;
+                changedBody = true;
+            }
+
+            if (changedBody)
+            {
+                this.chargeComponent = null;
+            }
+
+            if (!chargeComponent)
+            {
+                if (savedCharacterBody) chargeComponent = savedCharacterBody.GetComponent<CyborgChargeComponent>();
+            }
+            else
             {
                 if (this.chargeBarBackground)
                 {
