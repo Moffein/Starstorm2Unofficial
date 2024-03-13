@@ -1,6 +1,7 @@
 `0.18.6`
 
-- Fixed a potential nullref related to picking up items(?)
+- Fixed Nucleator's unfinished item display code causing double item pickups.
+- Fixed Nemmando modifying Executioner's itemdisplays.
 
 `0.18.5`
 

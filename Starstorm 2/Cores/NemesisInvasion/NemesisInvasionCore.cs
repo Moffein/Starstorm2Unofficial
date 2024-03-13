@@ -163,7 +163,7 @@ namespace Starstorm2Unofficial.Cores.NemesisInvasion
 
         private void CharacterBody_onBodyInventoryChangedGlobal(CharacterBody self)
         {
-            if (self && self.inventory) self.AddItemBehavior<NemesisItemBehavior>(self.inventory.GetItemCount(NemesisMarkerItem));
+            if (self.inventory) self.AddItemBehavior<NemesisItemBehavior>(self.inventory.GetItemCount(NemesisMarkerItem));
         }
 
         private void NemforcerMinibossCompat()

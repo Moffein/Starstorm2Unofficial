@@ -19,7 +19,7 @@ namespace Starstorm2Unofficial.Survivors.Nemmando
             CharacterModel characterModel = model.GetComponent<CharacterModel>();
 
             itemDisplayRuleSet = ScriptableObject.CreateInstance<ItemDisplayRuleSet>();
-            itemRules = ExecutionerCore.instance.itemDisplayRules;
+            itemRules = NemmandoCore.instance.itemDisplayRules;
 
             #region Display Rules
             //i leave the rest to you, swuff. godspeed.
