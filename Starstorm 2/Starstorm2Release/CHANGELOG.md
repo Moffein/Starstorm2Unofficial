@@ -1,3 +1,7 @@
+`0.18.7`
+
+- Enabled nemesis VFX on Nemforcer Invader.
+
 `0.18.6`
 
 - Fixed Nucleator's unfinished item display code causing double item pickups on certain mod setups.

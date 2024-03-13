@@ -171,7 +171,7 @@ namespace Starstorm2Unofficial.Cores.NemesisInvasion
             GameObject masterPrefab = MasterCatalog.FindMasterPrefab("NemesisEnforcerMiniBossMaster");  //This is mislabeled as requiring BodyName instead of MasterName. HOPOOOOOOOOOOOOOOOOOOOO
             if (!masterPrefab) return;
             Debug.Log("Starstorm 2 Unofficial: Adding Nemforcer Miniboss to Nemesis invader list.");
-            AddNemesisBoss(masterPrefab, null, string.Empty, true);
+            AddNemesisBoss(masterPrefab, null, string.Empty, true, true);
 
             CharacterMaster cm = masterPrefab.GetComponent<CharacterMaster>();
             if (cm && cm.bodyPrefab)
