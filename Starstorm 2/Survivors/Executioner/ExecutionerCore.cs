@@ -10,6 +10,7 @@ using RoR2.Orbs;
 using RoR2.Skills;
 using Starstorm2Unofficial.Cores;
 using Starstorm2Unofficial.Modules;
+using Starstorm2Unofficial.Modules.Achievements;
 using Starstorm2Unofficial.Modules.Survivors;
 using Starstorm2Unofficial.Survivors.Executioner.Components;
 using System;
@@ -150,18 +151,21 @@ namespace Starstorm2Unofficial.Survivors.Executioner
             masterySkinUnlockableDef.nameToken = "ACHIEVEMENT_SS2UEXECUTIONERCLEARGAMEMONSOON_NAME";
             masterySkinUnlockableDef.achievementIcon = Assets.mainAssetBundle.LoadAsset<Sprite>("texExecutionerSkinMaster");
             Unlockables.unlockableDefs.Add(masterySkinUnlockableDef);
+            AchievementHider.unlockableRewardIdentifiers.Remove(masterySkinUnlockableDef.cachedName);
 
             grandMasterySkinUnlockableDef = ScriptableObject.CreateInstance<UnlockableDef>();
             grandMasterySkinUnlockableDef.cachedName = "Skins.SS2UExecutioner.GrandMastery";
             grandMasterySkinUnlockableDef.nameToken = "ACHIEVEMENT_SS2UEXECUTIONERCLEARGAMETYPHOON_NAME";
             grandMasterySkinUnlockableDef.achievementIcon = Assets.mainAssetBundle.LoadAsset<Sprite>("texExecutionerSkinGrandMaster");
             Unlockables.unlockableDefs.Add(grandMasterySkinUnlockableDef);
+            AchievementHider.unlockableRewardIdentifiers.Remove(grandMasterySkinUnlockableDef.cachedName);
 
             wastelanderSkinUnlockableDef = ScriptableObject.CreateInstance<UnlockableDef>();
             wastelanderSkinUnlockableDef.cachedName = "Skins.SS2UExecutioner.Wastelander";
             wastelanderSkinUnlockableDef.nameToken = "ACHIEVEMENT_SS2UEXECUTIONERWASTELANDER_NAME";
             wastelanderSkinUnlockableDef.achievementIcon = Assets.mainAssetBundle.LoadAsset<Sprite>("texExecutionerWastelander");
             Unlockables.unlockableDefs.Add(wastelanderSkinUnlockableDef);
+            AchievementHider.unlockableRewardIdentifiers.Remove(wastelanderSkinUnlockableDef.cachedName);
         }
 
         internal override void InitializeSkills()

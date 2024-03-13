@@ -1,6 +1,7 @@
 ﻿using R2API;
 using RoR2;
 using Starstorm2Unofficial.Modules;
+using Starstorm2Unofficial.Modules.Achievements;
 using UnityEngine;
 
 namespace Starstorm2Unofficial.Cores.Unlockables
@@ -29,6 +30,8 @@ namespace Starstorm2Unofficial.Cores.Unlockables
                 commandoGrandMastery.nameToken = "ACHIEVEMENT_SS2UCOMMANDOCLEARGAMETYPHOON_NAME";
                 commandoGrandMastery.achievementIcon = Assets.mainAssetBundle.LoadAsset<Sprite>("texCommandoSkinGrandMaster");
                 Modules.Unlockables.unlockableDefs.Add(commandoGrandMastery);
+
+                AchievementHider.unlockableRewardIdentifiers.Remove(commandoGrandMastery.cachedName);
             }
 
             if (Modules.Config.EnableGrandMasteryToolbot.Value)
@@ -40,6 +43,8 @@ namespace Starstorm2Unofficial.Cores.Unlockables
                 toolbotGrandMastery.nameToken = "ACHIEVEMENT_SS2UTOOLBOTCLEARGAMETYPHOON_NAME";
                 toolbotGrandMastery.achievementIcon = Assets.mainAssetBundle.LoadAsset<Sprite>("texToolbotSkinGrandMaster");
                 Modules.Unlockables.unlockableDefs.Add(toolbotGrandMastery);
+
+                AchievementHider.unlockableRewardIdentifiers.Remove(toolbotGrandMastery.cachedName);
             }
 
             //acridGrandMastery = Modules.Unlockables.AddUnlockable<Achievements.CrocoGrandMasteryAchievement>(true);//Assets.mainAssetBundle.LoadAsset<Sprite>("texAcridSkinGrandMaster");

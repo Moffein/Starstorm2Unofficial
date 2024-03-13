@@ -3,6 +3,7 @@ using R2API.Utils;
 using RoR2;
 using Starstorm2Unofficial.Cores;
 using Starstorm2Unofficial.Modules;
+using Starstorm2Unofficial.Modules.Achievements;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -74,6 +75,7 @@ namespace Starstorm2Unofficial.Survivors.Chirr
             masterySkinUnlockableDef.nameToken = "ACHIEVEMENT_SS2UCHIRRCLEARGAMEMONSOON_NAME";
             masterySkinUnlockableDef.achievementIcon = maidSkinIcon;
             Unlockables.unlockableDefs.Add(masterySkinUnlockableDef);
+            AchievementHider.unlockableRewardIdentifiers.Add(masterySkinUnlockableDef.cachedName);
 
             CharacterModel.RendererInfo[] masteryRendererInfos = new CharacterModel.RendererInfo[defaultRenderers.Length];
             defaultRenderers.CopyTo(masteryRendererInfos, 0);

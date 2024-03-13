@@ -84,6 +84,7 @@
     <Compile Include="Cores\NemesisInvasion\NemesisInvasionCore.cs" />
     <Compile Include="IgnoreSprintCrosshair.cs" />
     <Compile Include="ModCompat.cs" />
+    <Compile Include="Modules\Achievements\AchievementHider.cs" />
     <Compile Include="Modules\BazaarChecker.cs" />
     <Compile Include="Modules\CameraParams.cs" />
     <Compile Include="Modules\EntityStates\BaseMeleeAttack.cs" />

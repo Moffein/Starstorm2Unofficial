@@ -9,6 +9,7 @@ using Starstorm2Unofficial.Cores.Equipment;
 using Starstorm2Unofficial.Cores.Items;
 using Starstorm2Unofficial.Cores.NemesisInvasion;
 using Starstorm2Unofficial.Modules;
+using Starstorm2Unofficial.Modules.Achievements;
 using Starstorm2Unofficial.SharedHooks;
 using Starstorm2Unofficial.Survivors.Chirr;
 using Starstorm2Unofficial.Survivors.Cyborg;
@@ -118,6 +119,7 @@ namespace Starstorm2Unofficial
             //Figure out where to place this later.
             ShootableProjectileComponent.AddHooks();
             IgnoreSprintCrosshair.Init();
+            AchievementHider.Init();
         }
 
         public void Start()

@@ -6,6 +6,7 @@ using R2API.Utils;
 using System.Collections.Generic;
 using Starstorm2Unofficial.Cores;
 using Starstorm2Unofficial.Modules;
+using Starstorm2Unofficial.Modules.Achievements;
 
 namespace Starstorm2Unofficial.Survivors.Cyborg
 {
@@ -66,11 +67,13 @@ namespace Starstorm2Unofficial.Survivors.Cyborg
             LanguageAPI.Add("ACHIEVEMENT_SS2UCYBORGCLEARGAMEMONSOON_NAME", "CYBORG: Mastery");
             LanguageAPI.Add("ACHIEVEMENT_SS2UCYBORGCLEARGAMEMONSOON_DESCRIPTION", "As CYBORG, beat the game or obliterate on Monsoon.");
 
+            Sprite masteryIcon = LoadoutAPI.CreateSkinIcon(new Color32(234, 231, 212, 255), new Color32(125, 92, 39, 255), new Color32(26, 17, 22, 255), new Color32(57, 33, 33, 255));
             UnlockableDef masterySkinUnlockableDef = ScriptableObject.CreateInstance<UnlockableDef>();
             masterySkinUnlockableDef.cachedName = "Skins.SS2UCyborg.Mastery";
             masterySkinUnlockableDef.nameToken = "ACHIEVEMENT_SS2UCYBORGCLEARGAMEMONSOON_NAME";
-            masterySkinUnlockableDef.achievementIcon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("cyborgsecondary");
+            masterySkinUnlockableDef.achievementIcon = masteryIcon;
             Unlockables.unlockableDefs.Add(masterySkinUnlockableDef);
+            AchievementHider.unlockableRewardIdentifiers.Remove(masterySkinUnlockableDef.cachedName);
 
             CharacterModel.RendererInfo[] masteryRendererInfos = new CharacterModel.RendererInfo[defaultRenderers.Length];
             defaultRenderers.CopyTo(masteryRendererInfos, 0);
@@ -82,7 +85,7 @@ namespace Starstorm2Unofficial.Survivors.Cyborg
 
             LanguageAPI.Add("SS2UCYBORG_MASTERY_SKIN_NAME", "Cybersteam");
             SkinDef masterySkin = SkinsCore.CreateSkinDef("SS2UCYBORG_MASTERY_SKIN_NAME",
-                                                          LoadoutAPI.CreateSkinIcon(new Color32(234, 231, 212, 255), new Color32(125, 92, 39, 255), new Color32(26, 17, 22, 255), new Color32(57, 33, 33, 255)),
+                                                          masteryIcon,
                                                           masteryRendererInfos,
                                                           model,
                                                           Modules.Config.ForceUnlockSkins.Value ? null : masterySkinUnlockableDef);
@@ -98,11 +101,13 @@ namespace Starstorm2Unofficial.Survivors.Cyborg
             LanguageAPI.Add("ACHIEVEMENT_SS2UCYBORGCLEARGAMETYPHOON_NAME", "CYBORG: Grandmastery");
             LanguageAPI.Add("ACHIEVEMENT_SS2UCYBORGCLEARGAMETYPHOON_DESCRIPTION", "As CYBORG, beat the game or obliterate on Typhoon.");
 
+            Sprite gmIcon = LoadoutAPI.CreateSkinIcon(new Color32(255, 134, 122, 255), new Color32(7, 14, 30, 255), new Color32(7, 12, 25, 255), new Color32(10, 22, 36, 255));
             UnlockableDef grandmasterySkinUnlockableDef = ScriptableObject.CreateInstance<UnlockableDef>();
             grandmasterySkinUnlockableDef.cachedName = "Skins.SS2UCyborg.GrandMastery";
             grandmasterySkinUnlockableDef.nameToken = "ACHIEVEMENT_SS2UCYBORGCLEARGAMETYPHOON_NAME";
-            grandmasterySkinUnlockableDef.achievementIcon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("cyborgspecial");
+            grandmasterySkinUnlockableDef.achievementIcon = gmIcon;
             Unlockables.unlockableDefs.Add(grandmasterySkinUnlockableDef);
+            AchievementHider.unlockableRewardIdentifiers.Remove(grandmasterySkinUnlockableDef.cachedName);
 
             CharacterModel.RendererInfo[] grandMasteryRendererInfos = new CharacterModel.RendererInfo[defaultRenderers.Length];
             defaultRenderers.CopyTo(grandMasteryRendererInfos, 0);
@@ -114,7 +119,7 @@ namespace Starstorm2Unofficial.Survivors.Cyborg
 
             LanguageAPI.Add("SS2UCYBORG_GRANDMASTERY_SKIN_NAME", "Metamorphic");
             SkinDef grandMasterySkin = SkinsCore.CreateSkinDef("SS2UCYBORG_GRANDMASTERY_SKIN_NAME",
-                                                          LoadoutAPI.CreateSkinIcon(new Color32(255, 134, 122, 255), new Color32(7, 14, 30, 255), new Color32(7, 12, 25, 255), new Color32(10, 22, 36, 255)),
+                                                          gmIcon,
                                                           grandMasteryRendererInfos,
                                                           model,
                                                           Modules.Config.ForceUnlockSkins.Value ? null : grandmasterySkinUnlockableDef);

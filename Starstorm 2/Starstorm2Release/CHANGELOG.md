@@ -1,7 +1,9 @@
 `0.18.6`
 
-- Fixed Nucleator's unfinished item display code causing double item pickups.
+- Fixed Nucleator's unfinished item display code causing double item pickups on certain mod setups.
 - Fixed Nemmando modifying Executioner's itemdisplays.
+- Achievements for disabled content are now hidden from the logbook. (They might still show up in other places though?)
+	- This feature can be toggled in the config, in case it happens to break anything.
 
 `0.18.5`
 

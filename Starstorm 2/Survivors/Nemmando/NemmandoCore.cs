@@ -11,6 +11,7 @@ using RoR2.Skills;
 using Starstorm2Unofficial.Cores;
 using Starstorm2Unofficial.Cores.NemesisInvasion;
 using Starstorm2Unofficial.Modules;
+using Starstorm2Unofficial.Modules.Achievements;
 using Starstorm2Unofficial.Modules.Survivors;
 using Starstorm2Unofficial.Survivors.Nemmando.Components;
 using System;
@@ -100,6 +101,7 @@ namespace Starstorm2Unofficial.Survivors.Nemmando
                 NemmandoCore.killSelfUnlockableDef.cachedName = "Skins.SS2UNemmando.Commando";
                 NemmandoCore.killSelfUnlockableDef.nameToken = "ACHIEVEMENT_SS2UNEMMANDOKILLSELF_NAME";
                 NemmandoCore.killSelfUnlockableDef.achievementIcon = Assets.mainAssetBundle.LoadAsset<Sprite>("texSingleTapUnlockIcon");
+                AchievementHider.unlockableRewardIdentifiers.Remove(NemmandoCore.killSelfUnlockableDef.cachedName);
 
                 SkinDef sd = Addressables.LoadAssetAsync<SkinDef>("RoR2/Base/Commando/skinCommandoDefault.asset").WaitForCompletion();
                 if (sd && sd.icon) NemmandoCore.killSelfUnlockableDef.achievementIcon = sd.icon;
@@ -116,6 +118,7 @@ namespace Starstorm2Unofficial.Survivors.Nemmando
                 survivorUnlock.cachedName = "Characters.SS2UNemmando";
                 survivorUnlock.nameToken = "ACHIEVEMENT_SS2UNEMMANDOUNLOCK_NAME";
                 survivorUnlock.achievementIcon = Assets.mainAssetBundle.LoadAsset<Sprite>("texNemmandoIconUnlock");
+                AchievementHider.unlockableRewardIdentifiers.Remove(survivorUnlock.cachedName);
 
                 Modules.Unlockables.unlockableDefs.Add(survivorUnlock);
             }
@@ -407,12 +410,14 @@ namespace Starstorm2Unofficial.Survivors.Nemmando
             masterySkinUnlockableDef.nameToken = "ACHIEVEMENT_SS2UNEMMANDOCLEARGAMEMONSOON_NAME";
             masterySkinUnlockableDef.achievementIcon = Assets.mainAssetBundle.LoadAsset<Sprite>("texNemmandoSkinMaster");
             Unlockables.unlockableDefs.Add(masterySkinUnlockableDef);
+            AchievementHider.unlockableRewardIdentifiers.Remove(masterySkinUnlockableDef.cachedName);
 
             grandMasterySkinUnlockableDef = ScriptableObject.CreateInstance<UnlockableDef>();
             grandMasterySkinUnlockableDef.cachedName = "Skins.SS2UNemmando.GrandMastery";
             grandMasterySkinUnlockableDef.nameToken = "ACHIEVEMENT_SS2UNEMMANDOCLEARGAMETYPHOON_NAME";
             grandMasterySkinUnlockableDef.achievementIcon = Assets.mainAssetBundle.LoadAsset<Sprite>("texNemmandoSkinGrandMaster");
             Unlockables.unlockableDefs.Add(grandMasterySkinUnlockableDef);
+            AchievementHider.unlockableRewardIdentifiers.Remove(grandMasterySkinUnlockableDef.cachedName);
 
             //Assets.mainAssetBundle.LoadAsset<Sprite>("texNemmandoIconUnlock");
             //Assets.mainAssetBundle.LoadAsset<Sprite>("texSingleTapUnlockIcon");

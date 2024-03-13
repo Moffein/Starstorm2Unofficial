@@ -1,5 +1,6 @@
 ﻿using BepInEx.Configuration;
 using RiskOfOptions;
+using Starstorm2Unofficial.Modules.Achievements;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using UnityEngine;
@@ -65,6 +66,11 @@ namespace Starstorm2Unofficial.Modules
                             "Unlock Skins",
                             false,
                             "Automatically unlock all skins.");
+
+            AchievementHider.enabled = StarstormPlugin.instance.Config.Bind("Starstorm 2 :: Unlock All",
+                            "Hide Disabled Achievements",
+                            true,
+                            "Achievements for config-disabled content will not show up in the logbook (might still show up in other places).").Value;
 
             cursed =
                 StarstormPlugin.instance.Config.Bind("Starstorm 2 :: Cursed",
