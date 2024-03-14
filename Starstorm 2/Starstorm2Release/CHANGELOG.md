@@ -1,3 +1,8 @@
+`0.18.8`
+
+- Fixed some Nucleator sounds playing globally.
+- Fixed most sounds not factoring in orientation for real this time.
+
 `0.18.7`
 
 - Enabled nemesis VFX on Nemforcer Invader.
