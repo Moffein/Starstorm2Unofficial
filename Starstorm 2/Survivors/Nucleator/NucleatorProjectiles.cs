@@ -89,12 +89,14 @@ namespace Starstorm2Unofficial.Survivors.Nucleator
 
             ProjectileController pc = projectilePrefab.GetComponent<ProjectileController>();
             pc.ghostPrefab = projectileGhost;
+            pc.allowPrediction = false;
 
             ProjectileSimple ps = projectilePrefab.GetComponent<ProjectileSimple>();
             ps.desiredForwardSpeed = 20f;
             ps.lifetime = 2.1f;
 
-            GameObject impactEffectPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Loader/OmniImpactVFXLoaderLightning.prefab").WaitForCompletion().InstantiateClone("SS2UNucleatorPrimaryOverchargeImpactEffect", false);
+            //"RoR2/Base/Loader/OmniImpactVFXLoaderLightning.prefab"
+            GameObject impactEffectPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Loader/LoaderGroundSlam.prefab").WaitForCompletion().InstantiateClone("SS2UNucleatorPrimaryOverchargeImpactEffect", false);
             VFXAttributes vfxAttributes = impactEffectPrefab.GetComponent<VFXAttributes>();
             if (vfxAttributes)
             {

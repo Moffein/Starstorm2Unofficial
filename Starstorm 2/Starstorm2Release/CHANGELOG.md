@@ -4,12 +4,21 @@
 	- Updated anims (Thanks Spanish Space Inquisition!)
 	- Increased health regen from 1.0 -> 2.5
 	- Radiation Poisoning VFX now scales with body size.
-	- Irradiate description now mentions the radius scaling.
+	- Irradiate
+		- Description now mentions the radius scaling.
+		- Overcharge projectile now has prediction disabled, so its position won't be desynced anymore.
+		- Changed Overcharge VFX to a cleaner effect.
 	- Quarantine
 		- Reduced damage from 400%-1200% -> 200%-1080%
 		- Increased root duration from 3s -> 5s
 		
 		*Now deals same damage as primary, since having this be a power skill felt unfitting.*
+		
+	- Fission Impulse
+		- Adjusted leap hitbox.
+			- Enemy detection hitbox size reduced from 4m -> 2.5m, now can detect non-flying enemies.
+			
+		*Goal is to make this more consistent at direct-hitting enemies that are grounded.*
 	
 - Nemmando
 	- Gouge
