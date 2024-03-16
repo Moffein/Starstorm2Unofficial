@@ -123,7 +123,7 @@ namespace EntityStates.SS2UStates.Nucleator.Secondary
 
             float recoil = 8f;
             base.AddRecoil(-0.5f * recoil, -0.8f * recoil, -0.3f * recoil, 0.3f * recoil);
-            base.PlayAnimation("Gesture, Override", "SecondaryRelease", "Secondary.playbackRate", duration * 2f);
+            base.PlayAnimation("Gesture, Override", "SecondaryRelease", "Secondary.playbackRate", 1.2f);
         }
 
         public override void FixedUpdate()
@@ -144,7 +144,7 @@ namespace EntityStates.SS2UStates.Nucleator.Secondary
         protected virtual float GetDamageCoefficient()
         {
             float chargeScaled = charge / BaseChargeState.overchargeFraction;
-            return Mathf.Lerp(4f, 8f, chargeScaled);
+            return Mathf.Lerp(2f, 7.2f, chargeScaled);
         }
 
         protected virtual GameObject GetEffectPrefab()

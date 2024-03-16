@@ -2,6 +2,17 @@
 
 - Nucleator
 	- Updated anims (Thanks Spanish Space Inquisition!)
+	- Radiation Poisoning VFX now scales with body size.
+	- Quarantine
+		- Reduced damage from 400%-1200% -> 200%-1080%
+		- Increased root duration from 3s -> 5s
+		
+		*Now deals samge damage as primary, since having this be a power skill felt unfitting.*
+	
+- Nemmando
+	- Gouge
+		- Reduced proc coefficient from 0.7 -> 0.5
+		- Reduced damage from 400% -> 300%
 
 `0.18.8`
 

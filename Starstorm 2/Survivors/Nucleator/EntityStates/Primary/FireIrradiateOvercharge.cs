@@ -24,7 +24,7 @@ namespace EntityStates.SS2UStates.Nucleator.Primary
             //Util.PlaySound("SS2UNucleatorSkill1", base.gameObject);
             //Util.PlaySound("SS2UNucleatorSkill1c", base.gameObject);
             Util.PlaySound("SS2UCyborgUtility", base.gameObject);
-            base.PlayAnimation("Gesture, Override", "PrimaryBig");
+            base.PlayAnimation("Gesture, Override", "PrimaryBig", "Primary.playbackRate", 1f);
 
             if (muzzleflashEffectPrefab) EffectManager.SimpleMuzzleFlash(muzzleflashEffectPrefab, base.gameObject, "MuzzleR", false);
 

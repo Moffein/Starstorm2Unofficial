@@ -26,14 +26,14 @@ namespace Starstorm2Unofficial.Cores
             public static DamageAPI.ModdedDamageType ErraticGadget;
             public static DamageAPI.ModdedDamageType SlayerExceptItActuallyWorks;
             public static DamageAPI.ModdedDamageType AntiFlyingForce;
-            public static DamageAPI.ModdedDamageType Root3s;
+            public static DamageAPI.ModdedDamageType Root5s;
             public static DamageAPI.ModdedDamageType NucleatorRadiationOnHit;
         }
 
         //public static DamageType
         //OnHit;
 
-        public static float gougeDamageCoefficient = 2f;    //gouge DPS
+        public static float gougeDamageCoefficient = 1.5f;    //gouge DPS
 
         public DamageTypeCore()
         {
@@ -49,7 +49,7 @@ namespace Starstorm2Unofficial.Cores
             ModdedDamageTypes.ExtendFear = DamageAPI.ReserveDamageType();
             ModdedDamageTypes.GuaranteedFearOnHit = DamageAPI.ReserveDamageType();
             ModdedDamageTypes.ErraticGadget = DamageAPI.ReserveDamageType();
-            ModdedDamageTypes.Root3s = DamageAPI.ReserveDamageType();
+            ModdedDamageTypes.Root5s = DamageAPI.ReserveDamageType();
 
             On.RoR2.HealthComponent.TakeDamage += HealthComponent_TakeDamage;
             On.RoR2.GlobalEventManager.OnHitEnemy += GlobalEventManager_OnHitEnemy;
@@ -88,9 +88,9 @@ namespace Starstorm2Unofficial.Cores
                             }
                         }
 
-                        if (damageInfo.HasModdedDamageType(ModdedDamageTypes.Root3s))
+                        if (damageInfo.HasModdedDamageType(ModdedDamageTypes.Root5s))
                         {
-                            victimBody.AddTimedBuff(RoR2Content.Buffs.LunarSecondaryRoot, 3f);
+                            victimBody.AddTimedBuff(RoR2Content.Buffs.LunarSecondaryRoot, 5f);
                         }
 
                         if (damageInfo.HasModdedDamageType(ModdedDamageTypes.NucleatorRadiationOnHit) && victimBody.bodyIndex != Survivors.Nucleator.NucleatorCore.bodyIndex)
@@ -150,7 +150,7 @@ namespace Starstorm2Unofficial.Cores
                     {
                         damageInfo.crit = Util.CheckRoll(attackerBody.crit, attackerBody.master);
                     }
-                    damageInfo.procCoefficient = 0.7f;
+                    damageInfo.procCoefficient = 0.5f;
                     damageInfo.procChainMask.AddProc(ProcType.Rings);
                     triggerGougeProc = true;
                 }
@@ -190,7 +190,13 @@ namespace Starstorm2Unofficial.Cores
                 else if (damageInfo.dotIndex == DoTCore.NucleatorRadiation)
                 {
                     damageInfo.damage = Mathf.Max(damageInfo.damage, self.fullCombinedHealth * 0.01f);
-                    EffectManager.SimpleEffect(DoTCore.TrematodeHitEffect, damageInfo.position, self.transform.rotation, true);
+
+                    EffectManager.SpawnEffect(DoTCore.TrematodeHitEffect, new EffectData
+                    {
+                        origin = damageInfo.position,
+                        rotation = self.transform.rotation,
+                        scale = Mathf.Max(1f, Mathf.Min(4f, cb.radius))
+                    }, true);
                 }
 
                 if (damageInfo.HasModdedDamageType(ModdedDamageTypes.GuaranteedFearOnHit))

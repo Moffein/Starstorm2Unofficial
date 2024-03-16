@@ -22,12 +22,12 @@ namespace EntityStates.SS2UStates.Nucleator.Secondary
         protected override float GetDamageCoefficient()
         {
             float chargeScaled = (charge - BaseChargeState.overchargeFraction) / (1f - BaseChargeState.overchargeFraction);
-            return Mathf.Lerp(8f, 12f, chargeScaled);
+            return Mathf.Lerp(7.2f, 10.8f, chargeScaled);
         }
 
         protected override void ModifyBulletAttack(BulletAttack ba)
         {
-            ba.AddModdedDamageType(DamageTypeCore.ModdedDamageTypes.Root3s);
+            ba.AddModdedDamageType(DamageTypeCore.ModdedDamageTypes.Root5s);
         }
     }
 }
