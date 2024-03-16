@@ -2,7 +2,9 @@
 
 - Nucleator
 	- Updated anims (Thanks Spanish Space Inquisition!)
+	- Increased health regen from 1.0 -> 2.5
 	- Radiation Poisoning VFX now scales with body size.
+	- Irradiate description now mentions the radius scaling.
 	- Quarantine
 		- Reduced damage from 400%-1200% -> 200%-1080%
 		- Increased root duration from 3s -> 5s
