@@ -1,3 +1,8 @@
+`0.18.9`
+
+- Nucleator
+	- Updated anims (Thanks Spanish Space Inquisition!)
+
 `0.18.8`
 
 - Fixed some Nucleator sounds playing globally.

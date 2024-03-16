@@ -62,6 +62,7 @@ namespace EntityStates.SS2UStates.Nucleator.Primary
 
         public void SetStep(int i)
         {
+            if (i > 1) i = 0;
             step = i;
         }
     }

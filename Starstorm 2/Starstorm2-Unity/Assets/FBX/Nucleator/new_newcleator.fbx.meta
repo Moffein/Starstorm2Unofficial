@@ -1,159 +1,91 @@
 fileFormatVersion: 2
 guid: c08578ae22a15d74f935ea608143ace5
 ModelImporter:
-  serializedVersion: 23
-  fileIDToRecycleName:
-    100000: BASE
-    100002: Calf.L
-    100004: Calf.R
-    100006: Camera
-    100008: ElbowIK.L
-    100010: ElbowIK.R
-    100012: Foot.L
-    100014: Foot.R
-    100016: FootIK.L
-    100018: FootIK.R
-    100020: Forearm.L
-    100022: Forearm.R
-    100024: ForearmIK.L
-    100026: ForearmIK.R
-    100028: Head
-    100030: KneeIK.L
-    100032: KneeIK.R
-    100034: Midriff
-    100036: Neck
-    100038: //RootNode
-    100040: NucleatorArmature
-    100042: NucleatorMesh
-    100044: Pelvis
-    100046: Point
-    100048: ROOT
-    100050: Shoulder.L
-    100052: Shoulder.R
-    100054: Thigh.L
-    100056: Thigh.R
-    100058: Toe.L
-    100060: Toe.R
-    100062: Torso
-    100064: Tube1.L
-    100066: Tube1.R
-    100068: Tube2.L
-    100070: Tube2.R
-    100072: Tube3.L
-    100074: Tube3.R
-    100076: Tube4.L
-    100078: Tube4.R
-    100080: Tube5.L
-    100082: Tube5.R
-    100084: Tube6.L
-    100086: Tube6.R
-    100088: Tube7.L
-    100090: Tube7.R
-    100092: Tube8.L
-    100094: Tube8.R
-    100096: Tube9.L
-    100098: Tube9.L.001
-    100100: Tube9.R
-    100102: Tube9.R.001
-    100104: TubeJiggleLeft
-    100106: TubeJiggleLeft.001
-    100108: TubeJiggleRight
-    100110: TubeJiggleRight.001
-    100112: UpperArm1.L
-    100114: UpperArm1.R
-    100116: UpperArm2.L
-    100118: UpperArm2.R
-    400000: BASE
-    400002: Calf.L
-    400004: Calf.R
-    400006: Camera
-    400008: ElbowIK.L
-    400010: ElbowIK.R
-    400012: Foot.L
-    400014: Foot.R
-    400016: FootIK.L
-    400018: FootIK.R
-    400020: Forearm.L
-    400022: Forearm.R
-    400024: ForearmIK.L
-    400026: ForearmIK.R
-    400028: Head
-    400030: KneeIK.L
-    400032: KneeIK.R
-    400034: Midriff
-    400036: Neck
-    400038: //RootNode
-    400040: NucleatorArmature
-    400042: NucleatorMesh
-    400044: Pelvis
-    400046: Point
-    400048: ROOT
-    400050: Shoulder.L
-    400052: Shoulder.R
-    400054: Thigh.L
-    400056: Thigh.R
-    400058: Toe.L
-    400060: Toe.R
-    400062: Torso
-    400064: Tube1.L
-    400066: Tube1.R
-    400068: Tube2.L
-    400070: Tube2.R
-    400072: Tube3.L
-    400074: Tube3.R
-    400076: Tube4.L
-    400078: Tube4.R
-    400080: Tube5.L
-    400082: Tube5.R
-    400084: Tube6.L
-    400086: Tube6.R
-    400088: Tube7.L
-    400090: Tube7.R
-    400092: Tube8.L
-    400094: Tube8.R
-    400096: Tube9.L
-    400098: Tube9.L.001
-    400100: Tube9.R
-    400102: Tube9.R.001
-    400104: TubeJiggleLeft
-    400106: TubeJiggleLeft.001
-    400108: TubeJiggleRight
-    400110: TubeJiggleRight.001
-    400112: UpperArm1.L
-    400114: UpperArm1.R
-    400116: UpperArm2.L
-    400118: UpperArm2.R
-    2000000: Camera
-    2100000: Material.001
-    4300000: NucleatorMesh
-    7400000: NucleatorArmature|AscendLoop
-    7400002: NucleatorArmature|CombatIdle
-    7400004: NucleatorArmature|CSS
-    7400006: NucleatorArmature|Idle
-    7400008: NucleatorArmature|Jump
-    7400010: NucleatorArmature|PrimaryBig
-    7400012: NucleatorArmature|PrimaryCharge
-    7400014: NucleatorArmature|PrimaryChargeHold
-    7400016: NucleatorArmature|PrimaryLight
-    7400018: NucleatorArmature|Rest Pose
-    7400020: NucleatorArmature|RunBackwards
-    7400022: NucleatorArmature|RunForwards
-    7400024: NucleatorArmature|RunLeft
-    7400026: NucleatorArmature|RunRight
-    7400028: NucleatorArmature|SecondaryCharge
-    7400030: NucleatorArmature|SecondaryRelease
-    7400032: NucleatorArmature|Sit
-    7400034: NucleatorArmature|SpecialIdle
-    7400036: NucleatorArmature|Sprint
-    7400038: NucleatorArmature|Stop
-    7400040: NucleatorArmature|UtilityCharge
-    7400042: NucleatorArmature|UtilityRelease
-    9500000: //RootNode
-    10800000: Point
-    13700000: NucleatorMesh
-  externalObjects: {}
+  serializedVersion: 19301
+  internalIDToNameTable:
+  - first:
+      74: -3191035676316898018
+    second: NucleatorArmature|AscendLoop
+  - first:
+      74: -1775372898884613035
+    second: NucleatorArmature|CombatIdle
+  - first:
+      74: -5701644125602787109
+    second: NucleatorArmature|CSS
+  - first:
+      74: 8106339582807367738
+    second: NucleatorArmature|Idle
+  - first:
+      74: 6412764646963210324
+    second: NucleatorArmature|Jump
+  - first:
+      74: 5421357377408189259
+    second: NucleatorArmature|NucleatorArmature
+  - first:
+      74: -1964707695660226396
+    second: NucleatorArmature|PrimaryBig
+  - first:
+      74: -3297440244311213081
+    second: NucleatorArmature|PrimaryCharge
+  - first:
+      74: -7343701831865640012
+    second: NucleatorArmature|PrimaryChargeHold
+  - first:
+      74: 3615419826384310500
+    second: NucleatorArmature|PrimaryLight
+  - first:
+      74: -1781610058397668600
+    second: NucleatorArmature|PrimaryLightAlt
+  - first:
+      74: -1464783412966836571
+    second: NucleatorArmature|Rest Pose
+  - first:
+      74: 577449398580414115
+    second: NucleatorArmature|RunBackwards
+  - first:
+      74: -6354683658392488303
+    second: NucleatorArmature|RunForwards
+  - first:
+      74: -6623814504135496513
+    second: NucleatorArmature|RunLeft
+  - first:
+      74: 8666206340067346132
+    second: NucleatorArmature|RunRight
+  - first:
+      74: 3638181817499191841
+    second: NucleatorArmature|SecondaryCharge
+  - first:
+      74: -1395100860508582549
+    second: NucleatorArmature|SecondaryRelease
+  - first:
+      74: -7278425318448378312
+    second: NucleatorArmature|Sit
+  - first:
+      74: 7964670028089407264
+    second: NucleatorArmature|SpecialIdle
+  - first:
+      74: 1998408007712134772
+    second: NucleatorArmature|Sprint
+  - first:
+      74: 8829846441364326393
+    second: NucleatorArmature|Stop
+  - first:
+      74: 4422734722340931940
+    second: NucleatorArmature|UtilityCharge
+  - first:
+      74: -7453287260852638555
+    second: NucleatorArmature|UtilityLanding
+  - first:
+      74: -6460911887744810901
+    second: NucleatorArmature|UtilityRelease
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material.001
+    second: {fileID: 2100000, guid: 623c1449446c90742bedfc6365acde67, type: 2}
   materials:
-    importMaterials: 1
+    materialImportMode: 1
     materialName: 0
     materialSearch: 1
     materialLocation: 1
@@ -179,32 +111,35 @@ ModelImporter:
     extraExposedTransformPaths: []
     extraUserProperties: []
     clipAnimations: []
-    isReadable: 1
+    isReadable: 0
   meshes:
     lODScreenPercentages: []
     globalScale: 1
     meshCompression: 0
     addColliders: 0
     useSRGBMaterialColor: 1
+    sortHierarchyByName: 1
     importVisibility: 1
     importBlendShapes: 1
-    importCameras: 0
-    importLights: 0
+    importCameras: 1
+    importLights: 1
+    fileIdsGeneration: 2
     swapUVChannels: 0
     generateSecondaryUV: 0
     useFileUnits: 1
-    optimizeMeshForGPU: 1
     keepQuads: 0
     weldVertices: 1
     preserveHierarchy: 0
+    skinWeightsMode: 0
+    maxBonesPerVertex: 4
+    minBoneWeight: 0.001
+    meshOptimizationFlags: -1
     indexFormat: 0
     secondaryUVAngleDistortion: 8
     secondaryUVAreaDistortion: 15.000001
     secondaryUVHardAngle: 88
     secondaryUVPackMargin: 4
     useFileScale: 0
-    previousCalculatedGlobalScale: 0.01
-    hasPreviousCalculatedGlobalScale: 1
   tangentSpace:
     normalSmoothAngle: 60
     normalImportMode: 0
@@ -213,10 +148,10 @@ ModelImporter:
     legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
     blendShapeNormalImportMode: 1
     normalSmoothingSource: 0
+  referencedClips: []
   importAnimation: 1
-  copyAvatar: 0
   humanDescription:
-    serializedVersion: 2
+    serializedVersion: 3
     human: []
     skeleton: []
     armTwist: 0.5
@@ -226,13 +161,16 @@ ModelImporter:
     armStretch: 0.05
     legStretch: 0.05
     feetSpacing: 0
-    rootMotionBoneName: 
+    globalScale: 1
+    rootMotionBoneName: BASE
     hasTranslationDoF: 0
     hasExtraRoot: 0
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
+  autoGenerateAvatarMappingIfUnspecified: 1
   animationType: 2
   humanoidOversampling: 1
+  avatarSetup: 1
   additionalBone: 0
   userData: 
   assetBundleName: 

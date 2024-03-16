@@ -23,7 +23,11 @@ namespace EntityStates.SS2UStates.Nucleator.Primary
 
             Util.PlaySound("SS2UNucleatorSkill1", base.gameObject);
 
-            string muzzleString = step == 0 ? "MuzzleR" : "MuzzleL";
+            bool isRight = step == 0;
+            string animString = isRight ? "PrimaryLightR" : "PrimaryLightL";
+            base.PlayAnimation("Gesture, Override", animString, "Primary.playbackRate", this.duration);
+
+            string muzzleString = isRight ? "MuzzleR" : "MuzzleL";
             if (muzzleflashEffectPrefab) EffectManager.SimpleMuzzleFlash(muzzleflashEffectPrefab, base.gameObject, muzzleString, false);
 
             if (base.isAuthority)

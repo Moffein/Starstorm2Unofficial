@@ -1,12 +1,12 @@
 ManifestFileVersion: 0
-CRC: 212309327
+CRC: 4151493075
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 18ded13353167f67ed1dcd1a0c4b6e0d
+    Hash: 42a9d2943d136b2a8b8a7098af668bca
   TypeTreeHash:
     serializedVersion: 2
-    Hash: e085efc3cec39229c22603e1a47b8115
+    Hash: 9b39e8c6fc23523925becd33387f2f7a
 HashAppended: 0
 ClassTypes:
 - Class: 1
@@ -42,9 +42,9 @@ ClassTypes:
 - Class: 108
   Script: {instanceID: 0}
 - Class: 114
-  Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-- Class: 114
   Script: {fileID: 11500000, guid: d0203090a5cc68345977ed2206b1f42d, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
 - Class: 114
   Script: {fileID: 11500000, guid: da178bd6941be6d4299f99ed3486707d, type: 3}
 - Class: 114
@@ -194,6 +194,7 @@ Assets:
 - Assets/AssetBundle/Chirr/texChirrTargetCrosshair.png
 - Assets/AssetBundle/Nemmando/VFX/Materials/matSheatheSpark.mat
 - Assets/AssetBundle/Nemmando/Textures/texVergil.png
+- Assets/AssetBundle/Nucleator/Animations/Clips/NucleatorArmature_CSS.anim
 - Assets/AssetBundle/Executioner/Textures/texWastelander.png
 - Assets/AssetBundle/Nemmando/VFX/ImpactScepterStrike.prefab
 - Assets/AssetBundle/Nemmando/Mesh/meshCommandoMesh.mesh
@@ -407,6 +408,7 @@ Assets:
 - Assets/AssetBundle/Nemmando/Animations/Utility.Right.anim
 - Assets/AssetBundle/Nemmando/Textures/texGuardianGun.png
 - Assets/AssetBundle/Cyborg/Animations/WalkLFT.anim
+- Assets/AssetBundle/Nucleator/Animations/Clips/Sit.anim
 - Assets/AssetBundle/Chirr/ChirrSpecial1.png
 - Assets/AssetBundle/Nemmando/Textures/texNemmandoAlt.png
 - Assets/AssetBundle/BuffIcons/Status_Sigil.png
@@ -695,6 +697,7 @@ Assets:
 - Assets/AssetBundle/Enemies/Spooder/Animations/Ascend.anim
 - Assets/AssetBundle/BuffIcons/Status_StrangeCan.png
 - Assets/AssetBundle/Skins/Materials/matAcridArmor.mat
+- Assets/AssetBundle/Nucleator/Animations/Clips/Stop.anim
 - Assets/AssetBundle/Executioner/Animations/MenuIdleIn.anim
 - Assets/AssetBundle/Executioner/ExecutionerDisplay.prefab
 - Assets/AssetBundle/GeneralAssets/Textures/UI/texCrosshairShieldBarBase.png
@@ -732,6 +735,7 @@ Assets:
 - Assets/AssetBundle/Nucleator/Icons/texNucleatorSecondary.png
 - Assets/AssetBundle/Cyborg/Animations/Utility.anim
 - Assets/AssetBundle/Chirr/Animations/Bugged.anim
+- Assets/AssetBundle/Nucleator/Animations/Clips/UtilityLanding.anim
 - Assets/AssetBundle/Chirr/Animations/RestLoop.anim
 - Assets/AssetBundle/Nemmando/VFX/NemmandoSwingEffect.prefab
 - Assets/AssetBundle/Chirr/Animations/WalkFWD.anim
@@ -739,6 +743,7 @@ Assets:
 - Assets/AssetBundle/Nemmando/Animations/SprintRestR.anim
 - Assets/AssetBundle/Cyborg/Animations/Special11.anim
 - Assets/AssetBundle/Nemmando/Mesh/meshNemmandoClassic.mesh
+- Assets/AssetBundle/Nucleator/Animations/Clips/PrimaryLightAlt.anim
 - Assets/AssetBundle/Chirr/texChirrBefriendCrosshair.png
 - Assets/AssetBundle/FX/Dust.mat
 - Assets/AssetBundle/Pyro/Icons/pyroSkill4.png
