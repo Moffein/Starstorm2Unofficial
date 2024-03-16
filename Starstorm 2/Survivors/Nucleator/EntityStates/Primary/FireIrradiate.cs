@@ -25,7 +25,7 @@ namespace EntityStates.SS2UStates.Nucleator.Primary
 
             bool isRight = step == 0;
             string animString = isRight ? "PrimaryLightR" : "PrimaryLightL";
-            base.PlayAnimation("Gesture, Override", animString, "Primary.playbackRate", this.duration);
+            base.PlayAnimation("Gesture, Override", animString);
 
             string muzzleString = isRight ? "MuzzleR" : "MuzzleL";
             if (muzzleflashEffectPrefab) EffectManager.SimpleMuzzleFlash(muzzleflashEffectPrefab, base.gameObject, muzzleString, false);

@@ -37,7 +37,7 @@ namespace EntityStates.SS2UStates.Nucleator.Utility
             base.OnEnter();
 
             Util.PlaySound(soundLoopStartEvent, base.gameObject);
-            base.PlayAnimation("FullBody, Override", "UtilityRelease");
+            base.PlayAnimation("Body", "UtilityRelease");
 
             previousAirControl = base.characterMotor.airControl;
             detonateNextFrame = false;
@@ -96,7 +96,8 @@ namespace EntityStates.SS2UStates.Nucleator.Utility
                     if (passedMinDuration && Starstorm2Unofficial.SneedUtils.IsEnemyInSphere(4f, base.transform.position, base.GetTeam(), true)) detonateNextFrame = true;
 
                     base.characterMotor.moveDirection = base.inputBank.moveVector;
-                    if (passedMinDuration && (this.detonateNextFrame || (base.characterMotor.Motor.GroundingStatus.IsStableOnGround && !base.characterMotor.Motor.LastGroundingStatus.IsStableOnGround)))
+                    bool hitGround = base.characterMotor.Motor.GroundingStatus.IsStableOnGround && !base.characterMotor.Motor.LastGroundingStatus.IsStableOnGround;
+                    if (passedMinDuration && (this.detonateNextFrame || hitGround))
                     {
                         DetonateAuthority();
                         this.outer.SetNextStateToMain();
@@ -120,19 +121,11 @@ namespace EntityStates.SS2UStates.Nucleator.Utility
                 base.characterBody.RemoveBuff(RoR2Content.Buffs.ArmorBoost);
             }
 
-            Animator modelAnimator = base.GetModelAnimator();
-            if (modelAnimator)
-            {
-                int layerIndex = modelAnimator.GetLayerIndex("Impact");
-                if (layerIndex >= 0)
-                {
-                    modelAnimator.SetLayerWeight(layerIndex, 2f);
-                    this.PlayAnimation("Impact", "LightImpact");
-                }
-            }
-
             base.OnExit();
+            if (base.modelAnimator) base.PlayAnimation("FullBody, Override", "UtilityLanding", "Utility.playbackRate", 0.5f);
         }
+
+        public override void UpdateAnimationParameters() { }
 
         public override InterruptPriority GetMinimumInterruptPriority()
         {
