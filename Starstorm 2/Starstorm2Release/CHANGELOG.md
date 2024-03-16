@@ -9,7 +9,7 @@
 		- Reduced damage from 400%-1200% -> 200%-1080%
 		- Increased root duration from 3s -> 5s
 		
-		*Now deals samge damage as primary, since having this be a power skill felt unfitting.*
+		*Now deals same damage as primary, since having this be a power skill felt unfitting.*
 	
 - Nemmando
 	- Gouge
