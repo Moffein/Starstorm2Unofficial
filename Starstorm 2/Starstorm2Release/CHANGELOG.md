@@ -8,6 +8,7 @@
 		- Description now mentions the radius scaling.
 		- Overcharge projectile now has prediction disabled, so its position won't be desynced anymore.
 		- Changed Overcharge VFX to a cleaner effect.
+		
 	- Quarantine
 		- Reduced damage from 400%-1200% -> 200%-1080%
 		- Increased root duration from 3s -> 5s
