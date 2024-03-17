@@ -275,6 +275,10 @@ namespace Starstorm2Unofficial.Modules
                              "Utility Air Control",
                              false,
                              "Utility gains extra air control at higher movement speeds (this causes momentum to be preserved worse). (Client-Side)");
+            EntityStates.SS2UStates.Nucleator.Utility.ChargeLeap.stationaryLeap = StarstormPlugin.instance.Config.Bind("Starstorm 2 :: Survivors :: Nucleator",
+                             "Utility Stops Movement",
+                             false,
+                             "Charging the Utility makes you stand still. (Client-Side)");
 
 
             //survivors

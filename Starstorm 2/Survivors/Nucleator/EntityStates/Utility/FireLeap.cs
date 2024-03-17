@@ -27,6 +27,7 @@ namespace EntityStates.SS2UStates.Nucleator.Utility
 
         public static string leapSoundString = "SS2UNucleatorSkill3";
 
+        public string animString = "UtilityRelease";
         public float charge;
         private float previousAirControl;
         protected bool isCrit;
@@ -37,7 +38,7 @@ namespace EntityStates.SS2UStates.Nucleator.Utility
             base.OnEnter();
 
             Util.PlaySound(soundLoopStartEvent, base.gameObject);
-            base.PlayAnimation("Body", "UtilityRelease");
+            base.PlayAnimation("Body", animString);
 
             previousAirControl = base.characterMotor.airControl;
             detonateNextFrame = false;

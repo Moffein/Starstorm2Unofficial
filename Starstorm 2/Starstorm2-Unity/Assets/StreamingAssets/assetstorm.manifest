@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 388747356
+CRC: 1061197163
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: f139538edfdd6f2ab30628bf16e142a3
+    Hash: a51514243234fd10cbd005e4f96cd09d
   TypeTreeHash:
     serializedVersion: 2
     Hash: e085efc3cec39229c22603e1a47b8115
@@ -163,6 +163,7 @@ Assets:
 - Assets/AssetBundle/Chirr/ChirrPrimary.png
 - Assets/AssetBundle/Executioner/Materials/matExecutionerAxeRed.mat
 - Assets/AssetBundle/Items/ErraticGadget/MDLErraticGadget.prefab
+- Assets/AssetBundle/Nucleator/Animations/Clips/UtilityChargeWalk.anim
 - Assets/AssetBundle/Nemmando/VFX/Materials/matDashingNemmando.mat
 - Assets/AssetBundle/Chirr/Animations/ChirrGesture.mask
 - Assets/AssetBundle/Executioner/Mesh/meshExecutionerKnightAxe.mesh
@@ -317,6 +318,7 @@ Assets:
 - Assets/AssetBundle/Nemmando/VFX/Textures/texNemmandoLightningWhite.png
 - Assets/AssetBundle/Items/WatchMetronome/MDLWatchMetronome.prefab
 - Assets/AssetBundle/Nemmando/VFX/Textures/texNemmandoLightning.png
+- Assets/AssetBundle/Nucleator/Animations/Clips/UtilityReleaseWalk.anim
 - Assets/AssetBundle/Nemmando/VFX/Materials/metNemmandoChargeShadowFull 1.mat
 - Assets/AssetBundle/Nemmando/Mesh/meshNemmandoSwordMGS.mesh
 - Assets/AssetBundle/Items/StirringSoul/matTempBalck.mat
@@ -413,7 +415,6 @@ Assets:
 - Assets/AssetBundle/Nemmando/Textures/texNemmandoAlt.png
 - Assets/AssetBundle/BuffIcons/Status_Sigil.png
 - Assets/AssetBundle/Nemmando/VFX/Materials/metNemmandoCharge.mat
-- Assets/AssetBundle/Nucleator/Animations/Clips/MenuIdle.anim
 - Assets/AssetBundle/Executioner/Mesh/meshExecutionerGun.mesh
 - Assets/AssetBundle/modIcon.png
 - Assets/AssetBundle/GeneralAssets/Textures/UI/texCrosshairChargeRifleCharge.png

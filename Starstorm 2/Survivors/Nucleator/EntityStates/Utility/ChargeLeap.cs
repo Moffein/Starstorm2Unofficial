@@ -1,4 +1,5 @@
-﻿using RoR2;
+﻿using BepInEx.Configuration;
+using RoR2;
 using System;
 using UnityEngine;
 using UnityEngine.Networking;
@@ -7,12 +8,24 @@ namespace EntityStates.SS2UStates.Nucleator.Utility
 {
     public class ChargeLeap : BaseChargeState
     {
+        public static ConfigEntry<bool> stationaryLeap;
+
+        private bool isStationary = false;
         public override void OnEnter()
         {
             base.OnEnter();
 
             Util.PlaySound("Play_loader_shift_activate", base.gameObject);
-            base.PlayAnimation("FullBody, Override", "UtilityCharge", "Utility.playbackRate", base.duration);
+
+            if (stationaryLeap.Value)
+            {
+                isStationary = true;
+                base.PlayAnimation("FullBody, Override", "UtilityCharge", "Utility.playbackRate", base.duration);
+            }
+            else
+            {
+                base.PlayAnimation("Gesture, Override", "UtilityChargeWalk", "Utility.playbackRate", base.duration);
+            }
         }
 
         public override void FixedUpdate()
@@ -21,7 +34,7 @@ namespace EntityStates.SS2UStates.Nucleator.Utility
 
             base.StartAimMode(base.GetAimRay(), 2f, false);
             //Don't need this if we're running this in the body state machine.
-            if (base.isAuthority)
+            if (base.isAuthority && isStationary)
             {
                 base.characterMotor.moveDirection = Vector3.zero;
                 base.characterMotor.jumpCount = base.characterBody.maxJumpCount;
@@ -31,8 +44,17 @@ namespace EntityStates.SS2UStates.Nucleator.Utility
         public override void OnExit()
         {
             Util.PlaySound("Play_loader_shift_release", base.gameObject);
-            base.PlayAnimation("FullBody, Override", "BufferEmpty");
-            base.characterMotor.jumpCount = 0;
+
+            if (isStationary)
+            {
+                base.PlayAnimation("FullBody, Override", "BufferEmpty");
+                base.characterMotor.jumpCount = 0;
+            }
+            else
+            {
+                base.PlayAnimation("Gesture, Override", "BufferEmpty");
+            }
+
             base.OnExit();
         }
 
@@ -41,7 +63,10 @@ namespace EntityStates.SS2UStates.Nucleator.Utility
             EntityStateMachine bodyMachine = EntityStateMachine.FindByCustomName(base.gameObject, "Body");
             if (bodyMachine)
             {
-                bodyMachine.SetNextState(new FireLeap() { charge = this.chargeFraction });
+                bodyMachine.SetNextState(new FireLeap() {
+                    charge = this.chargeFraction,
+                    animString = isStationary ? "UtilityRelease" : "UtilityReleaseWalk"
+                });
             }
             this.outer.SetNextStateToMain();
         }

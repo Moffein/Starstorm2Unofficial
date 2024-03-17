@@ -73,11 +73,17 @@ ModelImporter:
       74: 4422734722340931940
     second: NucleatorArmature|UtilityCharge
   - first:
+      74: -2890635588936183302
+    second: NucleatorArmature|UtilityChargeWalk
+  - first:
       74: -7453287260852638555
     second: NucleatorArmature|UtilityLanding
   - first:
       74: -6460911887744810901
     second: NucleatorArmature|UtilityRelease
+  - first:
+      74: 4906465979505058888
+    second: NucleatorArmature|UtilityReleaseWalk
   externalObjects:
   - first:
       type: UnityEngine:Material
@@ -162,7 +168,7 @@ ModelImporter:
     legStretch: 0.05
     feetSpacing: 0
     globalScale: 1
-    rootMotionBoneName: BASE
+    rootMotionBoneName: 
     hasTranslationDoF: 0
     hasExtraRoot: 0
     skeletonHasParents: 1
@@ -170,7 +176,7 @@ ModelImporter:
   autoGenerateAvatarMappingIfUnspecified: 1
   animationType: 2
   humanoidOversampling: 1
-  avatarSetup: 1
+  avatarSetup: 0
   additionalBone: 0
   userData: 
   assetBundleName: 

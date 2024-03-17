@@ -16,10 +16,11 @@
 		*Now deals same damage as primary, since having this be a power skill felt unfitting.*
 		
 	- Fission Impulse
+		- No longer stops movement. (Old version can be re-enabled in config)
 		- Adjusted leap hitbox.
-			- Enemy detection hitbox size reduced from 4m -> 2.5m, now can detect non-flying enemies.
+			- Enemy hitbox detection radius reduced from 4m -> 2.5m, now can detect non-flying enemies.
 			
-		*Goal is to make this more consistent at direct-hitting enemies that are grounded.*
+		*Goal is to make this more consistent at direct-hitting enemies when used offensively.*
 	
 - Nemmando
 	- Gouge
