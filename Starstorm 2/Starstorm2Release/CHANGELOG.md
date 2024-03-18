@@ -1,3 +1,11 @@
+`0.18.11`
+
+- Fixed Nucleator Sit emote.
+
+`0.18.10`
+
+- Updated mod icon (Thanks DestroyedClone!)
+
 `0.18.9`
 
 - Nucleator
