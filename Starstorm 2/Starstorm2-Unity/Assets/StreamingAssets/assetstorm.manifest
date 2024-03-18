@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 1061197163
+CRC: 350742831
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: a51514243234fd10cbd005e4f96cd09d
+    Hash: ca3b074138a182b03e3ab5b9dad68e9c
   TypeTreeHash:
     serializedVersion: 2
     Hash: e085efc3cec39229c22603e1a47b8115
@@ -138,6 +138,7 @@ Assets:
 - Assets/AssetBundle/Cyborg/Materials/matRockborg.mat
 - Assets/AssetBundle/Nemmando/Animations/aimYaw.anim
 - Assets/AssetBundle/Cyborg/CyborgTeleGhost2.prefab
+- Assets/AssetBundle/Nucleator/Animations/Clips/MenuIdle.anim
 - Assets/AssetBundle/Executioner/Icons/texExecutionerSkinGrandMaster.png
 - Assets/AssetBundle/Items/CloakingHeadband/cloakbandtex.png
 - Assets/AssetBundle/matPureBlack.mat

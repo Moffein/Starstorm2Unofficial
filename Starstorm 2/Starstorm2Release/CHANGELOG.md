@@ -6,7 +6,7 @@
 	- Radiation Poisoning VFX now scales with body size.
 	- Irradiate
 		- Description now mentions the radius scaling.
-		- Overcharge projectile now has prediction disabled, so its position won't be desynced anymore.
+		- Overcharge projectile now has prediction disabled, so its position won't be desynced for clients anymore.
 		- Changed Overcharge VFX to a cleaner effect.
 		
 	- Quarantine

@@ -266,8 +266,6 @@
     <Compile Include="Survivors\Nemmando\NemmandoItemDisplays.cs" />
     <Compile Include="Survivors\Nucleator\Components\Crosshair\NucleatorCrosshairController.cs" />
     <Compile Include="Survivors\Nucleator\Components\NucleatorChargeComponent.cs" />
-    <Compile Include="Survivors\Nucleator\Components\Projectile\PrimaryGhostScaleOverDistance.cs" />
-    <Compile Include="Survivors\Nucleator\Components\Projectile\PrimaryProjectileComponent.cs" />
     <Compile Include="Survivors\Nucleator\Components\Projectile\PrimaryProjectileComponentSimple.cs" />
     <Compile Include="Survivors\Nucleator\Components\Projectile\ProjectileCheckSpecialBuffComponent.cs" />
     <Compile Include="Survivors\Nucleator\EntityStates\BaseChargeState.cs" />

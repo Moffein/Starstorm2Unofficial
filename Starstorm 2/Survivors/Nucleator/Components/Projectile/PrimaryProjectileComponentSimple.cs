@@ -2,6 +2,7 @@
 using RoR2.Projectile;
 using UnityEngine.Networking;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
 
 namespace Starstorm2Unofficial.Survivors.Nucleator.Components.Projectile
 {
@@ -13,9 +14,13 @@ namespace Starstorm2Unofficial.Survivors.Nucleator.Components.Projectile
         public float endSizeTime = 1f;  //Time it takes to expand to full (after start delay)
         public float baseSpeed = 60f;   //If projectile is faster than base speed, speed up time scaling to match;
 
+        //Hacky thing to make the VFX look less plain
+        public static GameObject secondaryVFX = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Loader/OmniImpactVFXLoaderLightning.prefab").WaitForCompletion();
+
         private float stopwatch;
         private float initialRadius;  //Always calculate size off of initial size
         private ProjectileImpactExplosion pie;
+        private float storedRadius;
 
         public void Awake()
         {
@@ -44,6 +49,20 @@ namespace Starstorm2Unofficial.Survivors.Nucleator.Components.Projectile
 
             float multiplier = Mathf.Lerp(1f, endSizeMultiplier, (stopwatch - startDelay) / endSizeTime);
             pie.blastRadius = initialRadius * multiplier;
+            storedRadius = pie.blastRadius;
+        }
+
+        private void OnDestroy()
+        {
+            if (NetworkServer.active)
+            {
+                EffectManager.SpawnEffect(secondaryVFX, new EffectData
+                {
+                    scale = storedRadius * 0.5f,
+                    origin = base.transform.position,
+                    rotation = base.transform.rotation
+                }, true);
+            }
         }
     }
 }
