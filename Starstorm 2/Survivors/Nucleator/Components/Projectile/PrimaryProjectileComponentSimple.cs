@@ -15,7 +15,7 @@ namespace Starstorm2Unofficial.Survivors.Nucleator.Components.Projectile
         public float baseSpeed = 60f;   //If projectile is faster than base speed, speed up time scaling to match;
 
         //Hacky thing to make the VFX look less plain
-        public static GameObject secondaryVFX = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Loader/OmniImpactVFXLoaderLightning.prefab").WaitForCompletion();
+        public GameObject secondaryVFX = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Loader/OmniImpactVFXLoaderLightning.prefab").WaitForCompletion();
 
         private float stopwatch;
         private float initialRadius;  //Always calculate size off of initial size
