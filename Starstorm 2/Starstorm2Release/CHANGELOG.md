@@ -1,3 +1,7 @@
+`0.18.12`
+
+- Fixed Nucleator Radation damagetype being unregistered. Should fix certain attacks causing radiation to be applied.
+
 `0.18.11`
 
 - Fixed Nucleator Sit emote.

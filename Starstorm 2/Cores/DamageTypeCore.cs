@@ -50,6 +50,7 @@ namespace Starstorm2Unofficial.Cores
             ModdedDamageTypes.GuaranteedFearOnHit = DamageAPI.ReserveDamageType();
             ModdedDamageTypes.ErraticGadget = DamageAPI.ReserveDamageType();
             ModdedDamageTypes.Root5s = DamageAPI.ReserveDamageType();
+            ModdedDamageTypes.NucleatorRadiationOnHit = DamageAPI.ReserveDamageType();
 
             On.RoR2.HealthComponent.TakeDamage += HealthComponent_TakeDamage;
             On.RoR2.GlobalEventManager.OnHitEnemy += GlobalEventManager_OnHitEnemy;
