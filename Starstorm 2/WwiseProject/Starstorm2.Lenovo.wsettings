@@ -5,8 +5,12 @@
 			<PropertyList>
 				<Property Name="Event Action List\{12A0645D-AC99-401A-9FC0-953A1921088A}\x64_Expand States" Type="string" Value=""/>
 				<Property Name="Event Action List\{287FE9DE-B876-4875-9BB3-F127269E1F3B}\x64_Expand States" Type="string" Value=""/>
+				<Property Name="Event Action List\{46705C7E-D5CD-413B-945E-2BF9EEC91D97}\x64_Expand States" Type="string" Value=""/>
+				<Property Name="Event Action List\{5EE5992A-5CE2-4285-ABFC-D269AFBE4E85}\x64_Expand States" Type="string" Value=""/>
 				<Property Name="Event Action List\{65141DD0-CAB0-4122-BDE0-3BDE9BF08AA2}\x64_Expand States" Type="string" Value=""/>
 				<Property Name="Event Action List\{B7CD98D3-BC93-48FA-9361-D15609C4C5E3}\x64_Expand States" Type="string" Value=""/>
+				<Property Name="Event Action List\{BF7B07E2-724A-43BF-BC66-D0B342EA6200}\x64_Expand States" Type="string" Value=""/>
+				<Property Name="Event Action List\{DCC575E6-3496-4AC6-996C-78B9580A6963}\x64_Expand States" Type="string" Value=""/>
 				<Property Name="Event Action List\{F11A7DC6-DE58-45D3-B426-9EA67D24F4DB}\x64_Expand States" Type="string" Value=""/>
 				<Property Name="EventView\FilterMode1" Type="int32" Value="2"/>
 				<Property Name="ExternalSourcesInputPath" Type="string">
@@ -26,6 +30,7 @@
 				<Property Name="GenerateSoundBanks\x64_SelectedPlatforms" Type="string" Value=""/>
 				<Property Name="GenerateSoundBanks\x64_SelectedSoundBanks" Type="string" Value="W/eO6cPD/0qmo4Vwykg8mbWfWNybF2tPqBOXIZIulSk="/>
 				<Property Name="HardwareController\CurrentSession" Type="string" Value="{00000000-0000-0000-0000-000000000000}"/>
+				<Property Name="Interactive Music\x64_{3F84CA5E-5741-408C-9A9B-04B207732823} - SegmentEditorZoomInfo" Type="string" Value="AAAAAAAA8D8AAAAAAADwP04kb0Py9ldAAAAAAAAA8D8AAAAAAAAAAAAAAAAAAAAA"/>
 				<Property Name="MeterView\LastObject1" Type="string" Value="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}"/>
 				<Property Name="MeterView\MeterMode1" Type="int32" Value="1"/>
 				<Property Name="MeterView\MeterMode1Viewpoint0" Type="int32" Value="1"/>
@@ -40,7 +45,7 @@
 				<Property Name="Music Transition List\{AC240B75-5912-45E6-9B36-3BBEEC6B6173}\x64_Expand States" Type="string" Value=""/>
 				<Property Name="ProjectExplorer\FirstVisible_10_1" Type="string" Value="{4C96B38B-3DB4-40C7-91C9-665510E38993}"/>
 				<Property Name="ProjectExplorer\FirstVisible_11_1" Type="string" Value="{23EC2DE3-3ED8-4B82-AC99-92E25F2E4C6B}"/>
-				<Property Name="ProjectExplorer\FirstVisible_1_1" Type="string" Value="{B2F71EA4-8F10-4EDF-ADF1-77877F2E10FA}"/>
+				<Property Name="ProjectExplorer\FirstVisible_1_1" Type="string" Value="{2C86BB91-694A-481D-B562-DCCBC15841F5}"/>
 				<Property Name="ProjectExplorer\FirstVisible_3_1" Type="string" Value="{A69BF0FC-D84A-487C-ABDD-56F71CB2A126}"/>
 				<Property Name="ProjectExplorer\FirstVisible_4_1" Type="string" Value="{CB6175F1-6080-4A23-92EF-0807E304D0C1}"/>
 				<Property Name="ProjectExplorer\FirstVisible_6_1" Type="string" Value="{C98E673F-A24C-48A8-960F-10565FFE70A0}"/>

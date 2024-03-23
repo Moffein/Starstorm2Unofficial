@@ -1,3 +1,7 @@
+`0.18.13`
+
+- Rebuilt soundbanks to fix a conflict with SS2 Official's Nemesis music. Lemme know if anything broke.
+
 `0.18.12`
 
 - Fixed Nucleator Radation damagetype being unregistered. Should fix certain attacks causing radiation to be applied.
