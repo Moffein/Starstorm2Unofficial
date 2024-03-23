@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 2216793816
+CRC: 1913976404
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: e09b8d58271c6914255a5cbf6be21d4a
+    Hash: 01a6b105cb1282a46dd5d280766e5ddb
   TypeTreeHash:
     serializedVersion: 2
     Hash: e085efc3cec39229c22603e1a47b8115
@@ -228,6 +228,7 @@ Assets:
 - Assets/AssetBundle/Nemmando/Animations/FireGunShort.anim
 - Assets/AssetBundle/Nemmando/VFX/Materials/matSlash03.mat
 - Assets/AssetBundle/Cyborg/Animations/animCyTP_Idle.anim
+- Assets/AssetBundle/Cyborg/cyborgshockcorescepter.png
 - Assets/AssetBundle/Chirr/Animations/Idle-Rest.anim
 - Assets/AssetBundle/Nucleator/Icons/texNucleatorIcon.png
 - Assets/AssetBundle/Cyborg/Animations/Primary1.anim

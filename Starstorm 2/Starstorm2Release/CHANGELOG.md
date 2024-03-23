@@ -1,3 +1,16 @@
+`0.19.0`
+
+- Cyborg
+	- Shock Core
+		- Moved from Secondary slot to Special slot. (Reverting earlier update)
+		- Reduced cooldown from 7s -> 5s (half of Overheat Redress)
+		- Increased pull radius from 20m -> 30m
+		
+	- Alt Primary: Renamed to ______ (TODO)
+	
+	- New Default Secondary: Rising Star (TODO)
+		- idea is that it uses same bar as shield with similar cooldown mechanics, rapidly fires a triple-spread of weak shots for high close range dps
+
 `0.18.13`
 
 - Rebuilt soundbanks to fix a conflict with SS2 Official's Nemesis music. Lemme know if anything broke.

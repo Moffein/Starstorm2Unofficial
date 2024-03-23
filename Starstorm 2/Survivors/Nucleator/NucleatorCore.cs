@@ -418,7 +418,7 @@ namespace Starstorm2Unofficial.Survivors.Nucleator
             LanguageAPI.Add("SS2UNUCLEATOR_PRIMARY_DESCRIPTION", "Charge and fire a glob of nuclear waste for <style=cIsDamage>200%-720% damage</style>, up to <style=cIsDamage>1080% damage</style> on <style=cIsHealth>Overcharge</style>. Radius increases with distance.");
 
             LanguageAPI.Add("SS2UNUCLEATOR_SECONDARY_NAME", "Quarantine");
-            LanguageAPI.Add("SS2UNUCLEATOR_SECONDARY_DESCRIPTION", "<style=cIsDamage>Stunning</style>. Charge up and <style=cIsUtility>push</style> enemies for <style=cIsDamage>200%-720% damage</style>, deals up to <style=cIsDamage>1080% damage</style> and <style=cIsDamage>roots</style> on <style=cIsHealth>Overcharge</style>.");
+            LanguageAPI.Add("SS2UNUCLEATOR_SECONDARY_DESCRIPTION", "<style=cIsDamage>Stunning</style>. Charge up and <style=cIsUtility>push</style> enemies for <style=cIsDamage>200%-720% damage</style>, up to <style=cIsDamage>1080% damage</style> and <style=cIsDamage>roots</style> on <style=cIsHealth>Overcharge</style>.");
 
             LanguageAPI.Add("SS2UNUCLEATOR_UTILITY_NAME", "Fission Impulse");
             LanguageAPI.Add("SS2UNUCLEATOR_UTILITY_DESCRIPTION", "<style=cIsDamage>Stunning</style>. Charge up a leap and gain <style=cIsUtility>200 armor</style>. Deals <style=cIsDamage>400%-800% damage</style> on impact, up to <style=cIsDamage>1200% damage</style> on <style=cIsHealth>Overcharge</style>.");

@@ -24,7 +24,7 @@ namespace EntityStates.SS2UStates.Cyborg
             {
                 ProjectileManager.instance.FireProjectile(GetProjectilePrefab(), aimRay.origin, Util.QuaternionSafeLookRotation(aimRay.direction), base.gameObject, this.damageStat * GetDamageCoefficient(), 0f, base.RollCrit(), DamageColorIndex.Default, null, -1f);
             }
-            //ApplySelfKnockback();
+            ApplySelfKnockback();
         }
 
         public virtual float GetDamageCoefficient() { return ShockCore.damageCoefficient;  }
