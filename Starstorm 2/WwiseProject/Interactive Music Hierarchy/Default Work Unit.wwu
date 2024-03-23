@@ -3,7 +3,7 @@
 	<InteractiveMusic>
 		<WorkUnit Name="Default Work Unit" ID="{F233C913-3B4E-4D63-9074-90CE5295641F}" PersistMode="Standalone">
 			<ChildrenList>
-				<MusicSwitchContainer Name="SS2_Music_System" ID="{4BC128DE-77C0-4BBA-8ED4-00A2A8E01DCA}" ShortID="867870899">
+				<MusicSwitchContainer Name="SS2U_Music_System" ID="{4BC128DE-77C0-4BBA-8ED4-00A2A8E01DCA}" ShortID="867870899">
 					<PropertyList>
 						<Property Name="ContinuePlay" Type="bool" Value="False"/>
 						<Property Name="ListenerRelativeRouting" Type="bool" Value="False"/>
@@ -49,7 +49,7 @@
 						</Reference>
 					</ReferenceList>
 					<ChildrenList>
-						<MusicPlaylistContainer Name="Canticum_Vitae_Start" ID="{4EFB8D4A-97A1-4ADB-8DF7-E89BF2DECAD4}" ShortID="491126556">
+						<MusicPlaylistContainer Name="SS2U_Canticum_Vitae_Start" ID="{4EFB8D4A-97A1-4ADB-8DF7-E89BF2DECAD4}" ShortID="491126556">
 							<ReferenceList>
 								<Reference Name="Conversion">
 									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{94E9A332-4F75-42A2-884C-469412070470}"/>
@@ -59,7 +59,7 @@
 								</Reference>
 							</ReferenceList>
 							<ChildrenList>
-								<MusicSegment Name="Canticum_Vitae_Start_A" ID="{84807198-79C1-4127-8238-8EA27BFE5057}" ShortID="963890332">
+								<MusicSegment Name="SS2U_Canticum_Vitae_Start_A" ID="{84807198-79C1-4127-8238-8EA27BFE5057}" ShortID="963890332">
 									<PropertyList>
 										<Property Name="EndPosition" Type="Real64" Value="11162.7891156463"/>
 									</PropertyList>
@@ -72,7 +72,7 @@
 										</Reference>
 									</ReferenceList>
 									<ChildrenList>
-										<MusicTrack Name="Canticum_Vitae_Start_A" ID="{1A7C8239-2AF1-45B8-A245-CF28C86B1C2F}" ShortID="38627265">
+										<MusicTrack Name="SS2U_Canticum_Vitae_Start_A" ID="{1A7C8239-2AF1-45B8-A245-CF28C86B1C2F}" ShortID="38627265">
 											<ReferenceList>
 												<Reference Name="OutputBus">
 													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{8B449195-16F5-41A2-9626-CB3E0D2C3C12}"/>
@@ -121,7 +121,7 @@
 										</MusicCue>
 									</CueList>
 								</MusicSegment>
-								<MusicSegment Name="Canticum_Vitae_Start_B" ID="{8FD4690E-92A0-4EAD-A467-94E532306D8C}" ShortID="909073595">
+								<MusicSegment Name="SS2U_Canticum_Vitae_Start_B" ID="{8FD4690E-92A0-4EAD-A467-94E532306D8C}" ShortID="909073595">
 									<PropertyList>
 										<Property Name="EndPosition" Type="Real64" Value="11162.7891156463"/>
 									</PropertyList>
@@ -134,7 +134,7 @@
 										</Reference>
 									</ReferenceList>
 									<ChildrenList>
-										<MusicTrack Name="Canticum_Vitae_Start_B" ID="{0FD4DAF6-CAD9-4252-AC0E-7BA8DA93B69E}" ShortID="723844281">
+										<MusicTrack Name="SS2U_Canticum_Vitae_Start_B" ID="{0FD4DAF6-CAD9-4252-AC0E-7BA8DA93B69E}" ShortID="723844281">
 											<ReferenceList>
 												<Reference Name="OutputBus">
 													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{8B449195-16F5-41A2-9626-CB3E0D2C3C12}"/>
@@ -227,20 +227,20 @@
 											<PropertyList>
 												<Property Name="PlaylistItemType" Type="int16" Value="1"/>
 											</PropertyList>
-											<SegmentRef Name="Canticum_Vitae_Start_A" ID="{84807198-79C1-4127-8238-8EA27BFE5057}"/>
+											<SegmentRef Name="SS2U_Canticum_Vitae_Start_A" ID="{84807198-79C1-4127-8238-8EA27BFE5057}"/>
 										</MusicPlaylistItem>
 										<MusicPlaylistItem Name="" ID="{14CF8D08-84FD-4E3A-8ECC-6CF02CD1F786}" ShortID="474605064">
 											<PropertyList>
 												<Property Name="LoopCount" Type="int16" Value="0"/>
 												<Property Name="PlaylistItemType" Type="int16" Value="1"/>
 											</PropertyList>
-											<SegmentRef Name="Canticum_Vitae_Start_B" ID="{8FD4690E-92A0-4EAD-A467-94E532306D8C}"/>
+											<SegmentRef Name="SS2U_Canticum_Vitae_Start_B" ID="{8FD4690E-92A0-4EAD-A467-94E532306D8C}"/>
 										</MusicPlaylistItem>
 									</ChildrenList>
 								</MusicPlaylistItem>
 							</Playlist>
 						</MusicPlaylistContainer>
-						<MusicPlaylistContainer Name="Canticum_Vitae_Main" ID="{7785E4D6-0318-4882-8732-856AF0F50CE3}" ShortID="475604857">
+						<MusicPlaylistContainer Name="SS2U_Canticum_Vitae_Main" ID="{7785E4D6-0318-4882-8732-856AF0F50CE3}" ShortID="475604857">
 							<ReferenceList>
 								<Reference Name="Conversion">
 									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{94E9A332-4F75-42A2-884C-469412070470}"/>
@@ -250,7 +250,7 @@
 								</Reference>
 							</ReferenceList>
 							<ChildrenList>
-								<MusicSegment Name="Canticum_Vitae_Transition_B" ID="{F5323A1D-4679-46C7-B370-FC58820F52CD}" ShortID="552937231">
+								<MusicSegment Name="SS2U_Canticum_Vitae_Transition_B" ID="{F5323A1D-4679-46C7-B370-FC58820F52CD}" ShortID="552937231">
 									<PropertyList>
 										<Property Name="EndPosition" Type="Real64" Value="29302.335600907"/>
 									</PropertyList>
@@ -263,7 +263,7 @@
 										</Reference>
 									</ReferenceList>
 									<ChildrenList>
-										<MusicTrack Name="Canticum_Vitae_Transition_B" ID="{8C8594D8-684F-400F-9470-5959F9D1A862}" ShortID="321453374">
+										<MusicTrack Name="SS2U_Canticum_Vitae_Transition_B" ID="{8C8594D8-684F-400F-9470-5959F9D1A862}" ShortID="321453374">
 											<ReferenceList>
 												<Reference Name="OutputBus">
 													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{8B449195-16F5-41A2-9626-CB3E0D2C3C12}"/>
@@ -316,7 +316,7 @@
 										</MusicCue>
 									</CueList>
 								</MusicSegment>
-								<MusicSegment Name="Canticum_Vitae_Transition_A" ID="{02F5B1B0-C0E2-4321-8A2C-C6FC5A82E99D}" ShortID="110807017">
+								<MusicSegment Name="SS2U_Canticum_Vitae_Transition_A" ID="{02F5B1B0-C0E2-4321-8A2C-C6FC5A82E99D}" ShortID="110807017">
 									<PropertyList>
 										<Property Name="EndPosition" Type="Real64" Value="25116.2811791383"/>
 									</PropertyList>
@@ -329,7 +329,7 @@
 										</Reference>
 									</ReferenceList>
 									<ChildrenList>
-										<MusicTrack Name="Canticum_Vitae_Transition_A" ID="{E180E711-0101-45B3-9CF4-36BD16A99CAE}" ShortID="194007823">
+										<MusicTrack Name="SS2U_Canticum_Vitae_Transition_A" ID="{E180E711-0101-45B3-9CF4-36BD16A99CAE}" ShortID="194007823">
 											<ReferenceList>
 												<Reference Name="OutputBus">
 													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{8B449195-16F5-41A2-9626-CB3E0D2C3C12}"/>
@@ -378,7 +378,7 @@
 										</MusicCue>
 									</CueList>
 								</MusicSegment>
-								<MusicSegment Name="Canticum_Vitae_Loop_B" ID="{6B259F6E-8CFC-417D-B2AE-71A5643EFCF4}" ShortID="635166687">
+								<MusicSegment Name="SS2U_Canticum_Vitae_Loop_B" ID="{6B259F6E-8CFC-417D-B2AE-71A5643EFCF4}" ShortID="635166687">
 									<PropertyList>
 										<Property Name="EndPosition" Type="Real64" Value="56162.7906976744"/>
 									</PropertyList>
@@ -391,7 +391,7 @@
 										</Reference>
 									</ReferenceList>
 									<ChildrenList>
-										<MusicTrack Name="Canticum_Vitae_Loop_B" ID="{A5DA992A-8A2B-4479-81B7-2A1E8A46FD1A}" ShortID="803919751">
+										<MusicTrack Name="SS2U_Canticum_Vitae_Loop_B" ID="{A5DA992A-8A2B-4479-81B7-2A1E8A46FD1A}" ShortID="803919751">
 											<ReferenceList>
 												<Reference Name="OutputBus">
 													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{8B449195-16F5-41A2-9626-CB3E0D2C3C12}"/>
@@ -440,7 +440,7 @@
 										</MusicCue>
 									</CueList>
 								</MusicSegment>
-								<MusicSegment Name="Canticum_Vitae_Loop_A" ID="{72E0C779-AE96-43B5-A098-A1C8C2A37852}" ShortID="859983439">
+								<MusicSegment Name="SS2U_Canticum_Vitae_Loop_C" ID="{72E0C779-AE96-43B5-A098-A1C8C2A37852}" ShortID="859983439">
 									<PropertyList>
 										<Property Name="EndPosition" Type="Real64" Value="61395.3514739229"/>
 									</PropertyList>
@@ -453,7 +453,7 @@
 										</Reference>
 									</ReferenceList>
 									<ChildrenList>
-										<MusicTrack Name="Canticum_Vitae_Loop_A" ID="{E3EAD861-93E6-424A-8D1B-4D1E5FC47239}" ShortID="649262721">
+										<MusicTrack Name="SS2U_Canticum_Vitae_Loop_A" ID="{E3EAD861-93E6-424A-8D1B-4D1E5FC47239}" ShortID="649262721">
 											<ReferenceList>
 												<Reference Name="OutputBus">
 													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{8B449195-16F5-41A2-9626-CB3E0D2C3C12}"/>
@@ -502,7 +502,7 @@
 										</MusicCue>
 									</CueList>
 								</MusicSegment>
-								<MusicSegment Name="Canticum_Vitae_Main" ID="{3F84CA5E-5741-408C-9A9B-04B207732823}" ShortID="647541571">
+								<MusicSegment Name="SS2U_Canticum_Vitae_Main" ID="{3F84CA5E-5741-408C-9A9B-04B207732823}" ShortID="647541571">
 									<PropertyList>
 										<Property Name="EndPosition" Type="Real64" Value="14302.3255813953"/>
 									</PropertyList>
@@ -515,7 +515,7 @@
 										</Reference>
 									</ReferenceList>
 									<ChildrenList>
-										<MusicTrack Name="Canticum_Vitae_Start_C" ID="{F620E63D-41F3-43D6-B86B-4A78B4A17901}" ShortID="913986859">
+										<MusicTrack Name="SS2U_Canticum_Vitae_Start_C" ID="{F620E63D-41F3-43D6-B86B-4A78B4A17901}" ShortID="913986859">
 											<ReferenceList>
 												<Reference Name="OutputBus">
 													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{8B449195-16F5-41A2-9626-CB3E0D2C3C12}"/>
@@ -612,7 +612,7 @@
 												</MusicTrackSequence>
 											</SequenceList>
 										</MusicTrack>
-										<MusicTrack Name="Canticum_Vitae_Start_B" ID="{18CA27B5-6308-42AE-B87F-5F56F25A8078}" ShortID="1001559165">
+										<MusicTrack Name="SS2U_Canticum_Vitae_Start_B" ID="{18CA27B5-6308-42AE-B87F-5F56F25A8078}" ShortID="1001559165">
 											<ReferenceList>
 												<Reference Name="OutputBus">
 													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{8B449195-16F5-41A2-9626-CB3E0D2C3C12}"/>
@@ -690,37 +690,37 @@
 											<PropertyList>
 												<Property Name="PlaylistItemType" Type="int16" Value="1"/>
 											</PropertyList>
-											<SegmentRef Name="Canticum_Vitae_Main" ID="{3F84CA5E-5741-408C-9A9B-04B207732823}"/>
+											<SegmentRef Name="SS2U_Canticum_Vitae_Main" ID="{3F84CA5E-5741-408C-9A9B-04B207732823}"/>
 										</MusicPlaylistItem>
 										<MusicPlaylistItem Name="" ID="{E5515913-25FD-41B0-BEAB-94089EC6BD79}" ShortID="594318720">
 											<PropertyList>
 												<Property Name="PlaylistItemType" Type="int16" Value="1"/>
 											</PropertyList>
-											<SegmentRef Name="Canticum_Vitae_Loop_A" ID="{72E0C779-AE96-43B5-A098-A1C8C2A37852}"/>
+											<SegmentRef Name="SS2U_Canticum_Vitae_Loop_C" ID="{72E0C779-AE96-43B5-A098-A1C8C2A37852}"/>
 										</MusicPlaylistItem>
 										<MusicPlaylistItem Name="" ID="{7BC87EB2-7AA0-401B-97D2-06C6A4A4A303}" ShortID="478289607">
 											<PropertyList>
 												<Property Name="PlaylistItemType" Type="int16" Value="1"/>
 											</PropertyList>
-											<SegmentRef Name="Canticum_Vitae_Transition_A" ID="{02F5B1B0-C0E2-4321-8A2C-C6FC5A82E99D}"/>
+											<SegmentRef Name="SS2U_Canticum_Vitae_Transition_A" ID="{02F5B1B0-C0E2-4321-8A2C-C6FC5A82E99D}"/>
 										</MusicPlaylistItem>
 										<MusicPlaylistItem Name="" ID="{2A1E0388-2E2B-4BB7-BD8A-0270A20B46BA}" ShortID="138816898">
 											<PropertyList>
 												<Property Name="PlaylistItemType" Type="int16" Value="1"/>
 											</PropertyList>
-											<SegmentRef Name="Canticum_Vitae_Loop_B" ID="{6B259F6E-8CFC-417D-B2AE-71A5643EFCF4}"/>
+											<SegmentRef Name="SS2U_Canticum_Vitae_Loop_B" ID="{6B259F6E-8CFC-417D-B2AE-71A5643EFCF4}"/>
 										</MusicPlaylistItem>
 										<MusicPlaylistItem Name="" ID="{DB69E3E5-FE60-44BE-BA7F-3D5CFE32C96F}" ShortID="393240081">
 											<PropertyList>
 												<Property Name="PlaylistItemType" Type="int16" Value="1"/>
 											</PropertyList>
-											<SegmentRef Name="Canticum_Vitae_Transition_B" ID="{F5323A1D-4679-46C7-B370-FC58820F52CD}"/>
+											<SegmentRef Name="SS2U_Canticum_Vitae_Transition_B" ID="{F5323A1D-4679-46C7-B370-FC58820F52CD}"/>
 										</MusicPlaylistItem>
 									</ChildrenList>
 								</MusicPlaylistItem>
 							</Playlist>
 						</MusicPlaylistContainer>
-						<MusicPlaylistContainer Name="Canticum_Vitae_End" ID="{AC240B75-5912-45E6-9B36-3BBEEC6B6173}" ShortID="251897479">
+						<MusicPlaylistContainer Name="SS2U_Canticum_Vitae_End" ID="{AC240B75-5912-45E6-9B36-3BBEEC6B6173}" ShortID="251897479">
 							<PropertyList>
 								<Property Name="Tempo" Type="Real64" Value="172"/>
 							</PropertyList>
@@ -767,10 +767,10 @@
 									</PropertyList>
 									<ReferenceList>
 										<Reference Name="DestinationContextObject">
-											<ObjectRef Name="Canticum_Vitae_Main" ID="{7785E4D6-0318-4882-8732-856AF0F50CE3}" WorkUnitID="{F233C913-3B4E-4D63-9074-90CE5295641F}"/>
+											<ObjectRef Name="SS2U_Canticum_Vitae_Main" ID="{7785E4D6-0318-4882-8732-856AF0F50CE3}" WorkUnitID="{F233C913-3B4E-4D63-9074-90CE5295641F}"/>
 										</Reference>
 										<Reference Name="SourceContextObject">
-											<ObjectRef Name="Canticum_Vitae_Start" ID="{4EFB8D4A-97A1-4ADB-8DF7-E89BF2DECAD4}" WorkUnitID="{F233C913-3B4E-4D63-9074-90CE5295641F}"/>
+											<ObjectRef Name="SS2U_Canticum_Vitae_Start" ID="{4EFB8D4A-97A1-4ADB-8DF7-E89BF2DECAD4}" WorkUnitID="{F233C913-3B4E-4D63-9074-90CE5295641F}"/>
 										</Reference>
 									</ReferenceList>
 									<TransitionInfo>
@@ -815,27 +815,6 @@
 							<TransitionInfo/>
 						</MusicTransition>
 					</TransitionList>
-					<ArgumentList>
-						<ArgumentRef Name="gameplaySongChoice" ID="{AF662067-146B-45F4-BD5B-EA995963753C}"/>
-					</ArgumentList>
-					<EntryList>
-						<Entry>
-							<Path>
-								<PathElementRef Name="song_nemesis_start" ID="{F82465D1-6966-4764-BA13-7E2C759DC645}"/>
-							</Path>
-							<AudioNodeInfo>
-								<AudioNodeRef Name="Canticum_Vitae_Start" ID="{4EFB8D4A-97A1-4ADB-8DF7-E89BF2DECAD4}" WorkUnitID="{F233C913-3B4E-4D63-9074-90CE5295641F}" Platform="Linked"/>
-							</AudioNodeInfo>
-						</Entry>
-						<Entry>
-							<Path>
-								<PathElementRef Name="song_nemesis_main" ID="{E440A5C1-C4B8-4ECE-BC38-109416605313}"/>
-							</Path>
-							<AudioNodeInfo>
-								<AudioNodeRef Name="Canticum_Vitae_Main" ID="{7785E4D6-0318-4882-8732-856AF0F50CE3}" WorkUnitID="{F233C913-3B4E-4D63-9074-90CE5295641F}" Platform="Linked"/>
-							</AudioNodeInfo>
-						</Entry>
-					</EntryList>
 				</MusicSwitchContainer>
 			</ChildrenList>
 		</WorkUnit>

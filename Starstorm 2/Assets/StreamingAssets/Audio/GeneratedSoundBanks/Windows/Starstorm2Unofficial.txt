@@ -1,0 +1,215 @@
+Event	ID	Name			Wwise Object Path	Notes
+	22047592	SS2UNemmandoDecisiveStrikeReady			\Default Work Unit\Nemmando\SS2UNemmandoDecisiveStrikeReady	
+	26066256	SS2UNemmandoSwingSaberDecisive			\Default Work Unit\Nemmando\SS2UNemmandoSwingSaberDecisive	
+	81596630	SS2UWastelanderSecondary			\Default Work Unit\Executioner\SS2UWastelanderSecondary	
+	103484912	SS2UChirrStep			\Default Work Unit\Chirr\SS2UChirrStep	
+	124522464	SS2UNemmandoCharacterSelect			\Default Work Unit\Nemmando\SS2UNemmandoCharacterSelect	
+	164513259	SS2UNemmandoSwing			\Default Work Unit\Nemmando\SS2UNemmandoSwing	
+	185810034	SS2UNemmandoSwingSaber			\Default Work Unit\Nemmando\SS2UNemmandoSwingSaber	
+	213158012	SS2UCyborgUtility			\Default Work Unit\Cyborg\SS2UCyborgUtility	
+	247163825	SS2UExecutionerUtility			\Default Work Unit\Executioner\SS2UExecutionerUtility	
+	255323470	Play_SS2U_RoR1Lightning			\Default Work Unit\Play_SS2U_RoR1Lightning	
+	360530966	SS2UCyborgPrimary			\Default Work Unit\Cyborg\SS2UCyborgPrimary	
+	420210098	SS2UExecutionerSpecialImpact			\Default Work Unit\Executioner\SS2UExecutionerSpecialImpact	
+	506115381	SS2UNemmandoJCEClick			\Default Work Unit\Nemmando\SS2UNemmandoJCEClick	
+	511709689	SS2UExecutionerSpecialCast			\Default Work Unit\Executioner\SS2UExecutionerSpecialCast	
+	710109306	SS2UStrangeCan			\Default Work Unit\Items\SS2UStrangeCan	
+	711785431	SS2UNemmandoSubmissionFire			\Default Work Unit\Nemmando\SS2UNemmandoSubmissionFire	
+	730886375	SS2UNucleatorChargePrimary			\Default Work Unit\Nucleator\SS2UNucleatorChargePrimary	
+	737569162	SS2UNemmandoReloadGun			\Default Work Unit\Nemmando\SS2UNemmandoReloadGun	
+	740827599	SS2UNemmandoSubmissionCharge			\Default Work Unit\Nemmando\SS2UNemmandoSubmissionCharge	
+	838763226	SS2UNemmandoChargeBeam			\Default Work Unit\Nemmando\SS2UNemmandoChargeBeam	
+	858992619	SS2UNemmandoSwingCrit			\Default Work Unit\Nemmando\SS2UNemmandoSwingCrit	
+	922992055	SS2UExecutionerSecondary			\Default Work Unit\Executioner\SS2UExecutionerSecondary	
+	954861990	SS2UGreaterWarbanner			\Default Work Unit\Items\SS2UGreaterWarbanner	
+	1041023373	SS2U_RainAmbience			\Default Work Unit\Environment\Ambient\SS2U_RainAmbience	
+	1054755932	SS2UExecutionerSupercharge			\Default Work Unit\Executioner\SS2UExecutionerSupercharge	
+	1211325524	SS2UVoidEliteSpawn			\Default Work Unit\Elites\SS2UVoidEliteSpawn	
+	1297014222	SS2UChirrSprintStart			\Default Work Unit\Chirr\SS2UChirrSprintStart	
+	1386574408	SS2UNemmandoSubmissionReady			\Default Work Unit\Nemmando\SS2UNemmandoSubmissionReady	
+	1437608003	SS2UChirrSpecial			\Default Work Unit\SS2UChirrSpecial	
+	1462797768	SS2UChirrHealStart			\Default Work Unit\SS2UChirrHealStart	
+	1586310007	SS2UNemmandoDecisiveStrikeFire			\Default Work Unit\Nemmando\SS2UNemmandoDecisiveStrikeFire	
+	1605127702	SS2UWastelanderPrimaryCrit			\Default Work Unit\Executioner\SS2UWastelanderPrimaryCrit	
+	1633773620	SS2UDroidHead			\Default Work Unit\Items\SS2UDroidHead	
+	1649975571	SS2UWayfarerIdle			\Default Work Unit\Wayfarer\SS2UWayfarerIdle	
+	1706367820	SS2UChirrPrimary			\Default Work Unit\SS2UChirrPrimary	
+	1727901998	SS2UChirrSprintStop			\Default Work Unit\Chirr\SS2UChirrSprintStop	
+	1829856367	SS2UNemmandoDecisiveStrikeCharge			\Default Work Unit\Nemmando\SS2UNemmandoDecisiveStrikeCharge	
+	1883721561	SS2U_WindAmbience			\Default Work Unit\Environment\Ambient\SS2U_WindAmbience	
+	1925922491	SS2UExecutionerMaxCharge			\Default Work Unit\Executioner\SS2UExecutionerMaxCharge	
+	1953872322	SS2UDiaryLevelUp			\Default Work Unit\Items\SS2UDiaryLevelUp	
+	2039269204	SS2UNucleatorSkill4b			\Default Work Unit\SS2UNucleatorSkill4b	
+	2039269205	SS2UNucleatorSkill4c			\Default Work Unit\SS2UNucleatorSkill4c	
+	2039269207	SS2UNucleatorSkill4a			\Default Work Unit\SS2UNucleatorSkill4a	
+	2089601932	SS2UNucleatorSkill3c			\Default Work Unit\SS2UNucleatorSkill3c	
+	2089601933	SS2UNucleatorSkill3b			\Default Work Unit\SS2UNucleatorSkill3b	
+	2089601934	SS2UNucleatorSkill3a			\Default Work Unit\SS2UNucleatorSkill3a	
+	2123157366	SS2UNucleatorSkill1c			\Default Work Unit\SS2UNucleatorSkill1c	
+	2220201199	SS2UNemmandoSheathSword			\Default Work Unit\Nemmando\SS2UNemmandoSheathSword	
+	2232269442	SS2UVoidAmbient			\Default Work Unit\SS2UVoidAmbient	
+	2237225549	SS2UJetBootsExplosion			\Default Work Unit\Items\SS2UJetBootsExplosion	
+	2339804282	SS2UHottestSauce			\Default Work Unit\Items\SS2UHottestSauce	
+	2340316130	SS2UCyborgSpecialPlace			\Default Work Unit\Cyborg\SS2UCyborgSpecialPlace	
+	2347908078	SS2UNucleatorAlarm			\Default Work Unit\SS2UNucleatorAlarm	
+	2376596764	SS2UNemmandoChargeBeam2			\Default Work Unit\Nemmando\SS2UNemmandoChargeBeam2	
+	2380128698	SS2UCyborgSecondary			\Default Work Unit\Cyborg\SS2UCyborgSecondary	
+	2389642456	SS2UNemmandoShoot			\Default Work Unit\Nemmando\SS2UNemmandoShoot	
+	2416899508	SS2UNucleatorSkill2			\Default Work Unit\SS2UNucleatorSkill2	
+	2416899511	SS2UNucleatorSkill1			\Default Work Unit\SS2UNucleatorSkill1	
+	2425560246	SS2UNemmandoShootGun			\Default Work Unit\Nemmando\SS2UNemmandoShootGun	
+	2479874820	SS2UNemmandoShootCrit			\Default Work Unit\Nemmando\SS2UNemmandoShootCrit	
+	2499004872	SS2UNemmandoShootClassic			\Default Work Unit\Nemmando\SS2UNemmandoShootClassic	
+	2534988401	SS2USpawnMGR			\Default Work Unit\Nemmando\SS2USpawnMGR	
+	2673629459	SS2USwiftSkateboard			\Default Work Unit\Items\SS2USwiftSkateboard	
+	2731254558	SS2UExecutionerGainCharge			\Default Work Unit\Executioner\SS2UExecutionerGainCharge	
+	2814705880	SS2UNemmandoCSS			\Default Work Unit\Nemmando\SS2UNemmandoCSS	
+	2830161239	SS2UExecutionerPrimary			\Default Work Unit\Executioner\SS2UExecutionerPrimary	
+	2853950591	SS2UStirringSoul			\Default Work Unit\Items\SS2UStirringSoul	
+	3085229669	SS2UNemmandoSwingDecisive			\Default Work Unit\Nemmando\SS2UNemmandoSwingDecisive	
+	3104276655	SS2UExecutionerPrimaryCrit			\Default Work Unit\Executioner\SS2UExecutionerPrimaryCrit	
+	3170292593	SS2UExecutionerPrimaryClassic			\Default Work Unit\SS2UExecutionerPrimaryClassic	
+	3193796250	SS2UMoltenCoin			\Default Work Unit\Items\SS2UMoltenCoin	
+	3205276720	SS2UChirrSprintLoop			\Default Work Unit\Chirr\SS2UChirrSprintLoop	
+	3352530362	SS2UWastelanderPrimary			\Default Work Unit\Executioner\SS2UWastelanderPrimary	
+	3479832145	SS2UExecutionerSecondaryClassic			\Default Work Unit\SS2UExecutionerSecondaryClassic	
+	3551862239	SS2UCyborgPerfectCharge			\Default Work Unit\SS2UCyborgPerfectCharge	
+	3586017208	SS2USigilActivation			\Default Work Unit\Items\SS2USigilActivation	
+	3615017985	SS2UNemmandoSaberHit			\Default Work Unit\Nemmando\SS2UNemmandoSaberHit	
+	3838547709	SS2UNemmandoChargeDecisive			\Default Work Unit\Nemmando\SS2UNemmandoChargeDecisive	
+	3843991376	SS2UWayfarerVO			\Default Work Unit\Wayfarer\SS2UWayfarerVO	
+	3883628619	SS2UNemmandoGunSpin			\Default Work Unit\Nemmando\SS2UNemmandoGunSpin	
+	3999788194	SS2UNemmandoFireBeam			\Default Work Unit\Nemmando\SS2UNemmandoFireBeam	
+	4019815220	SS2UNemmandoFireBeam2			\Default Work Unit\Nemmando\SS2UNemmandoFireBeam2	
+	4144548912	SS2UCyborgSpecialTeleport			\Default Work Unit\Cyborg\SS2UCyborgSpecialTeleport	
+	4165535176	SS2UChirrHealTrigger			\Default Work Unit\SS2UChirrHealTrigger	
+
+Game Parameter	ID	Name			Wwise Object Path	Notes
+	3673881719	Volume_SFX			\Default Work Unit\Volume_SFX	
+
+Effect plug-ins	ID	Name	Type				Notes
+	1252796875	Light_Expander	Wwise Expander			
+	3043085106	High_Impact	Wwise Compressor			
+
+In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
+	5091085	NemmandoSubmissionCharge	D:\Projects\RoR2 Mods\ss2-old\Starstorm 2\WwiseProject\.cache\Windows\SFX\NemmandoSubmissionCharge_0D5756A9.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX Mixer\Nemesis Commando\NemmandoSubmissionCharge		14600
+	23250849	ExecutionerSecondary	D:\Projects\RoR2 Mods\ss2-old\Starstorm 2\WwiseProject\.cache\Windows\SFX\Shoot2_0D5756A9.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX Mixer\Executioner\ExecutionerSecondary		32257
+	43053855	chirr_step_01	D:\Projects\RoR2 Mods\ss2-old\Starstorm 2\WwiseProject\.cache\Windows\SFX\chirr_step_01_0D5756A9.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX Mixer\Chirr\Step\chirr_step_01		4838
+	43533750	fullChargeExe	D:\Projects\RoR2 Mods\ss2-old\Starstorm 2\WwiseProject\.cache\Windows\SFX\fullCharge_0D5756A9.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX Mixer\Executioner\fullChargeExe		38900
+	55114581	ChirrSpecial	D:\Projects\RoR2 Mods\ss2-old\Starstorm 2\WwiseProject\.cache\Windows\SFX\ChirrSpecial_3F75BDB9.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX Mixer\Chirr\ChirrSpecial		6432
+	57255358	NemmandoShoot2Crit	D:\Projects\RoR2 Mods\ss2-old\Starstorm 2\WwiseProject\.cache\Windows\SFX\NemmandoShoot2Crit_0D5756A9.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX Mixer\Nemesis Commando\NemmandoShootCrit\NemmandoShoot2Crit		17596
+	58295564	chirr_step_02	D:\Projects\RoR2 Mods\ss2-old\Starstorm 2\WwiseProject\.cache\Windows\SFX\chirr_step_02_0D5756A9.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX Mixer\Chirr\Step\chirr_step_02		4493
+	59938249	chargeExe	D:\Projects\RoR2 Mods\ss2-old\Starstorm 2\WwiseProject\.cache\Windows\SFX\charge_0D5756A9.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX Mixer\Executioner\chargeExe		18884
+	82598891	CyborgUtility	D:\Projects\RoR2 Mods\ss2-old\Starstorm 2\WwiseProject\.cache\Windows\SFX\CyborgUtility_0D5756A9.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX Mixer\Cyborg\CyborgUtility		24842
+	86342755	item_proc_droneOnKill_03	D:\Projects\RoR2 Mods\ss2-old\Starstorm 2\WwiseProject\.cache\Windows\SFX\item_proc_droneOnKill_03_0D5756A9.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX Mixer\Items\DroidHead\item_proc_droneOnKill_03		21735
+	89003483	item_proc_intoxicateHit_03	D:\Projects\RoR2 Mods\ss2-old\Starstorm 2\WwiseProject\.cache\Windows\SFX\item_proc_intoxicateHit_03_0D5756A9.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX Mixer\Items\StrangeCan\item_proc_intoxicateHit_03		17876
+	96611325	skill4c	D:\Projects\RoR2 Mods\ss2-old\Starstorm 2\WwiseProject\.cache\Windows\SFX\skill4c_3F75BDB9.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX Mixer\Nucleator\skill4c		26416
+	116836686	chirr_sprint_start_01	D:\Projects\RoR2 Mods\ss2-old\Starstorm 2\WwiseProject\.cache\Windows\SFX\chirr_sprint_start_01_0D5756A9.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX Mixer\Chirr\chirr_sprint_start_01		15665
+	120647268	WastelanderShoot2	D:\Projects\RoR2 Mods\ss2-old\Starstorm 2\WwiseProject\.cache\Windows\SFX\WastelanderShoot2_0D5756A9.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX Mixer\Executioner\WastelanderShoot\WastelanderShoot2		11455
+	123604037	chirr_sprint_loop_01	D:\Projects\RoR2 Mods\ss2-old\Starstorm 2\WwiseProject\.cache\Windows\SFX\chirr_sprint_loop_01_0D5756A9.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX Mixer\Chirr\sprintLoop\chirr_sprint_loop_01		50876
+	125821321	ExecutionerPrimary	D:\Projects\RoR2 Mods\ss2-old\Starstorm 2\WwiseProject\.cache\Windows\SFX\ExecutionerPrimary_0D5756A9.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX Mixer\Executioner\ExecutionerPrimary		26447
+	129668216	nemmandosaberswing2	D:\Projects\RoR2 Mods\ss2-old\Starstorm 2\WwiseProject\.cache\Windows\SFX\nemmandoswing22_0D5756A9.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX Mixer\Nemesis Commando\NemmandoSwingSaber\nemmandosaberswing2		19771
+	131170681	OnlyThingIKnowForRealCatch	D:\Projects\RoR2 Mods\ss2-old\Starstorm 2\WwiseProject\.cache\Windows\SFX\NemmandoSpawnmeme_0D5756A9.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX Mixer\Meme Stuff\OnlyThingIKnowForRealCatch		115624
+	140746596	item_proc_fireonequip_v2_02	D:\Projects\RoR2 Mods\ss2-old\Starstorm 2\WwiseProject\.cache\Windows\SFX\item_proc_fireonequip_v2_02_0D5756A9.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX Mixer\Items\HotSauce\item_proc_fireonequip_v2_02		28196
+	143741125	item_proc_swiftSkateboard_02	D:\Projects\RoR2 Mods\ss2-old\Starstorm 2\WwiseProject\.cache\Windows\SFX\item_proc_swiftSkateboard_02_0D5756A9.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX Mixer\Items\SwiftSkateboard\item_proc_swiftSkateboard_02		9312
+	144766640	CyborgSpecialPlace	D:\Projects\RoR2 Mods\ss2-old\Starstorm 2\WwiseProject\.cache\Windows\SFX\CyborgSpecialPlace_0D5756A9.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX Mixer\Cyborg\CyborgSpecialPlace		14303
+	147367706	recharged	D:\Projects\RoR2 Mods\ss2-old\Starstorm 2\WwiseProject\.cache\Windows\SFX\recharged_3F75BDB9.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX Mixer\Cyborg\recharged		4893
+	148389898	chirr_step_03	D:\Projects\RoR2 Mods\ss2-old\Starstorm 2\WwiseProject\.cache\Windows\SFX\chirr_step_03_0D5756A9.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX Mixer\Chirr\Step\chirr_step_03		3589
+	163442424	skill3a	D:\Projects\RoR2 Mods\ss2-old\Starstorm 2\WwiseProject\.cache\Windows\SFX\skill3a_3F75BDB9.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX Mixer\Nucleator\skill3a		8278
+	171627018	wayfarer_idle_VO_01	D:\Projects\RoR2 Mods\ss2-old\Starstorm 2\WwiseProject\.cache\Windows\SFX\wayfarer_idle_VO_01_0D5756A9.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX Mixer\Wayfarer\idleVO\wayfarer_idle_VO_01		24901
+	174116591	NemmandoChargeBeam	D:\Projects\RoR2 Mods\ss2-old\Starstorm 2\WwiseProject\.cache\Windows\SFX\NemmandoChargeBeam_0D5756A9.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX Mixer\Nemesis Commando\NemmandoChargeBeam		11019
+	174347869	ExecutionerPrimaryCrit	D:\Projects\RoR2 Mods\ss2-old\Starstorm 2\WwiseProject\.cache\Windows\SFX\ExecutionerPrimaryCrit_0D5756A9.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX Mixer\Executioner\ExecutionerPrimaryCrit		27333
+	196979575	wayfarer_idle_VO_05	D:\Projects\RoR2 Mods\ss2-old\Starstorm 2\WwiseProject\.cache\Windows\SFX\wayfarer_idle_VO_05_0D5756A9.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX Mixer\Wayfarer\idleVO\wayfarer_idle_VO_05		24169
+	213601022	skill4b	D:\Projects\RoR2 Mods\ss2-old\Starstorm 2\WwiseProject\.cache\Windows\SFX\skill4b_3F75BDB9.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX Mixer\Nucleator\skill4b		147398
+	215151188	DecisiveCharge	D:\Projects\RoR2 Mods\ss2-old\Starstorm 2\WwiseProject\.cache\Windows\SFX\DecisiveCharge_0D5756A9.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX Mixer\Nemesis Commando\DecisiveCharge		24118
+	216505171	NemmandoSwing2	D:\Projects\RoR2 Mods\ss2-old\Starstorm 2\WwiseProject\.cache\Windows\SFX\NemmandoSwing2_0D5756A9.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX Mixer\Nemesis Commando\NemmandoSwing\NemmandoSwing2		8806
+	235333974	chirr_step_07	D:\Projects\RoR2 Mods\ss2-old\Starstorm 2\WwiseProject\.cache\Windows\SFX\chirr_step_07_0D5756A9.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX Mixer\Chirr\Step\chirr_step_07		3359
+	239656552	item_proc_diaryLevel_01	D:\Projects\RoR2 Mods\ss2-old\Starstorm 2\WwiseProject\.cache\Windows\SFX\item_proc_diaryLevel_01_0D5756A9.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX Mixer\Items\item_proc_diaryLevel_01		16925
+	245165805	skill1c	D:\Projects\RoR2 Mods\ss2-old\Starstorm 2\WwiseProject\.cache\Windows\SFX\m1OverchargeFire_3F75BDB9.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX Mixer\Nucleator\skill1c		15536
+	246039484	nemmandosaberswing1	D:\Projects\RoR2 Mods\ss2-old\Starstorm 2\WwiseProject\.cache\Windows\SFX\nemmandosaberswing1_0D5756A9.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX Mixer\Nemesis Commando\NemmandoSwingSaber\nemmandosaberswing1		17928
+	253404114	WastelanderShootCrit2	D:\Projects\RoR2 Mods\ss2-old\Starstorm 2\WwiseProject\.cache\Windows\SFX\WastelanderShootCrit2_0D5756A9.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX Mixer\Executioner\WastelanderShootCrit\WastelanderShootCrit2		11552
+	253409635	ExecutionerSpecialImpact	D:\Projects\RoR2 Mods\ss2-old\Starstorm 2\WwiseProject\.cache\Windows\SFX\ExecutionerSpecialImpact_0D5756A9.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX Mixer\Executioner\ExecutionerSpecialImpact		56498
+	269722145	NemmandoShootGun	D:\Projects\RoR2 Mods\ss2-old\Starstorm 2\WwiseProject\.cache\Windows\SFX\NemmandoShootGun_0D5756A9.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX Mixer\Nemesis Commando\NemmandoShootGun		6884
+	276555501	nemmandoGashShoot	D:\Projects\RoR2 Mods\ss2-old\Starstorm 2\WwiseProject\.cache\Windows\SFX\nemmandoGashShoot_0D5756A9.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX Mixer\Nemesis Commando\nemmandoGashShoot		28862
+	278937456	NemmandoClassicShoot	D:\Projects\RoR2 Mods\ss2-old\Starstorm 2\WwiseProject\.cache\Windows\SFX\NemmandoClassicShoot_0D5756A9.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX Mixer\Nemesis Commando\NemmandoClassicShoot		12781
+	279441326	ExecutionerPrimaryClassic	D:\Projects\RoR2 Mods\ss2-old\Starstorm 2\WwiseProject\.cache\Windows\SFX\ExecutionerPrimaryClassic_3F75BDB9.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX Mixer\Executioner\ExecutionerPrimaryClassic		3986
+	285628454	nemmandosaberhit	D:\Projects\RoR2 Mods\ss2-old\Starstorm 2\WwiseProject\.cache\Windows\SFX\nemmandosaberhit_0D5756A9.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX Mixer\Nemesis Commando\nemmandosaberhit		19982
+	320726770	item_proc_buffOnIdle_01	D:\Projects\RoR2 Mods\ss2-old\Starstorm 2\WwiseProject\.cache\Windows\SFX\item_proc_buffOnIdle_01_0D5756A9.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX Mixer\Items\item_proc_buffOnIdle_01		30895
+	332193265	item_proc_droneOnKill_02	D:\Projects\RoR2 Mods\ss2-old\Starstorm 2\WwiseProject\.cache\Windows\SFX\item_proc_droneOnKill_02_0D5756A9.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX Mixer\Items\DroidHead\item_proc_droneOnKill_02		22611
+	334027601	item_proc_droneOnKill_04	D:\Projects\RoR2 Mods\ss2-old\Starstorm 2\WwiseProject\.cache\Windows\SFX\item_proc_droneOnKill_04_0D5756A9.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX Mixer\Items\DroidHead\item_proc_droneOnKill_04		23318
+	342261758	skill3b	D:\Projects\RoR2 Mods\ss2-old\Starstorm 2\WwiseProject\.cache\Windows\SFX\skill3b_3F75BDB9.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX Mixer\Nucleator\skill3b		19731
+	344160986	wayfarer_idle_loop_01	D:\Projects\RoR2 Mods\ss2-old\Starstorm 2\WwiseProject\.cache\Windows\SFX\wayfarer_idle_loop_01_0D5756A9.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX Mixer\Wayfarer\idleLoop\wayfarer_idle_loop_01		36686
+	354162060	NemmandoSwing1	D:\Projects\RoR2 Mods\ss2-old\Starstorm 2\WwiseProject\.cache\Windows\SFX\NemmandoSwing1_0D5756A9.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX Mixer\Nemesis Commando\NemmandoSwing\NemmandoSwing1		10566
+	356582938	nemmandoGashChargeC	D:\Projects\RoR2 Mods\ss2-old\Starstorm 2\WwiseProject\.cache\Windows\SFX\nemmandoGashChargeC_0D5756A9.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX Mixer\Nemesis Commando\nemmandoGashChargeC		27458
+	361683038	skill4a	D:\Projects\RoR2 Mods\ss2-old\Starstorm 2\WwiseProject\.cache\Windows\SFX\skill4a_3F75BDB9.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX Mixer\Nucleator\skill4a		62634
+	368397302	item_proc_greaterBanner_01	D:\Projects\RoR2 Mods\ss2-old\Starstorm 2\WwiseProject\.cache\Windows\SFX\item_proc_greaterBanner_01_0D5756A9.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX Mixer\Items\item_proc_greaterBanner_01		33264
+	393562851	GunSpin	D:\Projects\RoR2 Mods\ss2-old\Starstorm 2\WwiseProject\.cache\Windows\SFX\GunSpin_0D5756A9.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX Mixer\Nemesis Commando\GunSpin		8513
+	410466958	CyborgSecondary	D:\Projects\RoR2 Mods\ss2-old\Starstorm 2\WwiseProject\.cache\Windows\SFX\CyborgSecondary_0D5756A9.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX Mixer\Cyborg\CyborgSecondary		21128
+	421525587	ChirrHealStart	D:\Projects\RoR2 Mods\ss2-old\Starstorm 2\WwiseProject\.cache\Windows\SFX\ChirrHealStart_3F75BDB9.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX Mixer\Chirr\ChirrHealStart		14318
+	423172737	ExecutionerUtility	D:\Projects\RoR2 Mods\ss2-old\Starstorm 2\WwiseProject\.cache\Windows\SFX\ExecutionerUtility_0D5756A9.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX Mixer\Executioner\ExecutionerUtility		34670
+	428394710	NemmandoShoot2	D:\Projects\RoR2 Mods\ss2-old\Starstorm 2\WwiseProject\.cache\Windows\SFX\NemmandoShoot2_0D5756A9.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX Mixer\Nemesis Commando\NemmandoShoot\NemmandoShoot2		17300
+	438122999	nucleator_m1_charge_01	D:\Projects\RoR2 Mods\ss2-old\Starstorm 2\WwiseProject\.cache\Windows\SFX\nucleator_m1_charge_01_0D5756A9.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX Mixer\Nucleator\nucleator_m1_charge_01		29012
+	445232879	wayfarer_idle_loop_05	D:\Projects\RoR2 Mods\ss2-old\Starstorm 2\WwiseProject\.cache\Windows\SFX\wayfarer_idle_loop_05_0D5756A9.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX Mixer\Wayfarer\idleLoop\wayfarer_idle_loop_05		35779
+	453785391	chirr_sprint_end_01	D:\Projects\RoR2 Mods\ss2-old\Starstorm 2\WwiseProject\.cache\Windows\SFX\chirr_sprint_end_01_0D5756A9.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX Mixer\Chirr\chirr_sprint_end_01		12173
+	464930069	skill3c	D:\Projects\RoR2 Mods\ss2-old\Starstorm 2\WwiseProject\.cache\Windows\SFX\skill3c_3F75BDB9.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX Mixer\Nucleator\skill3c		17215
+	465172932	NemmandoSwingSaberDecisive	D:\Projects\RoR2 Mods\ss2-old\Starstorm 2\WwiseProject\.cache\Windows\SFX\NemmandoSwingSaberBig_0D5756A9.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX Mixer\Nemesis Commando\NemmandoSwingSaberDecisive		23625
+	471547935	VoidAmbience2	D:\Projects\RoR2 Mods\ss2-old\Starstorm 2\WwiseProject\.cache\Windows\SFX\VoidAmbience2_0D5756A9.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX Mixer\Enemies\VoidAmbience\VoidAmbience2		232860
+	483753104	item_proc_soulonkillPickup_01	D:\Projects\RoR2 Mods\ss2-old\Starstorm 2\WwiseProject\.cache\Windows\SFX\item_proc_soulonkillPickup_01_0D5756A9.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX Mixer\Items\item_proc_soulonkillPickup_01		11435
+	530421127	WastelanderShoot3	D:\Projects\RoR2 Mods\ss2-old\Starstorm 2\WwiseProject\.cache\Windows\SFX\WastelanderShoot3_0D5756A9.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX Mixer\Executioner\WastelanderShoot\WastelanderShoot3		8729
+	546895763	wayfarer_idle_VO_06	D:\Projects\RoR2 Mods\ss2-old\Starstorm 2\WwiseProject\.cache\Windows\SFX\wayfarer_idle_VO_06_0D5756A9.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX Mixer\Wayfarer\idleVO\wayfarer_idle_VO_06		23570
+	555558067	item_proc_swiftSkateboard_01	D:\Projects\RoR2 Mods\ss2-old\Starstorm 2\WwiseProject\.cache\Windows\SFX\item_proc_swiftSkateboard_01_0D5756A9.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX Mixer\Items\SwiftSkateboard\item_proc_swiftSkateboard_01		12317
+	569240974	ChirrPrimary	D:\Projects\RoR2 Mods\ss2-old\Starstorm 2\WwiseProject\.cache\Windows\SFX\ChirrPrimary_3F75BDB9.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX Mixer\Chirr\ChirrPrimary		9961
+	579606469	item_proc_fireonequip_v2_01	D:\Projects\RoR2 Mods\ss2-old\Starstorm 2\WwiseProject\.cache\Windows\SFX\item_proc_fireonequip_v2_01_0D5756A9.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX Mixer\Items\HotSauce\item_proc_fireonequip_v2_01		29146
+	591344468	VoidEliteSpawn	D:\Projects\RoR2 Mods\ss2-old\Starstorm 2\WwiseProject\.cache\Windows\SFX\VoidEliteSpawn_0D5756A9.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX Mixer\Enemies\VoidEliteSpawn		50140
+	603837612	VoidAmbience3	D:\Projects\RoR2 Mods\ss2-old\Starstorm 2\WwiseProject\.cache\Windows\SFX\VoidAmbience3_0D5756A9.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX Mixer\Enemies\VoidAmbience\VoidAmbience3		226102
+	632799382	chirr_sprint_loop_04	D:\Projects\RoR2 Mods\ss2-old\Starstorm 2\WwiseProject\.cache\Windows\SFX\chirr_sprint_loop_04_0D5756A9.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX Mixer\Chirr\sprintLoop\chirr_sprint_loop_04		47554
+	634982983	RainAmbience1	D:\Projects\RoR2 Mods\ss2-old\Starstorm 2\WwiseProject\.cache\Windows\SFX\RainAmbience1_78160227.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX Mixer\Environment\Ambient\RainAmbience1		245531
+	658160967	alarm	D:\Projects\RoR2 Mods\ss2-old\Starstorm 2\WwiseProject\.cache\Windows\SFX\alarm_3F75BDB9.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX Mixer\Nucleator\alarm		6602
+	659856957	DecisiveStrikeReady	D:\Projects\RoR2 Mods\ss2-old\Starstorm 2\WwiseProject\.cache\Windows\SFX\DecisiveStrikeReady_0D5756A9.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX Mixer\Nemesis Commando\DecisiveStrikeReady		10665
+	673620894	chirr_step_04	D:\Projects\RoR2 Mods\ss2-old\Starstorm 2\WwiseProject\.cache\Windows\SFX\chirr_step_04_0D5756A9.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX Mixer\Chirr\Step\chirr_step_04		4474
+	679076346	NemmandoSubmissionReady	D:\Projects\RoR2 Mods\ss2-old\Starstorm 2\WwiseProject\.cache\Windows\SFX\NemmandoSubmissionReady_0D5756A9.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX Mixer\Nemesis Commando\NemmandoSubmissionReady		7726
+	683106128	item_proc_intoxicateHit_02	D:\Projects\RoR2 Mods\ss2-old\Starstorm 2\WwiseProject\.cache\Windows\SFX\item_proc_intoxicateHit_02_0D5756A9.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX Mixer\Items\StrangeCan\item_proc_intoxicateHit_02		19576
+	686485429	wayfarer_idle_loop_04	D:\Projects\RoR2 Mods\ss2-old\Starstorm 2\WwiseProject\.cache\Windows\SFX\wayfarer_idle_loop_04_0D5756A9.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX Mixer\Wayfarer\idleLoop\wayfarer_idle_loop_04		37450
+	687716872	item_proc_goldonignite_01	D:\Projects\RoR2 Mods\ss2-old\Starstorm 2\WwiseProject\.cache\Windows\SFX\item_proc_goldonignite_01_0D5756A9.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX Mixer\Items\item_proc_goldonignite_01		8940
+	688307028	CyborgPrimary	D:\Projects\RoR2 Mods\ss2-old\Starstorm 2\WwiseProject\.cache\Windows\SFX\CyborgPrimary_0D5756A9.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX Mixer\Cyborg\CyborgPrimary		16389
+	692098495	chirr_sprint_loop_02	D:\Projects\RoR2 Mods\ss2-old\Starstorm 2\WwiseProject\.cache\Windows\SFX\chirr_sprint_loop_02_0D5756A9.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX Mixer\Chirr\sprintLoop\chirr_sprint_loop_02		48291
+	714536331	superCharge	D:\Projects\RoR2 Mods\ss2-old\Starstorm 2\WwiseProject\.cache\Windows\SFX\superCharge_0D5756A9.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX Mixer\Executioner\superCharge		44973
+	717741475	WastelanderShoot1	D:\Projects\RoR2 Mods\ss2-old\Starstorm 2\WwiseProject\.cache\Windows\SFX\WastelanderShoot1_0D5756A9.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX Mixer\Executioner\WastelanderShoot\WastelanderShoot1		10583
+	727148866	wChainLightning	D:\Projects\RoR2 Mods\ss2-old\Starstorm 2\WwiseProject\.cache\Windows\SFX\wChainLightning_3F75BDB9.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX Mixer\wChainLightning		5365
+	749486746	skill2	D:\Projects\RoR2 Mods\ss2-old\Starstorm 2\WwiseProject\.cache\Windows\SFX\m2_3F75BDB9.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX Mixer\Nucleator\skill2		14231
+	760241741	ChargeDecisiveStrike	D:\Projects\RoR2 Mods\ss2-old\Starstorm 2\WwiseProject\.cache\Windows\SFX\ChargeDecisiveStrike_0D5756A9.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX Mixer\Nemesis Commando\ChargeDecisiveStrike		16290
+	762350638	chirr_sprint_loop_05	D:\Projects\RoR2 Mods\ss2-old\Starstorm 2\WwiseProject\.cache\Windows\SFX\chirr_sprint_loop_05_0D5756A9.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX Mixer\Chirr\sprintLoop\chirr_sprint_loop_05		48401
+	805104243	DecisiveStrike	D:\Projects\RoR2 Mods\ss2-old\Starstorm 2\WwiseProject\.cache\Windows\SFX\DecisiveStrike_0D5756A9.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX Mixer\Nemesis Commando\DecisiveStrike		26982
+	818318347	chirr_step_06	D:\Projects\RoR2 Mods\ss2-old\Starstorm 2\WwiseProject\.cache\Windows\SFX\chirr_step_06_0D5756A9.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX Mixer\Chirr\Step\chirr_step_06		4035
+	819498529	wayfarer_idle_VO_02	D:\Projects\RoR2 Mods\ss2-old\Starstorm 2\WwiseProject\.cache\Windows\SFX\wayfarer_idle_VO_02_0D5756A9.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX Mixer\Wayfarer\idleVO\wayfarer_idle_VO_02		25404
+	822026355	ExecutionerSecondaryClassic	D:\Projects\RoR2 Mods\ss2-old\Starstorm 2\WwiseProject\.cache\Windows\SFX\ExecutionerSecondaryClassic_3F75BDB9.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX Mixer\Executioner\ExecutionerSecondaryClassic		8371
+	826625557	WastelanderShootCrit3	D:\Projects\RoR2 Mods\ss2-old\Starstorm 2\WwiseProject\.cache\Windows\SFX\WastelanderShootCrit3_0D5756A9.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX Mixer\Executioner\WastelanderShootCrit\WastelanderShootCrit3		8831
+	830750472	gunshell1	D:\Projects\RoR2 Mods\ss2-old\Starstorm 2\WwiseProject\.cache\Windows\SFX\gunshell1_0D5756A9.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX Mixer\Nemesis Commando\gunshell1		8685
+	835244512	WastelanderShootIon1	D:\Projects\RoR2 Mods\ss2-old\Starstorm 2\WwiseProject\.cache\Windows\SFX\WastelanderShootIon1_0D5756A9.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX Mixer\Executioner\WastelanderShootIon\WastelanderShootIon1		10502
+	841991385	item_proc_intoxicateHit_01	D:\Projects\RoR2 Mods\ss2-old\Starstorm 2\WwiseProject\.cache\Windows\SFX\item_proc_intoxicateHit_01_0D5756A9.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX Mixer\Items\StrangeCan\item_proc_intoxicateHit_01		18516
+	848343354	DecisiveStrikeFire	D:\Projects\RoR2 Mods\ss2-old\Starstorm 2\WwiseProject\.cache\Windows\SFX\DecisiveStrikeFire_0D5756A9.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX Mixer\Nemesis Commando\DecisiveStrikeFire		15314
+	848587777	item_proc_explodejump_v2_02	D:\Projects\RoR2 Mods\ss2-old\Starstorm 2\WwiseProject\.cache\Windows\SFX\item_proc_explodejump_v2_02_0D5756A9.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX Mixer\Items\JetBoot\item_proc_explodejump_v2_02		16749
+	853066570	skill1	D:\Projects\RoR2 Mods\ss2-old\Starstorm 2\WwiseProject\.cache\Windows\SFX\m1Fire_3F75BDB9.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX Mixer\Nucleator\skill1		8814
+	878483494	JCEclick	D:\Projects\RoR2 Mods\ss2-old\Starstorm 2\WwiseProject\.cache\Windows\SFX\JCEclick_0D5756A9.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX Mixer\Nemesis Commando\JCEclick		10849
+	903966366	NemmandoSubmissionFire	D:\Projects\RoR2 Mods\ss2-old\Starstorm 2\WwiseProject\.cache\Windows\SFX\NemmandoSubmissionFire_0D5756A9.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX Mixer\Nemesis Commando\NemmandoSubmissionFire		7895
+	906121422	wayfarer_idle_VO_04	D:\Projects\RoR2 Mods\ss2-old\Starstorm 2\WwiseProject\.cache\Windows\SFX\wayfarer_idle_VO_04_0D5756A9.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX Mixer\Wayfarer\idleVO\wayfarer_idle_VO_04		27785
+	917508447	NemmandoCharacterSelect	D:\Projects\RoR2 Mods\ss2-old\Starstorm 2\WwiseProject\.cache\Windows\SFX\nemmando_select_swordSwings_0D5756A9.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX Mixer\Nemesis Commando\NemmandoCharacterSelect		11330
+	953880137	item_proc_explodejump_v3_01	D:\Projects\RoR2 Mods\ss2-old\Starstorm 2\WwiseProject\.cache\Windows\SFX\item_proc_explodejump_v3_01_0D5756A9.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX Mixer\Items\JetBoot\item_proc_explodejump_v3_01		16828
+	955562662	wayfarer_idle_VO_03	D:\Projects\RoR2 Mods\ss2-old\Starstorm 2\WwiseProject\.cache\Windows\SFX\wayfarer_idle_VO_03_0D5756A9.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX Mixer\Wayfarer\idleVO\wayfarer_idle_VO_03		24356
+	972774711	WastelanderShootCrit1	D:\Projects\RoR2 Mods\ss2-old\Starstorm 2\WwiseProject\.cache\Windows\SFX\WastelanderShootCrit1_0D5756A9.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX Mixer\Executioner\WastelanderShootCrit\WastelanderShootCrit1		10603
+	978048950	VoidAmbience1	D:\Projects\RoR2 Mods\ss2-old\Starstorm 2\WwiseProject\.cache\Windows\SFX\VoidAmbience1_0D5756A9.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX Mixer\Enemies\VoidAmbience\VoidAmbience1		191170
+	981345431	NemmandoShoot1Crit	D:\Projects\RoR2 Mods\ss2-old\Starstorm 2\WwiseProject\.cache\Windows\SFX\NemmandoShoot1Crit_0D5756A9.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX Mixer\Nemesis Commando\NemmandoShootCrit\NemmandoShoot1Crit		22192
+	987711244	wayfarer_idle_loop_03	D:\Projects\RoR2 Mods\ss2-old\Starstorm 2\WwiseProject\.cache\Windows\SFX\wayfarer_idle_loop_03_0D5756A9.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX Mixer\Wayfarer\idleLoop\wayfarer_idle_loop_03		36460
+	1004833416	chirr_step_05	D:\Projects\RoR2 Mods\ss2-old\Starstorm 2\WwiseProject\.cache\Windows\SFX\chirr_step_05_0D5756A9.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX Mixer\Chirr\Step\chirr_step_05		4283
+	1016269948	ExecutionerSpecialActivate	D:\Projects\RoR2 Mods\ss2-old\Starstorm 2\WwiseProject\.cache\Windows\SFX\ExecutionerSpecialActivate_0D5756A9.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX Mixer\Executioner\ExecutionerSpecialActivate		28953
+	1019695934	WindAmbience2	D:\Projects\RoR2 Mods\ss2-old\Starstorm 2\WwiseProject\.cache\Windows\SFX\WindAmbience2_78160227.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX Mixer\Environment\Ambient\WindAmbience2		235871
+	1027913659	WastelanderShootIon2	D:\Projects\RoR2 Mods\ss2-old\Starstorm 2\WwiseProject\.cache\Windows\SFX\WastelanderShootIon2_0D5756A9.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX Mixer\Executioner\WastelanderShootIon\WastelanderShootIon2		10394
+	1037024320	chirr_sprint_loop_03	D:\Projects\RoR2 Mods\ss2-old\Starstorm 2\WwiseProject\.cache\Windows\SFX\chirr_sprint_loop_03_0D5756A9.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX Mixer\Chirr\sprintLoop\chirr_sprint_loop_03		53349
+	1040351984	item_proc_droneOnKill_01	D:\Projects\RoR2 Mods\ss2-old\Starstorm 2\WwiseProject\.cache\Windows\SFX\item_proc_droneOnKill_01_0D5756A9.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX Mixer\Items\DroidHead\item_proc_droneOnKill_01		23184
+	1040636062	NemmandoShoot1	D:\Projects\RoR2 Mods\ss2-old\Starstorm 2\WwiseProject\.cache\Windows\SFX\NemmandoShoot1_0D5756A9.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX Mixer\Nemesis Commando\NemmandoShoot\NemmandoShoot1		21531
+	1050674871	CyborgSpecialTeleport	D:\Projects\RoR2 Mods\ss2-old\Starstorm 2\WwiseProject\.cache\Windows\SFX\CyborgSpecialTeleport_0D5756A9.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX Mixer\Cyborg\CyborgSpecialTeleport		40889
+	1055144826	wayfarer_idle_loop_02	D:\Projects\RoR2 Mods\ss2-old\Starstorm 2\WwiseProject\.cache\Windows\SFX\wayfarer_idle_loop_02_0D5756A9.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX Mixer\Wayfarer\idleLoop\wayfarer_idle_loop_02		36722
+	1057107243	sheathesound	D:\Projects\RoR2 Mods\ss2-old\Starstorm 2\WwiseProject\.cache\Windows\SFX\sheathesound_0D5756A9.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX Mixer\Nemesis Commando\sheathesound		8108
+	1072219509	ChirrHealTrigger	D:\Projects\RoR2 Mods\ss2-old\Starstorm 2\WwiseProject\.cache\Windows\SFX\ChirrHealTrigger_3F75BDB9.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX Mixer\Chirr\ChirrHealTrigger		9396
+	1072703392	NemmandoFireBeam	D:\Projects\RoR2 Mods\ss2-old\Starstorm 2\WwiseProject\.cache\Windows\SFX\NemmandoFireBeam_0D5756A9.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX Mixer\Nemesis Commando\NemmandoFireBeam		8922
+

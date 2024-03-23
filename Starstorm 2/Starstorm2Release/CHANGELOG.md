@@ -11,9 +11,9 @@
 	- New Default Secondary: Rising Star (TODO)
 		- idea is that it uses same bar as shield with similar cooldown mechanics, rapidly fires a triple-spread of weak shots for high close range dps
 
-`0.18.13`
+`0.18.13` to `0.18.14`
 
-- Rebuilt soundbanks to fix a conflict with SS2 Official's Nemesis music. Lemme know if anything broke.
+- Attempted to fix a conflict with SS2 Official's Nemesis music. (Didn't work)
 
 `0.18.12`
 

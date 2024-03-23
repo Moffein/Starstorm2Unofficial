@@ -1,0 +1,896 @@
+<?xml version="1.0" encoding="utf-8"?>
+<SoundBanksInfo Platform="Windows" BasePlatform="Windows" SchemaVersion="12" SoundbankVersion="135">
+	<RootPaths>
+		<ProjectRoot>D:\Projects\RoR2 Mods\ss2-old\Starstorm 2\WwiseProject\</ProjectRoot>
+		<SourceFilesRoot>D:\Projects\RoR2 Mods\ss2-old\Starstorm 2\WwiseProject\.cache\Windows\</SourceFilesRoot>
+		<SoundBanksRoot>D:\Projects\RoR2 Mods\ss2-old\Starstorm 2\Assets\StreamingAssets\Audio\GeneratedSoundBanks\Windows\</SoundBanksRoot>
+		<ExternalSourcesInputFile></ExternalSourcesInputFile>
+		<ExternalSourcesOutputRoot>D:\Projects\RoR2 Mods\ss2-old\Starstorm 2\WwiseProject\GeneratedSoundBanks\Windows</ExternalSourcesOutputRoot>
+	</RootPaths>
+	<DialogueEvents/>
+	<StreamedFiles/>
+	<MediaFilesNotInAnyBank/>
+	<SoundBanks>
+		<SoundBank Id="1355168291" Language="SFX" Hash="428097628">
+			<ObjectPath>SS2Init</ObjectPath>
+			<ShortName>SS2Init</ShortName>
+			<Path>SS2Init.bnk</Path>
+		</SoundBank>
+		<SoundBank Id="1386252388" Language="SFX" Hash="3701071451">
+			<ObjectPath>\SoundBanks\Default Work Unit\Starstorm2Unofficial</ObjectPath>
+			<ShortName>Starstorm2Unofficial</ShortName>
+			<Path>Starstorm2Unofficial.bnk</Path>
+			<IncludedEvents>
+				<Event Id="255323470" Name="Play_SS2U_RoR1Lightning" ObjectPath="\Events\Default Work Unit\Play_SS2U_RoR1Lightning" MaxAttenuation="200.000000" DurationType="OneShot" DurationMin="0.513333" DurationMax="0.513333">
+					<IncludedMemoryFiles>
+						<File Id="727148866" Language="SFX">
+							<ShortName>wChainLightning.wav</ShortName>
+							<Path>SFX\wChainLightning_3F75BDB9.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="1041023373" Name="SS2U_RainAmbience" ObjectPath="\Events\Default Work Unit\Environment\Ambient\SS2U_RainAmbience" DurationType="Infinite">
+					<IncludedMemoryFiles>
+						<File Id="634982983" Language="SFX">
+							<ShortName>RainAmbience1.wav</ShortName>
+							<Path>SFX\RainAmbience1_78160227.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="1883721561" Name="SS2U_WindAmbience" ObjectPath="\Events\Default Work Unit\Environment\Ambient\SS2U_WindAmbience" DurationType="Infinite">
+					<IncludedMemoryFiles>
+						<File Id="1019695934" Language="SFX">
+							<ShortName>WindAmbience2.wav</ShortName>
+							<Path>SFX\WindAmbience2_78160227.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="1462797768" Name="SS2UChirrHealStart" ObjectPath="\Events\Default Work Unit\SS2UChirrHealStart" MaxAttenuation="200.000000" DurationType="OneShot" DurationMin="1.352903" DurationMax="1.352903">
+					<IncludedMemoryFiles>
+						<File Id="421525587" Language="SFX">
+							<ShortName>ChirrHealStart.wav</ShortName>
+							<Path>SFX\ChirrHealStart_3F75BDB9.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="4165535176" Name="SS2UChirrHealTrigger" ObjectPath="\Events\Default Work Unit\SS2UChirrHealTrigger" MaxAttenuation="200.000000" DurationType="OneShot" DurationMin="1.104667" DurationMax="1.104667">
+					<IncludedMemoryFiles>
+						<File Id="1072219509" Language="SFX">
+							<ShortName>ChirrHealTrigger.wav</ShortName>
+							<Path>SFX\ChirrHealTrigger_3F75BDB9.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="1706367820" Name="SS2UChirrPrimary" ObjectPath="\Events\Default Work Unit\SS2UChirrPrimary" MaxAttenuation="200.000000" DurationType="OneShot" DurationMin="1.054118" DurationMax="1.253565">
+					<IncludedMemoryFiles>
+						<File Id="569240974" Language="SFX">
+							<ShortName>ChirrPrimary.wav</ShortName>
+							<Path>SFX\ChirrPrimary_3F75BDB9.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="1437608003" Name="SS2UChirrSpecial" ObjectPath="\Events\Default Work Unit\SS2UChirrSpecial" MaxAttenuation="200.000000" DurationType="OneShot" DurationMin="0.621293" DurationMax="0.621293">
+					<IncludedMemoryFiles>
+						<File Id="55114581" Language="SFX">
+							<ShortName>ChirrSpecial.wav</ShortName>
+							<Path>SFX\ChirrSpecial_3F75BDB9.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="3205276720" Name="SS2UChirrSprintLoop" ObjectPath="\Events\Default Work Unit\Chirr\SS2UChirrSprintLoop" MaxAttenuation="200.000000" DurationType="OneShot" DurationMin="11.374149" DurationMax="11.374149">
+					<IncludedMemoryFiles>
+						<File Id="123604037" Language="SFX">
+							<ShortName>chirr_sprint_loop_01.wav</ShortName>
+							<Path>SFX\chirr_sprint_loop_01_0D5756A9.wem</Path>
+						</File>
+						<File Id="632799382" Language="SFX">
+							<ShortName>chirr_sprint_loop_04.wav</ShortName>
+							<Path>SFX\chirr_sprint_loop_04_0D5756A9.wem</Path>
+						</File>
+						<File Id="692098495" Language="SFX">
+							<ShortName>chirr_sprint_loop_02.wav</ShortName>
+							<Path>SFX\chirr_sprint_loop_02_0D5756A9.wem</Path>
+						</File>
+						<File Id="762350638" Language="SFX">
+							<ShortName>chirr_sprint_loop_05.wav</ShortName>
+							<Path>SFX\chirr_sprint_loop_05_0D5756A9.wem</Path>
+						</File>
+						<File Id="1037024320" Language="SFX">
+							<ShortName>chirr_sprint_loop_03.wav</ShortName>
+							<Path>SFX\chirr_sprint_loop_03_0D5756A9.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="1297014222" Name="SS2UChirrSprintStart" ObjectPath="\Events\Default Work Unit\Chirr\SS2UChirrSprintStart" MaxAttenuation="200.000000" DurationType="OneShot" DurationMin="0.693084" DurationMax="0.693084">
+					<IncludedMemoryFiles>
+						<File Id="116836686" Language="SFX">
+							<ShortName>chirr_sprint_start_01.wav</ShortName>
+							<Path>SFX\chirr_sprint_start_01_0D5756A9.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="1727901998" Name="SS2UChirrSprintStop" ObjectPath="\Events\Default Work Unit\Chirr\SS2UChirrSprintStop" MaxAttenuation="200.000000" DurationType="OneShot" DurationMin="0.664376" DurationMax="0.664376">
+					<IncludedMemoryFiles>
+						<File Id="453785391" Language="SFX">
+							<ShortName>chirr_sprint_end_01.wav</ShortName>
+							<Path>SFX\chirr_sprint_end_01_0D5756A9.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="103484912" Name="SS2UChirrStep" ObjectPath="\Events\Default Work Unit\Chirr\SS2UChirrStep" MaxAttenuation="200.000000" DurationType="OneShot" DurationMin="0.193243" DurationMax="0.369501">
+					<IncludedMemoryFiles>
+						<File Id="43053855" Language="SFX">
+							<ShortName>chirr_step_01.wav</ShortName>
+							<Path>SFX\chirr_step_01_0D5756A9.wem</Path>
+						</File>
+						<File Id="58295564" Language="SFX">
+							<ShortName>chirr_step_02.wav</ShortName>
+							<Path>SFX\chirr_step_02_0D5756A9.wem</Path>
+						</File>
+						<File Id="148389898" Language="SFX">
+							<ShortName>chirr_step_03.wav</ShortName>
+							<Path>SFX\chirr_step_03_0D5756A9.wem</Path>
+						</File>
+						<File Id="235333974" Language="SFX">
+							<ShortName>chirr_step_07.wav</ShortName>
+							<Path>SFX\chirr_step_07_0D5756A9.wem</Path>
+						</File>
+						<File Id="673620894" Language="SFX">
+							<ShortName>chirr_step_04.wav</ShortName>
+							<Path>SFX\chirr_step_04_0D5756A9.wem</Path>
+						</File>
+						<File Id="818318347" Language="SFX">
+							<ShortName>chirr_step_06.wav</ShortName>
+							<Path>SFX\chirr_step_06_0D5756A9.wem</Path>
+						</File>
+						<File Id="1004833416" Language="SFX">
+							<ShortName>chirr_step_05.wav</ShortName>
+							<Path>SFX\chirr_step_05_0D5756A9.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="3551862239" Name="SS2UCyborgPerfectCharge" ObjectPath="\Events\Default Work Unit\SS2UCyborgPerfectCharge" MaxAttenuation="200.000000" DurationType="OneShot" DurationMin="0.314694" DurationMax="0.314694">
+					<IncludedMemoryFiles>
+						<File Id="147367706" Language="SFX">
+							<ShortName>recharged.wav</ShortName>
+							<Path>SFX\recharged_3F75BDB9.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="360530966" Name="SS2UCyborgPrimary" ObjectPath="\Events\Default Work Unit\Cyborg\SS2UCyborgPrimary" MaxAttenuation="200.000000" DurationType="OneShot" DurationMin="1.072770" DurationMax="1.275746">
+					<IncludedMemoryFiles>
+						<File Id="688307028" Language="SFX">
+							<ShortName>CyborgPrimary.wav</ShortName>
+							<Path>SFX\CyborgPrimary_0D5756A9.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="2380128698" Name="SS2UCyborgSecondary" ObjectPath="\Events\Default Work Unit\Cyborg\SS2UCyborgSecondary" MaxAttenuation="200.000000" DurationType="OneShot" DurationMin="1.313520" DurationMax="1.562047">
+					<IncludedMemoryFiles>
+						<File Id="410466958" Language="SFX">
+							<ShortName>CyborgSecondary.wav</ShortName>
+							<Path>SFX\CyborgSecondary_0D5756A9.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="2340316130" Name="SS2UCyborgSpecialPlace" ObjectPath="\Events\Default Work Unit\Cyborg\SS2UCyborgSpecialPlace" MaxAttenuation="200.000000" DurationType="OneShot" DurationMin="0.962979" DurationMax="1.145182">
+					<IncludedMemoryFiles>
+						<File Id="144766640" Language="SFX">
+							<ShortName>CyborgSpecialPlace.wav</ShortName>
+							<Path>SFX\CyborgSpecialPlace_0D5756A9.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="4144548912" Name="SS2UCyborgSpecialTeleport" ObjectPath="\Events\Default Work Unit\Cyborg\SS2UCyborgSpecialTeleport" MaxAttenuation="200.000000" DurationType="OneShot" DurationMin="2.614626" DurationMax="3.109332">
+					<IncludedMemoryFiles>
+						<File Id="1050674871" Language="SFX">
+							<ShortName>CyborgSpecialTeleport.wav</ShortName>
+							<Path>SFX\CyborgSpecialTeleport_0D5756A9.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="213158012" Name="SS2UCyborgUtility" ObjectPath="\Events\Default Work Unit\Cyborg\SS2UCyborgUtility" MaxAttenuation="200.000000" DurationType="OneShot" DurationMin="1.700680" DurationMax="2.022460">
+					<IncludedMemoryFiles>
+						<File Id="82598891" Language="SFX">
+							<ShortName>CyborgUtility.wav</ShortName>
+							<Path>SFX\CyborgUtility_0D5756A9.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="1953872322" Name="SS2UDiaryLevelUp" ObjectPath="\Events\Default Work Unit\Items\SS2UDiaryLevelUp" MaxAttenuation="200.000000" DurationType="OneShot" DurationMin="1.010227" DurationMax="1.010227">
+					<IncludedMemoryFiles>
+						<File Id="239656552" Language="SFX">
+							<ShortName>item_proc_diaryLevel_01.wav</ShortName>
+							<Path>SFX\item_proc_diaryLevel_01_0D5756A9.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="1633773620" Name="SS2UDroidHead" ObjectPath="\Events\Default Work Unit\Items\SS2UDroidHead" MaxAttenuation="200.000000" DurationType="OneShot" DurationMin="1.399048" DurationMax="1.399048">
+					<IncludedMemoryFiles>
+						<File Id="86342755" Language="SFX">
+							<ShortName>item_proc_droneOnKill_03.wav</ShortName>
+							<Path>SFX\item_proc_droneOnKill_03_0D5756A9.wem</Path>
+						</File>
+						<File Id="332193265" Language="SFX">
+							<ShortName>item_proc_droneOnKill_02.wav</ShortName>
+							<Path>SFX\item_proc_droneOnKill_02_0D5756A9.wem</Path>
+						</File>
+						<File Id="334027601" Language="SFX">
+							<ShortName>item_proc_droneOnKill_04.wav</ShortName>
+							<Path>SFX\item_proc_droneOnKill_04_0D5756A9.wem</Path>
+						</File>
+						<File Id="1040351984" Language="SFX">
+							<ShortName>item_proc_droneOnKill_01.wav</ShortName>
+							<Path>SFX\item_proc_droneOnKill_01_0D5756A9.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="2731254558" Name="SS2UExecutionerGainCharge" ObjectPath="\Events\Default Work Unit\Executioner\SS2UExecutionerGainCharge" MaxAttenuation="200.000000" DurationType="OneShot" DurationMin="1.385291" DurationMax="1.554936">
+					<IncludedMemoryFiles>
+						<File Id="59938249" Language="SFX">
+							<ShortName>charge.wav</ShortName>
+							<Path>SFX\charge_0D5756A9.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="1925922491" Name="SS2UExecutionerMaxCharge" ObjectPath="\Events\Default Work Unit\Executioner\SS2UExecutionerMaxCharge" MaxAttenuation="200.000000" DurationType="OneShot" DurationMin="2.852493" DurationMax="3.022111">
+					<IncludedMemoryFiles>
+						<File Id="43533750" Language="SFX">
+							<ShortName>fullCharge.wav</ShortName>
+							<Path>SFX\fullCharge_0D5756A9.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="2830161239" Name="SS2UExecutionerPrimary" ObjectPath="\Events\Default Work Unit\Executioner\SS2UExecutionerPrimary" MaxAttenuation="200.000000" DurationType="OneShot" DurationMin="1.588844" DurationMax="2.001817">
+					<IncludedMemoryFiles>
+						<File Id="125821321" Language="SFX">
+							<ShortName>ExecutionerPrimary.wav</ShortName>
+							<Path>SFX\ExecutionerPrimary_0D5756A9.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="3170292593" Name="SS2UExecutionerPrimaryClassic" ObjectPath="\Events\Default Work Unit\SS2UExecutionerPrimaryClassic" MaxAttenuation="200.000000" DurationType="OneShot" DurationMin="0.341845" DurationMax="0.430698">
+					<IncludedMemoryFiles>
+						<File Id="279441326" Language="SFX">
+							<ShortName>ExecutionerPrimaryClassic.wav</ShortName>
+							<Path>SFX\ExecutionerPrimaryClassic_3F75BDB9.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="3104276655" Name="SS2UExecutionerPrimaryCrit" ObjectPath="\Events\Default Work Unit\Executioner\SS2UExecutionerPrimaryCrit" MaxAttenuation="200.000000" DurationType="OneShot" DurationMin="1.588844" DurationMax="2.001817">
+					<IncludedMemoryFiles>
+						<File Id="174347869" Language="SFX">
+							<ShortName>ExecutionerPrimaryCrit.wav</ShortName>
+							<Path>SFX\ExecutionerPrimaryCrit_0D5756A9.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="922992055" Name="SS2UExecutionerSecondary" ObjectPath="\Events\Default Work Unit\Executioner\SS2UExecutionerSecondary" MaxAttenuation="200.000000" DurationType="OneShot" DurationMin="2.736470" DurationMax="3.071584">
+					<IncludedMemoryFiles>
+						<File Id="23250849" Language="SFX">
+							<ShortName>Shoot2.wav</ShortName>
+							<Path>SFX\Shoot2_0D5756A9.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="3479832145" Name="SS2UExecutionerSecondaryClassic" ObjectPath="\Events\Default Work Unit\SS2UExecutionerSecondaryClassic" MaxAttenuation="200.000000" DurationType="OneShot" DurationMin="0.934475" DurationMax="1.048913">
+					<IncludedMemoryFiles>
+						<File Id="822026355" Language="SFX">
+							<ShortName>ExecutionerSecondaryClassic.wav</ShortName>
+							<Path>SFX\ExecutionerSecondaryClassic_3F75BDB9.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="511709689" Name="SS2UExecutionerSpecialCast" ObjectPath="\Events\Default Work Unit\Executioner\SS2UExecutionerSpecialCast" MaxAttenuation="200.000000" DurationType="OneShot" DurationMin="1.822030" DurationMax="1.930373">
+					<IncludedMemoryFiles>
+						<File Id="1016269948" Language="SFX">
+							<ShortName>ExecutionerSpecialActivate.wav</ShortName>
+							<Path>SFX\ExecutionerSpecialActivate_0D5756A9.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="420210098" Name="SS2UExecutionerSpecialImpact" ObjectPath="\Events\Default Work Unit\Executioner\SS2UExecutionerSpecialImpact" MaxAttenuation="200.000000" DurationType="OneShot" DurationMin="2.591347" DurationMax="2.745436">
+					<IncludedMemoryFiles>
+						<File Id="253409635" Language="SFX">
+							<ShortName>ExecutionerSpecialImpact.wav</ShortName>
+							<Path>SFX\ExecutionerSpecialImpact_0D5756A9.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="1054755932" Name="SS2UExecutionerSupercharge" ObjectPath="\Events\Default Work Unit\Executioner\SS2UExecutionerSupercharge" MaxAttenuation="200.000000" DurationType="OneShot" DurationMin="3.624784" DurationMax="3.624784">
+					<IncludedMemoryFiles>
+						<File Id="714536331" Language="SFX">
+							<ShortName>superCharge.wav</ShortName>
+							<Path>SFX\superCharge_0D5756A9.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="247163825" Name="SS2UExecutionerUtility" ObjectPath="\Events\Default Work Unit\Executioner\SS2UExecutionerUtility" MaxAttenuation="200.000000" DurationType="OneShot" DurationMin="2.135145" DurationMax="2.262108">
+					<IncludedMemoryFiles>
+						<File Id="423172737" Language="SFX">
+							<ShortName>ExecutionerUtility.wav</ShortName>
+							<Path>SFX\ExecutionerUtility_0D5756A9.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="954861990" Name="SS2UGreaterWarbanner" ObjectPath="\Events\Default Work Unit\Items\SS2UGreaterWarbanner" MaxAttenuation="200.000000" DurationType="OneShot" DurationMin="2.340042" DurationMax="2.340042">
+					<IncludedMemoryFiles>
+						<File Id="368397302" Language="SFX">
+							<ShortName>item_proc_greaterBanner_01.wav</ShortName>
+							<Path>SFX\item_proc_greaterBanner_01_0D5756A9.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="2339804282" Name="SS2UHottestSauce" ObjectPath="\Events\Default Work Unit\Items\SS2UHottestSauce" MaxAttenuation="200.000000" DurationType="OneShot" DurationMin="2.005722" DurationMax="2.251347">
+					<IncludedMemoryFiles>
+						<File Id="140746596" Language="SFX">
+							<ShortName>item_proc_fireonequip_v2_02.wav</ShortName>
+							<Path>SFX\item_proc_fireonequip_v2_02_0D5756A9.wem</Path>
+						</File>
+						<File Id="579606469" Language="SFX">
+							<ShortName>item_proc_fireonequip_v2_01.wav</ShortName>
+							<Path>SFX\item_proc_fireonequip_v2_01_0D5756A9.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="2237225549" Name="SS2UJetBootsExplosion" ObjectPath="\Events\Default Work Unit\Items\SS2UJetBootsExplosion" MaxAttenuation="200.000000" DurationType="OneShot" DurationMin="1.084876" DurationMax="1.366858">
+					<IncludedMemoryFiles>
+						<File Id="848587777" Language="SFX">
+							<ShortName>item_proc_explodejump_v2_02.wav</ShortName>
+							<Path>SFX\item_proc_explodejump_v2_02_0D5756A9.wem</Path>
+						</File>
+						<File Id="953880137" Language="SFX">
+							<ShortName>item_proc_explodejump_v3_01.wav</ShortName>
+							<Path>SFX\item_proc_explodejump_v3_01_0D5756A9.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="3193796250" Name="SS2UMoltenCoin" ObjectPath="\Events\Default Work Unit\Items\SS2UMoltenCoin" MaxAttenuation="200.000000" DurationType="OneShot" DurationMin="0.910703" DurationMax="0.910703">
+					<IncludedMemoryFiles>
+						<File Id="687716872" Language="SFX">
+							<ShortName>item_proc_goldonignite_01.wav</ShortName>
+							<Path>SFX\item_proc_goldonignite_01_0D5756A9.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="124522464" Name="SS2UNemmandoCharacterSelect" ObjectPath="\Events\Default Work Unit\Nemmando\SS2UNemmandoCharacterSelect" MaxAttenuation="200.000000" DurationType="OneShot" DurationMin="1.000000" DurationMax="1.000000">
+					<IncludedMemoryFiles>
+						<File Id="917508447" Language="SFX">
+							<ShortName>nemmando_select_swordSwings.wav</ShortName>
+							<Path>SFX\nemmando_select_swordSwings_0D5756A9.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="838763226" Name="SS2UNemmandoChargeBeam" ObjectPath="\Events\Default Work Unit\Nemmando\SS2UNemmandoChargeBeam" MaxAttenuation="200.000000" DurationType="OneShot" DurationMin="1.083506" DurationMax="1.216195">
+					<IncludedMemoryFiles>
+						<File Id="174116591" Language="SFX">
+							<ShortName>NemmandoChargeBeam.wav</ShortName>
+							<Path>SFX\NemmandoChargeBeam_0D5756A9.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="2376596764" Name="SS2UNemmandoChargeBeam2" ObjectPath="\Events\Default Work Unit\Nemmando\SS2UNemmandoChargeBeam2" MaxAttenuation="200.000000" DurationType="OneShot" DurationMin="1.937604" DurationMax="1.937604">
+					<IncludedMemoryFiles>
+						<File Id="356582938" Language="SFX">
+							<ShortName>nemmandoGashChargeC.wav</ShortName>
+							<Path>SFX\nemmandoGashChargeC_0D5756A9.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="3838547709" Name="SS2UNemmandoChargeDecisive" ObjectPath="\Events\Default Work Unit\Nemmando\SS2UNemmandoChargeDecisive" MaxAttenuation="200.000000" DurationType="OneShot" DurationMin="1.654974" DurationMax="1.968107">
+					<IncludedMemoryFiles>
+						<File Id="215151188" Language="SFX">
+							<ShortName>DecisiveCharge.wav</ShortName>
+							<Path>SFX\DecisiveCharge_0D5756A9.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="2814705880" Name="SS2UNemmandoCSS" ObjectPath="\Events\Default Work Unit\Nemmando\SS2UNemmandoCSS" MaxAttenuation="200.000000" DurationType="OneShot" DurationMin="1.000000" DurationMax="1.000000">
+					<IncludedMemoryFiles>
+						<File Id="917508447" Language="SFX">
+							<ShortName>nemmando_select_swordSwings.wav</ShortName>
+							<Path>SFX\nemmando_select_swordSwings_0D5756A9.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="1829856367" Name="SS2UNemmandoDecisiveStrikeCharge" ObjectPath="\Events\Default Work Unit\Nemmando\SS2UNemmandoDecisiveStrikeCharge" MaxAttenuation="200.000000" DurationType="OneShot" DurationMin="1.742563" DurationMax="1.742563">
+					<IncludedMemoryFiles>
+						<File Id="760241741" Language="SFX">
+							<ShortName>ChargeDecisiveStrike.wav</ShortName>
+							<Path>SFX\ChargeDecisiveStrike_0D5756A9.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="1586310007" Name="SS2UNemmandoDecisiveStrikeFire" ObjectPath="\Events\Default Work Unit\Nemmando\SS2UNemmandoDecisiveStrikeFire" MaxAttenuation="200.000000" DurationType="OneShot" DurationMin="1.493071" DurationMax="1.675916">
+					<IncludedMemoryFiles>
+						<File Id="848343354" Language="SFX">
+							<ShortName>DecisiveStrikeFire.wav</ShortName>
+							<Path>SFX\DecisiveStrikeFire_0D5756A9.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="22047592" Name="SS2UNemmandoDecisiveStrikeReady" ObjectPath="\Events\Default Work Unit\Nemmando\SS2UNemmandoDecisiveStrikeReady" MaxAttenuation="200.000000" DurationType="OneShot" DurationMin="1.125963" DurationMax="1.263851">
+					<IncludedMemoryFiles>
+						<File Id="659856957" Language="SFX">
+							<ShortName>DecisiveStrikeReady.wav</ShortName>
+							<Path>SFX\DecisiveStrikeReady_0D5756A9.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="3999788194" Name="SS2UNemmandoFireBeam" ObjectPath="\Events\Default Work Unit\Nemmando\SS2UNemmandoFireBeam" MaxAttenuation="200.000000" DurationType="OneShot" DurationMin="0.796955" DurationMax="0.894552">
+					<IncludedMemoryFiles>
+						<File Id="1072703392" Language="SFX">
+							<ShortName>NemmandoFireBeam.wav</ShortName>
+							<Path>SFX\NemmandoFireBeam_0D5756A9.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="4019815220" Name="SS2UNemmandoFireBeam2" ObjectPath="\Events\Default Work Unit\Nemmando\SS2UNemmandoFireBeam2" MaxAttenuation="200.000000" DurationType="OneShot" DurationMin="2.242132" DurationMax="2.824910">
+					<IncludedMemoryFiles>
+						<File Id="276555501" Language="SFX">
+							<ShortName>nemmandoGashShoot.wav</ShortName>
+							<Path>SFX\nemmandoGashShoot_0D5756A9.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="3883628619" Name="SS2UNemmandoGunSpin" ObjectPath="\Events\Default Work Unit\Nemmando\SS2UNemmandoGunSpin" MaxAttenuation="200.000000" DurationType="OneShot" DurationMin="0.802477" DurationMax="0.900750">
+					<IncludedMemoryFiles>
+						<File Id="393562851" Language="SFX">
+							<ShortName>GunSpin.wav</ShortName>
+							<Path>SFX\GunSpin_0D5756A9.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="506115381" Name="SS2UNemmandoJCEClick" ObjectPath="\Events\Default Work Unit\Nemmando\SS2UNemmandoJCEClick" MaxAttenuation="200.000000" DurationType="OneShot" DurationMin="1.125653" DurationMax="1.192587">
+					<IncludedMemoryFiles>
+						<File Id="878483494" Language="SFX">
+							<ShortName>JCEclick.wav</ShortName>
+							<Path>SFX\JCEclick_0D5756A9.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="737569162" Name="SS2UNemmandoReloadGun" ObjectPath="\Events\Default Work Unit\Nemmando\SS2UNemmandoReloadGun" MaxAttenuation="200.000000" DurationType="OneShot" DurationMin="0.470476" DurationMax="0.470476">
+					<IncludedMemoryFiles>
+						<File Id="830750472" Language="SFX">
+							<ShortName>gunshell1.wav</ShortName>
+							<Path>SFX\gunshell1_0D5756A9.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="3615017985" Name="SS2UNemmandoSaberHit" ObjectPath="\Events\Default Work Unit\Nemmando\SS2UNemmandoSaberHit" MaxAttenuation="200.000000" DurationType="OneShot" DurationMin="1.510172" DurationMax="1.795907">
+					<IncludedMemoryFiles>
+						<File Id="285628454" Language="SFX">
+							<ShortName>nemmandosaberhit.wav</ShortName>
+							<Path>SFX\nemmandosaberhit_0D5756A9.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="2220201199" Name="SS2UNemmandoSheathSword" ObjectPath="\Events\Default Work Unit\Nemmando\SS2UNemmandoSheathSword" MaxAttenuation="200.000000" DurationType="OneShot" DurationMin="0.823259" DurationMax="0.872213">
+					<IncludedMemoryFiles>
+						<File Id="1057107243" Language="SFX">
+							<ShortName>sheathesound.wav</ShortName>
+							<Path>SFX\sheathesound_0D5756A9.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="2389642456" Name="SS2UNemmandoShoot" ObjectPath="\Events\Default Work Unit\Nemmando\SS2UNemmandoShoot" MaxAttenuation="200.000000" DurationType="OneShot" DurationMin="1.137243" DurationMax="1.567644">
+					<IncludedMemoryFiles>
+						<File Id="428394710" Language="SFX">
+							<ShortName>NemmandoShoot2.wav</ShortName>
+							<Path>SFX\NemmandoShoot2_0D5756A9.wem</Path>
+						</File>
+						<File Id="1040636062" Language="SFX">
+							<ShortName>NemmandoShoot1.wav</ShortName>
+							<Path>SFX\NemmandoShoot1_0D5756A9.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="2499004872" Name="SS2UNemmandoShootClassic" ObjectPath="\Events\Default Work Unit\Nemmando\SS2UNemmandoShootClassic" MaxAttenuation="200.000000" DurationType="OneShot" DurationMin="1.468757" DurationMax="1.648624">
+					<IncludedMemoryFiles>
+						<File Id="278937456" Language="SFX">
+							<ShortName>NemmandoClassicShoot.wav</ShortName>
+							<Path>SFX\NemmandoClassicShoot_0D5756A9.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="2479874820" Name="SS2UNemmandoShootCrit" ObjectPath="\Events\Default Work Unit\Nemmando\SS2UNemmandoShootCrit" MaxAttenuation="200.000000" DurationType="OneShot" DurationMin="1.137243" DurationMax="1.567644">
+					<IncludedMemoryFiles>
+						<File Id="57255358" Language="SFX">
+							<ShortName>NemmandoShoot2Crit.wav</ShortName>
+							<Path>SFX\NemmandoShoot2Crit_0D5756A9.wem</Path>
+						</File>
+						<File Id="981345431" Language="SFX">
+							<ShortName>NemmandoShoot1Crit.wav</ShortName>
+							<Path>SFX\NemmandoShoot1Crit_0D5756A9.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="2425560246" Name="SS2UNemmandoShootGun" ObjectPath="\Events\Default Work Unit\Nemmando\SS2UNemmandoShootGun" MaxAttenuation="200.000000" DurationType="OneShot" DurationMin="0.629467" DurationMax="0.748567">
+					<IncludedMemoryFiles>
+						<File Id="269722145" Language="SFX">
+							<ShortName>NemmandoShootGun.wav</ShortName>
+							<Path>SFX\NemmandoShootGun_0D5756A9.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="740827599" Name="SS2UNemmandoSubmissionCharge" ObjectPath="\Events\Default Work Unit\Nemmando\SS2UNemmandoSubmissionCharge" MaxAttenuation="200.000000" DurationType="OneShot" DurationMin="1.549660" DurationMax="1.549660">
+					<IncludedMemoryFiles>
+						<File Id="5091085" Language="SFX">
+							<ShortName>NemmandoSubmissionCharge.wav</ShortName>
+							<Path>SFX\NemmandoSubmissionCharge_0D5756A9.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="711785431" Name="SS2UNemmandoSubmissionFire" ObjectPath="\Events\Default Work Unit\Nemmando\SS2UNemmandoSubmissionFire" MaxAttenuation="200.000000" DurationType="OneShot" DurationMin="0.767940" DurationMax="0.861984">
+					<IncludedMemoryFiles>
+						<File Id="903966366" Language="SFX">
+							<ShortName>NemmandoSubmissionFire.wav</ShortName>
+							<Path>SFX\NemmandoSubmissionFire_0D5756A9.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="1386574408" Name="SS2UNemmandoSubmissionReady" ObjectPath="\Events\Default Work Unit\Nemmando\SS2UNemmandoSubmissionReady" MaxAttenuation="200.000000" DurationType="OneShot" DurationMin="0.824770" DurationMax="0.873813">
+					<IncludedMemoryFiles>
+						<File Id="679076346" Language="SFX">
+							<ShortName>NemmandoSubmissionReady.wav</ShortName>
+							<Path>SFX\NemmandoSubmissionReady_0D5756A9.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="164513259" Name="SS2UNemmandoSwing" ObjectPath="\Events\Default Work Unit\Nemmando\SS2UNemmandoSwing" MaxAttenuation="200.000000" DurationType="OneShot" DurationMin="0.548492" DurationMax="1.021599">
+					<IncludedMemoryFiles>
+						<File Id="216505171" Language="SFX">
+							<ShortName>NemmandoSwing2.wav</ShortName>
+							<Path>SFX\NemmandoSwing2_0D5756A9.wem</Path>
+						</File>
+						<File Id="354162060" Language="SFX">
+							<ShortName>NemmandoSwing1.wav</ShortName>
+							<Path>SFX\NemmandoSwing1_0D5756A9.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="858992619" Name="SS2UNemmandoSwingCrit" ObjectPath="\Events\Default Work Unit\Nemmando\SS2UNemmandoSwingCrit" MaxAttenuation="200.000000" DurationType="OneShot" DurationMin="0.548492" DurationMax="1.021599">
+					<IncludedMemoryFiles>
+						<File Id="216505171" Language="SFX">
+							<ShortName>NemmandoSwing2.wav</ShortName>
+							<Path>SFX\NemmandoSwing2_0D5756A9.wem</Path>
+						</File>
+						<File Id="354162060" Language="SFX">
+							<ShortName>NemmandoSwing1.wav</ShortName>
+							<Path>SFX\NemmandoSwing1_0D5756A9.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="3085229669" Name="SS2UNemmandoSwingDecisive" ObjectPath="\Events\Default Work Unit\Nemmando\SS2UNemmandoSwingDecisive" MaxAttenuation="200.000000" DurationType="OneShot" DurationMin="1.822572" DurationMax="2.167415">
+					<IncludedMemoryFiles>
+						<File Id="805104243" Language="SFX">
+							<ShortName>DecisiveStrike.wav</ShortName>
+							<Path>SFX\DecisiveStrike_0D5756A9.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="185810034" Name="SS2UNemmandoSwingSaber" ObjectPath="\Events\Default Work Unit\Nemmando\SS2UNemmandoSwingSaber" MaxAttenuation="200.000000" DurationType="OneShot" DurationMin="1.284326" DurationMax="1.666637">
+					<IncludedMemoryFiles>
+						<File Id="129668216" Language="SFX">
+							<ShortName>nemmandoswing22.wav</ShortName>
+							<Path>SFX\nemmandoswing22_0D5756A9.wem</Path>
+						</File>
+						<File Id="246039484" Language="SFX">
+							<ShortName>nemmandosaberswing1.wav</ShortName>
+							<Path>SFX\nemmandosaberswing1_0D5756A9.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="26066256" Name="SS2UNemmandoSwingSaberDecisive" ObjectPath="\Events\Default Work Unit\Nemmando\SS2UNemmandoSwingSaberDecisive" MaxAttenuation="200.000000" DurationType="OneShot" DurationMin="1.724656" DurationMax="1.827210">
+					<IncludedMemoryFiles>
+						<File Id="465172932" Language="SFX">
+							<ShortName>NemmandoSwingSaberBig.wav</ShortName>
+							<Path>SFX\NemmandoSwingSaberBig_0D5756A9.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="2347908078" Name="SS2UNucleatorAlarm" ObjectPath="\Events\Default Work Unit\SS2UNucleatorAlarm" MaxAttenuation="200.000000" DurationType="OneShot" DurationMin="0.660229" DurationMax="0.660229">
+					<IncludedMemoryFiles>
+						<File Id="658160967" Language="SFX">
+							<ShortName>alarm.wav</ShortName>
+							<Path>SFX\alarm_3F75BDB9.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="730886375" Name="SS2UNucleatorChargePrimary" ObjectPath="\Events\Default Work Unit\Nucleator\SS2UNucleatorChargePrimary" MaxAttenuation="200.000000" DurationType="OneShot" DurationMin="2.054382" DurationMax="2.176542">
+					<IncludedMemoryFiles>
+						<File Id="438122999" Language="SFX">
+							<ShortName>nucleator_m1_charge_01.wav</ShortName>
+							<Path>SFX\nucleator_m1_charge_01_0D5756A9.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="2416899511" Name="SS2UNucleatorSkill1" ObjectPath="\Events\Default Work Unit\SS2UNucleatorSkill1" MaxAttenuation="200.000000" DurationType="OneShot" DurationMin="0.997455" DurationMax="1.186181">
+					<IncludedMemoryFiles>
+						<File Id="853066570" Language="SFX">
+							<ShortName>m1Fire.wav</ShortName>
+							<Path>SFX\m1Fire_3F75BDB9.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="2123157366" Name="SS2UNucleatorSkill1c" ObjectPath="\Events\Default Work Unit\SS2UNucleatorSkill1c" MaxAttenuation="200.000000" DurationType="OneShot" DurationMin="1.887052" DurationMax="1.887052">
+					<IncludedMemoryFiles>
+						<File Id="245165805" Language="SFX">
+							<ShortName>m1OverchargeFire.wav</ShortName>
+							<Path>SFX\m1OverchargeFire_3F75BDB9.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="2416899508" Name="SS2UNucleatorSkill2" ObjectPath="\Events\Default Work Unit\SS2UNucleatorSkill2" MaxAttenuation="200.000000" DurationType="OneShot" DurationMin="1.548549" DurationMax="1.548549">
+					<IncludedMemoryFiles>
+						<File Id="749486746" Language="SFX">
+							<ShortName>m2.wav</ShortName>
+							<Path>SFX\m2_3F75BDB9.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="2089601934" Name="SS2UNucleatorSkill3a" ObjectPath="\Events\Default Work Unit\SS2UNucleatorSkill3a" MaxAttenuation="200.000000" DurationType="OneShot" DurationMin="0.987914" DurationMax="0.987914">
+					<IncludedMemoryFiles>
+						<File Id="163442424" Language="SFX">
+							<ShortName>skill3a.wav</ShortName>
+							<Path>SFX\skill3a_3F75BDB9.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="2089601933" Name="SS2UNucleatorSkill3b" ObjectPath="\Events\Default Work Unit\SS2UNucleatorSkill3b" MaxAttenuation="200.000000" DurationType="OneShot" DurationMin="2.375813" DurationMax="2.375813">
+					<IncludedMemoryFiles>
+						<File Id="342261758" Language="SFX">
+							<ShortName>skill3b.wav</ShortName>
+							<Path>SFX\skill3b_3F75BDB9.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="2089601932" Name="SS2UNucleatorSkill3c" ObjectPath="\Events\Default Work Unit\SS2UNucleatorSkill3c" MaxAttenuation="200.000000" DurationType="OneShot" DurationMin="1.940068" DurationMax="1.940068">
+					<IncludedMemoryFiles>
+						<File Id="464930069" Language="SFX">
+							<ShortName>skill3c.wav</ShortName>
+							<Path>SFX\skill3c_3F75BDB9.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="2039269207" Name="SS2UNucleatorSkill4a" ObjectPath="\Events\Default Work Unit\SS2UNucleatorSkill4a" MaxAttenuation="200.000000" DurationType="OneShot" DurationMin="7.881406" DurationMax="7.881406">
+					<IncludedMemoryFiles>
+						<File Id="361683038" Language="SFX">
+							<ShortName>skill4a.wav</ShortName>
+							<Path>SFX\skill4a_3F75BDB9.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="2039269204" Name="SS2UNucleatorSkill4b" ObjectPath="\Events\Default Work Unit\SS2UNucleatorSkill4b" MaxAttenuation="200.000000" DurationType="OneShot" DurationMin="13.658617" DurationMax="13.658617">
+					<IncludedMemoryFiles>
+						<File Id="213601022" Language="SFX">
+							<ShortName>skill4b.wav</ShortName>
+							<Path>SFX\skill4b_3F75BDB9.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="2039269205" Name="SS2UNucleatorSkill4c" ObjectPath="\Events\Default Work Unit\SS2UNucleatorSkill4c" MaxAttenuation="200.000000" DurationType="OneShot" DurationMin="3.401021" DurationMax="3.401021">
+					<IncludedMemoryFiles>
+						<File Id="96611325" Language="SFX">
+							<ShortName>skill4c.wav</ShortName>
+							<Path>SFX\skill4c_3F75BDB9.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="3586017208" Name="SS2USigilActivation" ObjectPath="\Events\Default Work Unit\Items\SS2USigilActivation" MaxAttenuation="200.000000" DurationType="OneShot" DurationMin="1.357029" DurationMax="1.357029">
+					<IncludedMemoryFiles>
+						<File Id="320726770" Language="SFX">
+							<ShortName>item_proc_buffOnIdle_01.wav</ShortName>
+							<Path>SFX\item_proc_buffOnIdle_01_0D5756A9.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="2534988401" Name="SS2USpawnMGR" ObjectPath="\Events\Default Work Unit\Nemmando\SS2USpawnMGR" MaxAttenuation="200.000000" DurationType="OneShot" DurationMin="13.249342" DurationMax="13.249342">
+					<IncludedMemoryFiles>
+						<File Id="131170681" Language="SFX">
+							<ShortName>NemmandoSpawnmeme.wav</ShortName>
+							<Path>SFX\NemmandoSpawnmeme_0D5756A9.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="2853950591" Name="SS2UStirringSoul" ObjectPath="\Events\Default Work Unit\Items\SS2UStirringSoul" MaxAttenuation="200.000000" DurationType="OneShot" DurationMin="1.436599" DurationMax="1.436599">
+					<IncludedMemoryFiles>
+						<File Id="483753104" Language="SFX">
+							<ShortName>item_proc_soulonkillPickup_01.wav</ShortName>
+							<Path>SFX\item_proc_soulonkillPickup_01_0D5756A9.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="710109306" Name="SS2UStrangeCan" ObjectPath="\Events\Default Work Unit\Items\SS2UStrangeCan" MaxAttenuation="200.000000" DurationType="OneShot" DurationMin="0.963347" DurationMax="1.362379">
+					<IncludedMemoryFiles>
+						<File Id="89003483" Language="SFX">
+							<ShortName>item_proc_intoxicateHit_03.wav</ShortName>
+							<Path>SFX\item_proc_intoxicateHit_03_0D5756A9.wem</Path>
+						</File>
+						<File Id="683106128" Language="SFX">
+							<ShortName>item_proc_intoxicateHit_02.wav</ShortName>
+							<Path>SFX\item_proc_intoxicateHit_02_0D5756A9.wem</Path>
+						</File>
+						<File Id="841991385" Language="SFX">
+							<ShortName>item_proc_intoxicateHit_01.wav</ShortName>
+							<Path>SFX\item_proc_intoxicateHit_01_0D5756A9.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="2673629459" Name="SS2USwiftSkateboard" ObjectPath="\Events\Default Work Unit\Items\SS2USwiftSkateboard" MaxAttenuation="200.000000" DurationType="OneShot" DurationMin="0.590542" DurationMax="0.918005">
+					<IncludedMemoryFiles>
+						<File Id="143741125" Language="SFX">
+							<ShortName>item_proc_swiftSkateboard_02.wav</ShortName>
+							<Path>SFX\item_proc_swiftSkateboard_02_0D5756A9.wem</Path>
+						</File>
+						<File Id="555558067" Language="SFX">
+							<ShortName>item_proc_swiftSkateboard_01.wav</ShortName>
+							<Path>SFX\item_proc_swiftSkateboard_01_0D5756A9.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="2232269442" Name="SS2UVoidAmbient" ObjectPath="\Events\Default Work Unit\SS2UVoidAmbient" DurationType="OneShot" DurationMin="12.438050" DurationMax="15.329093">
+					<IncludedMemoryFiles>
+						<File Id="471547935" Language="SFX">
+							<ShortName>VoidAmbience2.wav</ShortName>
+							<Path>SFX\VoidAmbience2_0D5756A9.wem</Path>
+						</File>
+						<File Id="603837612" Language="SFX">
+							<ShortName>VoidAmbience3.wav</ShortName>
+							<Path>SFX\VoidAmbience3_0D5756A9.wem</Path>
+						</File>
+						<File Id="978048950" Language="SFX">
+							<ShortName>VoidAmbience1.wav</ShortName>
+							<Path>SFX\VoidAmbience1_0D5756A9.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="1211325524" Name="SS2UVoidEliteSpawn" ObjectPath="\Events\Default Work Unit\Elites\SS2UVoidEliteSpawn" MaxAttenuation="200.000000" DurationType="OneShot" DurationMin="2.980091" DurationMax="2.980091">
+					<IncludedMemoryFiles>
+						<File Id="591344468" Language="SFX">
+							<ShortName>VoidEliteSpawn.wav</ShortName>
+							<Path>SFX\VoidEliteSpawn_0D5756A9.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="3352530362" Name="SS2UWastelanderPrimary" ObjectPath="\Events\Default Work Unit\Executioner\SS2UWastelanderPrimary" MaxAttenuation="200.000000" DurationType="OneShot" DurationMin="0.943442" DurationMax="1.416436">
+					<IncludedMemoryFiles>
+						<File Id="120647268" Language="SFX">
+							<ShortName>WastelanderShoot2.wav</ShortName>
+							<Path>SFX\WastelanderShoot2_0D5756A9.wem</Path>
+						</File>
+						<File Id="530421127" Language="SFX">
+							<ShortName>WastelanderShoot3.wav</ShortName>
+							<Path>SFX\WastelanderShoot3_0D5756A9.wem</Path>
+						</File>
+						<File Id="717741475" Language="SFX">
+							<ShortName>WastelanderShoot1.wav</ShortName>
+							<Path>SFX\WastelanderShoot1_0D5756A9.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="1605127702" Name="SS2UWastelanderPrimaryCrit" ObjectPath="\Events\Default Work Unit\Executioner\SS2UWastelanderPrimaryCrit" MaxAttenuation="200.000000" DurationType="OneShot" DurationMin="0.943442" DurationMax="1.416436">
+					<IncludedMemoryFiles>
+						<File Id="253404114" Language="SFX">
+							<ShortName>WastelanderShootCrit2.wav</ShortName>
+							<Path>SFX\WastelanderShootCrit2_0D5756A9.wem</Path>
+						</File>
+						<File Id="826625557" Language="SFX">
+							<ShortName>WastelanderShootCrit3.wav</ShortName>
+							<Path>SFX\WastelanderShootCrit3_0D5756A9.wem</Path>
+						</File>
+						<File Id="972774711" Language="SFX">
+							<ShortName>WastelanderShootCrit1.wav</ShortName>
+							<Path>SFX\WastelanderShootCrit1_0D5756A9.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="81596630" Name="SS2UWastelanderSecondary" ObjectPath="\Events\Default Work Unit\Executioner\SS2UWastelanderSecondary" MaxAttenuation="200.000000" DurationType="OneShot" DurationMin="0.981590" DurationMax="1.241912">
+					<IncludedMemoryFiles>
+						<File Id="835244512" Language="SFX">
+							<ShortName>WastelanderShootIon1.wav</ShortName>
+							<Path>SFX\WastelanderShootIon1_0D5756A9.wem</Path>
+						</File>
+						<File Id="1027913659" Language="SFX">
+							<ShortName>WastelanderShootIon2.wav</ShortName>
+							<Path>SFX\WastelanderShootIon2_0D5756A9.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="1649975571" Name="SS2UWayfarerIdle" ObjectPath="\Events\Default Work Unit\Wayfarer\SS2UWayfarerIdle" MaxAttenuation="300.000000" DurationType="OneShot" DurationMin="18.461565" DurationMax="18.461565">
+					<IncludedMemoryFiles>
+						<File Id="344160986" Language="SFX">
+							<ShortName>wayfarer_idle_loop_01.wav</ShortName>
+							<Path>SFX\wayfarer_idle_loop_01_0D5756A9.wem</Path>
+						</File>
+						<File Id="445232879" Language="SFX">
+							<ShortName>wayfarer_idle_loop_05.wav</ShortName>
+							<Path>SFX\wayfarer_idle_loop_05_0D5756A9.wem</Path>
+						</File>
+						<File Id="686485429" Language="SFX">
+							<ShortName>wayfarer_idle_loop_04.wav</ShortName>
+							<Path>SFX\wayfarer_idle_loop_04_0D5756A9.wem</Path>
+						</File>
+						<File Id="987711244" Language="SFX">
+							<ShortName>wayfarer_idle_loop_03.wav</ShortName>
+							<Path>SFX\wayfarer_idle_loop_03_0D5756A9.wem</Path>
+						</File>
+						<File Id="1055144826" Language="SFX">
+							<ShortName>wayfarer_idle_loop_02.wav</ShortName>
+							<Path>SFX\wayfarer_idle_loop_02_0D5756A9.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="3843991376" Name="SS2UWayfarerVO" ObjectPath="\Events\Default Work Unit\Wayfarer\SS2UWayfarerVO" MaxAttenuation="300.000000" DurationType="OneShot" DurationMin="2.850408" DurationMax="3.307279">
+					<IncludedMemoryFiles>
+						<File Id="171627018" Language="SFX">
+							<ShortName>wayfarer_idle_VO_01.wav</ShortName>
+							<Path>SFX\wayfarer_idle_VO_01_0D5756A9.wem</Path>
+						</File>
+						<File Id="196979575" Language="SFX">
+							<ShortName>wayfarer_idle_VO_05.wav</ShortName>
+							<Path>SFX\wayfarer_idle_VO_05_0D5756A9.wem</Path>
+						</File>
+						<File Id="546895763" Language="SFX">
+							<ShortName>wayfarer_idle_VO_06.wav</ShortName>
+							<Path>SFX\wayfarer_idle_VO_06_0D5756A9.wem</Path>
+						</File>
+						<File Id="819498529" Language="SFX">
+							<ShortName>wayfarer_idle_VO_02.wav</ShortName>
+							<Path>SFX\wayfarer_idle_VO_02_0D5756A9.wem</Path>
+						</File>
+						<File Id="906121422" Language="SFX">
+							<ShortName>wayfarer_idle_VO_04.wav</ShortName>
+							<Path>SFX\wayfarer_idle_VO_04_0D5756A9.wem</Path>
+						</File>
+						<File Id="955562662" Language="SFX">
+							<ShortName>wayfarer_idle_VO_03.wav</ShortName>
+							<Path>SFX\wayfarer_idle_VO_03_0D5756A9.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+			</IncludedEvents>
+			<GameParameters>
+				<GameParameter Id="3673881719" Name="Volume_SFX" ObjectPath="\Game Parameters\Default Work Unit\Volume_SFX"/>
+			</GameParameters>
+		</SoundBank>
+		<SoundBank Id="3788975425" Language="SFX" Hash="709936565">
+			<ObjectPath>\SoundBanks\Default Work Unit\SS2UMusic</ObjectPath>
+			<ShortName>SS2UMusic</ShortName>
+			<Path>SS2UMusic.bnk</Path>
+			<IncludedEvents>
+				<Event Id="2276060465" Name="Play_SS2U_NemesisTheme" ObjectPath="\Events\Default Work Unit\Play_SS2U_NemesisTheme" DurationType="Infinite">
+					<IncludedMemoryFiles>
+						<File Id="41584387" Language="SFX">
+							<ShortName>Canticum_Vitae_Start_B.wav</ShortName>
+							<Path>SFX\Canticum_Vitae_Start_B_78160227.wem</Path>
+						</File>
+						<File Id="324234268" Language="SFX">
+							<ShortName>Canticum_Vitae_Loop_A.wav</ShortName>
+							<Path>SFX\Canticum_Vitae_Loop_A_78160227.wem</Path>
+						</File>
+						<File Id="342415295" Language="SFX">
+							<ShortName>Canticum_Vitae_Transition_B.wav</ShortName>
+							<Path>SFX\Canticum_Vitae_Transition_B_78160227.wem</Path>
+						</File>
+						<File Id="417465332" Language="SFX">
+							<ShortName>Canticum_Vitae_Transition_A.wav</ShortName>
+							<Path>SFX\Canticum_Vitae_Transition_A_78160227.wem</Path>
+						</File>
+						<File Id="516513095" Language="SFX">
+							<ShortName>Canticum_Vitae_Loop_B.wav</ShortName>
+							<Path>SFX\Canticum_Vitae_Loop_B_78160227.wem</Path>
+						</File>
+						<File Id="920998419" Language="SFX">
+							<ShortName>Canticum_Vitae_Start_C.wav</ShortName>
+							<Path>SFX\Canticum_Vitae_Start_C_78160227.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+			</IncludedEvents>
+			<GameParameters>
+				<GameParameter Id="3729143042" Name="Volume_MSX" ObjectPath="\Game Parameters\Default Work Unit\Volume_MSX"/>
+			</GameParameters>
+		</SoundBank>
+	</SoundBanks>
+</SoundBanksInfo>

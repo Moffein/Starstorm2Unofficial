@@ -971,24 +971,7 @@
 						</Folder>
 					</ChildrenList>
 				</Folder>
-				<Folder Name="Workers" ID="{281C2BF7-2791-49D7-9488-F9BCA2578C63}" ShortID="77239015">
-					<ChildrenList>
-						<Event Name="Play_SS2U_Music_System" ID="{BF7B07E2-724A-43BF-BC66-D0B342EA6200}">
-							<ChildrenList>
-								<Action Name="" ID="{566AD58C-63B8-485C-80F2-10ABFCC44B60}" ShortID="1023548246">
-									<PropertyList>
-										<Property Name="ActionType" Type="int16" Value="1"/>
-									</PropertyList>
-									<ReferenceList>
-										<Reference Name="Target">
-											<ObjectRef Name="SS2_Music_System" ID="{4BC128DE-77C0-4BBA-8ED4-00A2A8E01DCA}" WorkUnitID="{F233C913-3B4E-4D63-9074-90CE5295641F}"/>
-										</Reference>
-									</ReferenceList>
-								</Action>
-							</ChildrenList>
-						</Event>
-					</ChildrenList>
-				</Folder>
+				<Folder Name="Workers" ID="{281C2BF7-2791-49D7-9488-F9BCA2578C63}" ShortID="77239015"/>
 				<Event Name="SS2UExecutionerPrimaryClassic" ID="{4D0A86FF-E315-428F-BAFA-C3655751B6B3}">
 					<ChildrenList>
 						<Action Name="" ID="{DBBF63C7-D26A-4172-9318-5BCA090CBD89}" ShortID="46169592">
@@ -1095,7 +1078,7 @@
 							</PropertyList>
 							<ReferenceList>
 								<Reference Name="Target">
-									<ObjectRef Name="Canticum_Vitae_Main" ID="{7785E4D6-0318-4882-8732-856AF0F50CE3}" WorkUnitID="{F233C913-3B4E-4D63-9074-90CE5295641F}"/>
+									<ObjectRef Name="SS2U_Canticum_Vitae_Main" ID="{7785E4D6-0318-4882-8732-856AF0F50CE3}" WorkUnitID="{F233C913-3B4E-4D63-9074-90CE5295641F}"/>
 								</Reference>
 							</ReferenceList>
 						</Action>
