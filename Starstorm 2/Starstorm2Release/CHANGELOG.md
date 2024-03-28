@@ -17,6 +17,7 @@
 	- New Default Secondary: Rising Star
 		- Rapidly fire slowing shots for 3x100% damage. (0.5 proc)
 			- Fires 5 times per second, can continuously fire for up to 3 seconds.
+		- 6s cooldown.
 		
 - Chirr
 	- Friend loadout is now saved between stages. (Relevant for Hunted and other mods that let you befriend survivors)
