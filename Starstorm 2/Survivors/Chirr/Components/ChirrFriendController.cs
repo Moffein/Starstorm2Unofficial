@@ -283,7 +283,7 @@ namespace Starstorm2Unofficial.Survivors.Chirr.Components
 
                         if (setLoadout && body)
                         {
-                            body.AddComponent<RespawnMasterOnStart>();  //jank
+                            body.AddComponent<RespawnMasterOnStart>();  //jank, nullrefs if it's not delayed with this
                         }
                     }
                 }
