@@ -7,13 +7,12 @@ namespace Starstorm2Unofficial.Survivors.Cyborg.Components
     //Crosshair gets charge info from this component.
     public class CyborgChargeComponent : NetworkBehaviour
     {
-        public static float baseMaxShieldDuration = 3f;
         public static float delayBeforeShieldRecharge = 1f;
 
         private float shieldRechargeDelayStopwatch;
         public bool shieldActive = false;
         public bool shieldDepleted = false;
-        public float remainingShieldDuration = 2f;
+        public float remainingShieldFraction = 1f;
 
         public float chargeFraction = 0f;
         public bool perfectCharge = false;
@@ -30,17 +29,17 @@ namespace Starstorm2Unofficial.Survivors.Cyborg.Components
             {
                 if (shieldRechargeDelayStopwatch <= 0f)
                 {
-                    remainingShieldDuration += Time.fixedDeltaTime * CyborgChargeComponent.baseMaxShieldDuration / GetShieldRechargeTime();
+                    remainingShieldFraction += Time.fixedDeltaTime / GetShieldRechargeTime();
 
-                    if (remainingShieldDuration >= baseMaxShieldDuration)
+                    if (remainingShieldFraction >= 1f)
                     {
                         shieldDepleted = false;
                     }
 
                     float maxShield = GetMaxShieldDuration();
-                    if (remainingShieldDuration > maxShield)
+                    if (remainingShieldFraction > maxShield)
                     {
-                        remainingShieldDuration = maxShield;
+                        remainingShieldFraction = maxShield;
                     }
                 }
                 else
@@ -52,16 +51,16 @@ namespace Starstorm2Unofficial.Survivors.Cyborg.Components
 
         public void RefreshShield()
         {
-            remainingShieldDuration = GetMaxShieldDuration();
+            remainingShieldFraction = GetMaxShieldDuration();
             shieldDepleted = false;
         }
 
-        public void ConsumeShield(float duration)
+        public void ConsumeShield(float fraction)
         {
-            remainingShieldDuration -= duration;
-            if (remainingShieldDuration <= 0f)
+            remainingShieldFraction -= fraction;
+            if (remainingShieldFraction <= 0f)
             {
-                remainingShieldDuration = 0f;
+                remainingShieldFraction = 0f;
                 shieldDepleted = true;
             }
             shieldRechargeDelayStopwatch = CyborgChargeComponent.delayBeforeShieldRecharge;
@@ -69,18 +68,18 @@ namespace Starstorm2Unofficial.Survivors.Cyborg.Components
 
         public float GetMaxShieldDuration()
         {
-            float duration = CyborgChargeComponent.baseMaxShieldDuration;
-            if (skillLocator && skillLocator.secondary && skillLocator.secondary.skillDef == CyborgCore.defenseMatrixDef)
+            float fraction = 1f;
+            if (skillLocator && skillLocator.secondary)
             {
                 int extraStocks = Mathf.Max(0, skillLocator.secondary.maxStock - 1);
-                duration += CyborgChargeComponent.baseMaxShieldDuration * extraStocks;
+                fraction += extraStocks;
             }
-            return duration;
+            return fraction;
         }
 
         private float GetShieldRechargeTime()
         {
-            if (skillLocator && skillLocator.secondary && skillLocator.secondary.skillDef == CyborgCore.defenseMatrixDef)
+            if (skillLocator && skillLocator.secondary)
             {
                 return skillLocator.secondary.CalculateFinalRechargeInterval();
             }

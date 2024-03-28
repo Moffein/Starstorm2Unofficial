@@ -13,7 +13,7 @@ namespace EntityStates.SS2UStates.Cyborg
         public static float baseDuration = 0.5f;
         public static float recoil = 2f;
         public static GameObject tracerEffectPrefab;//Prefabs/Effects/Tracers/TracerHuntressSnipe
-        public static GameObject hitEffectPrefab = LegacyResourcesAPI.Load<GameObject>("prefabs/effects/impacteffects/HitsparkCommandoShotgun");
+        public static GameObject hitEffectPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Commando/HitsparkCommandoShotgun.prefab").WaitForCompletion();
         public static GameObject muzzleflashEffectPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Mage/MuzzleflashMageLightning.prefab").WaitForCompletion();
 
         int step = 0;
@@ -64,9 +64,10 @@ namespace EntityStates.SS2UStates.Cyborg
                     isCrit = base.RollCrit(),
                     falloffModel = BulletAttack.FalloffModel.None,
                     damageType = DamageType.SlowOnHit,
-                    maxDistance = 1000f
+                    maxDistance = 1000f,
+                    procCoefficient = 1f
                 };
-                bullet.AddModdedDamageType(DamageTypeCore.ModdedDamageTypes.CyborgPrimary);
+                bullet.AddModdedDamageType(DamageTypeCore.ModdedDamageTypes.CyborgCanDetonateShockCore);
                 bullet.Fire();
                 base.AddRecoil(-0.5f * recoil, -0.8f * recoil, -0.3f * recoil, 0.3f * recoil);
             }

@@ -155,6 +155,7 @@ namespace Starstorm2Unofficial.Survivors.Cyborg
             Modules.States.AddState(typeof(FireBeam));
 
             Modules.States.AddState(typeof(DefenseMatrix));
+            Modules.States.AddState(typeof(FireTriShot));
             Modules.States.AddState(typeof(ShockCore));
             Modules.States.AddState(typeof(ShockCoreScepter));
         }
@@ -316,7 +317,7 @@ namespace Starstorm2Unofficial.Survivors.Cyborg
             hc.body = cb;
 
             ShootableShockCore sp = projectilePrefab.AddComponent<ShootableShockCore>();
-            sp.targetDamageType = DamageTypeCore.ModdedDamageTypes.CyborgPrimary;
+            sp.targetDamageType = DamageTypeCore.ModdedDamageTypes.CyborgCanDetonateShockCore;
             sp.explosionEffectPrefab = explosionEffectPrefab;
             sp.radius = radius;
             sp.implosionStartEffectPrefab = implosionEffectPrefab;

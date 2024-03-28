@@ -24,6 +24,7 @@ namespace EntityStates.SS2UStates.Cyborg.Secondary
         private DefenseMatrixManager.DefenseMatrixInfo defenseMatrixInfo;
         private CyborgChargeComponent chargeComponent;
 
+        public static float shieldDuration = 6f;
         public static float minDuration = 0.5f;
         public static string attackSoundString = "SS2UCyborgSpecialTeleport";
         public static GameObject projectileDeletionEffectPrefab;
@@ -155,7 +156,7 @@ namespace EntityStates.SS2UStates.Cyborg.Secondary
             bool shieldDepleted = false;
             if (this.chargeComponent)
             {
-                this.chargeComponent.ConsumeShield(Time.fixedDeltaTime);
+                this.chargeComponent.ConsumeShield(Time.fixedDeltaTime/DefenseMatrix.shieldDuration);
                 shieldDepleted = this.chargeComponent.shieldDepleted;
             }
 
@@ -163,7 +164,7 @@ namespace EntityStates.SS2UStates.Cyborg.Secondary
             {
                 if (this.chargeComponent)
                 {
-                    if (this.chargeComponent.remainingShieldDuration <= 0.5f)
+                    if (this.chargeComponent.remainingShieldFraction <= blinkTime/DefenseMatrix.shieldDuration)
                     {
                         blinkStopwatch += Time.fixedDeltaTime;
                         if (blinkStopwatch >= blinkToggleDuration)

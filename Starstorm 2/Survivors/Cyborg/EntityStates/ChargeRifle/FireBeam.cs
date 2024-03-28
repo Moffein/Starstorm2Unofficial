@@ -18,7 +18,7 @@ namespace EntityStates.SS2UStates.Cyborg.ChargeRifle
         public static float maxForce = 2000f;
         public static float baseDuration = 0.5f;
         public static float recoil = 4f;
-        public static GameObject hitEffectPrefab = LegacyResourcesAPI.Load<GameObject>("prefabs/effects/impacteffects/HitsparkCommandoShotgun");
+        public static GameObject hitEffectPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Commando/HitsparkCommandoShotgun.prefab").WaitForCompletion();
         public static GameObject tracerEffectPrefab;
         public static GameObject perfectTracerEffectPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Huntress/TracerHuntressSnipe.prefab").WaitForCompletion();
         public static GameObject muzzleflashEffectPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Mage/MuzzleflashMageLightning.prefab").WaitForCompletion();
@@ -106,7 +106,7 @@ namespace EntityStates.SS2UStates.Cyborg.ChargeRifle
                     hitEffectPrefab = FireBeam.hitEffectPrefab,
                     maxDistance = 1000f
                 };
-                bullet.AddModdedDamageType(DamageTypeCore.ModdedDamageTypes.CyborgPrimary);
+                bullet.AddModdedDamageType(DamageTypeCore.ModdedDamageTypes.CyborgCanDetonateShockCore);
                 if (perfectCharge || charge >= 1f) bullet.stopperMask = LayerIndex.world.mask;
                 bullet.Fire();
             }

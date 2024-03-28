@@ -8,6 +8,11 @@
 		
 	- Alt Primary: Renamed to ______ (TODO)
 	
+	- Defense Matrix
+		- Increased shield duration from 3s -> 6s
+		
+		*3s was "balanced", but way too restrictive when trying to use it to actively protect teammates.*
+	
 	- New Default Secondary: Rising Star (TODO)
 		- idea is that it uses same bar as shield with similar cooldown mechanics, rapidly fires a triple-spread of weak shots for high close range dps
 		

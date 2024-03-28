@@ -16,7 +16,7 @@ namespace Starstorm2Unofficial.Cores
 
         public static class ModdedDamageTypes
         {
-            public static DamageAPI.ModdedDamageType CyborgPrimary; //Used for Cyborg Shock Rifle combo
+            public static DamageAPI.ModdedDamageType CyborgCanDetonateShockCore; //Used for Cyborg Shock Rifle combo
             public static DamageAPI.ModdedDamageType ScaleForceToMass;
             public static DamageAPI.ModdedDamageType GroundedForceCorrection;   //Used to fix scaled knockback force attacks on grounded enemies.
             public static DamageAPI.ModdedDamageType GougeOnHit;
@@ -43,7 +43,7 @@ namespace Starstorm2Unofficial.Cores
             ModdedDamageTypes.AntiFlyingForce = DamageAPI.ReserveDamageType();
             ModdedDamageTypes.SlayerExceptItActuallyWorks = DamageAPI.ReserveDamageType();
             ModdedDamageTypes.ResetVictimForce = DamageAPI.ReserveDamageType();
-            ModdedDamageTypes.CyborgPrimary = DamageAPI.ReserveDamageType();
+            ModdedDamageTypes.CyborgCanDetonateShockCore = DamageAPI.ReserveDamageType();
             ModdedDamageTypes.ScaleForceToMass = DamageAPI.ReserveDamageType();
             ModdedDamageTypes.GougeOnHit = DamageAPI.ReserveDamageType();
             ModdedDamageTypes.ExtendFear = DamageAPI.ReserveDamageType();
