@@ -19,6 +19,10 @@ namespace Starstorm2Unofficial.Survivors.Cyborg.Components.Crosshair
         private Image chargeBar;
         private Image chargeBarBackground;
         private Image shieldBar;
+
+        private Image rightDot;
+        private Image leftDot;
+
         private CharacterBody savedCharacterBody;
 
         private void Awake()
@@ -39,6 +43,18 @@ namespace Starstorm2Unofficial.Survivors.Cyborg.Components.Crosshair
                 if (chargeBackgroundTransform)
                 {
                     chargeBarBackground = chargeBackgroundTransform.GetComponent<Image>();
+                }
+
+                Transform rightDotTransform = cl.FindChild("RightDot");
+                if (rightDotTransform)
+                {
+                    rightDot = rightDotTransform.GetComponent<Image>();
+                }
+
+                Transform leftDotTransform = cl.FindChild("LeftDot");
+                if (leftDotTransform)
+                {
+                    leftDot = leftDotTransform.GetComponent<Image>();
                 }
             }
         }
@@ -77,14 +93,14 @@ namespace Starstorm2Unofficial.Survivors.Cyborg.Components.Crosshair
                     }
                 }
 
-                if (this.chargeBar)
+                if (chargeBar)
                 {
                     float targetFill = Mathf.Lerp(0f, 1f, chargeComponent.chargeFraction);
-                    this.chargeBar.fillAmount = targetFill;
-                    this.chargeBar.color = this.chargeComponent.perfectCharge ? perfectChargeColor : chargeColor;
+                    chargeBar.fillAmount = targetFill;
+                    chargeBar.color = chargeComponent.perfectCharge ? perfectChargeColor : chargeColor;
                 }
 
-                if (this.shieldBar)
+                if (shieldBar)
                 {
                     float targetFill = Mathf.Lerp(0f, 1f, chargeComponent.remainingShieldFraction / chargeComponent.GetMaxShieldDuration());
                     Color targetColor = chargeComponent.shieldDepleted ? shieldDepleteColor : shieldColor;
@@ -92,6 +108,15 @@ namespace Starstorm2Unofficial.Survivors.Cyborg.Components.Crosshair
 
                     shieldBar.color = targetColor;
                     shieldBar.fillAmount = targetFill;
+                }
+
+                if (rightDot)
+                {
+                    rightDot.fillAmount = chargeComponent.showTriShotCrosshair ? 1f : 0f;
+                }
+                if (leftDot)
+                {
+                    leftDot.fillAmount = chargeComponent.showTriShotCrosshair ? 1f : 0f;
                 }
             }
         }

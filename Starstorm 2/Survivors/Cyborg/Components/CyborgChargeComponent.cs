@@ -14,6 +14,8 @@ namespace Starstorm2Unofficial.Survivors.Cyborg.Components
         public bool shieldDepleted = false;
         public float remainingShieldFraction = 1f;
 
+        public bool showTriShotCrosshair = false;
+
         public float chargeFraction = 0f;
         public bool perfectCharge = false;
         public SkillLocator skillLocator;

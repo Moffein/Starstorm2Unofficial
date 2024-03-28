@@ -580,7 +580,7 @@ namespace Starstorm2Unofficial.Survivors.Cyborg
             SkillFamily.Variant secondaryVariant2 = Utils.RegisterSkillVariant(triShotDef);
             CyborgCore.triShotDef = triShotDef;
 
-            skillLocator.secondary = Utils.RegisterSkillsToFamily(cybPrefab, new SkillFamily.Variant[] { secondaryVariant1, secondaryVariant2 });
+            skillLocator.secondary = Utils.RegisterSkillsToFamily(cybPrefab, new SkillFamily.Variant[] { secondaryVariant2, secondaryVariant1 });
         }
 
         private void SetUpUtilities(SkillLocator skillLocator)

@@ -34,6 +34,7 @@ namespace EntityStates.SS2UStates.Cyborg.Secondary
             chargeComponent = base.GetComponent<CyborgChargeComponent>();
             if (chargeComponent)
             {
+                chargeComponent.showTriShotCrosshair = true;
                 chargeComponent.shieldActive = true;
                 chargeComponent.ConsumeShield(chargeConsumptionPerShot);
 
@@ -140,7 +141,11 @@ namespace EntityStates.SS2UStates.Cyborg.Secondary
 
         public override void OnExit()
         {
-            if (chargeComponent) chargeComponent.shieldActive = false;
+            if (chargeComponent)
+            {
+                chargeComponent.shieldActive = false;
+                chargeComponent.showTriShotCrosshair = false;
+            }
             base.OnExit();
         }
 
