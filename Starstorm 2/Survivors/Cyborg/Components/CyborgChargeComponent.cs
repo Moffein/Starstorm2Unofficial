@@ -7,7 +7,7 @@ namespace Starstorm2Unofficial.Survivors.Cyborg.Components
     //Crosshair gets charge info from this component.
     public class CyborgChargeComponent : NetworkBehaviour
     {
-        public static float delayBeforeShieldRecharge = 1f;
+        public static float delayBeforeShieldRecharge = 0.5f;
 
         private float shieldRechargeDelayStopwatch;
         public bool shieldActive = false;
@@ -18,6 +18,9 @@ namespace Starstorm2Unofficial.Survivors.Cyborg.Components
         public bool perfectCharge = false;
         public SkillLocator skillLocator;
 
+        //Jank to make FireTriShot alternate without a SteppedSkillDef
+        public int armToFireFrom = 0;
+
         private void Awake()
         {
             skillLocator = base.GetComponent<SkillLocator>();
@@ -27,7 +30,7 @@ namespace Starstorm2Unofficial.Survivors.Cyborg.Components
         {
             if (!shieldActive)
             {
-                if (shieldRechargeDelayStopwatch <= 0f)
+                if (shieldRechargeDelayStopwatch <= 0f || shieldDepleted)
                 {
                     remainingShieldFraction += Time.fixedDeltaTime / GetShieldRechargeTime();
 

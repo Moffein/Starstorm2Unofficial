@@ -10,11 +10,13 @@
 	
 	- Defense Matrix
 		- Increased shield duration from 3s -> 6s
+		- Reduced cooldown from 7s -> 6s
 		
 		*3s was "balanced", but way too restrictive when trying to use it to actively protect teammates.*
 	
-	- New Default Secondary: Rising Star (TODO)
-		- idea is that it uses same bar as shield with similar cooldown mechanics, rapidly fires a triple-spread of weak shots for high close range dps
+	- New Default Secondary: Rising Star
+		- Rapidly fire slowing shots for 3x100% damage. (0.5 proc)
+			- Fires 5 times per second, can continuously fire for up to 3 seconds.
 		
 - Chirr
 	- Friend loadout is now saved between stages. (Relevant for Hunted and other mods that let you befriend survivors)

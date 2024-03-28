@@ -8,11 +8,13 @@ using System.Threading.Tasks;
 using UnityEngine.AddressableAssets;
 using UnityEngine;
 using R2API;
+using Starstorm2Unofficial.Survivors.Cyborg.Components;
 
 namespace EntityStates.SS2UStates.Cyborg.Secondary
 {
     public class FireTriShot : BaseState
     {
+        public static float chargeConsumptionPerShot = 0.2f / 3f;
         public static float damageCoefficient = 1f;
         public static float baseDuration = 0.2f;
         public static float recoil = 0.5f;
@@ -20,6 +22,7 @@ namespace EntityStates.SS2UStates.Cyborg.Secondary
         public static GameObject hitEffectPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Commando/HitsparkCommandoShotgun.prefab").WaitForCompletion();
         public static GameObject muzzleflashEffectPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Mage/MuzzleflashMageLightning.prefab").WaitForCompletion();
 
+        private CyborgChargeComponent chargeComponent;
         int step = 0;
         public string muzzleString;
         private float duration;
@@ -27,6 +30,25 @@ namespace EntityStates.SS2UStates.Cyborg.Secondary
         public override void OnEnter()
         {
             base.OnEnter();
+
+            chargeComponent = base.GetComponent<CyborgChargeComponent>();
+            if (chargeComponent)
+            {
+                chargeComponent.shieldActive = true;
+                chargeComponent.ConsumeShield(chargeConsumptionPerShot);
+
+                step = chargeComponent.armToFireFrom;
+                
+                if (step == 0)
+                {
+                    chargeComponent.armToFireFrom = 1;
+                }
+                else
+                {
+                    chargeComponent.armToFireFrom = 0;
+                }
+            }
+
             duration = baseDuration / this.attackSpeedStat;
             if (step == 1)
             {
@@ -74,7 +96,7 @@ namespace EntityStates.SS2UStates.Cyborg.Secondary
                         minSpread = 0,
                         maxSpread = 0,
                         damage = damageCoefficient * this.damageStat,
-                        force = 1000f,
+                        force = 200f,
                         radius = 1f,
                         smartCollision = true,
                         tracerEffectPrefab = tracerEffectPrefab,
@@ -114,6 +136,12 @@ namespace EntityStates.SS2UStates.Cyborg.Secondary
         public override InterruptPriority GetMinimumInterruptPriority()
         {
             return InterruptPriority.PrioritySkill;
+        }
+
+        public override void OnExit()
+        {
+            if (chargeComponent) chargeComponent.shieldActive = false;
+            base.OnExit();
         }
 
         public void SetStep(int i)

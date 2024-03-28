@@ -40,6 +40,7 @@ namespace Starstorm2Unofficial.Survivors.Cyborg
         public static SkillDef overheatScepterDef;
         public static SkillDef shockDef;
         public static SkillDef shockScepterDef;
+        public static SkillDef triShotDef;
 
         public CyborgCore() => Setup();
         private void SetBodyIndex()
@@ -63,6 +64,7 @@ namespace Starstorm2Unofficial.Survivors.Cyborg
             Modules.Assets.effectDefs.Add(new EffectDef(tracerEffectPrefab));
             PrimaryLaser.tracerEffectPrefab = tracerEffectPrefab;
             FireBeam.tracerEffectPrefab = tracerEffectPrefab;
+            FireTriShot.tracerEffectPrefab = tracerEffectPrefab;
 
             LanguageAPI.Add("SS2UCYBORG_NAME", "Cyborg");
             LanguageAPI.Add("SS2UCYBORG_SUBTITLE", "Man Made Monstrosity");
@@ -534,7 +536,7 @@ namespace Starstorm2Unofficial.Survivors.Cyborg
              defenseMatrixDef.skillDescriptionToken = "SS2UCYBORG_SECONDARY_DEFENSEMATRIX_DESCRIPTION";
              defenseMatrixDef.icon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("cyborgsecondary");
              defenseMatrixDef.baseMaxStock = 1;
-             defenseMatrixDef.baseRechargeInterval = 7f;
+             defenseMatrixDef.baseRechargeInterval = 6f;
              defenseMatrixDef.beginSkillCooldownOnSkillEnd = true;
              defenseMatrixDef.canceledFromSprinting = false;
              defenseMatrixDef.fullRestockOnAssign = true;
@@ -551,7 +553,34 @@ namespace Starstorm2Unofficial.Survivors.Cyborg
              SkillFamily.Variant secondaryVariant1 = Utils.RegisterSkillVariant(defenseMatrixDef);
             CyborgCore.defenseMatrixDef = defenseMatrixDef;
 
-            skillLocator.secondary = Utils.RegisterSkillsToFamily(cybPrefab, new SkillFamily.Variant[] { secondaryVariant1 });
+            LanguageAPI.Add("SS2UCYBORG_SECONDARY_TRISHOT_NAME", "Rising Star");
+            LanguageAPI.Add("SS2UCYBORG_SECONDARY_TRISHOT_DESCRIPTION", "Rapidly fire <style=cIsUtility>slowing</style> shots at contenders for <style=cIsDamage>3x100% damage</style>.");
+            DefenseMatrixSkillDef triShotDef = ScriptableObject.CreateInstance<DefenseMatrixSkillDef>();
+            triShotDef.activationState = new SerializableEntityStateType(typeof(FireTriShot));
+            triShotDef.activationStateMachineName = "Weapon";
+            triShotDef.skillName = "SS2UCYBORG_SECONDARY_TRISHOT_NAME";
+            triShotDef.skillNameToken = "SS2UCYBORG_SECONDARY_TRISHOT_NAME";
+            triShotDef.skillDescriptionToken = "SS2UCYBORG_SECONDARY_TRISHOT_DESCRIPTION";
+            triShotDef.icon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("cyborgsecondary");
+            triShotDef.baseMaxStock = 1;
+            triShotDef.baseRechargeInterval = 6f;
+            triShotDef.beginSkillCooldownOnSkillEnd = true;
+            triShotDef.canceledFromSprinting = false;
+            triShotDef.fullRestockOnAssign = true;
+            triShotDef.interruptPriority = EntityStates.InterruptPriority.Skill;
+            triShotDef.isCombatSkill = false;
+            triShotDef.mustKeyPress = false;
+            triShotDef.cancelSprintingOnActivation = true;
+            triShotDef.rechargeStock = 0;
+            triShotDef.requiredStock = 0;
+            triShotDef.stockToConsume = 0;
+            triShotDef.keywordTokens = new string[] { };
+            Modules.Skills.FixSkillName(triShotDef);
+            Utils.RegisterSkillDef(triShotDef);
+            SkillFamily.Variant secondaryVariant2 = Utils.RegisterSkillVariant(triShotDef);
+            CyborgCore.triShotDef = triShotDef;
+
+            skillLocator.secondary = Utils.RegisterSkillsToFamily(cybPrefab, new SkillFamily.Variant[] { secondaryVariant1, secondaryVariant2 });
         }
 
         private void SetUpUtilities(SkillLocator skillLocator)
