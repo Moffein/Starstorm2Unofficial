@@ -93,7 +93,7 @@ namespace Starstorm2Unofficial.Survivors.Chirr.Components
         private CharacterBody ownerBody;
         private CharacterMaster ownerMaster;
         private TeamComponent teamComponent;
-        private MasterFriendController masterFriendController;
+        private MasterFriendInfo masterFriendInfo;
 
         //[SyncVar]//Uncomment this if min leash distance is going to be a thing again.
         private bool _canLeash = false;
@@ -194,13 +194,13 @@ namespace Starstorm2Unofficial.Survivors.Chirr.Components
         {
             if (!NetworkServer.active || !ownerMaster) return;
 
-            masterFriendController = ownerMaster.GetComponent<MasterFriendController>();
-            if (!masterFriendController) masterFriendController = ownerMaster.AddComponent<MasterFriendController>();
+            masterFriendInfo = ownerMaster.GetComponent<MasterFriendInfo>();
+            if (!masterFriendInfo) masterFriendInfo = ownerMaster.AddComponent<MasterFriendInfo>();
 
             //Attempt to spawn in body before running usual code. This must be done since the old DontDestroyOnLoad method didn't work on dedicated servers.
-            if (masterFriendController.masterNetID == NetworkInstanceId.Invalid.Value)
+            if (masterFriendInfo.masterNetID == NetworkInstanceId.Invalid.Value)
             {
-                GameObject masterPrefab = MasterCatalog.GetMasterPrefab(masterFriendController.masterIndex);
+                GameObject masterPrefab = MasterCatalog.GetMasterPrefab(masterFriendInfo.masterIndex);
                 if (masterPrefab)
                 {
                     bool isFlying = false;
@@ -257,29 +257,41 @@ namespace Starstorm2Unofficial.Survivors.Chirr.Components
 
                     if (spawnedMaster)
                     {
-                        masterFriendController.masterNetID = spawnedMaster.netId.Value;
+                        masterFriendInfo.masterNetID = spawnedMaster.netId.Value;
+
+                        if (spawnedMaster.inventory)
+                        {
+                            SyncInventory(spawnedMaster);
+                            spawnedMaster.inventory.SetEquipmentIndex(masterFriendInfo.masterEquipmentIndex);
+                        }
 
                         CharacterBody body = spawnedMaster.GetBody();
                         if (body)
                         {
-                            foreach (BuffIndex buff in masterFriendController.EliteBuffs)
+                            foreach (BuffIndex buff in masterFriendInfo.EliteBuffs)
                             {
                                 if (!body.HasBuff(buff)) body.AddBuff(buff);
                             }
                         }
 
-                        if (spawnedMaster.inventory)
+                        bool setLoadout = false;
+                        if (masterFriendInfo.loadout != null)
                         {
-                            SyncInventory(spawnedMaster);
-                            spawnedMaster.inventory.SetEquipmentIndex(masterFriendController.masterEquipmentIndex);
+                            spawnedMaster.SetLoadoutServer(masterFriendInfo.loadout);
+                            setLoadout = true;
+                        }
+
+                        if (setLoadout && body)
+                        {
+                            body.AddComponent<RespawnMasterOnStart>();  //jank
                         }
                     }
                 }
             }
 
-            if (masterFriendController.masterNetID != NetworkInstanceId.Invalid.Value)
+            if (masterFriendInfo.masterNetID != NetworkInstanceId.Invalid.Value)
             {
-                _trackingTargetMasterNetID = masterFriendController.masterNetID;
+                _trackingTargetMasterNetID = masterFriendInfo.masterNetID;
                 bool hasMaster = ResolveTargetMaster();
                 if (hasMaster)
                 {
@@ -338,9 +350,9 @@ namespace Starstorm2Unofficial.Survivors.Chirr.Components
                 //CopyItemsFromInventory resets inventory
                 master.inventory.CopyItemsFrom(ownerMaster.inventory, Inventory.defaultItemCopyFilterDelegate);
 
-                if (masterFriendController && masterFriendController.masterItemStacks != null)
+                if (masterFriendInfo && masterFriendInfo.masterItemStacks != null)
                 {
-                    master.inventory.AddItemsFrom(masterFriendController.masterItemStacks, x => x != ItemIndex.None);
+                    master.inventory.AddItemsFrom(masterFriendInfo.masterItemStacks, x => x != ItemIndex.None);
                 }
                 RemoveBlacklistedItems(master.inventory);
                 master.inventory.RemoveItem(RoR2Content.Items.MinionLeash, master.inventory.GetItemCount(RoR2Content.Items.MinionLeash));
@@ -520,7 +532,7 @@ namespace Starstorm2Unofficial.Survivors.Chirr.Components
             }
             else
             {
-                if (masterFriendController) masterFriendController.Clear();
+                if (masterFriendInfo) masterFriendInfo.Clear();
                 trackingTarget = null;
                 if (_hasFriend)
                 {
@@ -576,7 +588,6 @@ namespace Starstorm2Unofficial.Survivors.Chirr.Components
                     if (hbBody)
                     {
                         bool isPlayerControlled = hbBody.isPlayerControlled;
-                        bool isBoss = hbBody.isBoss;
                         bool isChampion = hbBody.isChampion;
                         bool isBlacklisted = blacklistedBodies.Contains(hbBody.bodyIndex);
                         bool isDecay = hbBody.inventory && hbBody.inventory.GetItemCount(RoR2Content.Items.HealthDecay) > 0;
@@ -590,7 +601,9 @@ namespace Starstorm2Unofficial.Survivors.Chirr.Components
                             isNemesis = hbBody.inventory.GetItemCount(Starstorm2Unofficial.Cores.NemesisInvasion.NemesisInvasionCore.NemesisMarkerItem) > 0;
                         }
 
-                        if (!isPlayerControlled && !isMasterless && !isDecay && !isDestroy && !isAlreadyFriended && (((!isChampion && !isBoss) || canBefriendChampion) || (hbBody.bodyIndex == EnemyCore.brotherHurtIndex && (canBefriendChampion || hadScepter || HasLunarTrinket()))) && !isBlacklisted && !(isNemesis && !allowBefriendNemesis))
+                        if (!isPlayerControlled && !isMasterless && !isDecay && !isDestroy && !isAlreadyFriended
+                            && ((!isChampion || canBefriendChampion) || (hbBody.bodyIndex == EnemyCore.brotherHurtIndex && (canBefriendChampion || hadScepter || HasLunarTrinket())))
+                            && !isBlacklisted && !(isNemesis && !allowBefriendNemesis))
                         {
                             validTargets.Add(hb);
                         }
@@ -662,10 +675,10 @@ namespace Starstorm2Unofficial.Survivors.Chirr.Components
                         baseAI.aimVectorMaxSpeed = 360f;
                     }
 
-                    if (!masterFriendController)
+                    if (!masterFriendInfo)
                     {
-                        masterFriendController = ownerMaster.GetComponent<MasterFriendController>();
-                        if (!masterFriendController) masterFriendController = ownerMaster.AddComponent<MasterFriendController>();
+                        masterFriendInfo = ownerMaster.GetComponent<MasterFriendInfo>();
+                        if (!masterFriendInfo) masterFriendInfo = ownerMaster.AddComponent<MasterFriendInfo>();
                     }
                 }
 
@@ -689,12 +702,15 @@ namespace Starstorm2Unofficial.Survivors.Chirr.Components
                 //RpcDontDestroyOnLoad(_trackingTargetMasterNetID);
 
                 //Save ally info
-                if (masterFriendController)
+                if (masterFriendInfo)
                 {
-                    masterFriendController.masterNetID = _trackingTargetMasterNetID;
-                    masterFriendController.masterItemStacks = ItemCatalog.RequestItemStackArray();
-                    masterFriendController.masterEquipmentIndex = EquipmentIndex.None;
-                    masterFriendController.masterIndex = targetMaster.masterIndex;
+                    masterFriendInfo.masterNetID = _trackingTargetMasterNetID;
+                    masterFriendInfo.masterItemStacks = ItemCatalog.RequestItemStackArray();
+                    masterFriendInfo.masterEquipmentIndex = EquipmentIndex.None;
+                    masterFriendInfo.masterIndex = targetMaster.masterIndex;
+
+                    if (masterFriendInfo.loadout == null) masterFriendInfo.loadout = new Loadout();
+                    targetMaster.loadout.Copy(masterFriendInfo.loadout);
                 }
 
                 if (targetMaster.inventory)
@@ -721,18 +737,18 @@ namespace Starstorm2Unofficial.Survivors.Chirr.Components
                             }
                         }
                     }
-                    masterFriendController.masterEquipmentIndex = ei;
+                    masterFriendInfo.masterEquipmentIndex = ei;
 
                     EquipmentDef eliteEquipment = null;
                     //Save the original inventory
-                    if (masterFriendController)
+                    if (masterFriendInfo)
                     {
-                        if (masterFriendController.masterItemStacks != null && targetMaster.inventory.itemStacks != null)
+                        if (masterFriendInfo.masterItemStacks != null && targetMaster.inventory.itemStacks != null)
                         {
-                            targetMaster.inventory.itemStacks.CopyTo(masterFriendController.masterItemStacks, 0);
+                            targetMaster.inventory.itemStacks.CopyTo(masterFriendInfo.masterItemStacks, 0);
                         }
-                        masterFriendController.masterEquipmentIndex = targetMaster.inventory.GetEquipmentIndex();
-                        EquipmentDef ed = EquipmentCatalog.GetEquipmentDef(masterFriendController.masterEquipmentIndex);
+                        masterFriendInfo.masterEquipmentIndex = targetMaster.inventory.GetEquipmentIndex();
+                        EquipmentDef ed = EquipmentCatalog.GetEquipmentDef(masterFriendInfo.masterEquipmentIndex);
                         if (ed && ed.passiveBuffDef && ed.passiveBuffDef.isElite) eliteEquipment = ed;
                     }
 
@@ -743,13 +759,13 @@ namespace Starstorm2Unofficial.Survivors.Chirr.Components
                             && ed.eliteEquipmentDef.passiveBuffDef
                             && targetBody.HasBuff(ed.eliteEquipmentDef.passiveBuffDef))
                         {
-                            masterFriendController.EliteBuffs.Add(ed.eliteEquipmentDef.passiveBuffDef.buffIndex);
+                            masterFriendInfo.EliteBuffs.Add(ed.eliteEquipmentDef.passiveBuffDef.buffIndex);
                         }
                     }
                     //Remove redundant eliteequipment buff from saved buffs
-                    if (eliteEquipment) masterFriendController.EliteBuffs.Remove(eliteEquipment.passiveBuffDef.buffIndex);
+                    if (eliteEquipment) masterFriendInfo.EliteBuffs.Remove(eliteEquipment.passiveBuffDef.buffIndex);
                     //Handle Blighted
-                    if (StarstormPlugin.blightedElitesLoaded) HandleBlighted(targetBody, masterFriendController.EliteBuffs);
+                    if (StarstormPlugin.blightedElitesLoaded) HandleBlighted(targetBody, masterFriendInfo.EliteBuffs);
 
                     SyncInventory(targetMaster);
                 }

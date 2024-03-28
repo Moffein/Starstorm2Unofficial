@@ -10,6 +10,10 @@
 	
 	- New Default Secondary: Rising Star (TODO)
 		- idea is that it uses same bar as shield with similar cooldown mechanics, rapidly fires a triple-spread of weak shots for high close range dps
+		
+- Chirr
+	- Friend loadout is now saved between stages. (Relevant for Hunted and other mods that let you befriend survivors)
+	- Fixed TP boss befriending being locked behind Scepter. (You'll still need Scepter to befriend Champions, but you should now be able to befriend Horde bosses)
 
 `0.18.13` to `0.18.14`
 
