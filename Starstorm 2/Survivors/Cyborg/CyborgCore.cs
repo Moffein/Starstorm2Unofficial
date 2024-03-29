@@ -128,11 +128,6 @@ namespace Starstorm2Unofficial.Survivors.Cyborg
             if (StarstormPlugin.emoteAPILoaded) EmoteAPICompat();
         }
 
-        public static void EnergyPassiveSettingChanged(object sender, System.EventArgs e)
-        {
-
-        }
-
         private void SetupDefenseMatrix()
         {
             DefenseMatrix.matrixPrefab = Modules.Assets.mainAssetBundle.LoadAsset<UnityEngine.GameObject>("DefenseMatrix.prefab");

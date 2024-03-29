@@ -291,7 +291,6 @@ namespace Starstorm2Unofficial.Modules
                              "Enable Energy Core Passive (Client-Side)",
                              true,
                              "Cyborg skills use a single Energy Pool instead of having cooldowns. Set this to false to get the old Cyborg kit.");
-            CyborgCore.useEnergyRework.SettingChanged += CyborgCore.EnergyPassiveSettingChanged;
 
             //How to even add this to riskofoptions? Just need a simple float input field.
             CyborgCrosshairChargeController.energyBarScale = StarstormPlugin.instance.Config.Bind("Starstorm 2 :: Survivors :: Cyborg",
