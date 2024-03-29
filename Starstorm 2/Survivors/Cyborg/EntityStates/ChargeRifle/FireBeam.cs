@@ -88,7 +88,7 @@ namespace EntityStates.SS2UStates.Cyborg.ChargeRifle
                     aimVector = r.direction,
                     origin = r.origin,
                     damage = dmg,
-                    damageType = DamageType.SlowOnHit,
+                    damageType = DamageType.Generic,
                     damageColorIndex = DamageColorIndex.Default,
                     minSpread = 0f,
                     maxSpread = 0f,

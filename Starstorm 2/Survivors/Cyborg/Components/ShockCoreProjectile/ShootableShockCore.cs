@@ -14,9 +14,9 @@ namespace Starstorm2Unofficial.Survivors.Cyborg.Components.ShockCoreProjectile
         public GameObject implosionStartEffectPrefab;
         public GameObject explosionEffectPrefab;
         public float radius = 20f;
-        public float rootRadius = 30f;
+        public float pullRadius = 30f;
         public float delayBeforeExplosion = 0.5f;
-        public float implosionDamageCoefficient = 2f;
+        public float implosionDamageCoefficient = 3f;
 
         private ProjectileImpactExplosion pie;
         private float explosionTimer = 0f;
@@ -88,7 +88,7 @@ namespace Starstorm2Unofficial.Survivors.Cyborg.Components.ShockCoreProjectile
             if (pc) owner = pc.owner;
 
             if (implosionStartEffectPrefab) EffectManager.SpawnEffect(implosionStartEffectPrefab, new EffectData { origin = base.transform.position, scale = 4f }, true);
-            RootPulse(base.transform.position, rootRadius, teamIndex, owner);
+            RootPulse(base.transform.position, pullRadius, teamIndex, owner);
 
             ProjectileSimple ps = base.GetComponent<ProjectileSimple>();
             ps.desiredForwardSpeed = 0f;

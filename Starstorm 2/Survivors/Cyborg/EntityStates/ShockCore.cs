@@ -30,7 +30,7 @@ namespace EntityStates.SS2UStates.Cyborg
             energyComponent = base.GetComponent<CyborgEnergyComponent>();
             if (energyComponent)
             {
-                energyComponent.ConsumeEnergy(0.4f);
+                energyComponent.ConsumeEnergy(0.3f);
                 energyComponent.energySkillsActive++;
             }
         }
@@ -86,7 +86,7 @@ namespace EntityStates.SS2UStates.Cyborg
 
         public static GameObject muzzleflashEffectPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Captain/CaptainChargeTazer.prefab").WaitForCompletion();
         public static GameObject projectilePrefab;
-        public static float damageCoefficient = 6f;
+        public static float damageCoefficient = 4f;
         public static float baseDuration = 0.5f;
 
         private float duration;

@@ -1,6 +1,7 @@
 ﻿using R2API;
 using RoR2;
 using Starstorm2Unofficial.Cores;
+using Starstorm2Unofficial.Survivors.Cyborg.Components;
 using System;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
@@ -10,7 +11,7 @@ namespace EntityStates.SS2UStates.Cyborg.Jetpack
 {
     public class FlightMode : BaseState
     {
-        public static float baseDuration = 1.5f;
+        public static float baseDuration = 1f/0.6f;
         public static float speedMultCoefficient = 3f;
         public static float damageCoefficient = 4f;
         public static float force = 2400f;
@@ -28,6 +29,7 @@ namespace EntityStates.SS2UStates.Cyborg.Jetpack
         private float baseSpeed;
         private float desiredSpeed;
         private OverlapAttack attack;
+        private CyborgEnergyComponent energyComponent;
 
         public override void OnEnter()
         {
@@ -49,6 +51,12 @@ namespace EntityStates.SS2UStates.Cyborg.Jetpack
             if (base.isAuthority)
             {
                 InitOverlapAttack();
+            }
+
+            energyComponent = base.GetComponent<CyborgEnergyComponent>();
+            if (energyComponent)
+            {
+                energyComponent.energySkillsActive++;
             }
         }
 
@@ -88,6 +96,11 @@ namespace EntityStates.SS2UStates.Cyborg.Jetpack
         {
             base.FixedUpdate();
 
+            if (energyComponent)
+            {
+                energyComponent.ConsumeEnergy(Time.fixedDeltaTime / FlightMode.baseDuration);
+            }
+
             this.hitPauseTimer -= Time.fixedDeltaTime;
             if (!this.inHitPause)
             {
@@ -125,7 +138,8 @@ namespace EntityStates.SS2UStates.Cyborg.Jetpack
                     }
                 }
 
-                if (stopwatch >= FlightMode.baseDuration)
+                bool keyPressed = base.inputBank && base.inputBank.skill3.down;
+                if (stopwatch >= FlightMode.baseDuration || !keyPressed)
                 {
                     this.outer.SetNextStateToMain();
                     return;
@@ -151,6 +165,10 @@ namespace EntityStates.SS2UStates.Cyborg.Jetpack
             if (base.isAuthority && base.characterMotor && !base.characterMotor.isGrounded)
             {
                 base.characterMotor.velocity = base.GetAimRay().direction * this.desiredSpeed;
+            }
+            if (energyComponent)
+            {
+                energyComponent.energySkillsActive--;
             }
             base.OnExit();
         }

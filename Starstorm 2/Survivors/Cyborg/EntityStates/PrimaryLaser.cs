@@ -63,7 +63,7 @@ namespace EntityStates.SS2UStates.Cyborg
                     hitEffectPrefab = hitEffectPrefab,
                     isCrit = base.RollCrit(),
                     falloffModel = BulletAttack.FalloffModel.None,
-                    damageType = DamageType.SlowOnHit,
+                    damageType = DamageType.Generic,
                     maxDistance = 1000f,
                     procCoefficient = 1f
                 };

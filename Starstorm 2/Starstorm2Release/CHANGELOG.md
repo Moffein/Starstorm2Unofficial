@@ -3,37 +3,44 @@
 - Cyborg
 	- New Passive: Energy Core
 		- Cyborgs skills all draw from a shared Energy Pool instead of using cooldowns.
-			- Takes 15s to recharge, scales off of cooldown reduction to skills.
+			- Takes 15s to recharge, scales off of cooldown reduction to each skill.
 			- Extra skill stocks increase the max cap of the energy pool.
-		- Cyborg can hover for 3.3% Energy/s
+		- Cyborg can still hover by holding jump.
 	
-	- Alt Primary: Renamed to ______ (TODO)
+	- Primaries no longer slow on hit.
+	- Alt Primary: Renamed to Piercing Shot (TODO: Better name)
 	
 	- Defense Matrix
-		- 7s cooldown -> 16.7% Energy/s
-		- Increased shield duration from 3s -> 6s
-		- Restores 5% Energy per projectile deleted.
+		- 7s cooldown -> 15% Energy/s
+			- Increased shield uptime from 3s -> 6.67s
 	
 	- New Default Secondary: Rising Star
-		- 33.3% Energy/s
+		- 30% Energy/s
 		- Rapidly fire slowing shots for 3x120% damage. (0.5 proc)
-			- Fires 5 times per second, can continuously fire for up to 3 seconds.
+			- Fires 5x per second.
 		
 	- Recall
 		- 8s cooldown -> 50% Energy
-		- Removed damage.
+		- Removed shock explosion.
+		- Now stuns in a very small radius for 1000% when teleporting. (Hidden Stat)
+		
+	- Flight Mode
+		- 8s cooldown -> 60% Energy/s
+		- Skill now lasts for however long you're holding the button.
 		
 	- Overheat Redress
-		- 12s cooldown -> 80% Energy
+		- 10s cooldown -> 60% Energy
 	
 	- Shock Core
 		- Moved from Secondary slot to Special slot. (Reverting earlier update)
-		- 7s cooldown -> 40% Energy
+		- 7s cooldown -> 30% Energy
+		- Reduced damage from 600% (was mislabeled as 800%) -> 400%
+			- Implosion damage remains the same at 1200% (was mislabeled as 1600%)
 		- Increased pull radius from 20m -> 30m
 		
 - Chirr
 	- Friend loadout is now saved between stages. (Relevant for Hunted and other mods that let you befriend survivors)
-	- Fixed TP boss befriending being locked behind Scepter. (You'll still need Scepter to befriend Champions, but you should now be able to befriend Horde bosses)
+	- Fixed TP boss befriending being locked behind Scepter due to an earlier update. (You'll still need Scepter to befriend Champions, but you should now be able to befriend Horde bosses)
 
 `0.18.13` to `0.18.14`
 

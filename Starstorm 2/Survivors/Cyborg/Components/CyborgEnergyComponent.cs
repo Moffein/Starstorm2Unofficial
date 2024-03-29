@@ -8,9 +8,9 @@ namespace Starstorm2Unofficial.Survivors.Cyborg.Components
     public class CyborgEnergyComponent : NetworkBehaviour
     {
         public static float delayBeforeShieldRecharge = 0.5f;
-        public static float energyDepletedFraction = 1f/3f; //If energy is fully depleted, lock skills until this threshold is reached.
+        public static float energyDepletedFraction = 0.2f; //If energy is fully depleted, lock skills until this threshold is reached.
 
-        private float energyRechargeDelayStopwatch;
+        public float energyRechargeDelayStopwatch;
         public int energySkillsActive = 0;
         public bool energyDepleted = false;
         public float remainingEnergyFraction = 1f;

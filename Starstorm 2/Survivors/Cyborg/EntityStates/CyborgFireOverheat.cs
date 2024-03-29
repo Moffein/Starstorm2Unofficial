@@ -43,7 +43,7 @@ namespace EntityStates.SS2UStates.Cyborg
             energyComponent = base.GetComponent<CyborgEnergyComponent>();
             if (energyComponent)
             {
-                energyComponent.ConsumeEnergy(0.8f);
+                energyComponent.ConsumeEnergy(0.6f);
                 energyComponent.energySkillsActive++;
             }
         }

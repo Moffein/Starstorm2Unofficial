@@ -14,14 +14,13 @@ namespace EntityStates.SS2UStates.Cyborg.Secondary
 {
     public class FireTriShot : BaseState
     {
-        public static float chargeConsumptionPerShot = 0.2f / 3f;
-        public static float damageCoefficient = 1.2f;
+        public static float chargeConsumptionPerShot = 0.06f;
+        public static float damageCoefficient = 1.4f;
         public static float baseDuration = 0.2f;
         public static float recoil = 0.5f;
         public static GameObject tracerEffectPrefab;//Prefabs/Effects/Tracers/TracerHuntressSnipe
         public static GameObject hitEffectPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Commando/HitsparkCommandoShotgun.prefab").WaitForCompletion();
         public static GameObject muzzleflashEffectPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Mage/MuzzleflashMageLightning.prefab").WaitForCompletion();
-        public static float selfKnockbackForce = 450f;
 
         private CyborgEnergyComponent energyComponent;
         int step = 0;
@@ -98,7 +97,7 @@ namespace EntityStates.SS2UStates.Cyborg.Secondary
                         minSpread = 0,
                         maxSpread = 0,
                         damage = damageCoefficient * this.damageStat,
-                        force = 300f,
+                        force = 450f,
                         radius = 0.3f,
                         smartCollision = true,
                         tracerEffectPrefab = tracerEffectPrefab,
@@ -130,7 +129,7 @@ namespace EntityStates.SS2UStates.Cyborg.Secondary
             {
                 if (base.isAuthority)
                 {
-                    this.outer.SetNextStateToMain();
+                    this.outer.SetNextState(new StopTriShot()); //Prevents primary from overlapping/cancelling the skill
                 }
             }
         }

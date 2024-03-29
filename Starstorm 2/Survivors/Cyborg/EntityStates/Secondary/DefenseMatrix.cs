@@ -24,7 +24,7 @@ namespace EntityStates.SS2UStates.Cyborg.Secondary
         private DefenseMatrixManager.DefenseMatrixInfo defenseMatrixInfo;
         private CyborgEnergyComponent energyComponent;
 
-        public static float shieldDuration = 6f;
+        public static float shieldDuration = 1f / 0.15f;
         public static float minDuration = 0.5f;
         public static string attackSoundString = "SS2UCyborgSpecialTeleport";
         public static GameObject projectileDeletionEffectPrefab;

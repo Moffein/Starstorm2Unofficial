@@ -52,7 +52,8 @@ namespace EntityStates.SS2UStates.Cyborg
             {
                 if (this.hasCharacterMotor && this.hasInputBank && base.isAuthority)
                 {
-                    bool inputPressed = base.inputBank.jump.down && base.characterMotor.velocity.y < 0f && !base.characterMotor.isGrounded && !(energyComponent && energyComponent.energyDepleted);
+                    // && !(energyComponent && energyComponent.energyDepleted)  //This felt awful
+                    bool inputPressed = base.inputBank.jump.down && base.characterMotor.velocity.y < 0f && !base.characterMotor.isGrounded;
 
                     if (inputPressed && !inJetpackState)
                     {

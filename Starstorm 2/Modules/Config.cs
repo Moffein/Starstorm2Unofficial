@@ -1,6 +1,7 @@
 ﻿using BepInEx.Configuration;
 using RiskOfOptions;
 using Starstorm2Unofficial.Modules.Achievements;
+using Starstorm2Unofficial.Survivors.Cyborg.Components.Crosshair;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using UnityEngine;
@@ -280,6 +281,25 @@ namespace Starstorm2Unofficial.Modules
                              false,
                              "Charging the Utility makes you stand still. (Client-Side)");
 
+            CyborgCrosshairChargeController.useSimpleEnergyBar = StarstormPlugin.instance.Config.Bind("Starstorm 2 :: Survivors :: Cyborg",
+                             "UI - Simple Energy Meter",
+                             false,
+                             "Use a simplified Energy Meter. Ignores other Energy Meter options.");
+
+            //How to even add this to riskofoptions? Just need a simple float input field.
+            CyborgCrosshairChargeController.energyBarScale = StarstormPlugin.instance.Config.Bind("Starstorm 2 :: Survivors :: Cyborg",
+                             "UI - Energy Meter Scale",
+                             0.75f,
+                             "Size of Energy Meter.");
+            CyborgCrosshairChargeController.energyBarXPos = StarstormPlugin.instance.Config.Bind("Starstorm 2 :: Survivors :: Cyborg",
+                             "UI - Energy Meter X Position",
+                            0f,
+                             "Horizontal position of Energy Meter.");
+            CyborgCrosshairChargeController.energyBarYPos = StarstormPlugin.instance.Config.Bind("Starstorm 2 :: Survivors :: Cyborg",
+                             "UI - Energy Meter Y Position",
+                            -120f,
+                             "Vertical position of Energy Meter.");
+
 
             //survivors
             //EnableExecutioner = CharacterEnableConfig("Executioner");
@@ -322,6 +342,8 @@ namespace Starstorm2Unofficial.Modules
             ModSettingsManager.AddOption(new RiskOfOptions.Options.CheckBoxOption(NemmandoDecisiveMoveSpeedScaling));
 
             ModSettingsManager.AddOption(new RiskOfOptions.Options.CheckBoxOption(EntityStates.SS2UStates.Nucleator.Utility.FireLeap.leapAirControl));
+
+            ModSettingsManager.AddOption(new RiskOfOptions.Options.CheckBoxOption(CyborgCrosshairChargeController.useSimpleEnergyBar));
         }
 
         //Taken from https://github.com/ToastedOven/CustomEmotesAPI/blob/main/CustomEmotesAPI/CustomEmotesAPI/CustomEmotesAPI.cs

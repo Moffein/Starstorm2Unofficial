@@ -133,6 +133,7 @@
     <Compile Include="Survivors\Cyborg\EntityStates\Secondary\DefenseMatrix.cs" />
     <Compile Include="Survivors\Cyborg\EntityStates\ChargeRifle\FireBeam.cs" />
     <Compile Include="Survivors\Cyborg\EntityStates\Secondary\FireTriShot.cs" />
+    <Compile Include="Survivors\Cyborg\EntityStates\Secondary\StopTriShot.cs" />
     <Compile Include="Survivors\Cyborg\EntityStates\ShockCore.cs" />
     <Compile Include="Survivors\Cyborg\EntityStates\ShockCoreScepter.cs" />
     <Compile Include="Survivors\Cyborg\EntityStates\Teleporter\DeployTeleporter.cs" />
