@@ -16,8 +16,9 @@ namespace Starstorm2Unofficial.Survivors.Cyborg
 		{
 			return new DefenseMatrixSkillDef.InstanceData
 			{
-				chargeComponent = skillSlot.GetComponent<CyborgChargeComponent>()
-			};
+				chargeComponent = skillSlot.GetComponent<CyborgChargeComponent>(),
+                chargeFractionCost = this.chargeFractionCost
+            };
 		}
 
 		public override bool CanExecute([NotNull] GenericSkill skillSlot)
@@ -33,12 +34,16 @@ namespace Starstorm2Unofficial.Survivors.Cyborg
 		protected class InstanceData : SkillDef.BaseSkillInstanceData
 		{
 			public CyborgChargeComponent chargeComponent;
-		}
+			public float chargeFractionCost;
+        }
 
-		private static bool CanUseShield([NotNull] GenericSkill skillSlot)
-		{
-			CyborgChargeComponent chargeComponent = ((DefenseMatrixSkillDef.InstanceData)skillSlot.skillInstanceData).chargeComponent;
-			return (chargeComponent != null) ? !chargeComponent.shieldDepleted : false;
-		}
+        private static bool CanUseShield([NotNull] GenericSkill skillSlot)
+        {
+			DefenseMatrixSkillDef.InstanceData instanceData = (DefenseMatrixSkillDef.InstanceData)skillSlot.skillInstanceData;
+            CyborgChargeComponent chargeComponent = instanceData.chargeComponent;
+            return (chargeComponent != null) ? !chargeComponent.shieldDepleted && chargeComponent.chargeFraction >= instanceData.chargeFractionCost : false;
+        }
+
+        public float chargeFractionCost = 0f;
 	}
 }
