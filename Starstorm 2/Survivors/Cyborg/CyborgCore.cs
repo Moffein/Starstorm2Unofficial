@@ -698,7 +698,7 @@ namespace Starstorm2Unofficial.Survivors.Cyborg
 
             EnergySkillDef overheat = ScriptableObject.CreateInstance<EnergySkillDef>();
             overheat.activationState = new SerializableEntityStateType(typeof(CyborgFireOverheat));
-            overheat.activationStateMachineName = "Weapon";
+            overheat.activationStateMachineName = "Special";
             overheat.skillName = "SS2UCYBORG_OVERHEAT_NAME";
             overheat.skillNameToken = "SS2UCYBORG_OVERHEAT_NAME";
             overheat.skillDescriptionToken = "SS2UCYBORG_OVERHEAT_DESCRIPTION";
@@ -725,7 +725,7 @@ namespace Starstorm2Unofficial.Survivors.Cyborg
             LanguageAPI.Add("SS2UCYBORG_SHOCKCORE_DESCRIPTION", "<color=#8BEDE3>30% Energy</color>. <style=cIsDamage>Shocking</style>. Fire an energy core for <style=cIsDamage>400% damage</style>. Shoot the core to implode it for <style=cIsDamage>1200% damage</style>.");
             EnergySkillDef shockCoreDef = ScriptableObject.CreateInstance<EnergySkillDef>();
             shockCoreDef.activationState = new SerializableEntityStateType(typeof(ShockCore));
-            shockCoreDef.activationStateMachineName = "Weapon";
+            shockCoreDef.activationStateMachineName = "Special";
             shockCoreDef.skillName = "SS2UCYBORG_SHOCKCORE_NAME";
             shockCoreDef.skillNameToken = "SS2UCYBORG_SHOCKCORE_NAME";
             shockCoreDef.skillDescriptionToken = "SS2UCYBORG_SHOCKCORE_DESCRIPTION";
@@ -753,7 +753,7 @@ namespace Starstorm2Unofficial.Survivors.Cyborg
 
             EnergySkillDef overheatScepter = ScriptableObject.CreateInstance<EnergySkillDef>();
             overheatScepter.activationState = new SerializableEntityStateType(typeof(OverheatScepter));
-            overheatScepter.activationStateMachineName = "Weapon";
+            overheatScepter.activationStateMachineName = "Special";
             overheatScepter.skillName = "SS2UCYBORG_OVERHEAT_SCEPTER_NAME";
             overheatScepter.skillNameToken = "SS2UCYBORG_OVERHEAT_SCEPTER_NAME";
             overheatScepter.skillDescriptionToken = "SS2UCYBORG_OVERHEAT_SCEPTER_DESCRIPTION";
@@ -779,7 +779,7 @@ namespace Starstorm2Unofficial.Survivors.Cyborg
             LanguageAPI.Add("SS2UCYBORG_SHOCKCORE_SCEPTER_DESCRIPTION", "<color=#8BEDE3>30% Energy</color>. <style=cIsDamage>Shocking</style>. Fire an energy core for <style=cIsDamage>600% damage</style>. Shoot the core to implode it for <style=cIsDamage>1800% damage</style>.");
             EnergySkillDef shockCoreScepterDef = ScriptableObject.CreateInstance<EnergySkillDef>();
             shockCoreScepterDef.activationState = new SerializableEntityStateType(typeof(ShockCoreScepter));
-            shockCoreScepterDef.activationStateMachineName = "Weapon";
+            shockCoreScepterDef.activationStateMachineName = "Special";
             shockCoreScepterDef.skillName = "SS2UCYBORG_SHOCKCORE_SCEPTER_NAME";
             shockCoreScepterDef.skillNameToken = "SS2UCYBORG_SHOCKCORE_SCEPTER_NAME";
             shockCoreScepterDef.skillDescriptionToken = "SS2UCYBORG_SHOCKCORE_SCEPTER_DESCRIPTION";
@@ -1019,6 +1019,12 @@ namespace Starstorm2Unofficial.Survivors.Cyborg
             defenseStateMachine.initialStateType = new SerializableEntityStateType(typeof(EntityStates.Idle));
             defenseStateMachine.mainStateType = new SerializableEntityStateType(typeof(EntityStates.Idle));
             nsm.stateMachines = nsm.stateMachines.Append(defenseStateMachine).ToArray();
+
+            EntityStateMachine specialStateMachine = cyborgPrefab.AddComponent<EntityStateMachine>();
+            specialStateMachine.customName = "Special";
+            specialStateMachine.initialStateType = new SerializableEntityStateType(typeof(EntityStates.Idle));
+            specialStateMachine.mainStateType = new SerializableEntityStateType(typeof(EntityStates.Idle));
+            nsm.stateMachines = nsm.stateMachines.Append(specialStateMachine).ToArray();
 
             ModelLocator ml = cyborgPrefab.GetComponent<ModelLocator>();
             ChildLocator cl = ml.modelTransform.gameObject.GetComponent<ChildLocator>();

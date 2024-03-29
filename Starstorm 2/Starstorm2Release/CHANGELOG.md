@@ -28,6 +28,8 @@
 		- 8s cooldown -> 60% Energy/s
 		- Skill now lasts for however long you're holding the button.
 		
+	- Special Skills can now be fired while Primary is being fired.
+		
 	- Overheat Redress
 		- 10s cooldown -> 60% Energy
 	
