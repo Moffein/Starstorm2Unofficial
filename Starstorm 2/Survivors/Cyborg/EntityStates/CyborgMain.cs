@@ -18,10 +18,12 @@ namespace EntityStates.SS2UStates.Cyborg
         private bool inJetpackState = false;
 
         private EntityStateMachine jetpackStateMachine;
+        private CyborgEnergyComponent energyComponent;
 
         public override void OnEnter()
         {
             base.OnEnter();
+            energyComponent = base.GetComponent<CyborgEnergyComponent>();
             jetpackStateMachine = EntityStateMachine.FindByCustomName(base.gameObject, "Jetpack");
 
             ChildLocator cl = base.GetModelChildLocator();
@@ -50,7 +52,8 @@ namespace EntityStates.SS2UStates.Cyborg
             {
                 if (this.hasCharacterMotor && this.hasInputBank && base.isAuthority)
                 {
-                    bool inputPressed = base.inputBank.jump.down && base.characterMotor.velocity.y < 0f && !base.characterMotor.isGrounded;
+                    bool inputPressed = base.inputBank.jump.down && base.characterMotor.velocity.y < 0f && !base.characterMotor.isGrounded && !(energyComponent && energyComponent.energyDepleted);
+
                     if (inputPressed && !inJetpackState)
                     {
                         this.jetpackStateMachine.SetNextState(new JetpackOn());

@@ -20,6 +20,7 @@ namespace EntityStates.SS2UStates.Cyborg
 
         public float damageCoefficientInternal;
         public GameObject projectilePrefabInternal;
+        private CyborgEnergyComponent energyComponent;
 
         public override void OnEnter()
         {
@@ -38,6 +39,13 @@ namespace EntityStates.SS2UStates.Cyborg
 
             FireBFG();
             ApplySelfKnockback();
+
+            energyComponent = base.GetComponent<CyborgEnergyComponent>();
+            if (energyComponent)
+            {
+                energyComponent.ConsumeEnergy(0.8f);
+                energyComponent.energySkillsActive++;
+            }
         }
 
         public void ApplySelfKnockback()
@@ -59,6 +67,10 @@ namespace EntityStates.SS2UStates.Cyborg
 
         public override void OnExit()
         {
+            if (energyComponent)
+            {
+                energyComponent.energySkillsActive--;
+            }
             base.OnExit();
         }
 

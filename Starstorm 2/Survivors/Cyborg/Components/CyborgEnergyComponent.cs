@@ -8,6 +8,7 @@ namespace Starstorm2Unofficial.Survivors.Cyborg.Components
     public class CyborgEnergyComponent : NetworkBehaviour
     {
         public static float delayBeforeShieldRecharge = 0.5f;
+        public static float energyDepletedFraction = 1f/3f; //If energy is fully depleted, lock skills until this threshold is reached.
 
         private float energyRechargeDelayStopwatch;
         public int energySkillsActive = 0;
@@ -34,18 +35,10 @@ namespace Starstorm2Unofficial.Survivors.Cyborg.Components
             {
                 if (energyRechargeDelayStopwatch <= 0f || energyDepleted)
                 {
-                    remainingEnergyFraction += Time.fixedDeltaTime / GetShieldRechargeTime();
+                    remainingEnergyFraction += Time.fixedDeltaTime / GetRechargeTime();
+                    if (remainingEnergyFraction >= energyDepletedFraction) energyDepleted = false;
 
-                    if (remainingEnergyFraction >= 1f)
-                    {
-                        energyDepleted = false;
-                    }
-
-                    float maxShield = GetMaxShieldDuration();
-                    if (remainingEnergyFraction > maxShield)
-                    {
-                        remainingEnergyFraction = maxShield;
-                    }
+                    remainingEnergyFraction = Mathf.Min(remainingEnergyFraction, GetMaxEnergyFraction());
                 }
                 else
                 {
@@ -54,13 +47,24 @@ namespace Starstorm2Unofficial.Survivors.Cyborg.Components
             }
         }
 
-        public void RefreshShield()
+        public void ApplyAmmoPack()
         {
-            remainingEnergyFraction = GetMaxShieldDuration();
+            AddEnergyFraction(1f);
             energyDepleted = false;
         }
 
-        public void ConsumeShield(float fraction)
+        public void ResetEnergy()
+        {
+            remainingEnergyFraction = GetMaxEnergyFraction();
+            energyDepleted = false;
+        }
+
+        public void AddEnergyFraction(float fraction)
+        {
+            remainingEnergyFraction = Mathf.Min(remainingEnergyFraction + fraction, GetMaxEnergyFraction());
+        }
+
+        public void ConsumeEnergy(float fraction)
         {
             remainingEnergyFraction -= fraction;
             if (remainingEnergyFraction <= 0f)
@@ -71,24 +75,33 @@ namespace Starstorm2Unofficial.Survivors.Cyborg.Components
             energyRechargeDelayStopwatch = CyborgEnergyComponent.delayBeforeShieldRecharge;
         }
 
-        public float GetMaxShieldDuration()
+        public float GetMaxEnergyFraction()
         {
             float fraction = 1f;
-            if (skillLocator && skillLocator.secondary)
+            if (skillLocator)
             {
-                int extraStocks = Mathf.Max(0, skillLocator.secondary.maxStock - 1);
-                fraction += extraStocks;
+                int totalStocks = 0;
+                if (skillLocator.secondary) totalStocks += skillLocator.secondary.maxStock;
+                if (skillLocator.utility) totalStocks += skillLocator.utility.maxStock;
+                if (skillLocator.special) totalStocks += skillLocator.special.maxStock;
+
+                fraction = Mathf.Max(1f, totalStocks / 3f);
             }
             return fraction;
         }
 
-        private float GetShieldRechargeTime()
+        private float GetRechargeTime()
         {
-            if (skillLocator && skillLocator.secondary)
+            float secondaryTime = 5f;
+            float utilityTime = 5f;
+            float specialTime = 5f;
+            if (skillLocator)
             {
-                return skillLocator.secondary.CalculateFinalRechargeInterval();
+                if (skillLocator.secondary) secondaryTime = skillLocator.secondary.CalculateFinalRechargeInterval();
+                if (skillLocator.utility) utilityTime = skillLocator.utility.CalculateFinalRechargeInterval();
+                if (skillLocator.special) specialTime = skillLocator.special.CalculateFinalRechargeInterval();
             }
-            return 6f;
+            return secondaryTime + utilityTime + specialTime;
         }
 
         public void ResetCharge()
@@ -98,28 +111,19 @@ namespace Starstorm2Unofficial.Survivors.Cyborg.Components
         }
 
         [Server]
-        public void RestoreNonDefenseMatrixCooldownsServer(float reductionAmount)
+        public void RestoreEnergyServer(float reductionFraction)
         {
             if (!NetworkServer.active) return;
             if (skillLocator)
             {
-                RpcRestoreNonDefenseMatrixCooldowns(reductionAmount);
+                RpcRestoreEnergy(reductionFraction);
             }
         }
 
         [ClientRpc]
-        private void RpcRestoreNonDefenseMatrixCooldowns(float reductionAmount)
+        private void RpcRestoreEnergy(float reductionFraction)
         {
-            if (this.hasAuthority && skillLocator)
-            {
-                foreach (GenericSkill gs in skillLocator.allSkills)
-                {
-                    if (gs.skillDef != CyborgCore.defenseMatrixDef)
-                    {
-                        gs.RunRecharge(reductionAmount);
-                    }
-                }
-            }
+            AddEnergyFraction(reductionFraction);
         }
     }
 }

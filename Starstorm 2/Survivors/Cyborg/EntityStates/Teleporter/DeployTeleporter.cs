@@ -13,7 +13,9 @@ namespace EntityStates.SS2UStates.Cyborg.Special
         public static float timeoutDuration = 10f;  //Cancels skill if it can't find teleporter gameobject within 10s.
         public static GameObject projectilePrefab;
         public static CyborgTeleSkillDef teleportSkillDef;
+
         private CyborgTeleportTracker teleTracker;
+        private CyborgEnergyComponent energyComponent;
 
         private bool foundTeleporter;
         private bool appliedSkillOverride;
@@ -31,6 +33,12 @@ namespace EntityStates.SS2UStates.Cyborg.Special
             foundTeleporter = false;
 
             FireTeleportProjectile();
+
+            energyComponent = base.GetComponent<CyborgEnergyComponent>();
+            if (energyComponent)
+            {
+                energyComponent.ConsumeEnergy(0.5f);
+            }
         }
 
         private void FireTeleportProjectile()

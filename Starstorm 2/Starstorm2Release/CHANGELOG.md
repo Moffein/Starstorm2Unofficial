@@ -1,23 +1,35 @@
 `0.19.0`
 
 - Cyborg
-	- Shock Core
-		- Moved from Secondary slot to Special slot. (Reverting earlier update)
-		- Reduced cooldown from 7s -> 5s (half of Overheat Redress)
-		- Increased pull radius from 20m -> 30m
-		
+	- New Passive: Energy Core
+		- Cyborgs skills all draw from a shared Energy Pool instead of using cooldowns.
+			- Takes 15s to recharge, scales off of cooldown reduction to skills.
+			- Extra skill stocks increase the max cap of the energy pool.
+		- Cyborg can hover for 3.3% Energy/s
+	
 	- Alt Primary: Renamed to ______ (TODO)
 	
 	- Defense Matrix
+		- 7s cooldown -> 16.7% Energy/s
 		- Increased shield duration from 3s -> 6s
-		- Reduced cooldown from 7s -> 6s
-		
-		*3s was "balanced", but way too restrictive when trying to use it to actively protect teammates.*
+		- Restores 5% Energy per projectile deleted.
 	
 	- New Default Secondary: Rising Star
-		- Rapidly fire slowing shots for 3x100% damage. (0.5 proc)
+		- 33.3% Energy/s
+		- Rapidly fire slowing shots for 3x120% damage. (0.5 proc)
 			- Fires 5 times per second, can continuously fire for up to 3 seconds.
-		- 6s cooldown.
+		
+	- Recall
+		- 8s cooldown -> 50% Energy
+		- Removed damage.
+		
+	- Overheat Redress
+		- 12s cooldown -> 80% Energy
+	
+	- Shock Core
+		- Moved from Secondary slot to Special slot. (Reverting earlier update)
+		- 7s cooldown -> 40% Energy
+		- Increased pull radius from 20m -> 30m
 		
 - Chirr
 	- Friend loadout is now saved between stages. (Relevant for Hunted and other mods that let you befriend survivors)

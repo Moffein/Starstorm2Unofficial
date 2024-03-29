@@ -41,7 +41,7 @@ namespace Starstorm2Unofficial.Survivors.Cyborg
         {
 			EnergySkillDef.InstanceData instanceData = (EnergySkillDef.InstanceData)skillSlot.skillInstanceData;
             CyborgEnergyComponent chargeComponent = instanceData.energyComponent;
-            return (chargeComponent != null) ? !chargeComponent.energyDepleted && chargeComponent.rifleChargeFraction >= instanceData.energyFractionCost : false;
+            return (chargeComponent != null) ? !chargeComponent.energyDepleted && (chargeComponent.remainingEnergyFraction + 0.06666666667f) >= instanceData.energyFractionCost : false;
         }
 
         public float energyFractionCost = 0f;

@@ -102,7 +102,7 @@ namespace Starstorm2Unofficial.Survivors.Cyborg.Components.Crosshair
 
                 if (shieldBar)
                 {
-                    float targetFill = Mathf.Lerp(0f, 1f, chargeComponent.remainingEnergyFraction / chargeComponent.GetMaxShieldDuration());
+                    float targetFill = Mathf.Lerp(0f, 1f, chargeComponent.remainingEnergyFraction / chargeComponent.GetMaxEnergyFraction());
                     Color targetColor = chargeComponent.energyDepleted ? shieldDepleteColor : shieldColor;
                     targetColor.a = chargeComponent.energySkillsActive > 0 ? 1f : 0.5f;
 
@@ -110,13 +110,15 @@ namespace Starstorm2Unofficial.Survivors.Cyborg.Components.Crosshair
                     shieldBar.fillAmount = targetFill;
                 }
 
+                Color dotColor = Color.white;
+                dotColor.a = chargeComponent.showTriShotCrosshair ? 1f : 0f;
                 if (rightDot)
                 {
-                    rightDot.fillAmount = chargeComponent.showTriShotCrosshair ? 1f : 0f;
+                    rightDot.color = dotColor;
                 }
                 if (leftDot)
                 {
-                    leftDot.fillAmount = chargeComponent.showTriShotCrosshair ? 1f : 0f;
+                    leftDot.color = dotColor;
                 }
             }
         }

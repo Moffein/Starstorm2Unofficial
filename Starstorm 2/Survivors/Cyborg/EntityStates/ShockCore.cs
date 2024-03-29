@@ -2,6 +2,7 @@
 using UnityEngine;
 using RoR2.Projectile;
 using UnityEngine.AddressableAssets;
+using Starstorm2Unofficial.Survivors.Cyborg.Components;
 
 namespace EntityStates.SS2UStates.Cyborg
 {
@@ -25,6 +26,13 @@ namespace EntityStates.SS2UStates.Cyborg
                 ProjectileManager.instance.FireProjectile(GetProjectilePrefab(), aimRay.origin, Util.QuaternionSafeLookRotation(aimRay.direction), base.gameObject, this.damageStat * GetDamageCoefficient(), 0f, base.RollCrit(), DamageColorIndex.Default, null, -1f);
             }
             ApplySelfKnockback();
+
+            energyComponent = base.GetComponent<CyborgEnergyComponent>();
+            if (energyComponent)
+            {
+                energyComponent.ConsumeEnergy(0.4f);
+                energyComponent.energySkillsActive++;
+            }
         }
 
         public virtual float GetDamageCoefficient() { return ShockCore.damageCoefficient;  }
@@ -62,6 +70,15 @@ namespace EntityStates.SS2UStates.Cyborg
             }
         }
 
+        public override void OnExit()
+        {
+            if (energyComponent)
+            {
+                energyComponent.energySkillsActive--;
+            }
+            base.OnExit();
+        }
+
         public override InterruptPriority GetMinimumInterruptPriority()
         {
             return buttonReleased ? InterruptPriority.Any : InterruptPriority.PrioritySkill;
@@ -74,5 +91,6 @@ namespace EntityStates.SS2UStates.Cyborg
 
         private float duration;
         private bool buttonReleased = false;
+        private CyborgEnergyComponent energyComponent;
     }
 }

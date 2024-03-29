@@ -22,7 +22,7 @@ namespace EntityStates.SS2UStates.Cyborg.Secondary
         private float blinkToggleDuration;
         private TeamIndex inputTeamIndex;
         private DefenseMatrixManager.DefenseMatrixInfo defenseMatrixInfo;
-        private CyborgEnergyComponent chargeComponent;
+        private CyborgEnergyComponent energyComponent;
 
         public static float shieldDuration = 6f;
         public static float minDuration = 0.5f;
@@ -30,7 +30,7 @@ namespace EntityStates.SS2UStates.Cyborg.Secondary
         public static GameObject projectileDeletionEffectPrefab;
         public static GameObject matrixPrefab;
         public static float ticksPerSecond = 30;
-        public static float cdrPerProjectile = 0f;  //Leaving this in just in case.
+        public static float energyFractionPerProjectile = 0f;   //Leaving this in just in-case
 
         public static float blinkTime = 0.5f;
         public static float blinkFrequency = 20f;
@@ -39,10 +39,10 @@ namespace EntityStates.SS2UStates.Cyborg.Secondary
         {
             base.OnEnter();
 
-            chargeComponent = base.GetComponent<CyborgEnergyComponent>();
-            if (chargeComponent)
+            energyComponent = base.GetComponent<CyborgEnergyComponent>();
+            if (energyComponent)
             {
-                chargeComponent.energySkillsActive++;
+                energyComponent.energySkillsActive++;
             }
 
             Util.PlaySound(DefenseMatrix.attackSoundString, base.gameObject);
@@ -129,9 +129,9 @@ namespace EntityStates.SS2UStates.Cyborg.Secondary
                         EntityState.Destroy(toDelete);
                     }
                 }
-                if (chargeComponent && projectilesDeleted > 0 && DefenseMatrix.cdrPerProjectile > 0f)
+                if (energyComponent && projectilesDeleted > 0 && DefenseMatrix.energyFractionPerProjectile > 0f)
                 {
-                    chargeComponent.RestoreNonDefenseMatrixCooldownsServer(projectilesDeleted * DefenseMatrix.cdrPerProjectile);
+                    energyComponent.RestoreEnergyServer(projectilesDeleted * DefenseMatrix.energyFractionPerProjectile);
                 }
             }
         }
@@ -154,17 +154,17 @@ namespace EntityStates.SS2UStates.Cyborg.Secondary
             }
 
             bool shieldDepleted = false;
-            if (this.chargeComponent)
+            if (this.energyComponent)
             {
-                this.chargeComponent.ConsumeShield(Time.fixedDeltaTime/DefenseMatrix.shieldDuration);
-                shieldDepleted = this.chargeComponent.energyDepleted;
+                this.energyComponent.ConsumeEnergy(Time.fixedDeltaTime/DefenseMatrix.shieldDuration);
+                shieldDepleted = this.energyComponent.energyDepleted;
             }
 
             if (base.isAuthority)
             {
-                if (this.chargeComponent)
+                if (this.energyComponent)
                 {
-                    if (this.chargeComponent.remainingEnergyFraction <= blinkTime/DefenseMatrix.shieldDuration)
+                    if (this.energyComponent.remainingEnergyFraction <= blinkTime/DefenseMatrix.shieldDuration)
                     {
                         blinkStopwatch += Time.fixedDeltaTime;
                         if (blinkStopwatch >= blinkToggleDuration)
@@ -200,9 +200,9 @@ namespace EntityStates.SS2UStates.Cyborg.Secondary
 
         public override void OnExit()
         {
-            if (chargeComponent)
+            if (energyComponent)
             {
-                chargeComponent.energySkillsActive--;
+                energyComponent.energySkillsActive--;
             }
 
             if (this.defenseMatrixInfo != null)

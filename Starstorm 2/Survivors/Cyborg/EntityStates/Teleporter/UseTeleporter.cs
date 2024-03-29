@@ -34,7 +34,7 @@ namespace EntityStates.SS2UStates.Cyborg.Special
                     base.characterMotor.disableAirControlUntilCollision = false;
 
                     base.characterMotor.Motor.SetPosition((Vector3)teleportLocation, true);
-                    TelefragExplosionAuthority((Vector3)teleportLocation);
+                    //TelefragExplosionAuthority((Vector3)teleportLocation);
                     teleported = true;
                     teleTracker.CmdDestroyTeleporter();
                     base.PlayAnimation("Gesture, Override", "UseTP", "FireM1.playbackRate", UseTeleporter.baseDuration);

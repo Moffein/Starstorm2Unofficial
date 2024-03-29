@@ -2,16 +2,26 @@
 using UnityEngine;
 using EntityStates;
 using UnityEngine.AddressableAssets;
+using Starstorm2Unofficial.Survivors.Cyborg.Components;
 
 namespace EntityStates.SS2UStates.Cyborg.Jetpack
 {
 	public class JetpackOn : BaseState
 	{
+		public static float hoverDuration = 30f;
+
+		private CyborgEnergyComponent energyComponent;
         public override void OnEnter()
         {
             base.OnEnter();
 			Util.PlaySound("Play_mage_m1_impact", base.gameObject);
 			Util.PlaySound("Play_engi_sprint_start", base.gameObject);
+
+			energyComponent = base.GetComponent<CyborgEnergyComponent>();
+			if (energyComponent)
+			{
+				energyComponent.energySkillsActive++;
+			}
 
 			if (JetpackOn.activationEffectPrefab)
 			{
@@ -48,12 +58,22 @@ namespace EntityStates.SS2UStates.Cyborg.Jetpack
         public override void OnExit()
 		{
 			Util.PlaySound("Play_engi_sprint_end", base.gameObject);
-			base.OnExit();
+            if (energyComponent)
+            {
+                energyComponent.energySkillsActive--;
+            }
+            base.OnExit();
         }
 
         public override void FixedUpdate()
 		{
 			base.FixedUpdate();
+
+			if (energyComponent)
+			{
+				energyComponent.ConsumeEnergy(Time.fixedDeltaTime / hoverDuration);
+			}
+
 			if (base.isAuthority)
 			{
 				float num = base.characterMotor.velocity.y;
