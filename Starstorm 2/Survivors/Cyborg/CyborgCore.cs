@@ -447,20 +447,37 @@ namespace Starstorm2Unofficial.Survivors.Cyborg
             SetUpUtilities(skillLocator);
             SetUpSpecials(skillLocator);
 
-            On.RoR2.GenericSkill.ApplyAmmoPack += GenericSkill_ApplyAmmoPack;
+            On.RoR2.SkillLocator.ResetSkills += SkillLocator_ResetSkills;
+            On.RoR2.SkillLocator.ApplyAmmoPack += SkillLocator_ApplyAmmoPack;
+            On.RoR2.SkillLocator.DeductCooldownFromAllSkillsAuthority += SkillLocator_DeductCooldownFromAllSkillsAuthority;
         }
 
-        private void GenericSkill_ApplyAmmoPack(On.RoR2.GenericSkill.orig_ApplyAmmoPack orig, GenericSkill self)
+        private void SkillLocator_DeductCooldownFromAllSkillsAuthority(On.RoR2.SkillLocator.orig_DeductCooldownFromAllSkillsAuthority orig, SkillLocator self, float deduction)
+        {
+            orig(self, deduction);
+            var energyComponent = self.gameObject.GetComponent<CyborgEnergyComponent>();
+            if (energyComponent)
+            {
+                float energyRestoreFraction = 0f;
+                if (self.secondary) energyRestoreFraction += deduction / self.secondary.CalculateFinalRechargeInterval();
+                if (self.utility) energyRestoreFraction += deduction / self.utility.CalculateFinalRechargeInterval();
+                if (self.special) energyRestoreFraction += deduction / self.special.CalculateFinalRechargeInterval();
+                energyComponent.AddEnergyFraction(energyRestoreFraction);
+            }
+        }
+
+        private void SkillLocator_ApplyAmmoPack(On.RoR2.SkillLocator.orig_ApplyAmmoPack orig, SkillLocator self)
         {
             orig(self);
-            if (self.skillDef == CyborgCore.defenseMatrixDef)
-            {
-                CyborgEnergyComponent chargeComponent = self.GetComponent<CyborgEnergyComponent>();
-                if (chargeComponent)
-                {
-                    chargeComponent.ApplyAmmoPack();
-                }
-            }
+            var energyComponent = self.gameObject.GetComponent<CyborgEnergyComponent>();
+            if (energyComponent) energyComponent.ApplyAmmoPack();
+        }
+
+        private void SkillLocator_ResetSkills(On.RoR2.SkillLocator.orig_ResetSkills orig, SkillLocator self)
+        {
+            orig(self);
+            var energyComponent = self.gameObject.GetComponent<CyborgEnergyComponent>();
+            if (energyComponent) energyComponent.ResetEnergy();
         }
 
         private void SetUpPrimaries(SkillLocator skillLocator)

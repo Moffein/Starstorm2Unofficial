@@ -57,6 +57,7 @@ namespace Starstorm2Unofficial.Survivors.Cyborg.Components
         {
             remainingEnergyFraction = GetMaxEnergyFraction();
             energyDepleted = false;
+            energyRechargeDelayStopwatch = 0f;
         }
 
         public void AddEnergyFraction(float fraction)
