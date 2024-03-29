@@ -25,7 +25,7 @@ namespace EntityStates.SS2UStates.Cyborg
             {
                 ProjectileManager.instance.FireProjectile(GetProjectilePrefab(), aimRay.origin, Util.QuaternionSafeLookRotation(aimRay.direction), base.gameObject, this.damageStat * GetDamageCoefficient(), 0f, base.RollCrit(), DamageColorIndex.Default, null, -1f);
             }
-            ApplySelfKnockback();
+            //ApplySelfKnockback();
 
             energyComponent = base.GetComponent<CyborgEnergyComponent>();
             if (energyComponent)
@@ -38,7 +38,7 @@ namespace EntityStates.SS2UStates.Cyborg
         public virtual float GetDamageCoefficient() { return ShockCore.damageCoefficient;  }
         public virtual GameObject GetProjectilePrefab() { return ShockCore.projectilePrefab; }
 
-        public void ApplySelfKnockback()
+        /*public void ApplySelfKnockback()
         {
             if (base.isAuthority && base.characterBody && base.characterMotor && !base.characterMotor.isGrounded)
             {
@@ -51,7 +51,7 @@ namespace EntityStates.SS2UStates.Cyborg
                 if (base.characterMotor.velocity.y < 0f) base.characterMotor.velocity.y = 0f;
                 base.characterMotor.ApplyForce(-2400f * base.GetAimRay().direction, true, false);
             }
-        }
+        }*/
 
         public override void FixedUpdate()
         {

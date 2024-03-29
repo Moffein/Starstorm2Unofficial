@@ -16,7 +16,7 @@
 	
 	- New Default Secondary: Rising Star
 		- 30% Energy/s
-		- Rapidly fire slowing shots for 3x120% damage. (0.5 proc)
+		- Rapidly fire slowing shots for 3x140% damage. (0.5 proc)
 			- Fires 5x per second.
 		
 	- Recall
@@ -35,7 +35,7 @@
 		- Moved from Secondary slot to Special slot. (Reverting earlier update)
 		- 7s cooldown -> 30% Energy
 		- Reduced damage from 600% (was mislabeled as 800%) -> 400%
-			- Implosion damage remains the same at 1200% (was mislabeled as 1600%)
+			- Implosion damage remains the same, 1200% (was mislabeled as 1600%)
 		- Increased pull radius from 20m -> 30m
 		
 - Chirr
