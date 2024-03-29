@@ -282,15 +282,15 @@ namespace Starstorm2Unofficial.Modules
                              false,
                              "Charging the Utility makes you stand still. (Client-Side)");
 
-            CyborgCrosshairChargeController.useSimpleEnergyBar = StarstormPlugin.instance.Config.Bind("Starstorm 2 :: Survivors :: Cyborg",
-                             "UI - Simple Energy Meter",
-                             false,
-                             "Use a simplified Energy Meter. Ignores other Energy Meter options.");
-
             CyborgCore.useEnergyRework = StarstormPlugin.instance.Config.Bind("Starstorm 2 :: Survivors :: Cyborg",
                              "Enable Energy Core Passive (Client-Side)",
                              true,
                              "Cyborg skills use a single Energy Pool instead of having cooldowns. Set this to false to get the old Cyborg kit.");
+
+            CyborgCrosshairChargeController.useSimpleEnergyBar = StarstormPlugin.instance.Config.Bind("Starstorm 2 :: Survivors :: Cyborg",
+                             "UI - Simple Energy Meter",
+                             false,
+                             "Use a simplified Energy Meter. Ignores other Energy Meter options.");
 
             //How to even add this to riskofoptions? Just need a simple float input field.
             CyborgCrosshairChargeController.energyBarScale = StarstormPlugin.instance.Config.Bind("Starstorm 2 :: Survivors :: Cyborg",
