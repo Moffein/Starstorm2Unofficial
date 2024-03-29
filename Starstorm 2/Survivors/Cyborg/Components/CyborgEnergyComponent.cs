@@ -71,6 +71,7 @@ namespace Starstorm2Unofficial.Survivors.Cyborg.Components
             {
                 remainingEnergyFraction = 0f;
                 energyDepleted = true;
+                energyRechargeDelayStopwatch = 0f;
             }
             energyRechargeDelayStopwatch = CyborgEnergyComponent.delayBeforeShieldRecharge;
         }
