@@ -31,7 +31,7 @@ namespace EntityStates.SS2UStates.Cyborg.ChargeRifle
         public float charge;
         public bool perfectCharge;
         private CrosshairUtils.OverrideRequest crosshairOverrideRequest;
-        private CyborgChargeComponent chargeComponent;
+        private CyborgEnergyComponent chargeComponent;
         private string muzzleString;
 
         public int step = 0;
@@ -41,11 +41,11 @@ namespace EntityStates.SS2UStates.Cyborg.ChargeRifle
         public override void OnEnter()
         {
             base.OnEnter();
-            chargeComponent = base.GetComponent<CyborgChargeComponent>();
+            chargeComponent = base.GetComponent<CyborgEnergyComponent>();
             if (chargeComponent)
             {
-                chargeComponent.chargeFraction = this.charge;
-                chargeComponent.perfectCharge = this.perfectCharge;
+                chargeComponent.rifleChargeFraction = this.charge;
+                chargeComponent.riflePerfectCharge = this.perfectCharge;
             }
             duration = FireBeam.baseDuration / this.attackSpeedStat;
 

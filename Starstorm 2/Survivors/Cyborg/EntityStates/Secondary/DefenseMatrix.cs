@@ -22,7 +22,7 @@ namespace EntityStates.SS2UStates.Cyborg.Secondary
         private float blinkToggleDuration;
         private TeamIndex inputTeamIndex;
         private DefenseMatrixManager.DefenseMatrixInfo defenseMatrixInfo;
-        private CyborgChargeComponent chargeComponent;
+        private CyborgEnergyComponent chargeComponent;
 
         public static float shieldDuration = 6f;
         public static float minDuration = 0.5f;
@@ -39,10 +39,10 @@ namespace EntityStates.SS2UStates.Cyborg.Secondary
         {
             base.OnEnter();
 
-            chargeComponent = base.GetComponent<CyborgChargeComponent>();
+            chargeComponent = base.GetComponent<CyborgEnergyComponent>();
             if (chargeComponent)
             {
-                chargeComponent.shieldActive = true;
+                chargeComponent.energySkillsActive++;
             }
 
             Util.PlaySound(DefenseMatrix.attackSoundString, base.gameObject);
@@ -157,14 +157,14 @@ namespace EntityStates.SS2UStates.Cyborg.Secondary
             if (this.chargeComponent)
             {
                 this.chargeComponent.ConsumeShield(Time.fixedDeltaTime/DefenseMatrix.shieldDuration);
-                shieldDepleted = this.chargeComponent.shieldDepleted;
+                shieldDepleted = this.chargeComponent.energyDepleted;
             }
 
             if (base.isAuthority)
             {
                 if (this.chargeComponent)
                 {
-                    if (this.chargeComponent.remainingShieldFraction <= blinkTime/DefenseMatrix.shieldDuration)
+                    if (this.chargeComponent.remainingEnergyFraction <= blinkTime/DefenseMatrix.shieldDuration)
                     {
                         blinkStopwatch += Time.fixedDeltaTime;
                         if (blinkStopwatch >= blinkToggleDuration)
@@ -202,7 +202,7 @@ namespace EntityStates.SS2UStates.Cyborg.Secondary
         {
             if (chargeComponent)
             {
-                chargeComponent.shieldActive = false;
+                chargeComponent.energySkillsActive--;
             }
 
             if (this.defenseMatrixInfo != null)

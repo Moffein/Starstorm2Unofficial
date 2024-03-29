@@ -5,23 +5,23 @@ using UnityEngine.Networking;
 namespace Starstorm2Unofficial.Survivors.Cyborg.Components
 {
     //Crosshair gets charge info from this component.
-    public class CyborgChargeComponent : NetworkBehaviour
+    public class CyborgEnergyComponent : NetworkBehaviour
     {
         public static float delayBeforeShieldRecharge = 0.5f;
 
-        private float shieldRechargeDelayStopwatch;
-        public bool shieldActive = false;
-        public bool shieldDepleted = false;
-        public float remainingShieldFraction = 1f;
+        private float energyRechargeDelayStopwatch;
+        public int energySkillsActive = 0;
+        public bool energyDepleted = false;
+        public float remainingEnergyFraction = 1f;
 
-        public bool showTriShotCrosshair = false;
-
-        public float chargeFraction = 0f;
-        public bool perfectCharge = false;
+        //Specific to Charge Rifle
+        public float rifleChargeFraction = 0f;
+        public bool riflePerfectCharge = false;
         public SkillLocator skillLocator;
 
-        //Jank to make FireTriShot alternate without a SteppedSkillDef
-        public int armToFireFrom = 0;
+        //Specific to TriShot
+        public bool showTriShotCrosshair = false;
+        public int armToFireFrom = 0; //Jank to make FireTriShot alternate arms without a SteppedSkillDef
 
         private void Awake()
         {
@@ -30,45 +30,45 @@ namespace Starstorm2Unofficial.Survivors.Cyborg.Components
 
         private void FixedUpdate()
         {
-            if (!shieldActive)
+            if (energySkillsActive <= 0)
             {
-                if (shieldRechargeDelayStopwatch <= 0f || shieldDepleted)
+                if (energyRechargeDelayStopwatch <= 0f || energyDepleted)
                 {
-                    remainingShieldFraction += Time.fixedDeltaTime / GetShieldRechargeTime();
+                    remainingEnergyFraction += Time.fixedDeltaTime / GetShieldRechargeTime();
 
-                    if (remainingShieldFraction >= 1f)
+                    if (remainingEnergyFraction >= 1f)
                     {
-                        shieldDepleted = false;
+                        energyDepleted = false;
                     }
 
                     float maxShield = GetMaxShieldDuration();
-                    if (remainingShieldFraction > maxShield)
+                    if (remainingEnergyFraction > maxShield)
                     {
-                        remainingShieldFraction = maxShield;
+                        remainingEnergyFraction = maxShield;
                     }
                 }
                 else
                 {
-                    shieldRechargeDelayStopwatch -= Time.fixedDeltaTime;
+                    energyRechargeDelayStopwatch -= Time.fixedDeltaTime;
                 }
             }
         }
 
         public void RefreshShield()
         {
-            remainingShieldFraction = GetMaxShieldDuration();
-            shieldDepleted = false;
+            remainingEnergyFraction = GetMaxShieldDuration();
+            energyDepleted = false;
         }
 
         public void ConsumeShield(float fraction)
         {
-            remainingShieldFraction -= fraction;
-            if (remainingShieldFraction <= 0f)
+            remainingEnergyFraction -= fraction;
+            if (remainingEnergyFraction <= 0f)
             {
-                remainingShieldFraction = 0f;
-                shieldDepleted = true;
+                remainingEnergyFraction = 0f;
+                energyDepleted = true;
             }
-            shieldRechargeDelayStopwatch = CyborgChargeComponent.delayBeforeShieldRecharge;
+            energyRechargeDelayStopwatch = CyborgEnergyComponent.delayBeforeShieldRecharge;
         }
 
         public float GetMaxShieldDuration()
@@ -93,8 +93,8 @@ namespace Starstorm2Unofficial.Survivors.Cyborg.Components
 
         public void ResetCharge()
         {
-            chargeFraction = 0f;
-            perfectCharge = false;
+            rifleChargeFraction = 0f;
+            riflePerfectCharge = false;
         }
 
         [Server]

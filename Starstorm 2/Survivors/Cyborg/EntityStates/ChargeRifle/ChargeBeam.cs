@@ -26,7 +26,7 @@ namespace EntityStates.SS2UStates.Cyborg.ChargeRifle
         private Transform muzzleTransform;
         private string muzzleString; //"Lowerarm.L_end"
         private bool setNextState = false;
-        private CyborgChargeComponent chargeComponent;
+        private CyborgEnergyComponent chargeComponent;
         private bool isAutoFire = false;
         public int step = 0;
 
@@ -49,7 +49,7 @@ namespace EntityStates.SS2UStates.Cyborg.ChargeRifle
             this.loopSoundInstanceId = Util.PlayAttackSpeedSound(ChargeBeam.beginChargeSound, base.gameObject, this.attackSpeedStat);
             base.characterBody.SetAimTimer(3f);
 
-            chargeComponent = base.GetComponent<CyborgChargeComponent>();
+            chargeComponent = base.GetComponent<CyborgEnergyComponent>();
 
             ChildLocator cl = base.GetModelChildLocator();
             if (cl)
@@ -94,8 +94,8 @@ namespace EntityStates.SS2UStates.Cyborg.ChargeRifle
             bool perfectCharge = base.fixedAge >= this.duration && base.fixedAge <= this.duration + ChargeBeam.perfectChargeDuration;
             if (this.chargeComponent)
             {
-                chargeComponent.chargeFraction = charge;
-                chargeComponent.perfectCharge = perfectCharge;
+                chargeComponent.rifleChargeFraction = charge;
+                chargeComponent.riflePerfectCharge = perfectCharge;
             }
 
             if (base.isAuthority)

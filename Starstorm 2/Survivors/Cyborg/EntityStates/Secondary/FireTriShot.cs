@@ -22,7 +22,7 @@ namespace EntityStates.SS2UStates.Cyborg.Secondary
         public static GameObject hitEffectPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Commando/HitsparkCommandoShotgun.prefab").WaitForCompletion();
         public static GameObject muzzleflashEffectPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Mage/MuzzleflashMageLightning.prefab").WaitForCompletion();
 
-        private CyborgChargeComponent chargeComponent;
+        private CyborgEnergyComponent chargeComponent;
         int step = 0;
         public string muzzleString;
         private float duration;
@@ -31,11 +31,11 @@ namespace EntityStates.SS2UStates.Cyborg.Secondary
         {
             base.OnEnter();
 
-            chargeComponent = base.GetComponent<CyborgChargeComponent>();
+            chargeComponent = base.GetComponent<CyborgEnergyComponent>();
             if (chargeComponent)
             {
                 chargeComponent.showTriShotCrosshair = true;
-                chargeComponent.shieldActive = true;
+                chargeComponent.energySkillsActive++;
                 chargeComponent.ConsumeShield(chargeConsumptionPerShot);
 
                 step = chargeComponent.armToFireFrom;
@@ -143,7 +143,7 @@ namespace EntityStates.SS2UStates.Cyborg.Secondary
         {
             if (chargeComponent)
             {
-                chargeComponent.shieldActive = false;
+                chargeComponent.energySkillsActive--;
                 chargeComponent.showTriShotCrosshair = false;
             }
             base.OnExit();

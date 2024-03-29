@@ -454,7 +454,7 @@ namespace Starstorm2Unofficial.Survivors.Cyborg
             orig(self);
             if (self.skillDef == CyborgCore.defenseMatrixDef)
             {
-                CyborgChargeComponent chargeComponent = self.GetComponent<CyborgChargeComponent>();
+                CyborgEnergyComponent chargeComponent = self.GetComponent<CyborgEnergyComponent>();
                 if (chargeComponent)
                 {
                     chargeComponent.RefreshShield();
@@ -528,7 +528,7 @@ namespace Starstorm2Unofficial.Survivors.Cyborg
         {
              LanguageAPI.Add("SS2UCYBORG_SECONDARY_DEFENSEMATRIX_NAME", "Defense Matrix");
              LanguageAPI.Add("SS2UCYBORG_SECONDARY_DEFENSEMATRIX_DESCRIPTION", "Project an energy field that <style=cIsUtility>neutralizes ranged attacks</style>.");
-             DefenseMatrixSkillDef defenseMatrixDef = ScriptableObject.CreateInstance<DefenseMatrixSkillDef>();
+             EnergySkillDef defenseMatrixDef = ScriptableObject.CreateInstance<EnergySkillDef>();
              defenseMatrixDef.activationState = new SerializableEntityStateType(typeof(DefenseMatrix));
              defenseMatrixDef.activationStateMachineName = "DefenseMatrix";
              defenseMatrixDef.skillName = "SS2UCYBORG_SECONDARY_DEFENSEMATRIX_NAME";
@@ -555,7 +555,7 @@ namespace Starstorm2Unofficial.Survivors.Cyborg
 
             LanguageAPI.Add("SS2UCYBORG_SECONDARY_TRISHOT_NAME", "Rising Star");
             LanguageAPI.Add("SS2UCYBORG_SECONDARY_TRISHOT_DESCRIPTION", "Rapidly fire <style=cIsUtility>slowing</style> shots at contenders for <style=cIsDamage>3x100% damage</style>.");
-            DefenseMatrixSkillDef triShotDef = ScriptableObject.CreateInstance<DefenseMatrixSkillDef>();
+            EnergySkillDef triShotDef = ScriptableObject.CreateInstance<EnergySkillDef>();
             triShotDef.activationState = new SerializableEntityStateType(typeof(FireTriShot));
             triShotDef.activationStateMachineName = "Weapon";
             triShotDef.skillName = "SS2UCYBORG_SECONDARY_TRISHOT_NAME";
@@ -965,7 +965,7 @@ namespace Starstorm2Unofficial.Survivors.Cyborg
             }, 0);
 
             cyborgPrefab.AddComponent<CyborgTeleportTracker>();
-            cyborgPrefab.AddComponent<CyborgChargeComponent>();
+            cyborgPrefab.AddComponent<CyborgEnergyComponent>();
 
             cyborgPrefab.GetComponent<EntityStateMachine>().mainStateType = new SerializableEntityStateType(typeof(CyborgMain));
 

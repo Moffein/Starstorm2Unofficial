@@ -114,7 +114,7 @@
     <Compile Include="Survivors\Chirr\FriendLeashSkillDef.cs" />
     <Compile Include="Survivors\Cyborg\Achievements\CyborgGrandMasteryAchievement.cs" />
     <Compile Include="Survivors\Cyborg\Achievements\CyborgMasteryAchievement.cs" />
-    <Compile Include="Survivors\Cyborg\Components\CyborgChargeComponent.cs" />
+    <Compile Include="Survivors\Cyborg\Components\CyborgEnergyComponent.cs" />
     <Compile Include="Survivors\Cyborg\Components\Crosshair\CyborgCrosshairChargeController.cs" />
     <Compile Include="Survivors\Cyborg\Components\CyborgTeleportTracker.cs" />
     <Compile Include="Survivors\Cyborg\Components\OverheatProjectile\BFGGhostReduceSizeOverTime.cs" />
@@ -125,7 +125,7 @@
     <Compile Include="Survivors\Cyborg\Components\TeleportProjectile\AssignToTeleportTracker.cs" />
     <Compile Include="Survivors\Cyborg\CyborgTeleSkillDef.cs" />
     <Compile Include="Survivors\Cyborg\DefenseMatrixManager.cs" />
-    <Compile Include="Survivors\Cyborg\DefenseMatrixSkillDef.cs" />
+    <Compile Include="Survivors\Cyborg\EnergySkillDef.cs" />
     <Compile Include="Survivors\Cyborg\EntityStates\Jetpack\FlightMode.cs" />
     <Compile Include="Survivors\Cyborg\EntityStates\OverheatScepter.cs" />
     <Compile Include="Survivors\Cyborg\EntityStates\PrimaryLaser.cs" />

@@ -14,7 +14,7 @@ namespace Starstorm2Unofficial.Survivors.Cyborg.Components.Crosshair
         public static Color shieldColor = new Color32(139, 237, 227, 255);
         public static Color shieldDepleteColor = new Color32(150, 0, 0, 255);
 
-        private CyborgChargeComponent chargeComponent;
+        private CyborgEnergyComponent chargeComponent;
         private HudElement hudElement;
         private Image chargeBar;
         private Image chargeBarBackground;
@@ -77,7 +77,7 @@ namespace Starstorm2Unofficial.Survivors.Cyborg.Components.Crosshair
 
             if (!chargeComponent)
             {
-                if (savedCharacterBody) chargeComponent = savedCharacterBody.GetComponent<CyborgChargeComponent>();
+                if (savedCharacterBody) chargeComponent = savedCharacterBody.GetComponent<CyborgEnergyComponent>();
             }
             else
             {
@@ -95,16 +95,16 @@ namespace Starstorm2Unofficial.Survivors.Cyborg.Components.Crosshair
 
                 if (chargeBar)
                 {
-                    float targetFill = Mathf.Lerp(0f, 1f, chargeComponent.chargeFraction);
+                    float targetFill = Mathf.Lerp(0f, 1f, chargeComponent.rifleChargeFraction);
                     chargeBar.fillAmount = targetFill;
-                    chargeBar.color = chargeComponent.perfectCharge ? perfectChargeColor : chargeColor;
+                    chargeBar.color = chargeComponent.riflePerfectCharge ? perfectChargeColor : chargeColor;
                 }
 
                 if (shieldBar)
                 {
-                    float targetFill = Mathf.Lerp(0f, 1f, chargeComponent.remainingShieldFraction / chargeComponent.GetMaxShieldDuration());
-                    Color targetColor = chargeComponent.shieldDepleted ? shieldDepleteColor : shieldColor;
-                    targetColor.a = chargeComponent.shieldActive ? 1f : 0.5f;
+                    float targetFill = Mathf.Lerp(0f, 1f, chargeComponent.remainingEnergyFraction / chargeComponent.GetMaxShieldDuration());
+                    Color targetColor = chargeComponent.energyDepleted ? shieldDepleteColor : shieldColor;
+                    targetColor.a = chargeComponent.energySkillsActive > 0 ? 1f : 0.5f;
 
                     shieldBar.color = targetColor;
                     shieldBar.fillAmount = targetFill;
