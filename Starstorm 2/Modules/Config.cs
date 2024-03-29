@@ -1,6 +1,7 @@
 ﻿using BepInEx.Configuration;
 using RiskOfOptions;
 using Starstorm2Unofficial.Modules.Achievements;
+using Starstorm2Unofficial.Survivors.Cyborg;
 using Starstorm2Unofficial.Survivors.Cyborg.Components.Crosshair;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
@@ -286,6 +287,12 @@ namespace Starstorm2Unofficial.Modules
                              false,
                              "Use a simplified Energy Meter. Ignores other Energy Meter options.");
 
+            CyborgCore.useEnergyRework = StarstormPlugin.instance.Config.Bind("Starstorm 2 :: Survivors :: Cyborg",
+                             "Enable Energy Core Passive (Client-Side)",
+                             true,
+                             "Cyborg skills use a single Energy Pool instead of having cooldowns. Set this to false to get the old Cyborg kit.");
+            CyborgCore.useEnergyRework.SettingChanged += CyborgCore.EnergyPassiveSettingChanged;
+
             //How to even add this to riskofoptions? Just need a simple float input field.
             CyborgCrosshairChargeController.energyBarScale = StarstormPlugin.instance.Config.Bind("Starstorm 2 :: Survivors :: Cyborg",
                              "UI - Energy Meter Scale",
@@ -320,6 +327,7 @@ namespace Starstorm2Unofficial.Modules
                 RiskOfOptionsCompat();
             }
         }
+
         // this helper automatically makes config entries for enabling/disabling survivors
         internal static ConfigEntry<bool> CharacterEnableConfig(string characterName)
         {

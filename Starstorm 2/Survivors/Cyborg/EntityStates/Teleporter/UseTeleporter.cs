@@ -4,6 +4,7 @@ using RoR2.Projectile;
 using Starstorm2Unofficial.Survivors.Cyborg.Components;
 using UnityEngine.Networking;
 using UnityEngine.AddressableAssets;
+using Starstorm2Unofficial.Survivors.Cyborg;
 
 namespace EntityStates.SS2UStates.Cyborg.Special
 {
@@ -13,6 +14,11 @@ namespace EntityStates.SS2UStates.Cyborg.Special
         public static GameObject explosionEffectPrefab;
         public static float damageCoefficient = 10f;
         public static float radius = 5f;
+
+        //For the old version in the config
+        public static float damageCoefficientNoEnergy = 8f;
+        public static float radiusNoEnergy = 20f;
+
         public static float baseDuration = 1f;
         private CyborgTeleportTracker teleTracker;
         private bool teleported;
@@ -63,22 +69,31 @@ namespace EntityStates.SS2UStates.Cyborg.Special
                 position = position,
                 procChainMask = default,
                 procCoefficient = 1f,
-                teamIndex = base.GetTeam(),
-                impactEffect = EffectCatalog.FindEffectIndexFromPrefab(UseTeleporter.impactEffectPrefab)
+                teamIndex = base.GetTeam()
             };
+
+            if (!CyborgCore.useEnergyRework.Value)
+            {
+                ba.baseDamage = this.damageStat * UseTeleporter.damageCoefficientNoEnergy;
+                ba.radius = UseTeleporter.radiusNoEnergy;
+                ba.damageType = DamageType.Shock5s;
+                EffectManager.SpawnEffect(explosionEffectPrefab, new EffectData
+                {
+                    origin = position,
+                    scale = UseTeleporter.radius
+                }, true);
+
+                GameObject teleportEffectPrefab = Run.instance.GetTeleportEffectPrefab(base.gameObject);
+                if (teleportEffectPrefab)
+                {
+                    EffectManager.SimpleEffect(teleportEffectPrefab, position, Quaternion.identity, true);
+                }
+            }
+            else
+            {
+                ba.impactEffect = EffectCatalog.FindEffectIndexFromPrefab(UseTeleporter.impactEffectPrefab);
+            }
             ba.Fire();
-
-            /*EffectManager.SpawnEffect(explosionEffectPrefab, new EffectData
-            {
-                origin = position,
-                scale = UseTeleporter.radius
-            }, true);*/
-
-            /*GameObject teleportEffectPrefab = Run.instance.GetTeleportEffectPrefab(base.gameObject);
-            if (teleportEffectPrefab)
-            {
-                EffectManager.SimpleEffect(teleportEffectPrefab, position, Quaternion.identity, true);
-            }*/
         }
 
         public override void FixedUpdate()

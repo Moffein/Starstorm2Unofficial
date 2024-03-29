@@ -53,7 +53,7 @@ namespace EntityStates.SS2UStates.Cyborg.Jetpack
                 InitOverlapAttack();
             }
 
-            energyComponent = base.GetComponent<CyborgEnergyComponent>();
+            if (Starstorm2Unofficial.Survivors.Cyborg.CyborgCore.useEnergyRework.Value) energyComponent = base.GetComponent<CyborgEnergyComponent>();
             if (energyComponent)
             {
                 energyComponent.energySkillsActive++;
@@ -139,7 +139,15 @@ namespace EntityStates.SS2UStates.Cyborg.Jetpack
                 }
 
                 bool keyPressed = base.inputBank && base.inputBank.skill3.down;
-                if (stopwatch >= FlightMode.baseDuration || !keyPressed)
+                bool hasEnergy = energyComponent && !energyComponent.energyDepleted;
+
+                if (!Starstorm2Unofficial.Survivors.Cyborg.CyborgCore.useEnergyRework.Value)
+                {
+                    keyPressed = stopwatch <= FlightMode.baseDuration;
+                    hasEnergy = true;
+                }
+
+                if (!keyPressed || !hasEnergy)
                 {
                     this.outer.SetNextStateToMain();
                     return;

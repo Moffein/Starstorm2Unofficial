@@ -27,10 +27,10 @@ namespace EntityStates.SS2UStates.Cyborg
             }
             //ApplySelfKnockback();
 
-            energyComponent = base.GetComponent<CyborgEnergyComponent>();
+            if (Starstorm2Unofficial.Survivors.Cyborg.CyborgCore.useEnergyRework.Value) energyComponent = base.GetComponent<CyborgEnergyComponent>();
             if (energyComponent)
             {
-                energyComponent.ConsumeEnergy(0.3f);
+                energyComponent.ConsumeEnergy(0.4f);
                 energyComponent.energySkillsActive++;
             }
         }

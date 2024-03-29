@@ -103,7 +103,7 @@ namespace Starstorm2Unofficial.Survivors.Cyborg.Components.Crosshair
             {
                 if (this.chargeBarBackground)
                 {
-                    if (this.chargeComponent.skillLocator && this.chargeComponent.skillLocator.primary.skillDef == CyborgCore.chargeRifleDef)
+                    if (this.chargeComponent.skillLocator && this.chargeComponent.skillLocator.primary.skillDef == CyborgCore.Skills.ChargeRifle)
                     {
                         chargeBarBackground.color = Color.white;
                     }
@@ -144,7 +144,7 @@ namespace Starstorm2Unofficial.Survivors.Cyborg.Components.Crosshair
                         targetColor = shieldConsumeColor;
                     }
 
-                    if (useSimpleEnergyBar.Value)
+                    if (useSimpleEnergyBar.Value || !CyborgCore.useEnergyRework.Value)
                     {
                         if (shieldBar)
                         {

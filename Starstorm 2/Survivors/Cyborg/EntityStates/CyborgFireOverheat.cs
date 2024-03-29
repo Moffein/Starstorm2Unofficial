@@ -1,7 +1,6 @@
 ﻿using RoR2;
 using RoR2.Projectile;
 using UnityEngine;
-using Starstorm2Unofficial.Cores;
 using Starstorm2Unofficial.Survivors.Cyborg.Components;
 
 namespace EntityStates.SS2UStates.Cyborg
@@ -40,7 +39,7 @@ namespace EntityStates.SS2UStates.Cyborg
             FireBFG();
             ApplySelfKnockback();
 
-            energyComponent = base.GetComponent<CyborgEnergyComponent>();
+            if (Starstorm2Unofficial.Survivors.Cyborg.CyborgCore.useEnergyRework.Value) energyComponent = base.GetComponent<CyborgEnergyComponent>();
             if (energyComponent)
             {
                 energyComponent.ConsumeEnergy(0.6f);

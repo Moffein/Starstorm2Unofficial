@@ -156,7 +156,9 @@ namespace EntityStates.SS2UStates.Cyborg.Secondary
             bool shieldDepleted = false;
             if (this.energyComponent)
             {
-                this.energyComponent.ConsumeEnergy(Time.fixedDeltaTime/DefenseMatrix.shieldDuration);
+                float toConsume = Time.fixedDeltaTime / DefenseMatrix.shieldDuration;
+                if (!CyborgCore.useEnergyRework.Value) toConsume *= 2f;
+                this.energyComponent.ConsumeEnergy(toConsume);
                 shieldDepleted = this.energyComponent.energyDepleted;
             }
 

@@ -39,6 +39,14 @@ namespace Starstorm2Unofficial.Survivors.Cyborg
 
         private static bool HasEnoughEnergy([NotNull] GenericSkill skillSlot)
         {
+            if (!CyborgCore.useEnergyRework.Value)
+            {
+                bool isSecondary = skillSlot.skillFamily.defaultSkillDef == CyborgCore.Skills.RisingStar;
+                if (!isSecondary)
+				{
+                    return true;
+                }
+			}
 			EnergySkillDef.InstanceData instanceData = (EnergySkillDef.InstanceData)skillSlot.skillInstanceData;
             CyborgEnergyComponent chargeComponent = instanceData.energyComponent;
             return (chargeComponent != null) ? !chargeComponent.energyDepleted && chargeComponent.remainingEnergyFraction >= instanceData.energyFractionCost : false;

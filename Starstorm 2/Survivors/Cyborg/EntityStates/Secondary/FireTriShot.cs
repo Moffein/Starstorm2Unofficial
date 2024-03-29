@@ -9,6 +9,7 @@ using UnityEngine.AddressableAssets;
 using UnityEngine;
 using R2API;
 using Starstorm2Unofficial.Survivors.Cyborg.Components;
+using Starstorm2Unofficial.Survivors.Cyborg;
 
 namespace EntityStates.SS2UStates.Cyborg.Secondary
 {
@@ -36,7 +37,10 @@ namespace EntityStates.SS2UStates.Cyborg.Secondary
             {
                 energyComponent.showTriShotCrosshair = true;
                 energyComponent.energySkillsActive++;
-                energyComponent.ConsumeEnergy(chargeConsumptionPerShot);
+
+                float toConsume = chargeConsumptionPerShot;
+                if (!CyborgCore.useEnergyRework.Value) toConsume *= 2f;
+                energyComponent.ConsumeEnergy(toConsume);
 
                 step = energyComponent.armToFireFrom;
                 

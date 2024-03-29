@@ -80,6 +80,13 @@ namespace Starstorm2Unofficial.Survivors.Cyborg.Components
         public float GetMaxEnergyFraction()
         {
             float fraction = 1f;
+
+            if (!CyborgCore.useEnergyRework.Value)
+            {
+                if (skillLocator && skillLocator.secondary) fraction += skillLocator.secondary.bonusStockFromBody;
+                return fraction;
+            }
+
             if (skillLocator)
             {
                 int totalStocks = 0;
@@ -94,6 +101,12 @@ namespace Starstorm2Unofficial.Survivors.Cyborg.Components
 
         private float GetRechargeTime()
         {
+            if (!CyborgCore.useEnergyRework.Value)
+            {
+                if (skillLocator && skillLocator.secondary) return skillLocator.secondary.CalculateFinalRechargeInterval();
+                return 6f;
+            }
+
             float secondaryTime = 5f;
             float utilityTime = 5f;
             float specialTime = 5f;
