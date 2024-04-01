@@ -8,6 +8,8 @@
 		- Cyborg can still hover by holding jump.
 	
 	- Primaries no longer slow on hit.
+	- Special Skills can now be fired while Primary is being fired.
+	
 	- Alt Primary: Renamed to Piercing Shot (TODO: Better name)
 	
 	- Defense Matrix
@@ -22,20 +24,18 @@
 	- Recall
 		- 8s cooldown -> 50% Energy
 		- Removed shock explosion.
-		- Now stuns in a very small radius for 1000% when teleporting. (Hidden Stat)
+		- Now stuns in a very small radius for 1000% damage when teleporting. (Hidden Stat)
 		
 	- Flight Mode
 		- 8s cooldown -> 60% Energy/s
 		- Skill now lasts for however long you're holding the button.
-		
-	- Special Skills can now be fired while Primary is being fired.
 		
 	- Overheat Redress
 		- 10s cooldown -> 60% Energy
 	
 	- Shock Core
 		- Moved from Secondary slot to Special slot. (Reverting earlier update)
-		- 7s cooldown -> 30% Energy
+		- 7s cooldown -> 40% Energy
 		- Reduced damage from 600% (was mislabeled as 800%) -> 400%
 			- Implosion damage remains the same, 1200% (was mislabeled as 1600%)
 		- Increased pull radius from 20m -> 30m
@@ -43,6 +43,10 @@
 - Chirr
 	- Friend loadout is now saved between stages. (Relevant for Hunted and other mods that let you befriend survivors)
 	- Fixed TP boss befriending being locked behind Scepter due to an earlier update. (You'll still need Scepter to befriend Champions, but you should now be able to befriend Horde bosses)
+	
+- Items
+	- Strange Can
+		- Minimum damage is now capped at 1.
 
 `0.18.13` to `0.18.14`
 

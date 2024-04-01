@@ -157,7 +157,7 @@ namespace Starstorm2Unofficial.Cores
                 }
                 else if (damageInfo.dotIndex == DoTCore.StrangeCanPoison)
                 {
-                    damageInfo.damage = self.combinedHealth * 0.025f;
+                    damageInfo.damage = Mathf.Max(self.combinedHealth * 0.025f, 1f);
                     EffectManager.SimpleEffect(DoTCore.StrangeCanHitEffect, damageInfo.position, self.transform.rotation, true);
                 }
                 else if (damageInfo.dotIndex == DoTCore.DetritiveTrematodeInfection)
