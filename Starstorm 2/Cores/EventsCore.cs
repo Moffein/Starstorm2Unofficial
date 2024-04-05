@@ -212,7 +212,7 @@ namespace Starstorm2Unofficial.Cores
 
         private void WarnStorm() {
             //activate fear
-            Chat.SendBroadcastChat(new Chat.SimpleChatMessage() { baseToken = "<style=cWorldEvent><sprite name=\"CloudRight\">     A storm is approaching...</style>" });
+            Chat.SendBroadcastChat(new Chat.SimpleChatMessage() { baseToken = "SS2U_EVENT_STORM" });
             //activate pp
             showStormFX(true);
         }
@@ -221,7 +221,7 @@ namespace Starstorm2Unofficial.Cores
         {
 
             if (Modules.Config.disableStormVisuals.Value) {
-                Chat.SendBroadcastChat(new Chat.SimpleChatMessage() { baseToken = "(Storm started.)" });
+                Chat.SendBroadcastChat(new Chat.SimpleChatMessage() { baseToken = "SS2U_EVENT_STORM_START" });
             }
             //activate stat buffs
             RecalculateStatsAPI.GetStatCoefficients += StormStats;

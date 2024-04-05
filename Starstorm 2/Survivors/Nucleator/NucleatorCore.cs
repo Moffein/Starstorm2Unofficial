@@ -402,49 +402,6 @@ namespace Starstorm2Unofficial.Survivors.Nucleator
             ThinkInvisible.ClassicItems.Scepter.instance.RegisterScepterSkill(SkillDefs.SpecialScepter, bodyInfo.bodyName, SkillSlot.Special, SkillDefs.Special);
         }
 
-        internal override void RegisterTokens()
-        {
-            LanguageAPI.Add("SS2UNUCLEATOR_NAME", "Nucleator");
-            LanguageAPI.Add("SS2UNUCLEATOR_SUBTITLE", "Walking Fallout");
-            LanguageAPI.Add("SS2UNUCLEATOR_DESCRIPTION", "The Nucleator is a radioactive juggernaut with rad-proof armor, which allows him to manipulate nuclear components for long periods of time.<style=cSub>\r\n\r\n< ! > Nucleator can charge his skills for maximum output, but be careful as overcharging them may lead to self-harm!\r\n\r\n< ! > Irradiate's projectiles gain increased blast radius the further they travel.\r\n\r\n< ! > Quarantine always applies the same knockback force regardless of charge level.\r\n\r\n< ! > Strategic use of Radionuclide Surge will allow you to recover health lost from Overcharging skills.\r\n\r\n");
-            LanguageAPI.Add("SS2UNUCLEATOR_OUTRO_FLAVOR", "..and so he left, health status undisclosed.");
-            LanguageAPI.Add("SS2UNUCLEATOR_OUTRO_FAILURE", "..and so he vanished, an uninhabitable wasteland in his wake.");
-            LanguageAPI.Add("SS2UNUCLEATOR_LORE", "laugh and grow fat");
-
-            LanguageAPI.Add("SS2UNUCLEATOR_PASSIVE_NAME", "Total Meltdown");
-            LanguageAPI.Add("SS2UNUCLEATOR_PASSIVE_DESCRIPTION", "The Nucleator's skills are unaffected <style=cIsDamage>Attack Speed</style>. <style=cIsDamage>Attack Speed</style> is converted to <style=cIsDamage>Damage</style> instead.");
-
-            LanguageAPI.Add("SS2UNUCLEATOR_PRIMARY_NAME", "Irradiate");
-            LanguageAPI.Add("SS2UNUCLEATOR_PRIMARY_DESCRIPTION", "Charge and fire a glob of nuclear waste for <style=cIsDamage>200%-720% damage</style>, up to <style=cIsDamage>1080% damage</style> on <style=cIsHealth>Overcharge</style>. Radius increases with distance.");
-
-            LanguageAPI.Add("SS2UNUCLEATOR_SECONDARY_NAME", "Quarantine");
-            LanguageAPI.Add("SS2UNUCLEATOR_SECONDARY_DESCRIPTION", "<style=cIsDamage>Stunning</style>. Charge up and <style=cIsUtility>push</style> enemies for <style=cIsDamage>200%-720% damage</style>, up to <style=cIsDamage>1080% damage</style> and <style=cIsDamage>roots</style> on <style=cIsHealth>Overcharge</style>.");
-
-            LanguageAPI.Add("SS2UNUCLEATOR_UTILITY_NAME", "Fission Impulse");
-            LanguageAPI.Add("SS2UNUCLEATOR_UTILITY_DESCRIPTION", "<style=cIsDamage>Stunning</style>. Charge up a leap and gain <style=cIsUtility>200 armor</style>. Deals <style=cIsDamage>400%-800% damage</style> on impact, up to <style=cIsDamage>1200% damage</style> on <style=cIsHealth>Overcharge</style>.");
-
-            LanguageAPI.Add("SS2UNUCLEATOR_SPECIAL_NAME", "Radionuclide Surge");
-            LanguageAPI.Add("SS2UNUCLEATOR_SPECIAL_DESCRIPTION", "Go nuclear for <style=cIsUtility>6 seconds</style>, <style=cIsHealing>healing from <style=cIsHealth>Overcharge</style></style> and adding <style=cIsDamage>Radiation Poisoning</style> to every attack.");
-
-            LanguageAPI.Add("SS2UNUCLEATOR_SPECIAL_SCEPTER_NAME", "Radionuclide Efflux");
-            LanguageAPI.Add("SS2UNUCLEATOR_SPECIAL_SCEPTER_DESCRIPTION", $"Enter a nuclear state for <style=cIsUtility>12 seconds</style>, becoming <style=cIsUtility>immune to <style=cIsHealth>Overcharge</style> damage</style> and adding <style=cIsDamage>Radiation Poisoning</style> to every attack.");
-
-            LanguageAPI.Add("SS2UNUCLEATOR_UNLOCKUNLOCKABLE_ACHIEVEMENT_NAME", "Overkill");
-            LanguageAPI.Add("SS2UNUCLEATOR_UNLOCKUNLOCKABLE_ACHIEVEMENT_DESC", "Collect 5 Legendary items in one run.");
-            LanguageAPI.Add("SS2UNUCLEATOR_UNLOCKUNLOCKABLE_UNLOCKABLE_NAME", "Overkill");
-
-            LanguageAPI.Add("KEYWORD_SS2U_RADIATION", "<style=cKeywordName>Radiation Poisoning</style><style=cSub>Deal damage equivalent to <style=cIsDamage>5%</style> of their maximum health over 5s.</style>");
-
-            // todo: make a base class for mastery achievements and simply inherit from it for each character 
-            LanguageAPI.Add("SS2UNUCLEATOR_MASTERYUNLOCKABLE_ACHIEVEMENT_NAME", "Nucleator: Mastery");
-            LanguageAPI.Add("SS2UNUCLEATOR_MASTERYUNLOCKABLE_ACHIEVEMENT_DESC", "As Nucleator, beat the game or obliterate on Monsoon or harder.");
-            LanguageAPI.Add("SS2UNUCLEATOR_MASTERYUNLOCKABLE_UNLOCKABLE_NAME", "Nucleator: Mastery");
-
-            LanguageAPI.Add("SS2UNUCLEATOR_GRANDMASTERYUNLOCKABLE_ACHIEVEMENT_NAME", "Nucleator: Grand Mastery");
-            LanguageAPI.Add("SS2UNUCLEATOR_GRANDMASTERYUNLOCKABLE_ACHIEVEMENT_DESC", "As Nucleator, beat the game or obliterate on Typhoon.");
-            LanguageAPI.Add("SS2UNUCLEATOR_GRANDMASTERYUNLOCKABLE_UNLOCKABLE_NAME", "Nucleator: Grand Mastery");
-        }
-
         internal override void InitializeSkins()
         {
             GameObject model = bodyPrefab.GetComponentInChildren<ModelLocator>().modelTransform.gameObject;

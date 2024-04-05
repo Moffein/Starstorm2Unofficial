@@ -1,0 +1,10 @@
+{
+	strings:
+	{
+		"SS2U_EVENT_STORM" : "<style=cWorldEvent><sprite name=\"CloudRight\">     A storm is approaching...</style>",
+		"SS2U_EVENT_STORM_START" : "(Storm started.)",	//Used if storm visuals are disabled.
+		
+		"SS2UNEMESIS_MODE_ACTIVE_WARNING" : "<style=cIsHealth>An unnatural force emanates from the void...</style>",
+		"SS2UNEMESIS_MODE_DEACTIVATED" : "<style=cWorldEvent>The void's influence fades...</style>",
+	}
+}

@@ -63,10 +63,6 @@ namespace Starstorm2Unofficial.Survivors.Cyborg
             #endregion
 
             #region MasterySkin
-
-            LanguageAPI.Add("ACHIEVEMENT_SS2UCYBORGCLEARGAMEMONSOON_NAME", "CYBORG: Mastery");
-            LanguageAPI.Add("ACHIEVEMENT_SS2UCYBORGCLEARGAMEMONSOON_DESCRIPTION", "As CYBORG, beat the game or obliterate on Monsoon.");
-
             Sprite masteryIcon = LoadoutAPI.CreateSkinIcon(new Color32(234, 231, 212, 255), new Color32(125, 92, 39, 255), new Color32(26, 17, 22, 255), new Color32(57, 33, 33, 255));
             UnlockableDef masterySkinUnlockableDef = ScriptableObject.CreateInstance<UnlockableDef>();
             masterySkinUnlockableDef.cachedName = "Skins.SS2UCyborg.Mastery";
@@ -83,7 +79,6 @@ namespace Starstorm2Unofficial.Survivors.Cyborg
             //masteryRendererInfos[1].defaultMaterial = AssetsCore.CreateMaterial("matCyborg", 1, Color.white, 0);
             //masteryRendererInfos[2].defaultMaterial = AssetsCore.CreateMaterial("matCyborg", 1, Color.white, 0);
 
-            LanguageAPI.Add("SS2UCYBORG_MASTERY_SKIN_NAME", "Cybersteam");
             SkinDef masterySkin = SkinsCore.CreateSkinDef("SS2UCYBORG_MASTERY_SKIN_NAME",
                                                           masteryIcon,
                                                           masteryRendererInfos,
@@ -97,10 +92,6 @@ namespace Starstorm2Unofficial.Survivors.Cyborg
             #endregion
 
             #region GrandMasterySkin
-
-            LanguageAPI.Add("ACHIEVEMENT_SS2UCYBORGCLEARGAMETYPHOON_NAME", "CYBORG: Grandmastery");
-            LanguageAPI.Add("ACHIEVEMENT_SS2UCYBORGCLEARGAMETYPHOON_DESCRIPTION", "As CYBORG, beat the game or obliterate on Typhoon.");
-
             Sprite gmIcon = LoadoutAPI.CreateSkinIcon(new Color32(255, 134, 122, 255), new Color32(7, 14, 30, 255), new Color32(7, 12, 25, 255), new Color32(10, 22, 36, 255));
             UnlockableDef grandmasterySkinUnlockableDef = ScriptableObject.CreateInstance<UnlockableDef>();
             grandmasterySkinUnlockableDef.cachedName = "Skins.SS2UCyborg.GrandMastery";
@@ -117,7 +108,6 @@ namespace Starstorm2Unofficial.Survivors.Cyborg
             //masteryRendererInfos[1].defaultMaterial = AssetsCore.CreateMaterial("matCyborg", 1, Color.white, 0);
             //masteryRendererInfos[2].defaultMaterial = AssetsCore.CreateMaterial("matCyborg", 1, Color.white, 0);
 
-            LanguageAPI.Add("SS2UCYBORG_GRANDMASTERY_SKIN_NAME", "Metamorphic");
             SkinDef grandMasterySkin = SkinsCore.CreateSkinDef("SS2UCYBORG_GRANDMASTERY_SKIN_NAME",
                                                           gmIcon,
                                                           grandMasteryRendererInfos,

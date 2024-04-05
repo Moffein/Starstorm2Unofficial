@@ -67,9 +67,6 @@ namespace Starstorm2Unofficial.Survivors.Chirr
             #region MaidSkin
             Sprite maidSkinIcon = LoadoutAPI.CreateSkinIcon(new Color32(255, 255, 255, 255), new Color32(139, 139, 139, 255), new Color32(0, 0, 0, 255), new Color32(120, 147, 90, 255));
 
-            LanguageAPI.Add("ACHIEVEMENT_SS2UCHIRRCLEARGAMEMONSOON_NAME", "Chirr: Mastery");
-            LanguageAPI.Add("ACHIEVEMENT_SS2UCHIRRCLEARGAMEMONSOON_DESCRIPTION", "As Chirr, beat the game or obliterate on Monsoon.");
-
             UnlockableDef masterySkinUnlockableDef = ScriptableObject.CreateInstance<UnlockableDef>();
             masterySkinUnlockableDef.cachedName = "Skins.SS2UChirr.Mastery";
             masterySkinUnlockableDef.nameToken = "ACHIEVEMENT_SS2UCHIRRCLEARGAMEMONSOON_NAME";
@@ -83,7 +80,6 @@ namespace Starstorm2Unofficial.Survivors.Chirr
             masteryRendererInfos[0].defaultMaterial = Modules.Assets.CreateMaterial("matChirr", 0, new Color(1f, 1f, 1f), 1);
             masteryRendererInfos[1].defaultMaterial = Modules.Assets.CreateMaterial("matChirrMaidDress", 0, new Color(1f, 1f, 1f), 0);
 
-            LanguageAPI.Add("SS2UCHIRR_MASTERY_SKIN_NAME", "Maid");
             SkinDef masterySkin = SkinsCore.CreateSkinDef("SS2UCHIRR_MASTERY_SKIN_NAME",
                                                           maidSkinIcon,
                                                           masteryRendererInfos,

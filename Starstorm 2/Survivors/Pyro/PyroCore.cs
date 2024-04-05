@@ -43,13 +43,6 @@ namespace Starstorm2Unofficial.Survivors.Pyro
             bodyPrefab = CreatePyroPrefab();
             R2API.ItemAPI.DoNotAutoIDRSFor(bodyPrefab);
 
-            LanguageAPI.Add("SS2UPYRO_NAME", "Pyro");
-            LanguageAPI.Add("SS2UPYRO_SUBTITLE", "Pest Control");
-            LanguageAPI.Add("SS2UPYRO_OUTRO_FLAVOR", "..and so he left, in a blaze of glory.");
-            LanguageAPI.Add("SS2UPYRO_OUTRO_FAILURE", "..and so he vanished, with nothing but ashes left behind.");
-            LanguageAPI.Add("SS2UPYRO_DESCRIPTION", "The Pyro will stop at nothing to burn down everything in sight.\r\n\r\n< ! > Scorch generates Heat, which is required to use Pyro's abilities.\r\n\r\n< ! > \"Suppressive Fire\" can hit targets that are too far away to hit with Scorch.\r\n\r\n< ! > Plan B allows you to quickly get in and out of fights.\r\n\r\n< ! > Blaze Flare is strongest when used at high Heat.\r\n\r\n");
-            LanguageAPI.Add("SS2UPYRO_LORE", "<style=cMono>//--AUTO-TRANSCRIPTION FROM PATROL SECTION 7 OF RALLYPOINT SIGMA--//</style>\n\nTwo patrol guards walk into the sight of the camera, the sounds of their argument slowly fading in as they take their positions at the patrol point.\n\n\"No! For the last time, no! He is not going out to deal with the bugs.\"\n\n\"Come on, Alan! Those bugs have been harassing the rallypoint for far too long now. I mean, Hell, just last night those things almost killed me, for crying out loud!\"\n\n\"Okay, first of all, Jess, stop exaggerating. You were fine. They might be getting feistier, but it's nothing we can't handle. He'd just be a liability.\"\n\n\"What do you mean, a liability?\" Jess waves his hand out to the side. \"As far as I know, he's the single best suited person to deal with those bugs.\"\n\n\"Oh, gee, I dunno.\" Alan sets down his weapon to start a count. \"He's threatened people, gone out on 'hunting trips' in the middle of the night with NO ONE ELSE, he's started fires in the dorms while futzing around with his flamethrower, and that's just all before we took his weapons away.\" He lets out a subdued groan. \"Quite frankly, with his behavior, I'm stunned he was even allowed on the ship.\"\n\n\"He just wants to kill things, is all.\" Jess replied, before shrugging. \"And yeah, that's pretty screwed up, but if you gave him his stuff back and told him to run in the direction of the forest and burn anything that moves, he'd probably do it gladly.\"\n\n\"Ehh...\"\n\n\"Besides, if he does that, he'll probably just get himself killed.\" Jess added with a chuckle, \"Then he's no one's problem.\"");
-
             RegisterStates();
             SetUpSkills();
             RoR2.ContentManagement.ContentManager.onContentPacksAssigned += LateSetup;
@@ -208,9 +201,6 @@ namespace Starstorm2Unofficial.Survivors.Pyro
         }
         private void SetUpPrimaries(SkillLocator skillLocator)
         {
-            LanguageAPI.Add("SS2UPYRO_PRIMARY_NAME", "Scorch");
-            LanguageAPI.Add("SS2UPYRO_PRIMARY_DESCRIPTION", "<color=#D78326>Build heat</color> and burn enemies for <style=cIsDamage>420% damage per second</style>. <style=cIsDamage>Ignites</style> at <color=#D78326>high heat</color>.");
-
             SkillDef primaryDef1 = ScriptableObject.CreateInstance<SkillDef>();
             primaryDef1.activationState = new SerializableEntityStateType(typeof(FireFlamethrower));
             primaryDef1.activationStateMachineName = "Weapon";
@@ -241,9 +231,6 @@ namespace Starstorm2Unofficial.Survivors.Pyro
 
         private void SetUpSecondaries(SkillLocator skillLocator)
         {
-            LanguageAPI.Add("SS2UPYRO_SECONDARY_NAME", "Return to Sender");
-            LanguageAPI.Add("SS2UPYRO_SECONDARY_DESCRIPTION", $"<color=#D78326>Consume 25% heat</color> and fire a nonlethal blast of air that <style=cIsUtility>pushes</style> enemies and <style=cIsUtility>reflects projectiles</style>.");
-
             HeatSkillDef airblast = ScriptableObject.CreateInstance<HeatSkillDef>();
             airblast.activationState = new SerializableEntityStateType(typeof(Airblast));
             airblast.activationStateMachineName = "Weapon";
@@ -269,9 +256,6 @@ namespace Starstorm2Unofficial.Survivors.Pyro
             Modules.Skills.skillDefs.Add(airblast);
             SkillFamily.Variant airblastVariant = Utils.RegisterSkillVariant(airblast);
             Skills.secondaryAirblast = airblast;
-
-            LanguageAPI.Add("SS2UPYRO_SECONDARY_ALT_NAME", "\"Suppressive Fire\"");
-            LanguageAPI.Add("SS2UPYRO_SECONDARY_ALT_DESCRIPTION", $"<color=#D78326>Rapidly consume heat</color> to fire a stream of fireballs that deal <style=cIsDamage>1200% damage per second</style> and <style=cIsDamage>ignite</style>.");
 
             HeatSkillDef suppressiveFire = ScriptableObject.CreateInstance<HeatSkillDef>();
             suppressiveFire.activationState = new SerializableEntityStateType(typeof(SuppressiveFire));
@@ -304,9 +288,6 @@ namespace Starstorm2Unofficial.Survivors.Pyro
 
         private void SetUpUtilities(SkillLocator skillLocator)
         {
-            LanguageAPI.Add("SS2UPYRO_UTILITY_NAME", "Plan B");
-            LanguageAPI.Add("SS2UPYRO_UTILITY_DESCRIPTION", $"<color=#D78326>Consume 40% heat</color> and <style=cIsUtility>fly forwards</style>. Hold the button to fly further at the cost of more <color=#D78326>heat</color>.");
-
             HeatSkillDef utilityDef1 = ScriptableObject.CreateInstance<HeatSkillDef>();
             utilityDef1.activationState = new SerializableEntityStateType(typeof(HeatJetpack));
             utilityDef1.activationStateMachineName = "Weapon";
@@ -339,9 +320,6 @@ namespace Starstorm2Unofficial.Survivors.Pyro
 
         private void SetUpSpecials(SkillLocator skillLocator)
         {
-            LanguageAPI.Add("SS2UPYRO_SPECIAL_NAME", "Blaze Flare");
-            LanguageAPI.Add("SS2UPYRO_SPECIAL_DESCRIPTION", $"<color=#D78326>Consume all heat</color> and fire a flare for <style=cIsDamage>400% damage</style>. On impact, explodes for up to <style=cIsDamage>8x200% damage</style> based on <color=#D78326>heat</color> consumed.");
-
             HeatSkillDef flareGun = ScriptableObject.CreateInstance<HeatSkillDef>();
             flareGun.activationState = new SerializableEntityStateType(typeof(Flaregun));
             flareGun.activationStateMachineName = "Weapon";
@@ -376,9 +354,6 @@ namespace Starstorm2Unofficial.Survivors.Pyro
 
         private void SetUpScepters(SkillLocator skillLocator)
         {
-            LanguageAPI.Add("SS2UPYRO_SPECIAL_SCEPTER_NAME", "Hell Flare");
-            LanguageAPI.Add("SS2UPYRO_SPECIAL_SCEPTER_DESCRIPTION", $"<color=#D78326>Consume all Heat</color> and fire a flare for <style=cIsDamage>400% damage</style>. On impact, it explodes for up to <style=cIsDamage>16x200% damage</style> based on <color=#D78326>heat</color> consumed.");
-
             HeatSkillDef flareScepter = ScriptableObject.CreateInstance<HeatSkillDef>();
             flareScepter.activationState = new SerializableEntityStateType(typeof(Flaregun));
             flareScepter.activationStateMachineName = "Weapon";
