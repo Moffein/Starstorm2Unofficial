@@ -40,6 +40,8 @@
 			- Implosion damage remains the same, 1200% (was mislabeled as 1600%)
 		- Increased pull radius from 20m -> 30m
 		
+	*Credits to Thingw for the new icons!*
+		
 - Chirr
 	- Friend loadout is now saved between stages. (Relevant for Hunted and other mods that let you befriend survivors)
 	- Fixed TP boss befriending being locked behind Scepter due to an earlier update. (You'll still need Scepter to befriend Champions, but you should now be able to befriend Horde bosses)

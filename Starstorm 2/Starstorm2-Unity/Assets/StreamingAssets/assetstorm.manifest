@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 3563468063
+CRC: 522043990
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 1601d64a5f8cf6268c21a01d16ed0e3f
+    Hash: bf96152ccff95909cd5f0458c659a247
   TypeTreeHash:
     serializedVersion: 2
     Hash: 98dced2a5bd17d57baa4286d94746515
@@ -152,6 +152,7 @@ Assets:
 - Assets/AssetBundle/Chirr/Textures_Old/T_Chirr_C.png
 - Assets/AssetBundle/Nemmando/Animations/AltSprintF.anim
 - Assets/AssetBundle/Nemmando/Animations/maskNemmandoImpact.mask
+- Assets/AssetBundle/Cyborg/cyborgpassive_energy.png
 - Assets/AssetBundle/Nucleator/Icons/texNucleatorUtility.png
 - Assets/AssetBundle/GeneralAssets/Textures/texDistortionNormal.jpg
 - Assets/AssetBundle/Nemmando/Animations/Ascending.anim
@@ -368,6 +369,7 @@ Assets:
 - Assets/AssetBundle/Cyborg/Animations/ascend.anim
 - Assets/AssetBundle/Cyborg/animCyborg1Emote.prefab
 - Assets/AssetBundle/Enemies/Wayfarer/LampBoss.png
+- Assets/AssetBundle/Cyborg/cyborgprimarycharge.png
 - Assets/AssetBundle/Items/JetBoots/jet_boots.png
 - Assets/AssetBundle/Cyborg/Animations/animCyTP_Death.anim
 - Assets/AssetBundle/Nucleator/Animations/Clips/RunR.anim
@@ -702,6 +704,7 @@ Assets:
 - Assets/AssetBundle/Chirr/ChirrSpecialScepter.png
 - Assets/AssetBundle/Items/HuntersSigil/sigiltex.png
 - Assets/AssetBundle/Executioner/VFX/AxeSlamEffect.prefab
+- Assets/AssetBundle/Cyborg/cyborgsecondaryshield.png
 - Assets/AssetBundle/Skins/Textures/texCommandoClassic.png
 - Assets/AssetBundle/Items/HottestSauce/HottestSauceT.png
 - Assets/AssetBundle/Chirr/Animations/Primary.anim

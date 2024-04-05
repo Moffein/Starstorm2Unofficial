@@ -479,7 +479,7 @@ namespace Starstorm2Unofficial.Survivors.Cyborg
             skillLocator.passiveSkill.enabled = true;
             skillLocator.passiveSkill.skillNameToken = "SS2UCYBORG_PASSIVE_NAME";
             skillLocator.passiveSkill.skillDescriptionToken = useEnergyRework.Value ? "SS2UCYBORG_PASSIVE_DESCRIPTION" : "SS2UCYBORG_PASSIVE_DESCRIPTION_NOENERGY";
-            skillLocator.passiveSkill.icon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("cyborgpassive");
+            skillLocator.passiveSkill.icon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("cyborgpassive_energy");
 
             SetUpPrimaries(skillLocator);
             SetUpSecondaries(skillLocator);
@@ -552,7 +552,7 @@ namespace Starstorm2Unofficial.Survivors.Cyborg
             primaryDef2.skillName = "SS2UCYBORG_PRIMARY_CHARGE_NAME";
             primaryDef2.skillNameToken = "SS2UCYBORG_PRIMARY_CHARGE_NAME";
             primaryDef2.skillDescriptionToken = "SS2UCYBORG_PRIMARY_CHARGE_DESCRIPTION";
-            primaryDef2.icon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("cyborgprimary");
+            primaryDef2.icon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("cyborgprimarycharge");
             primaryDef2.baseMaxStock = 1;
             primaryDef2.baseRechargeInterval = 0f;
             primaryDef2.beginSkillCooldownOnSkillEnd = false;
@@ -583,7 +583,7 @@ namespace Starstorm2Unofficial.Survivors.Cyborg
              defenseMatrixDef.skillName = "SS2UCYBORG_SECONDARY_DEFENSEMATRIX_NAME";
              defenseMatrixDef.skillNameToken = "SS2UCYBORG_SECONDARY_DEFENSEMATRIX_NAME";
              defenseMatrixDef.skillDescriptionToken = useEnergyRework.Value ? "SS2UCYBORG_SECONDARY_DEFENSEMATRIX_DESCRIPTION" : "SS2UCYBORG_SECONDARY_DEFENSEMATRIX_DESCRIPTION_NOENERGY";
-             defenseMatrixDef.icon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("cyborgsecondary");
+             defenseMatrixDef.icon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("cyborgsecondaryshield");
              defenseMatrixDef.baseMaxStock = 1;
              defenseMatrixDef.baseRechargeInterval = useEnergyRework.Value ? 5f : 6f;
              defenseMatrixDef.beginSkillCooldownOnSkillEnd = true;
