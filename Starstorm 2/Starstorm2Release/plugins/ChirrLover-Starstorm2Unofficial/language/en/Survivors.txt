@@ -1,6 +1,49 @@
 {
 	strings:
 	{
+		"SS2UEXECUTIONER_NAME" : "Executioner",
+		"SS2UEXECUTIONER_SUBTITLE" : "Dreaded Guillotine",
+		"SS2UEXECUTIONER_DESCRIPTION" : "The Executioner's goal is to spill as much blood as possible in the shortest amount of time. Bullets loaded, ion manipulators charged.<style=cSub>\r\n\r\n < ! > Ion Burst deals massive damage but regenerates stocks slowly. Kill weak enemies to charge it up quickly, then unload it into stronger enemies.\r\n\r\n < ! > Crowd Disperion interrupts enemy attacks, providing you with a window of opportunity.\r\n\r\n < ! > Feared enemies are executed at low health.\r\n\r\n < ! > Combine Execution with Crowd Dispersion to quickly kill groups of enemies.\r\n\r\n",
+		"SS2UEXECUTIONER_OUTRO_FLAVOR" : "..and so he left, bloodlust unfulfilled.",
+		"SS2UEXECUTIONER_OUTRO_FAILURE" : "..and so he vanished, escaping what he'd believed was inevitable.",
+		"SS2UEXECUTIONER_LORE" : "Death is inevitable. It comes for us all. Some may try to evade it, or run from it. But death arrives all the same. Death, however, is simply the cost of war. And death in glorious combat is one of the best deaths a man could ask for.\n\nBut, as always, some would seek to run from death. We call them by many names. Deserters, cowards, turncoats. Each and every one of them, traitors to the cause. These traitors must be punished for their crime. And that punishment: in an ironic twist, is the very thing they tried to avoid.\n\nDeath will come for them. Not as a robed spectre with a scythe. Not in a trench coat, holding a revolver. Not as a sickness, nor the wear of time. No. For them, death will come bearing lustrous battlegarb, with service pistol loaded, and ion manipulators fully charged.",
+		
+		"SS2UEXECUTIONER_PISTOL_NAME" : "Service Pistol",
+		"SS2UEXECUTIONER_PISTOL_DESCRIPTION" : "Fire your pistol for <style=cIsDamage>2x180% damage</style>.",
+		
+		"SS2UEXECUTIONER_PISTOL_SINGLE_NAME" : "Standard-Issue Pistol",
+		"SS2UEXECUTIONER_PISTOL_SINGLE_DESCRIPTION" : "Fire your pistol for <style=cIsDamage>180% damage</style>.",
+		
+		"SS2UEXECUTIONER_IONGUN_NAME" : "Ion Burst",
+		"SS2UEXECUTIONER_IONGUN_DESCRIPTION" : "<style=cIsDamage>Shocking</style>. Unload a barrage of ionized bullets for <style=cIsDamage>2x300% damage</style> each. Every slain enemy <style=cIsUtility>adds a stock</style>. Hold up to 5.",
+		
+		"KEYWORD_SS2U_FEAR" : "<style=cKeywordName>Fear</style><style=cSub>Reduce movement speed by <style=cIsDamage>50%</style>. Feared enemies are <style=cIsHealth>instantly killed</style> if below <style=cIsHealth>15%</style> health.</style>",
+		
+		"SS2UEXECUTIONER_DASH_NAME" : "Crowd Dispersion",
+		"SS2UEXECUTIONER_DASH_DESCRIPTION" : "<style=cIsDamage>Stunning</style>. <style=cIsUtility>Dash forward</style> and <style=cIsDamage>Fear</style> nearby enemies.",
+		
+		"SS2UEXECUTIONER_AXE_NAME" : "Execution",
+		"SS2UEXECUTIONER_AXE_DESCRIPTION" : "<style=cIsDamage>Slayer</style>. <style=cIsUtility>Launch into the air</style>, then slam downwards with your ion axe for <style=cIsDamage>1000% damage</style>.",
+		
+		"SS2UEXECUTIONER_AXE_SCEPTER_NAME" : "Crowd Execution",
+		"SS2UEXECUTIONER_AXE_SCEPTER_DESCRIPTION" : "<style=cIsDamage>Slayer</style>. <style=cIsUtility>Launch into the air</style>, then slam downwards with your ion axe and <style=cIsUtility>Fear</style> nearby enemies while dealing <style=cIsDamage>1500% damage</style>.",
+		
+		//Is this even used?
+		"SS2UEXECUTIONER_UNLOCKUNLOCKABLE_ACHIEVEMENT_NAME" : "Overkill",
+		"SS2UEXECUTIONER_UNLOCKUNLOCKABLE_UNLOCKABLE_NAME" : "Overkill",
+		"SS2UEXECUTIONER_UNLOCKUNLOCKABLE_ACHIEVEMENT_DESC" : "Defeat an enemy by dealing 1000% of its max health in damage.",
+		
+		"ACHIEVEMENT_SS2UEXECUTIONERCLEARGAMEMONSOON_NAME" : "Executioner: Mastery",
+		"ACHIEVEMENT_SS2UEXECUTIONERCLEARGAMEMONSOON_DESCRIPTION" : "As Executioner, beat the game or obliterate on Monsoon.",
+		"ACHIEVEMENT_SS2UEXECUTIONERCLEARGAMETYPHOON_NAME" : "Executioner: Grand Mastery",
+		"ACHIEVEMENT_SS2UEXECUTIONERCLEARGAMETYPHOON_DESCRIPTION" : "As Executioner, beat the game or obliterate on Typhoon.",
+		"ACHIEVEMENT_SS2UEXECUTIONERWASTELANDER_NAME" : "Executioner: Crack the Vault",
+		"ACHIEVEMENT_SS2UEXECUTIONERWASTELANDER_DESCRIPTION" : "As Executioner, open the ancient gate on Abandoned Aqueduct.",
+		
+		"SS2UEXECUTIONER_MASTERY_SKIN_NAME" : "Vigilante",
+		"SS2UEXECUTIONER_KNIGHT_SKIN_NAME" : "Gladiator",
+		"SS2UEXECUTIONER_WASTELANDER_SKIN_NAME" : "Wastelander",
+	
 		"SS2UCYBORG_NAME" : "Cyborg",
 		"SS2UCYBORG_SUBTITLE" : "Man Made Monstrosity",
 		"SS2UCYBORG_OUTRO_FLAVOR" : "..and so it left, programming releasing excess serotonin.",
@@ -180,5 +223,56 @@
 		"SS2UNUCLEATOR_GRANDMASTERYUNLOCKABLE_UNLOCKABLE_NAME" : "Nucleator: Grand Mastery",
 		"SS2UNUCLEATOR_GRANDMASTERYUNLOCKABLE_ACHIEVEMENT_NAME" : "Nucleator: Grand Mastery",
 		"SS2UNUCLEATOR_GRANDMASTERYUNLOCKABLE_ACHIEVEMENT_DESC" : "As Nucleator, beat the game or obliterate on Typhoon.",
+		
+		"SS2UNEMMANDO_NAME" : "Nemesis Commando",
+		"SS2UNEMMANDO_SUBTITLE" : "Lone Echo",
+		"SS2UNEMMANDO_DESCRIPTION" : "The Nemesis Commando's origins are unknown, but something is clear: he's no longer who he once was.<style=cSub>\r\n\r\n< ! > Blade of Cessation is risky but can build up a lot of damage by stacking Gouge.\r\n\r\n< ! > Distant Gash can be used to safely apply stacks of Gouge to groups of enemies - take advantage of its piercing!\r\n\r\n< ! > Proper balance of melee and ranged combat is key, and Tactical Roll grants high armor to help enter and exit battles.\r\n\r\n< ! > Submission deals massive damage when fully charged.\r\n\r\n",
+		"SS2UNEMMANDO_OUTRO_FLAVOR" : "..and so he left, newfound sense of humanity within.",
+		"SS2UNEMMANDO_OUTRO_FAILURE" : "..and so he returned, concluding his endless struggle.",
+		"SS2UNEMMANDO_LORE" : "He lays to rest by a fire, setting the weapons he carries within an arm's reach. Checking his surroundings, hoping the cave he hid in would be enough shelter. Some would say, it isn't wise to be overly cautious. He would say, <color=#FFCCED>they haven't seen enough.</color>\n\nThe service pistol he got when he enlisted. Well used, dirtied, and loved. It's brought him through thick and thin, no matter which mission he took on. Some would say, only a fool would trust their weapon. He would say, <color=#FFCCED>your weapon is all you can trust.</color>\n\nThe blade of a fallen brother of war. Picked from what he could scavenge of the last of humanity he's seen. Some would say, it keeps their spirits united. He would say, <color=#FFCCED>it's to keep their spirits from joining for as long as possible.</color>\n\nThe loads of cargo that landed with him. Each item picked from a chest, keeping him alive in one way or another. Dozens of shipments to anyone but him. Some would say, they aren't his items to take. He would say, <color=#FFCCED>if he doesn't take them, then no one will.</color>\n\nThe glow of a violet light coming from deeper within the cave. Calming, warming... beckoning. Welcoming him deeper and deeper, promising safety. Some would say, what sounds too good to be true probably is. He would say, <color=#FFCCED>Faust was a wise man.</color>",
+		
+		"KEYWORD_SS2U_GOUGE" : "<style=cKeywordName>Gouge</style><style=cSub>Deal <style=cIsDamage>300%</style> base damage over 2s. <i>Capable of triggering item effects.</i>",
+		
+		"SS2UNEMMANDO_PRIMARY_BLADE_NAME" : "Blade of Cessation",
+		"SS2UNEMMANDO_PRIMARY_BLADE_DESCRIPTION" : "<style=cIsHealth>Gouging</style>. <style=cIsUtility>Agile.</style> Slice enemies for <style=cIsDamage>160% damage</style>.",
+		
+		"SS2UNEMMANDO_SECONDARY_CONCUSSION_NAME" : "Distant Gash",
+		"SS2UNEMMANDO_SECONDARY_CONCUSSION_DESCRIPTION" : "<style=cIsHealth>Gouging</style>. Charge a piercing sword beam for <style=cIsDamage>200%-600% damage</style>.",
+		
+		"SS2UNEMMANDO_SECONDARY_SHOOT_NAME" : "Single Tap",
+		"SS2UNEMMANDO_SECONDARY_SHOOT_DESCRIPTION" : "Fire your gun for <style=cIsDamage>210% damage</style>. Can hold up to 6 bullets.",
+		
+		"SS2UNEMMANDO_UTILITY_DODGE_NAME" : "Tactical Roll",
+		"SS2UNEMMANDO_UTILITY_DODGE_DESCRIPTION" : "<style=cIsUtility>Roll</style> a short distance and gain <style=cIsUtility>100 armor</style>.",
+		
+		"SS2UNEMMANDO_SPECIAL_SUBMISSION_NAME" : "Submission",
+		"SS2UNEMMANDO_SPECIAL_SUBMISSION_DESCRIPTION" : "Charge up a barrage of <style=cIsDamage>5 shotgun blasts</style> that deal <style=cIsDamage>4x120% damage</style> each. The number of shots increases with attack speed.",
+		
+		"SS2UNEMMANDO_SPECIAL_EPIC_NAME" : "Decisive Strike",
+		"SS2UNEMMANDO_SPECIAL_EPIC_DESCRIPTION" : "<style=cIsHealth>Gouging</style>. Charge up a devastating barrage of <style=cIsDamage>slashes</style> that deals up to <style=cIsDamage>6x360% damage</style>.",
+		
+		"SS2UNEMMANDO_SPECIAL_SCEPSUBMISSION_NAME" : "Subjunction",
+		"SS2UNEMMANDO_SPECIAL_SCEPSUBMISSION_DESCRIPTION" : "Charge up a barrage of <style=cIsDamage>5 shotgun blasts</style> that deal <style=cIsDamage>4x120% damage</style> each. The number of shots increases with attack speed. Each blast also fires a laser for <style=cIsDamage>820% damage</style>.",
+		
+		"SS2UNEMMANDO_SPECIAL_SCEPEPIC_NAME" : "Judgement Cut End",
+		"SS2UNEMMANDO_SPECIAL_SCEPEPIC_DESCRIPTION" : "<style=cIsHealth>Gouging</style>. Charge up a devastating barrage of <style=cIsDamage>slashes</style> that deals up to <style=cIsDamage>12x360% damage</style>.",
+		
+		"SS2UNEMMANDO_MASTERY_SKIN_NAME" : "Minuano",
+		"SS2UNEMMANDO_CLASSIC_SKIN_NAME" : "Classic",
+		"SS2UNEMMANDO_COMMANDO_SKIN_NAME" : "Commando",
+		"SS2UNEMMANDO_VERGIL_SKIN_NAME" : "Motivator",
+		
+		"ACHIEVEMENT_SS2UNEMMANDOCLEARGAMEMONSOON_NAME" : "Nemesis Commando: Mastery",
+		"ACHIEVEMENT_SS2UNEMMANDOCLEARGAMEMONSOON_DESCRIPTION" : "As Nemesis Commando, beat the game or obliterate on Monsoon.",
+		"ACHIEVEMENT_SS2UNEMMANDOCLEARGAMETYPHOON_NAME" : "Nemesis Commando: Grand Mastery",
+		"ACHIEVEMENT_SS2UNEMMANDOCLEARGAMETYPHOON_DESCRIPTION" : "As Nemesis Commando, beat the game or obliterate on Typhoon.",
+		
+		"ACHIEVEMENT_SS2UNEMMANDOUNLOCK_NAME" : "???",
+		"ACHIEVEMENT_SS2UNEMMANDOUNLOCK_DESCRIPTION" : "Defeat Commando's vestige.",
+		"ACHIEVEMENT_SS2UNEMMANDOKILLSELF_NAME" : "Nemesis Commando: Nemesis Nemesis",
+		"ACHIEVEMENT_SS2UNEMMANDOKILLSELF_DESCRIPTION" : "As Nemesis Commando, defeat Commando's vestige.",
+		"SS2UNEMMANDO_EPICUNLOCKABLE_UNLOCKABLE_NAME" : "Nemesis Commando: Zandatsu",
+		"SS2UNEMMANDO_EPICUNLOCKABLE_ACHIEVEMENT_NAME" : "Nemesis Commando: Zandatsu",
+		"SS2UNEMMANDO_EPICUNLOCKABLE_ACHIEVEMENT_DESC" : "As Nemesis Commando, inflict 50 stacks of Gouge on one enemy.",
 	}
 }

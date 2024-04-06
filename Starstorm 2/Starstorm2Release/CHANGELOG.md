@@ -1,30 +1,43 @@
 `0.19.0`
 
+- Now uses language files.
+
+- Executioner
+	- Service Pistol now has a unique icon. (TODO)
+
 - Cyborg
 	- New Passive: Energy Core
 		- Cyborgs skills all draw from a shared Energy Pool instead of using cooldowns.
 			- Takes 15s to recharge, scales off of cooldown reduction to each skill.
 			- Extra skill stocks increase the max cap of the energy pool.
 		- Cyborg can still hover by holding jump.
+		
+		*A common feedback about Cyborg was that he felt very generic, so I'm hoping this new passive will help shake his gameplay up. Skills are mostly mechanically the same, but he now has a lot more flexibility in how/when he can use his skills.*
 	
 	- Primaries no longer slow on hit.
 	- Special Skills can now be fired while Primary is being fired.
 	
 	- Alt Primary: Renamed to Piercing Shot (TODO: Better name)
 	
-	- Defense Matrix
-		- 7s cooldown -> 15% Energy/s
-			- Increased shield uptime from 3s -> 6.67s
-	
 	- New Default Secondary: Rising Star
 		- 30% Energy/s
 		- Rapidly fire slowing shots for 3x140% damage. (0.5 proc)
 			- Fires 5x per second.
+			
+		*The highest raw single target DPS skill in the kit, at the cost of consuming Energy very quickly.*
+	
+	- Defense Matrix
+		- 7s cooldown -> 15% Energy/s
+			- Increased shield uptime from 3s -> 6.67s
+			
+		*Short shield uptime was balanced around frame-perfect defenses in solo, but ended up being too short to be useful for protecting teammates in multiplayer.*
 		
 	- Recall
 		- 8s cooldown -> 50% Energy
 		- Removed shock explosion.
 		- Now stuns in a very small radius for 1000% damage when teleporting. (Hidden Stat)
+		
+		*No longer shocks, but now can be potentially used 2 times in a row.*
 		
 	- Flight Mode
 		- 8s cooldown -> 60% Energy/s
@@ -40,7 +53,7 @@
 			- Implosion damage remains the same, 1200% (was mislabeled as 1600%)
 		- Increased pull radius from 20m -> 30m
 		
-	*Credits to Thingw for the new icons!*
+*Credits to Thingw for the new icons!*
 		
 - Chirr
 	- Friend loadout is now saved between stages. (Relevant for Hunted and other mods that let you befriend survivors)

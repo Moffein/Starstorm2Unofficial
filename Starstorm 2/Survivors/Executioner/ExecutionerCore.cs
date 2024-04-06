@@ -335,70 +335,6 @@ namespace Starstorm2Unofficial.Survivors.Executioner
             Modules.States.AddState(typeof(ExecutionerAxeSlamScepter));
         }
 
-        internal override void RegisterTokens()
-        {
-            LanguageAPI.Add("SS2UEXECUTIONER_NAME", "Executioner");
-            LanguageAPI.Add("SS2UEXECUTIONER_SUBTITLE", "Dreaded Guillotine");
-            LanguageAPI.Add("SS2UEXECUTIONER_DESCRIPTION", "The Executioner's goal is to spill as much blood as possible in the shortest amount of time. Bullets loaded, ion manipulators charged.<style=cSub>\r\n\r\n" +
-                " < ! > Ion Burst deals massive damage but regenerates stocks slowly. Kill weak enemies to charge it up quickly, then unload it into stronger enemies.\r\n\r\n" +
-                " < ! > Crowd Disperion interrupts enemy attacks, providing you with a window of opportunity.\r\n\r\n" +
-                " < ! > Feared enemies are executed at low health.\r\n\r\n" +
-                " < ! > Combine Execution with Crowd Dispersion to quickly kill groups of enemies.\r\n\r\n");
-            LanguageAPI.Add("SS2UEXECUTIONER_OUTRO_FLAVOR", "..and so he left, bloodlust unfulfilled.");
-            LanguageAPI.Add("SS2UEXECUTIONER_OUTRO_FAILURE", "..and so he vanished, escaping what he'd believed was inevitable.");
-            LanguageAPI.Add("SS2UEXECUTIONER_LORE", "Death is inevitable. It comes for us all. Some may try to evade it, or run from it. But death arrives all the same. Death, however, is simply the cost of war. And death in glorious combat is one of the best deaths a man could ask for.\n\n" +
-                "But, as always, some would seek to run from death. We call them by many names. Deserters, cowards, turncoats. Each and every one of them, traitors to the cause. These traitors must be punished for their crime. And that punishment: in an ironic twist, is the very thing they tried to avoid.\n\n" +
-                "Death will come for them. Not as a robed spectre with a scythe. Not in a trench coat, holding a revolver. Not as a sickness, nor the wear of time. No. For them, death will come bearing lustrous battlegarb, with service pistol loaded, and ion manipulators fully charged.");
-
-            LanguageAPI.Add("SS2UEXECUTIONER_DEFAULT_SKIN_NAME", "Default");
-            LanguageAPI.Add("SS2UEXECUTIONER_MASTERY_SKIN_NAME", "Vigilante");
-            LanguageAPI.Add("SS2UEXECUTIONER_KNIGHT_SKIN_NAME", "Gladiator");
-            LanguageAPI.Add("SS2UEXECUTIONER_WASTELANDER_SKIN_NAME", "Wastelander");
-
-            //float dmg = ExecutionerPistol.damageCoefficient * 100f;
-            float dmg = ExecutionerBurstPistol.damageCoefficient * 100f;
-            int shotCount = ExecutionerBurstPistol.baseShotCount;
-
-            LanguageAPI.Add("SS2UEXECUTIONER_PISTOL_NAME", "Service Pistol");
-            LanguageAPI.Add("SS2UEXECUTIONER_PISTOL_DESCRIPTION", $"Fire your pistol for <style=cIsDamage>{shotCount}x{dmg}% damage</style>.");
-
-            dmg = ExecutionerSinglePistol.damageCoefficient * 100f;
-            LanguageAPI.Add("SS2UEXECUTIONER_PISTOL_SINGLE_NAME", "Standard-Issue Pistol");
-            LanguageAPI.Add("SS2UEXECUTIONER_PISTOL_SINGLE_DESCRIPTION", $"Fire your pistol for <style=cIsDamage>{dmg}% damage</style>.");
-
-            dmg = ExecutionerIonGun.damageCoefficient * 100f;
-            int shots = ExecutionerIonGun.shotCount;
-            LanguageAPI.Add("SS2UEXECUTIONER_IONGUN_NAME", "Ion Burst");
-            LanguageAPI.Add("SS2UEXECUTIONER_IONGUN_DESCRIPTION", $"<style=cIsDamage>Shocking</style>. Unload a barrage of ionized bullets for <style=cIsDamage>{shots}x{dmg}% damage</style> each. Every slain enemy <style=cIsUtility>adds a stock</style>. Hold up to 5.");
-
-            LanguageAPI.Add("KEYWORD_SS2U_FEAR", "<style=cKeywordName>Fear</style><style=cSub>Reduce movement speed by <style=cIsDamage>50%</style>. Feared enemies are <style=cIsHealth>instantly killed</style> if below <style=cIsHealth>15%</style> health.</style>");
-
-            LanguageAPI.Add("SS2UEXECUTIONER_DASH_NAME", "Crowd Dispersion");
-            LanguageAPI.Add("SS2UEXECUTIONER_DASH_DESCRIPTION", $"<style=cIsDamage>Stunning</style>. <style=cIsUtility>Dash forward</style> and <style=cIsDamage>Fear</style> nearby enemies.");
-
-            dmg = ExecutionerAxeSlam.damageCoefficient * 100f;
-
-            LanguageAPI.Add("SS2UEXECUTIONER_AXE_NAME", "Execution");
-            LanguageAPI.Add("SS2UEXECUTIONER_AXE_DESCRIPTION", $"<style=cIsDamage>Slayer</style>. <style=cIsUtility>Launch into the air</style>, then slam downwards with your ion axe for <style=cIsDamage>{dmg}% damage</style>.");
-
-            dmg = ExecutionerAxeSlam.damageCoefficient * 100f * 1.5f;
-            LanguageAPI.Add("SS2UEXECUTIONER_AXE_SCEPTER_NAME", "Crowd Execution");
-            LanguageAPI.Add("SS2UEXECUTIONER_AXE_SCEPTER_DESCRIPTION", $"<style=cIsDamage>Slayer</style>. <style=cIsUtility>Launch into the air</style>, then slam downwards with your ion axe and <style=cIsUtility>fear</style> nearby enemies while dealing <style=cIsDamage>{dmg}% damage</style>.");
-
-            LanguageAPI.Add("SS2UEXECUTIONER_UNLOCKUNLOCKABLE_ACHIEVEMENT_NAME", "Overkill");
-            LanguageAPI.Add("SS2UEXECUTIONER_UNLOCKUNLOCKABLE_ACHIEVEMENT_DESC", "Defeat an enemy by dealing 1000% of its max health in damage. <color=#c11>Host only</color>");
-            LanguageAPI.Add("SS2UEXECUTIONER_UNLOCKUNLOCKABLE_UNLOCKABLE_NAME", "Overkill");
-
-            LanguageAPI.Add("ACHIEVEMENT_SS2UEXECUTIONERCLEARGAMEMONSOON_NAME", "Executioner: Mastery");
-            LanguageAPI.Add("ACHIEVEMENT_SS2UEXECUTIONERCLEARGAMEMONSOON_DESCRIPTION", "As Executioner, beat the game or obliterate on Monsoon.");
-
-            LanguageAPI.Add("ACHIEVEMENT_SS2UEXECUTIONERCLEARGAMETYPHOON_NAME", "Executioner: Grand Mastery");
-            LanguageAPI.Add("ACHIEVEMENT_SS2UEXECUTIONERCLEARGAMETYPHOON_DESCRIPTION", "As Executioner, beat the game or obliterate on Typhoon.");
-
-            LanguageAPI.Add("ACHIEVEMENT_SS2UEXECUTIONERWASTELANDER_NAME", "Executioner: Crack the Vault");
-            LanguageAPI.Add("ACHIEVEMENT_SS2UEXECUTIONERWASTELANDER_DESCRIPTION", "As Executioner, open the ancient gate on Abandoned Aqueduct.");
-        }
-
         internal override void Hook()
         {
             On.RoR2.CharacterMaster.OnInventoryChanged += CharacterMaster_OnInventoryChanged;
@@ -470,6 +406,7 @@ namespace Starstorm2Unofficial.Survivors.Executioner
                 defaultRenderers,
                 mainRenderer,
                 model);
+            defaultSkin.nameToken = "DEFAULT_SKIN";
 
             defaultSkin.meshReplacements = new SkinDef.MeshReplacement[]
             {

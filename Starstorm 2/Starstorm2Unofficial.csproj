@@ -166,7 +166,7 @@
     <Compile Include="Cores\SkinsCore.cs" />
     <Compile Include="Equipment\CloakingHeadband.cs" />
     <Compile Include="Equipment\GreaterWarbanner.cs" />
-    <Compile Include="Equipment\PressurizedCanister.cs" />
+    <Compile Include="Equipment\Trashbin\PressurizedCanister.cs" />
     <Compile Include="Cores\EventsCore.cs" />
     <Compile Include="Cores\ItemDisplayCore.cs" />
     <Compile Include="Items\Trashbin\BrokenBloodTester.cs" />

@@ -792,89 +792,6 @@ namespace Starstorm2Unofficial.Survivors.Nemmando
             });
         }
 
-        internal override void RegisterTokens()
-        {
-            LanguageAPI.Add("SS2UNEMMANDO_NAME", "Nemesis Commando");
-            LanguageAPI.Add("SS2UNEMMANDO_SUBTITLE", "Lone Echo");
-            LanguageAPI.Add("SS2UNEMMANDO_DESCRIPTION", "The Nemesis Commando's origins are unknown, but something is clear: he's no longer who he once was.<style=cSub>\r\n\r\n" +
-                "< ! > Blade of Cessation is risky but can build up a lot of damage by stacking Gouge.\r\n\r\n" +
-                "< ! > Distant Gash can be used to safely apply stacks of Gouge to groups of enemies - take advantage of its piercing!\r\n\r\n" +
-                "< ! > Proper balance of melee and ranged combat is key, and Tactical Roll grants high armor to help enter and exit battles.\r\n\r\n" +
-                "< ! > Submission deals massive damage when fully charged.\r\n\r\n");
-            LanguageAPI.Add("SS2UNEMMANDO_OUTRO_FLAVOR", "..and so he left, newfound sense of humanity within.");
-            LanguageAPI.Add("SS2UNEMMANDO_OUTRO_FAILURE", "..and so he returned, concluding his endless struggle.");
-            LanguageAPI.Add("SS2UNEMMANDO_LORE", "He lays to rest by a fire, setting the weapons he carries within an arm's reach. Checking his surroundings, hoping the cave he hid in would be enough shelter. Some would say, it isn't wise to be overly cautious. He would say, <color=#FFCCED>they haven't seen enough.</color>\n\n" +
-                "The service pistol he got when he enlisted. Well used, dirtied, and loved. It's brought him through thick and thin, no matter which mission he took on. Some would say, only a fool would trust their weapon. He would say, <color=#FFCCED>your weapon is all you can trust.</color>\n\n" +
-                "The blade of a fallen brother of war. Picked from what he could scavenge of the last of humanity he's seen. Some would say, it keeps their spirits united. He would say, <color=#FFCCED>it's to keep their spirits from joining for as long as possible.</color>\n\n" +
-                "The loads of cargo that landed with him. Each item picked from a chest, keeping him alive in one way or another. Dozens of shipments to anyone but him. Some would say, they aren't his items to take. He would say, <color=#FFCCED>if he doesn't take them, then no one will.</color>\n\n" +
-                "The glow of a violet light coming from deeper within the cave. Calming, warming... beckoning. Welcoming him deeper and deeper, promising safety. Some would say, what sounds too good to be true probably is. He would say, <color=#FFCCED>Faust was a wise man.</color>");
-
-            LanguageAPI.Add("SS2UNEMMANDO_DEFAULT_SKIN_NAME", "Default");
-            LanguageAPI.Add("SS2UNEMMANDO_MASTERY_SKIN_NAME", "Minuano");
-            LanguageAPI.Add("SS2UNEMMANDO_CLASSIC_SKIN_NAME", "Classic");
-            LanguageAPI.Add("SS2UNEMMANDO_COMMANDO_SKIN_NAME", "Commando");
-            LanguageAPI.Add("SS2UNEMMANDO_VERGIL_SKIN_NAME", "Motivator");
-
-            float gougeDuration = 2f;
-            string gougeDamage = $"<style=cIsDamage>{gougeDuration * DamageTypeCore.gougeDamageCoefficient * 100}%</style> base damage";
-            string bladeDamage = $"<style=cIsDamage>{BladeOfCessation2.damageCoefficient * 100}% damage</style>";
-
-            LanguageAPI.Add("KEYWORD_SS2U_GOUGE", $"<style=cKeywordName>Gouge</style><style=cSub>Deal {gougeDamage} over {gougeDuration}s. <i>Capable of triggering item effects.</i>");
-
-            LanguageAPI.Add("SS2UNEMMANDO_PRIMARY_BLADE_NAME", "Blade of Cessation");
-            LanguageAPI.Add("SS2UNEMMANDO_PRIMARY_BLADE_DESCRIPTION", $@"<style=cIsHealth>Gouging</style>. <style=cIsUtility>Agile.</style> Slice enemies for {bladeDamage}.");
-
-            LanguageAPI.Add("SS2UNEMMANDO_SECONDARY_CONCUSSION_NAME", "Distant Gash");
-
-            string chargeDamage = $"<style=cIsDamage>{FireSwordBeam.minDamageCoeffficient * 100}%-{FireSwordBeam.maxDamageCoefficient * 100}% damage</style>";
-            LanguageAPI.Add("SS2UNEMMANDO_SECONDARY_CONCUSSION_DESCRIPTION", $"<style=cIsHealth>Gouging</style>. Charge a piercing sword beam for {chargeDamage}.");
-
-            LanguageAPI.Add("SS2UNEMMANDO_SECONDARY_SHOOT_NAME", "Single Tap");
-
-            chargeDamage = $"<style=cIsDamage>{ShootGun.damageCoefficient * 100}% damage</style>";
-            LanguageAPI.Add("SS2UNEMMANDO_SECONDARY_SHOOT_DESCRIPTION", $"Fire your gun for {chargeDamage}.");
-
-            LanguageAPI.Add("SS2UNEMMANDO_UTILITY_DODGE_NAME", "Tactical Roll");
-            LanguageAPI.Add("SS2UNEMMANDO_UTILITY_DODGE_DESCRIPTION", "<style=cIsUtility>Roll</style> a short distance and gain <style=cIsUtility>100 armor</style>.");
-
-            LanguageAPI.Add("SS2UNEMMANDO_SPECIAL_SUBMISSION_NAME", "Submission");
-            LanguageAPI.Add("SS2UNEMMANDO_SPECIAL_SUBMISSION_DESCRIPTION", $"Charge up a barrage of <style=cIsDamage>5 shotgun blasts</style> that deal <style=cIsDamage>4x{ChargeBarrageFire.damageCoefficient * 100}% damage</style> each. The number of shots increases with attack speed.");
-
-            LanguageAPI.Add("SS2UNEMMANDO_SPECIAL_EPIC_NAME", "Decisive Strike");
-            string chargedSlashDamage = $"<style=cIsDamage>{ChargedSlashAttack.maxHits}x{ChargedSlashAttack.maxDamageCoefficient * 100}% damage</style>";
-            LanguageAPI.Add("SS2UNEMMANDO_SPECIAL_EPIC_DESCRIPTION", $"<style=cIsHealth>Gouging</style>. Charge up a devastating barrage of <style=cIsDamage>slashes</style> that deals up to {chargedSlashDamage}.");
-
-            string desc = $"Charge up a barrage of <style=cIsDamage>5 shotgun blasts</style> that deal <style=cIsDamage>4x{ChargeBarrageFire.damageCoefficient * 100}% damage</style> each. The number of shots increases with attack speed.";
-            desc += Helpers.ScepterDescription($"Fire lasers for {100f * ScepterBarrageFire.laserDamageCoefficient}% damage.");
-
-            LanguageAPI.Add("SS2UNEMMANDO_SPECIAL_SCEPSUBMISSION_NAME", "Subjunction");
-            LanguageAPI.Add("SS2UNEMMANDO_SPECIAL_SCEPSUBMISSION_DESCRIPTION", desc);
-
-            chargedSlashDamage = $"<style=cIsDamage>{ChargedSlashAttack.maxHits}x{ChargedSlashAttack.maxDamageCoefficient * 100}% damage</style>";
-            desc = $"<style=cIsHealth>Gouging</style>. Charge up a devastating barrage of <style=cIsDamage>slashes</style> that deals up to {chargedSlashDamage}.";
-            desc += Helpers.ScepterDescription("Briefly disappear and then unleash all your strikes at once. Hit count increases the more attack speed you have.");
-
-            LanguageAPI.Add("SS2UNEMMANDO_SPECIAL_SCEPEPIC_NAME", "Judgement Cut End");
-            LanguageAPI.Add("SS2UNEMMANDO_SPECIAL_SCEPEPIC_DESCRIPTION", desc);
-
-            // todo: make a base class for mastery achievements and simply inherit from it for each character 
-            LanguageAPI.Add("ACHIEVEMENT_SS2UNEMMANDOCLEARGAMEMONSOON_NAME", "Nemesis Commando: Mastery");
-            LanguageAPI.Add("ACHIEVEMENT_SS2UNEMMANDOCLEARGAMEMONSOON_DESCRIPTION", "As Nemesis Commando, beat the game or obliterate on Monsoon.");
-
-            LanguageAPI.Add("ACHIEVEMENT_SS2UNEMMANDOCLEARGAMETYPHOON_NAME", "Nemesis Commando: Grand Mastery");
-            LanguageAPI.Add("ACHIEVEMENT_SS2UNEMMANDOCLEARGAMETYPHOON_DESCRIPTION", "As Nemesis Commando, beat the game or obliterate on Typhoon.");
-
-            LanguageAPI.Add("ACHIEVEMENT_SS2UNEMMANDOKILLSELF_NAME", "Nemesis Commando: Nemesis Nemesis");
-            LanguageAPI.Add("ACHIEVEMENT_SS2UNEMMANDOKILLSELF_DESCRIPTION", "As Nemesis Commando, defeat Commando's vestige.");
-
-            LanguageAPI.Add("SS2UNEMMANDO_EPICUNLOCKABLE_ACHIEVEMENT_NAME", "Nemesis Commando: Zandatsu");
-            LanguageAPI.Add("SS2UNEMMANDO_EPICUNLOCKABLE_ACHIEVEMENT_DESC", "As Nemesis Commando, inflict 50 stacks of Gouge on one enemy.");
-            LanguageAPI.Add("SS2UNEMMANDO_EPICUNLOCKABLE_UNLOCKABLE_NAME", "Nemesis Commando: Zandatsu");
-
-            LanguageAPI.Add("ACHIEVEMENT_SS2UNEMMANDOUNLOCK_NAME", "???");
-            LanguageAPI.Add("ACHIEVEMENT_SS2UNEMMANDOUNLOCK_DESCRIPTION", "Defeat Commando's vestige.");
-        }
-
         #region Hooks
         internal override void Hook()
         {
@@ -986,6 +903,7 @@ namespace Starstorm2Unofficial.Survivors.Nemmando
                 defaultRenderers,
                 mainRenderer,
                 model);
+            defaultSkin.nameToken = "DEFAULT_SKIN";
 
             defaultSkin.meshReplacements = new SkinDef.MeshReplacement[]
             {
