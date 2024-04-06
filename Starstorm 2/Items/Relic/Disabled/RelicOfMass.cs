@@ -15,7 +15,6 @@ namespace Starstorm2Unofficial.Cores.Items
     class RelicOfMass : SS2Item<RelicOfMass>
     {
         public override string NameInternal => "SS2U_RelicMass";
-        //public override string Lore => "Ah, welcome back! Youngling, what have you found?\n\nHmmm. More scavengings from the blasted heath? Very well. You may keep those things, if you wish. Have you found anything else?\n\nAh, you have? Let me see it then, youngling.\n\nOh! This shape that you've found! It is stalwart, but not loyal. Powerful, but yet also frail at the same time. It is a peculiar shape, to say the least of it. Where did you find this, youngling?\n\n...You found it on the planet? Hmm. Worrisome. This was not created by those sandfolk. Too complex, too powerful. Nor by those Lemurians. Tell me, youngling, you did not steal this, did you?\n\n...You did not. I see. Very well. I would like to keep this shape. This shape is dangerous if you do not understand it.\n\nOh, my youngling, do not look so saddened. This shape is remarkable, and I laud your work regardless of this. I simply want to keep it safe. Here, perhaps a reward is in order. Come with me.";
         public override ItemTier Tier => ItemTier.Lunar;
         public override ItemTag[] Tags => new ItemTag[]
         {

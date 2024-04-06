@@ -13,7 +13,6 @@ namespace Starstorm2Unofficial.Cores.Items
     class WatchMetronome : SS2Item<WatchMetronome>
     {
         public override string NameInternal => "SS2U_Metronome";
-        //public override string Lore => "Order: Broken Watch Metronome\nTracking Number: 88******\nEstimated Delivery: 04/14/2056:\nShipping Method: Priority\nShipping Address: 33 Skyview Drive, Albumen, Venus\nShipping Details:\n\nHey, this is the watch metronome I told you needed fixing. Apparently, the things been falling outta whack for a couple weeks now, and me and the boys can't get any recording done with it speeding up all the time. I'd like it back fairly quickly, since usin' the in-ear metronome hurts my ears if it's in for too long. Oh, and be careful with it, too. The watch is a gift from my pops, and it really means a lot to me. Thanks a bunch in advance!\n";
         public override ItemTier Tier => ItemTier.Tier2;
         public override ItemTag[] Tags => new ItemTag[]
         {

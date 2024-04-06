@@ -190,30 +190,26 @@ namespace Starstorm2Unofficial
                 AddItemIfEnabled(new MoltenCoin(), ItemCore.instance.items);
                 AddItemIfEnabled(new Diary(), ItemCore.instance.items);
                 AddItemIfEnabled(new DetritiveTrematode(), ItemCore.instance.items);
+                AddItemIfEnabled(new DormantFungus(), ItemCore.instance.items, false);
+                AddItemIfEnabled(new CoffeeBag(), ItemCore.instance.items, false);
 
                 AddItemIfEnabled(new WatchMetronome(), ItemCore.instance.items);
                 AddItemIfEnabled(new StrangeCan(), ItemCore.instance.items);
+
                 AddItemIfEnabled(new DroidHead(), ItemCore.instance.items);
-
                 AddItemIfEnabled(new GreenChocolate(), ItemCore.instance.items);
-
-                AddItemIfEnabled(new StirringSoul(), ItemCore.instance.items);
-
-                //Disabled by default
-                AddItemIfEnabled(new DormantFungus(), ItemCore.instance.items, false);
-                AddItemIfEnabled(new CoffeeBag(), ItemCore.instance.items, false);
-                AddItemIfEnabled(new RelicOfMass(), ItemCore.instance.items, false);
                 AddItemIfEnabled(new ErraticGadget(), ItemCore.instance.items, false);
                 AddItemIfEnabled(new NkotasHeritage(), ItemCore.instance.items, false);
 
-                //AddItemIfEnabled(new DetritiveTrematode(), ItemCore.instance.items);
+                AddItemIfEnabled(new RelicOfMass(), ItemCore.instance.items, false);
+
+                AddItemIfEnabled(new StirringSoul(), ItemCore.instance.items);
+
                 //AddItemIfEnabled(new Malice(), ItemCore.instance.items);
                 //AddItemIfEnabled(new BrokenBloodTester(), ItemCore.instance.items);
                 //AddItemIfEnabled(new HottestSauce(), ItemCore.instance.items);
-                //AddItemIfEnabled(new StrangeCan(), ItemCore.instance.items);
                 //AddItemIfEnabled(new PrototypeJetBoots(), ItemCore.instance.items);
                 //AddItemIfEnabled(new HuntersSigil(), ItemCore.instance.items);
-                //AddItemIfEnabled(new NkotasHeritage(), ItemCore.instance.items);
                 //AddItemIfEnabled(new BabyToys(), ItemCore.instance.items);
                 ItemCore.instance.InitItems();
             }
