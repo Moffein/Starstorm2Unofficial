@@ -12,10 +12,6 @@ public abstract class SS2Equipment
     //public EquipmentIndex index;
     public EquipmentDef equipDef;
     public abstract string NameInternal { get; }
-    public virtual string Name { get; }
-    public virtual string Pickup { get; }
-    public virtual string Description { get; }
-    public virtual string Lore { get; } = "";
     public virtual float Cooldown { get; } = 60f;
     public virtual bool CanDrop { get; } = true;
     public virtual bool EnigmaCompatible { get; } = true;
@@ -54,10 +50,10 @@ public abstract class SS2Equipment
         def.pickupIconSprite = PickupIconPath != "" ? Starstorm2Unofficial.Modules.Assets.mainAssetBundle.LoadAsset<Sprite>(PickupIconPath) : null;
         def.pickupModelPrefab = PickupModelPath != "" ? Starstorm2Unofficial.Modules.Assets.mainAssetBundle.LoadAsset<GameObject>(PickupModelPath) : null;
 
-        LanguageAPI.Add(def.nameToken, Name);
-        LanguageAPI.Add(def.pickupToken, Pickup);
-        LanguageAPI.Add(def.descriptionToken, Description);
-        LanguageAPI.Add(def.loreToken, Lore);
+        //LanguageAPI.Add(def.nameToken, Name);
+        //LanguageAPI.Add(def.pickupToken, Pickup);
+        //LanguageAPI.Add(def.descriptionToken, Description);
+        //LanguageAPI.Add(def.loreToken, Lore);
 
         if (PickupModelPath != "")
         {

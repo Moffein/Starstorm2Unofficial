@@ -1,9 +1,9 @@
 `0.19.0`
 
-- Now uses language files.
+*Credits to Thingw for the new icons!*
 
-- Executioner
-	- Service Pistol now has a unique icon. (TODO)
+- Now uses language files.
+- Item/Equipment lore now uses the original SS1 lore.
 
 - Cyborg
 	- New Passive: Energy Core
@@ -12,7 +12,7 @@
 			- Extra skill stocks increase the max cap of the energy pool.
 		- Cyborg can still hover by holding jump.
 		
-		*A common feedback about Cyborg was that he felt very generic, so I'm hoping this new passive will help shake his gameplay up. Skills are mostly mechanically the same, but he now has a lot more flexibility in how/when he can use his skills.*
+		*Hoping this new passive will help Cyborg feel more unique. Skills are mostly mechanically the same, but he now has a lot more flexibility in how/when he can use his skills.*
 	
 	- Primaries no longer slow on hit.
 	- Special Skills can now be fired while Primary is being fired.
@@ -30,7 +30,7 @@
 		- 7s cooldown -> 15% Energy/s
 			- Increased shield uptime from 3s -> 6.67s
 			
-		*Short shield uptime was balanced around frame-perfect defenses in solo, but ended up being too short to be useful for protecting teammates in multiplayer.*
+		*Shield uptime was balanced around frame-perfect defenses in solo, but ended up being too short to be useful for protecting teammates in multiplayer.*
 		
 	- Recall
 		- 8s cooldown -> 50% Energy
@@ -53,11 +53,12 @@
 			- Implosion damage remains the same, 1200% (was mislabeled as 1600%)
 		- Increased pull radius from 20m -> 30m
 		
-*Credits to Thingw for the new icons!*
-		
 - Chirr
 	- Friend loadout is now saved between stages. (Relevant for Hunted and other mods that let you befriend survivors)
 	- Fixed TP boss befriending being locked behind Scepter due to an earlier update. (You'll still need Scepter to befriend Champions, but you should now be able to befriend Horde bosses)
+
+- Executioner
+	- Service Pistol now has a unique icon.
 	
 - Items
 	- Strange Can

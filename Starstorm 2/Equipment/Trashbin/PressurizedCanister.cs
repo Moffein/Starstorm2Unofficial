@@ -13,10 +13,6 @@ namespace Starstorm2Unofficial.Cores.Equipment
     class PressurizedCanister : SS2Equipment<PressurizedCanister>
     {
         public override string NameInternal => "SS2U_Canister";
-        public override string Name => "Pressurized Canister";
-        public override string Pickup => "Launch yourself into the air. Gain upward momentum by holding the jump button.";
-        public override string Description => "Launch yourself into the air. Gain upward momentum by holding the jump button.";
-        public override string Lore => "Order: Pressured Air Canister (24)\nTracking Number: 182*****\nEstimated Delivery: 06/29/2056\nShipping Method: Standard / Fragile\nShipping Address: Tri-City Gas Shipment Center, Tri-City, Earth\nShipping Details:\n\nThis is the, uh, fifth, is it now? Fifth order of pressurized air canisters to this address. Now, I'm not going to judge, I mean, maybe you didn't know you'd need more canisters, for, uh, four times in a row, but, like, you do know you save quite a bit when you buy in bulk, right?\n\nWhatever, man. I mean, I don't really know what you'd need with a hundred and twenty total air canisters over the span of about two months, but I guess you do you.\n";
         public override float Cooldown => 15;
         public override string PickupIconPath => "PressurizedCanister_Icon";
         public override string PickupModelPath => "MDLPressurizedCanister";

@@ -15,10 +15,6 @@ namespace Starstorm2Unofficial.Cores.Equipment
         private static GameObject warbannerObj;
 
         public override string NameInternal => "SS2U_GreaterWarbanner";
-        public override string Name => "Greater Warbanner";
-        public override string Pickup => "Place a greater warbanner which grants healing, critical chance, and cooldown reduction.";
-        public override string Description => "Place a greater warbanner which strengthens all allies within <style=cIsDamage>25m</style>. Raises <style=cIsDamage>critical chance</style> by <style=cIsDamage>25%</style>. Every second, <style=cIsUtility>reduces skill cooldowns by 0.5s</style> and <style=cIsHealing>heals</style> for <style=cIsHealing>2.5%</style> of your <style=cIsHealing>health</style>. Only <style=cIsUtility>1</style> banner may be active at a time.";
-        public override string Lore => "<style=cMono>Recording from the Terran Museum of Tactics and Warfare.</style>\n\nSome say that one of the most important resources on the battlefield is morale. The functionality of a unit is exponentially increased depending on the mood of the troops within it. This can be raised or lowered through various means. For example, the quality of their lodging or food, news they've heard from their home, or even spending time recreationally.\n\nHowever, one tried and true method of raising the morale of a unit is the usage of symbolism. Many armies would wear colors and designs symbolizing their beliefs and their strength. Many units would carry flags in order to keep their morale high in combat.\n\nThe usage of this method has also seen variations. While a flag bearer for a unit will increase morale, it has been observed that flags unique to higher ranking military will further increase the unit's morale. Should a Colonel or General's flag appear on the battlefield, the troops will be encouraged by the power they display, and in turn increase their own fighting prowess.\n";
         public override float Cooldown => 60;
         public override string PickupIconPath => "GreaterWarbanner_Icon";
         public override string PickupModelPath => "MDLGreaterWarbanner";
