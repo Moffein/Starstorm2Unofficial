@@ -19,7 +19,7 @@
 	- Primaries no longer slow on hit.
 	- Special Skills can now be fired while Primary is being fired.
 	
-	- Alt Primary: Renamed to Piercing Shot (TODO: Better name)
+	- Alt Primary: Renamed to Piercing Shot
 	
 	- New Default Secondary: Rising Star
 		- 30% Energy/s
