@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 522043990
+CRC: 380865173
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: bf96152ccff95909cd5f0458c659a247
+    Hash: ccc0a558d5ff140c1214b63fc9527b8d
   TypeTreeHash:
     serializedVersion: 2
     Hash: 98dced2a5bd17d57baa4286d94746515
@@ -761,6 +761,7 @@ Assets:
 - Assets/AssetBundle/Nucleator/Animations/Clips/PrimaryLightAlt.anim
 - Assets/AssetBundle/Chirr/texChirrBefriendCrosshair.png
 - Assets/AssetBundle/FX/Dust.mat
+- Assets/AssetBundle/Executioner/Icons/texExecutionerPrimaryDouble.png
 - Assets/AssetBundle/Pyro/Icons/pyroSkill4.png
 - Assets/AssetBundle/Chirr/Textures/texChirrNormal.png
 - Assets/AssetBundle/Nemmando/VFX/ImpactNemmandoSlash.prefab
