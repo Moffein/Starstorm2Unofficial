@@ -4,11 +4,11 @@
 		"EQUIPMENT_SS2U_CLOAKINGHEADBAND_NAME" : "Cloaking Headband",
 		"EQUIPMENT_SS2U_CLOAKINGHEADBAND_PICKUP" : "Become temporarily invisible.",
 		"EQUIPMENT_SS2U_CLOAKINGHEADBAND_DESC" : "Become <style=cIsUtility>invisible</style> for 10 seconds.",
-		"EQUIPMENT_SS2U_CLOAKINGHEADBAND_LORE" : "",	//TODO
+		"EQUIPMENT_SS2U_CLOAKINGHEADBAND_LORE" : "TODO",
 		
 		"EQUIPMENT_SS2U_GREATERWARBANNER_NAME" : "Greater Warbanner",
 		"EQUIPMENT_SS2U_GREATERWARBANNER_PICKUP" : "Place a greater warbanner which grants healing, critical chance, and cooldown reduction.",
 		"EQUIPMENT_SS2U_GREATERWARBANNER_DESC" : "Place a greater warbanner which strengthens all allies within <style=cIsDamage>25m</style>. Raises <style=cIsDamage>critical chance</style> by <style=cIsDamage>25%</style>. Every second, <style=cIsUtility>reduces skill cooldowns by 0.5s</style> and <style=cIsHealing>heals</style> for <style=cIsHealing>2.5%</style> of your <style=cIsHealing>health</style>. Only <style=cIsUtility>1</style> banner may be active at a time.",
-		"EQUIPMENT_SS2U_GREATERWARBANNER_LORE" : "",	//TODO
+		"EQUIPMENT_SS2U_GREATERWARBANNER_LORE" : "TODO",
 	}
 }

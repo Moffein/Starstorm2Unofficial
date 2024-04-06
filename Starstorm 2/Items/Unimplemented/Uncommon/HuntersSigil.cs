@@ -15,10 +15,10 @@ namespace Starstorm2Unofficial.Cores.Items
     class HuntersSigil : SS2Item<HuntersSigil>
     {
         public override string NameInternal => "Sigil";
-        public override string Name => "Hunter's Sigil";
-        public override string Pickup => "Standing still grants bonus armor and critical strike chance.";
-        public override string Description => "While <style=cIsUtility>standing still</style> for at least 3/4ths of a second, gain <style=cIsUtility>15</style> armor <style=cStack>(+10 armor per stack)</style> and <style=cIsDamage>25%</style> critical chance <style=cStack>(+20% per stack)</style>.";
-        public override string Lore => "<style=cMono>Audio transcription complete from portable recorder.\n\nPrinting...\n\n</style>\"You think they'll take the bait?\"\n\"They're gonna have to. Not like we have any other options.\"\n\"I still think using our food like this is too risky.\"\n\"If we don't try, then we'll be dead in a week.\"\n\"Just... make sure we don't lose too much.\"\n\"Nothing more than our lives, at least.\"\n\"...\"\n\"They're here.\"\n\"Oh, good. Take one out and let's get out of here.\"\n\"Not yet...\"\n\"What? It's a waste of our food the longer you wait!\"\n\"Hold on...\"\n\"Take the shot, man, we only have so much!\"\n\"Almost...\"\n\"TAKE THE SHOT.\"\n\"Just about...\"\n\"SHOOT OR GIVE ME THE RIFLE.\"\n\"...\"\n\"GIVE IT TO ME.\"\n\"Hey, be CARE-\"\n\n<style=cMono>End of recording.</style>\n";
+        //public override string Name => "Hunter's Sigil";
+        //public override string Pickup => "Standing still grants bonus armor and critical strike chance.";
+        //public override string Description => "While <style=cIsUtility>standing still</style> for at least 3/4ths of a second, gain <style=cIsUtility>15</style> armor <style=cStack>(+10 armor per stack)</style> and <style=cIsDamage>25%</style> critical chance <style=cStack>(+20% per stack)</style>.";
+        //public override string Lore => "<style=cMono>Audio transcription complete from portable recorder.\n\nPrinting...\n\n</style>\"You think they'll take the bait?\"\n\"They're gonna have to. Not like we have any other options.\"\n\"I still think using our food like this is too risky.\"\n\"If we don't try, then we'll be dead in a week.\"\n\"Just... make sure we don't lose too much.\"\n\"Nothing more than our lives, at least.\"\n\"...\"\n\"They're here.\"\n\"Oh, good. Take one out and let's get out of here.\"\n\"Not yet...\"\n\"What? It's a waste of our food the longer you wait!\"\n\"Hold on...\"\n\"Take the shot, man, we only have so much!\"\n\"Almost...\"\n\"TAKE THE SHOT.\"\n\"Just about...\"\n\"SHOOT OR GIVE ME THE RIFLE.\"\n\"...\"\n\"GIVE IT TO ME.\"\n\"Hey, be CARE-\"\n\n<style=cMono>End of recording.</style>\n";
         public override ItemTier Tier => ItemTier.Tier2;
         public override ItemTag[] Tags => new ItemTag[]
         {

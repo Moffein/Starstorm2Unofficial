@@ -89,6 +89,7 @@
     <Compile Include="Modules\CameraParams.cs" />
     <Compile Include="Modules\EntityStates\BaseMeleeAttack.cs" />
     <Compile Include="Modules\Files.cs" />
+    <Compile Include="Modules\LanguageTokens.cs" />
     <Compile Include="Modules\SoundBanks.cs" />
     <Compile Include="SharedHooks\GetStatCoefficients.cs" />
     <Compile Include="SharedHooks\OnCharacterDeathGlobal.cs" />

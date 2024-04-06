@@ -1,23 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using R2API;
+﻿using R2API;
 using RoR2;
 using UnityEngine;
-
-//FIXME: trematode debuff does no damage
 
 namespace Starstorm2Unofficial.Cores.Items
 {
     class DetritiveTrematode : SS2Item<DetritiveTrematode>
     {
         public override string NameInternal => "SS2U_Trematode";
-        public override string Name => "Detritive Trematode";
-        public override string Pickup => "Low health enemies receive damage over time.";
-        public override string Description => "Enemies below <style=cIsHealth>25% health</style> are infested for <style=cIsDamage>100%</style> <style=cStack>(+100% per stack)</style> base damage per second.";
-        public override string Lore => "<style=cMono>$ Transcribing image... done.\n$ Resolving... done.\n$ Outputting text strings... done.\nComplete!\n\n\n</style>This is the logbook of D. Furthen, naturalist aboard the UES [Redacted] in conjunction with the ongoing UES Research and Documentation of Outer Life program. This entry was written at Point Sigma, during an expedition to the dense jungles of Cornea III.\n\n---------------------\n\nI have encountered my first sample of outer life on this planet! What a marvel it is, too. The sample resembles an earthen roundworm, but significantly bigger. I have assigned their common name as 'Detritive Trematode', and will describe their properties below.\n\n• Roughly two inches in diameter, and varying in size from about four inches to a foot and a half in length. White coloration.\n\n• These trematodes were found feasting on a pile of rotting meat in a damp cavern. The meat was of indeterminate origin, but the presence of other, larger animals is exciting nonetheless.\n\n• Upon scooping up a clump of the rotting meat, the trematodes quickly reacted to the movement and began wriggling around, before slowly relaxing. The guard positioned with me, Chevry, I think, was disgusted.\n\n• Upon touching one with an ungloved hand to feel their texture, one of the trematodes latched onto my palm and began chewing. It was extremely painful, both to have the trematode on my hand, and when Chevry cut the thing off. Despite that, other than a light gash on my palm, I believe I am fine.\n";
+        //public override string Lore => "<style=cMono>$ Transcribing image... done.\n$ Resolving... done.\n$ Outputting text strings... done.\nComplete!\n\n\n</style>This is the logbook of D. Furthen, naturalist aboard the UES [Redacted] in conjunction with the ongoing UES Research and Documentation of Outer Life program. This entry was written at Point Sigma, during an expedition to the dense jungles of Cornea III.\n\n---------------------\n\nI have encountered my first sample of outer life on this planet! What a marvel it is, too. The sample resembles an earthen roundworm, but significantly bigger. I have assigned their common name as 'Detritive Trematode', and will describe their properties below.\n\n• Roughly two inches in diameter, and varying in size from about four inches to a foot and a half in length. White coloration.\n\n• These trematodes were found feasting on a pile of rotting meat in a damp cavern. The meat was of indeterminate origin, but the presence of other, larger animals is exciting nonetheless.\n\n• Upon scooping up a clump of the rotting meat, the trematodes quickly reacted to the movement and began wriggling around, before slowly relaxing. The guard positioned with me, Chevry, I think, was disgusted.\n\n• Upon touching one with an ungloved hand to feel their texture, one of the trematodes latched onto my palm and began chewing. It was extremely painful, both to have the trematode on my hand, and when Chevry cut the thing off. Despite that, other than a light gash on my palm, I believe I am fine.\n";
         public override ItemTier Tier => ItemTier.Tier1;
         public override ItemTag[] Tags => new ItemTag[]
         {
@@ -49,44 +39,6 @@ namespace Starstorm2Unofficial.Cores.Items
                     maxStacksFromAttacker = (uint)itemCount
                 };
                 DotController.InflictDot(ref dotInfo);
-            }
-        }
-
-        private void HealthComponent_TakeDamage(On.RoR2.HealthComponent.orig_TakeDamage orig, HealthComponent self, DamageInfo damageInfo)
-        {
-            orig(self, damageInfo);
-
-            if (!damageInfo.rejected && damageInfo.damage > 0 && damageInfo.procCoefficient > 0)
-            {
-                var attacker = damageInfo.attacker;
-                if (attacker)
-                {
-                    var attackerBody = attacker.GetComponent<CharacterBody>();
-                    if (attackerBody)
-                    {
-                        int trematodeCount = GetCount(attackerBody);
-                        var dotController = DotController.FindDotController(self.gameObject);
-                        bool hasDot = false;
-                        if (dotController)
-                        {
-                            hasDot = dotController.HasDotActive(DoTCore.DetritiveTrematodeInfection);
-                        }
-
-                        if (self.combinedHealthFraction < StaticValues.trematodeCritical && trematodeCount > 0 && !hasDot)
-                        {
-                            var dotInfo = new InflictDotInfo()
-                            {
-                                attackerObject = attacker,
-                                victimObject = self.gameObject,
-                                dotIndex = DoTCore.DetritiveTrematodeInfection,
-                                duration = damageInfo.procCoefficient * (StaticValues.trematodeDuration * trematodeCount),
-                                damageMultiplier = StaticValues.trematodeDamage,
-                            };
-
-                            DotController.InflictDot(ref dotInfo);
-                        }
-                    }
-                }
             }
         }
 

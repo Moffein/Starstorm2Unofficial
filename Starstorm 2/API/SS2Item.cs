@@ -9,10 +9,6 @@ public abstract class SS2Item
 {
     public ItemDef itemDef;
     public abstract string NameInternal { get; }
-    public virtual string Name { get; }
-    public virtual string Pickup { get; }
-    public virtual string Description { get; }
-    public virtual string Lore { get; }
     public virtual bool CanRemove { get; } = true;
     public abstract ItemTier Tier { get; }
     public abstract ItemTag[] Tags { get; }
@@ -44,10 +40,10 @@ public abstract class SS2Item
         itemDef.deprecatedTier = Tier;
         Starstorm2Unofficial.Modules.Items.itemDefs.Add(itemDef);
 
-        LanguageAPI.Add(itemDef.nameToken, Name);
-        LanguageAPI.Add(itemDef.pickupToken, Pickup);
-        LanguageAPI.Add(itemDef.descriptionToken, Description);
-        LanguageAPI.Add(itemDef.loreToken, Lore);
+        //LanguageAPI.Add(itemDef.nameToken, Name);
+        //LanguageAPI.Add(itemDef.pickupToken, Pickup);
+        //LanguageAPI.Add(itemDef.descriptionToken, Description);
+        //LanguageAPI.Add(itemDef.loreToken, Lore);
 
         if (PickupModelPath != "")
         {

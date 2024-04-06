@@ -15,10 +15,10 @@ namespace Starstorm2Unofficial.Cores.Items
     {
         private static float healAccum = 0f;
         public override string NameInternal => "BloodTester";
-        public override string Name => "Broken Blood Tester";
-        public override string Pickup => "Gain money on healing.";
-        public override string Description => $"Gain <style=cIsUtility>{StaticValues.testerGold} gold</style> <style=cStack>(+{StaticValues.testerGold} gold per stack)</style> for every <style=cIsHealing>{StaticValues.testerHealing} hp</style> you heal.";
-        public override string Lore => "Return: Broken Blood Tester\nTracking Number: 288*****\nEstimated Delivery: 06/17/2056\nShipping Method: Priority\nShipping Address: Dionysus Pharmaceuticals Headquarters, Pluto\nShipping Details:\n\nWe're going to need this one repaired before it does our company more harm than good. This thing kept giving us the wrong results every time our MED-E used it. Not only does it clog our workflow, we wind up having to pay out of pocket to the patients since we wrongfully diagnose them, and stick them with needles needlessly. And we can't claim it as the patient being wrong since it's all immediately backed up to the servers. We can't keep shelling out this kind of money, or we'll be bankrupt by next quarter.\n";
+        //public override string Name => "Broken Blood Tester";
+        //public override string Pickup => "Gain money on healing.";
+        //public override string Description => $"Gain <style=cIsUtility>{StaticValues.testerGold} gold</style> <style=cStack>(+{StaticValues.testerGold} gold per stack)</style> for every <style=cIsHealing>{StaticValues.testerHealing} hp</style> you heal.";
+        //public override string Lore => "Return: Broken Blood Tester\nTracking Number: 288*****\nEstimated Delivery: 06/17/2056\nShipping Method: Priority\nShipping Address: Dionysus Pharmaceuticals Headquarters, Pluto\nShipping Details:\n\nWe're going to need this one repaired before it does our company more harm than good. This thing kept giving us the wrong results every time our MED-E used it. Not only does it clog our workflow, we wind up having to pay out of pocket to the patients since we wrongfully diagnose them, and stick them with needles needlessly. And we can't claim it as the patient being wrong since it's all immediately backed up to the servers. We can't keep shelling out this kind of money, or we'll be bankrupt by next quarter.\n";
         public override ItemTier Tier => ItemTier.Tier2;
         public override ItemTag[] Tags => new ItemTag[]
         {

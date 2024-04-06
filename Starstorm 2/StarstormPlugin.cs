@@ -42,7 +42,6 @@ namespace Starstorm2Unofficial
         nameof(R2API.Networking.NetworkingAPI),
         nameof(R2API.PrefabAPI),
         nameof(R2API.LoadoutAPI),
-        nameof(R2API.LanguageAPI),
         nameof(R2API.DirectorAPI),
         nameof(R2API.DamageAPI),
         nameof(R2API.RecalculateStatsAPI),
@@ -89,6 +88,7 @@ namespace Starstorm2Unofficial
         public void Awake()
         {
             Modules.Files.PluginInfo = Info;
+            LanguageTokens.RegisterLanguageTokens();
             scepterPluginLoaded = BepInEx.Bootstrap.Chainloader.PluginInfos.ContainsKey("com.DestroyedClone.AncientScepter");
             classicItemsLoaded = BepInEx.Bootstrap.Chainloader.PluginInfos.ContainsKey("com.ThinkInvisible.ClassicItems");
             kingArenaLoaded = BepInEx.Bootstrap.Chainloader.PluginInfos.ContainsKey("com.Kingpinush.KingKombatArena");

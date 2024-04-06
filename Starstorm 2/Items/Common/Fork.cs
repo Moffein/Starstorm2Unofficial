@@ -8,10 +8,7 @@ namespace Starstorm2Unofficial.Cores.Items
     class Fork : SS2Item<Fork>
     {
         public override string NameInternal => "SS2U_Fork";
-        public override string Name => "Fork";
-        public override string Pickup => "Deal more damage.";
-        public override string Description => "Increases your base damage by <style=cIsDamage>2.4</style> <style=cStack>(+2.4 per stack)</style>.";
-        public override string Lore => "\"You can't be serious... Look, I know we said we need everything we can get to survive, but you have to realize I wasn't literal about it!\"\n\nHe held up the silver instrument, a questioning look on his face. \"What do you mean? What if we need to fight off a monster?\"\n\nA brief silence.\n\n\"Please, we've both seen the creatures on this planet. Don't tell me you think that'd be enough to fight off anything here.\"\n\nHe shrugged. \"You never know\", he replied, as he slid the fork into his pocket.\n";
+        //public override string Lore => "\"You can't be serious... Look, I know we said we need everything we can get to survive, but you have to realize I wasn't literal about it!\"\n\nHe held up the silver instrument, a questioning look on his face. \"What do you mean? What if we need to fight off a monster?\"\n\nA brief silence.\n\n\"Please, we've both seen the creatures on this planet. Don't tell me you think that'd be enough to fight off anything here.\"\n\nHe shrugged. \"You never know\", he replied, as he slid the fork into his pocket.\n";
         public override ItemTier Tier => ItemTier.Tier1;
         public override ItemTag[] Tags => new ItemTag[]
         {

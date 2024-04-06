@@ -12,7 +12,7 @@ namespace Starstorm2Unofficial.Cores.Equipment
 {
     class CloakingHeadband : SS2Equipment<CloakingHeadband>
     {
-        public override string NameInternal => "SS2U_CloakingHeaband";
+        public override string NameInternal => "SS2U_CloakingHeadband";
         public override float Cooldown => 45;
         public override string PickupIconPath => "CloakingHeadband_Icon";
         public override string PickupModelPath => "MDLCloakingHeadband";

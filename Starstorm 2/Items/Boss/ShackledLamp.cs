@@ -13,10 +13,10 @@ namespace Starstorm2Unofficial.Cores.Items
 {
     class ShackledLamp : SS2Item<ShackledLamp>
     {
-        public override string NameInternal => "Lamp";
-        public override string Name => "Shackled Lamp";
-        public override string Pickup => "Every fifth basic attack fires a damaging chain.";
-        public override string Description => "Every fifth time you use your <style=cIsUtility>primary skill</style>, fire a <style=cIsDamage>chain</style> which deals <style=cIsDamage>300%</style> damage <style=cStack>(+100% damage per stack)</style>.";
+        public override string NameInternal => "SS2U_Lamp";
+        //public override string Name => "Shackled Lamp";
+        //public override string Pickup => "Every fifth basic attack fires a damaging chain.";
+        //public override string Description => "Every fifth time you use your <style=cIsUtility>primary skill</style>, fire a <style=cIsDamage>chain</style> which deals <style=cIsDamage>300%</style> damage <style=cStack>(+100% damage per stack)</style>.";
         //public override string Lore =>
         public override ItemTier Tier => ItemTier.Boss;
         public override ItemTag[] Tags => new ItemTag[]
