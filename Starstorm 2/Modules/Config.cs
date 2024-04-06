@@ -295,15 +295,19 @@ namespace Starstorm2Unofficial.Modules
             //How to even add this to riskofoptions? Just need a simple float input field.
             CyborgCrosshairChargeController.energyBarScale = StarstormPlugin.instance.Config.Bind("Starstorm 2 :: Survivors :: Cyborg",
                              "UI - Energy Meter Scale",
-                             0.75f,
+                             0.6f,
                              "Size of Energy Meter.");
+            CyborgCrosshairChargeController.fontSize = StarstormPlugin.instance.Config.Bind("Starstorm 2 :: Survivors :: Cyborg",
+                             "UI - Energy Meter Font Size",
+                             24f,
+                             "Size of Energy Meter number text.");
             CyborgCrosshairChargeController.energyBarXPos = StarstormPlugin.instance.Config.Bind("Starstorm 2 :: Survivors :: Cyborg",
                              "UI - Energy Meter X Position",
                             0f,
                              "Horizontal position of Energy Meter.");
             CyborgCrosshairChargeController.energyBarYPos = StarstormPlugin.instance.Config.Bind("Starstorm 2 :: Survivors :: Cyborg",
                              "UI - Energy Meter Y Position",
-                            -120f,
+                            -160f,
                              "Vertical position of Energy Meter.");
 
 

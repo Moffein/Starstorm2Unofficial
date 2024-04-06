@@ -10,6 +10,8 @@
 		- Cyborgs skills all draw from a shared Energy Pool instead of using cooldowns.
 			- Takes 15s to recharge, scales off of cooldown reduction to each skill.
 			- Extra skill stocks increase the max cap of the energy pool.
+				- Secondary: +11.1%
+				- Utility/Special: +33.3%
 		- Cyborg can still hover by holding jump.
 		
 		*Hoping this new passive will help Cyborg feel more unique. Skills are mostly mechanically the same, but he now has a lot more flexibility in how/when he can use his skills.*

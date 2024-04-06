@@ -12,13 +12,14 @@ namespace Starstorm2Unofficial.Survivors.Cyborg.Components.Crosshair
     public class CyborgCrosshairChargeController : MonoBehaviour
     {
         public static ConfigEntry<bool> useSimpleEnergyBar;
+        public static ConfigEntry<float> fontSize;
 
         public static Color chargeColor = Color.white;
         public static Color perfectChargeColor = new Color32(197, 246, 241, 255);
 
         public static Color shieldColor = new Color32(139, 237, 227, 255);
         public static Color shieldDepleteColor = new Color32(250, 100, 100, 255);
-        public static Color shieldConsumeColor = new Color32(0, 234, 207, 255);
+        public static Color shieldConsumeColor = new Color32(255, 255, 255, 255);
 
         private static Color emptyColor = new Color(1f, 1f, 1f, 0f);
 
@@ -31,6 +32,7 @@ namespace Starstorm2Unofficial.Survivors.Cyborg.Components.Crosshair
         private Image energyBackground;
         private Image energyBar;
         private TextMeshProUGUI energyText;
+        private TextMeshProUGUI shieldText;
 
         private Image rightDot;
         private Image leftDot;
@@ -73,9 +75,14 @@ namespace Starstorm2Unofficial.Survivors.Cyborg.Components.Crosshair
                     energyRect = energyBackgroundTransform.GetComponent<RectTransform>();
                 }
 
+                TMP_FontAsset font = Addressables.LoadAssetAsync<TMPro.TMP_FontAsset>("RoR2/Base/Common/Fonts/Bombardier/tmpBombDropshadow.asset").WaitForCompletion();
                 Transform energyTextTransform = cl.FindChild("EnergyText");
                 if (energyTextTransform) energyText = energyTextTransform.GetComponent<TextMeshProUGUI>();
-                if (energyText) energyText.font = Addressables.LoadAssetAsync<TMPro.TMP_FontAsset>("RoR2/Base/Common/Fonts/Bombardier/tmpBombDropshadow.asset").WaitForCompletion();
+                if (energyText) energyText.font = font;
+
+                Transform shieldTextTransform = cl.FindChild("ShieldText");
+                if (shieldTextTransform) shieldText = shieldTextTransform.GetComponent<TextMeshProUGUI>();
+                if (shieldText) shieldText.font = font;
             }
         }
 
@@ -151,6 +158,14 @@ namespace Starstorm2Unofficial.Survivors.Cyborg.Components.Crosshair
                             shieldBar.fillAmount = targetFill;
                             shieldBar.color = targetColor;
                         }
+
+                        if (shieldText)
+                        {
+                            shieldText.text = Mathf.FloorToInt(100f * chargeComponent.remainingEnergyFraction) + "%";
+                            shieldText.color = targetColor;
+                            shieldText.fontSize = fontSize.Value;
+                        }
+
                         if (energyBackground) energyBackground.color = emptyColor;
                         if (energyBar) energyBar.color = emptyColor;
                         if (energyText && energyText.color != emptyColor)
@@ -172,9 +187,14 @@ namespace Starstorm2Unofficial.Survivors.Cyborg.Components.Crosshair
                         {
                             energyText.text = Mathf.FloorToInt(100f * chargeComponent.remainingEnergyFraction) + "%";
                             energyText.color = targetColor;
+                            energyText.fontSize = fontSize.Value / energyBarScale.Value;
                         }
 
                         if (shieldBar) shieldBar.color = emptyColor;
+                        if (shieldText && shieldText.color != emptyColor)
+                        {
+                            shieldText.color = emptyColor;
+                        }
                     }
                 }
 

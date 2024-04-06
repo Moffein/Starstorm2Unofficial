@@ -13,7 +13,7 @@ namespace EntityStates.SS2UStates.Cyborg.Special
         public static GameObject impactEffectPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Toolbot/ImpactToolbotDash.prefab").WaitForCompletion();
         public static GameObject explosionEffectPrefab;
         public static float damageCoefficient = 10f;
-        public static float radius = 5f;
+        public static float radius = 8f;
 
         //For the old version in the config
         public static float damageCoefficientNoEnergy = 8f;
@@ -80,7 +80,7 @@ namespace EntityStates.SS2UStates.Cyborg.Special
                 EffectManager.SpawnEffect(explosionEffectPrefab, new EffectData
                 {
                     origin = position,
-                    scale = UseTeleporter.radius
+                    scale = UseTeleporter.radiusNoEnergy
                 }, true);
 
                 GameObject teleportEffectPrefab = Run.instance.GetTeleportEffectPrefab(base.gameObject);

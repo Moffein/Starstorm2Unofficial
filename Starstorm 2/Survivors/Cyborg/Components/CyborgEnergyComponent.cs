@@ -89,12 +89,17 @@ namespace Starstorm2Unofficial.Survivors.Cyborg.Components
 
             if (skillLocator)
             {
-                int totalStocks = 0;
+                /*int totalStocks = 0;
                 if (skillLocator.secondary) totalStocks += skillLocator.secondary.maxStock;
                 if (skillLocator.utility) totalStocks += skillLocator.utility.maxStock;
                 if (skillLocator.special) totalStocks += skillLocator.special.maxStock;
 
-                fraction = Mathf.Max(1f, totalStocks / 9f); //was /3f but +33% charge from backup mags was too much
+                fraction = Mathf.Max(1f, totalStocks / 9f); //was /3f but +33% charge from backup mags was too much*/
+
+                //Hardcode this interaction.
+                if (skillLocator.secondary) fraction += skillLocator.secondary.bonusStockFromBody / 9f;
+                if (skillLocator.utility) fraction += skillLocator.utility.bonusStockFromBody / 3f;
+                if (skillLocator.special) fraction += skillLocator.special.bonusStockFromBody / 3f;
             }
             return fraction;
         }
