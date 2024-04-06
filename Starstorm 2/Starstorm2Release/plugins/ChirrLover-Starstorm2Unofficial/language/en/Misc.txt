@@ -1,6 +1,10 @@
 {
 	strings:
 	{
+		"DIFFICULTY_TYPHOON_NAME" : "Typhoon",
+		"DIFFICULTY_TYPHOON_DESCRIPTION" : "Maximum challenge. The world is a nightmare, and survival is merely an illusion. Nobody has what it takes.<style=cStack>\n\n>Player health regeneration: <style=cIsHealth>-40%</style>\n>Difficulty scaling: <style=cIsHealth>+75%</style>",
+		"DIFFICULTY_TYPHOON_INCREASEDSPAWNCAP_DESCRIPTION" : "Maximum challenge. The world is a nightmare, and survival is merely an illusion. Nobody has what it takes.<style=cStack>\n\n>Player health regeneration: <style=cIsHealth>-40%</style>\n>Difficulty scaling: <style=cIsHealth>+75%</style>\n>Monster spawn limit: <style=cIsHealth>+50%</style></style>",
+	
 		"SS2U_EVENT_STORM" : "<style=cWorldEvent><sprite name=\"CloudRight\">     A storm is approaching...</style>",
 		"SS2U_EVENT_STORM_START" : "(Storm started.)",	//Used if storm visuals are disabled.
 		

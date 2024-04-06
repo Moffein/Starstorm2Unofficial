@@ -265,8 +265,8 @@ namespace Starstorm2Unofficial.Cores
             On.RoR2.CharacterBody.AddBuff_BuffDef += CharacterBody_AddBuff_BuffDef;
             On.RoR2.Projectile.HookProjectileImpact.FixedUpdate += HookProjectileImpact_FixedUpdate;
 
-            LanguageAPI.Add("WAYFARER_BODY_NAME", "Wayfarer");
-            LanguageAPI.Add("WAYFARER_SUBTITLE", "Usher of Light");
+            //LanguageAPI.Add("WAYFARER_BODY_NAME", "Wayfarer");
+            //LanguageAPI.Add("WAYFARER_SUBTITLE", "Usher of Light");
 
             //TODO: migrate wayfarer prefab code to prefabcore while consuming unhealthy amounts of liquor
             PrefabCore.bodyList.Add(wayfarerPrefab);

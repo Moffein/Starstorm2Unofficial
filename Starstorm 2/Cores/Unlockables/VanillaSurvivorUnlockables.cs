@@ -16,15 +16,8 @@ namespace Starstorm2Unofficial.Cores.Unlockables
         {
             // todo: make a base class for mastery achievements and simply inherit from it for each character 
 
-
-            //LanguageAPI.Add("CROCO_GRANDMASTERYUNLOCKABLE_ACHIEVEMENT_NAME", "Acrid: Grand Mastery");
-            //LanguageAPI.Add("CROCO_GRANDMASTERYUNLOCKABLE_ACHIEVEMENT_DESC", "As Acrid, beat the game or obliterate on Typhoon.");
-            //LanguageAPI.Add("CROCO_GRANDMASTERYUNLOCKABLE_UNLOCKABLE_NAME", "Acrid: Grand Mastery");
-
             if (Modules.Config.EnableGrandMasteryCommando.Value)
             {
-                LanguageAPI.Add("ACHIEVEMENT_SS2UCOMMANDOCLEARGAMETYPHOON_NAME", "Commando: Grand Mastery");
-                LanguageAPI.Add("ACHIEVEMENT_SS2UCOMMANDOCLEARGAMETYPHOON_DESCRIPTION", "As Commando, beat the game or obliterate on Typhoon.");
                 commandoGrandMastery = ScriptableObject.CreateInstance<UnlockableDef>();
                 commandoGrandMastery.cachedName = "Skins.SS2UCommando.GrandMastery";
                 commandoGrandMastery.nameToken = "ACHIEVEMENT_SS2UCOMMANDOCLEARGAMETYPHOON_NAME";
@@ -36,8 +29,6 @@ namespace Starstorm2Unofficial.Cores.Unlockables
 
             if (Modules.Config.EnableGrandMasteryToolbot.Value)
             {
-                LanguageAPI.Add("ACHIEVEMENT_SS2UTOOLBOTCLEARGAMETYPHOON_NAME", "MUL-T: Grand Mastery");
-                LanguageAPI.Add("ACHIEVEMENT_SS2UTOOLBOTCLEARGAMETYPHOON_DESCRIPTION", "As MUL-T, beat the game or obliterate on Typhoon.");
                 toolbotGrandMastery = ScriptableObject.CreateInstance<UnlockableDef>();
                 toolbotGrandMastery.cachedName = "Skins.SS2UToolbot.GrandMastery";
                 toolbotGrandMastery.nameToken = "ACHIEVEMENT_SS2UTOOLBOTCLEARGAMETYPHOON_NAME";

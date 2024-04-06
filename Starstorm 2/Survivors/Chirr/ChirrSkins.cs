@@ -43,12 +43,12 @@ namespace Starstorm2Unofficial.Survivors.Chirr
             #region DefaultSkin
             CharacterModel.RendererInfo[] defaultRenderers = characterModel.baseRendererInfos;
 
-            LanguageAPI.Add("SS2UCHIRR_DEFAULT_SKIN_NAME", "Default");
             SkinDef defaultSkin = SkinsCore.CreateSkinDef("SS2UCHIRR_DEFAULT_SKIN_NAME",
                                                           LoadoutAPI.CreateSkinIcon(new Color32(255, 255, 255, 255), new Color32(76, 116, 114, 255), new Color32(83, 118, 99, 255), new Color32(120, 147, 90, 255)),
                                                           defaultRenderers,
                                                           model,
                                                           null);
+            defaultSkin.nameToken = "DEFAULT_SKIN";
 
             defaultSkin.meshReplacements = SkinsCore.CreateMeshReplacements(defaultRenderers,
                                                                             meshChirr,

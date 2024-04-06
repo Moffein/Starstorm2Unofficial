@@ -53,7 +53,6 @@ namespace Starstorm2Unofficial.Cores.Skins
             commandoRendererInfos[1].defaultMaterial = commandoClassicMaterial;
             commandoRendererInfos[2].defaultMaterial = commandoClassicMaterial;
 
-            LanguageAPI.Add("COMMANDO_GRANDMASTERY_SKIN_NAME", "Classic");
             SkinDef classicSkin = SkinsCore.CreateSkinDef("COMMANDO_GRANDMASTERY_SKIN_NAME",
                                                           Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("texCommandoSkinGrandMaster"),
                                                           commandoRendererInfos,
@@ -96,8 +95,7 @@ namespace Starstorm2Unofficial.Cores.Skins
             defaultRenderers.CopyTo(toolbotRendererInfos, 0);
 
             toolbotRendererInfos[1].defaultMaterial = Modules.Assets.matLunarGolem;
-
-            LanguageAPI.Add("TOOLBOT_GRANDMASTERY_SKIN_NAME", "Lunar");
+            
             SkinDef lunarSkin = SkinsCore.CreateSkinDef("TOOLBOT_GRANDMASTERY_SKIN_NAME",
                                                           Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("texToolbotSkinGrandMaster"),
                                                           toolbotRendererInfos,
@@ -174,7 +172,6 @@ namespace Starstorm2Unofficial.Cores.Skins
 
             crocoRendererInfos[0].defaultMaterial = crocoClassicMaterial;
 
-            LanguageAPI.Add("ACRID_GRANDMASTERY_SKIN_NAME", "Armored");
             SkinDef armoredSkin = SkinsCore.CreateSkinDef("ACRID_GRANDMASTERY_SKIN_NAME",
                                                           Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("texAcridSkinGrandMaster"),
                                                           crocoRendererInfos,

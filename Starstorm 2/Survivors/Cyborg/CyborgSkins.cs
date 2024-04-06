@@ -49,12 +49,12 @@ namespace Starstorm2Unofficial.Survivors.Cyborg
 
             CharacterModel.RendererInfo[] defaultRenderers = characterModel.baseRendererInfos;
 
-            LanguageAPI.Add("SS2UCYBORG_DEFAULT_SKIN_NAME", "Default");
             SkinDef defaultSkin = SkinsCore.CreateSkinDef("SS2UCYBORG_DEFAULT_SKIN_NAME",
                                                           LoadoutAPI.CreateSkinIcon(new Color32(234, 231, 212, 255), new Color32(33, 51, 49, 255), new Color32(32, 40, 53, 255), new Color32(56, 79, 77, 255)),
                                                           defaultRenderers,
                                                           model, 
                                                           null);
+            defaultSkin.nameToken = "DEFAULT_SKIN";
 
             defaultSkin.meshReplacements = CreateMeshReplacements(defaultRenderers, 
                                                                   meshCyborg);

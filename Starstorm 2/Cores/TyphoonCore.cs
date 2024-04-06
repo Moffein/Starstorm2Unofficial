@@ -15,12 +15,6 @@ namespace Starstorm2Unofficial.Cores
     {
         public static DifficultyIndex diffIdxTyphoon;
         public const float difScale = 3.5f;
-        public const string difName = "Typhoon";
-        public string difDesc =
-            @"Maximum challenge. The world is a nightmare, and survival is merely an illusion. Nobody has what it takes.<style=cStack>
-
->Player health regeneration: <style=cIsHealth>-40%</style>
->Difficulty scaling: <style=cIsHealth>+75%</style>";
         public const string iconPath = "Assets/AssetBundle/GeneralAssets/TyphoonIcon";
         public Sprite iconSprite = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("TyphoonIcon");
         public const string difServerTag = "ty";
@@ -32,19 +26,13 @@ namespace Starstorm2Unofficial.Cores
             string nameToken = "DIFFICULTY_TYPHOON_NAME";
             string descToken = "DIFFICULTY_TYPHOON_DESCRIPTION";
 
-            if (Modules.Config.TyphoonIncreaseSpawnCap.Value)
-                difDesc += "\n>Monster spawn limit: <style=cIsHealth>+50%</style></style>";
-
-
+            if (Modules.Config.TyphoonIncreaseSpawnCap.Value) descToken = "DIFFICULTY_TYPHOON_INCREASEDSPAWNCAP_DESCRIPTION";
 
             //FIXME: typhoon icon doesn't work without R2API AssetBundleResourcesProvider, game uses Resources.Load which can't find assets in our asset bundle
             DifficultyDef typhoon = new DifficultyDef(difScale, nameToken, iconPath, descToken, difColor, difServerTag, true);
             //can't even load it ourselves to bypass the resource lookup
             typhoon.iconSprite = iconSprite;
             typhoon.foundIconSprite = true;
-
-            LanguageAPI.Add(nameToken, difName);
-            LanguageAPI.Add(descToken, difDesc);
 
             diffIdxTyphoon = DifficultyAPI.AddDifficulty(typhoon);
 

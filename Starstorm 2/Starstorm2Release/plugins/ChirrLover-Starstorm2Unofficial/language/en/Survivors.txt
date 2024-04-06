@@ -274,5 +274,19 @@
 		"SS2UNEMMANDO_EPICUNLOCKABLE_UNLOCKABLE_NAME" : "Nemesis Commando: Zandatsu",
 		"SS2UNEMMANDO_EPICUNLOCKABLE_ACHIEVEMENT_NAME" : "Nemesis Commando: Zandatsu",
 		"SS2UNEMMANDO_EPICUNLOCKABLE_ACHIEVEMENT_DESC" : "As Nemesis Commando, inflict 50 stacks of Gouge on one enemy.",
+		
+		//Skins and unlocks for vanilla survivors. Acrid stuff is in here, but does a model actually exist?
+		"COMMANDO_GRANDMASTERY_SKIN_NAME" : "Classic",
+		"TOOLBOT_GRANDMASTERY_SKIN_NAME" : "Lunar",
+		"ACRID_GRANDMASTERY_SKIN_NAME" : "Armored",
+		
+		"ACHIEVEMENT_SS2UCOMMANDOCLEARGAMETYPHOON_NAME" : "Commando: Grand Mastery",
+		"ACHIEVEMENT_SS2UCOMMANDOCLEARGAMETYPHOON_DESCRIPTION" : "As Commando, beat the game or obliterate on Typhoon.",
+		
+		"ACHIEVEMENT_SS2UTOOLBOTCLEARGAMETYPHOON_NAME" : "MUL-T: Grand Mastery",
+		"ACHIEVEMENT_SS2UTOOLBOTCLEARGAMETYPHOON_DESCRIPTION" : "As MUL-T, beat the game or obliterate on Typhoon.",
+		
+		"ACHIEVEMENT_SS2UCROCOCLEARGAMETYPHOON_NAME" : "Acrid: Grand Mastery",
+		"ACHIEVEMENT_SS2UCROCOCLEARGAMETYPHOON_DESCRIPTION" : "As Acrid, beat the game or obliterate on Typhoon.",
 	}
 }
