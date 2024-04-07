@@ -1,3 +1,9 @@
+`0.19.1`
+
+- Items
+	- Strange Can
+		- Increased minimum damage to follow a similar damage formula to Acrid's Poison. (Minimum is set at 100% x HP Percent base damage, so 2.5%HP = 250% base damage)
+
 `0.19.0`
 
 *Credits to Thingw for the new icons!*

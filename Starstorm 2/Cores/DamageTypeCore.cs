@@ -143,21 +143,28 @@ namespace Starstorm2Unofficial.Cores
                     }
                 }
 
+                CharacterBody attackerBody = null;
+                if (damageInfo.attacker) attackerBody = damageInfo.attacker.GetComponent<CharacterBody>();
                 if (damageInfo.dotIndex == DoTCore.NemmandoGouge && damageInfo.procCoefficient == 0f)
                 {
-                    CharacterBody attackerBody = null;
-                    if (damageInfo.attacker) attackerBody = damageInfo.attacker.GetComponent<CharacterBody>();
                     if (attackerBody)
                     {
                         damageInfo.crit = Util.CheckRoll(attackerBody.crit, attackerBody.master);
                     }
                     damageInfo.procCoefficient = 0.5f;
-                    damageInfo.procChainMask.AddProc(ProcType.Rings);
+                    damageInfo.procChainMask.AddProc(ProcType.Rings);   //Don't let this proc bands.
                     triggerGougeProc = true;
                 }
                 else if (damageInfo.dotIndex == DoTCore.StrangeCanPoison)
                 {
-                    damageInfo.damage = Mathf.Max(self.combinedHealth * 0.025f, 1f);
+                    float minDamage = 1f;
+                    float percentDamage = self.combinedHealth * 0.025f;
+                    if (attackerBody)
+                    {
+                        minDamage = 100f * (percentDamage / self.fullCombinedHealth) * attackerBody.damage;
+                    }
+
+                    damageInfo.damage = Mathf.Max(percentDamage, minDamage);
                     EffectManager.SimpleEffect(DoTCore.StrangeCanHitEffect, damageInfo.position, self.transform.rotation, true);
                 }
                 else if (damageInfo.dotIndex == DoTCore.DetritiveTrematodeInfection)
