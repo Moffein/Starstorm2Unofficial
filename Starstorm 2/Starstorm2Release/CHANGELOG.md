@@ -1,3 +1,8 @@
+`0.19.2`
+
+- Recompiled with new DLLs from the Devotion update.
+- Fixed extra space after Shipping Method field in lore.
+
 `0.19.1`
 
 - Items
