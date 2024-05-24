@@ -1,3 +1,7 @@
+`0.19.3`
+
+- Fixed Chirr's ally health modifier not applying earlygame (when player level > ambient level)
+
 `0.19.2`
 
 - Recompiled with new DLLs from the Devotion update.

@@ -314,27 +314,13 @@ namespace Starstorm2Unofficial.Cores
 
             if (sender.HasBuff(BuffCore.chirrFriendBuff))
             {
-                if (Run.instance)
+                if (!sender.isElite)
                 {
-                    float levelDiff = Run.instance.ambientLevelFloor - sender.level;
-                    if (levelDiff > 0f)
-                    {
-                        if (!sender.isElite)
-                        {
-                            args.healthMultAdd += 0.5f;
-                        }
-                        else
-                        {
-                            args.healthMultAdd += 1f;
-                        }
-
-                        /*args.baseHealthAdd += levelDiff * sender.levelMaxHealth * 2f / 3f;
-                        args.baseShieldAdd += levelDiff * sender.levelMaxShield;
-                        args.armorAdd += levelDiff * sender.levelArmor ;
-                        args.baseMoveSpeedAdd += levelDiff * sender.levelMoveSpeed;
-                        args.critAdd += levelDiff * sender.levelCrit;*/
-                        //dont scale base damage to ambientlevel since it will make Razor Wire OP.
-                    }
+                    args.healthMultAdd += 0.5f;
+                }
+                else
+                {
+                    args.healthMultAdd += 1f;
                 }
             }
 
