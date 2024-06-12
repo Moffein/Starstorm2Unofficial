@@ -25,6 +25,7 @@ namespace Starstorm2Unofficial.Survivors.Pyro
     {
         public static GameObject bodyPrefab;
         public static BodyIndex bodyIndex;
+        public static SurvivorDef survivorDef;
 
         public static class Skills
         {
@@ -49,7 +50,7 @@ namespace Starstorm2Unofficial.Survivors.Pyro
             PyroSkins.RegisterSkins();
             CreateDoppelganger();
 
-            Modules.Prefabs.RegisterNewSurvivor(bodyPrefab, PrefabCore.CreateDisplayPrefab("PyroDisplay", bodyPrefab), Color.red, "SS2UPYRO", 40.3f);
+            survivorDef = Modules.Prefabs.RegisterNewSurvivor(bodyPrefab, PrefabCore.CreateDisplayPrefab("PyroDisplay", bodyPrefab), Color.red, "SS2UPYRO", 40.3f);
             RoR2.RoR2Application.onLoad += SetBodyIndex;
 
             if (StarstormPlugin.emoteAPILoaded) EmoteAPICompat();
@@ -407,6 +408,7 @@ namespace Starstorm2Unofficial.Survivors.Pyro
         {
             bodyIndex = BodyCatalog.FindBodyIndex("SS2UPyroBody");
             if (bodyIndex != BodyIndex.None) IgnoreSprintCrosshair.bodies.Add(bodyIndex);
+            ModCompat.SurvariantsCompat.SetVariant(survivorDef, "PyroBody");    //Change this if this ends up getting used by something else
         }
 
         [MethodImpl(MethodImplOptions.NoInlining | MethodImplOptions.NoOptimization)]

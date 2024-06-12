@@ -39,7 +39,7 @@ namespace Starstorm2Unofficial.Survivors.Chirr
 
         public ChirrCore() => Setup();
 
-        private void SetBodyIndex()
+        private void OnLoadActions()
         {
             bodyIndex = BodyCatalog.FindBodyIndex("SS2UChirrBody");
             ChirrFriendController.BlacklistBody(bodyIndex);
@@ -63,6 +63,9 @@ namespace Starstorm2Unofficial.Survivors.Chirr
             //ChirrFriendController.bodyDamageValueOverrides.Add(BodyCatalog.FindBodyIndex("ClayBruiserBody"), 1f);
             ChirrFriendController.bodyDamageValueOverrides.Add(brotherBodyIndex, 10f);
             ChirrFriendController.bodyDamageValueOverrides.Add(BodyCatalog.FindBodyIndex("BrotherHurtBody"), 10f);
+
+
+            ModCompat.SurvariantsCompat.SetVariant(survivorDef, "ChirrBody");
         }
         private void Setup()
         {
@@ -82,7 +85,7 @@ namespace Starstorm2Unofficial.Survivors.Chirr
             survivorDef = Modules.Prefabs.RegisterNewSurvivor(chirrPrefab, Cores.PrefabCore.CreateDisplayPrefab("ChirrDisplay", chirrPrefab), Color.green, "SS2UCHIRR", 40.2f);
 
             ChirrSkins.RegisterSkins();
-            RoR2.RoR2Application.onLoad += SetBodyIndex;
+            RoR2.RoR2Application.onLoad += OnLoadActions;
             if (brotherKillChirrTokens.Count > 0) RoR2.GlobalEventManager.onCharacterDeathGlobal += GlobalEventManager_onCharacterDeathGlobal;
             RoR2.Run.onRunStartGlobal += ResetMithrixConvertedTracker;
 

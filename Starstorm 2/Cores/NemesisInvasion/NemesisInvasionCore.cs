@@ -234,6 +234,7 @@ namespace Starstorm2Unofficial.Cores.NemesisInvasion
                 if (self.currentEnemy != null
                 && self.currentEnemy.characterBody
                 && !self.currentEnemy.characterBody.isPlayerControlled
+                && (self.currentEnemy.characterBody.healthComponent && self.currentEnemy.characterBody.healthComponent.alive)
                 && self.currentEnemy.characterBody.teamComponent)
                 {
                     TeamMask enemyTeams = TeamMask.GetEnemyTeams(self.body.teamComponent.teamIndex);

@@ -9,6 +9,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
+using System.Runtime.CompilerServices;
+using Survariants;
 
 namespace Starstorm2Unofficial
 {
@@ -144,17 +146,45 @@ namespace Starstorm2Unofficial
         {
             public static bool pluginLoaded = false;
 
+            public static bool useVariants = true;
+
             public static void InitCompat()
             {
                 pluginLoaded = BepInEx.Bootstrap.Chainloader.PluginInfos.ContainsKey("pseudopulse.Survariants");
-                if (!pluginLoaded) return;
-
-                RoR2Application.onLoad += OnLoadActions;
             }
 
-            private static void OnLoadActions()
+            public static void SetVariant(SurvivorDef variantDef, string baseBodyName)
             {
+                GameObject bodyPrefab = BodyCatalog.FindBodyPrefab(baseBodyName);
+                SurvivorDef baseSurvivorDef = SurvivorCatalog.FindSurvivorDefFromBody(bodyPrefab);
 
+                if (!baseSurvivorDef)
+                {
+                    Debug.LogError("SS2U: Survariants Compat: Could not find SurvivorDef for " + baseBodyName);
+                    return;
+                }
+
+                SetVariant(variantDef, baseSurvivorDef);
+            }
+
+            public static void SetVariant(SurvivorDef variantDef, SurvivorDef baseSurvivorDef)
+            {
+                if (pluginLoaded && useVariants && variantDef && baseSurvivorDef) SetVariantInternal(variantDef, baseSurvivorDef);
+            }
+
+            [MethodImpl(MethodImplOptions.NoInlining | MethodImplOptions.NoOptimization)]
+            private static void SetVariantInternal(SurvivorDef variantDef, SurvivorDef baseSurvivorDef)
+            {
+                SurvivorVariantDef variant = ScriptableObject.CreateInstance<SurvivorVariantDef>();
+                (variant as ScriptableObject).name = variantDef.cachedName;
+                variant.DisplayName = variantDef.displayNameToken;
+                variant.VariantSurvivor = variantDef;
+                variant.TargetSurvivor = baseSurvivorDef;
+                variant.RequiredUnlock = variantDef.unlockableDef;
+                variant.Description = "Starstorm 2 Unofficial";
+
+                variantDef.hidden = true;
+                SurvivorVariantCatalog.AddSurvivorVariant(variant);
             }
         }
     }

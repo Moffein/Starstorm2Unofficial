@@ -87,9 +87,10 @@ namespace Starstorm2Unofficial.Survivors.Executioner
 
         public static SkillDef specialDef, specialScepterDef;
 
-        private void SetBodyIndex()
+        private void OnLoadActions()
         {
             bodyIndex = BodyCatalog.FindBodyIndex("SS2UExecutionerBody");
+            ModCompat.SurvariantsCompat.SetVariant(survivorDef, "Executioner2Body");
         }
 
         internal override void InitializeCharacter()
@@ -97,7 +98,7 @@ namespace Starstorm2Unofficial.Survivors.Executioner
             base.InitializeCharacter();
             R2API.ItemAPI.DoNotAutoIDRSFor(bodyPrefab);
 
-            RoR2.RoR2Application.onLoad += SetBodyIndex;
+            RoR2.RoR2Application.onLoad += OnLoadActions;
 
             Modules.Assets.LoadExecutionerEffects();
 

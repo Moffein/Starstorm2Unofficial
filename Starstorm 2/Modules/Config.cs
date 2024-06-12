@@ -53,11 +53,11 @@ namespace Starstorm2Unofficial.Modules
 
         internal static void Initialize()
         {
-            /*ss_test =
-                Starstorm.instance.Config.Bind("Starstorm 2 :: Unfinished Content",
-                            "Enabled",
-                            false,
-                            "Enables Starstorm 2's work-in-progress content. May be unstable so enable at your own risk.");*/
+
+            ModCompat.SurvariantsCompat.useVariants = StarstormPlugin.instance.Config.Bind("Starstorm 2 :: Compatibility",
+                            "Survariants",
+                            true,
+                            "Enable Survariants compat. Nemesis characters will be variants of their original character, and duplicated SS2 Official characters will be variants of those characters if they are enabled.").Value;
 
             EnableUnlockAll = StarstormPlugin.instance.Config.Bind("Starstorm 2 :: Unlock All",
                             "Unlock Gameplay",

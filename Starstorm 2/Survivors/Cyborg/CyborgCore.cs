@@ -31,6 +31,7 @@ namespace Starstorm2Unofficial.Survivors.Cyborg
         public static GameObject doppelganger;
 
         public static BodyIndex bodyIndex;
+        public static SurvivorDef survivorDef;
 
         public static class Skills
         {
@@ -42,10 +43,12 @@ namespace Starstorm2Unofficial.Survivors.Cyborg
         public static ConfigEntry<bool> useEnergyRework;
 
         public CyborgCore() => Setup();
-        private void SetBodyIndex()
+        private void OnLoadActions()
         {
             bodyIndex = BodyCatalog.FindBodyIndex("SS2UCyborgBody");
             if (bodyIndex != BodyIndex.None) IgnoreSprintCrosshair.bodies.Add(bodyIndex);
+
+            ModCompat.SurvariantsCompat.SetVariant(survivorDef, "CyborgBody");
         }
 
         private void Setup()
@@ -72,8 +75,8 @@ namespace Starstorm2Unofficial.Survivors.Cyborg
             CyborgSkins.RegisterSkins();
             CreateDoppelganger();
 
-            Modules.Prefabs.RegisterNewSurvivor(cybPrefab, PrefabCore.CreateDisplayPrefab("CyborgDisplay", cybPrefab), Color.blue, "SS2UCYBORG", 40.1f);
-            RoR2.RoR2Application.onLoad += SetBodyIndex;
+            survivorDef = Modules.Prefabs.RegisterNewSurvivor(cybPrefab, PrefabCore.CreateDisplayPrefab("CyborgDisplay", cybPrefab), Color.blue, "SS2UCYBORG", 40.1f);
+            RoR2.RoR2Application.onLoad += OnLoadActions;
             SetupDefenseMatrix();
 
             if (StarstormPlugin.emoteAPILoaded) EmoteAPICompat();

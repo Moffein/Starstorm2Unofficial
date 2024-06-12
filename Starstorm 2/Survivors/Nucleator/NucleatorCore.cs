@@ -134,7 +134,7 @@ namespace Starstorm2Unofficial.Survivors.Nucleator
             FireSecondary.coneEffectPrefab = BuildSecondaryVFX("SS2UNucleatorSecondaryEffect", new Color(244f / 255f, 243f / 255f, 183f / 255f));
             FireSecondaryOvercharge.overchargeEffectPrefab = BuildSecondaryVFX("SS2UNucleatorSecondaryOverchargeEffect", new Color(1f, 0f, 1f));
 
-            RoR2Application.onLoad += SetBodyIndex;
+            RoR2Application.onLoad += OnLoadActions;
             if (StarstormPlugin.emoteAPILoaded) EmoteAPICompat();
         }
 
@@ -587,10 +587,11 @@ namespace Starstorm2Unofficial.Survivors.Nucleator
             return crosshairPrefab;
         }
 
-        private void SetBodyIndex()
+        private void OnLoadActions()
         {
             bodyIndex = BodyCatalog.FindBodyIndex("SS2UNucleatorBody");
             if (bodyIndex != BodyIndex.None) IgnoreSprintCrosshair.bodies.Add(bodyIndex);
+            ModCompat.SurvariantsCompat.SetVariant(survivorDef, "NucleatorBody");
         }
     }
 }

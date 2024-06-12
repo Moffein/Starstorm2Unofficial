@@ -33,6 +33,8 @@ namespace Starstorm2Unofficial.Modules.Survivors
         internal abstract ItemDisplayRuleSet itemDisplayRuleSet { get; set; }
         internal abstract List<ItemDisplayRuleSet.KeyAssetRuleGroup> itemDisplayRules { get; set; }
 
+        public SurvivorDef survivorDef;
+
         internal virtual void Initialize()
         {
             instance = this;
@@ -63,7 +65,7 @@ namespace Starstorm2Unofficial.Modules.Survivors
                 displayPrefab = Modules.Prefabs.CreateDisplayPrefab(displayName, bodyPrefab, bodyInfo);
                 if (bodyInfo.menuSoundString != "") displayPrefab.AddComponent<Components.MenuSound>().soundString = bodyInfo.menuSoundString;
 
-                Modules.Prefabs.RegisterNewSurvivor(bodyPrefab, displayPrefab, Color.grey, bodyName.ToUpper(), characterUnlockableDef, sortPosition);
+                survivorDef = Modules.Prefabs.RegisterNewSurvivor(bodyPrefab, displayPrefab, Color.grey, bodyName.ToUpper(), characterUnlockableDef, sortPosition);
 
                 RegisterTokens();
                 Hook();

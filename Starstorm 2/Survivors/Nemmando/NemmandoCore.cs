@@ -144,7 +144,7 @@ namespace Starstorm2Unofficial.Survivors.Nemmando
         public static SkillDef specialDecisiveStrike;
         public static SkillDef specialSubmission;
 
-        private void SetBodyIndex()
+        private void OnLoadActions()
         {
             bodyIndex = BodyCatalog.FindBodyIndex("SS2UNemmandoBody");
 
@@ -153,6 +153,8 @@ namespace Starstorm2Unofficial.Survivors.Nemmando
             {
                 NemesisInvasionCore.prioritizePlayersList.Add(monsterBodyIndex);
             }
+
+            ModCompat.SurvariantsCompat.SetVariant(survivorDef, Addressables.LoadAssetAsync<SurvivorDef>("RoR2/Base/Commando/Commando.asset").WaitForCompletion());
         }
         internal override void InitializeCharacter()
         {
@@ -162,7 +164,7 @@ namespace Starstorm2Unofficial.Survivors.Nemmando
             SetupSwordProjectile();
             SetupLaserTracer();
 
-            RoR2.RoR2Application.onLoad += SetBodyIndex;
+            RoR2.RoR2Application.onLoad += OnLoadActions;
             Modules.Assets.LoadNemmandoEffects();
 
             bodyPrefab.AddComponent<Components.NemmandoController>();

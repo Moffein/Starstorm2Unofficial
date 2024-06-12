@@ -1,5 +1,10 @@
 `0.19.4`
 
+- Survariants compatibility
+	- Can be toggled in config.
+	- Nemmando is listed under Commando.
+	- Duplicated survivors with SS2 Official are listed as a variant. (Currently Executioner/Chirr)
+
 - Updated Icons
 	- Updated Strange Can and Greater Warbanner logbook icons.
 	- New Strange Can buff icon.
