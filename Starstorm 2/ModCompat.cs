@@ -18,6 +18,7 @@ namespace Starstorm2Unofficial
         {
             RiskyMod.InitCompat();
             SS2OCompat.InitCompat();
+            SurvariantsCompat.InitCompat();
         }
 
         public static class RiskyMod
@@ -136,6 +137,24 @@ namespace Starstorm2Unofficial
                 args.baseHealthAdd += (3600f - sender.baseMaxHealth) + levelFactor * (1080f - sender.levelMaxHealth);
                 args.baseRegenAdd -= sender.baseRegen + levelFactor * sender.levelRegen;
                 args.baseDamageAdd -= (sender.baseDamage - 3f) + levelFactor * (sender.levelDamage - 0.6f);
+            }
+        }
+
+        public static class SurvariantsCompat
+        {
+            public static bool pluginLoaded = false;
+
+            public static void InitCompat()
+            {
+                pluginLoaded = BepInEx.Bootstrap.Chainloader.PluginInfos.ContainsKey("pseudopulse.Survariants");
+                if (!pluginLoaded) return;
+
+                RoR2Application.onLoad += OnLoadActions;
+            }
+
+            private static void OnLoadActions()
+            {
+
             }
         }
     }

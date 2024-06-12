@@ -1,3 +1,13 @@
+`0.19.4`
+
+- Updated Icons
+	- Updated Strange Can and Greater Warbanner logbook icons.
+	- New Strange Can buff icon.
+	- Added transparency to Radiation buff icon.
+	
+- Cloaking Headband
+	- Now gives a speed boost as well.
+
 `0.19.3`
 
 - Fixed Chirr's ally health modifier not applying earlygame (when player level > ambient level)
