@@ -9,11 +9,10 @@ using RoR2.UI;
 using RoR2.Projectile;
 using Starstorm2Unofficial.Cores.NemesisInvasion;
 using Starstorm2Unofficial.Survivors.Cyborg.Components.OverheatProjectile;
-using UnityEngine.AddressableAssets;
 
 namespace Starstorm2Unofficial.Modules
 {
-    public static class Assets
+    internal static class Assets
     {
         // the assetbundle to load assets from
         internal static AssetBundle mainAssetBundle;
@@ -24,7 +23,7 @@ namespace Starstorm2Unofficial.Modules
         internal static List<GameObject> networkedObjectPrefabs = new List<GameObject>();
 
         // cache these and use to create our own materials
-        internal static Shader hotpoo = Addressables.LoadAssetAsync<Shader>("RoR2/Base/Shaders/HGStandard.shader").WaitForCompletion();
+        internal static Shader hotpoo = LegacyResourcesAPI.Load<Shader>("Shaders/Deferred/HGStandard");
         internal static Material commandoMat;
         private static string[] assetNames = new string[0];
 
@@ -93,9 +92,6 @@ namespace Starstorm2Unofficial.Modules
             if (mainAssetBundle == null)
             {
                 mainAssetBundle = AssetBundle.LoadFromFile(Files.GetPathToFile("Assets", "assetstorm"));
-                
-                //Had issues with the Async version
-                ShaderSwapper.ShaderSwapper.UpgradeStubbedShaders(mainAssetBundle);
             }
 
             assetNames = mainAssetBundle.GetAllAssetNames();
@@ -348,35 +344,28 @@ namespace Starstorm2Unofficial.Modules
             return networkSoundEventDef;
         }
 
-        public static void ConvertAllRenderersToHopooShader(GameObject objectToConvert)
+        internal static void ConvertAllRenderersToHopooShader(GameObject objectToConvert)
         {
             if (!objectToConvert) return;
 
-            foreach (Renderer renderer in objectToConvert.GetComponentsInChildren<Renderer>())
+            foreach (MeshRenderer i in objectToConvert.GetComponentsInChildren<MeshRenderer>())
             {
-                if (renderer && renderer.material)
+                if (i)
                 {
-                    bool isStandard = renderer.material.shader && renderer.material.shader.name == "Standard";
-                    bool isGlass = renderer.name == "UseGlassShader" || renderer.name == "UseGlass2Shader" || renderer.name == "UseGlass3Shader";
-
-                    if (isGlass)
+                    if (i.material)
                     {
-                        if (renderer.name == "UseGlassShader")
-                        {
-                            renderer.material = Addressables.LoadAssetAsync<Material>("RoR2/Base/Infusion/matInfusionGlass.mat").WaitForCompletion();
-                        }
-                        else if (renderer.name == "UseGlass2Shader")
-                        {
-                            renderer.material = Addressables.LoadAssetAsync<Material>("RoR2/DLC1/HealingPotion/matHealingPotionGlass.mat").WaitForCompletion();
-                        }
-                        else if (renderer.name == "UseGlass3Shader")
-                        {
-                            renderer.material = Addressables.LoadAssetAsync<Material>("RoR2/DLC1/VendingMachine/matVendingMachineGlass.mat").WaitForCompletion();
-                        }
+                        i.material.shader = hotpoo;
                     }
-                    else if (isStandard)
+                }
+            }
+
+            foreach (SkinnedMeshRenderer i in objectToConvert.GetComponentsInChildren<SkinnedMeshRenderer>())
+            {
+                if (i)
+                {
+                    if (i.material)
                     {
-                        renderer.material.shader = hotpoo;
+                        i.material.shader = hotpoo;
                     }
                 }
             }
@@ -497,14 +486,6 @@ namespace Starstorm2Unofficial.Modules
             {
                 Debug.LogError("Failed to load material: " + materialName + " - Check to see that the name in your Unity project matches the one in this code");
                 return commandoMat;
-            }
-            else
-            {
-                if (tempMat.shader && tempMat.shader.name != "Standard")
-                {
-                    Debug.Log("CreateMaterial: " + materialName + " has shader set to something other than Standard. Assuming this is a stubbed shader, parameters will be ignored.");
-                    return tempMat;
-                }
             }
 
             mat.name = materialName;

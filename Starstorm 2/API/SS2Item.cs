@@ -1,7 +1,6 @@
 ﻿using R2API;
 using RoR2;
 using Starstorm2Unofficial.Cores;
-using Starstorm2Unofficial.Modules;
 using System;
 using System.Globalization;
 using UnityEngine;
@@ -61,7 +60,12 @@ public abstract class SS2Item
     }
 
     protected virtual void SetupMaterials(GameObject modelPrefab) {
-        Assets.ConvertAllRenderersToHopooShader(modelPrefab);
+
+        Renderer[] children = modelPrefab.GetComponentsInChildren<Renderer>();
+
+        for (int i = 0; i < children.Length; i++) {
+            children[i].material.shader = Starstorm2Unofficial.Modules.Assets.hotpoo;
+        }
     }
 
     public abstract void RegisterHooks();
