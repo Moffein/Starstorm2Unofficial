@@ -5,6 +5,7 @@
     "description": "A restoration of the pre-SotV Videogame Mod 2. Compatible with the official Videogame Mod 2!",
     "dependencies": [
         "bbepis-BepInExPack-5.4.1905",
-		"tristanmcpherson-R2API-4.4.1"
+		"tristanmcpherson-R2API-4.4.1",
+		"Smooth_Salad-ShaderSwapper-1.0.1"
     ]
 }

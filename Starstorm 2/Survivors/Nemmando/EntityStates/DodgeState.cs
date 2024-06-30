@@ -45,10 +45,6 @@ namespace EntityStates.SS2UStates.Nemmando
 				base.characterMotor.velocity = this.forwardDirection * this.rollSpeed;
 			}
 
-            // dunno why this didn't work. FUCK HOPOO!
-            //EffectManager.SimpleMuzzleFlash(EntityStates.Commando.DodgeState.jetEffect, base.gameObject, "JetMuzzleL", true);
-            //EffectManager.SimpleMuzzleFlash(EntityStates.Commando.DodgeState.jetEffect, base.gameObject, "JetMuzzleR", true);
-
             Vector3 velocity = base.characterMotor ? base.characterMotor.velocity : Vector3.zero;
 			this.previousPosition = base.transform.position - velocity;
 

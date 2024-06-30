@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using R2API;
 using RoR2;
+using Starstorm2Unofficial.Modules;
 using UnityEngine;
 using UnityEngine.Networking;
 
@@ -37,7 +38,7 @@ namespace Starstorm2Unofficial.Cores.Equipment
                 sphereIndicator.GetComponent<MeshRenderer>().material = indicatorMat;
 
             GameObject greaterWarbannerProp = Modules.Assets.mainAssetBundle.LoadAsset<GameObject>("MDLGreaterWarbannerWard").InstantiateClone("GreaterWarbannerProp", false);
-            greaterWarbannerProp.GetComponent<Renderer>().material.shader = Modules.Assets.hotpoo;
+            Assets.ConvertAllRenderersToHopooShader(greaterWarbannerProp);
 
             greaterWarbannerProp.transform.parent = banner.transform;
             greaterWarbannerProp.transform.localPosition = new Vector3(0, 3f, 0);

@@ -1,6 +1,7 @@
 ﻿using R2API;
 using RoR2;
 using Starstorm2Unofficial.Cores;
+using Starstorm2Unofficial.Modules;
 using System;
 using System.Globalization;
 using UnityEngine;
@@ -60,7 +61,7 @@ public abstract class SS2Equipment
             var modelPrefab = def.pickupModelPrefab;
             if (modelPrefab)
             {
-                modelPrefab.GetComponentInChildren<MeshRenderer>().material.shader = Starstorm2Unofficial.Modules.Assets.hotpoo;
+                Assets.ConvertAllRenderersToHopooShader(modelPrefab);
             }
         }
 
