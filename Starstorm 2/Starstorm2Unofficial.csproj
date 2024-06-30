@@ -422,6 +422,10 @@
     <Reference Include="RoR2BepInExPack">
       <HintPath>libs\BepInEx\RoR2BepInExPack.dll</HintPath>
     </Reference>
+    <Reference Include="ShaderSwapper, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>libs\HardDependencies\ShaderSwapper.dll</HintPath>
+    </Reference>
     <Reference Include="SimpleJSON">
       <HintPath>libs\SimpleJSON.dll</HintPath>
     </Reference>
