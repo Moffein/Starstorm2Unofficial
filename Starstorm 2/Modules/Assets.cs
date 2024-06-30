@@ -356,7 +356,8 @@ namespace Starstorm2Unofficial.Modules
             {
                 if (renderer && renderer.material)
                 {
-                    bool isStandard = renderer.material.shader && renderer.material.shader.name == "Standard";
+                    bool isStandard = renderer.material.shader && 
+                        (renderer.material.shader.name == "Standard" || renderer.material.shader.name == "Autodesk Interactive");
                     bool isGlass = renderer.name == "UseGlassShader" || renderer.name == "UseGlass2Shader" || renderer.name == "UseGlass3Shader";
 
                     if (isGlass)
@@ -500,9 +501,10 @@ namespace Starstorm2Unofficial.Modules
             }
             else
             {
-                if (tempMat.shader && tempMat.shader.name != "Standard")
+                if (tempMat.shader &&
+                    !((tempMat.shader.name == "Standard" || tempMat.shader.name == "Autodesk Interactive")))
                 {
-                    Debug.Log("CreateMaterial: " + materialName + " has shader set to something other than Standard. Assuming this is a stubbed shader, parameters will be ignored.");
+                    Debug.Log("CreateMaterial: " + materialName + " has shader set to something other than standard ("+tempMat.shader.name+"). Assuming this is a stubbed shader, parameters will be ignored.");
                     return tempMat;
                 }
             }
