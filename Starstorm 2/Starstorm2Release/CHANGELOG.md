@@ -1,3 +1,9 @@
+`0.20.0`
+
+- Now depends on ShaderSwapper.
+
+- Fixed Executioner's selected primary not saving when restarting the game.
+
 `0.19.4`
 
 - Survariants compatibility

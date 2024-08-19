@@ -185,6 +185,7 @@ namespace Starstorm2Unofficial.Modules
             if (agile) skillDef.keywordTokens = new string[] { "KEYWORD_AGILE" };
 
             skillDefs.Add(skillDef);
+            FixSkillName(skillDef);
 
             return skillDef;
         }
