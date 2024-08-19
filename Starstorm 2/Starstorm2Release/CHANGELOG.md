@@ -1,3 +1,7 @@
+`0.20.2`
+
+- Fixed material settings on Commando's grandmastery.
+
 `0.20.1`
 
 - Fixed adjusted materials not fading at close-range.
