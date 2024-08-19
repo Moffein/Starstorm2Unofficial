@@ -47,7 +47,7 @@ namespace Starstorm2Unofficial.Cores.Skins
             defaultRenderers.CopyTo(commandoRendererInfos, 0);
 
 
-            Material commandoClassicMaterial = Modules.Assets.CreateMaterial("matCommandoClassic", 1, Color.white, 0);
+            Material commandoClassicMaterial = Modules.Assets.LoadMaterialFromAssetBundle("matCommandoClassic");
 
             commandoRendererInfos[0].defaultMaterial = commandoClassicMaterial;
             commandoRendererInfos[1].defaultMaterial = commandoClassicMaterial;
@@ -168,7 +168,7 @@ namespace Starstorm2Unofficial.Cores.Skins
             // :bombardier:
 
 
-            Material crocoClassicMaterial = Modules.Assets.CreateMaterial("matAcridArmor", 1, Color.white, 0);
+            Material crocoClassicMaterial = Modules.Assets.LoadMaterialFromAssetBundle("matAcridArmor");
 
             crocoRendererInfos[0].defaultMaterial = crocoClassicMaterial;
 
