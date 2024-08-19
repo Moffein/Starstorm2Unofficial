@@ -59,18 +59,18 @@ namespace Starstorm2Unofficial.Survivors.Executioner
                 new CustomRendererInfo
                 {
                     childName = "Model",
-                    material = Modules.Assets.CreateMaterial("matExecutioner", 1f)
+                    material = Modules.Assets.LoadMaterialFromAssetBundle("matExecutioner")
                 },
                 new CustomRendererInfo
                 {
                     childName = "GunModel",
-                    material = Modules.Assets.CreateMaterial("matExecutioner"),
+                    material = Modules.Assets.LoadMaterialFromAssetBundle("matExecutioner"),
                     ignoreOverlays = true
                 },
                 new CustomRendererInfo
                 {
                     childName = "AxeModel",
-                    material = Modules.Assets.CreateMaterial("matExecutionerAxe", 1f),
+                    material = Modules.Assets.LoadMaterialFromAssetBundle("matExecutionerAxe"),
                     ignoreOverlays = true
                 }};
 
@@ -400,6 +400,7 @@ namespace Starstorm2Unofficial.Survivors.Executioner
             CharacterModel.RendererInfo[] defaultRenderers = characterModel.baseRendererInfos;
 
             List<SkinDef> skins = new List<SkinDef>();
+            Material defaultAxeMat = Modules.Assets.LoadMaterialFromAssetBundle("matExecutionerAxe");
 
             #region DefaultSkin
             SkinDef defaultSkin = Modules.Skins.CreateSkinDef("SS2UEXECUTIONER_DEFAULT_SKIN_NAME",
@@ -432,12 +433,13 @@ namespace Starstorm2Unofficial.Survivors.Executioner
             #endregion
 
             #region MasterySkin
-            string materialName = UnityEngine.Random.value < 0.01f ? "matExecutionerMastery" : "matExecutionerMasteryAlt";
+            //string materialName = UnityEngine.Random.value < 0.01f ? "matExecutionerMastery" : "matExecutionerMasteryAlt";
+            Material masteryMat = Modules.Assets.LoadMaterialFromAssetBundle("matExecutionerMasteryAlt");
             CharacterModel.RendererInfo[] masteryRendererInfos = SkinRendererInfos(defaultRenderers, new Material[]
             {
-                Modules.Assets.CreateMaterial(materialName, 1f, Color.white),
-                Modules.Assets.CreateMaterial(materialName, 1f, Color.white),
-                Modules.Assets.CreateMaterial("matExecutionerAxe", 1f)
+                masteryMat,
+                masteryMat,
+                defaultAxeMat
             });
 
             SkinDef masterySkin = Modules.Skins.CreateSkinDef("SS2UEXECUTIONER_MASTERY_SKIN_NAME",
@@ -465,11 +467,12 @@ namespace Starstorm2Unofficial.Survivors.Executioner
             #endregion
 
             #region GrandMasterySkin
+            Material gmMat = Modules.Assets.LoadMaterialFromAssetBundle("matExecutionerKnight");
             CharacterModel.RendererInfo[] grandMasteryRendererInfos = SkinRendererInfos(defaultRenderers, new Material[]
             {
-                Modules.Assets.CreateMaterial("matExecutionerKnight"),
-                Modules.Assets.CreateMaterial("matExecutionerKnight"),
-                Modules.Assets.CreateMaterial("matExecutionerAxe", 1f)
+                gmMat,
+                gmMat,
+                defaultAxeMat
             });
 
             SkinDef grandMasterySkin = Modules.Skins.CreateSkinDef("SS2UEXECUTIONER_KNIGHT_SKIN_NAME",
@@ -496,12 +499,13 @@ namespace Starstorm2Unofficial.Survivors.Executioner
             skins.Add(grandMasterySkin);
             #endregion
 
+            Material wasteMat = Modules.Assets.LoadMaterialFromAssetBundle("matWastelander");
             #region WastelanderSkin
             CharacterModel.RendererInfo[] wastelanderRendererInfos = SkinRendererInfos(defaultRenderers, new Material[]
             {
-                Modules.Assets.CreateMaterial("matWastelander", 1f, Color.white),
-                Modules.Assets.CreateMaterial("matWastelander", 1f, Color.white),
-                Modules.Assets.CreateMaterial("matWastelanderAxe", 1, Color.red)
+                wasteMat,
+                wasteMat,
+                Modules.Assets.LoadMaterialFromAssetBundle("matWastelanderAxe")
             });
 
             SkinDef wastelanderSkin = Modules.Skins.CreateSkinDef("SS2UEXECUTIONER_WASTELANDER_SKIN_NAME",

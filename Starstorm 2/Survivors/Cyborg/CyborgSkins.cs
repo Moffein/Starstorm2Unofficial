@@ -63,7 +63,7 @@ namespace Starstorm2Unofficial.Survivors.Cyborg
             #endregion
 
             #region MasterySkin
-            Sprite masteryIcon = LoadoutAPI.CreateSkinIcon(new Color32(234, 231, 212, 255), new Color32(125, 92, 39, 255), new Color32(26, 17, 22, 255), new Color32(57, 33, 33, 255));
+            Sprite masteryIcon = LoadoutAPI.CreateSkinIcon(new Color32(250, 243, 181, 255), new Color32(125, 92, 39, 255), new Color32(26, 17, 22, 255), new Color32(57, 33, 33, 255));
             UnlockableDef masterySkinUnlockableDef = ScriptableObject.CreateInstance<UnlockableDef>();
             masterySkinUnlockableDef.cachedName = "Skins.SS2UCyborg.Mastery";
             masterySkinUnlockableDef.nameToken = "ACHIEVEMENT_SS2UCYBORGCLEARGAMEMONSOON_NAME";

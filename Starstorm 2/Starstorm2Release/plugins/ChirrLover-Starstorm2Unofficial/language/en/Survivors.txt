@@ -15,7 +15,7 @@
 		"SS2UEXECUTIONER_PISTOL_SINGLE_DESCRIPTION" : "Fire your pistol for <style=cIsDamage>180% damage</style>.",
 		
 		"SS2UEXECUTIONER_IONGUN_NAME" : "Ion Burst",
-		"SS2UEXECUTIONER_IONGUN_DESCRIPTION" : "<style=cIsDamage>Shocking</style>. Unload a barrage of ionized bullets for <style=cIsDamage>2x300% damage</style> each. Every slain enemy <style=cIsUtility>adds a stock</style>. Hold up to 5.",
+		"SS2UEXECUTIONER_IONGUN_DESCRIPTION" : "<style=cIsDamage>Shocking</style>. Unload a barrage of piercing ionized bullets for <style=cIsDamage>2x300% damage</style> each. Every slain enemy <style=cIsUtility>adds a stock</style>. Hold up to 5.",
 		
 		"KEYWORD_SS2U_FEAR" : "<style=cKeywordName>Fear</style><style=cSub>Reduce movement speed by <style=cIsDamage>50%</style>. Feared enemies are <style=cIsHealth>instantly killed</style> if below <style=cIsHealth>15%</style> health.</style>",
 		

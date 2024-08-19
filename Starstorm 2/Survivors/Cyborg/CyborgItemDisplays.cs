@@ -333,7 +333,7 @@ localScale = new Vector3(2.86155F, 2.86155F, 2.93507F),
                     }
                 }
             });
-            itemRules.Add(ItemDisplayCore.CreateGenericDisplayRule(DLC1Content.Items.MinorConstructOnKill, "DisplayDefenseNucleus", "head", Vector3.zero, Vector3.zero, Vector3.one));
+            itemRules.Add(ItemDisplayCore.CreateGenericDisplayRule(DLC1Content.Items.MinorConstructOnKill, "DisplayDefenseNucleus", "Base", new Vector3(-1.7f, 0f, 0.8f), new Vector3(90f, 0f, 0f), 0.5f * Vector3.one));
             itemRules.Add(ItemDisplayCore.CreateGenericDisplayRule(DLC1Content.Items.VoidMegaCrabItem, "DisplayMegaCrabItem", "Chest", new Vector3(0.06565F, -0.08502F, -0.20579F), new Vector3(354.1336F, 180F, 48.85915F), new Vector3(0.12792F, 0.12792F, 0.12792F)));
 
             itemRules.Add(ItemDisplayCore.CreateGenericDisplayRule(DLC1Content.Equipment.Molotov, "DisplayMolotov", "head", new Vector3(-0.25431F, 0.02618F, 0.23001F), new Vector3(341.9067F, 353.7088F, 342.7318F), new Vector3(0.26446F, 0.26446F, 0.26446F)));
