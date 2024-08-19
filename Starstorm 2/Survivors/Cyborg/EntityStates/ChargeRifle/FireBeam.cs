@@ -6,6 +6,7 @@ using Starstorm2Unofficial.Survivors.Cyborg.Components;
 using RoR2.Skills;
 using R2API;
 using Starstorm2Unofficial.Cores;
+using Starstorm2Unofficial.Survivors.Cyborg;
 
 namespace EntityStates.SS2UStates.Cyborg.ChargeRifle
 {
@@ -20,6 +21,8 @@ namespace EntityStates.SS2UStates.Cyborg.ChargeRifle
         public static float recoil = 4f;
         public static GameObject hitEffectPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Commando/HitsparkCommandoShotgun.prefab").WaitForCompletion();
         public static GameObject tracerEffectPrefab;
+        public static GameObject tracerEffectColossusPrefab;
+        public static GameObject perfectTracerEffectColossusPrefab;
         public static GameObject perfectTracerEffectPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Huntress/TracerHuntressSnipe.prefab").WaitForCompletion();
         public static GameObject muzzleflashEffectPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Mage/MuzzleflashMageLightning.prefab").WaitForCompletion();
 
@@ -82,6 +85,9 @@ namespace EntityStates.SS2UStates.Cyborg.ChargeRifle
                 float dmg = Mathf.Lerp(FireBeam.minDamageCoefficient, FireBeam.maxDamageCoefficient, charge) * this.damageStat * (perfectCharge ? FireBeam.perfectChargeDamageMultiplier : 1f);
                 float force = Mathf.Lerp(FireBeam.minForce, FireBeam.maxForce, charge);
 
+                GameObject tracer = perfectCharge ? FireBeam.perfectTracerEffectPrefab : FireBeam.tracerEffectPrefab;
+                if (CyborgCore.IsColossusSkin(base.characterBody) && tracerEffectColossusPrefab && perfectTracerEffectColossusPrefab) tracer = perfectCharge ? FireBeam.perfectTracerEffectColossusPrefab : FireBeam.tracerEffectColossusPrefab;
+
                 Ray r = base.GetAimRay();
                 BulletAttack bullet = new BulletAttack
                 {
@@ -102,7 +108,7 @@ namespace EntityStates.SS2UStates.Cyborg.ChargeRifle
                     procCoefficient = 1f,
                     radius = Mathf.Lerp(1f, 2f, charge),
                     weapon = base.gameObject,
-                    tracerEffectPrefab = perfectCharge ? FireBeam.perfectTracerEffectPrefab : FireBeam.tracerEffectPrefab,
+                    tracerEffectPrefab = tracer,
                     hitEffectPrefab = FireBeam.hitEffectPrefab,
                     maxDistance = 1000f
                 };

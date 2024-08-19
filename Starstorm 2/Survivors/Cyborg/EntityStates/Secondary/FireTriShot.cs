@@ -19,7 +19,8 @@ namespace EntityStates.SS2UStates.Cyborg.Secondary
         public static float damageCoefficient = 1.4f;
         public static float baseDuration = 0.2f;
         public static float recoil = 0.5f;
-        public static GameObject tracerEffectPrefab;//Prefabs/Effects/Tracers/TracerHuntressSnipe
+        public static GameObject tracerEffectPrefab;
+        public static GameObject tracerEffectColossusPrefab;
         public static GameObject hitEffectPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Commando/HitsparkCommandoShotgun.prefab").WaitForCompletion();
         public static GameObject muzzleflashEffectPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Mage/MuzzleflashMageLightning.prefab").WaitForCompletion();
 
@@ -90,6 +91,8 @@ namespace EntityStates.SS2UStates.Cyborg.Secondary
                 Vector3 direction = Quaternion.AngleAxis(-num2 * 0.5f, axis) * aimRay.direction;
                 Quaternion rotation = Quaternion.AngleAxis(angle, axis);
                 Ray aimRay2 = new Ray(aimRay.origin, direction);
+                GameObject tracer = tracerEffectPrefab;
+                if (CyborgCore.IsColossusSkin(base.characterBody) && tracerEffectColossusPrefab) tracer = tracerEffectColossusPrefab;
                 for (int i = 0; i < 3; i++)
                 {
                     BulletAttack bullet = new BulletAttack
@@ -104,14 +107,14 @@ namespace EntityStates.SS2UStates.Cyborg.Secondary
                         force = 450f,
                         radius = 0.3f,
                         smartCollision = true,
-                        tracerEffectPrefab = tracerEffectPrefab,
+                        tracerEffectPrefab = tracer,
                         muzzleName = muzzleString,
                         hitEffectPrefab = hitEffectPrefab,
                         isCrit = isCrit,
                         falloffModel = BulletAttack.FalloffModel.None,
                         damageType = DamageType.SlowOnHit,
                         maxDistance = 1000f,
-                        procCoefficient = 0.5f
+                        procCoefficient = 0.7f
                     };
                     bullet.AddModdedDamageType(DamageTypeCore.ModdedDamageTypes.CyborgCanDetonateShockCore);
                     bullet.Fire();

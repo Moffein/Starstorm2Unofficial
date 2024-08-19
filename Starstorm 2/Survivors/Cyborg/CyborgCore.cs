@@ -68,6 +68,16 @@ namespace Starstorm2Unofficial.Survivors.Cyborg
             FireBeam.tracerEffectPrefab = tracerEffectPrefab;
             FireTriShot.tracerEffectPrefab = tracerEffectPrefab;
 
+            GameObject colossusTracer = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/CaptainDefenseMatrix/TracerCaptainDefenseMatrix.prefab").WaitForCompletion().InstantiateClone("SS2UCyborgTracerColossus", false);
+            EffectComponent ec = colossusTracer.GetComponent<EffectComponent>();
+            ec.soundName = "";
+            Modules.Assets.effectDefs.Add(new EffectDef(colossusTracer));
+
+            PrimaryLaser.tracerEffectColossusPrefab = colossusTracer;
+            FireBeam.tracerEffectColossusPrefab = colossusTracer;
+            FireBeam.perfectTracerEffectColossusPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Golem/TracerGolem.prefab").WaitForCompletion();
+            FireTriShot.tracerEffectColossusPrefab = colossusTracer;
+
             RegisterProjectiles();
             RegisterStates();
             SetUpSkills();
@@ -999,6 +1009,15 @@ namespace Starstorm2Unofficial.Survivors.Cyborg
             PrefabCore.SetupHitbox(ml.modelTransform.gameObject, cl.FindChild("RamHitbox"), "RamHitbox");
 
             return cyborgPrefab;
+        }
+
+        public static bool IsColossusSkin(CharacterBody body)
+        {
+            if (!body) return false;
+            SkinDef currentSkin = SkinCatalog.GetBodySkinDef(body.bodyIndex, (int)body.skinIndex);
+            if (!currentSkin) return false;
+
+            return currentSkin.nameToken == "SS2UCYBORG_GRANDMASTERY_SKIN_NAME";
         }
     }
 }

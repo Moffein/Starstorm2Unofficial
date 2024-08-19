@@ -2,6 +2,7 @@
 using RoR2;
 using RoR2.Skills;
 using Starstorm2Unofficial.Cores;
+using Starstorm2Unofficial.Survivors.Cyborg;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 
@@ -12,7 +13,8 @@ namespace EntityStates.SS2UStates.Cyborg
         public static float damageCoefficient = 3f;
         public static float baseDuration = 0.5f;
         public static float recoil = 2f;
-        public static GameObject tracerEffectPrefab;//Prefabs/Effects/Tracers/TracerHuntressSnipe
+        public static GameObject tracerEffectPrefab;
+        public static GameObject tracerEffectColossusPrefab;
         public static GameObject hitEffectPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Commando/HitsparkCommandoShotgun.prefab").WaitForCompletion();
         public static GameObject muzzleflashEffectPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Mage/MuzzleflashMageLightning.prefab").WaitForCompletion();
 
@@ -46,6 +48,8 @@ namespace EntityStates.SS2UStates.Cyborg
 
             if (base.isAuthority)
             {
+                GameObject tracer = tracerEffectPrefab;
+                if (CyborgCore.IsColossusSkin(base.characterBody) && tracerEffectColossusPrefab) tracer = tracerEffectColossusPrefab;
                 BulletAttack bullet = new BulletAttack
                 {
                     owner = base.gameObject,
@@ -58,7 +62,7 @@ namespace EntityStates.SS2UStates.Cyborg
                     force = 1000f,
                     radius = 1f,
                     smartCollision = true,
-                    tracerEffectPrefab = tracerEffectPrefab,
+                    tracerEffectPrefab = tracer,
                     muzzleName = muzzleString,
                     hitEffectPrefab = hitEffectPrefab,
                     isCrit = base.RollCrit(),
