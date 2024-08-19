@@ -1,3 +1,7 @@
+`0.20.1`
+
+- Fixed adjusted materials not fading at close-range.
+
 `0.20.0`
 
 - Now depends on ShaderSwapper.

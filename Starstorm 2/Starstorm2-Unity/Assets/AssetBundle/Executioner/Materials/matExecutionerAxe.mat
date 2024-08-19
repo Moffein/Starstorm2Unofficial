@@ -9,7 +9,7 @@ Material:
   m_PrefabAsset: {fileID: 0}
   m_Name: matExecutionerAxe
   m_Shader: {fileID: 4800000, guid: 1e66606608720d9479ff3206ff5e4894, type: 3}
-  m_ShaderKeywords: _EMISSION _GLOSSYREFLECTIONS_OFF _SPECULARHIGHLIGHTS_OFF
+  m_ShaderKeywords: DITHER _EMISSION _GLOSSYREFLECTIONS_OFF _SPECULARHIGHLIGHTS_OFF
   m_LightmapFlags: 1
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -125,7 +125,7 @@ Material:
     - _DecalLayer: 0
     - _Depth: 0.2
     - _DetailNormalMapScale: 1
-    - _DitherOn: 0
+    - _DitherOn: 1
     - _DstBlend: 0
     - _EliteBrightnessMax: 1
     - _EliteBrightnessMin: 0
