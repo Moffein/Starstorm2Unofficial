@@ -112,7 +112,7 @@ namespace EntityStates.SS2UStates.Nemmando
             }
 
             bool keyDown = base.IsKeyDownAuthority();
-            if (base.GetTeam() == TeamIndex.Monster) keyDown = true;
+            if (!(base.characterBody && base.characterBody.isPlayerControlled)) keyDown = true;
 
             if (base.isAuthority && (base.fixedAge >= 1.25f * this.chargeDuration || !keyDown && base.fixedAge >= 0.1f))
             {
