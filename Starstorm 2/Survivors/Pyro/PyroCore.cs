@@ -462,7 +462,7 @@ namespace Starstorm2Unofficial.Survivors.Pyro
                 new CustomRendererInfo
                 {
                     childName = "Model",
-                    material = Modules.Assets.CreateMaterial("matPyro", 1f, new Color(0.839f, 0.812f, 0.812f))
+                    material = Modules.Assets.LoadMaterialFromAssetBundle("matPyro")
                 }
             }, 0);
 

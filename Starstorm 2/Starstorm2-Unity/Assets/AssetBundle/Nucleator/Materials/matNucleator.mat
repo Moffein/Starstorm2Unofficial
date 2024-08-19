@@ -130,7 +130,7 @@ Material:
     - _EliteBrightnessMax: 1
     - _EliteBrightnessMin: 0
     - _EliteIndex: 0
-    - _EmPower: 2
+    - _EmPower: 3.5
     - _EnableCutout: 0
     - _FEON: 0
     - _Fade: 1
@@ -179,6 +179,6 @@ Material:
     - _ZWrite: 1
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
-    - _EmColor: {r: 0.85882354, g: 0.7882353, b: 0.9607843, a: 1}
+    - _EmColor: {r: 0.67058825, g: 0.47843137, b: 0.95686275, a: 1}
     - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}
     - _FlashColor: {r: 0, g: 0, b: 0, a: 1}
