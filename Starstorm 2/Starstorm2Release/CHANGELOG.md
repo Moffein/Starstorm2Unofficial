@@ -6,6 +6,10 @@
 
 - Fixed Executioner's selected primary not saving when restarting the game.
 
+- Cyborg
+	- Colossus skin now uses red lasers.
+	- Increased Rising Star proc coefficient from 0.5 -> 0.7
+
 `0.19.4`
 
 - Survariants compatibility
