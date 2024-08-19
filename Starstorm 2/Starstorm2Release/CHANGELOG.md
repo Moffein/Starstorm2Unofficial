@@ -1,7 +1,7 @@
 `0.20.0`
 
 - Now depends on ShaderSwapper.
-- A bunch of minor material adjustments. Most survivors are more glowy now.
+- A bunch of minor material adjustments. Most survivors are more glowy, and their helmet colors are more apparent even on low graphics settings.
 
 - Fixed Executioner's selected primary not saving when restarting the game.
 
