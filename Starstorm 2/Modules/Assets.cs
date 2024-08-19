@@ -534,5 +534,10 @@ namespace Starstorm2Unofficial.Modules
         {
             return Assets.CreateMaterial(materialName, emission, emissionColor, 0f);
         }
+
+        public static Material LoadMaterialFromAssetBundle(string materialName)
+        {
+            return Assets.mainAssetBundle.LoadAsset<Material>(materialName);
+        }
     }
 }

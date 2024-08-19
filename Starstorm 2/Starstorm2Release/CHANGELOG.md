@@ -1,6 +1,7 @@
 `0.20.0`
 
 - Now depends on ShaderSwapper.
+- A bunch of minor material adjustments. Most survivors are more glowy now.
 
 - Fixed Executioner's selected primary not saving when restarting the game.
 

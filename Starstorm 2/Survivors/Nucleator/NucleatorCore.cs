@@ -65,7 +65,7 @@ namespace Starstorm2Unofficial.Survivors.Nucleator
             podPrefab = LegacyResourcesAPI.Load<GameObject>("Prefabs/NetworkedObjects/SurvivorPod")
         };
 
-        internal static Material nucleatorMat = Modules.Assets.CreateMaterial("matNucleator", 2f, new Color32(219, 201, 245, 255));
+        internal static Material nucleatorMat = Modules.Assets.LoadMaterialFromAssetBundle("matNucleator");
         internal override int mainRendererIndex { get; set; } = 0;
 
         internal override CustomRendererInfo[] customRendererInfos { get; set; } = new CustomRendererInfo[] {
