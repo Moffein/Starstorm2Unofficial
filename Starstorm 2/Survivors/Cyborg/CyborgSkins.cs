@@ -74,10 +74,7 @@ namespace Starstorm2Unofficial.Survivors.Cyborg
             CharacterModel.RendererInfo[] masteryRendererInfos = new CharacterModel.RendererInfo[defaultRenderers.Length];
             defaultRenderers.CopyTo(masteryRendererInfos, 0);
 
-            string materialName = "matSteamborg";
-            masteryRendererInfos[0].defaultMaterial = Modules.Assets.CreateMaterial(materialName, 1, new Color(0.839f, 0.812f, 0.812f), 0);
-            //masteryRendererInfos[1].defaultMaterial = AssetsCore.CreateMaterial("matCyborg", 1, Color.white, 0);
-            //masteryRendererInfos[2].defaultMaterial = AssetsCore.CreateMaterial("matCyborg", 1, Color.white, 0);
+            masteryRendererInfos[0].defaultMaterial = Modules.Assets.LoadMaterialFromAssetBundle("matSteamborg");
 
             SkinDef masterySkin = SkinsCore.CreateSkinDef("SS2UCYBORG_MASTERY_SKIN_NAME",
                                                           masteryIcon,
@@ -103,10 +100,7 @@ namespace Starstorm2Unofficial.Survivors.Cyborg
             CharacterModel.RendererInfo[] grandMasteryRendererInfos = new CharacterModel.RendererInfo[defaultRenderers.Length];
             defaultRenderers.CopyTo(grandMasteryRendererInfos, 0);
 
-            materialName = "matRockborg";
-            grandMasteryRendererInfos[0].defaultMaterial = Modules.Assets.CreateMaterial(materialName, 1, Color.white, 0);
-            //masteryRendererInfos[1].defaultMaterial = AssetsCore.CreateMaterial("matCyborg", 1, Color.white, 0);
-            //masteryRendererInfos[2].defaultMaterial = AssetsCore.CreateMaterial("matCyborg", 1, Color.white, 0);
+            grandMasteryRendererInfos[0].defaultMaterial = Modules.Assets.LoadMaterialFromAssetBundle("matRockborg");
 
             SkinDef grandMasterySkin = SkinsCore.CreateSkinDef("SS2UCYBORG_GRANDMASTERY_SKIN_NAME",
                                                           gmIcon,

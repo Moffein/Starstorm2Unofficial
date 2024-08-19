@@ -947,7 +947,7 @@ namespace Starstorm2Unofficial.Survivors.Cyborg
                 new CustomRendererInfo
                 {
                     childName = "Model",
-                    material = Modules.Assets.CreateMaterial("matCyborg", 1f, new Color(0.839f, 0.812f, 0.812f))
+                    material = Modules.Assets.LoadMaterialFromAssetBundle("matCyborg")
                 }
             }, 0);
 
