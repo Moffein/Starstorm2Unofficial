@@ -1,7 +1,8 @@
 `0.20.0`
 
 - Now depends on ShaderSwapper.
-- A bunch of minor material adjustments.
+- A bunch of material adjustments.
+- Added dependency on Loader Slam Audio Fix until the bug is fixed in Vanilla.
 
 - Fixed Executioner's selected primary not saving when restarting the game.
 
