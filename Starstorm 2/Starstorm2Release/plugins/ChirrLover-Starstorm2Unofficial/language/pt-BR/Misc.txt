@@ -8,7 +8,7 @@
 		"SS2U_EVENT_STORM" : "<style=cWorldEvent><sprite name=\"CloudRight\">     Um tempestade se aproxima...</style>",
 		"SS2U_EVENT_STORM_START" : "(Tempestade iniciada.)",
 		
-		"SS2UNEMESIS_MODE_ACTIVE_WARNING" : "<style=cIsHealth>Uma força anormal amana do vazio...</style>",
+		"SS2UNEMESIS_MODE_ACTIVE_WARNING" : "<style=cIsHealth>Uma força anormal emana do vazio...</style>",
 		"SS2UNEMESIS_MODE_DEACTIVATED" : "<style=cWorldEvent>A influência do vazio se esvai...</style>",
 	}
 }
