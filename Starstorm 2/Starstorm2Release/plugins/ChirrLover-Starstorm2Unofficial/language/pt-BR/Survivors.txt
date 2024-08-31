@@ -9,10 +9,10 @@
 		"SS2UEXECUTIONER_LORE" : "A morte é inevitável. Ela vem para todos nós. Alguns podem tentar evitá-lo ou fugir dele. Mas a morte chega mesmo assim. A morte, no entanto, é simplesmente o custo da guerra. E a morte em combate glorioso é uma das melhores mortes que um homem poderia pedir.\n\nMas, como sempre, alguns tentariam fugir da morte. Nós os chamamos por muitos nomes. Desertores, covardes, vira-casacas. Cada um deles, traidores da causa. Esses traidores devem ser punidos por seus crimes. E essa punição: em uma reviravolta irônica, é exatamente o que eles tentaram evitar.\n\nA morte virá para eles. Não como um espectro vestido com uma foice. Não em um sobretudo, segurando um revólver. Não como uma doença, nem o desgaste do tempo. Não. Para eles, a morte virá com trajes de batalha lustrosos, com a pistola de serviço carregada e os manipuladores de íon totalmente carregados.",
 		
 		"SS2UEXECUTIONER_PISTOL_NAME" : "Pistola de Serviço",
-		"SS2UEXECUTIONER_PISTOL_DESCRIPTION" : "Atire com sua pistola, causando <style=cIsDamage>2x180% de dano</style>.",
+		"SS2UEXECUTIONER_PISTOL_DESCRIPTION" : "Dispare com sua pistola, causando <style=cIsDamage>2x180% de dano</style>.",
 		
 		"SS2UEXECUTIONER_PISTOL_SINGLE_NAME" : "Pistola Padrão",
-		"SS2UEXECUTIONER_PISTOL_SINGLE_DESCRIPTION" : "Atire com sua pistola, causando <style=cIsDamage>180% de dano</style>.",
+		"SS2UEXECUTIONER_PISTOL_SINGLE_DESCRIPTION" : "Dispare com sua pistola, causando <style=cIsDamage>180% de dano</style>.",
 		
 		"SS2UEXECUTIONER_IONGUN_NAME" : "Rajada de Íons",
 		"SS2UEXECUTIONER_IONGUN_DESCRIPTION" : "<style=cIsDamage>Eletrizante</style>. Descarregue uma saraivada de balas iônicas perfurantes, causando <style=cIsDamage>2x300% de dano</style> cada. Cada abate <style=cIsUtility>adiciona uma carga</style>. Máximo de 5.",
