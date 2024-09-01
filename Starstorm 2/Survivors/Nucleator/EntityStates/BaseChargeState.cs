@@ -25,10 +25,12 @@ namespace EntityStates.SS2UStates.Nucleator
         private ShakeEmitter shakeEmitter;
 
         public float chargeFraction;
+        private float lastUpdateTime;
 
         public override void OnEnter()
         {
             base.OnEnter();
+            lastUpdateTime = Time.time;
             chargeFraction = 0f;
             duration = baseDuration; // this.attackSpeedStat;   //Attack speed scaling makes it impossible to time your overcharge properly.
 
@@ -46,7 +48,8 @@ namespace EntityStates.SS2UStates.Nucleator
         public override void FixedUpdate()
         {
             base.FixedUpdate();
-
+            float deltaTime = Time.time - lastUpdateTime;
+            lastUpdateTime = Time.time;
             chargeFraction = Mathf.Min(1f, base.fixedAge / duration);
             if (chargeComponent)
             {
@@ -82,7 +85,7 @@ namespace EntityStates.SS2UStates.Nucleator
                 }
                 else if (base.isAuthority && base.healthComponent)
                 {
-                    overchargeDamageStopwatch += Time.fixedDeltaTime;
+                    overchargeDamageStopwatch += deltaTime;
                     if (overchargeDamageStopwatch >= overchargeDamageDuration)
                     {
                         overchargeDamageStopwatch -= overchargeDamageDuration;

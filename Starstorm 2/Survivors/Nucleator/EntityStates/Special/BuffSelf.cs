@@ -11,10 +11,12 @@ namespace EntityStates.SS2UStates.Nucleator.Special
         public static float baseBuffDuration = 6f;
         protected float buffDurationRemaining;
 
+        private float lastUpdateTime;
+
         public override void OnEnter()
         {
             base.OnEnter();
-
+            lastUpdateTime = Time.time;
             SetBuffDuration();
             if (NetworkServer.active) SetBuffsServer();
         }
@@ -28,8 +30,9 @@ namespace EntityStates.SS2UStates.Nucleator.Special
         public override void FixedUpdate()
         {
             base.FixedUpdate();
-
-            buffDurationRemaining -= Time.fixedDeltaTime;
+            float deltaTime = Time.time - lastUpdateTime;
+            lastUpdateTime = Time.time;
+            buffDurationRemaining -= deltaTime;
 
             if (NetworkServer.active) SetBuffsServer();
 
