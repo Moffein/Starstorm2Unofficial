@@ -177,8 +177,8 @@ namespace Starstorm2Unofficial.Survivors.Executioner
 
             #region Primary
             //Modules.Skills.AddPrimarySkill(bodyPrefab, Modules.Skills.CreatePrimarySkillDef(new SerializableEntityStateType(typeof(EntityStates.Starstorm2States.Executioner.ExecutionerPistol)), "Weapon", "EXECUTIONER_PISTOL_NAME", "EXECUTIONER_PISTOL_DESCRIPTION", Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("texExecutionerPrimary"), false));
-            Modules.Skills.AddPrimarySkill(bodyPrefab, Modules.Skills.CreatePrimarySkillDef(new SerializableEntityStateType(typeof(EntityStates.SS2UStates.Executioner.ExecutionerBurstPistol)), "Weapon", "SS2UEXECUTIONER_PISTOL_NAME", "SS2UEXECUTIONER_PISTOL_DESCRIPTION", Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("texExecutionerPrimaryDouble"), false));
             Modules.Skills.AddPrimarySkill(bodyPrefab, Modules.Skills.CreatePrimarySkillDef(new SerializableEntityStateType(typeof(EntityStates.SS2UStates.Executioner.ExecutionerSinglePistol)), "Weapon", "SS2UEXECUTIONER_PISTOL_SINGLE_NAME", "SS2UEXECUTIONER_PISTOL_SINGLE_DESCRIPTION", Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("texExecutionerPrimary"), false));
+            Modules.Skills.AddPrimarySkill(bodyPrefab, Modules.Skills.CreatePrimarySkillDef(new SerializableEntityStateType(typeof(EntityStates.SS2UStates.Executioner.ExecutionerBurstPistol)), "Weapon", "SS2UEXECUTIONER_PISTOL_NAME", "SS2UEXECUTIONER_PISTOL_DESCRIPTION", Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("texExecutionerPrimaryDouble"), false));
             //if (Modules.Config.ss_test.Value) Modules.Skills.AddPrimarySkill(bodyPrefab, Modules.Skills.CreatePrimarySkillDef(new SerializableEntityStateType(typeof(EntityStates.Starstorm2States.Executioner.ExecutionerTaser)), "Weapon", "EXECUTIONER_TASER_NAME", "EXECUTIONER_TASER_DESCRIPTION", Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("texExecutionerPrimary"), false));
             #endregion
 
