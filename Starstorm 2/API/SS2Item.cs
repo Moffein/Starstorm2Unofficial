@@ -2,6 +2,7 @@
 using RoR2;
 using Starstorm2Unofficial.Cores;
 using System;
+using System.Collections.Generic;
 using System.Globalization;
 using UnityEngine;
 
@@ -50,6 +51,25 @@ public abstract class SS2Item
             GameObject modelPrefab = itemDef.pickupModelPrefab;
             if (modelPrefab)
             {
+                ModelPanelParameters mpp = modelPrefab.AddComponent<ModelPanelParameters>();
+                mpp.focusPointTransform = modelPrefab.transform;
+                mpp.cameraPositionTransform = mpp.transform;
+
+                ItemDisplay itemDisplay = modelPrefab.AddComponent<ItemDisplay>(); 
+                var renderers = itemDisplay.GetComponentsInChildren<MeshRenderer>();
+                List<CharacterModel.RendererInfo> rendererInfos = new List<CharacterModel.RendererInfo>();
+                foreach (Renderer r in renderers)
+                {
+                    var rendererInfo = new CharacterModel.RendererInfo();
+                    rendererInfo.renderer = r;
+                    rendererInfo.defaultMaterial = r.material;
+                    rendererInfo.defaultShadowCastingMode = r.shadowCastingMode;
+                    rendererInfo.ignoreOverlays = false;
+                    rendererInfo.hideOnDeath = false;
+                    rendererInfos.Add(rendererInfo);
+                }
+                itemDisplay.rendererInfos = rendererInfos.ToArray();
+
                 SetupMaterials(modelPrefab);
             }
             itemDef.pickupModelPrefab = modelPrefab;
