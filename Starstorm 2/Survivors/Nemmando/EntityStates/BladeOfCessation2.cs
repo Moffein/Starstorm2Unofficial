@@ -50,9 +50,12 @@ namespace EntityStates.SS2UStates.Nemmando
         private NemmandoController nemmandoController;
         private Vector3 storedVelocity;
 
+		private float lastUpdateTime;
+
 		public override void OnEnter()
         {
 			base.OnEnter();
+			lastUpdateTime = Time.time;
 			this.duration = baseDuration / this.attackSpeedStat;
 			this.earlyExitDuration = this.duration * baseEarlyExitTime;
 			this.effectTime = duration * baseEffectTime;
@@ -91,9 +94,11 @@ namespace EntityStates.SS2UStates.Nemmando
 		public override void FixedUpdate()
         {
 			base.FixedUpdate();
+			float deltaTime = Time.time - lastUpdateTime;
+			lastUpdateTime = Time.time;
 			base.StartAimMode();
 
-			this.hitPauseTimer -= Time.fixedDeltaTime;
+			this.hitPauseTimer -= deltaTime;
 
 			if (this.hitPauseTimer <= 0f && this.inHitPause)
             {
@@ -104,7 +109,7 @@ namespace EntityStates.SS2UStates.Nemmando
 
 			if (!this.inHitPause)
             {
-				this.stopwatch += Time.fixedDeltaTime;
+				this.stopwatch += deltaTime;
 			}
             else
             {

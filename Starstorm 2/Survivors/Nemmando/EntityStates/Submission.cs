@@ -15,10 +15,12 @@ namespace EntityStates.SS2UStates.Nemmando
         private Transform modelTransform;
         private float duration;
         private float durationBetweenShots;
+        private float lastUpdateTime;
 
         public override void OnEnter()
         {
             base.OnEnter();
+            lastUpdateTime = Time.time;
             base.characterBody.SetSpreadBloom(0.2f, false);
             this.duration = EntityStates.Commando.CommandoWeapon.FireBarrage.totalDuration;
             this.durationBetweenShots = EntityStates.Commando.CommandoWeapon.FireBarrage.baseDurationBetweenShots / this.attackSpeedStat;
@@ -76,7 +78,9 @@ namespace EntityStates.SS2UStates.Nemmando
         public override void FixedUpdate()
         {
             base.FixedUpdate();
-            this.stopwatchBetweenShots += Time.fixedDeltaTime;
+            float deltaTime = Time.time - lastUpdateTime;
+            lastUpdateTime = Time.time;
+            this.stopwatchBetweenShots += deltaTime;
 
             if (this.stopwatchBetweenShots >= this.durationBetweenShots && this.totalBulletsFired < this.bulletCount)
             {

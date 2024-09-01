@@ -37,6 +37,7 @@ namespace EntityStates.SS2UStates.Nemmando
         private NemmandoController nemmandoController;
         private float minimumEmission;
         public CameraTargetParams.CameraParamsOverrideHandle camOverrideHandle;
+        private float lastUpdateTime;
 
         private CharacterCameraParamsData decisiveCameraParams = new CharacterCameraParamsData
         {
@@ -51,7 +52,7 @@ namespace EntityStates.SS2UStates.Nemmando
         public override void OnEnter()
         {
             base.OnEnter();
-
+            lastUpdateTime = Time.time;
             this.duration = ChargedSlashAttack.baseDuration / this.attackSpeedStat;
             if (base.characterBody)
             {
@@ -154,8 +155,10 @@ namespace EntityStates.SS2UStates.Nemmando
         public override void FixedUpdate()
         {
             base.FixedUpdate();
-            this.hitStopwatch -= Time.fixedDeltaTime;
-            this.emission -= 2f * Time.fixedDeltaTime;
+            float deltaTime = Time.time - lastUpdateTime;
+            lastUpdateTime = Time.time;
+            this.hitStopwatch -= deltaTime;
+            this.emission -= 2f * deltaTime;
             if (this.emission < 0f) this.emission = 0f;
 
             if (this.swordMat) this.swordMat.SetFloat("_EmPower", Util.Remap(base.fixedAge, 0, this.duration, this.emission, this.minimumEmission));

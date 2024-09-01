@@ -49,10 +49,12 @@ namespace EntityStates.SS2UStates.Nemmando
 
         private List<HurtBox> targetList;
 
+        private float lastUpdateTime;
+
         public override void OnEnter()
         {
             base.OnEnter();
-
+            lastUpdateTime = Time.time;
             base.characterBody.isSprinting = false;
             this.hitsFired = 0;
             this.hitCount = (int)(ScepterSlashAttack.baseHitCount * this.attackSpeedStat);
@@ -190,8 +192,10 @@ namespace EntityStates.SS2UStates.Nemmando
         public override void FixedUpdate()
         {
             base.FixedUpdate();
-            this.hitStopwatch -= Time.fixedDeltaTime;
-            this.emission -= 10f * Time.fixedDeltaTime;
+            float deltaTime = Time.time - lastUpdateTime;
+            lastUpdateTime = Time.time;
+            this.hitStopwatch -= deltaTime;
+            this.emission -= 10f * deltaTime;
             if (this.emission < 0f) this.emission = 0f;
 
             if (this.swordMat) this.swordMat.SetFloat("_EmPower", Util.Remap(base.fixedAge, 0, this.duration, this.emission, this.minimumEmission));

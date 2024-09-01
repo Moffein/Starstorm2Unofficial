@@ -36,9 +36,12 @@ namespace EntityStates.SS2UStates.Nemmando
         public float lastCharge;
         public float maxChargeTime;
 
+        private float lastUpdateTime;
+
         public override void OnEnter()
         {
             base.OnEnter();
+            lastUpdateTime = Time.time;
             this.animator = base.GetModelAnimator();
             this.maxChargeTime = ChargeDecisiveStrike.baseMaxChargeTime / this.attackSpeedStat;
 
@@ -65,6 +68,8 @@ namespace EntityStates.SS2UStates.Nemmando
         public override void FixedUpdate()
         {
             base.FixedUpdate();
+            float deltaTime = Time.time - lastUpdateTime;
+            lastUpdateTime = Time.time;
             base.characterBody.SetAimTimer(1f);
 
             if(base.isAuthority)
@@ -115,7 +120,7 @@ namespace EntityStates.SS2UStates.Nemmando
                                 }
 
                                 base.characterMotor.velocity = Vector3.zero;
-                                base.characterMotor.rootMotion += this.dashDirection * (this.characterBody.baseMoveSpeed * this.speedCoef * Time.fixedDeltaTime);
+                                base.characterMotor.rootMotion += this.dashDirection * (this.characterBody.baseMoveSpeed * this.speedCoef * deltaTime);
                                 base.characterBody.isSprinting = true;
                             }
                         }
