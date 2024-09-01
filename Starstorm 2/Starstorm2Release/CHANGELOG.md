@@ -1,3 +1,10 @@
+`0.20.3`
+
+- Update for DLC2
+	- Needs testing.
+	
+- Chirr now uses Artificer's hover setting.
+
 `0.20.2`
 
 - Fixed material settings on Commando's grandmastery.

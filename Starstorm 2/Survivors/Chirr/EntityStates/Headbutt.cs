@@ -29,9 +29,11 @@ namespace EntityStates.SS2UStates.Chirr
         private float momentumEndTime;
 
         private bool startedGrounded;
+        private float lastUpdateTime;
 
         public override void OnEnter()
         {
+            lastUpdateTime = Time.time;
             this.bonusForce = Vector3.zero;
             this.attackRecoil = 0f;
 
@@ -88,7 +90,8 @@ namespace EntityStates.SS2UStates.Chirr
         public override void FixedUpdate()
         {
             base.FixedUpdate();
-
+            float deltaTime = Time.time - lastUpdateTime;
+            lastUpdateTime = Time.time;
             if (!this.hasFired && this.stopwatch < momentumStartTime)
             {
                 Ray aimRay = base.GetAimRay();
@@ -124,7 +127,7 @@ namespace EntityStates.SS2UStates.Chirr
 
                 if (!this.startedSkillStationary && !this.inHitPause && this.stopwatch >= this.momentumStartTime && this.stopwatch <= this.momentumEndTime)
                 {
-                    float evaluatedForwardSpeed = Headbutt.forwardSpeed * Time.fixedDeltaTime;
+                    float evaluatedForwardSpeed = Headbutt.forwardSpeed * deltaTime;
                     if (this.stopwatch >= this.momentumFadeTime)
                     {
                         evaluatedForwardSpeed *= Mathf.Lerp(1f, 0f, (this.stopwatch - this.momentumFadeTime)/(this.momentumEndTime - this.momentumFadeTime));
