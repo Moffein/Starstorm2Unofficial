@@ -4,7 +4,7 @@ using Starstorm2Unofficial.Survivors.Nemmando.Components;
 
 namespace Starstorm2Unofficial.Survivors.Nemmando.Achievements
 {
-    [RegisterAchievement("SS2UNemmandoUnlock", "Characters.SS2UNemmando", null, null)]
+    [RegisterAchievement("SS2UNemmandoUnlock", "Characters.SS2UNemmando", null, 3, null)]
     public class NemmandoUnlockAchievement : BaseAchievement
     {
 		public override void OnInstall()

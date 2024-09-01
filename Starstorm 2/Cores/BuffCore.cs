@@ -144,7 +144,7 @@ namespace Starstorm2Unofficial.Cores
 
         private void Hook()
         {
-            On.RoR2.HealthComponent.TakeDamage += HealthComponent_TakeDamage;
+            On.RoR2.HealthComponent.TakeDamageProcess += HealthComponent_TakeDamage;
             On.RoR2.CharacterBody.OnClientBuffsChanged += CharacterBody_OnClientBuffsChanged;
             On.RoR2.CharacterBody.RecalculateStats += CharacterBody_RecalculateStats;
             On.EntityStates.BaseState.OnEnter += BaseState_OnEnter;
@@ -243,7 +243,7 @@ namespace Starstorm2Unofficial.Cores
             }
         }
 
-        private void HealthComponent_TakeDamage(On.RoR2.HealthComponent.orig_TakeDamage orig, HealthComponent self, DamageInfo damageInfo)
+        private void HealthComponent_TakeDamage(On.RoR2.HealthComponent.orig_TakeDamageProcess orig, HealthComponent self, DamageInfo damageInfo)
         {
             if (NetworkServer.active)
             {

@@ -34,28 +34,27 @@ namespace Starstorm2Unofficial
     [BepInDependency("com.Kingpinush.KingKombatArena", BepInDependency.DependencyFlags.SoftDependency)]
     [BepInDependency("com.weliveinasociety.CustomEmotesAPI", BepInDependency.DependencyFlags.SoftDependency)]
     [BepInDependency("com.RiskyLives.RiskyMod", BepInDependency.DependencyFlags.SoftDependency)]
+
+    [BepInDependency(R2API.R2API.PluginGUID)]
+    [BepInDependency(R2API.DifficultyAPI.PluginGUID)]
+    [BepInDependency(R2API.DotAPI.PluginGUID)]
+    [BepInDependency(R2API.Networking.NetworkingAPI.PluginGUID)]
+    [BepInDependency(R2API.PrefabAPI.PluginGUID)]
+    [BepInDependency(R2API.LoadoutAPI.PluginGUID)]
+    [BepInDependency(R2API.DirectorAPI.PluginGUID)]
+    [BepInDependency(R2API.DamageAPI.PluginGUID)]
+    [BepInDependency(R2API.RecalculateStatsAPI.PluginGUID)]
+    [BepInDependency(R2API.ContentManagement.R2APIContentManager.PluginGUID)]
+    [BepInDependency(R2API.ItemAPI.PluginGUID)]
+
     [NetworkCompatibility(CompatibilityLevel.EveryoneMustHaveMod, VersionStrictness.EveryoneNeedSameModVersion)]
     [BepInPlugin(guid, modName, version)]
-    [R2APISubmoduleDependency(new string[]
-    {
-        nameof(R2API.Utils.CommandHelper),
-        nameof(R2API.Networking.NetworkingHelpers),
-        nameof(R2API.Networking.NetworkingAPI),
-        nameof(R2API.PrefabAPI),
-        nameof(R2API.LoadoutAPI),
-        nameof(R2API.DirectorAPI),
-        nameof(R2API.DamageAPI),
-        nameof(R2API.RecalculateStatsAPI),
-        nameof(R2API.ContentAddition),
-        nameof(R2API.EliteAPI),
-        nameof(R2API.ItemAPI),
-    })]
 
     public class StarstormPlugin : BaseUnityPlugin
     {
         internal const string guid = "com.ChirrLover.Starstorm2Unofficial";
         internal const string modName = "Starstorm 2 Unofficial";
-        internal const string version = "0.20.0";
+        internal const string version = "0.20.3";
 
         public static StarstormPlugin instance;
 
@@ -90,6 +89,7 @@ namespace Starstorm2Unofficial
         {
             Modules.Files.PluginInfo = Info;
             LanguageTokens.RegisterLanguageTokens();
+            Modules.SoundBanks.Init();
             scepterPluginLoaded = BepInEx.Bootstrap.Chainloader.PluginInfos.ContainsKey("com.DestroyedClone.AncientScepter");
             classicItemsLoaded = BepInEx.Bootstrap.Chainloader.PluginInfos.ContainsKey("com.ThinkInvisible.ClassicItems");
             kingArenaLoaded = BepInEx.Bootstrap.Chainloader.PluginInfos.ContainsKey("com.Kingpinush.KingKombatArena");
@@ -113,19 +113,12 @@ namespace Starstorm2Unofficial
 
             Initialize();
 
-            CommandHelper.AddToConsoleWhenReady();
-
             new Modules.ContentPacks().Initialize();
 
             //Figure out where to place this later.
             ShootableProjectileComponent.AddHooks();
             IgnoreSprintCrosshair.Init();
             AchievementHider.Init();
-        }
-
-        public void Start()
-        {
-            Modules.SoundBanks.Init();
         }
 
         [MethodImpl(MethodImplOptions.NoInlining | MethodImplOptions.NoOptimization)]
@@ -229,7 +222,7 @@ namespace Starstorm2Unofficial
 
             RoR2.Stage.onStageStartGlobal += BazaarChecker.Stage_onStageStartGlobal;
             RecalculateStatsAPI.GetStatCoefficients += GetStatCoefficients.RecalculateStatsAPI_GetStatCoefficients;
-            On.RoR2.GlobalEventManager.OnHitEnemy += SharedHooks.OnHitEnemy.GlobalEventManager_OnHitEnemy;
+            On.RoR2.GlobalEventManager.ProcessHitEnemy += SharedHooks.OnHitEnemy.GlobalEventManager_OnHitEnemy;
             On.RoR2.GlobalEventManager.OnCharacterDeath += SharedHooks.OnCharacterDeathGlobal.GlobalEventManager_OnCharacterDeath;
         }
 

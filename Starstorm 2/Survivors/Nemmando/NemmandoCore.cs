@@ -100,7 +100,7 @@ namespace Starstorm2Unofficial.Survivors.Nemmando
                 NemmandoCore.killSelfUnlockableDef = ScriptableObject.CreateInstance<UnlockableDef>();
                 NemmandoCore.killSelfUnlockableDef.cachedName = "Skins.SS2UNemmando.Commando";
                 NemmandoCore.killSelfUnlockableDef.nameToken = "ACHIEVEMENT_SS2UNEMMANDOKILLSELF_NAME";
-                NemmandoCore.killSelfUnlockableDef.achievementIcon = Assets.mainAssetBundle.LoadAsset<Sprite>("texSingleTapUnlockIcon");
+                NemmandoCore.killSelfUnlockableDef.achievementIcon = Starstorm2Unofficial.Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("texSingleTapUnlockIcon");
                 AchievementHider.unlockableRewardIdentifiers.Remove(NemmandoCore.killSelfUnlockableDef.cachedName);
 
                 SkinDef sd = Addressables.LoadAssetAsync<SkinDef>("RoR2/Base/Commando/skinCommandoDefault.asset").WaitForCompletion();
@@ -117,7 +117,7 @@ namespace Starstorm2Unofficial.Survivors.Nemmando
                 survivorUnlock = ScriptableObject.CreateInstance<UnlockableDef>();
                 survivorUnlock.cachedName = "Characters.SS2UNemmando";
                 survivorUnlock.nameToken = "ACHIEVEMENT_SS2UNEMMANDOUNLOCK_NAME";
-                survivorUnlock.achievementIcon = Assets.mainAssetBundle.LoadAsset<Sprite>("texNemmandoIconUnlock");
+                survivorUnlock.achievementIcon = Starstorm2Unofficial.Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("texNemmandoIconUnlock");
                 AchievementHider.unlockableRewardIdentifiers.Remove(survivorUnlock.cachedName);
 
                 Modules.Unlockables.unlockableDefs.Add(survivorUnlock);
@@ -410,20 +410,20 @@ namespace Starstorm2Unofficial.Survivors.Nemmando
             masterySkinUnlockableDef = ScriptableObject.CreateInstance<UnlockableDef>();
             masterySkinUnlockableDef.cachedName = "Skins.SS2UNemmando.Mastery";
             masterySkinUnlockableDef.nameToken = "ACHIEVEMENT_SS2UNEMMANDOCLEARGAMEMONSOON_NAME";
-            masterySkinUnlockableDef.achievementIcon = Assets.mainAssetBundle.LoadAsset<Sprite>("texNemmandoSkinMaster");
+            masterySkinUnlockableDef.achievementIcon = Starstorm2Unofficial.Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("texNemmandoSkinMaster");
             Unlockables.unlockableDefs.Add(masterySkinUnlockableDef);
             AchievementHider.unlockableRewardIdentifiers.Remove(masterySkinUnlockableDef.cachedName);
 
             grandMasterySkinUnlockableDef = ScriptableObject.CreateInstance<UnlockableDef>();
             grandMasterySkinUnlockableDef.cachedName = "Skins.SS2UNemmando.GrandMastery";
             grandMasterySkinUnlockableDef.nameToken = "ACHIEVEMENT_SS2UNEMMANDOCLEARGAMETYPHOON_NAME";
-            grandMasterySkinUnlockableDef.achievementIcon = Assets.mainAssetBundle.LoadAsset<Sprite>("texNemmandoSkinGrandMaster");
+            grandMasterySkinUnlockableDef.achievementIcon = Starstorm2Unofficial.Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("texNemmandoSkinGrandMaster");
             Unlockables.unlockableDefs.Add(grandMasterySkinUnlockableDef);
             AchievementHider.unlockableRewardIdentifiers.Remove(grandMasterySkinUnlockableDef.cachedName);
 
-            //Assets.mainAssetBundle.LoadAsset<Sprite>("texNemmandoIconUnlock");
-            //Assets.mainAssetBundle.LoadAsset<Sprite>("texSingleTapUnlockIcon");
-            //Assets.mainAssetBundle.LoadAsset<Sprite>("texDecisiveStrike");
+            //Starstorm2Unofficial.Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("texNemmandoIconUnlock");
+            //Starstorm2Unofficial.Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("texSingleTapUnlockIcon");
+            //Starstorm2Unofficial.Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("texDecisiveStrike");
         }
 
         internal override void InitializeDoppelganger()
@@ -842,10 +842,10 @@ namespace Starstorm2Unofficial.Survivors.Nemmando
             orig(self, other);
         }
 
-        private void HealthComponent_Suicide(On.RoR2.HealthComponent.orig_Suicide orig, HealthComponent self, GameObject killerOverride, GameObject inflictorOverride, DamageType damageType)
+        private void HealthComponent_Suicide(On.RoR2.HealthComponent.orig_Suicide orig, HealthComponent self, GameObject killerOverride, GameObject inflictorOverride, DamageTypeCombo damageType)
         {
 
-            if (damageType == DamageType.VoidDeath)
+            if (damageType.damageType == DamageType.VoidDeath)
             {
                 if (self.body.bodyIndex == NemmandoCore.bodyIndex)
                 {
@@ -901,7 +901,7 @@ namespace Starstorm2Unofficial.Survivors.Nemmando
 
             #region DefaultSkin
             SkinDef defaultSkin = Modules.Skins.CreateSkinDef("SS2UNEMMANDO_DEFAULT_SKIN_NAME",
-                Assets.mainAssetBundle.LoadAsset<Sprite>("texNemmandoSkin"),
+                Starstorm2Unofficial.Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("texNemmandoSkin"),
                 defaultRenderers,
                 mainRenderer,
                 model);
@@ -944,7 +944,7 @@ namespace Starstorm2Unofficial.Survivors.Nemmando
             });
 
             SkinDef masterySkin = Modules.Skins.CreateSkinDef("SS2UNEMMANDO_MASTERY_SKIN_NAME",
-                Assets.mainAssetBundle.LoadAsset<Sprite>("texNemmandoSkinMaster"),
+                Starstorm2Unofficial.Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("texNemmandoSkinMaster"),
                 masteryRendererInfos,
                 mainRenderer,
                 model,
@@ -984,7 +984,7 @@ namespace Starstorm2Unofficial.Survivors.Nemmando
             });
 
             SkinDef grandMasterySkin = Modules.Skins.CreateSkinDef("SS2UNEMMANDO_CLASSIC_SKIN_NAME",
-                Assets.mainAssetBundle.LoadAsset<Sprite>("texNemmandoSkinGrandMaster"),
+                Starstorm2Unofficial.Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("texNemmandoSkinGrandMaster"),
                 grandMasteryRendererInfos,
                 mainRenderer,
                 model,
@@ -1026,7 +1026,7 @@ namespace Starstorm2Unofficial.Survivors.Nemmando
             CreateKillSelfUnlockable();
 
             SkinDef commandoSkin = Modules.Skins.CreateSkinDef("SS2UNEMMANDO_COMMANDO_SKIN_NAME",
-                 Assets.mainAssetBundle.LoadAsset<Sprite>("texNemmandoCommandoSkin"),
+                 Starstorm2Unofficial.Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("texNemmandoCommandoSkin"),
                 commandoRendererInfos,
                 mainRenderer,
                 model,
@@ -1080,7 +1080,7 @@ namespace Starstorm2Unofficial.Survivors.Nemmando
                 });
 
                 SkinDef commandoJokeSkin = Modules.Skins.CreateSkinDef("SS2UNEMMANDO_COMMANDO_SKIN_NAME",
-                    Assets.mainAssetBundle.LoadAsset<Sprite>("texNemmandoCommandoSkin"),
+                    Starstorm2Unofficial.Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("texNemmandoCommandoSkin"),
                     commandoJokeRendererInfos,
                     mainRenderer,
                     model,
@@ -1120,7 +1120,7 @@ namespace Starstorm2Unofficial.Survivors.Nemmando
                 });
 
                 SkinDef vergilSkin = Modules.Skins.CreateSkinDef("SS2UNEMMANDO_VERGIL_SKIN_NAME",
-                    Assets.mainAssetBundle.LoadAsset<Sprite>("texVergilSkin"),
+                    Starstorm2Unofficial.Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("texVergilSkin"),
                     vergilRendererInfos,
                     mainRenderer,
                     model,

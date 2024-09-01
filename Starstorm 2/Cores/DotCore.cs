@@ -9,7 +9,6 @@ using static RoR2.DotController;
 
 namespace Starstorm2Unofficial.Cores
 {
-    [R2APISubmoduleDependency(nameof(DotAPI))]
     class DoTCore
     {
         //private static DotController.DotDef[] DotDefs

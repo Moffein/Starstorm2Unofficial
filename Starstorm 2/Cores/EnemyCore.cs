@@ -205,7 +205,7 @@ namespace Starstorm2Unofficial.Cores
                 },
             };
             charModel.autoPopulateLightInfos = true;
-            charModel.temporaryOverlays = new List<TemporaryOverlay>();
+            charModel.temporaryOverlays = new List<TemporaryOverlayInstance>();
 
             TeamComponent team = wayfarerPrefab.AddOrGetComponent<TeamComponent>();
             team.body = body;

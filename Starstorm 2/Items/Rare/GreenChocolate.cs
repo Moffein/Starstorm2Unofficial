@@ -24,10 +24,10 @@ namespace Starstorm2Unofficial.Cores.Items
 
         public override void RegisterHooks()
         {
-            On.RoR2.HealthComponent.TakeDamage += HealthComponent_TakeDamage;
+            On.RoR2.HealthComponent.TakeDamageProcess += HealthComponent_TakeDamage;
         }
 
-        private void HealthComponent_TakeDamage(On.RoR2.HealthComponent.orig_TakeDamage orig, HealthComponent self, DamageInfo damageInfo)
+        private void HealthComponent_TakeDamage(On.RoR2.HealthComponent.orig_TakeDamageProcess orig, HealthComponent self, DamageInfo damageInfo)
         {
             if (NetworkServer.active && damageInfo.attacker)
             {

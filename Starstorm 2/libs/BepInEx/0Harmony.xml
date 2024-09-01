@@ -878,8 +878,7 @@
         </member>
         <member name="M:HarmonyLib.CodeInstruction.Call(System.Type,System.String,System.Type[],System.Type[])">
              <summary>Creates a CodeInstruction calling a method (CALL)</summary>
-             <param name="type">The class/type 
-             the method is declared</param>
+             <param name="type">The class/type where the method is declared</param>
              <param name="name">The name of the method (case sensitive)</param>
              <param name="parameters">Optional parameters to target a specific overload of the method</param>
              <param name="generics">Optional list of types that define the generic version of the method</param>

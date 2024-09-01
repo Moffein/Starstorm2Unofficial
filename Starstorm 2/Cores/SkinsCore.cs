@@ -9,6 +9,7 @@ using UnityEngine;
 using UnityEngine.Networking;
 using Starstorm2Unofficial.Cores.Skins;
 using Starstorm2Unofficial.Modules;
+using System.Collections;
 
 namespace Starstorm2Unofficial.Cores
 {
@@ -20,14 +21,18 @@ namespace Starstorm2Unofficial.Cores
             //todo: add nem and exe here?
         }
 
-        private static void BodyCatalog_Init(On.RoR2.BodyCatalog.orig_Init orig) {
-            orig();
-            try {
+        private IEnumerator BodyCatalog_Init(On.RoR2.BodyCatalog.orig_Init orig)
+        {
+            var ret = orig();
+            try
+            {
                 VanillaSurvivorSkins.RegisterVanillaSurvivorSkins();
             }
-            catch (Exception ex) {
+            catch (Exception ex)
+            {
                 LogCore.LogError("error registering vanilla survivor skins\n" + ex);
             }
+            return ret;
         }
 
         public static SkinDef CreateSkinDef(string skinName, Sprite skinIcon, CharacterModel.RendererInfo[] rendererInfos, GameObject root, UnlockableDef unlockDef) {

@@ -52,11 +52,11 @@ namespace Starstorm2Unofficial.Cores
             ModdedDamageTypes.Root5s = DamageAPI.ReserveDamageType();
             ModdedDamageTypes.NucleatorRadiationOnHit = DamageAPI.ReserveDamageType();
 
-            On.RoR2.HealthComponent.TakeDamage += HealthComponent_TakeDamage;
-            On.RoR2.GlobalEventManager.OnHitEnemy += GlobalEventManager_OnHitEnemy;
+            On.RoR2.HealthComponent.TakeDamageProcess += HealthComponent_TakeDamage;
+            On.RoR2.GlobalEventManager.ProcessHitEnemy += GlobalEventManager_OnHitEnemy;
         }
 
-        private void GlobalEventManager_OnHitEnemy(On.RoR2.GlobalEventManager.orig_OnHitEnemy orig, GlobalEventManager self, DamageInfo damageInfo, GameObject victim)
+        private void GlobalEventManager_OnHitEnemy(On.RoR2.GlobalEventManager.orig_ProcessHitEnemy orig, GlobalEventManager self, DamageInfo damageInfo, GameObject victim)
         {
             orig(self, damageInfo, victim);
             if (NetworkServer.active && !damageInfo.rejected)
@@ -114,7 +114,7 @@ namespace Starstorm2Unofficial.Cores
             }
         }
 
-        private void HealthComponent_TakeDamage(On.RoR2.HealthComponent.orig_TakeDamage orig, HealthComponent self, DamageInfo damageInfo)
+        private void HealthComponent_TakeDamage(On.RoR2.HealthComponent.orig_TakeDamageProcess orig, HealthComponent self, DamageInfo damageInfo)
         {
             bool triggerGougeProc = false;
             if (NetworkServer.active)

@@ -26,7 +26,7 @@ namespace Starstorm2Unofficial.Cores.Items
             base.RegisterItem();
 
             //object???.GetComponentInChildren<renderer>().material = AssetsCore.CreateMaterial("MoltenCoinDiffuse2");
-            procSound = Assets.CreateNetworkSoundEventDef("SS2UMoltenCoin");
+            procSound = Starstorm2Unofficial.Modules.Assets.CreateNetworkSoundEventDef("SS2UMoltenCoin");
         }
 
         public override void RegisterHooks()
@@ -36,7 +36,7 @@ namespace Starstorm2Unofficial.Cores.Items
 
         public override ItemDisplayRuleDict CreateDisplayRules()
         {
-            displayPrefab = Assets.mainAssetBundle.LoadAsset<GameObject>(PickupModelPath);
+            displayPrefab = Starstorm2Unofficial.Modules.Assets.mainAssetBundle.LoadAsset<GameObject>(PickupModelPath);
             var disp = displayPrefab.AddComponent<ItemDisplay>();
             disp.rendererInfos = Utils.SetupRendererInfos(displayPrefab);
 

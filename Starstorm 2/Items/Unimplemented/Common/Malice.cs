@@ -31,7 +31,7 @@ namespace Starstorm2Unofficial.Cores.Items
             var maliceComp = maliceEffect.AddComponent<EffectComponent>();
             Modules.Assets.effectDefs.Add(new EffectDef(maliceEffect));
             maliceEffect.AddComponent<DestroyOnTimer>().duration = 5f;
-            On.RoR2.GlobalEventManager.OnHitEnemy += GlobalEventManager_OnHitEnemy;
+            On.RoR2.GlobalEventManager.ProcessHitEnemy += GlobalEventManager_OnHitEnemy;
         }
 
         /*public override ItemDisplayRuleDict CreateDisplayRules()
@@ -176,7 +176,7 @@ namespace Starstorm2Unofficial.Cores.Items
         }
         */
 
-        private void GlobalEventManager_OnHitEnemy(On.RoR2.GlobalEventManager.orig_OnHitEnemy orig, GlobalEventManager self, DamageInfo damageInfo, UnityEngine.GameObject victim)
+        private void GlobalEventManager_OnHitEnemy(On.RoR2.GlobalEventManager.orig_ProcessHitEnemy orig, GlobalEventManager self, DamageInfo damageInfo, UnityEngine.GameObject victim)
         {
             var attacker = damageInfo.attacker;
             if (attacker)

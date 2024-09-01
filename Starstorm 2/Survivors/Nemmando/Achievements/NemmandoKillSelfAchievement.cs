@@ -4,7 +4,7 @@ using Starstorm2Unofficial.Survivors.Nemmando.Components;
 
 namespace Starstorm2Unofficial.Survivors.Nemmando.Achievements
 {
-    [RegisterAchievement("SS2UNemmandoKillSelf", "Skins.SS2UNemmando.Commando", null, null)]
+    [RegisterAchievement("SS2UNemmandoKillSelf", "Skins.SS2UNemmando.Commando", null, 3, null)]
     public class NemmandoKillSelfAchievement : BaseAchievement
     {
         public override void OnBodyRequirementMet()

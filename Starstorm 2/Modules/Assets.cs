@@ -492,7 +492,7 @@ namespace Starstorm2Unofficial.Modules
             if (!commandoMat) commandoMat = LegacyResourcesAPI.Load<GameObject>("Prefabs/CharacterBodies/CommandoBody").GetComponentInChildren<CharacterModel>().baseRendererInfos[0].defaultMaterial;
 
             Material mat = UnityEngine.Object.Instantiate<Material>(commandoMat);
-            Material tempMat = Assets.mainAssetBundle.LoadAsset<Material>(materialName);
+            Material tempMat = Starstorm2Unofficial.Modules.Assets.mainAssetBundle.LoadAsset<Material>(materialName);
 
             if (!tempMat)
             {
@@ -537,7 +537,7 @@ namespace Starstorm2Unofficial.Modules
 
         public static Material LoadMaterialFromAssetBundle(string materialName)
         {
-            return Assets.mainAssetBundle.LoadAsset<Material>(materialName);
+            return Starstorm2Unofficial.Modules.Assets.mainAssetBundle.LoadAsset<Material>(materialName);
         }
     }
 }

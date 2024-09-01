@@ -31,10 +31,10 @@ namespace Starstorm2Unofficial.Components.Projectiles
 
 		internal static void AddHooks()
         {
-            On.RoR2.HealthComponent.TakeDamage += ShootableProjectileHook;
+            On.RoR2.HealthComponent.TakeDamageProcess += ShootableProjectileHook;
         }
 
-        private static void ShootableProjectileHook(On.RoR2.HealthComponent.orig_TakeDamage orig, HealthComponent self, DamageInfo damageInfo)
+        private static void ShootableProjectileHook(On.RoR2.HealthComponent.orig_TakeDamageProcess orig, HealthComponent self, DamageInfo damageInfo)
         {
             if (NetworkServer.active)
             {

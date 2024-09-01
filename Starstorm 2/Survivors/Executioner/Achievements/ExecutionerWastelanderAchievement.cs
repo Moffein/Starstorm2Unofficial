@@ -3,7 +3,7 @@ using RoR2.Achievements;
 
 namespace Starstorm2Unofficial.Survivors.Executioner.Achievements
 {
-	[RegisterAchievement("SS2UExecutionerWastelander", "Skins.SS2UExecutioner.Wastelander", null, null)]
+	[RegisterAchievement("SS2UExecutionerWastelander", "Skins.SS2UExecutioner.Wastelander", null, 3, null)]
 	public class ExecutionerWastelanderAchievement : BaseAchievement
 	{
 		public override BodyIndex LookUpRequiredBodyIndex()

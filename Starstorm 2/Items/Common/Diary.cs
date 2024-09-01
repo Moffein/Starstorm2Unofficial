@@ -37,7 +37,7 @@ namespace Starstorm2Unofficial.Cores.Items
 
         public override ItemDisplayRuleDict CreateDisplayRules()
         {
-            displayPrefab = Assets.mainAssetBundle.LoadAsset<GameObject>(PickupModelPath);
+            displayPrefab = Starstorm2Unofficial.Modules.Assets.mainAssetBundle.LoadAsset<GameObject>(PickupModelPath);
             var disp = displayPrefab.AddComponent<ItemDisplay>();
             disp.rendererInfos = Utils.SetupRendererInfos(displayPrefab);
 

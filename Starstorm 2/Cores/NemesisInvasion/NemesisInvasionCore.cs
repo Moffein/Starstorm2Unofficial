@@ -50,7 +50,7 @@ namespace Starstorm2Unofficial.Cores.NemesisInvasion
         private void BuildNemesisMusicController()
         {
             if (NemesisMusicPrefab) return;
-            NemesisMusicPrefab = Assets.mainAssetBundle.LoadAsset<GameObject>("EmptyGameObject").InstantiateClone("NemesisMusicObject", false);
+            NemesisMusicPrefab = Starstorm2Unofficial.Modules.Assets.mainAssetBundle.LoadAsset<GameObject>("EmptyGameObject").InstantiateClone("NemesisMusicObject", false);
             NemesisMusicPrefab.AddComponent<NetworkIdentity>();
             NemesisMusicPrefab.AddComponent<NemesisMusicController>();
             NemesisMusicPrefab.RegisterNetworkPrefab();
@@ -134,13 +134,13 @@ namespace Starstorm2Unofficial.Cores.NemesisInvasion
                 }
             };
 
-            On.RoR2.HealthComponent.TakeDamage += (orig, self, damageInfo) =>
+            On.RoR2.HealthComponent.TakeDamageProcess += (orig, self, damageInfo) =>
             {
                 if (NetworkServer.active)
                 {
                     if (self.body && self.body.inventory && self.body.inventory.GetItemCount(NemesisMarkerItem) > 0)
                     {
-                        bool isFall = damageInfo.damageType.HasFlag(DamageType.FallDamage);
+                        bool isFall = (damageInfo.damageType & DamageType.FallDamage) != 0;
                         bool isVoidFog = !damageInfo.attacker && !damageInfo.inflictor
                             && damageInfo.damageColorIndex == DamageColorIndex.Void
                             && damageInfo.damageType == (DamageType.BypassArmor | DamageType.BypassBlock);

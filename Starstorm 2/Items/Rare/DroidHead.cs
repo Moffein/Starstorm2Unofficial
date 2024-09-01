@@ -27,7 +27,7 @@ namespace Starstorm2Unofficial.Cores.Items
 
         public override void RegisterHooks()
         {
-            procSound = Assets.CreateNetworkSoundEventDef("SS2UDroidHead");
+            procSound = Starstorm2Unofficial.Modules.Assets.CreateNetworkSoundEventDef("SS2UDroidHead");
             On.RoR2.CharacterBody.OnInventoryChanged += CharacterBody_OnInventoryChanged;
             SharedHooks.OnCharacterDeathGlobal.OnCharacterDeathInventoryActions += ProcDroidHead;
         }

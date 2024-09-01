@@ -21,7 +21,7 @@ namespace Starstorm2Unofficial.Cores.Unlockables
                 commandoGrandMastery = ScriptableObject.CreateInstance<UnlockableDef>();
                 commandoGrandMastery.cachedName = "Skins.SS2UCommando.GrandMastery";
                 commandoGrandMastery.nameToken = "ACHIEVEMENT_SS2UCOMMANDOCLEARGAMETYPHOON_NAME";
-                commandoGrandMastery.achievementIcon = Assets.mainAssetBundle.LoadAsset<Sprite>("texCommandoSkinGrandMaster");
+                commandoGrandMastery.achievementIcon = Starstorm2Unofficial.Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("texCommandoSkinGrandMaster");
                 Modules.Unlockables.unlockableDefs.Add(commandoGrandMastery);
 
                 AchievementHider.unlockableRewardIdentifiers.Remove(commandoGrandMastery.cachedName);
@@ -32,13 +32,13 @@ namespace Starstorm2Unofficial.Cores.Unlockables
                 toolbotGrandMastery = ScriptableObject.CreateInstance<UnlockableDef>();
                 toolbotGrandMastery.cachedName = "Skins.SS2UToolbot.GrandMastery";
                 toolbotGrandMastery.nameToken = "ACHIEVEMENT_SS2UTOOLBOTCLEARGAMETYPHOON_NAME";
-                toolbotGrandMastery.achievementIcon = Assets.mainAssetBundle.LoadAsset<Sprite>("texToolbotSkinGrandMaster");
+                toolbotGrandMastery.achievementIcon = Starstorm2Unofficial.Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("texToolbotSkinGrandMaster");
                 Modules.Unlockables.unlockableDefs.Add(toolbotGrandMastery);
 
                 AchievementHider.unlockableRewardIdentifiers.Remove(toolbotGrandMastery.cachedName);
             }
 
-            //acridGrandMastery = Modules.Unlockables.AddUnlockable<Achievements.CrocoGrandMasteryAchievement>(true);//Assets.mainAssetBundle.LoadAsset<Sprite>("texAcridSkinGrandMaster");
+            //acridGrandMastery = Modules.Unlockables.AddUnlockable<Achievements.CrocoGrandMasteryAchievement>(true);//Starstorm2Unofficial.Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("texAcridSkinGrandMaster");
         }
     }
 }

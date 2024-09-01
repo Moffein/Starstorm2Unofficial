@@ -345,7 +345,7 @@ namespace Starstorm2Unofficial.Modules
         [MethodImpl(MethodImplOptions.NoInlining | MethodImplOptions.NoOptimization)]
         private static void RiskOfOptionsCompat()
         {
-            ModSettingsManager.SetModIcon(Assets.mainAssetBundle.LoadAsset<Sprite>("modIcon.png"));
+            ModSettingsManager.SetModIcon(Starstorm2Unofficial.Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("modIcon.png"));
             ModSettingsManager.AddOption(new RiskOfOptions.Options.KeyBindOption(RestKeybind));
             ModSettingsManager.AddOption(new RiskOfOptions.Options.KeyBindOption(TauntKeybind));
 

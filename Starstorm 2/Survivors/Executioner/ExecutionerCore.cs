@@ -150,21 +150,21 @@ namespace Starstorm2Unofficial.Survivors.Executioner
             masterySkinUnlockableDef = ScriptableObject.CreateInstance<UnlockableDef>();
             masterySkinUnlockableDef.cachedName = "Skins.SS2UExecutioner.Mastery";
             masterySkinUnlockableDef.nameToken = "ACHIEVEMENT_SS2UEXECUTIONERCLEARGAMEMONSOON_NAME";
-            masterySkinUnlockableDef.achievementIcon = Assets.mainAssetBundle.LoadAsset<Sprite>("texExecutionerSkinMaster");
+            masterySkinUnlockableDef.achievementIcon = Starstorm2Unofficial.Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("texExecutionerSkinMaster");
             Unlockables.unlockableDefs.Add(masterySkinUnlockableDef);
             AchievementHider.unlockableRewardIdentifiers.Remove(masterySkinUnlockableDef.cachedName);
 
             grandMasterySkinUnlockableDef = ScriptableObject.CreateInstance<UnlockableDef>();
             grandMasterySkinUnlockableDef.cachedName = "Skins.SS2UExecutioner.GrandMastery";
             grandMasterySkinUnlockableDef.nameToken = "ACHIEVEMENT_SS2UEXECUTIONERCLEARGAMETYPHOON_NAME";
-            grandMasterySkinUnlockableDef.achievementIcon = Assets.mainAssetBundle.LoadAsset<Sprite>("texExecutionerSkinGrandMaster");
+            grandMasterySkinUnlockableDef.achievementIcon = Starstorm2Unofficial.Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("texExecutionerSkinGrandMaster");
             Unlockables.unlockableDefs.Add(grandMasterySkinUnlockableDef);
             AchievementHider.unlockableRewardIdentifiers.Remove(grandMasterySkinUnlockableDef.cachedName);
 
             wastelanderSkinUnlockableDef = ScriptableObject.CreateInstance<UnlockableDef>();
             wastelanderSkinUnlockableDef.cachedName = "Skins.SS2UExecutioner.Wastelander";
             wastelanderSkinUnlockableDef.nameToken = "ACHIEVEMENT_SS2UEXECUTIONERWASTELANDER_NAME";
-            wastelanderSkinUnlockableDef.achievementIcon = Assets.mainAssetBundle.LoadAsset<Sprite>("texExecutionerWastelander");
+            wastelanderSkinUnlockableDef.achievementIcon = Starstorm2Unofficial.Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("texExecutionerWastelander");
             Unlockables.unlockableDefs.Add(wastelanderSkinUnlockableDef);
             AchievementHider.unlockableRewardIdentifiers.Remove(wastelanderSkinUnlockableDef.cachedName);
         }
@@ -340,10 +340,10 @@ namespace Starstorm2Unofficial.Survivors.Executioner
         {
             On.RoR2.CharacterMaster.OnInventoryChanged += CharacterMaster_OnInventoryChanged;
             GlobalEventManager.onCharacterDeathGlobal += GlobalEventManager_onCharacterDeathGlobal;
-            On.RoR2.HealthComponent.TakeDamage += HealthComponent_TakeDamage;
+            On.RoR2.HealthComponent.TakeDamageProcess += HealthComponent_TakeDamage;
             SetupFearExecute();
         }
-        private void HealthComponent_TakeDamage(On.RoR2.HealthComponent.orig_TakeDamage orig, HealthComponent self, DamageInfo damageInfo)
+        private void HealthComponent_TakeDamage(On.RoR2.HealthComponent.orig_TakeDamageProcess orig, HealthComponent self, DamageInfo damageInfo)
         {
             bool wasAlive = self.alive;
 
@@ -404,7 +404,7 @@ namespace Starstorm2Unofficial.Survivors.Executioner
 
             #region DefaultSkin
             SkinDef defaultSkin = Modules.Skins.CreateSkinDef("SS2UEXECUTIONER_DEFAULT_SKIN_NAME",
-                Assets.mainAssetBundle.LoadAsset<Sprite>("texExecutionerSkin"),
+                Starstorm2Unofficial.Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("texExecutionerSkin"),
                 defaultRenderers,
                 mainRenderer,
                 model);
@@ -443,7 +443,7 @@ namespace Starstorm2Unofficial.Survivors.Executioner
             });
 
             SkinDef masterySkin = Modules.Skins.CreateSkinDef("SS2UEXECUTIONER_MASTERY_SKIN_NAME",
-                Assets.mainAssetBundle.LoadAsset<Sprite>("texExecutionerSkinMaster"),
+                Starstorm2Unofficial.Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("texExecutionerSkinMaster"),
                 masteryRendererInfos,
                 mainRenderer,
                 model,
@@ -476,7 +476,7 @@ namespace Starstorm2Unofficial.Survivors.Executioner
             });
 
             SkinDef grandMasterySkin = Modules.Skins.CreateSkinDef("SS2UEXECUTIONER_KNIGHT_SKIN_NAME",
-                Assets.mainAssetBundle.LoadAsset<Sprite>("texExecutionerSkinGrandMaster"),
+                Starstorm2Unofficial.Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("texExecutionerSkinGrandMaster"),
                 grandMasteryRendererInfos,
                 mainRenderer,
                 model,
@@ -509,7 +509,7 @@ namespace Starstorm2Unofficial.Survivors.Executioner
             });
 
             SkinDef wastelanderSkin = Modules.Skins.CreateSkinDef("SS2UEXECUTIONER_WASTELANDER_SKIN_NAME",
-                Assets.mainAssetBundle.LoadAsset<Sprite>("texExecutionerWastelander"),
+                Starstorm2Unofficial.Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("texExecutionerWastelander"),
                 wastelanderRendererInfos,
                 mainRenderer,
                 model,
@@ -606,20 +606,20 @@ namespace Starstorm2Unofficial.Survivors.Executioner
             On.RoR2.HealthComponent.GetHealthBarValues += FearExecuteHealthbar;
 
             //Prone to breaking when the game updates
-            IL.RoR2.HealthComponent.TakeDamage += (il) =>
+            IL.RoR2.HealthComponent.TakeDamageProcess += (il) =>
             {
                 bool error = true;
                 ILCursor c = new ILCursor(il);
                 if (c.TryGotoNext(MoveType.After,
-                    x => x.MatchStloc(53)   //num17 = float.NegativeInfinity, stloc53 = Execute Fraction, first instance it is used
+                    x => x.MatchStloc(59)   //num17 = float.NegativeInfinity, stloc53 = Execute Fraction, first instance it is used
                     ))
                 {
                     if (c.TryGotoNext(MoveType.After,
-                    x => x.MatchLdloc(8)   //flag 5, this is checked before final Execute damage calculations.
+                    x => x.MatchLdloc(9)   //flag ImmuneToExecutes this is checked before final Execute damage calculations.
                     ))
                     {
                         c.Emit(OpCodes.Ldarg_0);//self
-                        c.Emit(OpCodes.Ldloc, 53);//execute fraction
+                        c.Emit(OpCodes.Ldloc, 59);//execute fraction
                         c.EmitDelegate <Func<HealthComponent, float, float>>((self, executeFraction) =>
                         {
                             if (self.body.HasBuff(BuffCore.fearDebuff))
@@ -629,7 +629,7 @@ namespace Starstorm2Unofficial.Survivors.Executioner
                             }
                             return executeFraction;
                         });
-                        c.Emit(OpCodes.Stloc, 53);
+                        c.Emit(OpCodes.Stloc, 59);
 
                         error = false;
                     }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using R2API;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -22,10 +23,20 @@ namespace Starstorm2Unofficial.Modules
         {
             if (initialized) return;
             initialized = true;
-            AKRESULT akResult = AkSoundEngine.AddBasePath(SoundBankDirectory);
 
-            AkSoundEngine.LoadBank("SS2UMusic.bnk", out _);
-            AkSoundEngine.LoadBank("Starstorm2Unofficial.bnk", out _);
+            using (Stream manifestResourceStream = new FileStream(SoundBankDirectory + "\\Starstorm2Unofficial.bnk", FileMode.Open))
+            {
+                byte[] array = new byte[manifestResourceStream.Length];
+                manifestResourceStream.Read(array, 0, array.Length);
+                SoundAPI.SoundBanks.Add(array);
+            }
+
+            using (Stream manifestResourceStream = new FileStream(SoundBankDirectory + "\\SS2UMusic.bnk", FileMode.Open))
+            {
+                byte[] array = new byte[manifestResourceStream.Length];
+                manifestResourceStream.Read(array, 0, array.Length);
+                SoundAPI.SoundBanks.Add(array);
+            }
         }
     }
 }
