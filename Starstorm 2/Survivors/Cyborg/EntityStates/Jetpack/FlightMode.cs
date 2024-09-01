@@ -31,10 +31,12 @@ namespace EntityStates.SS2UStates.Cyborg.Jetpack
         private OverlapAttack attack;
         private CyborgEnergyComponent energyComponent;
 
+        private float lastUpdateTime;
+
         public override void OnEnter()
         {
             base.OnEnter();
-
+            lastUpdateTime = Time.time;
             inHitPause = false;
             hitPauseTimer = 0f;
             stopwatch = 0f;
@@ -95,16 +97,17 @@ namespace EntityStates.SS2UStates.Cyborg.Jetpack
         public override void FixedUpdate()
         {
             base.FixedUpdate();
-
+            float deltaTime = Time.time - lastUpdateTime;
+            lastUpdateTime = Time.time;
             if (energyComponent)
             {
-                energyComponent.ConsumeEnergy(Time.fixedDeltaTime / FlightMode.baseDuration);
+                energyComponent.ConsumeEnergy(deltaTime / FlightMode.baseDuration);
             }
 
-            this.hitPauseTimer -= Time.fixedDeltaTime;
+            this.hitPauseTimer -= deltaTime;
             if (!this.inHitPause)
             {
-                this.stopwatch += Time.fixedDeltaTime;
+                this.stopwatch += deltaTime;
             }
 
             if (base.isAuthority)
@@ -127,7 +130,7 @@ namespace EntityStates.SS2UStates.Cyborg.Jetpack
                 {
                     if (base.characterMotor.isGrounded && base.characterMotor.Motor) base.characterMotor.Motor.ForceUnground();
                     base.characterMotor.velocity = Vector3.zero;
-                    base.characterMotor.rootMotion += Time.fixedDeltaTime * this.desiredSpeed * aimRay.direction;
+                    base.characterMotor.rootMotion += deltaTime * this.desiredSpeed * aimRay.direction;
                 }
                 if (this.attack != null)
                 {

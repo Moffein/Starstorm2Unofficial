@@ -20,6 +20,13 @@ namespace EntityStates.SS2UStates.Cyborg
         private EntityStateMachine jetpackStateMachine;
         private CyborgEnergyComponent energyComponent;
 
+        //Copied fron new artificer code
+        public bool jumpButtonState;
+        private bool heldPress;
+        private bool jumpToggledState;
+        private float oldJumpHeldTime;
+        private float jumpButtonHeldTime;
+
         public override void OnEnter()
         {
             base.OnEnter();
@@ -45,26 +52,71 @@ namespace EntityStates.SS2UStates.Cyborg
 
         public override void ProcessJump()
         {
-            base.ProcessJump();
             inJetpackState = this.jetpackStateMachine.state.GetType() != typeof(Idle);
 
-            if (this.jetpackStateMachine.state.GetType() == typeof(Idle) || this.jetpackStateMachine.state.GetType() == typeof(JetpackOn))
-            {
-                if (this.hasCharacterMotor && this.hasInputBank && base.isAuthority)
-                {
-                    // && !(energyComponent && energyComponent.energyDepleted)  //This felt awful
-                    bool inputPressed = base.inputBank.jump.down && base.characterMotor.velocity.y < 0f && !base.characterMotor.isGrounded;
+            if (this.jetpackStateMachine.state.GetType() == typeof(FlightMode)) return;
 
-                    if (inputPressed && !inJetpackState)
+            if (this.hasCharacterMotor && this.hasInputBank && base.isAuthority)
+            {
+                NetworkUser networkUser = NetworkUser.readOnlyLocalPlayersList[0];
+                bool? flag;
+                if (networkUser == null)
+                {
+                    flag = null;
+                }
+                else
+                {
+                    LocalUser localUser = networkUser.localUser;
+                    flag = ((localUser != null) ? new bool?(localUser.userProfile.toggleArtificerHover) : null);
+                }
+                if (flag ?? true)
+                {
+                    if (base.inputBank.jump.down)
                     {
-                        this.jetpackStateMachine.SetNextState(new JetpackOn());
+                        this.oldJumpHeldTime = this.jumpButtonHeldTime;
+                        this.jumpButtonHeldTime += Time.deltaTime;
+                        this.heldPress = (this.oldJumpHeldTime < 0.5f && this.jumpButtonHeldTime >= 0.5f);
                     }
-                    if (inJetpackState && !inputPressed)
+                    else
                     {
-                        this.jetpackStateMachine.SetNextState(new Idle());
+                        this.oldJumpHeldTime = 0f;
+                        this.jumpButtonHeldTime = 0f;
+                        this.heldPress = false;
+                    }
+                    if (!base.characterMotor.isGrounded)
+                    {
+                        if (base.characterMotor.jumpCount == base.characterBody.maxJumpCount)
+                        {
+                            if (base.inputBank.jump.justPressed)
+                            {
+                                this.jumpButtonState = !this.jumpButtonState;
+                            }
+                        }
+                        else if (this.heldPress)
+                        {
+                            this.jumpButtonState = !this.jumpButtonState;
+                        }
+                    }
+                    else
+                    {
+                        this.jumpButtonState = false;
                     }
                 }
+                else
+                {
+                    this.jumpButtonState = base.inputBank.jump.down;
+                }
+                bool shouldJetpack = this.jumpButtonState && base.characterMotor.velocity.y < 0f && !base.characterMotor.isGrounded;
+                if (shouldJetpack && !inJetpackState)
+                {
+                    this.jetpackStateMachine.SetNextState(new JetpackOn());
+                }
+                if (!shouldJetpack && inJetpackState)
+                {
+                    this.jetpackStateMachine.SetNextState(new Idle());
+                }
             }
+            base.ProcessJump();
         }
 
         public override void FixedUpdate()

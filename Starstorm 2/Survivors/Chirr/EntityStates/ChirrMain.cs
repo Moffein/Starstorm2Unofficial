@@ -66,7 +66,6 @@ namespace EntityStates.SS2UStates.Chirr
 
         public override void ProcessJump()
         {
-            base.ProcessJump();
             inJetpackState = this.jetpackStateMachine.state.GetType() == typeof(JetpackOn);
             if (this.hasCharacterMotor && this.hasInputBank && base.isAuthority)
             {
@@ -119,12 +118,11 @@ namespace EntityStates.SS2UStates.Chirr
                     this.jumpButtonState = base.inputBank.jump.down;
                 }
                 bool shouldJetpack = this.jumpButtonState && base.characterMotor.velocity.y < 0f && !base.characterMotor.isGrounded;
-                bool isInJetpack = this.jetpackStateMachine.state.GetType() == typeof(JetpackOn);
-                if (shouldJetpack && !isInJetpack)
+                if (shouldJetpack && !inJetpackState)
                 {
                     this.jetpackStateMachine.SetNextState(new JetpackOn());
                 }
-                if (!shouldJetpack && isInJetpack)
+                if (!shouldJetpack && inJetpackState)
                 {
                     this.jetpackStateMachine.SetNextState(new Idle());
                 }

@@ -8,12 +8,13 @@ namespace EntityStates.SS2UStates.Cyborg.Jetpack
 {
 	public class JetpackOn : BaseState
 	{
-		public static float hoverDuration = -1f;	//Hover consuming energy felt terrible, but leaving this here just in case there's a need to use it later.
-
+		public static float hoverDuration = -1f;    //Hover consuming energy felt terrible, but leaving this here just in case there's a need to use it later.
+		private float lastUpdateTime;
 		private CyborgEnergyComponent energyComponent;
         public override void OnEnter()
         {
             base.OnEnter();
+			lastUpdateTime = Time.time;
 			Util.PlaySound("Play_mage_m1_impact", base.gameObject);
 			Util.PlaySound("Play_engi_sprint_start", base.gameObject);
 
@@ -68,7 +69,8 @@ namespace EntityStates.SS2UStates.Cyborg.Jetpack
         public override void FixedUpdate()
 		{
 			base.FixedUpdate();
-
+			float deltaTime = Time.time - lastUpdateTime;
+			lastUpdateTime = Time.time;
 			/*if (energyComponent && hoverDuration > 0f)
 			{
 				energyComponent.ConsumeEnergy(Time.fixedDeltaTime / hoverDuration);
@@ -77,7 +79,7 @@ namespace EntityStates.SS2UStates.Cyborg.Jetpack
 			if (base.isAuthority)
 			{
 				float num = base.characterMotor.velocity.y;
-				num = Mathf.MoveTowards(num, JetpackOn.hoverVelocity, JetpackOn.hoverAcceleration * Time.fixedDeltaTime);
+				num = Mathf.MoveTowards(num, JetpackOn.hoverVelocity, JetpackOn.hoverAcceleration * deltaTime);
 				base.characterMotor.velocity = new Vector3(base.characterMotor.velocity.x, num, base.characterMotor.velocity.z);
 			}
 		}
