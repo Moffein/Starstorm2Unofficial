@@ -60,12 +60,7 @@ public abstract class SS2Item
     }
 
     protected virtual void SetupMaterials(GameObject modelPrefab) {
-
-        Renderer[] children = modelPrefab.GetComponentsInChildren<Renderer>();
-
-        for (int i = 0; i < children.Length; i++) {
-            children[i].material.shader = Starstorm2Unofficial.Modules.Assets.hotpoo;
-        }
+        Starstorm2Unofficial.Modules.Assets.ConvertAllRenderersToHopooShader(modelPrefab);
     }
 
     public abstract void RegisterHooks();
