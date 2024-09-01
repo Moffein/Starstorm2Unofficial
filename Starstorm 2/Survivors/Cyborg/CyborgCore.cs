@@ -101,8 +101,6 @@ namespace Starstorm2Unofficial.Survivors.Cyborg
             ec.soundName = "Play_captain_drone_zap";
             Modules.Assets.effectDefs.Add(new EffectDef(projectileDeletionEffect));
             DefenseMatrix.projectileDeletionEffectPrefab = projectileDeletionEffect;
-
-            DefenseMatrixManager.Initialize();
         }
 
         private static GameObject BuildChargeRifleCrosshair()

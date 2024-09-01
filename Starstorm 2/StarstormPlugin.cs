@@ -23,7 +23,6 @@ namespace Starstorm2Unofficial
 {
     [BepInDependency("pseudopulse.Survariants", BepInDependency.DependencyFlags.SoftDependency)]
     [BepInDependency("com.Moffein.BlightedElites", BepInDependency.DependencyFlags.SoftDependency)]
-    [BepInDependency("com.bepis.r2api", BepInDependency.DependencyFlags.HardDependency)]
     [BepInDependency("com.TeamMoonstorm.Starstorm2-Nightly", BepInDependency.DependencyFlags.SoftDependency)]
     [BepInDependency("com.TeamMoonstorm.Starstorm2", BepInDependency.DependencyFlags.SoftDependency)]
     [BepInDependency("HIFU.Inferno", BepInDependency.DependencyFlags.SoftDependency)]
@@ -35,6 +34,7 @@ namespace Starstorm2Unofficial
     [BepInDependency("com.weliveinasociety.CustomEmotesAPI", BepInDependency.DependencyFlags.SoftDependency)]
     [BepInDependency("com.RiskyLives.RiskyMod", BepInDependency.DependencyFlags.SoftDependency)]
 
+    [BepInDependency("com.Moffein.DefenseMatrixManager", BepInDependency.DependencyFlags.HardDependency)]
     [BepInDependency(R2API.R2API.PluginGUID)]
     [BepInDependency(R2API.DifficultyAPI.PluginGUID)]
     [BepInDependency(R2API.DotAPI.PluginGUID)]

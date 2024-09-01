@@ -125,7 +125,6 @@
     <Compile Include="Survivors\Cyborg\Components\ShockCoreProjectile\ShootableShockCore.cs" />
     <Compile Include="Survivors\Cyborg\Components\TeleportProjectile\AssignToTeleportTracker.cs" />
     <Compile Include="Survivors\Cyborg\CyborgTeleSkillDef.cs" />
-    <Compile Include="Survivors\Cyborg\DefenseMatrixManager.cs" />
     <Compile Include="Survivors\Cyborg\EnergySkillDef.cs" />
     <Compile Include="Survivors\Cyborg\EntityStates\Jetpack\FlightMode.cs" />
     <Compile Include="Survivors\Cyborg\EntityStates\OverheatScepter.cs" />
@@ -363,6 +362,9 @@
     </Reference>
     <Reference Include="Decalicious">
       <HintPath>libs\Decalicious.dll</HintPath>
+    </Reference>
+    <Reference Include="DefenseMatrixManager">
+      <HintPath>libs\HardDependencies\DefenseMatrixManager.dll</HintPath>
     </Reference>
     <Reference Include="DropInMultiplayer">
       <HintPath>libs\SoftDependencies\DropInMultiplayer.dll</HintPath>

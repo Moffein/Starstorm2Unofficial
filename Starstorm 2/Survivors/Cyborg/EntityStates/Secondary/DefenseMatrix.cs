@@ -21,7 +21,7 @@ namespace EntityStates.SS2UStates.Cyborg.Secondary
         private float blinkStopwatch;
         private float blinkToggleDuration;
         private TeamIndex inputTeamIndex;
-        private DefenseMatrixManager.DefenseMatrixInfo defenseMatrixInfo;
+        private DefenseMatrixManager.DefenseMatrixManager.DefenseMatrixInfo defenseMatrixInfo;
         private CyborgEnergyComponent energyComponent;
 
         public static float shieldDuration = 1f / 0.15f;
@@ -76,7 +76,8 @@ namespace EntityStates.SS2UStates.Cyborg.Secondary
                             {
                                 matrixCollider = hitboxTransform.GetComponent<BoxCollider>();
                                 inputTeamIndex = base.GetTeam();
-                                this.defenseMatrixInfo = DefenseMatrixManager.AddMatrix(hitboxTransform.GetComponentsInChildren<Collider>(), inputTeamIndex);
+                                defenseMatrixInfo = new DefenseMatrixManager.DefenseMatrixManager.DefenseMatrixInfo(hitboxTransform.GetComponentsInChildren<Collider>(), inputTeamIndex);
+                                this.defenseMatrixInfo = DefenseMatrixManager.DefenseMatrixManager.AddMatrix(defenseMatrixInfo);
                             }
 
                             laserVisuals = laserCL.FindChild("LaserVisuals");
@@ -213,7 +214,7 @@ namespace EntityStates.SS2UStates.Cyborg.Secondary
 
             if (this.defenseMatrixInfo != null)
             {
-                DefenseMatrixManager.RemoveMatrix(this.defenseMatrixInfo);
+                DefenseMatrixManager.DefenseMatrixManager.RemoveMatrix(this.defenseMatrixInfo);
             }
 
             if (matrixInstance)

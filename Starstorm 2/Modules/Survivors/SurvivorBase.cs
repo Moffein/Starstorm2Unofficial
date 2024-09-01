@@ -53,28 +53,25 @@ namespace Starstorm2Unofficial.Modules.Survivors
             // this creates a config option to enable the character- feel free to remove if the character is the only thing in your mod
             //characterEnabled = Modules.Config.CharacterEnableConfig(bodyName);
 
-            if (true)//characterEnabled.Value
-            {
-                InitializeUnlockables();
+            InitializeUnlockables();
 
-                bodyPrefab = Modules.Prefabs.CreatePrefab(bodyName + "Body", modelName, bodyInfo);
-                bodyPrefab.GetComponent<EntityStateMachine>().mainStateType = new EntityStates.SerializableEntityStateType(characterMainState);
+            bodyPrefab = Modules.Prefabs.CreatePrefab(bodyName + "Body", modelName, bodyInfo);
+            bodyPrefab.GetComponent<EntityStateMachine>().mainStateType = new EntityStates.SerializableEntityStateType(characterMainState);
 
-                Modules.Prefabs.SetupCharacterModel(bodyPrefab, customRendererInfos, mainRendererIndex);
+            Modules.Prefabs.SetupCharacterModel(bodyPrefab, customRendererInfos, mainRendererIndex);
 
-                displayPrefab = Modules.Prefabs.CreateDisplayPrefab(displayName, bodyPrefab, bodyInfo);
-                if (bodyInfo.menuSoundString != "") displayPrefab.AddComponent<Components.MenuSound>().soundString = bodyInfo.menuSoundString;
+            displayPrefab = Modules.Prefabs.CreateDisplayPrefab(displayName, bodyPrefab, bodyInfo);
+            if (bodyInfo.menuSoundString != "") displayPrefab.AddComponent<Components.MenuSound>().soundString = bodyInfo.menuSoundString;
 
-                survivorDef = Modules.Prefabs.RegisterNewSurvivor(bodyPrefab, displayPrefab, Color.grey, bodyName.ToUpper(), characterUnlockableDef, sortPosition);
+            survivorDef = Modules.Prefabs.RegisterNewSurvivor(bodyPrefab, displayPrefab, Color.grey, bodyName.ToUpper(), characterUnlockableDef, sortPosition);
 
-                RegisterTokens();
-                Hook();
-                InitializeHitboxes();
-                InitializeSkills();
-                InitializeSkins();
-                InitializeItemDisplays();
-                InitializeDoppelganger();
-            }
+            RegisterTokens();
+            Hook();
+            InitializeHitboxes();
+            InitializeSkills();
+            InitializeSkins();
+            InitializeItemDisplays();
+            InitializeDoppelganger();
         }
 
         internal virtual void InitializeUnlockables()
