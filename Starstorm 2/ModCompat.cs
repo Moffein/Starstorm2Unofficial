@@ -155,12 +155,13 @@ namespace Starstorm2Unofficial
 
             public static void SetVariant(SurvivorDef variantDef, string baseBodyName)
             {
+                if (!pluginLoaded) return;
                 GameObject bodyPrefab = BodyCatalog.FindBodyPrefab(baseBodyName);
                 SurvivorDef baseSurvivorDef = SurvivorCatalog.FindSurvivorDefFromBody(bodyPrefab);
 
                 if (!baseSurvivorDef)
                 {
-                    Debug.LogError("SS2U: Survariants Compat: Could not find SurvivorDef for " + baseBodyName);
+                    Debug.LogWarning("SS2U: Survariants Compat: Could not find SurvivorDef for " + baseBodyName);
                     return;
                 }
 

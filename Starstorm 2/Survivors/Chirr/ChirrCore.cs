@@ -112,6 +112,7 @@ namespace Starstorm2Unofficial.Survivors.Chirr
                 }
             };
         }
+
         private void LateSetup(HG.ReadOnlyArray<RoR2.ContentManagement.ReadOnlyContentPack> obj)
         {
             ChirrItemDisplays.RegisterDisplays();
