@@ -6,9 +6,6 @@
 - Executioner
 	- Single shot is now default, double shot is alt.
 - Chirr and Cyborg now use Artificer's hover setting.
-- Nucleator's utility now makes him stationary while charging. (Reverted to the original release version)
-	- Mobile version can be enabled in the config.
-	- Existing configs will still use the mobile version.
 
 `0.20.2`
 
