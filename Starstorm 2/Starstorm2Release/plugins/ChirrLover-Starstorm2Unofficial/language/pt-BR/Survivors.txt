@@ -1,0 +1,281 @@
+{
+	strings:
+	{
+		"SS2UEXECUTIONER_NAME" : "Carrasco",
+		"SS2UEXECUTIONER_SUBTITLE" : "Guilhotina Temida",
+		"SS2UEXECUTIONER_DESCRIPTION" : "O objetivo do Carrasco é derramar o máximo de sangue possível na janela de tempo mais curta possível. Armas recarregadas, manipuladores de íon carregados.<style=cSub>\r\n\r\n < ! > Rajada de Íons causa dano massivo, mas regenera lentamente suas cargas. Abata inimigos fracos para carregá-la rapidamente, e então descarregue tudo em inimigos mais fortes.\r\n\r\n < ! > Disperção de Grupo interrompe ataques inimigos, abrindo uma janela de oportunidade.\r\n\r\n < ! > Feared enemies are executed at low health.\r\n\r\n < ! > Combine Execução com Disperção de Grupo para abater rapidamente grupos de inimigos.\r\n\r\n",
+		"SS2UEXECUTIONER_OUTRO_FLAVOR" : "... e assim ele partiu, sede de sangue não satisfeita.",
+		"SS2UEXECUTIONER_OUTRO_FAILURE" : "... e assim ele desapareceu, escapando do que acreditava ser inevitável.",
+		"SS2UEXECUTIONER_LORE" : "A morte é inevitável. Ela vem para todos nós. Alguns podem tentar evitá-lo ou fugir dele. Mas a morte chega mesmo assim. A morte, no entanto, é simplesmente o custo da guerra. E a morte em combate glorioso é uma das melhores mortes que um homem poderia pedir.\n\nMas, como sempre, alguns tentariam fugir da morte. Nós os chamamos por muitos nomes. Desertores, covardes, vira-casacas. Cada um deles, traidores da causa. Esses traidores devem ser punidos por seus crimes. E essa punição: em uma reviravolta irônica, é exatamente o que eles tentaram evitar.\n\nA morte virá para eles. Não como um espectro vestido com uma foice. Não em um sobretudo, segurando um revólver. Não como uma doença, nem o desgaste do tempo. Não. Para eles, a morte virá com trajes de batalha lustrosos, com a pistola de serviço carregada e os manipuladores de íon totalmente carregados.",
+		
+		"SS2UEXECUTIONER_PISTOL_NAME" : "Pistola de Serviço",
+		"SS2UEXECUTIONER_PISTOL_DESCRIPTION" : "Dispare com sua pistola, causando <style=cIsDamage>2x180% de dano</style>.",
+		
+		"SS2UEXECUTIONER_PISTOL_SINGLE_NAME" : "Pistola Padrão",
+		"SS2UEXECUTIONER_PISTOL_SINGLE_DESCRIPTION" : "Dispare com sua pistola, causando <style=cIsDamage>180% de dano</style>.",
+		
+		"SS2UEXECUTIONER_IONGUN_NAME" : "Rajada de Íons",
+		"SS2UEXECUTIONER_IONGUN_DESCRIPTION" : "<style=cIsDamage>Eletrizante</style>. Descarregue uma saraivada de balas iônicas perfurantes, causando <style=cIsDamage>2x300% de dano</style> cada. Cada abate <style=cIsUtility>adiciona uma carga</style>. Máximo de 5.",
+		
+		"KEYWORD_SS2U_FEAR" : "<style=cKeywordName>Medo</style><style=cSub>Reduz a velocidade de movimento em <style=cIsDamage>50%</style>. Inimigos afetados e com menos de <style=cIsHealth>15%</style> da saúde afetados são <style=cIsHealth>abatidos instantaneamente</style>",
+		
+		"SS2UEXECUTIONER_DASH_NAME" : "Disperção de Grupo",
+		"SS2UEXECUTIONER_DASH_DESCRIPTION" : "<style=cIsDamage>Atordoante</style>. <style=cIsUtility>Impulsione para a frente</style> e cause <style=cIsDamage>Medo</style> em inimigos próximos.",
+		
+		"SS2UEXECUTIONER_AXE_NAME" : "Execução",
+		"SS2UEXECUTIONER_AXE_DESCRIPTION" : "<style=cIsDamage>Assassino</style>. <style=cIsUtility>Lance-se no ar</style>, e depois desça com seu Machado Iônica, causando <style=cIsDamage>1.000% de dano</style>.",
+		
+		"SS2UEXECUTIONER_AXE_SCEPTER_NAME" : "Execução de Grupo",
+		"SS2UEXECUTIONER_AXE_SCEPTER_DESCRIPTION" : "<style=cIsDamage>Assassino</style>. <style=cIsUtility>Lance-se no ar</style>, e depois desça com seu Machado Iônica, causando <style=cIsDamage>1.500% de dano</style> e <style=cIsUtility>Medo</style> em inimigos próximos.",
+		
+		"SS2UEXECUTIONER_UNLOCKUNLOCKABLE_ACHIEVEMENT_NAME" : "Exagero",
+		"SS2UEXECUTIONER_UNLOCKUNLOCKABLE_UNLOCKABLE_NAME" : "Exagero",
+		"SS2UEXECUTIONER_UNLOCKUNLOCKABLE_ACHIEVEMENT_DESC" : "Abata um inimigo causando 1.000% da sua saúde máxima em dano.",
+		
+		"ACHIEVEMENT_SS2UEXECUTIONERCLEARGAMEMONSOON_NAME" : "Carrasco: Domínio",
+		"ACHIEVEMENT_SS2UEXECUTIONERCLEARGAMEMONSOON_DESCRIPTION" : "Como Carrasco, vença o jogo ou aniquile em Monção.",
+		"ACHIEVEMENT_SS2UEXECUTIONERCLEARGAMETYPHOON_NAME" : "Carrasco: Grande Domínio",
+		"ACHIEVEMENT_SS2UEXECUTIONERCLEARGAMETYPHOON_DESCRIPTION" : "Como Carrasco, vença o jogo ou aniquile em Tufão.",
+		"ACHIEVEMENT_SS2UEXECUTIONERWASTELANDER_NAME" : "Carrasco: Arrombar o Cofre",
+		"ACHIEVEMENT_SS2UEXECUTIONERWASTELANDER_DESCRIPTION" : "Como Carrasco, abra o portão ancião no Aqueduto Abandonado.",
+		
+		"SS2UEXECUTIONER_MASTERY_SKIN_NAME" : "Vigilante",
+		"SS2UEXECUTIONER_KNIGHT_SKIN_NAME" : "Gladiador",
+		"SS2UEXECUTIONER_WASTELANDER_SKIN_NAME" : "Desolador",
+	
+		"SS2UCYBORG_NAME" : "Ciborgue",
+		"SS2UCYBORG_SUBTITLE" : "Monstruosidade Criada pelo Homem",
+		"SS2UCYBORG_OUTRO_FLAVOR" : "... e assim ele partiu, com a programação liberando serotonina em excesso.",
+		"SS2UCYBORG_OUTRO_FAILURE" : "... e assim ele desapareceu, deixando o farol de dobra sem sinal.",
+		"SS2UCYBORG_DESCRIPTION" : "A tecnologia alcançou seus limites morais quando o Ciborgue foi criado. É difícil saber quanto de humanidade ainda resta nele.<style=cSub>\r\n\r\n< ! > As habilidades do Ciborgue consomem uma única Reserva de Energia, permitindo flexibilidade no uso das habilidades.\r\n\r\n< ! > Estrela Ascendente causa muito dano por segundo, mas consome energia rapidamente.\r\n\r\n< ! > Use Retorno para colocar um Ponto de Retorno antes de enfrentar os oponentes, garantindo uma rota de fuga.\r\n\r\n< ! > Ajuste de Superaquecimento é a melhor ferramenta do Cyborg para lidar com muitos inimigos.\r\n\r\n",
+		"SS2UCYBORG_LORE" : "<style=cMono>Arquivo de áudio encontrado em \"Testemunho de Dr. Rayell'\". Iniciando...</style>\n\n\"'Gravação iniciada. Inicie os testes, Dr. Rayell.\"\n\n\"Obrigado. Após o enorme sucesso do EOD com as augmentações biomecânicas, produzindo alguns dos melhores engenheiros de combate que já saíram do departamento, eles seguiram adiante com designs um pouco mais... digamos, experimentais.\"\n\n\"Como assim?\"\n\n\"O departamento começou a explorar a augmentação mental. Definitivamente foi um salto, com certeza. A augmentação já era muito avançada, mas suplementar — ou até mesmo substituir — um cérebro danificado? Era um grande desafio. Mas os chefes acreditavam que podíamos fazer isso, então nós aceitamos o desafio.\"\n\n\"Hm. O que resultou do seu projeto?\"\n\n\"Assim que a prototipagem foi concluída, começamos os testes humanos. Conseguimos todo tipo de gente como cobaias, estavam vegetativos, mentalmente instáveis, pessoas quebradas. Disseram-nos para consertá-los o melhor que pudéssemos.\"\n\n\"E como foi?\"\n\n\"Foi... Foi uma tragédia. Alguns estavam simplesmente perdidos demais. Não havia nada que pudéssemos fazer. Esses foram os melhores casos. Pior foi quando eles rejeitaram as substituições. Alguns morreram em uma resposta imune rápida. Os mais conscientes imploravam para que acabássemos com as dores de cabeça que estavam tendo. Alguns começaram a gritar. Gritavam por horas e horas, às vezes por dias. E então paravam. Literalmente gritavam até a morte.\"\n\n\"Isso é, um pouco inquietante. É tudo?\"\n\n\"Havia um. Um que sobreviveu à substituição. E funcionou maravilhosamente. Pegamos ele em um estado vegetativo, sem esperança alguma, e o tiramos disso, e demos a ele - talvez não sua vida completa de volta, mas algo que se assemelha a isso. Você não tem ideia de como fiquei grato ao saber que ele estava indo bem.\"\n\n\"Bem, eu acho que isso é bom de ouvir. Então, o que aconteceu com ele?\"\n\n\"Sabe? Não tenho certeza. Além de algumas mudanças comportamentais, o que já era esperado, ele conseguiu voltar à sociedade de maneira bem tranquila. Fazemos check-ups nele a cada três meses para analisar os efeitos a longo prazo, mas... Pensando bem, ele não apareceu no último mês. Ah, bem. Tenho certeza de que ele está bem. Vou ter que entrar em contato com ele sobre isso.\"\n\n\"Hm, certo então. Obrigado pelo seu tempo, Dr. Rayell. Seu testemunho é... Bem, certamente é algo. Espero ouvir mais sobre seus projetos no futuro.\"\n\n\"Muito bem. Espero que você encontre o que está procurando.\"\n\n<style=cMono>Fim do Arquivo.</style>",
+		
+		"SS2UCYBORG_PASSIVE_NAME" : "Núcleo de Energia",
+		"SS2UCYBORG_PASSIVE_DESCRIPTION" : "As habilidades do Ciborgue compartilham uma única <color=#8BEDE3>Reserva de Energia</color> para seus tempos de recarga.\nManter a tecla de Salto pressionada faz o Ciborgue <style=cIsUtility>pairar no ar</style>.",
+		"SS2UCYBORG_PASSIVE_DESCRIPTION_NOENERGY" : "Manter a tecla de Salto pressionada faz o Ciborgue <style=cIsUtility>pairar no ar</style>.",
+		
+		"SS2UCYBORG_PRIMARY_GUN_NAME" : "Desfazedor",
+		"SS2UCYBORG_PRIMARY_GUN_DESCRIPTION" : "Dispare um feixe contra inimigos, causando <style=cIsDamage>300% de dano</style>.",
+		
+		"SS2UCYBORG_PRIMARY_CHARGE_NAME" : "Disparo Penetrante",
+		"SS2UCYBORG_PRIMARY_CHARGE_DESCRIPTION" : "Carregue um feixe perfurante, causando <style=cIsDamage>300%-900% de dano</style>. Causa <style=cIsDamage>1.200%</style> de dano quando <style=cIsDamage>carregado perfeitamente</style>.",
+		
+		"SS2UCYBORG_SECONDARY_DEFENSEMATRIX_NAME" : "Matriz de Defesa",
+		"SS2UCYBORG_SECONDARY_DEFENSEMATRIX_DESCRIPTION" : "<color=#8BEDE3>15% de Energia/s</color>. Projete um campo de energia que <style=cIsUtility>neutraliza ataques à distância</style>.",
+		"SS2UCYBORG_SECONDARY_DEFENSEMATRIX_DESCRIPTION_NOENERGY" : "Projete um campo de energia que <style=cIsUtility>neutraliza ataques à distância</style>.",
+		
+		"SS2UCYBORG_SECONDARY_TRISHOT_NAME" : "Estrela Ascendente",
+		"SS2UCYBORG_SECONDARY_TRISHOT_DESCRIPTION" : "<color=#8BEDE3>30% de Energia/s</color>. Dispare rapidamente projetéis que <style=cIsUtility>desaceleram</style> os inimigos, causando <style=cIsDamage>3x140% de dano</style>.",
+		"SS2UCYBORG_SECONDARY_TRISHOT_DESCRIPTION_NOENERGY" : "Dispare rapidamente projetéis que <style=cIsUtility>desaceleram</style> os inimigos, causando <style=cIsDamage>3x140% de dano</style>.",
+		
+		"SS2UCYBORG_UTILITY_TELEPORT_NAME" : "Retorno",
+		"SS2UCYBORG_UTILITY_TELEPORT_DESCRIPTION" : "<color=#8BEDE3>50% de Energia</color>. Crie um <style=cIsUtility>ponto de retorno</style>. Ative novamente para <style=cIsUtility>teleportar para a localização</style>. Segure para remover pontos de retorno existentes.",
+		"SS2UCYBORG_UTILITY_TELEPORT_DESCRIPTION_NOENERGY" : "<style=cIsDamage>Eletrizante</style>. Crie um <style=cIsUtility>ponto de retorno</style>. Ative novamente para <style=cIsUtility>teleportar para a localização</style> e causar <style=cIsDamage>800% de dano</style>. Segure para remover pontos de retorno existentes.",
+		
+		"SS2UCYBORG_UTILITY_FLIGHT_NAME" : "Modo de Voo",
+		"SS2UCYBORG_UTILITY_FLIGHT_DESCRIPTION" : "<color=#8BEDE3>60% de Energia/s</color>. <style=cIsUtility>Pesado</style>. Decole, ganhando <style=cIsUtility>200% de velocidade de movimento</style>. Causa <style=cIsDamage>400% de dano</style> aos inimigos no impacto.",
+		"SS2UCYBORG_UTILITY_FLIGHT_DESCRIPTION_NOENERGY" : "<style=cIsUtility>Pesado</style>. Decole, ganhando <style=cIsUtility>200% de velocidade de movimento</style>. Causa <style=cIsDamage>400% de dano</style> aos inimigos no impacto.",
+		
+		"SS2UCYBORG_OVERHEAT_NAME" : "Ajuste de Superaquecimento",
+		"SS2UCYBORG_OVERHEAT_DESCRIPTION" : "<color=#8BEDE3>60% de Energia</color>. <style=cIsUtility>Impulsione-se para trás</style>, disparando uma enorme bala de energia que causa um máximo de <style=cIsDamage>1.200% de dano por segundo</style>.",
+		"SS2UCYBORG_OVERHEAT_DESCRIPTION_NOENERGY" : "<style=cIsUtility>Impulsione-se para trás</style>, disparando uma enorme bala de energia que causa um máximo de <style=cIsDamage>1.200% de dano por segundo</style>.",
+		
+		"SS2UCYBORG_OVERHEAT_SCEPTER_NAME" : "Ajuste de Superaquecimento Gamma",
+		"SS2UCYBORG_OVERHEAT_SCEPTER_DESCRIPTION" : "<color=#8BEDE3>60% de Energia</color>. <style=cIsUtility>Impulsione-se para trás</style>, disparando uma enorme bala de energia que causa um máximo de <style=cIsDamage>1.800% de dano por segundo</style>.",
+		"SS2UCYBORG_OVERHEAT_SCEPTER_DESCRIPTION_NOENERGY" : "<style=cIsUtility>Impulsione-se para trás</style>, disparando uma enorme bala de energia que causa um máximo de <style=cIsDamage>1.800% de dano por segundo</style>.",
+		
+		"SS2UCYBORG_SHOCKCORE_NAME" : "Núcleo de Choque",
+		"SS2UCYBORG_SHOCKCORE_DESCRIPTION" : "<color=#8BEDE3>40% de Energia</color>. <style=cIsDamage>Eletrizante</style>. Dispare um núcleo de energia, causando <style=cIsDamage>400% de dano</style>. Atire no núcleo para implodi-lo, causando <style=cIsDamage>1.200% de dano</style>.",
+		"SS2UCYBORG_SHOCKCORE_DESCRIPTION_NOENERGY" : "<style=cIsDamage>Eletrizante</style>. Dispare um núcleo de energia, causando <style=cIsDamage>400% de dano</style>. Atire no núcleo para implodi-lo, causando <style=cIsDamage>1.200% de dano</style>.",
+		
+		"SS2UCYBORG_SHOCKCORE_SCEPTER_NAME" : "Núcleo de Choque Gama",
+		"SS2UCYBORG_SHOCKCORE_SCEPTER_DESCRIPTION" : "<color=#8BEDE3>40% de Energia</color>. <style=cIsDamage>Eletrizante</style>. Dispare um núcleo de energia, causando <style=cIsDamage>600% de dano</style>. Atire no núcleo para implodi-lo, causando <style=cIsDamage>1.800% de dano</style>.",
+		"SS2UCYBORG_SHOCKCORE_SCEPTER_DESCRIPTION_NOENERGY" : "<style=cIsDamage>Eletrizante</style>. <style=cIsDamage>Eletrizante</style>. Dispare um núcleo de energia, causando <style=cIsDamage>600% de dano</style>. Atire no núcleo para implodi-lo, causando <style=cIsDamage>1.200% de dano</style>.",
+		
+		"ACHIEVEMENT_SS2UCYBORGCLEARGAMEMONSOON_NAME" : "Ciborgue: Domínio",
+		"ACHIEVEMENT_SS2UCYBORGCLEARGAMEMONSOON_DESCRIPTION" : "Como Ciborgue, vença o jogo ou aniquile em Monção.",
+		"SS2UCYBORG_MASTERY_SKIN_NAME" : "Ciborgue a Vapor",
+		
+		"ACHIEVEMENT_SS2UCYBORGCLEARGAMETYPHOON_NAME" : "Ciborgue: Grande Domínio",
+		"ACHIEVEMENT_SS2UCYBORGCLEARGAMETYPHOON_DESCRIPTION" : "Como Ciborgue, vença o jogo ou aniquile em Tufão.",
+		"SS2UCYBORG_GRANDMASTERY_SKIN_NAME" : "Metamórfico",
+		
+		"SS2UPYRO_NAME" : "Pyro",
+		"SS2UPYRO_SUBTITLE" : "Controle de Pragas",
+		"SS2UPYRO_OUTRO_FLAVOR" : "... e assim ele partiu, em um arder glorioso.",
+		"SS2UPYRO_OUTRO_FAILURE" : "... e assim ele desapareceu, restando nada além de cinzas.",
+		"SS2UPYRO_DESCRIPTION" : "O Pyro não irá parar até queimar tudo e todos.\r\n\r\n< ! > Chamuscar gera Calor, necessário para as habilidades de Pyro.\r\n\r\n< ! > \"Fogo Supressor\" pode atingir alvos que estão fora do alcance de Chamuscar.\r\n\r\n< ! > Plano B permite você engajar em batalhas mais rapidamente.\r\n\r\n< ! > Labareda fica mais forte ao usar com altas temperaturas.\r\n\r\n",
+		"SS2UPYRO_LORE" : "<style=cMono>//--AUTOTRANCRIÇÃO DA PATRULHA DA SEÇÃO 7 DO PONTO DE ENCONTRO SIGMA--//</style>\n\nDois guardas de patrulha entram no campo de visão da câmera, com os sons da discussão deles gradualmente ficando mais audíveis enquanto tomam suas posições no ponto de patrulha.\n\n\"Não! Pela última vez, não! Ele não vai sair para lidar com os insetos.\"\n\n\"Vamos lá, Alan! Esses insetos têm atormentado o ponto de encontro por tempo demais. Quero dizer, caramba, só na noite passada essas coisas quase me mataram, pelo amor de Deus!\"\n\n\"Ok, primeiro de tudo, Jess, pare de exagerar. Você estava bem. Eles podem estar ficando mais agressivos, mas nada que não possamos lidar. Ele seria apenas um problema.\"\n\n\"O que você quer dizer com problema?\" Jess gesticula com a mão para o lado. \"Pelo que eu sei, ele é a pessoa mais adequada para lidar com esses insetos.\"\n\n\"Oh, puxa, sei não\" Alan coloca sua arma no chão para começar a contar. \"Ele ameaçou pessoas, saiu em 'caçadas' no meio da noite SEM NINGUÉM, ele começou incêndios nos dormitórios enquanto brincava com seu lança-chamas, e isso é só antes de tirarmos as armas dele.\" Ele solta um suspiro contido. \"Francamente, com o comportamento dele, estou surpreso que ele tenha sequer sido autorizado a entrar na nave.\"\n\n\"Ele só quer matar coisas, é só isso.\" Jess respondeu, dando de ombros. \"E sim, isso é bem problemático, mas se você devolvesse as coisas dele e dissesse para ele correr na direção da floresta e queimar qualquer coisa que se mova, ele provavelmente faria isso com prazer.\"\n\n\"Ehh...\"\n\n\"Além disso, se ele fizer isso, provavelmente vai acabar se matando.\" Jess acrescentou com uma risada. \"Então ele não seria problema de ninguém.\"",
+		
+		"SS2UPYRO_PRIMARY_NAME" : "Chamuscar",
+		"SS2UPYRO_PRIMARY_DESCRIPTION" : "<color=#D78326>Gera calor</color> e queima inimigos, causando <style=cIsDamage>420% de dano por segundo</style>. <style=cIsDamage>Incendeia</style> em <color=#D78326>altas temperaturas</color>.",
+		
+		"SS2UPYRO_SECONDARY_NAME" : "De Volta ao Remetente",
+		"SS2UPYRO_SECONDARY_DESCRIPTION" : "<color=#D78326>Consuma 25% de calor</color> e dispare uma explosão de ar não-letal que <style=cIsUtility>empurra</style> inimigos e <style=cIsUtility>reflete projéteis</style>.",
+		
+		"SS2UPYRO_SECONDARY_ALT_NAME" : "\"Fogo Supressor\"",
+		"SS2UPYRO_SECONDARY_ALT_DESCRIPTION" : "<color=#D78326>Consuma calor rapidamente</color> para disparar uma rajada de bolas de fogo, causando <style=cIsDamage>1.200% de dano por segundo</style> e <style=cIsDamage>incendiar</style> inimigos.",
+		
+		"SS2UPYRO_UTILITY_NAME" : "Plano B",
+		"SS2UPYRO_UTILITY_DESCRIPTION" : "<color=#D78326>Consuma 40% de calor</color> e <style=cIsUtility>voe para frente</style>. Mantenha a tecla pressionada para voar mais longe, ao custo de mais <color=#D78326>calor</color>.",
+		
+		"SS2UPYRO_SPECIAL_NAME" : "Labareda",
+		"SS2UPYRO_SPECIAL_DESCRIPTION" : "<color=#D78326>Consuma todo o calor</color> e dispare uma labareda, causando <style=cIsDamage>400% de dano</style>. No impacto, ele explode causando até <style=cIsDamage>8x200% de dano</style> baseado no <color=#D78326>calor</color> consumido.",
+		
+		"SS2UPYRO_SPECIAL_SCEPTER_NAME" : "Labareda Infernal",
+		"SS2UPYRO_SPECIAL_SCEPTER_DESCRIPTION" : "<color=#D78326>Consuma todo o calor</color> e dispare uma labareda, causando <style=cIsDamage>400% de dano</style>. No impacto, ele explode causando até <style=cIsDamage>16x200% de dano</style> baseado no <color=#D78326>calor</color> consumido.",
+		
+		"SS2UPYRO_MASTERYUNLOCKABLE_UNLOCKABLE_NAME" : "Pyro: Domínio",
+		"SS2UPYRO_MASTERYUNLOCKABLE_ACHIEVEMENT_NAME" : "Pyro: Domínio",
+		"SS2UPYRO_MASTERYUNLOCKABLE_ACHIEVEMENT_DESC" : "Como Pyro, vença o jogo ou aniquile em Monção.",
+		
+		"SS2UPYRO_GRANDMASTERYUNLOCKABLE_UNLOCKABLE_NAME" : "Pyro: Grande Domínio",
+		"SS2UPYRO_GRANDMASTERYUNLOCKABLE_ACHIEVEMENT_NAME" : "Pyro: Grande Domínio",
+		"SS2UPYRO_GRANDMASTERYUNLOCKABLE_ACHIEVEMENT_DESC" : "Como Pyro, vença o jogo ou aniquile em Tufão.",
+		
+		"SS2UCHIRR_NAME" : "Chirr",
+		"SS2UCHIRR_SUBTITLE" : "Espírito da Floresta",
+		"SS2UCHIRR_DESCRIPTION" : "Chirr é uma criatura mística que possui uma conexão pura com o planeta.<style=cSub>\r\n\r\n< ! > Espinhos da Vida casam dano consistente, mas baixo.\r\n\r\n< ! > Use a Cabeçada quando estiver cercado para ganhar algum espaço para respirar.\r\n\r\n< ! > Aura Sanativa pode salvar aliados da morte se usado no tempo correto.\r\n\r\n< ! > Vínculo Natural pode ser utilizado para distrair inimigos.\r\n\r\n",
+		"SS2UCHIRR_LORE" : "\"Will? Will, você copia??\"\n\n\"Uh, sim, o que foi?\"\n\n\"ontra todas as probabilidades, eu encontrei algo que não só não tentou me matar imediatamente, mas que na verdade parece genuinamente amigável.\"\n\n\"Sério? Isso é impressionante. E o que é?\"\n\n\"É, uh, um inseto? Talvez? Não tenho certeza. Definitivamente parece algum tipo de louva-a-deus gigante, mas-\"\n\n\"Espera, espera. Você disse louva-a-deus gigante? Quão grande você acha que era?\"\n\n\"Uh, calma aí, me dá um minuto...\"\n\n\"...Digamos que, cerca de 3 metros de comprimento? E cerca de 2 metros de altura.\"\n\n\"Isso é... bem grande. Você tem certeza de que essa coisa é amigável?\"\n\n\"Oh, com certeza. Eu os encontrei enquanto fugia de um enxame daquelas vespas, e no momento em que passei, ela começou a ficar muito agressiva com elas. Lançando agulhas, dando cabeçadas nas que estavam no chão, e continuou até que elas voassem para longe. Territorial? Provavelmente, mas parecia que as vespas odiavam essa coisa tanto quanto elas me odeiam.\"\n\n\"Huh. Bem, se ela está te mantendo seguro, então continue como estava.\"\n\n\"Certo, então. Vou te manter informado — Hmm? Algum problema, Chirr\"\n\n\"E- Espera. Quem é Chirr?\"\n\n\"É o nome dela. A louva-a-deus, ou seja lá o que for.\"\n\n\"...Espera aí.\"",
+		"SS2UCHIRR_OUTRO_FLAVOR" : "... e assim ela partiu, carregando uma nova vida em seu espírito.",
+		"SS2UCHIRR_OUTRO_MAID_FLAVOR" : "... e assim ela partiu, contente com seus esforços.",
+		"SS2UCHIRR_OUTRO_FAILURE" : "... e assim ela desapareceu, sem ninguém para lhe fazer companhia.",
+		
+		"SS2UCHIRR_PASSIVE_NAME" : "Alçar Voo",
+		"SS2UCHIRR_PASSIVE_DESCRIPTION" : "Chirr pula <style=cIsUtility>50% mais alto</style> e pode <style=cIsUtility>planar no ar</style> ao segurar o botão de Salto.",
+		
+		"SS2UCHIRR_DARTS_NAME" : "Espinhos da Vida",
+		"SS2UCHIRR_DARTS_DESCRIPTION" : "Atire uma sequência de <style=cIsUtility>espinhos perseguidores</style>, causando <style=cIsDamage>3x90% de dano</style>.",
+		
+		"SS2UCHIRR_HEADBUTT_NAME" : "Cabeçada",
+		"SS2UCHIRR_HEADBUTT_DESCRIPTION" : "<style=cIsDamage>Atordoante</style>. Avance para frente e derrube os inimigos para trás, causando <style=cIsDamage>500% de dano</style>.",
+		
+		"SS2UCHIRR_HEAL_NAME" : "Aura Sanativa",
+		"SS2UCHIRR_HEAL_DESCRIPTION" : " Cure a si e todos os aliados próximos em <style=cIsHealing>30%</style> da sua saúde máxima, <style=cIsUtility>removendo todas as penalidades</style>. Aliados recebem um <style=cIsHealing>aumento na regeneração de saúde</style> por um curto período.",
+		
+		"KEYWORD_SS2U_CHIRR_PING" : "<style=cKeywordName>Comandar</style><style=cSub>Seu amigo irá tentar atacar inimigos marcados.</style>",
+		"SS2UCHIRR_BEFRIEND_NAME" : "Vínculo Natural",
+		"SS2UCHIRR_BEFRIEND_DESCRIPTION" : "<style=cIsUtility>Faça amizade</style> com um inimigo com menos de <style=cIsHealth>50% de saúde</style>.\nAtive novamente para <style=cIsUtility>teleportar</style> seu amigo até você e <style=cIsUtility>distrair inimigos próximos</style>.\nAmigos <style=cIsUtility>herdam seus itens</style>.",
+		
+		"SS2UCHIRR_LEASH_NAME" : "Laço Inquebrantável",
+		"SS2UCHIRR_LEASH_DESCRIPTION" : "Teleporta seu amigo até você e <style=cIsUtility>distrai inimigos próximos</style>. Mantenha pressionado para se separar do seu amigo.",
+		
+		"SS2UCHIRR_BEFRIEND_SCEPTER_NAME" : "Vínculo Natural Primordial",
+		"SS2UCHIRR_BEFRIEND_SCEPTER_DESCRIPTION" : "<style=cIsUtility>Faça amizade</style> com um inimigo com menos de <style=cIsHealth>50% de saúde</style>, ou abaixo de <style=cIsHealth>30% de saúde</style> caso seja um monstro chefe.\nAtive novamente para <style=cIsUtility>teleportar</style> seu amigo até você e <style=cIsUtility>distrair inimigos próximos</style>.\nAmigos <style=cIsUtility>herdam seus itens</style>.",
+		
+		"ACHIEVEMENT_SS2UCHIRRCLEARGAMEMONSOON_NAME" : "Chirr: Domínio",
+		"ACHIEVEMENT_SS2UCHIRRCLEARGAMEMONSOON_DESCRIPTION" : "Como Chirr, vença o jogo ou aniquile em Monção.",
+		"SS2UCHIRR_MASTERY_SKIN_NAME" : "Criada",
+		
+		"ACHIEVEMENT_SS2UCHIRRCLEARGAMETYPHOON_NAME" : "Chirr: Grande Domínio",
+		"ACHIEVEMENT_SS2UCHIRRCLEARGAMETYPHOON_DESCRIPTION" : "Como Chirr, vença o jogo ou aniquile em Tufão.",
+		
+		"SS2UCHIRR_OUTRO_BROTHER_EASTEREGG" : "... e juntos eles partiram, aprendendo que o real Risk of Rain são os amigos que fizemos no caminho.",
+		"SS2UBROTHER_KILL_CHIRR1" : " Junte-se às suas irmãs.",
+		"SS2UBROTHER_KILL_CHIRR2" : " Finalmente extinto.",
+		"SS2UBROTHERHURT_CHIRR_BEFRIEND_1" : " VOCÊ... SE ATREVE... A ME TOCAR, VERME...?",
+		
+		"SS2UNUCLEATOR_NAME" : "Nucleador",
+		"SS2UNUCLEATOR_SUBTITLE" : "Contaminação Ambulante",
+		"SS2UNUCLEATOR_DESCRIPTION" : "O Nucleador é um colosso radioativo com armadura à prova de radiação, o que lhe permite manipular componentes nucleares por longos períodos de tempo.<style=cSub>\r\n\r\n< ! > O Nucleador pode carregar suas habilidades para obter o máximo desempenho, mas tenha cuidado, pois o sobrecarregamento pode causar danos a si mesmo!\r\n\r\n< ! > Projéteis de 'Irradiar' ganham um raio de explosão aumentado quanto mais tempo eles percorrem.\r\n\r\n< ! > Quarentena sempre aplica a mesma força de recuo, independentemente do nível de carga.\r\n\r\n< ! > SO uso estratégico de Surto Radionuclídeo permitirá que você recupere a saúde perdida ao sobrecarregar habilidades.\r\n\r\n",
+		"SS2UNUCLEATOR_OUTRO_FLAVOR" : "... e assim ele se foi, status de saúde não divulgado.",
+		"SS2UNUCLEATOR_OUTRO_FAILURE" : "... e assim ele desapareceu, uma terra inabitável em seu rastro.",
+		"SS2UNUCLEATOR_LORE" : "ria e engorde.",
+		
+		"SS2UNUCLEATOR_PASSIVE_NAME" : "Derretimento Total",
+		"SS2UNUCLEATOR_PASSIVE_DESCRIPTION" : "As habilidades do Nucleador não são afetadas por <style=cIsDamage>Velocidade de Ataque</style>. A <style=cIsDamage>Velocidade de Ataque</style> é convertida em <style=cIsDamage>Dano</style>.",
+		
+		"SS2UNUCLEATOR_PRIMARY_NAME" : "Irradiar",
+		"SS2UNUCLEATOR_PRIMARY_DESCRIPTION" : "Carregue e dispare uma bolha de resíduo nuclear, causando <style=cIsDamage>200%-720% de dano</style>, até um total de <style=cIsDamage>1.080% de dano</style> em <style=cIsHealth>Sobrecarga</style>. Raio aumenta com a distância.",
+		
+		"SS2UNUCLEATOR_SECONDARY_NAME" : "Quarentena",
+		"SS2UNUCLEATOR_SECONDARY_DESCRIPTION" : "<style=cIsDamage>Atordoante</style>. Carregue e <style=cIsUtility>empurre</style> inimigos, causando <style=cIsDamage>200%-720% de dano</style>, até um total de <style=cIsDamage>1080% de dano</style> e <style=cIsDamage>enraizar</style> em <style=cIsHealth>Sobrecarga</style>.",
+		
+		"SS2UNUCLEATOR_UTILITY_NAME" : "Impulso de Fissão",
+		"SS2UNUCLEATOR_UTILITY_DESCRIPTION" : "<style=cIsDamage>Atordoante</style>. Carregue um salto e ganhe <style=cIsUtility>200 de armadura</style>. Causa <style=cIsDamage>400%-800% de dano</style> no impacto, até um total de <style=cIsDamage>1.200% de dano</style> em <style=cIsHealth>Sobrecarga</style>.",
+		
+		"SS2UNUCLEATOR_SPECIAL_NAME" : "Surto Radionuclídeo",
+		"SS2UNUCLEATOR_SPECIAL_DESCRIPTION" : "Entre em um estado Nuclear por <style=cIsUtility>6 segundos</style>, <style=cIsHealing>curando-se com <style=cIsHealth>Sobrecarga</style></style> e adicionando <style=cIsDamage>Envenenamento Radioativo</style> a cada ataque.",
+		
+		"SS2UNUCLEATOR_SPECIAL_SCEPTER_NAME" : "Efluxo Radionuclídeo",
+		"SS2UNUCLEATOR_SPECIAL_SCEPTER_DESCRIPTION" : "Entre em um estado Nuclear por <style=cIsUtility>12 segundos</style>, tornando-se <style=cIsUtility>imune ao dano da <style=cIsHealth>Sobrecarga</style></style> e adicionando <style=cIsDamage>Envenenamento Radioativo</style> a cada ataque.",
+		
+		"KEYWORD_SS2U_RADIATION" : "<style=cKeywordName>Envenenamento Radioativo</style><style=cSub>Causa dano equivalente a <style=cIsDamage>5%</style> da saúde máxima deles por 5s.</style>",
+		
+		"SS2UNUCLEATOR_UNLOCKUNLOCKABLE_UNLOCKABLE_NAME" : "Excesso",
+		"SS2UNUCLEATOR_UNLOCKUNLOCKABLE_ACHIEVEMENT_NAME" : "Excesso",
+		"SS2UNUCLEATOR_UNLOCKUNLOCKABLE_ACHIEVEMENT_DESC" : "Carregue 5 itens Lendários em uma única jogatina.",
+		
+		"SS2UNUCLEATOR_MASTERYUNLOCKABLE_UNLOCKABLE_NAME" : "Nucleador: Domínio",
+		"SS2UNUCLEATOR_MASTERYUNLOCKABLE_ACHIEVEMENT_NAME" : "Nucleador: Domínio",
+		"SS2UNUCLEATOR_MASTERYUNLOCKABLE_ACHIEVEMENT_DESC" : "Como Nucleador, vença o jogo ou aniquile em Monção.",
+		
+		"SS2UNUCLEATOR_GRANDMASTERYUNLOCKABLE_UNLOCKABLE_NAME" : "Nucleador: Grande Domínio",
+		"SS2UNUCLEATOR_GRANDMASTERYUNLOCKABLE_ACHIEVEMENT_NAME" : "Nucleador: Grande Domínio",
+		"SS2UNUCLEATOR_GRANDMASTERYUNLOCKABLE_ACHIEVEMENT_DESC" : "Como Nucleador, vença o jogo ou aniquile em Tufão.",
+		
+		"SS2UNEMMANDO_NAME" : "Nêmesis Comando",
+		"SS2UNEMMANDO_SUBTITLE" : "Eco Solitário",
+		"SS2UNEMMANDO_DESCRIPTION" : "A origem do Nêmesis Comando é desconhecida, mas uma coisa é clara: ele não é mais quem um dia foi.<style=cSub>\r\n\r\n< ! > Lâmina da Cessação é arriscado, mas pode causar muito dano com o acúmulo de Ferimento.\r\n\r\n< ! > Corte Longo pode ser usado para aplicar Ferimento em um grupo de inimigos de forma mais segura - tome proveito da sua perfuração!\r\n\r\n< ! > O equilíbrio entre o combate corpo-a-corpo e à distância é a chave, e o Rolamento Tático garante uma grande quantidade de armadura para entrar e sair de batalhas.\r\n\r\n< ! > Submissão causa dano massivo quando carregado completamente.\r\n\r\n",
+		"SS2UNEMMANDO_OUTRO_FLAVOR" : "... e assim ele se foi, descobrindo a humanidade dentro de si.",
+		"SS2UNEMMANDO_OUTRO_FAILURE" : "... e assim ele desapareceu, concluindo sua luta interminável.",
+		"SS2UNEMMANDO_LORE" : "Ele descansa perto de uma fogueira, colocando as armas que carrega ao alcance de um braço. Verificando seus arredores, esperando que a caverna onde ele se escondeu fosse suficiente para abrigá-lo. Alguns diriam que não é sábio ser excessivamente cauteloso. Ele diria que <color=#FFCCED>eles não viram o suficiente.</color>\n\nA pistola que ele conseguiu quando se alistou. Bem usada, suja e amada. Ela o acompanhou em altos e baixo, não importa em qual missão ele assumisse. Alguns diriam que apenas um tolo confiaria em sua arma. Ele diria que <color=#FFCCED>sua arma é tudo em que você pode confiar.</color>\n\nA lâmina de um irmão de guerra caído. Escolhida entre o que ele conseguiu catar dos resquícios da humanidade que testemunhou. Alguns diriam que isso mantém seus espíritos unidos. Ele diria que <color=#FFCCED>é para impedir que seus espíritos se unam pelo maior tempo possível.</color>\n\nAs cargas de carregamento que desembarcaram com ele. Cada item retirado de um baú, mantendo-o vivo de uma forma ou de outra. Dezenas de remessas para qualquer um, menos para ele. Alguns diriam, eles não são seus itens para você levar. Ele diria que <color=#FFCCED>se ele não os levar, ninguém os fará.</color>\n\nO brilho de uma luz violeta vindo das profundezas da caverna. Calmante, aquecendo... acenando. Acolhendo-o cada vez mais fundo, prometendo segurança. Alguns diriam, o que parece bom demais para ser verdade provavelmente é. Ele diz, <color=#FFCCED>Fausto era um homem sábio.</color>",
+		
+		"KEYWORD_SS2U_GOUGE" : "<style=cKeywordName>Ferimento</style><style=cSub>Cause <style=cIsDamage>300%</style> do dano base por 2s. <i>Capaz de acionar itens.</i>",
+		
+		"SS2UNEMMANDO_PRIMARY_BLADE_NAME" : "Lâmina da Cessação",
+		"SS2UNEMMANDO_PRIMARY_BLADE_DESCRIPTION" : "<style=cIsHealth>Ferimento</style>. <style=cIsUtility>Ágil.</style> Corte os inimigos, causando  <style=cIsDamage>160% de dano</style>.",
+		
+		"SS2UNEMMANDO_SECONDARY_CONCUSSION_NAME" : "Corte Longo",
+		"SS2UNEMMANDO_SECONDARY_CONCUSSION_DESCRIPTION" : "<style=cIsHealth>Ferimento</style>. Carregue um feixe de espada perfurante, causando <style=cIsDamage>200%-600% de dano</style>.",
+		
+		"SS2UNEMMANDO_SECONDARY_SHOOT_NAME" : "Toque Único",
+		"SS2UNEMMANDO_SECONDARY_SHOOT_DESCRIPTION" : "Atire com sua arma, causando <style=cIsDamage>210% máximo</style>. Máximo de 6 projéteis.",
+		
+		"SS2UNEMMANDO_UTILITY_DODGE_NAME" : "Rolamento Tático",
+		"SS2UNEMMANDO_UTILITY_DODGE_DESCRIPTION" : "<style=cIsUtility>Role</style> por uma curta distância, ganhando <style=cIsUtility>100 de armadura</style>.",
+		
+		"SS2UNEMMANDO_SPECIAL_SUBMISSION_NAME" : "Submissão",
+		"SS2UNEMMANDO_SPECIAL_SUBMISSION_DESCRIPTION" : "Carregue uma série de <style=cIsDamage>5 disparos de espingarda</style> que causam <style=cIsDamage>4x120% de dano</style> cada. O número de tiros aumenta com a velocidade de ataque.",
+		
+		"SS2UNEMMANDO_SPECIAL_EPIC_NAME" : "Golpe Decisivo",
+		"SS2UNEMMANDO_SPECIAL_EPIC_DESCRIPTION" : "<style=cIsHealth>Ferimento</style>. Carregue uma série devastadora de <style=cIsDamage>cortes</style> que causam <style=cIsDamage>6x360% de dano</style>.",
+		
+		"SS2UNEMMANDO_SPECIAL_SCEPSUBMISSION_NAME" : "Subjunção",
+		"SS2UNEMMANDO_SPECIAL_SCEPSUBMISSION_DESCRIPTION" : "Carregue uma série de <style=cIsDamage>5 disparos de espingarda</style> que causam <style=cIsDamage>4x120% de dano</style> cada. O número de tiros aumenta com a velocidade de ataque. Cada tiro também dispara um laser, causando <style=cIsDamage>820% dano</style>.",
+		
+		"SS2UNEMMANDO_SPECIAL_SCEPEPIC_NAME" : "Corte de Julgamento",
+		"SS2UNEMMANDO_SPECIAL_SCEPEPIC_DESCRIPTION" : "<style=cIsHealth>Ferimento</style>. Carregue uma série devastadora de <style=cIsDamage>cortes</style> que causam <style=cIsDamage>12x360% de dano</style>.",
+		
+		"SS2UNEMMANDO_MASTERY_SKIN_NAME" : "Minuano",
+		"SS2UNEMMANDO_CLASSIC_SKIN_NAME" : "Clássico",
+		"SS2UNEMMANDO_COMMANDO_SKIN_NAME" : "Comando",
+		"SS2UNEMMANDO_VERGIL_SKIN_NAME" : "Motivador",
+		
+		"ACHIEVEMENT_SS2UNEMMANDOCLEARGAMEMONSOON_NAME" : "Nêmesis Comando: Domínio",
+		"ACHIEVEMENT_SS2UNEMMANDOCLEARGAMEMONSOON_DESCRIPTION" : "Como Nêmesis Comando, vença o jogo ou aniquile em Monção.",
+		"ACHIEVEMENT_SS2UNEMMANDOCLEARGAMETYPHOON_NAME" : "Nêmesis Comando: Grande Domínio",
+		"ACHIEVEMENT_SS2UNEMMANDOCLEARGAMETYPHOON_DESCRIPTION" : "Como Nêmesis Comando, vença o jogo ou aniquile em Tufão.",
+		
+		"ACHIEVEMENT_SS2UNEMMANDOUNLOCK_NAME" : "???",
+		"ACHIEVEMENT_SS2UNEMMANDOUNLOCK_DESCRIPTION" : "Derrote o vestígio do Comando.",
+		"ACHIEVEMENT_SS2UNEMMANDOKILLSELF_NAME" : "Nêmesis Comando: Nêmesis Nêmesis",
+		"ACHIEVEMENT_SS2UNEMMANDOKILLSELF_DESCRIPTION" : "Como Nêmesis Comando, derrote o vestígio do Comando.",
+		"SS2UNEMMANDO_EPICUNLOCKABLE_UNLOCKABLE_NAME" : "Nêmesis Comando: Zandatsu",
+		"SS2UNEMMANDO_EPICUNLOCKABLE_ACHIEVEMENT_NAME" : "Nêmesis Comando: Zandatsu",
+		"SS2UNEMMANDO_EPICUNLOCKABLE_ACHIEVEMENT_DESC" : "Como Nêmesis Comando, inflija 8 acúmulos de Ferimento em um único inimigo.",
+		
+		"COMMANDO_GRANDMASTERY_SKIN_NAME" : "Clássico",
+		"TOOLBOT_GRANDMASTERY_SKIN_NAME" : "Lunar",
+		"ACRID_GRANDMASTERY_SKIN_NAME" : "Armoadurado",
+		
+		"ACHIEVEMENT_SS2UCOMMANDOCLEARGAMETYPHOON_NAME" : "Comando: Grande Domínio",
+		"ACHIEVEMENT_SS2UCOMMANDOCLEARGAMETYPHOON_DESCRIPTION" : "Como Comando, vença o jogo ou aniquile em Tufão.",
+		
+		"ACHIEVEMENT_SS2UTOOLBOTCLEARGAMETYPHOON_NAME" : "MUL-T: Grande Domínio",
+		"ACHIEVEMENT_SS2UTOOLBOTCLEARGAMETYPHOON_DESCRIPTION" : "Como MUL-T, vença o jogo ou aniquile em Tufão.",
+		
+		"ACHIEVEMENT_SS2UCROCOCLEARGAMETYPHOON_NAME" : "Acrid: Grande Domínio",
+		"ACHIEVEMENT_SS2UCROCOCLEARGAMETYPHOON_DESCRIPTION" : "Como Acrid, vença o jogo ou aniquile em Tufão.",
+	}
+}
