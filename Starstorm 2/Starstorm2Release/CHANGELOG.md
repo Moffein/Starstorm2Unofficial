@@ -1,3 +1,8 @@
+`0.20.4`
+
+- Storms
+	- Reformed Altar now uses Dust Storm VFX.
+
 `0.20.3`
 
 - Update for DLC2

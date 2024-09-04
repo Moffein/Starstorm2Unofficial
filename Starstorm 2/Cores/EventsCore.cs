@@ -134,6 +134,7 @@ namespace Starstorm2Unofficial.Cores
                     case "goolake":
                     case "itgoolake":
                     case "drybasin":
+                    case "lemuriantemple":
                         particleIndex = 2;
                         break;
                     case "skymeadow":
