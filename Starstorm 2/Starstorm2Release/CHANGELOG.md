@@ -1,3 +1,8 @@
+`0.20.5`
+
+- Chirr
+	- Added False Son to Befriend blacklist. No secret interaction for now.
+
 `0.20.4`
 
 - Storms
