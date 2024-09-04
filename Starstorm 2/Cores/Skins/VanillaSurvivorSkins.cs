@@ -6,6 +6,7 @@ using RoR2;
 using R2API.Utils;
 using Starstorm2Unofficial.Cores.Unlockables;
 using System.Collections.Generic;
+using UnityEngine.AddressableAssets;
 
 namespace Starstorm2Unofficial.Cores.Skins
 {
@@ -31,8 +32,7 @@ namespace Starstorm2Unofficial.Cores.Skins
         private static void RegisterCommandoSkins()
         {
             if (!Modules.Config.EnableGrandMasteryCommando.Value) return;
-
-            GameObject bodyPrefab = BodyCatalog.FindBodyPrefab("CommandoBody");
+            GameObject bodyPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Commando/CommandoBody.prefab").WaitForCompletion();
             ModelSkinController skinController = bodyPrefab.GetComponentInChildren<ModelSkinController>();
             GameObject model = skinController.gameObject;
             CharacterModel characterModel = model.GetComponent<CharacterModel>();
@@ -40,12 +40,9 @@ namespace Starstorm2Unofficial.Cores.Skins
 
             CharacterModel.RendererInfo[] defaultRenderers = characterModel.baseRendererInfos;
 
-            //List<SkinDef> skinDefs = new List<SkinDef>();
-
             #region Commando Classic
             CharacterModel.RendererInfo[] commandoRendererInfos = new CharacterModel.RendererInfo[defaultRenderers.Length];
             defaultRenderers.CopyTo(commandoRendererInfos, 0);
-
 
             Material commandoClassicMaterial = Modules.Assets.LoadMaterialFromAssetBundle("matCommandoClassic");
 
@@ -67,10 +64,8 @@ namespace Starstorm2Unofficial.Cores.Skins
             //skinDefs.Add(classicSkin);
             #endregion
             List<SkinDef> skinDefs = skinController.skins.ToList();
-            skinDefs.Insert(2, classicSkin);
-
+            skinDefs.Insert(3, classicSkin);
             skinController.skins = skinDefs.ToArray();
-
             SkinDef[][] skinsField = Reflection.GetFieldValue<SkinDef[][]>(typeof(BodyCatalog), "skins");
             skinsField[(int)BodyCatalog.FindBodyIndex(bodyPrefab)] = skinController.skins;
             BodyCatalog.skins = skinsField;
@@ -80,7 +75,7 @@ namespace Starstorm2Unofficial.Cores.Skins
         {
             if (!Modules.Config.EnableGrandMasteryToolbot.Value) return;
 
-            GameObject bodyPrefab = BodyCatalog.FindBodyPrefab("ToolbotBody");
+            GameObject bodyPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Toolbot/ToolbotBody.prefab").WaitForCompletion();
             ModelSkinController skinController = bodyPrefab.GetComponentInChildren<ModelSkinController>();
             GameObject model = skinController.gameObject;
             CharacterModel characterModel = model.GetComponent<CharacterModel>();
@@ -132,7 +127,7 @@ namespace Starstorm2Unofficial.Cores.Skins
 
             #endregion
             List<SkinDef> skinDefs = skinController.skins.ToList();
-            skinDefs.Insert(2, lunarSkin);
+            skinDefs.Insert(3, lunarSkin);
 
             skinController.skins = skinDefs.ToArray();
 

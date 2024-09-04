@@ -56,7 +56,7 @@ namespace Starstorm2Unofficial.Survivors.Nemmando
         };
 
         internal static Material nemmandoMat = Modules.Assets.CreateMaterial("matNemmando", 1f, Color.white);
-        internal static Material swordMat = Modules.Assets.CreateMaterial("matNemmando", 1f, Color.white);
+        internal static Material swordMat = Modules.Assets.CreateMaterial("matNemmando", 0f, Color.white);
         internal override int mainRendererIndex { get; set; } = 0;
 
         internal override CustomRendererInfo[] customRendererInfos { get; set; } = new CustomRendererInfo[] {

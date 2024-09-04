@@ -17,13 +17,11 @@ namespace Starstorm2Unofficial.Cores
     {
         public SkinsCore() {
 
-            On.RoR2.BodyCatalog.Init += BodyCatalog_Init;
-            //todo: add nem and exe here?
+            BodyCatalog.availability.onAvailable += Availability_onAvailable;
         }
 
-        private IEnumerator BodyCatalog_Init(On.RoR2.BodyCatalog.orig_Init orig)
+        private void Availability_onAvailable()
         {
-            var ret = orig();
             try
             {
                 VanillaSurvivorSkins.RegisterVanillaSurvivorSkins();
@@ -32,7 +30,6 @@ namespace Starstorm2Unofficial.Cores
             {
                 LogCore.LogError("error registering vanilla survivor skins\n" + ex);
             }
-            return ret;
         }
 
         public static SkinDef CreateSkinDef(string skinName, Sprite skinIcon, CharacterModel.RendererInfo[] rendererInfos, GameObject root, UnlockableDef unlockDef) {
