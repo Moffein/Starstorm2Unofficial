@@ -1,0 +1,14 @@
+{
+	strings:
+	{
+		"DIFFICULTY_TYPHOON_NAME" : "Tufão",
+		"DIFFICULTY_TYPHOON_DESCRIPTION" : "Desafio máximo. O mundo é um pesadelo, a sobrevivência é uma mera ilusão. Ninguém tem o que é preciso.<style=cStack>\n\n>Regeneração de saúde do jogador: <style=cIsHealth>-40%</style>\n>Escala de dificuldade: <style=cIsHealth>+75%</style>",
+		"DIFFICULTY_TYPHOON_INCREASEDSPAWNCAP_DESCRIPTION" : "Desafio máximo. O mundo é um pesadelo, a sobrevivência é uma mera ilusão. Ninguém tem o que é preciso.<style=cStack>\n\n>Regeneração de saúde do jogador: <style=cIsHealth>-40%</style>\n>Escala de dificuldade: <style=cIsHealth>+75%</style>\n>Limite de geração de monstros: <style=cIsHealth>+50%</style></style>",
+	
+		"SS2U_EVENT_STORM" : "<style=cWorldEvent><sprite name=\"CloudRight\">     Um tempestade se aproxima...</style>",
+		"SS2U_EVENT_STORM_START" : "(Tempestade iniciada.)",
+		
+		"SS2UNEMESIS_MODE_ACTIVE_WARNING" : "<style=cIsHealth>Uma força anormal emana do vazio...</style>",
+		"SS2UNEMESIS_MODE_DEACTIVATED" : "<style=cWorldEvent>A influência do vazio se esvai...</style>",
+	}
+}

@@ -1,0 +1,14 @@
+{
+	strings:
+	{
+		"EQUIPMENT_SS2U_CLOAKINGHEADBAND_NAME" : "Faixa de Cabeça Camuflada",
+		"EQUIPMENT_SS2U_CLOAKINGHEADBAND_PICKUP" : Torne-se temporariamente invisível.",
+		"EQUIPMENT_SS2U_CLOAKINGHEADBAND_DESC" : "Torne-se <style=cIsUtility>invisível</style> por 10 segundos.",
+		"EQUIPMENT_SS2U_CLOAKINGHEADBAND_LORE" : "Pedido: Faixa de Cabeça Camuflada\r\nNúmero de Rastreio: 30******\r\nPrevisão de Entrega: 11\/10\/2056\r\nMétodo de Envio: Volátil\r\nEndereço de Entrega: Olmos Empreendimentos, Novo Satt, Terra\r\nDetalhes da Entrega:\r\n\r\nDe todas as coisasm, por que essa faixa de cabeça idiota? Um cinto faria muito mais sentido, não acha? Não é querendo fazer birra, mas parece só estranho e desnecessário. Especialmente sabendo o que há no mercado.\nEu realmente não posso deixar isso passar como está, reconsidere antes do final desta temporada.",
+		
+		"EQUIPMENT_SS2U_GREATERWARBANNER_NAME" : "Bandeira de Guerra Grande",
+		"EQUIPMENT_SS2U_GREATERWARBANNER_PICKUP" : "Coloque uma bandeira de guerra grande que aumenta a regeneração, a chance de acerto crítico e reduz os tempos de recarga.",
+		"EQUIPMENT_SS2U_GREATERWARBANNER_DESC" : "Coloque uma bandeira de guerra grande que fortalece todos os aliados em um raio de <style=cIsDamage>25m</style>. Aumenta a <style=cIsDamage>chance de acerto crítico</style> em <style=cIsDamage>25%</style>. A cada segundo, <style=cIsUtility>reduz o tempo de recarga das habilidades em 0.5s</style> e <style=cIsHealing>cura</style> <style=cIsHealing>2.5%</style> da sua <style=cIsHealing>saúde</style>. Apenas <style=cIsUtility>1</style> bandeira pode permanecer ativa por vez.",
+		"EQUIPMENT_SS2U_GREATERWARBANNER_LORE" : "Pedido: Bandeira de Guerra Grande\r\nNúmero de Rastreio: 31******\r\nPrevisão de Entrega: 03\/01\/2056\r\nMétodo de Envio: Volátil\r\nEndereço de Entrega: L2, Posto Avançado Norte, Terra\r\nDetalhes da Entrega:\r\n\r\nForça, minhas crianças, força! Estamos perto do armagedom. Devemos lutar, ou sucumbiremos. Este é um presente dos anciões, para nos auxiliar em futuras batalhas.",
+	}
+}
