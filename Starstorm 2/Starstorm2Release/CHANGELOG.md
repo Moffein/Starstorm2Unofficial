@@ -7,6 +7,8 @@
 	- Single shot is now default, double shot is alt.
 - Chirr and Cyborg now use Artificer's hover setting.
 
+- Added PT-BR TL (Thanks kauzok!)
+
 `0.20.2`
 
 - Fixed material settings on Commando's grandmastery.

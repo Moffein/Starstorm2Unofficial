@@ -80,3 +80,7 @@ Clearing the Void Fields will trigger a series of Nemesis Survivor bossfights th
 * Writing - Blimblam, Lyrical Endymion, swuff★, QandQuestion, T_Dimensional
 * Sound - KevinFromHPCustomerService, Neik, SOM, UnknownGlaze
 * Additional support/special thanks - Altzeus, DestroyedClone, don, Draymarc, Gnome, JesusPxP, KomradeSpectre, MinimalEffort, Moshinate, MysticSword, Neik, Riskka, Ruxbieno, Shooty, Twiner
+
+## Translations
+
+Brazilian Portuguese: Kauzok
