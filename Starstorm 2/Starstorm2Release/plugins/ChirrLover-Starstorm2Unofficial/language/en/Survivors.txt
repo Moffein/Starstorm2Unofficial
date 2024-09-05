@@ -174,6 +174,7 @@
 		"SS2UBROTHER_KILL_CHIRR1" : " Join your sisters.",
 		"SS2UBROTHER_KILL_CHIRR2" : " Extinct at last.",
 		"SS2UBROTHERHURT_CHIRR_BEFRIEND_1" : " YOU... REACH OUT... TO ME, VERMIN...?",
+		"SS2UFALSESONBOSS_CHIRR_BEFRIEND_1" : " Were you... the storm I've been seeking this whole time?",
 		
 		"SS2UNUCLEATOR_NAME" : "Nucleator",
 		"SS2UNUCLEATOR_SUBTITLE" : "Walking Fallout",

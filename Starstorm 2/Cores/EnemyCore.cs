@@ -26,7 +26,10 @@ namespace Starstorm2Unofficial.Cores
         public static BodyIndex brotherHurtIndex;
         public static BodyIndex brotherIndex;
         public static BodyIndex scavLunar1Index, scavLunar2Index, scavLunar3Index, scavLunar4Index;
+
         public static BodyIndex falseSonBossIndex;
+        public static BodyIndex falseSonBossPhase2Index;
+        public static BodyIndex falseSonBossPhase3Index;
 
         private static SceneDef sceneMoon = Addressables.LoadAssetAsync<SceneDef>("RoR2/Base/moon/moon.asset").WaitForCompletion();
         private static SceneDef sceneMoon2 = Addressables.LoadAssetAsync<SceneDef>("RoR2/Base/moon2/moon2.asset").WaitForCompletion();
@@ -48,6 +51,8 @@ namespace Starstorm2Unofficial.Cores
             scavLunar4Index = BodyCatalog.FindBodyIndex("ScavLunar4Body");
 
             falseSonBossIndex = BodyCatalog.FindBodyIndex("FalseSonBossBody");
+            falseSonBossPhase2Index = BodyCatalog.FindBodyIndex("FalseSonBossBodyLunarShard");
+            falseSonBossPhase3Index = BodyCatalog.FindBodyIndex("FalseSonBossBodyBrokenLunarShard");
         }
 
         //Super bootleg code.
@@ -55,6 +60,21 @@ namespace Starstorm2Unofficial.Cores
         {
             string fullMessage = "<color=#c6d5ff><size=120%>";
             fullMessage += Language.GetString("BROTHER_BODY_NAME");
+            fullMessage += ":";
+            fullMessage += Language.GetString(token);
+            fullMessage += "</color></size>";
+            Chat.SendBroadcastChat(new Chat.SimpleChatMessage
+            {
+                baseToken = fullMessage
+            });
+        }
+
+        //TODO
+        //Super bootleg code.
+        public static void FakeFalseSonChatMessageServer(string token)
+        {
+            string fullMessage = "<color=#c6d5ff><size=120%>";
+            fullMessage += Language.GetString("FALSESONBOSS_BODY_NAME");
             fullMessage += ":";
             fullMessage += Language.GetString(token);
             fullMessage += "</color></size>";

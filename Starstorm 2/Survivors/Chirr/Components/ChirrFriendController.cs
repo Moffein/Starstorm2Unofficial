@@ -4,6 +4,7 @@ using RoR2.CharacterAI;
 using RoR2.Navigation;
 using Starstorm2Unofficial.Cores;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.CompilerServices;
@@ -19,6 +20,9 @@ namespace Starstorm2Unofficial.Survivors.Chirr.Components
     [RequireComponent(typeof(CharacterBody))]
     public class ChirrFriendController : NetworkBehaviour
     {
+        //Gets set to false on Meridian start, true again on Meridian final phase so that you can befriend him in Universe.
+        public static bool canBefriendFalseSon = true;
+
         public static bool minionPingRetarget = true;
         public static float befriendHealthFraction = 0.5f;
         public static float befriendChampionHealthFraction = 0.3f;
@@ -78,6 +82,7 @@ namespace Starstorm2Unofficial.Survivors.Chirr.Components
         }
 
         private bool hadBeads = false;
+        private bool hadGoldSeed = false;
 
         public static HashSet<BodyIndex> blacklistedBodies = new HashSet<BodyIndex>();
 
@@ -127,6 +132,12 @@ namespace Starstorm2Unofficial.Survivors.Chirr.Components
         {
             if (!hadBeads) hadBeads = ownerMaster && ownerMaster.inventory && ownerMaster.inventory.GetItemCount(RoR2Content.Items.LunarTrinket) > 0;
             return hadBeads;    //hadBeads is intentional
+        }
+
+        private bool HasGoldSeed()
+        {
+            if (!hadGoldSeed) hadGoldSeed = ownerMaster && ownerMaster.inventory && ownerMaster.inventory.GetItemCount(RoR2Content.Items.TitanGoldDuringTP) > 0;
+            return hadGoldSeed;
         }
 
         public bool HasScepter()
@@ -601,8 +612,16 @@ namespace Starstorm2Unofficial.Survivors.Chirr.Components
                             isNemesis = hbBody.inventory.GetItemCount(Starstorm2Unofficial.Cores.NemesisInvasion.NemesisInvasionCore.NemesisMarkerItem) > 0;
                         }
 
+                        bool isBrotherHurt = hbBody.bodyIndex == EnemyCore.brotherHurtIndex;
+                        bool mithrixSecret = isBrotherHurt && (canBefriendChampion || hadScepter || HasLunarTrinket());
+
+                        bool isFalseSon = hbBody.bodyIndex == EnemyCore.falseSonBossPhase3Index;
+                        bool falseSonSecret = isFalseSon && (canBefriendChampion || hadScepter || HasGoldSeed()) && canBefriendFalseSon;
+
+                        bool isSecret = isFalseSon || isBrotherHurt;
+
                         if (!isPlayerControlled && !isMasterless && !isDecay && !isDestroy && !isAlreadyFriended
-                            && ((!isChampion || canBefriendChampion) || (hbBody.bodyIndex == EnemyCore.brotherHurtIndex && (canBefriendChampion || hadScepter || HasLunarTrinket())))
+                            && (((!isChampion || canBefriendChampion) && !isSecret) || mithrixSecret || falseSonSecret)
                             && !isBlacklisted && !(isNemesis && !allowBefriendNemesis))
                         {
                             validTargets.Add(hb);
@@ -793,6 +812,21 @@ namespace Starstorm2Unofficial.Survivors.Chirr.Components
                         EnemyCore.FakeMithrixChatMessageServer("SS2UBROTHERHURT_CHIRR_BEFRIEND_1");
                     }
                 }
+                else if (targetBody.bodyIndex == EnemyCore.falseSonBossPhase3Index)
+                {
+                    targetBody.AddBuff(RoR2Content.Buffs.HiddenInvincibility);
+                    StartCoroutine(DelayFalseSonChatMessage());
+
+                    if (MeridianEventTriggerInteraction.instance && MeridianEventTriggerInteraction.instance.mainStateMachine)
+                    {
+                        if (MeridianEventTriggerInteraction.instance.mainStateMachine.state.GetType() == typeof(MeridianEventTriggerInteraction.Phase3))
+                        {
+                            Debug.Log("Chirr: Setting MeridianEventTriggerInteraction to next state.");
+                            var state = (MeridianEventTriggerInteraction.instance.mainStateMachine.state as MeridianEventTriggerInteraction.Phase3);
+                            if (!state.spawnedNextState) state.outer.SetNextState(state.nextState);
+                        }
+                    }
+                }
                 else if (targetBody.bodyIndex == EnemyCore.scavLunar1Index || targetBody.bodyIndex == EnemyCore.scavLunar2Index || targetBody.bodyIndex == EnemyCore.scavLunar3Index || targetBody.bodyIndex == EnemyCore.scavLunar4Index)
                 {
                     NetworkUser networkUser = Util.LookUpBodyNetworkUser(ownerBody);
@@ -806,6 +840,13 @@ namespace Starstorm2Unofficial.Survivors.Chirr.Components
             {
                 Debug.LogError("ChirrFriendController: Befriend called without valid target.");
             }
+        }
+
+        private IEnumerator DelayFalseSonChatMessage()
+        {
+            yield return new WaitForSeconds(0.3f);
+            EnemyCore.FakeFalseSonChatMessageServer("SS2UFALSESONBOSS_CHIRR_BEFRIEND_1");
+            yield return null;
         }
 
         [MethodImpl(MethodImplOptions.NoInlining | MethodImplOptions.NoOptimization)]
@@ -855,7 +896,7 @@ namespace Starstorm2Unofficial.Survivors.Chirr.Components
         }
 
         [ClientRpc]
-        private void RpcSetMithrixConverted()
+        private void RpcSetMithrixConverted()   //Only used to change her outro token.
         {
             ChirrCore.survivorDef.outroFlavorToken = "SS2UCHIRR_OUTRO_BROTHER_EASTEREGG";
         }

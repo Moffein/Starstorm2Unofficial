@@ -1,7 +1,12 @@
+`0.20.6`
+
+- Chirr
+	- Peak fiction.
+
 `0.20.5`
 
 - Chirr
-	- Added False Son to Befriend blacklist. No secret interaction for now.
+	- Added False Son to Befriend blacklist.
 
 `0.20.4`
 

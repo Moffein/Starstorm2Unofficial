@@ -60,6 +60,10 @@ namespace Starstorm2Unofficial.Survivors.Chirr
             ChirrFriendController.BlacklistBody(BodyCatalog.FindBodyIndex("MiniVoidRaidCrabBodyPhase3"));
             ChirrFriendController.BlacklistBody(BodyCatalog.FindBodyIndex("MiniVoidRaidCrabBodyPhase4"));
 
+            ChirrFriendController.BlacklistBody(BodyCatalog.FindBodyIndex("FalseSonBossBody"));
+            ChirrFriendController.BlacklistBody(BodyCatalog.FindBodyIndex("FalseSonBossBodyLunarShard"));
+            //ChirrFriendController.BlacklistBody(BodyCatalog.FindBodyIndex("FalseSonBossBodyBrokenLunarShard"));
+
             //ChirrFriendController.bodyDamageValueOverrides.Add(BodyCatalog.FindBodyIndex("ClayBruiserBody"), 1f);
             ChirrFriendController.bodyDamageValueOverrides.Add(brotherBodyIndex, 10f);
             ChirrFriendController.bodyDamageValueOverrides.Add(BodyCatalog.FindBodyIndex("BrotherHurtBody"), 10f);
@@ -89,7 +93,26 @@ namespace Starstorm2Unofficial.Survivors.Chirr
             if (brotherKillChirrTokens.Count > 0) RoR2.GlobalEventManager.onCharacterDeathGlobal += GlobalEventManager_onCharacterDeathGlobal;
             RoR2.Run.onRunStartGlobal += ResetMithrixConvertedTracker;
 
+            RoR2.Stage.onStageStartGlobal += Stage_onStageStartGlobal;
+            On.RoR2.MeridianEventTriggerInteraction.Phase3.OnEnter += Phase3_OnEnter;
+
             if (StarstormPlugin.emoteAPILoaded) EmoteAPICompat();
+        }
+
+        private void Phase3_OnEnter(On.RoR2.MeridianEventTriggerInteraction.Phase3.orig_OnEnter orig, MeridianEventTriggerInteraction.Phase3 self)
+        {
+            ChirrFriendController.canBefriendFalseSon = true;
+            orig(self);
+        }
+
+        private void Stage_onStageStartGlobal(Stage obj)
+        {
+            ChirrFriendController.canBefriendFalseSon = true;
+            SceneDef sd = SceneCatalog.GetSceneDefForCurrentScene();
+            if (sd && sd.baseSceneName == "Meridian")
+            {
+                ChirrFriendController.canBefriendFalseSon = false;
+            }
         }
 
         [MethodImpl(MethodImplOptions.NoInlining | MethodImplOptions.NoOptimization)]
