@@ -1,3 +1,7 @@
+`0.20.8`
+
+- Reverted previous update since Vanilla is fixed now.
+
 `0.20.7`
 
 - Temporary fix for the mod breaking Maximum_Cope and similar Framerate fix mods.
