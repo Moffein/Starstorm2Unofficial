@@ -1,3 +1,8 @@
+`0.20.7`
+
+- Temporary fix for the mod breaking Maximum_Cope and similar Framerate fix mods.
+	- Chirr's Minions now get a base damage multiplier instead of a skill damage multiplier as a result of this. This will be reverted once Vanilla is fixed.
+
 `0.20.6`
 
 - Chirr

@@ -147,7 +147,7 @@ namespace Starstorm2Unofficial.Cores
             On.RoR2.HealthComponent.TakeDamageProcess += HealthComponent_TakeDamage;
             On.RoR2.CharacterBody.OnClientBuffsChanged += CharacterBody_OnClientBuffsChanged;
             On.RoR2.CharacterBody.RecalculateStats += CharacterBody_RecalculateStats;
-            On.EntityStates.BaseState.OnEnter += BaseState_OnEnter;
+            //On.EntityStates.BaseState.OnEnter += BaseState_OnEnter;
             RecalculateStatsAPI.GetStatCoefficients += RecalculateStatsAPI_GetStatCoefficients;
 
             //Prevent Infestors from infesting chirr friends
@@ -260,12 +260,12 @@ namespace Starstorm2Unofficial.Cores
                     }
                     if (!damageInfo.canRejectForce) damageInfo.force *= 0.1f;
                 }
-
             }
 
             orig(self, damageInfo);
         }
 
+        //TODO: Re-enable when Vanilla is fixed.
         private void BaseState_OnEnter(On.EntityStates.BaseState.orig_OnEnter orig, EntityStates.BaseState self)
         {
             orig(self);
@@ -296,6 +296,28 @@ namespace Starstorm2Unofficial.Cores
 
         private void RecalculateStatsAPI_GetStatCoefficients(CharacterBody sender, RecalculateStatsAPI.StatHookEventArgs args)
         {
+            //TODO: Remove when Vanilla is fixed
+            if (sender.HasBuff(chirrFriendBuff))
+            {
+                float toAdd = 0f;
+                float damageFactor = (sender.baseDamage + sender.levelDamage * (sender.level - 1f));
+                if (ChirrFriendController.bodyDamageValueOverrides.TryGetValue(sender.bodyIndex, out float value))
+                {
+                    toAdd += (value - 1f) * damageFactor;
+                }
+
+                if (!sender.isElite)
+                {
+                    toAdd += damageFactor;  //2f - 1f
+                }
+                else
+                {
+                    toAdd += 2f * damageFactor;  //3f - 1f
+                }
+
+                args.baseDamageAdd += toAdd;
+            }
+
             if (sender.HasBuff(greaterBannerBuff))
             {
                 args.critAdd += 25f;
