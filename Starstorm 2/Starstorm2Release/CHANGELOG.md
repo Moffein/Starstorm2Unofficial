@@ -1,3 +1,8 @@
+`0.20.9`
+
+- Fixed TemporaryOverlay nullrefs on Executioner and other survivors.
+- Helminth Roost now uses Ash Storm VFX.
+
 `0.20.8`
 
 - Reverted previous update since Vanilla is fixed now.

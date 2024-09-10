@@ -130,13 +130,14 @@ namespace Starstorm2Unofficial.Survivors.Nemmando.Components
             {
                 if (i)
                 {
-                    TemporaryOverlay temporaryOverlay = i.gameObject.AddComponent<TemporaryOverlay>();
+                    TemporaryOverlayInstance temporaryOverlay = TemporaryOverlayManager.AddOverlay(i.gameObject);
                     temporaryOverlay.duration = 5f * (EntityStates.SS2UStates.Nemmando.ChargedSlashAttack.baseDuration / this.characterBody.attackSpeed);
                     temporaryOverlay.animateShaderAlpha = true;
                     temporaryOverlay.alphaCurve = AnimationCurve.EaseInOut(0f, 1f, 1f, 1f);
                     temporaryOverlay.destroyComponentOnEnd = true;
                     temporaryOverlay.originalMaterial = Modules.Assets.pureBlackMaterial;
-                    temporaryOverlay.AddToCharacerModel(i.transform.GetComponent<CharacterModel>());
+                    temporaryOverlay.AddToCharacterModel(i);
+                    temporaryOverlay.Start();
                 }
             }
         }

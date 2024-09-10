@@ -144,6 +144,7 @@ namespace Starstorm2Unofficial.Cores
                         break;
                     case "dampcavesimple":
                     case "itdampcavesimple":
+                    case "helminthroost":
                         particleIndex = 4;
                         break;
                     default:
