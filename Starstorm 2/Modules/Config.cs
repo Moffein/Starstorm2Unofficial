@@ -340,6 +340,8 @@ namespace Starstorm2Unofficial.Modules
                 EnableEvents.Value = false;
                 EnableVoid.Value = false;
                 EnableTyphoon.Value = false;
+                EnableGrandMasteryCommando.Value = false;
+                EnableGrandMasteryToolbot.Value = false;
                 //Item/Equipment doorstop is handle separately.
             }
         }
