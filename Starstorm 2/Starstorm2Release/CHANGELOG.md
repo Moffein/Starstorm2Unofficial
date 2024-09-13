@@ -1,3 +1,18 @@
+`0.21.0`
+
+- SS2 Official Autoconfig (Enabled by default, Untested)
+	- If it detects SS2 Official is loaded, it'll automatically turn off Storms/Events, Void Invasion, Typhoon, and duplicated Items/Equipments that exist in the Official version.
+		- The list of features disabled is manually set, and won't automatically update when SS2 Official updates.
+	- Does not affect Survivors since they're already nested under Variants.
+	- If you want to manually configure which features to keep, disable this option.
+
+- Re-enabled Dormant Fungus by default. (Existing config unaffected)
+	- It's a nice item to have in the pool, and can be considered different from Vanilla Wungus by having lower numbers but being usable alongside Bungus.
+	
+- Re-enabled Relic of Mass by default. (Existing config unaffected)
+	- Acceleration reduction is funny, different enough from Stone Flux Pauldron to warrant keeping.
+	
+
 `0.20.9`
 
 - Fixed TemporaryOverlay nullrefs on Executioner and other survivors.

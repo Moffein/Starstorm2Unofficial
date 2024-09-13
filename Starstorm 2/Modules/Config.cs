@@ -1,5 +1,6 @@
 ﻿using BepInEx.Configuration;
 using RiskOfOptions;
+using Starstorm2Unofficial.Cores.Equipment;
 using Starstorm2Unofficial.Modules.Achievements;
 using Starstorm2Unofficial.Survivors.Cyborg;
 using Starstorm2Unofficial.Survivors.Cyborg.Components.Crosshair;
@@ -53,6 +54,10 @@ namespace Starstorm2Unofficial.Modules
 
         internal static void Initialize()
         {
+            ModCompat.SS2OCompat.autoConfig = StarstormPlugin.instance.Config.Bind("Starstorm 2 :: Compatibility",
+                            "SS2 Official - Autoconfig",
+                            true,
+                            "Automatically disable duplicated features that exist in SS2 Official. Disable this if you want to pick and choose which things to keep.").Value;
 
             ModCompat.SurvariantsCompat.useVariants = StarstormPlugin.instance.Config.Bind("Starstorm 2 :: Compatibility",
                             "Survariants",
@@ -328,6 +333,14 @@ namespace Starstorm2Unofficial.Modules
             if (StarstormPlugin.riskOfOptionsLoaded)
             {
                 RiskOfOptionsCompat();
+            }
+
+            if (ModCompat.SS2OCompat.pluginLoaded && ModCompat.SS2OCompat.autoConfig)
+            {
+                EnableEvents.Value = false;
+                EnableVoid.Value = false;
+                EnableTyphoon.Value = false;
+                //Item/Equipment doorstop is handle separately.
             }
         }
 

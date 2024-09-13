@@ -32,7 +32,6 @@ namespace Starstorm2Unofficial
             public static void InitCompat()
             {
                 pluginLoaded = BepInEx.Bootstrap.Chainloader.PluginInfos.ContainsKey("com.RiskyLives.RiskyMod");
-
                 RoR2Application.onLoad += OnLoadActions;
             }
 
@@ -50,6 +49,7 @@ namespace Starstorm2Unofficial
         public static class SS2OCompat
         {
             public static bool pluginLoaded = false;
+            public static bool autoConfig;
 
             public static bool enableNemMercInvasion = true;
             public static bool enableNemCommandoInvasion = true;
@@ -59,6 +59,7 @@ namespace Starstorm2Unofficial
 
             public static void InitCompat()
             {
+                pluginLoaded = BepInEx.Bootstrap.Chainloader.PluginInfos.ContainsKey("com.TeamMoonstorm.Starstorm2");
                 RoR2Application.onLoad += OnLoadActions;
             }
             private static void OnLoadActions()

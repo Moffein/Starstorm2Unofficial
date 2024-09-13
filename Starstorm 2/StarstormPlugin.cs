@@ -54,7 +54,7 @@ namespace Starstorm2Unofficial
     {
         internal const string guid = "com.ChirrLover.Starstorm2Unofficial";
         internal const string modName = "Starstorm 2 Unofficial";
-        internal const string version = "0.20.9";
+        internal const string version = "0.21.0";
 
         public static StarstormPlugin instance;
 
@@ -170,8 +170,11 @@ namespace Starstorm2Unofficial
             if (Modules.Config.EnableEquipment.Value)
             {
                 equipmentCore = new EquipmentCore();
-                AddEquipmentIfEnabled(new CloakingHeadband(), EquipmentCore.instance.equipment);
-                AddEquipmentIfEnabled(new GreaterWarbanner(), EquipmentCore.instance.equipment);
+                if (ModCompat.SS2OCompat.pluginLoaded && ModCompat.SS2OCompat.autoConfig)
+                {
+                    AddEquipmentIfEnabled(new CloakingHeadband(), EquipmentCore.instance.equipment);
+                    AddEquipmentIfEnabled(new GreaterWarbanner(), EquipmentCore.instance.equipment);
+                }
                 //AddEquipmentIfEnabled(new PressurizedCanister(), EquipmentCore.instance.equipment);   //fuck this equipment in particular
                 EquipmentCore.instance.InitEquipment();
             }
@@ -180,24 +183,26 @@ namespace Starstorm2Unofficial
             {
                 itemCore = new ItemCore();
 
-                AddItemIfEnabled(new Fork(), ItemCore.instance.items);
-                AddItemIfEnabled(new MoltenCoin(), ItemCore.instance.items);
-                AddItemIfEnabled(new Diary(), ItemCore.instance.items);
-                AddItemIfEnabled(new DetritiveTrematode(), ItemCore.instance.items);
-                AddItemIfEnabled(new DormantFungus(), ItemCore.instance.items, false);
-                AddItemIfEnabled(new CoffeeBag(), ItemCore.instance.items, false);
+                if (ModCompat.SS2OCompat.pluginLoaded && ModCompat.SS2OCompat.autoConfig)
+                {
+                    AddItemIfEnabled(new Fork(), ItemCore.instance.items);
+                    AddItemIfEnabled(new MoltenCoin(), ItemCore.instance.items);
+                    AddItemIfEnabled(new DetritiveTrematode(), ItemCore.instance.items);
+                    AddItemIfEnabled(new CoffeeBag(), ItemCore.instance.items, false);
+                    AddItemIfEnabled(new WatchMetronome(), ItemCore.instance.items);
+                    AddItemIfEnabled(new DormantFungus(), ItemCore.instance.items);
+                    AddItemIfEnabled(new DroidHead(), ItemCore.instance.items);
+                    AddItemIfEnabled(new GreenChocolate(), ItemCore.instance.items);
+                    AddItemIfEnabled(new NkotasHeritage(), ItemCore.instance.items, false);
+                    AddItemIfEnabled(new RelicOfMass(), ItemCore.instance.items);
+                    AddItemIfEnabled(new StirringSoul(), ItemCore.instance.items);
+                }
 
-                AddItemIfEnabled(new WatchMetronome(), ItemCore.instance.items);
+                AddItemIfEnabled(new Diary(), ItemCore.instance.items);
+
                 AddItemIfEnabled(new StrangeCan(), ItemCore.instance.items);
 
-                AddItemIfEnabled(new DroidHead(), ItemCore.instance.items);
-                AddItemIfEnabled(new GreenChocolate(), ItemCore.instance.items);
                 AddItemIfEnabled(new ErraticGadget(), ItemCore.instance.items, false);
-                AddItemIfEnabled(new NkotasHeritage(), ItemCore.instance.items, false);
-
-                AddItemIfEnabled(new RelicOfMass(), ItemCore.instance.items, false);
-
-                AddItemIfEnabled(new StirringSoul(), ItemCore.instance.items);
 
                 //AddItemIfEnabled(new Malice(), ItemCore.instance.items);
                 //AddItemIfEnabled(new BrokenBloodTester(), ItemCore.instance.items);
