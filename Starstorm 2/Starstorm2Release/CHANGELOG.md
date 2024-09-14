@@ -1,3 +1,7 @@
+`0.21.2`
+
+- Fixed JSON error with Portuguese translation.
+
 `0.21.1`
 
 - Fixed Autoconfig always being active regardless of whether or not SS2 Official is installed.
