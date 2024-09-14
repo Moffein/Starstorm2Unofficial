@@ -335,8 +335,9 @@ namespace Starstorm2Unofficial.Modules
                 RiskOfOptionsCompat();
             }
 
-            if (ModCompat.SS2OCompat.pluginLoaded && ModCompat.SS2OCompat.autoConfig)
+            if (!ModCompat.SS2OCompat.ShouldLoadAutoconfigContent())
             {
+                Debug.LogWarning("SS2U: Disabling autoconfig content.");
                 EnableEvents.Value = false;
                 EnableVoid.Value = false;
                 EnableTyphoon.Value = false;

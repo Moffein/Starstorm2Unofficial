@@ -49,7 +49,7 @@ namespace Starstorm2Unofficial
         public static class SS2OCompat
         {
             public static bool pluginLoaded = false;
-            public static bool autoConfig;
+            public static bool autoConfig = true;
 
             public static bool enableNemMercInvasion = true;
             public static bool enableNemCommandoInvasion = true;
@@ -57,9 +57,16 @@ namespace Starstorm2Unofficial
             private static BodyIndex NemMercIndex;
             private static BodyIndex NemCommandoIndex;
 
+            public static bool ShouldLoadAutoconfigContent()
+            {
+                return !pluginLoaded || !autoConfig;
+            }
+
             public static void InitCompat()
             {
                 pluginLoaded = BepInEx.Bootstrap.Chainloader.PluginInfos.ContainsKey("com.TeamMoonstorm.Starstorm2");
+                Debug.Log("Starstorm 2 Official Loaded: " + pluginLoaded);
+
                 RoR2Application.onLoad += OnLoadActions;
             }
             private static void OnLoadActions()

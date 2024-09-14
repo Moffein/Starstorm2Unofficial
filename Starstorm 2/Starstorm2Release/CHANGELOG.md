@@ -1,3 +1,7 @@
+`0.21.1`
+
+- Fixed Autoconfig always being active regardless of whether or not SS2 Official is installed.
+
 `0.21.0`
 
 - SS2 Official Autoconfig (Enabled by default, Untested)

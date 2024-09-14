@@ -23,7 +23,6 @@ namespace Starstorm2Unofficial
 {
     [BepInDependency("pseudopulse.Survariants", BepInDependency.DependencyFlags.SoftDependency)]
     [BepInDependency("com.Moffein.BlightedElites", BepInDependency.DependencyFlags.SoftDependency)]
-    [BepInDependency("com.TeamMoonstorm.Starstorm2-Nightly", BepInDependency.DependencyFlags.SoftDependency)]
     [BepInDependency("com.TeamMoonstorm.Starstorm2", BepInDependency.DependencyFlags.SoftDependency)]
     [BepInDependency("HIFU.Inferno", BepInDependency.DependencyFlags.SoftDependency)]
     [BepInDependency("com.rune580.riskofoptions", BepInDependency.DependencyFlags.SoftDependency)]
@@ -54,7 +53,7 @@ namespace Starstorm2Unofficial
     {
         internal const string guid = "com.ChirrLover.Starstorm2Unofficial";
         internal const string modName = "Starstorm 2 Unofficial";
-        internal const string version = "0.21.0";
+        internal const string version = "0.21.1";
 
         public static StarstormPlugin instance;
 
@@ -96,8 +95,7 @@ namespace Starstorm2Unofficial
             emoteAPILoaded = BepInEx.Bootstrap.Chainloader.PluginInfos.ContainsKey("com.weliveinasociety.CustomEmotesAPI");
             riskOfOptionsLoaded = BepInEx.Bootstrap.Chainloader.PluginInfos.ContainsKey("com.rune580.riskofoptions");
             blightedElitesLoaded = BepInEx.Bootstrap.Chainloader.PluginInfos.ContainsKey("com.Moffein.BlightedElites");
-            ModCompat.SS2OCompat.pluginLoaded = BepInEx.Bootstrap.Chainloader.PluginInfos.ContainsKey("com.TeamMoonstorm.Starstorm2") || BepInEx.Bootstrap.Chainloader.PluginInfos.ContainsKey("com.TeamMoonstorm.Starstorm2-Nightly");
-
+            if (BepInEx.Bootstrap.Chainloader.PluginInfos.ContainsKey("com.KingEnderBrine.ScrollableLobbyUI")) scrollableLobbyInstalled = true;
             ModCompat.Initialize();
 
             if (kingArenaLoaded)
@@ -109,7 +107,6 @@ namespace Starstorm2Unofficial
             LogCore.logger = Logger;
             StaticValues.InitValues();
 
-            if (BepInEx.Bootstrap.Chainloader.PluginInfos.ContainsKey("com.KingEnderBrine.ScrollableLobbyUI")) scrollableLobbyInstalled = true;
 
             Initialize();
 
@@ -170,10 +167,14 @@ namespace Starstorm2Unofficial
             if (Modules.Config.EnableEquipment.Value)
             {
                 equipmentCore = new EquipmentCore();
-                if (ModCompat.SS2OCompat.pluginLoaded && ModCompat.SS2OCompat.autoConfig)
+                if (ModCompat.SS2OCompat.ShouldLoadAutoconfigContent())
                 {
                     AddEquipmentIfEnabled(new CloakingHeadband(), EquipmentCore.instance.equipment);
                     AddEquipmentIfEnabled(new GreaterWarbanner(), EquipmentCore.instance.equipment);
+                }
+                else
+                {
+                    Debug.LogWarning("SS2U: Disabling autoconfig equipment.");
                 }
                 //AddEquipmentIfEnabled(new PressurizedCanister(), EquipmentCore.instance.equipment);   //fuck this equipment in particular
                 EquipmentCore.instance.InitEquipment();
@@ -183,7 +184,7 @@ namespace Starstorm2Unofficial
             {
                 itemCore = new ItemCore();
 
-                if (ModCompat.SS2OCompat.pluginLoaded && ModCompat.SS2OCompat.autoConfig)
+                if (ModCompat.SS2OCompat.ShouldLoadAutoconfigContent())
                 {
                     AddItemIfEnabled(new Fork(), ItemCore.instance.items);
                     AddItemIfEnabled(new MoltenCoin(), ItemCore.instance.items);
@@ -196,6 +197,10 @@ namespace Starstorm2Unofficial
                     AddItemIfEnabled(new NkotasHeritage(), ItemCore.instance.items, false);
                     AddItemIfEnabled(new RelicOfMass(), ItemCore.instance.items);
                     AddItemIfEnabled(new StirringSoul(), ItemCore.instance.items);
+                }
+                else
+                {
+                    Debug.LogWarning("SS2U: Disabling autoconfig items.");
                 }
 
                 AddItemIfEnabled(new Diary(), ItemCore.instance.items);
