@@ -19,6 +19,7 @@ using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using UnityEngine;
 
+[assembly: HG.Reflection.SearchableAttribute.OptInAttribute]
 namespace Starstorm2Unofficial
 {
     [BepInDependency("pseudopulse.Survariants", BepInDependency.DependencyFlags.SoftDependency)]
@@ -54,7 +55,7 @@ namespace Starstorm2Unofficial
     {
         internal const string guid = "com.ChirrLover.Starstorm2Unofficial";
         internal const string modName = "Starstorm 2 Unofficial";
-        internal const string version = "0.21.2";
+        internal const string version = "0.21.4";
 
         public static StarstormPlugin instance;
 

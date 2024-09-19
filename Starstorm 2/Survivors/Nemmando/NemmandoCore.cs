@@ -101,7 +101,7 @@ namespace Starstorm2Unofficial.Survivors.Nemmando
                 NemmandoCore.killSelfUnlockableDef.cachedName = "Skins.SS2UNemmando.Commando";
                 NemmandoCore.killSelfUnlockableDef.nameToken = "ACHIEVEMENT_SS2UNEMMANDOKILLSELF_NAME";
                 NemmandoCore.killSelfUnlockableDef.achievementIcon = Starstorm2Unofficial.Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("texSingleTapUnlockIcon");
-                AchievementHider.unlockableRewardIdentifiers.Remove(NemmandoCore.killSelfUnlockableDef.cachedName);
+                if (ModCompat.SS2OCompat.ShouldLoadAutoconfigContent()) AchievementHider.unlockableRewardIdentifiers.Remove(NemmandoCore.killSelfUnlockableDef.cachedName);
 
                 SkinDef sd = Addressables.LoadAssetAsync<SkinDef>("RoR2/Base/Commando/skinCommandoDefault.asset").WaitForCompletion();
                 if (sd && sd.icon) NemmandoCore.killSelfUnlockableDef.achievementIcon = sd.icon;
@@ -118,12 +118,12 @@ namespace Starstorm2Unofficial.Survivors.Nemmando
                 survivorUnlock.cachedName = "Characters.SS2UNemmando";
                 survivorUnlock.nameToken = "ACHIEVEMENT_SS2UNEMMANDOUNLOCK_NAME";
                 survivorUnlock.achievementIcon = Starstorm2Unofficial.Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("texNemmandoIconUnlock");
-                AchievementHider.unlockableRewardIdentifiers.Remove(survivorUnlock.cachedName);
+                if (ModCompat.SS2OCompat.ShouldLoadAutoconfigContent()) AchievementHider.unlockableRewardIdentifiers.Remove(survivorUnlock.cachedName);
 
                 Modules.Unlockables.unlockableDefs.Add(survivorUnlock);
             }
 
-            if (Modules.Config.EnableUnlockAll.Value || !Modules.Config.EnableVoid.Value) return null;
+            if (Modules.Config.EnableUnlockAll.Value || !Modules.Config.EnableVoid.Value || !ModCompat.SS2OCompat.ShouldLoadAutoconfigContent()) return null;
 
             return survivorUnlock;
         }
@@ -1030,7 +1030,7 @@ namespace Starstorm2Unofficial.Survivors.Nemmando
                 commandoRendererInfos,
                 mainRenderer,
                 model,
-                (Modules.Config.EnableVoid.Value && !Modules.Config.ForceUnlockSkins.Value) ? NemmandoCore.killSelfUnlockableDef : null);
+                (Modules.Config.EnableVoid.Value && !Modules.Config.ForceUnlockSkins.Value && ModCompat.SS2OCompat.ShouldLoadAutoconfigContent()) ? NemmandoCore.killSelfUnlockableDef : null);
 
             commandoSkin.meshReplacements = new SkinDef.MeshReplacement[]
             {
@@ -1084,7 +1084,7 @@ namespace Starstorm2Unofficial.Survivors.Nemmando
                     commandoJokeRendererInfos,
                     mainRenderer,
                     model,
-                    (Modules.Config.EnableVoid.Value && !Modules.Config.ForceUnlockSkins.Value) ? NemmandoCore.killSelfUnlockableDef : null);
+                    (Modules.Config.EnableVoid.Value && !Modules.Config.ForceUnlockSkins.Value && ModCompat.SS2OCompat.ShouldLoadAutoconfigContent()) ? NemmandoCore.killSelfUnlockableDef : null);
 
                 commandoJokeSkin.meshReplacements = new SkinDef.MeshReplacement[]
                 {
