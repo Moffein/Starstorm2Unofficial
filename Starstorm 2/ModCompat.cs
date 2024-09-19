@@ -64,7 +64,8 @@ namespace Starstorm2Unofficial
 
             public static void InitCompat()
             {
-                pluginLoaded = BepInEx.Bootstrap.Chainloader.PluginInfos.ContainsKey("com.TeamMoonstorm.Starstorm2");
+                pluginLoaded = BepInEx.Bootstrap.Chainloader.PluginInfos.ContainsKey("com.TeamMoonstorm.Starstorm2")
+                    || BepInEx.Bootstrap.Chainloader.PluginInfos.ContainsKey("com.TeamSS2");
                 Debug.Log("Starstorm 2 Official Loaded: " + pluginLoaded);
 
                 RoR2Application.onLoad += OnLoadActions;

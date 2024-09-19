@@ -24,6 +24,7 @@ namespace Starstorm2Unofficial
     [BepInDependency("pseudopulse.Survariants", BepInDependency.DependencyFlags.SoftDependency)]
     [BepInDependency("com.Moffein.BlightedElites", BepInDependency.DependencyFlags.SoftDependency)]
     [BepInDependency("com.TeamMoonstorm.Starstorm2", BepInDependency.DependencyFlags.SoftDependency)]
+    [BepInDependency("com.TeamSS2", BepInDependency.DependencyFlags.SoftDependency)]
     [BepInDependency("HIFU.Inferno", BepInDependency.DependencyFlags.SoftDependency)]
     [BepInDependency("com.rune580.riskofoptions", BepInDependency.DependencyFlags.SoftDependency)]
     [BepInDependency("com.niwith.DropInMultiplayer", BepInDependency.DependencyFlags.SoftDependency)]
@@ -53,7 +54,7 @@ namespace Starstorm2Unofficial
     {
         internal const string guid = "com.ChirrLover.Starstorm2Unofficial";
         internal const string modName = "Starstorm 2 Unofficial";
-        internal const string version = "0.21.1";
+        internal const string version = "0.21.2";
 
         public static StarstormPlugin instance;
 
@@ -197,17 +198,17 @@ namespace Starstorm2Unofficial
                     AddItemIfEnabled(new NkotasHeritage(), ItemCore.instance.items, false);
                     AddItemIfEnabled(new RelicOfMass(), ItemCore.instance.items);
                     AddItemIfEnabled(new StirringSoul(), ItemCore.instance.items);
+
+                    AddItemIfEnabled(new Diary(), ItemCore.instance.items);
+
+                    AddItemIfEnabled(new StrangeCan(), ItemCore.instance.items);
+
+                    AddItemIfEnabled(new ErraticGadget(), ItemCore.instance.items, false);
                 }
                 else
                 {
                     Debug.LogWarning("SS2U: Disabling autoconfig items.");
                 }
-
-                AddItemIfEnabled(new Diary(), ItemCore.instance.items);
-
-                AddItemIfEnabled(new StrangeCan(), ItemCore.instance.items);
-
-                AddItemIfEnabled(new ErraticGadget(), ItemCore.instance.items, false);
 
                 //AddItemIfEnabled(new Malice(), ItemCore.instance.items);
                 //AddItemIfEnabled(new BrokenBloodTester(), ItemCore.instance.items);

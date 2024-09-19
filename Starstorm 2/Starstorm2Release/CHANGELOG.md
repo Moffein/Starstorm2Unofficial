@@ -1,3 +1,7 @@
+`0.21.3`
+
+- Updated Autoconfig to use the latest SS2 Official plugin GUID.
+
 `0.21.2`
 
 - Fixed JSON error with Portuguese translation.
