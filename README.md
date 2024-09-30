@@ -32,7 +32,6 @@ This mod can be used alongside the official version of Starstorm 2. Be sure to g
 | ![](https://raw.githubusercontent.com/Moffein/Starstorm2Unofficial/main/README%20Images/itemDetritiveTrematode.png) | Detritive Trematode | Enemies below **25% health** are infested for **100%** *(+100%)* base damage per second. |
 | ![](https://raw.githubusercontent.com/Moffein/Starstorm2Unofficial/main/README%20Images/itemDiary.png) | Diary | Increases **movement speed** by **10%** *(+10%)* and **armor** by **3** *(+3)*. |
 | ![](https://raw.githubusercontent.com/Moffein/Starstorm2Unofficial/main/README%20Images/itemDungus.png) | Dormant Fungus | Heals for **1.2%** *(+0.6%)* of your **health** every second **while sprinting**. |
-| Rare | | |
 | ![](https://raw.githubusercontent.com/Moffein/Starstorm2Unofficial/main/README%20Images/itemFork.png) | Fork | Increases your base damage by **2.4** *(+2.4)*. |
 | ![](https://raw.githubusercontent.com/Moffein/Starstorm2Unofficial/main/README%20Images/itemMoltenCoin.png) | Molten Coin | **6%** chance to **ignite on hit** for **320%** *(+320%)* base damage and earn **$1**. Scales with time. |
 | Uncommon | | |
@@ -55,6 +54,7 @@ Can be re-enabled in config.
 |:--:|:--:|--|
 | Common | | |
 | ![](https://raw.githubusercontent.com/Moffein/Starstorm2Unofficial/main/README%20Images/itemCoffeeBag.png) | Coffee Bag | Increases **movement speed** by **7%** *(+7%)* and **attack speed** by **7.5%** *(+7.5%)*. Disabled due to being officially implemented as **Mocha**. |
+| Rare | | |
 | ![](https://raw.githubusercontent.com/Moffein/Starstorm2Unofficial/main/README%20Images/itemErraticGadget.png) | Erratic Gadget | Gain **10% critical chance**. **Critical strikes** hit an additional time for **50%** *(+50%)* TOTAL damage. Disabled due to being similar to **Laser Scope**, same damage boost but applied in a different way. |
 | ![](https://raw.githubusercontent.com/Moffein/Starstorm2Unofficial/main/README%20Images/itemNkota.png) | Nkota's Heritage | **Receive an item** on **level up** or starting the **Teleporter event**. Rerolls for a higher item tier **0** *(+1)* times. **Unaffected by luck**. |
 
