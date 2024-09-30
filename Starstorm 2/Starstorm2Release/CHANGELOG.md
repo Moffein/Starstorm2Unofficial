@@ -1,3 +1,7 @@
+`0.21.5`
+
+- Updated autoconfig to match latest SS2 Official plugin GUID.
+
 `0.21.4`
 
 - Nemmando is now automatically unlocked if Autoconfig is active and SS2 Official is loaded.
