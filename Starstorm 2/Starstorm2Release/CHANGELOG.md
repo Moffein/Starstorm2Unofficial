@@ -1,3 +1,8 @@
+`0.21.6`
+
+- Attempted to fix incompat with SS2 Official music.
+	- This is done by not loading SS2U's music soundbank if SS2O is loaded.
+
 `0.21.5`
 
 - Updated autoconfig to match latest SS2 Official plugin GUID.

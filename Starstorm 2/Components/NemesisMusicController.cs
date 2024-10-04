@@ -39,6 +39,12 @@ namespace Starstorm2Unofficial.Components
             StopMusic();
             isPlaying = true;
             Modules.Music.musicSources++;
+            
+            if (ModCompat.SS2OCompat.pluginLoaded && soundName == "Play_SS2U_NemesisTheme")
+            {
+                soundName = "Play_SS2_Music_System";
+            }
+
             playID = Util.PlaySound(soundName, base.gameObject);
         }
 

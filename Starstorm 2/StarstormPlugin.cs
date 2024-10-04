@@ -56,7 +56,7 @@ namespace Starstorm2Unofficial
     {
         internal const string guid = "com.ChirrLover.Starstorm2Unofficial";
         internal const string modName = "Starstorm 2 Unofficial";
-        internal const string version = "0.21.5";
+        internal const string version = "0.21.6";
 
         public static StarstormPlugin instance;
 
@@ -91,7 +91,6 @@ namespace Starstorm2Unofficial
         {
             Modules.Files.PluginInfo = Info;
             LanguageTokens.RegisterLanguageTokens();
-            Modules.SoundBanks.Init();
             scepterPluginLoaded = BepInEx.Bootstrap.Chainloader.PluginInfos.ContainsKey("com.DestroyedClone.AncientScepter");
             classicItemsLoaded = BepInEx.Bootstrap.Chainloader.PluginInfos.ContainsKey("com.ThinkInvisible.ClassicItems");
             kingArenaLoaded = BepInEx.Bootstrap.Chainloader.PluginInfos.ContainsKey("com.Kingpinush.KingKombatArena");
@@ -100,6 +99,7 @@ namespace Starstorm2Unofficial
             blightedElitesLoaded = BepInEx.Bootstrap.Chainloader.PluginInfos.ContainsKey("com.Moffein.BlightedElites");
             if (BepInEx.Bootstrap.Chainloader.PluginInfos.ContainsKey("com.KingEnderBrine.ScrollableLobbyUI")) scrollableLobbyInstalled = true;
             ModCompat.Initialize();
+            Modules.SoundBanks.Init();
 
             if (kingArenaLoaded)
             {

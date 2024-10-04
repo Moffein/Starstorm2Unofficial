@@ -31,11 +31,15 @@ namespace Starstorm2Unofficial.Modules
                 SoundAPI.SoundBanks.Add(array);
             }
 
-            using (Stream manifestResourceStream = new FileStream(SoundBankDirectory + "\\SS2UMusic.bnk", FileMode.Open))
+            //This check needs to be done because there's a mystery conflict with SS2O music.
+            if (!ModCompat.SS2OCompat.pluginLoaded)
             {
-                byte[] array = new byte[manifestResourceStream.Length];
-                manifestResourceStream.Read(array, 0, array.Length);
-                SoundAPI.SoundBanks.Add(array);
+                using (Stream manifestResourceStream = new FileStream(SoundBankDirectory + "\\SS2UMusic.bnk", FileMode.Open))
+                {
+                    byte[] array = new byte[manifestResourceStream.Length];
+                    manifestResourceStream.Read(array, 0, array.Length);
+                    SoundAPI.SoundBanks.Add(array);
+                }
             }
         }
     }
