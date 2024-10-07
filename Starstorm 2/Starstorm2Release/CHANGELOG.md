@@ -1,3 +1,7 @@
+`0.21.7`
+
+- Cyborg Defense Matrix now guards against Vagrant Novas.
+
 `0.21.6`
 
 - Attempted to fix incompat with SS2 Official music.

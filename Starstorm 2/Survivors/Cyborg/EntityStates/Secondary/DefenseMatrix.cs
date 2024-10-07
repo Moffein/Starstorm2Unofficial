@@ -76,7 +76,12 @@ namespace EntityStates.SS2UStates.Cyborg.Secondary
                             {
                                 matrixCollider = hitboxTransform.GetComponent<BoxCollider>();
                                 inputTeamIndex = base.GetTeam();
-                                defenseMatrixInfo = new DefenseMatrixManager.DefenseMatrixManager.DefenseMatrixInfo(hitboxTransform.GetComponentsInChildren<Collider>(), inputTeamIndex);
+                                Collider[] colliders = hitboxTransform.GetComponentsInChildren<Collider>();
+                                foreach (Collider c in colliders)
+                                {
+                                    c.gameObject.layer = LayerIndex.world.mask;
+                                }
+                                defenseMatrixInfo = new DefenseMatrixManager.DefenseMatrixManager.DefenseMatrixInfo(colliders, inputTeamIndex);
                                 this.defenseMatrixInfo = DefenseMatrixManager.DefenseMatrixManager.AddMatrix(defenseMatrixInfo);
                             }
 
