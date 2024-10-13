@@ -3,7 +3,7 @@
 	{
 		"ITEM_SS2U_FORK_NAME" : "Garfo",
 		"ITEM_SS2U_FORK_PICKUP" : "Dá mais dano.",
-		"ITEM_SS2U_FORK_DESC" : "Aumenta seu dano base em <style=cIsDamage>2.4</style> <style=cStack>(+2.4 por acúmulo)</style>.",
+		"ITEM_SS2U_FORK_DESC" : "Aumenta seu dano base em <style=cIsDamage>5%</style> <style=cStack>(+5% por acúmulo)</style>.",
 		"ITEM_SS2U_FORK_LORE" : "Pedido: Garfo\r\nNúmero de Rastreio: 00******\r\nPrevisão de Entrega: 09\/24\/2056\r\nMétodo de Envio: Padrão\r\nEndereço de Entrega: Edifício Antima - Telhado, Colinas Florescentes, Terra\r\nDetalhes da Entrega:\r\n\r\nSurpresa! Um garfo! Hahaha!!!\nVocê disse que todo presente é um bom presente, AQUI ESTÁ! Brincadeiras à parte, esse garfo é mágico. Acredite em mim Duncan, uma vez eu comi uma salada e depois, no mesmo dia, eu encontrei uma moeda!\nA propósito, venha jogar conosco algum dia, sentimos falta de destruir a sua construção no SS3 (porfavor me diz que você mudou seu main, lol).",
 		
 		"ITEM_SS2U_MOLTENCOIN_NAME" : "Moeda Derretida",

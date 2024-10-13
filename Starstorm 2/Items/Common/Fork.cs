@@ -24,7 +24,7 @@ namespace Starstorm2Unofficial.Cores.Items
         private void HandleStats(CharacterBody sender, RecalculateStatsAPI.StatHookEventArgs args, Inventory inventory)
         {
             int itemCount = inventory.GetItemCount(itemDef);
-            args.baseDamageAdd += 2.4f * itemCount;
+            args.damageMultAdd += 0.05f * itemCount;
         }
 
         public override ItemDisplayRuleDict CreateDisplayRules()

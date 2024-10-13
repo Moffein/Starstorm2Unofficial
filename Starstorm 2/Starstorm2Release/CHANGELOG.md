@@ -1,3 +1,7 @@
+`0.21.8`
+
+- Buffed Fork from +2.4 base damage -> +5% base damage
+
 `0.21.7`
 
 - Cyborg Defense Matrix now guards against Vagrant Novas.

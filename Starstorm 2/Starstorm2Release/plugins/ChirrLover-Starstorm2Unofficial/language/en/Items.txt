@@ -3,7 +3,7 @@
 	{
 		"ITEM_SS2U_FORK_NAME" : "Fork",
 		"ITEM_SS2U_FORK_PICKUP" : "Deal more damage.",
-		"ITEM_SS2U_FORK_DESC" : "Increases your base damage by <style=cIsDamage>2.4</style> <style=cStack>(+2.4 per stack)</style>.",
+		"ITEM_SS2U_FORK_DESC" : "Increases your base damage by <style=cIsDamage>5%</style> <style=cStack>(+5% per stack)</style>.",
 		"ITEM_SS2U_FORK_LORE" : "Order: Fork\r\nTracking Number: 00******\r\nEstimated Delivery: 09\/24\/2056\r\nShipping Method: Standard\r\nShipping Address: Antima Building - Rooftop, Blossom Hills, Earth\r\nShipping Details:\r\n\r\nSurprise! A fork! Hahaha!!!\nYou said any gift was a good gift, HERE YOU GO! Jokes aside, this fork is magical. Trust me Duncan, I once got to eat a salad with it and later that same day I found a cent!\nAlso uh please come play with us someday soon, we miss destroying your build in SS3 (please tell me you changed your main, lol).",
 		
 		"ITEM_SS2U_MOLTENCOIN_NAME" : "Molten Coin",
