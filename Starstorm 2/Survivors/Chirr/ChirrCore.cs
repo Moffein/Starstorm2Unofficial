@@ -94,12 +94,12 @@ namespace Starstorm2Unofficial.Survivors.Chirr
             RoR2.Run.onRunStartGlobal += ResetMithrixConvertedTracker;
 
             RoR2.Stage.onStageStartGlobal += Stage_onStageStartGlobal;
-            On.RoR2.MeridianEventTriggerInteraction.Phase3.OnEnter += Phase3_OnEnter;
+            On.EntityStates.MeridianEvent.Phase3.OnEnter += Phase3_OnEnter1;
 
             if (StarstormPlugin.emoteAPILoaded) EmoteAPICompat();
         }
 
-        private void Phase3_OnEnter(On.RoR2.MeridianEventTriggerInteraction.Phase3.orig_OnEnter orig, MeridianEventTriggerInteraction.Phase3 self)
+        private void Phase3_OnEnter1(On.EntityStates.MeridianEvent.Phase3.orig_OnEnter orig, EntityStates.MeridianEvent.Phase3 self)
         {
             ChirrFriendController.canBefriendFalseSon = true;
             orig(self);

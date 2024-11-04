@@ -1,4 +1,5 @@
-﻿using R2API;
+﻿using EntityStates.MeridianEvent;
+using R2API;
 using RoR2;
 using RoR2.CharacterAI;
 using RoR2.Navigation;
@@ -819,10 +820,10 @@ namespace Starstorm2Unofficial.Survivors.Chirr.Components
 
                     if (MeridianEventTriggerInteraction.instance && MeridianEventTriggerInteraction.instance.mainStateMachine)
                     {
-                        if (MeridianEventTriggerInteraction.instance.mainStateMachine.state.GetType() == typeof(MeridianEventTriggerInteraction.Phase3))
+                        if (MeridianEventTriggerInteraction.instance.mainStateMachine.state.GetType() == typeof(Phase3))
                         {
                             Debug.Log("Chirr: Setting MeridianEventTriggerInteraction to next state.");
-                            var state = (MeridianEventTriggerInteraction.instance.mainStateMachine.state as MeridianEventTriggerInteraction.Phase3);
+                            var state = (MeridianEventTriggerInteraction.instance.mainStateMachine.state as Phase3);
                             if (!state.spawnedNextState) state.outer.SetNextState(state.nextState);
                         }
                     }

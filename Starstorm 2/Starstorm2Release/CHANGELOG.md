@@ -1,3 +1,8 @@
+`0.21.9`
+
+- Recompiled for latest update.
+	- Let me know if Chirr's thingy broke.
+
 `0.21.8`
 
 - Buffed Fork from +2.4 base damage -> +5% base damage
