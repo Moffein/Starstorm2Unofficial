@@ -844,17 +844,12 @@ namespace Starstorm2Unofficial.Survivors.Nemmando
 
         private void HealthComponent_Suicide(On.RoR2.HealthComponent.orig_Suicide orig, HealthComponent self, GameObject killerOverride, GameObject inflictorOverride, DamageTypeCombo damageType)
         {
-
-            if (damageType.damageType == DamageType.VoidDeath)
+            if (damageType.damageType == DamageType.VoidDeath
+                && self.body && self.body.bodyIndex == NemmandoCore.bodyIndex
+                && self.body.teamComponent && self.body.teamComponent.teamIndex != TeamIndex.Player)
             {
-                if (self.body.bodyIndex == NemmandoCore.bodyIndex)
-                {
-                    if (self.body.teamComponent.teamIndex != TeamIndex.Player)
-                    {
-                        ChatMessage.SendColored("He laughs in the face of the void.", new Color(0.149f, 0.0039f, 0.2117f));
-                        return;
-                    }
-                }
+                ChatMessage.SendColored("He laughs in the face of the void.", new Color(0.149f, 0.0039f, 0.2117f));
+                return;
             }
             orig(self, killerOverride, inflictorOverride, damageType);
         }

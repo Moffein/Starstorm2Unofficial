@@ -1,3 +1,7 @@
+`0.21.11`
+
+- Added extra nullchecking to a niche part of Nemmando.
+
 `0.21.10`
 
 - Attempted to fix Storms erroring and permanently increasing enemy stats due to the last game update. Let me know if this issue persists.
