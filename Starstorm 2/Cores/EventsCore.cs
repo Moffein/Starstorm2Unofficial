@@ -18,7 +18,6 @@ namespace Starstorm2Unofficial.Cores
 {
     public class EventsCore
     {
-
         public static EventsCore instance;
         public static float stormDuration = 90;
         //public static float stormDuration = 10;
@@ -221,44 +220,38 @@ namespace Starstorm2Unofficial.Cores
 
         private void StartStorm()
         {
+            //activate stat buffs
+            RecalculateStatsAPI.GetStatCoefficients += StormStats;
+            On.RoR2.DeathRewards.OnKilledServer += DeathRewards_OnKilledServer;
+
+            foreach (CharacterMaster master in CharacterMaster.instancesList)
+            {
+                if (master.teamIndex == TeamIndex.Player) continue;
+                CharacterBody body = master.GetBody();
+                if (body) body.statsDirty = true;
+            }
 
             if (Modules.Config.disableStormVisuals.Value) {
                 Chat.SendBroadcastChat(new Chat.SimpleChatMessage() { baseToken = "SS2U_EVENT_STORM_START" });
             }
-            //activate stat buffs
-            RecalculateStatsAPI.GetStatCoefficients += StormStats;
-            On.RoR2.DeathRewards.OnKilledServer += DeathRewards_OnKilledServer;
-            foreach (TeamComponent tc in new List<TeamComponent>(TeamComponent.GetTeamMembers(TeamIndex.Monster)))
-            {
-                if (tc)
-                    tc.GetComponent<CharacterBody>().statsDirty = true;
-            }
-            /*
-             * bool wasAliveAtStormStart[players.count];
-             * foreach (player in players) {
-             *   if (player.isalive)
-             *   wasAliveAtStormStart[player.index] = true;
-             * }
-             */
         }
 
-        private void StopStorm() {
+        private void StopStorm()
+        {
+            RecalculateStatsAPI.GetStatCoefficients -= StormStats;
+            On.RoR2.DeathRewards.OnKilledServer -= DeathRewards_OnKilledServer;
+
+            foreach (CharacterMaster master in CharacterMaster.instancesList)
+            {
+                if (master.teamIndex == TeamIndex.Player) continue;
+                CharacterBody body = master.GetBody();
+                if (body) body.statsDirty = true;
+            }
+
             if (Modules.Config.disableStormVisuals.Value) {
                 Chat.SendBroadcastChat(new Chat.SimpleChatMessage() { baseToken = "(Storm ended.)" });
             }
             showStormFX(false);
-            RecalculateStatsAPI.GetStatCoefficients -= StormStats;
-            On.RoR2.DeathRewards.OnKilledServer -= DeathRewards_OnKilledServer;
-            foreach (TeamComponent tc in new List<TeamComponent>(TeamComponent.GetTeamMembers(TeamIndex.Monster))) {
-                if (tc)
-                    tc.GetComponent<CharacterBody>().statsDirty = true;
-            }
-            /* 
-             * foreach (player in players) {
-             *   if (player.isalive && wasAliveAtStormStart[player.index])
-             *     player.awardMuleAchievement();
-             * }
-             */
         }
 
         private void StormStats(CharacterBody sender, RecalculateStatsAPI.StatHookEventArgs args)
