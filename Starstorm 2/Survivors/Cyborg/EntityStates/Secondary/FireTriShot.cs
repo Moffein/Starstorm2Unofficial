@@ -116,6 +116,7 @@ namespace EntityStates.SS2UStates.Cyborg.Secondary
                         maxDistance = 1000f,
                         procCoefficient = 0.7f
                     };
+                    bullet.damageType.damageSource = DamageSource.Secondary;
                     bullet.AddModdedDamageType(DamageTypeCore.ModdedDamageTypes.CyborgCanDetonateShockCore);
                     bullet.Fire();
                     aimRay2.direction = rotation * aimRay2.direction;

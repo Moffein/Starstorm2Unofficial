@@ -79,7 +79,7 @@ namespace EntityStates.SS2UStates.Nemmando
                     scale = 1f
                 }, true);*/
 
-                new BulletAttack
+                var bullet = new BulletAttack
                 {
                     owner = base.gameObject,
                     weapon = base.gameObject,
@@ -103,7 +103,9 @@ namespace EntityStates.SS2UStates.Nemmando
                     procCoefficient = ChargeBarrageFire.procCoefficient,
                     falloffModel = BulletAttack.FalloffModel.DefaultBullet,
                     maxDistance = ChargeBarrageFire.range
-                }.Fire();
+                };
+                bullet.damageType.damageSource = DamageSource.Special;
+                bullet.Fire();
             }
 
             base.characterBody.AddSpreadBloom(2f * EntityStates.Commando.CommandoWeapon.FireBarrage.spreadBloomValue);

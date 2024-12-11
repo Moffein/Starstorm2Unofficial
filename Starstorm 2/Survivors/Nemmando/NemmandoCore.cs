@@ -225,7 +225,9 @@ namespace Starstorm2Unofficial.Survivors.Nemmando
             }
 
             swordBeam.GetComponent<ProjectileController>().ghostPrefab = swordBeamGhost;
-            swordBeam.GetComponent<ProjectileDamage>().damageType = DamageType.Generic;
+            var pd = swordBeam.GetComponent<ProjectileDamage>();
+            pd.damageType = DamageType.Generic;
+            pd.damageType.damageSource = DamageSource.Secondary;
 
             DamageAPI.ModdedDamageTypeHolderComponent moddedDamage = swordBeam.AddComponent<DamageAPI.ModdedDamageTypeHolderComponent>();
             moddedDamage.Add(Cores.DamageTypeCore.ModdedDamageTypes.GougeOnHit);

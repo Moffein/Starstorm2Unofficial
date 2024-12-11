@@ -69,6 +69,7 @@ namespace EntityStates.SS2UStates.Nemmando
 		public override void AuthorityModifyOverlapAttack(OverlapAttack overlapAttack)
 		{
 			base.AuthorityModifyOverlapAttack(overlapAttack);
+			overlapAttack.damageType.damageSource = DamageSource.Special;
 			overlapAttack.AddModdedDamageType(DamageTypeCore.ModdedDamageTypes.GougeOnHit);
 		}
 

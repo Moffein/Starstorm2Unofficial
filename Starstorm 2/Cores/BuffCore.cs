@@ -147,7 +147,6 @@ namespace Starstorm2Unofficial.Cores
             On.RoR2.HealthComponent.TakeDamageProcess += HealthComponent_TakeDamage;
             On.RoR2.CharacterBody.OnClientBuffsChanged += CharacterBody_OnClientBuffsChanged;
             On.RoR2.CharacterBody.RecalculateStats += CharacterBody_RecalculateStats;
-            On.EntityStates.BaseState.OnEnter += BaseState_OnEnter;
             RecalculateStatsAPI.GetStatCoefficients += RecalculateStatsAPI_GetStatCoefficients;
 
             //Prevent Infestors from infesting chirr friends
@@ -260,33 +259,16 @@ namespace Starstorm2Unofficial.Cores
                     }
                     if (!damageInfo.canRejectForce) damageInfo.force *= 0.1f;
                 }
+
+                //Chirr skill damage boost
+                CharacterBody attackerBody = damageInfo.attacker ? damageInfo.attacker.GetComponent<CharacterBody>() : null;
+                if (attackerBody && attackerBody.HasBuff(BuffCore.chirrFriendBuff))
+                {
+                    damageInfo.damage *= attackerBody.isElite ? 3f : 2f;
+                }
             }
 
             orig(self, damageInfo);
-        }
-
-        private void BaseState_OnEnter(On.EntityStates.BaseState.orig_OnEnter orig, EntityStates.BaseState self)
-        {
-            orig(self);
-            if (self.characterBody)
-            {
-                if (self.characterBody.HasBuff(BuffCore.chirrFriendBuff))
-                {
-                    if (ChirrFriendController.bodyDamageValueOverrides.TryGetValue(self.characterBody.bodyIndex, out float value))
-                    {
-                        self.damageStat *= value;
-                    }
-
-                    if (!self.characterBody.isElite)
-                    {
-                        self.damageStat *= 2f;
-                    }
-                    else
-                    {
-                        self.damageStat *= 3f;
-                    }
-                }
-            }
         }
 
         private void RecalculateStatsAPI_GetStatCoefficients(CharacterBody sender, RecalculateStatsAPI.StatHookEventArgs args)

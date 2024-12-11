@@ -69,6 +69,7 @@ namespace EntityStates.SS2UStates.Chirr
             }
             if(this.attack != null)
             {
+                this.attack.damageType.damageSource = DamageSource.Secondary;
                 this.attack.AddModdedDamageType(DamageTypeCore.ModdedDamageTypes.ScaleForceToMass);
                 this.attack.AddModdedDamageType(DamageTypeCore.ModdedDamageTypes.ResetVictimForce);
 

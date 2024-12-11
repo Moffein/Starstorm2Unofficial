@@ -92,6 +92,7 @@ namespace EntityStates.SS2UStates.Nemmando
                 radius = this.radius,
                 teamIndex = base.GetTeam()
             };
+            this.blastAttack.damageType.damageSource = DamageSource.Special;
             this.blastAttack.AddModdedDamageType(DamageTypeCore.ModdedDamageTypes.GougeOnHit);
 
             this.attackEffect = new EffectData()

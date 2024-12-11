@@ -1,4 +1,5 @@
 ﻿using R2API;
+using Rewired.Demos;
 using RoR2;
 using Starstorm2Unofficial.Components;
 using Starstorm2Unofficial.Cores;
@@ -243,6 +244,7 @@ namespace EntityStates.SS2UStates.Executioner
                 blast.AddModdedDamageType(DamageTypeCore.ModdedDamageTypes.AntiFlyingForce);
                 blast.AddModdedDamageType(DamageTypeCore.ModdedDamageTypes.ResetVictimForce);
                 blast = ModifyBlastAttack(blast);
+                blast.damageType.damageSource = DamageSource.Special;
                 blast.Fire();
 
                 base.characterMotor.velocity.y = 0f;

@@ -283,6 +283,7 @@ namespace Starstorm2Unofficial.Survivors.Cyborg
 
             ProjectileDamage pd = projectilePrefab.GetComponent<ProjectileDamage>();
             pd.damageType = DamageType.Shock5s;
+            pd.damageType.damageSource = DamageSource.Special;
 
             ProjectileImpactExplosion pie = projectilePrefab.GetComponent<ProjectileImpactExplosion>();
             pie.blastRadius = 4f;
@@ -377,6 +378,7 @@ namespace Starstorm2Unofficial.Survivors.Cyborg
             bfgDamage.damage = 1f;
             bfgDamage.damageType = DamageType.Generic;
             bfgDamage.damageColorIndex = DamageColorIndex.Default;
+            bfgDamage.damageType.damageSource = DamageSource.Special;
 
             ProjectileSimple bfgProjectileSimple = projectilePrefab.GetComponent<ProjectileSimple>();
             bfgProjectileSimple.desiredForwardSpeed = 15f;

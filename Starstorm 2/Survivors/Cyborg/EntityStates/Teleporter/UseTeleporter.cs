@@ -5,6 +5,7 @@ using Starstorm2Unofficial.Survivors.Cyborg.Components;
 using UnityEngine.Networking;
 using UnityEngine.AddressableAssets;
 using Starstorm2Unofficial.Survivors.Cyborg;
+using Rewired.Demos;
 
 namespace EntityStates.SS2UStates.Cyborg.Special
 {
@@ -71,6 +72,7 @@ namespace EntityStates.SS2UStates.Cyborg.Special
                 procCoefficient = 1f,
                 teamIndex = base.GetTeam()
             };
+            ba.damageType.damageSource = DamageSource.Utility;
 
             if (!CyborgCore.useEnergyRework.Value)
             {

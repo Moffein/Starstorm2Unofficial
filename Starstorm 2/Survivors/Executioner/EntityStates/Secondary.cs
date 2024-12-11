@@ -139,6 +139,7 @@ namespace EntityStates.SS2UStates.Executioner
                     stopperMask = LayerIndex.world.mask
                     //HitEffectNormal = ClayBruiser.Weapon.MinigunFire.bulletHitEffectNormal
                 };
+                bullet.damageType.damageSource = DamageSource.Secondary;
                 bullet.AddModdedDamageType(DamageTypeCore.ModdedDamageTypes.ExtendFear);
                 bullet.Fire();
             }

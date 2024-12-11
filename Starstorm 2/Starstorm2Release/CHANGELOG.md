@@ -1,3 +1,8 @@
+`0.21.12`
+
+- Fixed for latest update.
+	- Custom damagetypes will be broken until DamageTypeAPI updates.
+
 `0.21.11`
 
 - Added extra nullchecking to a niche part of Nemmando.

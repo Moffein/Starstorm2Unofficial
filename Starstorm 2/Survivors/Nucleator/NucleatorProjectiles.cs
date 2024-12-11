@@ -26,6 +26,9 @@ namespace Starstorm2Unofficial.Survivors.Nucleator
 
             GameObject projectileGhost = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Beetle/BeetleQueenSpitGhost.prefab").WaitForCompletion();
 
+            ProjectileDamage pd = projectilePrefab.GetComponent<ProjectileDamage>();
+            pd.damageType = DamageType.Generic;
+            pd.damageType.damageSource = DamageSource.Primary;
 
             ProjectileController pc = projectilePrefab.GetComponent<ProjectileController>();
             pc.ghostPrefab = projectileGhost;
@@ -68,6 +71,10 @@ namespace Starstorm2Unofficial.Survivors.Nucleator
             projectilePrefab.AddComponent<ProjectileCheckSpecialBuffComponent>();
 
             GameObject projectileGhost = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/BFG/BeamSphereGhost.prefab").WaitForCompletion().InstantiateClone("SS2UNucleatorPrimaryOverchargeGhost",false);
+
+            ProjectileDamage pd = projectilePrefab.GetComponent<ProjectileDamage>();
+            pd.damageType = DamageType.Generic;
+            pd.damageType.damageSource = DamageSource.Primary;
 
             //Copied from Cyborg
             ParticleSystem[] particles = projectileGhost.GetComponentsInChildren<ParticleSystem>();

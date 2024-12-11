@@ -62,7 +62,7 @@ namespace EntityStates.SS2UStates.Nemmando
                     Ray aimRay = base.GetAimRay();
                     base.AddRecoil(-1f * ShootGun.recoil, -2f * ShootGun.recoil, -0.5f * ShootGun.recoil, 0.5f * ShootGun.recoil);
 
-                    new BulletAttack
+                    var bullet = new BulletAttack
                     {
                         bulletCount = 1,
                         aimVector = aimRay.direction,
@@ -91,7 +91,9 @@ namespace EntityStates.SS2UStates.Nemmando
                         spreadYawScale = 0f,
                         queryTriggerInteraction = QueryTriggerInteraction.UseGlobal,
                         hitEffectPrefab = EntityStates.Commando.CommandoWeapon.FirePistol2.hitEffectPrefab
-                    }.Fire();
+                    };
+                    bullet.damageType.damageSource = DamageSource.Secondary;
+                    bullet.Fire();
                 }
             }
         }

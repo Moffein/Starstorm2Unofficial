@@ -611,7 +611,7 @@ namespace Starstorm2Unofficial.Survivors.Executioner
                 bool error = true;
                 ILCursor c = new ILCursor(il);
                 if (c.TryGotoNext(MoveType.After,
-                    x => x.MatchStloc(59)   //num17 = float.NegativeInfinity, stloc53 = Execute Fraction, first instance it is used
+                    x => x.MatchStloc(72)   //num17 = float.NegativeInfinity, stloc53 = Execute Fraction, first instance it is used
                     ))
                 {
                     if (c.TryGotoNext(MoveType.After,
@@ -619,7 +619,7 @@ namespace Starstorm2Unofficial.Survivors.Executioner
                     ))
                     {
                         c.Emit(OpCodes.Ldarg_0);//self
-                        c.Emit(OpCodes.Ldloc, 59);//execute fraction
+                        c.Emit(OpCodes.Ldloc, 72);//execute fraction
                         c.EmitDelegate <Func<HealthComponent, float, float>>((self, executeFraction) =>
                         {
                             if (self.body.HasBuff(BuffCore.fearDebuff))

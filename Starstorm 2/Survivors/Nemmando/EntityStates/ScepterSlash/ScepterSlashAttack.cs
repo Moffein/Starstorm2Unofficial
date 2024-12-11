@@ -129,6 +129,7 @@ namespace EntityStates.SS2UStates.Nemmando
                         damageInfo.position = hurtbox.transform.position;
                         damageInfo.crit = this.isCrit;
                         damageInfo.damageType = DamageType.Generic;
+                        damageInfo.damageType.damageSource = DamageSource.Special;
                         damageInfo.AddModdedDamageType(DamageTypeCore.ModdedDamageTypes.GougeOnHit);
 
                         hurtbox.healthComponent.TakeDamage(damageInfo);

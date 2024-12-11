@@ -84,6 +84,7 @@ namespace EntityStates.SS2UStates.Nemmando
 			this.overlapAttack.hitBoxGroup = hitBoxGroup;
 			this.overlapAttack.isCrit = isCrit;
             this.overlapAttack.impactSound = base.effectComponent.impactSoundDef.index;
+			this.overlapAttack.damageType.damageSource = DamageSource.Primary;
 
             string soundString = base.effectComponent.swingSound;
             //if (isCrit) soundString += "Crit";

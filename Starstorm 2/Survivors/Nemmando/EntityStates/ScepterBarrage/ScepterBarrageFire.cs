@@ -78,7 +78,7 @@ namespace EntityStates.SS2UStates.Nemmando
 
             if (base.isAuthority)
             {
-                new BulletAttack
+                var bullet = new BulletAttack
                 {
                     owner = base.gameObject,
                     weapon = base.gameObject,
@@ -102,7 +102,9 @@ namespace EntityStates.SS2UStates.Nemmando
                     procCoefficient = ScepterBarrageFire.procCoefficient,
                     falloffModel = BulletAttack.FalloffModel.DefaultBullet,
                     maxDistance = ScepterBarrageFire.range
-                }.Fire();
+                };
+                bullet.damageType.damageSource = DamageSource.Special;
+                bullet.Fire();
 
                 this.FireLaser();
             }

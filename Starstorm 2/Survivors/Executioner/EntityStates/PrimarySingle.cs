@@ -88,6 +88,7 @@ namespace EntityStates.SS2UStates.Executioner
                     hitEffectPrefab = hitEffectPrefab,
                     maxDistance = 200f
                 };
+                bullet.damageType.damageSource = DamageSource.Primary;
                 bullet.Fire();
             }
             base.AddRecoil(-0.4f * recoil, -0.8f * recoil, -0.3f * recoil, 0.3f * recoil);

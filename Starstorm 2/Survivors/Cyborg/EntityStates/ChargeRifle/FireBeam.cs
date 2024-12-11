@@ -112,6 +112,7 @@ namespace EntityStates.SS2UStates.Cyborg.ChargeRifle
                     hitEffectPrefab = FireBeam.hitEffectPrefab,
                     maxDistance = 1000f
                 };
+                bullet.damageType.damageSource = DamageSource.Primary;
                 bullet.AddModdedDamageType(DamageTypeCore.ModdedDamageTypes.CyborgCanDetonateShockCore);
                 if (perfectCharge || charge >= 1f) bullet.stopperMask = LayerIndex.world.mask;
                 bullet.Fire();

@@ -103,6 +103,7 @@ namespace EntityStates.SS2UStates.Nucleator.Secondary
                     maxDistance = range,
                     stopperMask = LayerIndex.noCollision.mask
                 };
+                ba.damageType.damageSource = DamageSource.Secondary;
                 ba.AddModdedDamageType(Starstorm2Unofficial.Cores.DamageTypeCore.ModdedDamageTypes.ScaleForceToMass);
                 ba.AddModdedDamageType(DamageTypeCore.ModdedDamageTypes.ResetVictimForce);
                 ba.AddModdedDamageType(DamageTypeCore.ModdedDamageTypes.GroundedForceCorrection);

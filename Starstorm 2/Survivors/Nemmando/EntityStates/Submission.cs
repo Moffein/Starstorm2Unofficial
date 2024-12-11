@@ -45,7 +45,7 @@ namespace EntityStates.SS2UStates.Nemmando
 
             if (base.isAuthority)
             {
-                new BulletAttack
+                var bullet = new BulletAttack
                 {
                     owner = base.gameObject,
                     weapon = base.gameObject,
@@ -63,7 +63,9 @@ namespace EntityStates.SS2UStates.Nemmando
                     radius = EntityStates.Commando.CommandoWeapon.FireBarrage.bulletRadius,
                     smartCollision = true,
                     damageType = DamageType.Stun1s
-                }.Fire();
+                };
+                bullet.damageType.damageSource = DamageSource.Special;
+                bullet.Fire();
             }
 
             base.characterBody.AddSpreadBloom(EntityStates.Commando.CommandoWeapon.FireBarrage.spreadBloomValue);

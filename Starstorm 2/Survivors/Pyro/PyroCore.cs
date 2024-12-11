@@ -101,6 +101,7 @@ namespace Starstorm2Unofficial.Survivors.Pyro
 
             ProjectileDamage pd = projectilePrefab.GetComponent<ProjectileDamage>();
             pd.damageType = DamageType.IgniteOnHit;
+            pd.damageType.damageSource = DamageSource.Secondary;
 
             SuppressiveFire.projectilePrefab = projectilePrefab;
         }
@@ -114,6 +115,7 @@ namespace Starstorm2Unofficial.Survivors.Pyro
 
             ProjectileDamage pd = projectilePrefab.GetComponent<ProjectileDamage>();
             pd.damageType = DamageType.IgniteOnHit;
+            pd.damageType.damageSource = DamageSource.Special;
 
             ProjectileStickOnImpact pst = projectilePrefab.AddComponent<ProjectileStickOnImpact>();
             pst.ignoreCharacters = false;

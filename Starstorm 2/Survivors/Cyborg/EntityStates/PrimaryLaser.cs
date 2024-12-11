@@ -71,6 +71,7 @@ namespace EntityStates.SS2UStates.Cyborg
                     maxDistance = 1000f,
                     procCoefficient = 1f
                 };
+                bullet.damageType.damageSource = DamageSource.Primary;
                 bullet.AddModdedDamageType(DamageTypeCore.ModdedDamageTypes.CyborgCanDetonateShockCore);
                 bullet.Fire();
                 base.AddRecoil(-0.5f * recoil, -0.8f * recoil, -0.3f * recoil, 0.3f * recoil);
