@@ -1,3 +1,7 @@
+`0.21.13`
+
+- Fixed TakeDamage nullrefs.
+
 `0.21.12`
 
 - Fixed for latest update.

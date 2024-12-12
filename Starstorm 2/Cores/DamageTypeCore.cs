@@ -24,7 +24,6 @@ namespace Starstorm2Unofficial.Cores
             public static DamageAPI.ModdedDamageType GuaranteedFearOnHit;   //Used for Exe Scepter
             public static DamageAPI.ModdedDamageType ResetVictimForce;
             public static DamageAPI.ModdedDamageType ErraticGadget;
-            public static DamageAPI.ModdedDamageType SlayerExceptItActuallyWorks;
             public static DamageAPI.ModdedDamageType AntiFlyingForce;
             public static DamageAPI.ModdedDamageType Root5s;
             public static DamageAPI.ModdedDamageType NucleatorRadiationOnHit;
@@ -41,7 +40,6 @@ namespace Starstorm2Unofficial.Cores
 
             ModdedDamageTypes.GroundedForceCorrection = DamageAPI.ReserveDamageType();
             ModdedDamageTypes.AntiFlyingForce = DamageAPI.ReserveDamageType();
-            ModdedDamageTypes.SlayerExceptItActuallyWorks = DamageAPI.ReserveDamageType();
             ModdedDamageTypes.ResetVictimForce = DamageAPI.ReserveDamageType();
             ModdedDamageTypes.CyborgCanDetonateShockCore = DamageAPI.ReserveDamageType();
             ModdedDamageTypes.ScaleForceToMass = DamageAPI.ReserveDamageType();
@@ -119,12 +117,6 @@ namespace Starstorm2Unofficial.Cores
             bool triggerGougeProc = false;
             if (NetworkServer.active)
             {
-                if (damageInfo.HasModdedDamageType(ModdedDamageTypes.SlayerExceptItActuallyWorks))
-                {
-                    damageInfo.RemoveModdedDamageType(ModdedDamageTypes.SlayerExceptItActuallyWorks);
-                    damageInfo.damage *= Mathf.Lerp(3f, 1f, self.combinedHealthFraction);
-                }
-
                 CharacterBody cb = self.body;
                 //This will only work on things that are run on the server.
                 if (damageInfo.HasModdedDamageType(ModdedDamageTypes.ResetVictimForce))

@@ -237,10 +237,9 @@ namespace EntityStates.SS2UStates.Executioner
                     damageColorIndex = DamageColorIndex.Default,
                     falloffModel = BlastAttack.FalloffModel.None,
                     attackerFiltering = AttackerFiltering.NeverHitSelf,
-                    damageType = DamageType.Generic,
+                    damageType = DamageType.BonusToLowHealth,
                     bonusForce = Vector3.down * 4000f
                 };
-                blast.AddModdedDamageType(DamageTypeCore.ModdedDamageTypes.SlayerExceptItActuallyWorks);
                 blast.AddModdedDamageType(DamageTypeCore.ModdedDamageTypes.AntiFlyingForce);
                 blast.AddModdedDamageType(DamageTypeCore.ModdedDamageTypes.ResetVictimForce);
                 blast = ModifyBlastAttack(blast);

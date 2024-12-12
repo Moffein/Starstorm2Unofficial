@@ -247,12 +247,12 @@ namespace Starstorm2Unofficial.Cores
             if (NetworkServer.active)
             {
                 //Chirr Friends dont take void fog damage
-                bool isChirrFriend = self.body.HasBuff(BuffCore.chirrFriendBuff);
+                bool isChirrFriend = self.body && self.body.HasBuff(BuffCore.chirrFriendBuff);
                 if (isChirrFriend)
                 {
                     if (!damageInfo.attacker && !damageInfo.inflictor
                         && damageInfo.damageColorIndex == DamageColorIndex.Void
-                        && damageInfo.damageType == (DamageType.BypassArmor | DamageType.BypassBlock))
+                        && damageInfo.damageType.damageType == (DamageType.BypassArmor | DamageType.BypassBlock))
                     {
                         damageInfo.damage = 0f;
                         damageInfo.rejected = true;
@@ -261,10 +261,14 @@ namespace Starstorm2Unofficial.Cores
                 }
 
                 //Chirr skill damage boost
-                CharacterBody attackerBody = damageInfo.attacker ? damageInfo.attacker.GetComponent<CharacterBody>() : null;
-                if (attackerBody && attackerBody.HasBuff(BuffCore.chirrFriendBuff))
+                if (damageInfo.damageType.IsDamageSourceSkillBased)
                 {
-                    damageInfo.damage *= attackerBody.isElite ? 3f : 2f;
+                    CharacterBody attackerBody = null;
+                    if (damageInfo.attacker) attackerBody = damageInfo.attacker.GetComponent<CharacterBody>();
+                    if (attackerBody && attackerBody.HasBuff(BuffCore.chirrFriendBuff))
+                    {
+                        damageInfo.damage *= attackerBody.isElite ? 3f : 2f;
+                    }
                 }
             }
 

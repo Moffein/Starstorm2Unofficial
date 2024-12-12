@@ -18,6 +18,7 @@ using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
+using UnityEngine.Networking;
 
 namespace Starstorm2Unofficial.Survivors.Executioner
 {
@@ -349,23 +350,17 @@ namespace Starstorm2Unofficial.Survivors.Executioner
 
             orig(self, damageInfo);
 
-            if (self)
+            if (NetworkServer.active && damageInfo.attacker && !damageInfo.rejected)
             {
-                if (damageInfo.attacker && !damageInfo.rejected)
+                CharacterBody attackerBody = damageInfo.attacker.GetComponent<CharacterBody>();
+                if (attackerBody && attackerBody.bodyIndex == ExecutionerCore.bodyIndex)
                 {
-                    CharacterBody attackerBody = damageInfo.attacker.GetComponent<CharacterBody>();
-                    if (attackerBody)
+                    ExecutionerKillComponent killComponent = self.GetComponent<ExecutionerKillComponent>();
+                    if (!killComponent)
                     {
-                        if (attackerBody.bodyIndex == ExecutionerCore.bodyIndex)
-                        {
-                            Components.ExecutionerKillComponent killComponent = self.GetComponent<Components.ExecutionerKillComponent>();
-                            if (!killComponent)
-                            {
-                                killComponent = self.AddComponent<Components.ExecutionerKillComponent>();
-                            }
-                            killComponent.AddTimer(attackerBody, 5f);
-                        }
+                        killComponent = self.AddComponent<ExecutionerKillComponent>();
                     }
+                    killComponent.AddTimer(attackerBody, 5f);
                 }
             }
         }
@@ -376,9 +371,10 @@ namespace Starstorm2Unofficial.Survivors.Executioner
 
             if (self.hasBody)
             {
-                if (self.GetBody().bodyIndex == ExecutionerCore.bodyIndex)
+                CharacterBody body = self.GetBody();
+                if (body && body.bodyIndex == ExecutionerCore.bodyIndex)
                 {
-                    var execComponent = self.GetBody().GetComponent<Components.ExecutionerController>();
+                    var execComponent = body.GetComponent<Components.ExecutionerController>();
                     if (execComponent)
                     {
                         execComponent.CheckInventory();
@@ -610,17 +606,26 @@ namespace Starstorm2Unofficial.Survivors.Executioner
             {
                 bool error = true;
                 ILCursor c = new ILCursor(il);
-                if (c.TryGotoNext(MoveType.After,
-                    x => x.MatchStloc(72)   //num17 = float.NegativeInfinity, stloc53 = Execute Fraction, first instance it is used
-                    ))
+
+                if (c.TryGotoNext( x => x.MatchLdloc(72), x => x.MatchLdcR4(0)))
                 {
-                    if (c.TryGotoNext(MoveType.After,
-                    x => x.MatchLdloc(9)   //flag ImmuneToExecutes this is checked before final Execute damage calculations.
-                    ))
+                    c.Index++;
+                    c.Emit(OpCodes.Ldarg_0);//self
+                    c.EmitDelegate<Func<float, HealthComponent, float>>((executeFraction, self) =>
                     {
+                        if (self.body.HasBuff(BuffCore.fearDebuff))
+                        {
+                            if (executeFraction < 0f) executeFraction = 0f;
+                            executeFraction += 0.15f;
+                        }
+                        return executeFraction;
+                    });
+
+                    if (c.TryGotoNext(x => x.MatchLdloc(72)))
+                    {
+                        c.Index++;
                         c.Emit(OpCodes.Ldarg_0);//self
-                        c.Emit(OpCodes.Ldloc, 72);//execute fraction
-                        c.EmitDelegate <Func<HealthComponent, float, float>>((self, executeFraction) =>
+                        c.EmitDelegate<Func<float, HealthComponent, float>>((executeFraction, self) =>
                         {
                             if (self.body.HasBuff(BuffCore.fearDebuff))
                             {
@@ -629,8 +634,6 @@ namespace Starstorm2Unofficial.Survivors.Executioner
                             }
                             return executeFraction;
                         });
-                        c.Emit(OpCodes.Stloc, 59);
-
                         error = false;
                     }
                 }
@@ -641,6 +644,7 @@ namespace Starstorm2Unofficial.Survivors.Executioner
                 }
 
             };
+
             IL.RoR2.CharacterBody.UpdateAllTemporaryVisualEffects += (il) =>
             {
                 ILCursor c = new ILCursor(il);
