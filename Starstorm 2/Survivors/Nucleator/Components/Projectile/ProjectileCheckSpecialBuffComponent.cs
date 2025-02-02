@@ -21,11 +21,8 @@ namespace Starstorm2Unofficial.Survivors.Nucleator.Components.Projectile
                     CharacterBody ownerBody = pc.owner.GetComponent<CharacterBody>();
                     if (ownerBody && ownerBody.HasBuff(BuffCore.nucleatorSpecialBuff))
                     {
-                        ModdedDamageTypeHolderComponent mdc = base.GetComponent<ModdedDamageTypeHolderComponent>();
-                        if (mdc)
-                        {
-                            mdc.Add(DamageTypeCore.ModdedDamageTypes.NucleatorRadiationOnHit);
-                        }
+                        ProjectileDamage pd = base.GetComponent<ProjectileDamage>();
+                        pd.damageType.AddModdedDamageType(DamageTypeCore.ModdedDamageTypes.NucleatorRadiationOnHit);
                     }
                 }
             }

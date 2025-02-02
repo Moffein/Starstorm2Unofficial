@@ -1,3 +1,7 @@
+`0.21.14`
+
+- Updated R2API DamageType implementation, removed deprecated components.
+
 `0.21.13`
 
 - Fixed TakeDamage nullrefs.

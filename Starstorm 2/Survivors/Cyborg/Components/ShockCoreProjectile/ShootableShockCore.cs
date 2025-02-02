@@ -73,11 +73,8 @@ namespace Starstorm2Unofficial.Survivors.Cyborg.Components.ShockCoreProjectile
             if (pd)
             {
                 pd.damage *= implosionDamageCoefficient;
+                pd.damageType.AddModdedDamageType(this.targetDamageType);
             }
-
-            DamageAPI.ModdedDamageTypeHolderComponent mdc = base.gameObject.GetComponent<DamageAPI.ModdedDamageTypeHolderComponent>();
-            if (!mdc) mdc = base.gameObject.AddComponent<DamageAPI.ModdedDamageTypeHolderComponent>();
-            mdc.Add(this.targetDamageType);
 
             TeamIndex teamIndex = TeamIndex.None;
             TeamFilter tf = base.GetComponent<TeamFilter>();

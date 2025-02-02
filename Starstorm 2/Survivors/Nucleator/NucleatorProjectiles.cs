@@ -20,15 +20,12 @@ namespace Starstorm2Unofficial.Survivors.Nucleator
             Modules.Prefabs.projectilePrefabs.Add(projectilePrefab);
 
             projectilePrefab.transform.localScale *= 1.5f;
-
-            projectilePrefab.AddComponent<DamageAPI.ModdedDamageTypeHolderComponent>(); //Does nothing until SpecialBuffComponent does its thing.
             projectilePrefab.AddComponent<ProjectileCheckSpecialBuffComponent>();
 
             GameObject projectileGhost = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Beetle/BeetleQueenSpitGhost.prefab").WaitForCompletion();
 
             ProjectileDamage pd = projectilePrefab.GetComponent<ProjectileDamage>();
-            pd.damageType = DamageType.Generic;
-            pd.damageType.damageSource = DamageSource.Primary;
+            pd.damageType = DamageTypeCombo.GenericPrimary;
 
             ProjectileController pc = projectilePrefab.GetComponent<ProjectileController>();
             pc.ghostPrefab = projectileGhost;
@@ -67,14 +64,12 @@ namespace Starstorm2Unofficial.Survivors.Nucleator
 
             projectilePrefab.transform.localScale *= 3f;
 
-            projectilePrefab.AddComponent<DamageAPI.ModdedDamageTypeHolderComponent>(); //Does nothing until SpecialBuffComponent does its thing.
             projectilePrefab.AddComponent<ProjectileCheckSpecialBuffComponent>();
 
             GameObject projectileGhost = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/BFG/BeamSphereGhost.prefab").WaitForCompletion().InstantiateClone("SS2UNucleatorPrimaryOverchargeGhost",false);
 
             ProjectileDamage pd = projectilePrefab.GetComponent<ProjectileDamage>();
-            pd.damageType = DamageType.Generic;
-            pd.damageType.damageSource = DamageSource.Primary;
+            pd.damageType = DamageTypeCombo.GenericPrimary;
 
             //Copied from Cyborg
             ParticleSystem[] particles = projectileGhost.GetComponentsInChildren<ParticleSystem>();
