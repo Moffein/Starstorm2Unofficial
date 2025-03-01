@@ -1,0 +1,286 @@
+{
+	strings:
+	{
+		"SS2UEXECUTIONER_NAME": "Исполнитель",
+		"SS2UEXECUTIONER_SUBTITLE": "Ужасная Гильотина",
+		"SS2UEXECUTIONER_DESCRIPTION": "Цель Исполнителя - пролить как можно больше крови за кратчайший срок. Патроны заряжены, ионные манипуляторы готовы.<style=cSub>\r\n\r\n < ! > Ионный Взрыв наносит огромный урон, но запасы восстанавливаются медленно. Убивайте слабых врагов, чтобы быстро зарядить его, а затем выпустите его на более сильных врагов.\r\n\r\n < ! > Разгон толпы прерывает атаки врагов, предоставляя вам окно возможностей.\r\n\r\n < ! > Ужасные враги исполняются при низком здоровье.\r\n\r\n < ! > Скомбинируйте Исполнение с Разгоном Толпы, чтобы быстро убивать группы врагов.\r\n\r\n",
+		"SS2UEXECUTIONER_OUTRO_FLAVOR": "..и так он ушел, жажда крови не удовлетворена.",
+		"SS2UEXECUTIONER_OUTRO_FAILURE": "..и так он исчез, сбежав от того, что считал неизбежным.",
+		"SS2UEXECUTIONER_LORE": "Смерть неизбежна. Она приходит за всеми нами. Некоторые могут пытаться избежать ее или убежать от нее. Но смерть приходит все равно. Смерть, однако, является просто ценой войны. И смерть в славном бою - одна из лучших смертей, о которых может мечтать человек.\n\nНо, как всегда, некоторые будут пытаться убежать от смерти. Мы называем их разными именами. Дезертиры, трусы, предатели. Каждый из них - предатель дела. И это наказание: в ироничном повороте, это то самое, чего они пытались избежать.\n\nСмерть придет к ним. Не как закутанный призрак с косой. Не в плаще, держащем револьвер. Не как болезнь, и не как износ времени. Нет. Для них смерть придет, нося блестящие боевые доспехи, с заряженным служебным пистолетом и полностью заряженными ионными манипуляторами.",
+		
+		"SS2UEXECUTIONER_PISTOL_NAME": "Служебный Пистолет",
+		"SS2UEXECUTIONER_PISTOL_DESCRIPTION": "Стреляйте из пистолета, нанося <style=cIsDamage>2x180% урона</style>.",
+		"SS2UEXECUTIONER_PISTOL_SINGLE_NAME": "Стандартный Пистолет",
+		"SS2UEXECUTIONER_PISTOL_SINGLE_DESCRIPTION": "Стреляйте из пистолета, нанося <style=cIsDamage>180% урона</style>.",
+		
+		"SS2UEXECUTIONER_IONGUN_NAME": "Ионный Взрыв",
+		"SS2UEXECUTIONER_IONGUN_DESCRIPTION": "<style=cIsDamage>Ужасный</style>. Выпустите залп ионизированных пуль, нанося <style=cIsDamage>2x300% урона</style> каждая. Каждого убитого врага <style=cIsUtility>добавляет запас</style>. Максимум до 5.",
+		"KEYWORD_SS2U_FEAR": "<style=cKeywordName>Страх</style><style=cSub>Снижает скорость движения на <style=cIsDamage>50%</style>. Ужасные враги <style=cIsHealth>убиваются мгновенно</style>, если здоровье ниже <style=cIsHealth>15%</style>.</style>",
+		"SS2UEXECUTIONER_DASH_NAME": "Разгон Толпы",
+		"SS2UEXECUTIONER_DASH_DESCRIPTION": "<style=cIsDamage>Ошеломляющий</style>. <style=cIsUtility>Рывок вперед</style> и <style=cIsDamage>Страх</style> ближайших врагов.",
+		"SS2UEXECUTIONER_AXE_NAME": "Исполнение",
+		"SS2UEXECUTIONER_AXE_DESCRIPTION": "<style=cIsDamage>Убийственный</style>. <style=cIsUtility>Запустите в воздух</style>, затем ударьте вниз своим ионным топором, нанося <style=cIsDamage>1000% урона</style>.",
+		"SS2UEXECUTIONER_AXE_SCEPTER_NAME": "Исполнение Толпы",
+		"SS2UEXECUTIONER_AXE_SCEPTER_DESCRIPTION": "<style=cIsDamage>Убийственный</style>. <style=cIsUtility>Запустите в воздух</style>, затем ударьте вниз своим ионным топором и <style=cIsUtility>испугайте</style> ближайших врагов, нанося <style=cIsDamage>1500% урона</style>.",
+		
+		"SS2UEXECUTIONER_UNLOCKUNLOCKABLE_ACHIEVEMENT_NAME": "Перебор",
+		"SS2UEXECUTIONER_UNLOCKUNLOCKABLE_UNLOCKABLE_NAME": "Перебор",
+		"SS2UEXECUTIONER_UNLOCKUNLOCKABLE_ACHIEVEMENT_DESC": "Убейте врага, нанеся 1000% его максимального здоровья в урон.",
+		"ACHIEVEMENT_SS2UEXECUTIONERCLEARGAMEMONSOON_NAME": "Исполнитель: Мастерство",
+		"ACHIEVEMENT_SS2UEXECUTIONERCLEARGAMEMONSOON_DESCRIPTION": "Как Исполнитель, пройдите игру или уничтожьте на уровне Монсун.",
+		"ACHIEVEMENT_SS2UEXECUTIONERCLEARGAMETYPHOON_NAME": "Исполнитель: Великое Мастерство",
+		"ACHIEVEMENT_SS2UEXECUTIONERCLEARGAMETYPHOON_DESCRIPTION": "Как Исполнитель, пройдите игру или уничтожьте на уровне Тайфун.",
+		"ACHIEVEMENT_SS2UEXECUTIONERWASTELANDER_NAME": "Исполнитель: Пробуждение Хранилища",
+		"ACHIEVEMENT_SS2UEXECUTIONERWASTELANDER_DESCRIPTION": "Как Исполнитель, откройте древние врата на Заброшенном Акведуке.",
+		
+		"SS2UEXECUTIONER_MASTERY_SKIN_NAME": "Линчеватель",
+		"SS2UEXECUTIONER_KNIGHT_SKIN_NAME": "Гладиатор",
+		"SS2UEXECUTIONER_WASTELANDER_SKIN_NAME": "Пустошь",
+	
+			
+		"SS2UCYBORG_SUBTITLE" : "Man Made Monstrosity",
+		"SS2UCYBORG_OUTRO_FLAVOR" : "..and so it left, programming releasing excess serotonin.",
+		"SS2UCYBORG_OUTRO_FAILURE" : "..and so it vanished, warp beacon left with no signal.",
+		"SS2UCYBORG_DESCRIPTION" : "Technology was to reach its moral bounds when the Cyborg was created. It's hard to know how much humanity is left inside them.<style=cSub>\r\n\r\n< ! > Cyborg's skills all draw from a single Energy Pool, allowing for flexibility with skill usage.\r\n\r\n< ! > Rising Star deals very high damage per second, but consumes energy quickly.\r\n\r\n< ! > Use Recall to place a Warp Point before engaging contenders so that you have an escape route.\r\n\r\n< ! > Overheat Redress is Cyborg's best tool for dealing with crowds.\r\n\r\n",
+		"SS2UCYBORG_LORE" : "<style=cMono>Audio file found under \"Dr. Rayell's Testimony\". Playing...</style>\n\n\"Recording started. Begin testing, Dr. Rayell.\"\n\n\"Thank you. After the EOD's smashing success with biomechanical augmentations, producing some of the finest combat engineers to ever come out of the department, they proceeded further with slightly more... shall we say, experimental designs.\"\n\n\"How so?\"\n\n\"The department began looking into mental augmentation. It was definitely a leap, to be sure. Augmentation was already very cutting edge, but supplementing - or even replacing a damaged brain? It was a tall order. But the heads thought we could do it, so we obliged.\"\n\n\"Hm. What came of your project?\"\n\n\"Once prototyping was complete, we began the human trials. We got all sorts of folks as test subjects, they were vegetative, mentally unstable, broken people. We were told to fix them as best would could.\"\n\n\"And how did that go?\"\n\n\"It was... It was a travesty. Some of them were simply too far gone. There was nothing we could do. Those were the best cases. Worse was when they rejected the replacements. Some died in a swift immune response. The more cognisant ones begged for us to end the headaches they were having. Some of them just started screaming. They'd scream for hours and hours, sometimes for days even. And then they'd stop. They'd literally scream themselves to death.\"\n\n\"That's, um, a bit unsettling. Is that all?\"\n\n\"There was one. One who made it through the replacement. And it worked wonderfully. We got him in a vegetative state, no hope whatsoever, and we took him from that, and we gave him - maybe not his full life back, but perhaps something resembling it. You have no idea how thankful I was to hear that he was doing well.\"\n\n\"Well, I suppose that's good to hear. So, what's happened to him?\"\n\n\"You know? I'm not sure. Other than some behavioral changes, which is to be expected, he was able to return to society rather gracefully. We've done check-ups on him every three months to analyze long-term effects, but... Actually? Now that I'm thinking about it, he didn't show up for it last month. Oh, well. I'm sure he's doing fine. I'll have to contact him about that.\"\n\n\"Um, alright, then. Thank you for your time, Dr. Rayell. Your testimony is... Well, it's certainly something. I hope to hear more about your projects in the future.\"\n\n\"Very well. I hope you find what you're looking for.\"\n\n<style=cMono>End of file.</style>",
+		
+		"SS2UCYBORG_NAME": "Киборг",
+		"SS2UCYBORG_SUBTITLE": "Чудовище, созданное человеком",
+		"SS2UCYBORG_OUTRO_FLAVOR": "..и так он ушел, программируя избыток серотонина.",
+		"SS2UCYBORG_OUTRO_FAILURE": "..и так он исчез, маяк искажения остался без сигнала.",
+		"SS2UCYBORG_DESCRIPTION": "Технология достигла своих моральных границ, когда был создан Киборг. Трудно сказать, сколько человечности осталось внутри него.<style=cSub>\r\n\r\n< ! > Умения Киборга используют общий Энергетический Ресурс, что позволяет гибко использовать навыки.\r\n\r\n< ! > Восходящая Звезда наносит очень высокий урон в секунду, но быстро расходует энергию.\r\n\r\n< ! > Используйте Воспоминание, чтобы установить Точку Искажения перед тем, как вступить в бой, чтобы у вас был путь к отступлению.\r\n\r\n< ! > Перегрев - лучший инструмент Киборга для борьбы с толпами.\r\n\r\n",
+		"SS2UCYBORG_LORE": "<style=cMono>Аудиофайл найден под \"Свидетельством д-ра Рейелла\". Воспроизведение...</style>\n\n\"Запись начата. Начать тестирование, д-р Рейелл.\"\n\n\"Спасибо. После ошеломляющего успеха EOD с биомеханическими дополнениями, которые произвели некоторых из лучших боевых инженеров, когда-либо выходивших из отдела, они продвинулись дальше с немного более... скажем, экспериментальными дизайнами.\"\n\n\"Как именно?\"\n\n\"Отдел начал изучать умственное дополнение. Это определенно был шаг вперед, чтобы быть уверенным. Дополнение уже было на переднем крае, но дополнение - или даже замена поврежденного мозга? Это было сложной задачей. Но руководители думали, что мы можем это сделать, так что мы согласились.\"\n\n\"Хм. Что вышло из вашего проекта?\"\n\n\"Как только прототипирование было завершено, мы начали испытания на людях. Мы получили всевозможных людей в качестве испытуемых, они были в вегетативном состоянии, психически нестабильные, сломанные люди. Нам сказали исправить их как можно лучше.\"\n\n\"И как это прошло?\"\n\n\"Это было... Это было ужасно. Некоторые из них были просто слишком далеко. Мы ничего не могли сделать. Это были лучшие случаи. Хуже было, когда они отвергали замены. Некоторые умирали от быстрого иммунного ответа. Более сознательные умоляли нас положить конец головным болям, которые они испытывали. Некоторые просто начинали кричать. Они кричали часами и часами, иногда даже днями. А потом они останавливались. Они буквально кричали до смерти.\"\n\n\"Это, эм, немного тревожно. Это все?\"\n\n\"Был один. Один, кто прошел замену. И это сработало прекрасно. Мы получили его в вегетативном состоянии, без всякой надежды, и мы вывели его из этого, и мы дали ему - может, не всю его жизнь обратно, но, возможно, что-то, что на нее похоже. Вы не представляете, как я был благодарен услышать, что с ним все хорошо.\"\n\n\"Ну, я полагаю, это хорошо слышать. Так что, что с ним случилось?\"\n\n\"Знаете? Я не уверен. Кроме некоторых изменений в поведении, что ожидаемо, он смог вернуться в общество довольно грациозно. Мы проводили проверки каждые три месяца, чтобы проанализировать долгосрочные эффекты, но... На самом деле? Теперь, когда я об этом думаю, он не пришел на проверку в прошлом месяце. О, ну. Я уверен, что с ним все в порядке. Мне нужно будет связаться с ним по этому поводу.\"\n\n\"Эм, хорошо, тогда. Спасибо за ваше время, д-р Рейелл. Ваше свидетельство - это... Ну, это определенно что-то. Я надеюсь услышать больше о ваших проектах в будущем.\"\n\n\"Очень хорошо. Я надеюсь, вы найдете то, что ищете.\"\n\n<style=cMono>Конец файла.</style>",
+				
+		"SS2UCYBORG_PASSIVE_NAME": "Энергетическое ядро",
+		"SS2UCYBORG_PASSIVE_DESCRIPTION": "Умения Киборга используют общий <color=#8BEDE3>Энергетический Ресурс</color> для своих перезарядок.\nУдерживание клавиши прыжка заставляет Киборга <style=cIsUtility>парить в воздухе</style>.",
+		"SS2UCYBORG_PASSIVE_DESCRIPTION_NOENERGY": "Удерживание клавиши прыжка заставляет Киборга <style=cIsUtility>парить в воздухе</style>.",
+				
+		"SS2UCYBORG_PRIMARY_GUN_NAME": "Разрушитель",
+		"SS2UCYBORG_PRIMARY_GUN_DESCRIPTION": "Стреляйте лучом в противников за <style=cIsDamage>300% урона</style>.",
+				
+		"SS2UCYBORG_PRIMARY_CHARGE_NAME": "Пронзающий Выстрел",
+		"SS2UCYBORG_PRIMARY_CHARGE_DESCRIPTION": "Зарядите луч, который пронзает за <style=cIsDamage>300%-900% урона</style>. Наносит <style=cIsDamage>1200%</style> урона при <style=cIsDamage>идеальной зарядке</style>.",
+				
+		"SS2UCYBORG_SECONDARY_DEFENSEMATRIX_NAME": "Матрица Защиты",
+		"SS2UCYBORG_SECONDARY_DEFENSEMATRIX_DESCRIPTION": "<color=#8BEDE3>15% Энергии/с</color>. Проектируйте энергетическое поле, которое <style=cIsUtility>нейтрализует дальние атаки</style>.",
+		"SS2UCYBORG_SECONDARY_DEFENSEMATRIX_DESCRIPTION_NOENERGY": "Проектируйте энергетическое поле, которое <style=cIsUtility>нейтрализует дальние атаки</style>.",
+				
+		"SS2UCYBORG_SECONDARY_TRISHOT_NAME": "Восходящая Звезда",
+		"SS2UCYBORG_SECONDARY_TRISHOT_DESCRIPTION": "<color=#8BEDE3>30% Энергии/с</color>. Быстро стреляйте <style=cIsUtility>замедляющими</style> выстрелами по противникам за <style=cIsDamage>3x140% урона</style>.",
+		"SS2UCYBORG_SECONDARY_TRISHOT_DESCRIPTION_NOENERGY": "Быстро стреляйте <style=cIsUtility>замедляющими</style> выстрелами по противникам за <style=cIsDamage>3x140% урона</style>.",
+				
+		"SS2UCYBORG_UTILITY_TELEPORT_NAME": "Воспоминание",
+		"SS2UCYBORG_UTILITY_TELEPORT_DESCRIPTION": "<color=#8BEDE3>50% Энергии</color>. Создайте <style=cIsUtility>точку искажения</style>. Повторная активация позволяет <style=cIsUtility>телепортироваться на ее место</style>. Удерживайте, чтобы удалить существующие точки искажения.",
+		"SS2UCYBORG_UTILITY_TELEPORT_DESCRIPTION_NOENERGY": "<style=cIsDamage>Шокирующий</style>. Создайте <style=cIsUtility>точку искажения</style>. Повторная активация позволяет <style=cIsUtility>телепортироваться на ее место</style> и наносит <style=cIsDamage>800% урона</style>. Удерживайте, чтобы удалить существующие точки искажения.",
+				
+		"SS2UCYBORG_UTILITY_FLIGHT_NAME": "Режим Полета",
+		"SS2UCYBORG_UTILITY_FLIGHT_DESCRIPTION": "<color=#8BEDE3>60% Энергии/с</color>. <style=cIsUtility>Тяжелый</style>. Поднимитесь в воздух, получая <style=cIsUtility>200% скорости движения</style>. Наносит <style=cIsDamage>400% урона</style> противникам при столкновении.",
+		"SS2UCYBORG_UTILITY_FLIGHT_DESCRIPTION_NOENERGY": "<style=cIsUtility>Тяжелый</style>. Поднимитесь в воздух, получая <style=cIsUtility>200% скорости движения</style>. Наносит <style=cIsDamage>400% урона</style> противникам при столкновении.",
+				
+		"SS2UCYBORG_OVERHEAT_NAME": "Перегрев",
+		"SS2UCYBORG_OVERHEAT_DESCRIPTION": "<color=#8BEDE3>60% Энергии</color>. <style=cIsUtility>Отбросьте себя назад</style>, стреляя более мощной энергетической пулей, которая наносит максимум <style=cIsDamage>1200% урона в секунду</style>.",
+		"SS2UCYBORG_OVERHEAT_DESCRIPTION_NOENERGY": "<style=cIsUtility>Отбросьте себя назад</style>, стреляя более мощной энергетической пулей, которая наносит максимум <style=cIsDamage>1200% урона в секунду</style>.",
+				
+		"SS2UCYBORG_OVERHEAT_SCEPTER_NAME": "Гамма Перегрев",
+		"SS2UCYBORG_OVERHEAT_SCEPTER_DESCRIPTION": "<color=#8BEDE3>60% Энергии</color>. <style=cIsUtility>Отбросьте себя назад</style> и стреляйте более мощной энергетической пулей, которая наносит максимум <style=cIsDamage>1800% урона в секунду</style>.",
+		"SS2UCYBORG_OVERHEAT_SCEPTER_DESCRIPTION_NOENERGY": "<style=cIsUtility>Отбросьте себя назад</style> и стреляйте более мощной энергетической пулей, которая наносит максимум <style=cIsDamage>1800% урона в секунду</style>.",
+				
+		"SS2UCYBORG_SHOCKCORE_NAME": "Шоковый Ядро",
+		"SS2UCYBORG_SHOCKCORE_DESCRIPTION": "<color=#8BEDE3>40% Энергии</color>. <style=cIsDamage>Шокирующий</style>. Стреляйте энергетическим ядром за <style=cIsDamage>400% урона</style>. Стреляйте в ядро, чтобы вызвать его взрыв за <style=cIsDamage>1200% урона</style>.",
+		"SS2UCYBORG_SHOCKCORE_DESCRIPTION_NOENERGY": "<style=cIsDamage>Шокирующий</style>. Стреляйте энергетическим ядром за <style=cIsDamage>400% урона</style>. Стреляйте в ядро, чтобы вызвать его взрыв за <style=cIsDamage>1200% урона</style>.",
+				
+		"SS2UCYBORG_SHOCKCORE_SCEPTER_NAME": "Гамма Шоковый Ядро",
+		"SS2UCYBORG_SHOCKCORE_SCEPTER_DESCRIPTION": "<color=#8BEDE3>40% Энергии</color>. <style=cIsDamage>Шокирующий</style>. Стреляйте энергетическим ядром за <style=cIsDamage>600% урона</style>. Стреляйте в ядро, чтобы вызвать его взрыв за <style=cIsDamage>1800% урона</style>.",
+		"SS2UCYBORG_SHOCKCORE_SCEPTER_DESCRIPTION_NOENERGY": "<style=cIsDamage>Шокирующий</style>. Стреляйте энергетическим ядром за <style=cIsDamage>600% урона</style>. Стреляйте в ядро, чтобы вызвать его взрыв за <style=cIsDamage>1800% урона</style>.",
+				
+		"ACHIEVEMENT_SS2UCYBORGCLEARGAMEMONSOON_NAME": "Киборг: Мастерство",
+		"ACHIEVEMENT_SS2UCYBORGCLEARGAMEMONSOON_DESCRIPTION": "Как Киборг, пройдите игру или уничтожьте на уровне Монсун.",
+		"SS2UCYBORG_MASTERY_SKIN_NAME": "Паровой Киборг",
+				
+		"ACHIEVEMENT_SS2UCYBORGCLEARGAMETYPHOON_NAME": "Киборг: Великое Мастерство",
+		"ACHIEVEMENT_SS2UCYBORGCLEARGAMETYPHOON_DESCRIPTION": "Как Киборг, пройдите игру или уничтожьте на уровне Тайфун.",
+		"SS2UCYBORG_GRANDMASTERY_SKIN_NAME": "Метаморфный",
+		
+		"SS2UPYRO_NAME": "Пироман",
+		"SS2UPYRO_SUBTITLE": "Уничтожение вредителей",
+		"SS2UPYRO_OUTRO_FLAVOR": "..и так он ушел, в огненном сиянии славы.",
+		"SS2UPYRO_OUTRO_FAILURE": "..и так он исчез, оставив только пепел позади.",
+		"SS2UPYRO_DESCRIPTION": "Пироман не остановится ни перед чем, чтобы сжечь все на своем пути.\r\n\r\n< ! > Обжиг генерирует тепло, необходимое для использования способностей Пиромана.\r\n\r\n< ! > \"Подавляющий Огонь\" может поражать цели, которые слишком далеко, чтобы их достать с помощью Обжига.\r\n\r\n< ! > План Б позволяет быстро войти и выйти из боев.\r\n\r\n< ! > Пылающий Сигнал сильнее всего, когда используется при высоком тепле.\r\n\r\n",
+		"SS2UPYRO_LORE": "<style=cMono>//--АВТО-ТРАНСКРИПЦИЯ СЕКЦИИ ПАТРУЛЯ 7 РАЛЛИПУНКТА СИГМА--//</style>\n\nДва патрульных охранника входят в поле зрения камеры, звуки их спора постепенно затихают, когда они занимают свои позиции на патрульном пункте.\n\n\"Нет! В последний раз, нет! Он не пойдет разбираться с жуками.\"\n\n\"Давай, Алан! Эти жуки уже слишком долго беспокоят ралли-пункт. Я имею в виду, черт возьми, только прошлой ночью эти вещи чуть не убили меня, черт возьми!\"\n\n\"Хорошо, во-первых, Джесс, прекрати преувеличивать. Ты был в порядке. Они могут становиться более агрессивными, но это ничего, с чем мы не можем справиться. Он просто будет обузой.\"\n\n\"Что ты имеешь в виду, обузой?\" Джесс машет рукой в сторону. \"Насколько я знаю, он единственный, кто лучше всего подходит для борьбы с этими жуками.\"\n\n\"О, не знаю.\" Алан ставит оружие, чтобы начать отсчет. \"Он угрожал людям, выходил на 'охотничьи поездки' посреди ночи без никого, он поджигал в общежитии, когда возился с горелкой, и это все до того, как мы забрали у него оружие.\" Он издает подавленный вздох. \"Честно говоря, с его поведением, я поражен, что его вообще допустили на корабль.\"\n\n\"Он просто хочет убивать, вот и все.\" Ответил Джесс, прежде чем пожал плечами. \"И да, это довольно странно, но если бы ты вернул ему его вещи и сказал ему бежать в сторону леса и сжигать все, что движется, он, вероятно, сделал бы это с радостью.\"\n\n\"Эх...\"\n\n\"Кроме того, если он это сделает, он, вероятно, просто убьет себя.\" Джесс добавил с усмешкой, \"Тогда он не будет проблемой для никого.\"",
+				
+		"SS2UPYRO_PRIMARY_NAME": "Обжиг",
+		"SS2UPYRO_PRIMARY_DESCRIPTION": "<color=#D78326>Накопите тепло</color> и сжигайте врагов за <style=cIsDamage>420% урона в секунду</style>. <style=cIsDamage>Зажигает</style> при <color=#D78326>высоком тепле</color>.",
+				
+		"SS2UPYRO_SECONDARY_NAME": "Возврат к Отправителю",
+		"SS2UPYRO_SECONDARY_DESCRIPTION": "<color=#D78326>Потребляет 25% тепла</color> и выпускает не lethal взрыв воздуха, который <style=cIsUtility>отталкивает</style> врагов и <style=cIsUtility>отражает снаряды</style>.",
+				
+		"SS2UPYRO_SECONDARY_ALT_NAME": "\"Подавляющий Огонь\"",
+		"SS2UPYRO_SECONDARY_ALT_DESCRIPTION": "<color=#D78326>Быстро потребляет тепло</color>, чтобы выпустить поток огненных шаров, которые наносят <style=cIsDamage>1200% урона в секунду</style> и <style=cIsDamage>зажигают</style>.",
+				
+		"SS2UPYRO_UTILITY_NAME": "План Б",
+		"SS2UPYRO_UTILITY_DESCRIPTION": "<color=#D78326>Потребляет 40% тепла</color> и <style=cIsUtility>летит вперед</style>. Удерживайте кнопку, чтобы лететь дальше, затрачивая больше <color=#D78326>тепла</color>.",
+				
+		"SS2UPYRO_SPECIAL_NAME": "Пылающий Сигнал",
+		"SS2UPYRO_SPECIAL_DESCRIPTION": "<color=#D78326>Потребляет все тепло</color> и выпускает сигнал за <style=cIsDamage>400% урона</style>. При ударе взрывается на <style=cIsDamage>до 8x200% урона</style> в зависимости от <color=#D78326>потраченного тепла</color>.",
+				
+		"SS2UPYRO_SPECIAL_SCEPTER_NAME": "Адский Сигнал",
+		"SS2UPYRO_SPECIAL_SCEPTER_DESCRIPTION": "<color=#D78326>Потребляет все тепло</color> и выпускает сигнал за <style=cIsDamage>400% урона</style>. При ударе взрывается на <style=cIsDamage>до 16x200% урона</style> в зависимости от <color=#D78326>потраченного тепла</color>.",
+				
+		"SS2UPYRO_MASTERYUNLOCKABLE_UNLOCKABLE_NAME": "Пироман: Мастерство",
+		"SS2UPYRO_MASTERYUNLOCKABLE_ACHIEVEMENT_NAME": "Пироман: Мастерство",
+		"SS2UPYRO_MASTERYUNLOCKABLE_ACHIEVEMENT_DESC": "Как Пироман, пройдите игру или уничтожьте на уровне Монсун.",
+				
+		"SS2UPYRO_GRANDMASTERYUNLOCKABLE_UNLOCKABLE_NAME": "Пироман: Великое Мастерство",
+		"SS2UPYRO_GRANDMASTERYUNLOCKABLE_ACHIEVEMENT_NAME": "Пироман: Великое Мастерство",
+		"SS2UPYRO_GRANDMASTERYUNLOCKABLE_ACHIEVEMENT_DESC": "Как Пироман, пройдите игру или уничтожьте на уровне Тайфун.",
+				
+		"SS2UCHIRR_NAME": "Чирр",
+		"SS2UCHIRR_SUBTITLE": "Лесной Дух",
+		"SS2UCHIRR_DESCRIPTION": "Чирр - это мистическое существо, которое имеет чистую связь с планетой.<style=cSub>\r\n\r\n< ! > Жизненные Шипы наносят низкий, но постоянный урон.\r\n\r\n< ! > Используйте Удар Головой, когда вас окружили, чтобы получить немного пространства.\r\n\r\n< ! > Исцеляющая Аура может спасти союзников от смерти, если использовать вовремя.\r\n\r\n< ! > Природная Связь может быть использована для отвлечения врагов.\r\n\r\n",
+		"SS2UCHIRR_LORE": "\"Уилл? Уилл, ты на связи?\"\n\n\"Эм, да, что случилось?\"\n\n\"Против всех шансов, я нашел что-то, что не только не пыталось меня убить, но и кажется искренне дружелюбным.\"\n\n\"О, да? Это впечатляет. Что это?\"\n\n\"Это, эм, жук? Может быть? Я не уверен. Он определенно выглядит как какая-то гигантская богомол, но-\"\n\n\"Подожди, подожди. Ты сказал гигантская богомол? Насколько он большой, ты думаешь?\"\n\n\"Эм, подожди, дай мне минуту...\"\n\n\"...Примерно, скажем, 3 метра в длину? И около 2 метров в высоту.\"\n\n\"Это... довольно большой. Ты уверен, что это существо дружелюбно?\"\n\n\"О, абсолютно. Я наткнулся на него, когда убегал от роя ос, и в тот момент, когда я прошел мимо, он начал агрессивно атаковать их. Он распылял иглы в них, бодал тех, кто был на земле, и продолжал атаковать, пока они не улетели. Территориальный? Возможно, но похоже, что осам это существо ненавидело так же, как и мне.\"\n\n\"Хм. Ну, я думаю, если оно защищает тебя, то продолжай в том же духе.\"\n\n\"Хорошо, тогда. Я буду держать тебя в курсе- Хм? Что-то не так, Чирр?\"\n\n\"Х- Подожди. Кто такая Чирр?\"\n\n\"Это ее имя. Богомол, или что-то в этом роде.\"\n\n\"...Подожди.\"",
+		"SS2UCHIRR_OUTRO_FLAVOR": "..и так она ушла, неся новую жизнь в своем духе.",
+		"SS2UCHIRR_OUTRO_MAID_FLAVOR": "..и так она ушла, довольная тем, что смогла помочь.",
+		"SS2UCHIRR_OUTRO_FAILURE": "..и так она исчезла, не оставив никого, кто бы ее ждал.",
+				
+		"SS2UCHIRR_PASSIVE_NAME": "Взлет",
+		"SS2UCHIRR_PASSIVE_DESCRIPTION": "Чирр прыгает <style=cIsUtility>на 50% выше</style> и может <style=cIsUtility>парить в воздухе</style>, удерживая клавишу прыжка.",
+				
+		"SS2UCHIRR_DARTS_NAME": "Жизненные Шипы",
+		"SS2UCHIRR_DARTS_DESCRIPTION": "Запустите залп <style=cIsUtility>следящих шипов</style> за <style=cIsDamage>3x90% урона</style>.",
+				
+		"SS2UCHIRR_HEADBUTT_NAME": "Удар Головой",
+		"SS2UCHIRR_HEADBUTT_DESCRIPTION": "<style=cIsDamage>Ошеломляющий</style>. Направься вперед и оттолкни врагов назад за <style=cIsDamage>500% урона</style>.",
+				
+		"SS2UCHIRR_HEAL_NAME": "Исцеляющая Аура",
+		"SS2UCHIRR_HEAL_DESCRIPTION": "Исцелите себя и ближайших союзников на <style=cIsHealing>30%</style> от их общего здоровья и <style=cIsUtility>очистите все дебаффы</style>. Союзники получают <style=cIsHealing>увеличенную регенерацию здоровья</style> на короткий период.",
+				
+		"KEYWORD_SS2U_CHIRR_PING": "<style=cKeywordName>Команда Пинга</style><style=cSub>Ваш друг попытается атаковать пингованные враги.</style>",
+		"SS2UCHIRR_BEFRIEND_NAME": "Природная Связь",
+		"SS2UCHIRR_BEFRIEND_DESCRIPTION": "<style=cIsUtility>Подружитесь</style> с целевым врагом, если у него <style=cIsHealth>менее 50% здоровья</style>.\nПовторная активация позволяет <style=cIsUtility>телепортировать</style> вашего друга к вам и <style=cIsUtility>отвлечь ближайших врагов</style>.\nДрузья <style=cIsUtility>унаследуют все ваши предметы</style>.",
+				
+		"SS2UCHIRR_LEASH_NAME": "Неразрывная Связь",
+		"SS2UCHIRR_LEASH_DESCRIPTION": "Телепортируйте своего друга к себе и <style=cIsUtility>отвлеките ближайших врагов</style>. Удерживайте, чтобы расстаться с другом.",
+				
+		"SS2UCHIRR_BEFRIEND_SCEPTER_NAME": "Первичная Природная Связь",
+		"SS2UCHIRR_BEFRIEND_SCEPTER_DESCRIPTION": "<style=cIsUtility>Подружитесь</style> с целевым врагом, если у него <style=cIsHealth>менее 50% здоровья</style>, или <style=cIsHealth>менее 30% здоровья</style>, если это босс.\nПовторная активация позволяет <style=cIsUtility>телепортировать</style> вашего друга к вам и <style=cIsUtility>отвлечь ближайших врагов</style>.\nДрузья <style=cIsUtility>унаследуют все ваши предметы</style>.",
+				
+		"ACHIEVEMENT_SS2UCHIRRCLEARGAMEMONSOON_NAME": "Чирр: Мастерство",
+		"ACHIEVEMENT_SS2UCHIRRCLEARGAMEMONSOON_DESCRIPTION": "Как Чирр, пройдите игру или уничтожьте на уровне Монсун.",
+		"SS2UCHIRR_MASTERY_SKIN_NAME": "Служанка",
+				
+		"ACHIEVEMENT_SS2UCHIRRCLEARGAMETYPHOON_NAME": "Чирр: Великое Мастерство",
+		"ACHIEVEMENT_SS2UCHIRRCLEARGAMETYPHOON_DESCRIPTION": "Как Чирр, пройдите игру или уничтожьте на уровне Тайфун.",
+				
+		"SS2UCHIRR_OUTRO_BROTHER_EASTEREGG": "..и вместе они ушли, узнав, что настоящая Риск дождя - это друзья, которых они завели по пути.",
+		"SS2UBROTHER_KILL_CHIRR1": " Присоединяйтесь к своим сестрам.",
+		"SS2UBROTHER_KILL_CHIRR2": " Наконец-то вымерли.",
+		"SS2UBROTHERHURT_CHIRR_BEFRIEND_1": " ТЫ... ПРОТЯГИВАЕШЬ... К МНЕ, ГАД?",
+		"SS2UFALSESONBOSS_CHIRR_BEFRIEND_1": " Были ли вы... бурей, которую я искал все это время?",
+				
+		"SS2UNUCLEATOR_NAME": "Нуклеатор",
+		"SS2UNUCLEATOR_SUBTITLE": "Ходячий Fallout",
+		"SS2UNUCLEATOR_DESCRIPTION": "Нуклеатор - это радиоактивный гигант с радиационно-устойчивой броней, который позволяет ему манипулировать ядерными компонентами в течение длительного времени.<style=cSub>\r\n\r\n< ! > Нуклеатор может заряжать свои навыки для максимального выхода, но будьте осторожны, так как их перегрузка может привести к самоповреждению!\r\n\r\n< ! > Проектиль Ионизации увеличивает радиус взрыва по мере увеличения расстояния.\r\n\r\n< ! > Карантин всегда применяет одинаковую силу отталкивания независимо от уровня заряда.\r\n\r\n< ! > Стратегическое использование Радионуклидного Всплеска позволит вам восстановить здоровье, потерянное от перегрузки навыков.\r\n\r\n",
+		"SS2UNUCLEATOR_OUTRO_FLAVOR": "..и так он ушел, состояние здоровья не раскрыто.",
+		"SS2UNUCLEATOR_OUTRO_FAILURE": "..и так он исчез, оставив за собой непригодную для жизни пустошь.",
+		"SS2UNUCLEATOR_LORE": "смеяться и толстеть",
+				
+		"SS2UNUCLEATOR_PASSIVE_NAME": "Полная Авария",
+		"SS2UNUCLEATOR_PASSIVE_DESCRIPTION": "Навыки Нуклеатора не подвержены <style=cIsDamage>Скорости Атаки</style>. <style=cIsDamage>Скорость Атаки</style> преобразуется в <style=cIsDamage>Урон</style> вместо этого.",
+				
+		"SS2UNUCLEATOR_PRIMARY_NAME": "Ионизация",
+		"SS2UNUCLEATOR_PRIMARY_DESCRIPTION": "Зарядите и стреляйте глобусом ядерных отходов за <style=cIsDamage>200%-720% урона</style>, до <style=cIsDamage>1080% урона</style> при <style=cIsHealth>перегрузке</style>. Радиус увеличивается с расстоянием.",
+				
+		"SS2UNUCLEATOR_SECONDARY_NAME": "Карантин",
+		"SS2UNUCLEATOR_SECONDARY_DESCRIPTION": "<style=cIsDamage>Ошеломляющий</style>. Зарядите и <style=cIsUtility>оттолкните</style> врагов за <style=cIsDamage>200%-720% урона</style>, до <style=cIsDamage>1080% урона</style> и <style=cIsDamage>корень</style> при <style=cIsHealth>перегрузке</style>.",
+				
+		"SS2UNUCLEATOR_UTILITY_NAME": "Импульс Деления",
+		"SS2UNUCLEATOR_UTILITY_DESCRIPTION": "<style=cIsDamage>Ошеломляющий</style>. Зарядите прыжок и получите <style=cIsUtility>200 брони</style>. Наносит <style=cIsDamage>400%-800% урона</style> при столкновении, до <style=cIsDamage>1200% урона</style> при <style=cIsHealth>перегрузке</style>.",
+				
+		"SS2UNUCLEATOR_SPECIAL_NAME": "Радионуклидный Всплеск",
+		"SS2UNUCLEATOR_SPECIAL_DESCRIPTION": "Станьте ядерным в течение <style=cIsUtility>6 секунд</style>, <style=cIsHealing>восстанавливая здоровье от <style=cIsHealth>перегрузки</style></style> и добавляя <style=cIsDamage>Радиационное Отравление</style> к каждой атаке.",
+				
+		"SS2UNUCLEATOR_SPECIAL_SCEPTER_NAME": "Радионуклидный Эффлюкс",
+		"SS2UNUCLEATOR_SPECIAL_SCEPTER_DESCRIPTION": "Войдите в ядерное состояние на <style=cIsUtility>12 секунд</style>, становясь <style=cIsUtility>иммунным к <style=cIsHealth>перегрузке</style> урону</style> и добавляя <style=cIsDamage>Радиационное Отравление</style> к каждой атаке.",
+				
+		"KEYWORD_SS2U_RADIATION": "<style=cKeywordName>Радиационное Отравление</style><style=cSub>Наносит урон, эквивалентный <style=cIsDamage>5%</style> от их максимального здоровья в течение 5 секунд.</style>",
+				
+		"SS2UNUCLEATOR_UNLOCKUNLOCKABLE_UNLOCKABLE_NAME": "Перегрузка",
+		"SS2UNUCLEATOR_UNLOCKUNLOCKABLE_ACHIEVEMENT_NAME": "Перегрузка",
+		"SS2UNUCLEATOR_UNLOCKUNLOCKABLE_ACHIEVEMENT_DESC": "Соберите 5 Легендарных предметов за один забег.",
+				
+		"SS2UNUCLEATOR_MASTERYUNLOCKABLE_UNLOCKABLE_NAME": "Нуклеатор: Мастерство",
+		"SS2UNUCLEATOR_MASTERYUNLOCKABLE_ACHIEVEMENT_NAME": "Нуклеатор: Мастерство",
+		"SS2UNUCLEATOR_MASTERYUNLOCKABLE_ACHIEVEMENT_DESC": "Как Нуклеатор, пройдите игру или уничтожьте на уровне Монсун.",
+				
+		"SS2UNUCLEATOR_GRANDMASTERYUNLOCKABLE_UNLOCKABLE_NAME": "Нуклеатор: Великое Мастерство",
+		"SS2UNUCLEATOR_GRANDMASTERYUNLOCKABLE_ACHIEVEMENT_NAME": "Нуклеатор: Великое Мастерство",
+		"SS2UNUCLEATOR_GRANDMASTERYUNLOCKABLE_ACHIEVEMENT_DESC": "Как Нуклеатор, пройдите игру или уничтожьте на уровне Тайфун.",
+		
+		"SS2UNEMMANDO_NAME": "Коммандо Ненависти",
+		"SS2UNEMMANDO_SUBTITLE": "Одинокое Эхо",
+		"SS2UNEMMANDO_DESCRIPTION": "Происхождение Коммандо Ненависти неизвестно, но одно ясно: он больше не тот, кем был раньше.<style=cSub>\r\n\r\n< ! > Лезвие Уничтожения рискованно, но может накапливать много урона, накапливая Глубокие Удары.\r\n\r\n< ! > Дальний Удар можно использовать, чтобы безопасно наносить Глубокие Удары группам врагов - воспользуйтесь его пробивной силой!\r\n\r\n< ! > Правильный баланс ближнего и дальнего боя - ключ к успеху, а Тактический Ролл дает высокую броню, чтобы помочь войти и выйти из боев.\r\n\r\n< ! > Подавление наносит огромный урон, когда полностью заряжено.\r\n\r\n",
+		"SS2UNEMMANDO_LORE": "Он лежит у костра, держа оружие на расстоянии. Проверяя окружение, надеясь, что пещера, в которой он прячется, будет достаточно укрытием. Некоторые скажут, что быть слишком осторожным - это не мудро. Он скажет, что <color=#FFCCED>они не видели достаточно.</color>\n\nСлужебный пистолет, который он получил, когда поступил на службу. Хорошо использованный, запачканный и любимый. Он прошел через трудные времена, независимо от того, какую миссию он выполнял. Некоторые скажут, что только дурак доверяет своему оружию. Он скажет, что <color=#FFCCED>ваше оружие - это все, на что вы можете положиться.</color>\n\nЛезвие упавшего брата войны. Подобранное из того, что он смог найти из последнего, что он видел из человечества. Некоторые скажут, что это держит их дух вместе. Он скажет, что <color=#FFCCED>это держит их духи от соединения как можно дольше.</color>\n\nГрузы, которые приземлились с ним. Каждый предмет, подобранный из ящика, поддерживает его в живых так или иначе. Десятки поставок для кого угодно, кроме него. Некоторые скажут, что это не его вещи, чтобы забирать. Он скажет, что <color=#FFCCED>если он не возьмет их, тогда никто не возьмет.</color>\n\nСвет фиолетового света, исходящий из глубины пещеры. Успокаивающий, согревающий... манящий. Некоторые скажут, что то, что звучит слишком хорошо, вероятно, таковым и является. Он скажет, что <color=#FFCCED>Фауст был мудрым человеком.</color>",
+				
+		"SS2UNEMMANDO_PASSIVE_NAME": "Глубокие Удары",
+		"SS2UNEMMANDO_PASSIVE_DESCRIPTION": "Каждый удар, который вы наносите, накапливает <style=cIsDamage>Глубокие Удары</style> на врагах. Каждый накопленный удар увеличивает урон на <style=cIsDamage>50%</style> <style=cStack>(+50% за каждую единицу)</style>.",
+				
+		"SS2UNEMMANDO_PRIMARY_BLADE_NAME": "Лезвие Уничтожения",
+		"SS2UNEMMANDO_PRIMARY_BLADE_DESCRIPTION": "<style=cIsHealth>Глубокие Удары</style>. <style=cIsUtility>Гибкий.</style> Режьте врагов за <style=cIsDamage>160% урона</style>.",
+				
+		"SS2UNEMMANDO_SECONDARY_CONCUSSION_NAME": "Дальний Удар",
+		"SS2UNEMMANDO_SECONDARY_CONCUSSION_DESCRIPTION": "<style=cIsHealth>Глубокие Удары</style>. Зарядите пробивной меч за <style=cIsDamage>200%-600% урона</style>.",
+				
+		"SS2UNEMMANDO_SECONDARY_SHOOT_NAME": "Одиночный Выстрел",
+		"SS2UNEMMANDO_SECONDARY_SHOOT_DESCRIPTION": "Стреляйте из пистолета за <style=cIsDamage>210% урона</style>. Может держать до 6 пуль.",
+				
+		"SS2UNEMMANDO_UTILITY_DODGE_NAME": "Тактический Ролл",
+		"SS2UNEMMANDO_UTILITY_DODGE_DESCRIPTION": "<style=cIsUtility>Ролл</style> на короткое расстояние и получите <style=cIsUtility>100 брони</style>.",
+				
+		"SS2UNEMMANDO_SPECIAL_SUBMISSION_NAME": "Подавление",
+		"SS2UNEMMANDO_SPECIAL_SUBMISSION_DESCRIPTION": "Зарядите залп <style=cIsDamage>5 выстрелов из дробовика</style>, которые наносят <style=cIsDamage>4x120% урона</style> каждый. Количество выстрелов увеличивается с атакующей скоростью.",
+				
+		"SS2UNEMMANDO_SPECIAL_EPIC_NAME": "Решающий Удар",
+		"SS2UNEMMANDO_SPECIAL_EPIC_DESCRIPTION": "<style=cIsHealth>Глубокие Удары</style>. Зарядите разрушительный залп <style=cIsDamage>резов</style>, который наносит до <style=cIsDamage>6x360% урона</style>.",
+				
+		"SS2UNEMMANDO_SPECIAL_SCEPSUBMISSION_NAME": "Подавление",
+		"SS2UNEMMANDO_SPECIAL_SCEPSUBMISSION_DESCRIPTION": "Зарядите залп <style=cIsDamage>5 выстрелов из дробовика</style>, которые наносят <style=cIsDamage>4x120% урона</style> каждый. Количество выстрелов увеличивается с атакующей скоростью. Каждый выстрел также стреляет лазером за <style=cIsDamage>820% урона</style>.",
+				
+		"SS2UNEMMANDO_SPECIAL_SCEPEPIC_NAME": "Решающий Удар",
+		"SS2UNEMMANDO_SPECIAL_SCEPEPIC_DESCRIPTION": "<style=cIsHealth>Глубокие Удары</style>. Зарядите разрушительный залп <style=cIsDamage>резов</style>, который наносит до <style=cIsDamage>12x360% урона</style>.",
+				
+		"SS2UNEMMANDO_MASTERY_SKIN_NAME": "Миниуано",
+		"SS2UNEMMANDO_CLASSIC_SKIN_NAME": "Классический",
+		"SS2UNEMMANDO_COMMANDO_SKIN_NAME": "Коммандо",
+		"SS2UNEMMANDO_VERGIL_SKIN_NAME": "Мотиватор",
+				
+		"ACHIEVEMENT_SS2UNEMMANDOCLEARGAMEMONSOON_NAME": "Коммандо Ненависти: Мастерство",
+		"ACHIEVEMENT_SS2UNEMMANDOCLEARGAMEMONSOON_DESCRIPTION": "Как Коммандо Ненависти, пройдите игру или уничтожьте на уровне Монсун.",
+		"ACHIEVEMENT_SS2UNEMMANDOCLEARGAMETYPHOON_NAME": "Коммандо Ненависти: Великое Мастерство",
+		"ACHIEVEMENT_SS2UNEMMANDOCLEARGAMETYPHOON_DESCRIPTION": "Как Коммандо Ненависти, пройдите игру или уничтожьте на уровне Тайфун.",
+				
+		"ACHIEVEMENT_SS2UNEMMANDOUNLOCK_NAME": "???",
+		"ACHIEVEMENT_SS2UNEMMANDOUNLOCK_DESCRIPTION": "Победите остатки Коммандо.",
+		"ACHIEVEMENT_SS2UNEMMANDOKILLSELF_NAME": "Коммандо Ненависти: Ненависть Ненависти",
+		"ACHIEVEMENT_SS2UNEMMANDOKILLSELF_DESCRIPTION": "Как Коммандо Ненависти, победите остатки Коммандо.",
+		"SS2UNEMMANDO_EPICUNLOCKABLE_UNLOCKABLE_NAME": "Коммандо Ненависти: Зандатсу",
+		"SS2UNEMMANDO_EPICUNLOCKABLE_ACHIEVEMENT_NAME": "Коммандо Ненависти: Зандатсу",
+		"SS2UNEMMANDO_EPICUNLOCKABLE_ACHIEVEMENT_DESC": "Как Коммандо Ненависти, нанесите 50 стаков Глубоких Ударов одному врагу.",
+		
+		"COMMANDO_GRANDMASTERY_SKIN_NAME": "Классический",
+		"TOOLBOT_GRANDMASTERY_SKIN_NAME": "Лунный",
+		"ACRID_GRANDMASTERY_SKIN_NAME": "Бронированный",
+
+		"ACHIEVEMENT_SS2UCOMMANDOCLEARGAMETYPHOON_NAME": "Коммандо: Великое Мастерство",
+		"ACHIEVEMENT_SS2UCOMMANDOCLEARGAMETYPHOON_DESCRIPTION": "Как Коммандо, пройдите игру или уничтожьте на уровне Тайфун.",
+
+		"ACHIEVEMENT_SS2UTOOLBOTCLEARGAMETYPHOON_NAME": "MUL-T: Великое Мастерство",
+		"ACHIEVEMENT_SS2UTOOLBOTCLEARGAMETYPHOON_DESCRIPTION": "Как MUL-T, пройдите игру или уничтожьте на уровне Тайфун.",
+
+		"ACHIEVEMENT_SS2UCROCOCLEARGAMETYPHOON_NAME": "Acrid: Великое Мастерство",
+		"ACHIEVEMENT_SS2UCROCOCLEARGAMETYPHOON_DESCRIPTION": "Как Acrid, пройдите игру или уничтожьте на уровне Тайфун.",
+
+		"SS2UITEMS_NAME": "Предметы",
+		"SS2UITEMS_DESCRIPTION": "Разнообразные предметы, которые могут помочь вам в бою.",
+		"SS2UITEMS_LORE": "Каждый предмет имеет свою историю и предназначение. Используйте их мудро, чтобы выжить в этом опасном мире."
+	}
+}

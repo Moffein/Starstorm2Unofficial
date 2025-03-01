@@ -1,0 +1,12 @@
+{
+	strings:
+	{
+		"DIFFICULTY_TYPHOON_NAME": "Тайфун",
+		"DIFFICULTY_TYPHOON_DESCRIPTION": "Максимальный вызов. Мир - это кошмар, и выживание - всего лишь иллюзия. Никто не способен на это.<style=cStack>\n\n>Регeneration здоровья игрока: <style=cIsHealth>-40%</style>\n>Масштабирование сложности: <style=cIsHealth>+75%</style>",
+		"DIFFICULTY_TYPHOON_INCREASEDSPAWNCAP_DESCRIPTION": "Максимальный вызов. Мир - это кошмар, и выживание - всего лишь иллюзия. Никто не способен на это.<style=cStack>\n\n>Регeneration здоровья игрока: <style=cIsHealth>-40%</style>\n>Масштабирование сложности: <style=cIsHealth>+75%</style>\n>Лимит появления монстров: <style=cIsHealth>+50%</style></style>",
+		"SS2U_EVENT_STORM": "<style=cWorldEvent><sprite name=\"CloudRight\">     Надвигается буря...</style>",
+		"SS2U_EVENT_STORM_START": "(Буря началась.)",
+		"SS2UNEMESIS_MODE_ACTIVE_WARNING": "<style=cIsHealth>Неестественная сила исходит из бездны...</style>",
+		"SS2UNEMESIS_MODE_DEACTIVATED": "<style=cWorldEvent>Влияние бездны утихает...</style>"
+	}
+}

@@ -86,8 +86,6 @@ namespace Starstorm2Unofficial.Cores
 
         public EnemyCore()
         {
-            new SpooderCore();
-
             //CreatePrefab();
             //CreateAI();
             //SetUpSkills();

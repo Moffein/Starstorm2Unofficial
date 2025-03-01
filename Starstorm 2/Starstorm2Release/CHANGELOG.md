@@ -1,3 +1,8 @@
+`0.21.15`
+
+- Cyborg is now listed as a variant for SS2 Beta Cyborg.
+- Added RU TL (Thanks N3xT!)
+
 `0.21.14`
 
 - Updated R2API DamageType implementation, removed deprecated components.

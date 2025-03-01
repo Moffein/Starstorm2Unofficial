@@ -48,7 +48,7 @@ namespace Starstorm2Unofficial.Survivors.Cyborg
             bodyIndex = BodyCatalog.FindBodyIndex("SS2UCyborgBody");
             if (bodyIndex != BodyIndex.None) IgnoreSprintCrosshair.bodies.Add(bodyIndex);
 
-            ModCompat.SurvariantsCompat.SetVariant(survivorDef, "CyborgBody");
+            ModCompat.SurvariantsCompat.SetVariant(survivorDef, "Cyborg2Body");
         }
 
         private void Setup()

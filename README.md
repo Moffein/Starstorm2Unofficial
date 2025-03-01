@@ -32,7 +32,7 @@ This mod can be used alongside the official version of Starstorm 2. Be sure to g
 | ![](https://raw.githubusercontent.com/Moffein/Starstorm2Unofficial/main/README%20Images/itemDetritiveTrematode.png) | Detritive Trematode | Enemies below **25% health** are infested for **100%** *(+100%)* base damage per second. |
 | ![](https://raw.githubusercontent.com/Moffein/Starstorm2Unofficial/main/README%20Images/itemDiary.png) | Diary | Increases **movement speed** by **10%** *(+10%)* and **armor** by **3** *(+3)*. |
 | ![](https://raw.githubusercontent.com/Moffein/Starstorm2Unofficial/main/README%20Images/itemDungus.png) | Dormant Fungus | Heals for **1.2%** *(+0.6%)* of your **health** every second **while sprinting**. |
-| ![](https://raw.githubusercontent.com/Moffein/Starstorm2Unofficial/main/README%20Images/itemFork.png) | Fork | Increases your base damage by **2.4** *(+2.4)*. |
+| ![](https://raw.githubusercontent.com/Moffein/Starstorm2Unofficial/main/README%20Images/itemFork.png) | Fork | Increases your base damage by **5%** *(+5%)*. |
 | ![](https://raw.githubusercontent.com/Moffein/Starstorm2Unofficial/main/README%20Images/itemMoltenCoin.png) | Molten Coin | **6%** chance to **ignite on hit** for **320%** *(+320%)* base damage and earn **$1**. Scales with time. |
 | Uncommon | | |
 | ![](https://raw.githubusercontent.com/Moffein/Starstorm2Unofficial/main/README%20Images/itemStrangeCan.png) | Strange Can | **8.5%** *(+5%)* chance to **intoxicate** enemies, causing them to lose **2.5%** of their **current health** every second for **5s**. |
@@ -84,3 +84,5 @@ Clearing the Void Fields will trigger a series of Nemesis Survivor bossfights th
 ## Translations
 
 Brazilian Portuguese: Kauzok
+
+Russian: N3xT
