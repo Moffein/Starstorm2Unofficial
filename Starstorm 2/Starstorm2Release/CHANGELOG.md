@@ -1,3 +1,7 @@
+`0.21.16`
+
+- Fix for SotS Phase 3.
+
 `0.21.15`
 
 - Cyborg is now listed as a variant for SS2 Beta Cyborg.
