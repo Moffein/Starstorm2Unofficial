@@ -212,6 +212,18 @@ namespace Starstorm2Unofficial.Survivors.Chirr.Components
             //Attempt to spawn in body before running usual code. This must be done since the old DontDestroyOnLoad method didn't work on dedicated servers.
             if (masterFriendInfo.masterNetID == NetworkInstanceId.Invalid.Value)
             {
+                if (masterFriendInfo.masterIndex == MasterCatalog.FindMasterIndex("BrotherHurtMaster"))
+                {
+                    var newIndex = MasterCatalog.FindMasterIndex("BrotherMaster");
+                    if (newIndex != MasterCatalog.MasterIndex.none) masterFriendInfo.masterIndex = newIndex;
+                }
+                else if (masterFriendInfo.masterIndex == MasterCatalog.FindMasterIndex("FalseSonBossLunarShardMaster")
+                    || masterFriendInfo.masterIndex == MasterCatalog.FindMasterIndex("FalseSonBossLunarShardBrokenMaster"))
+                {
+                    var newIndex = MasterCatalog.FindMasterIndex("FalseSonBossMaster");
+                    if (newIndex != MasterCatalog.MasterIndex.none) masterFriendInfo.masterIndex = newIndex;
+                }
+
                 GameObject masterPrefab = MasterCatalog.GetMasterPrefab(masterFriendInfo.masterIndex);
                 if (masterPrefab)
                 {

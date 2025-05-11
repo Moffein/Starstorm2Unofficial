@@ -1,3 +1,11 @@
+`0.21.17`
+
+- Chirr
+	- Minions from her Secret get swapped for better-working versions when entering new stages.
+
+- Watch Metronome
+	- Reduced chargeup time from 6s -> 4s
+
 `0.21.16`
 
 - Fix for SotS Phase 3.

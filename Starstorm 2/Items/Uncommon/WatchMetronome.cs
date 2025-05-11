@@ -188,7 +188,7 @@ namespace Starstorm2Unofficial.Cores.Items
 
     public class MetronomeBehavior : CharacterBody.ItemBehavior
     {
-        public static float chargeDuration = 6f;
+        public static float chargeDuration = 4f;
 
         private float notSprintingStopwatch;
         private float charge;
