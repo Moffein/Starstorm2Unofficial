@@ -113,7 +113,9 @@ namespace Starstorm2Unofficial.Modules
             matMercSwipe = UnityEngine.Object.Instantiate(LegacyResourcesAPI.Load<GameObject>("Prefabs/Projectiles/EvisProjectile").GetComponent<ProjectileController>().ghostPrefab.transform.Find("Base").GetComponent<ParticleSystemRenderer>().material);
             matMercSwipeRed = UnityEngine.Object.Instantiate(LegacyResourcesAPI.Load<GameObject>("Prefabs/Projectiles/EvisProjectile").GetComponent<ProjectileController>().ghostPrefab.transform.Find("Base").GetComponent<ParticleSystemRenderer>().material);
             matMercSwipeRed.SetColor("_TintColor", Color.red);
-            matLunarGolem = UnityEngine.Object.Instantiate(LegacyResourcesAPI.Load<GameObject>("Prefabs/CharacterBodies/LunarGolemBody").GetComponentInChildren<CharacterModel>().baseRendererInfos[0].defaultMaterial);
+
+            //matLunarGolem = UnityEngine.Object.Instantiate(LegacyResourcesAPI.Load<GameObject>("Prefabs/CharacterBodies/LunarGolemBody").GetComponentInChildren<CharacterModel>().baseRendererInfos[0].defaultMaterial);
+            matLunarGolem = Addressables.LoadAssetAsync<Material>("RoR2/Base/LunarGolem/matLunarGolem.mat").WaitForCompletion();
             #endregion
 
             ror1LightningSound = Modules.Assets.CreateNetworkSoundEventDef("Play_SS2U_RoR1Lightning");
@@ -489,7 +491,8 @@ namespace Starstorm2Unofficial.Modules
 
         public static Material CreateMaterial(string materialName, float emission, Color emissionColor, float normalStrength)
         {
-            if (!commandoMat) commandoMat = LegacyResourcesAPI.Load<GameObject>("Prefabs/CharacterBodies/CommandoBody").GetComponentInChildren<CharacterModel>().baseRendererInfos[0].defaultMaterial;
+            if (!commandoMat) //commandoMat = LegacyResourcesAPI.Load<GameObject>("Prefabs/CharacterBodies/CommandoBody").GetComponentInChildren<CharacterModel>().baseRendererInfos[0].defaultMaterial;
+                commandoMat = Addressables.LoadAssetAsync<Material>("RoR2/Base/Commando/matCommandoDualies.mat").WaitForCompletion();
 
             Material mat = UnityEngine.Object.Instantiate<Material>(commandoMat);
             Material tempMat = Starstorm2Unofficial.Modules.Assets.mainAssetBundle.LoadAsset<Material>(materialName);

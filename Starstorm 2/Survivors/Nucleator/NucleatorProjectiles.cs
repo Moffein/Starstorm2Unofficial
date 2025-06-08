@@ -22,7 +22,7 @@ namespace Starstorm2Unofficial.Survivors.Nucleator
             projectilePrefab.transform.localScale *= 1.5f;
             projectilePrefab.AddComponent<ProjectileCheckSpecialBuffComponent>();
 
-            GameObject projectileGhost = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Beetle/BeetleQueenSpitGhost.prefab").WaitForCompletion();
+            GameObject projectileGhost = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/BeetleQueen/BeetleQueenSpitGhost.prefab").WaitForCompletion();
 
             ProjectileDamage pd = projectilePrefab.GetComponent<ProjectileDamage>();
             pd.damageType = DamageTypeCombo.GenericPrimary;
@@ -35,7 +35,7 @@ namespace Starstorm2Unofficial.Survivors.Nucleator
             ps.lifetime = 10f;
 
             ProjectileImpactExplosion pie = projectilePrefab.GetComponent<ProjectileImpactExplosion>();
-            pie.impactEffect = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Beetle/BeetleSpitExplosion.prefab").WaitForCompletion();
+            pie.impactEffect = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/BeetleQueen/BeetleSpitExplosion.prefab").WaitForCompletion();
             pie.blastRadius = 6f;
             pie.falloffModel = BlastAttack.FalloffModel.None;
             pie.blastAttackerFiltering = AttackerFiltering.NeverHitSelf;

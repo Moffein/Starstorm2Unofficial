@@ -98,7 +98,6 @@ namespace Starstorm2Unofficial
             riskOfOptionsLoaded = BepInEx.Bootstrap.Chainloader.PluginInfos.ContainsKey("com.rune580.riskofoptions");
             blightedElitesLoaded = BepInEx.Bootstrap.Chainloader.PluginInfos.ContainsKey("com.Moffein.BlightedElites");
             if (BepInEx.Bootstrap.Chainloader.PluginInfos.ContainsKey("com.KingEnderBrine.ScrollableLobbyUI")) scrollableLobbyInstalled = true;
-            ModCompat.Initialize();
             Modules.SoundBanks.Init();
 
             if (kingArenaLoaded)
@@ -147,6 +146,7 @@ namespace Starstorm2Unofficial
             Modules.Assets.Initialize();
             Modules.States.Initialize();
             Modules.Config.Initialize();
+            ModCompat.Initialize();
             Modules.Music.Initialize();
             Cores.Unlockables.VanillaSurvivorUnlockables.RegisterUnlockables();
 

@@ -45,6 +45,7 @@ namespace Starstorm2Unofficial.Survivors.Chirr
             ChirrFriendController.BlacklistBody(bodyIndex);
 
             BodyIndex brotherBodyIndex = BodyCatalog.FindBodyIndex("BrotherBody");
+
             ChirrFriendController.BlacklistBody(BodyCatalog.FindBodyIndex("VoidRaidCrabBody"));
             ChirrFriendController.BlacklistBody(brotherBodyIndex);
             ChirrFriendController.BlacklistBody(BodyCatalog.FindBodyIndex("UrchinTurretBody"));
@@ -52,22 +53,17 @@ namespace Starstorm2Unofficial.Survivors.Chirr
             ChirrFriendController.BlacklistBody(BodyCatalog.FindBodyIndex("ShopkeeperBody"));
             ChirrFriendController.BlacklistBody(BodyCatalog.FindBodyIndex("VoidInfestorBody"));
             ChirrFriendController.BlacklistBody(BodyCatalog.FindBodyIndex("MinorConstructAttachableBody"));
-
             ChirrFriendController.BlacklistBody(BodyCatalog.FindBodyIndex("VoidRaidCrabBody"));
             ChirrFriendController.BlacklistBody(BodyCatalog.FindBodyIndex("MiniVoidRaidCrabBodyBase"));
             ChirrFriendController.BlacklistBody(BodyCatalog.FindBodyIndex("MiniVoidRaidCrabBodyPhase1"));
             ChirrFriendController.BlacklistBody(BodyCatalog.FindBodyIndex("MiniVoidRaidCrabBodyPhase2"));
             ChirrFriendController.BlacklistBody(BodyCatalog.FindBodyIndex("MiniVoidRaidCrabBodyPhase3"));
             ChirrFriendController.BlacklistBody(BodyCatalog.FindBodyIndex("MiniVoidRaidCrabBodyPhase4"));
-
             ChirrFriendController.BlacklistBody(BodyCatalog.FindBodyIndex("FalseSonBossBody"));
             ChirrFriendController.BlacklistBody(BodyCatalog.FindBodyIndex("FalseSonBossBodyLunarShard"));
-            //ChirrFriendController.BlacklistBody(BodyCatalog.FindBodyIndex("FalseSonBossBodyBrokenLunarShard"));
 
-            //ChirrFriendController.bodyDamageValueOverrides.Add(BodyCatalog.FindBodyIndex("ClayBruiserBody"), 1f);
             ChirrFriendController.bodyDamageValueOverrides.Add(brotherBodyIndex, 10f);
             ChirrFriendController.bodyDamageValueOverrides.Add(BodyCatalog.FindBodyIndex("BrotherHurtBody"), 10f);
-
 
             ModCompat.SurvariantsCompat.SetVariant(survivorDef, "ChirrBody");
         }

@@ -24,6 +24,8 @@ namespace Starstorm2Unofficial.Cores.Skins
 
         public static void RegisterVanillaSurvivorSkins()
         {
+            Debug.LogError("SS2U: Skipping skin setup because it needs to be fixed, and I won't be the one who does it.");
+            return;
             RegisterCommandoSkins();
             RegisterMultSkins();
             //RegisterAcridSkins();

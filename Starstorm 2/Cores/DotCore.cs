@@ -45,7 +45,7 @@ namespace Starstorm2Unofficial.Cores
             StrangeCanHitEffect = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Croco/CrocoDiseaseImpactEffect.prefab").WaitForCompletion().InstantiateClone("SS2UStrangeCanHitEffect", false);
             Modules.Assets.AddEffect(StrangeCanHitEffect, "SS2UStrangeCan");
 
-            TrematodeHitEffect = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Beetle/BeetleSpitExplosion.prefab").WaitForCompletion().InstantiateClone("SS2UTrematodeHitEffect", false);
+            TrematodeHitEffect = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/BeetleQueen/BeetleSpitExplosion.prefab").WaitForCompletion().InstantiateClone("SS2UTrematodeHitEffect", false);
             Modules.Assets.AddEffect(TrematodeHitEffect);   //This removes the sound from it
         }
 

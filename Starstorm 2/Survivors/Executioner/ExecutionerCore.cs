@@ -607,7 +607,8 @@ namespace Starstorm2Unofficial.Survivors.Executioner
                 bool error = true;
                 ILCursor c = new ILCursor(il);
 
-                if (c.TryGotoNext( x => x.MatchLdloc(73), x => x.MatchLdcR4(0)))
+                //This match is located at the last If statement where the execution takes place
+                if (c.TryGotoNext( x => x.MatchLdloc(74), x => x.MatchLdcR4(0)))
                 {
                     c.Index++;
                     c.Emit(OpCodes.Ldarg_0);//self
@@ -621,7 +622,7 @@ namespace Starstorm2Unofficial.Survivors.Executioner
                         return executeFraction;
                     });
 
-                    if (c.TryGotoNext(x => x.MatchLdloc(73)))
+                    if (c.TryGotoNext(x => x.MatchLdloc(74)))
                     {
                         c.Index++;
                         c.Emit(OpCodes.Ldarg_0);//self

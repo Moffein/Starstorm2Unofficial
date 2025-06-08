@@ -13,7 +13,7 @@ namespace EntityStates.SS2UStates.Nucleator.Secondary
         public static float range = 40f;
         public static float baseDuration = 0.4f;
         public static GameObject coneEffectPrefab;
-        public static GameObject hitEffectPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Beetle/BeetleAcidImpact.prefab").WaitForCompletion();
+        public static GameObject hitEffectPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/BeetleQueen/BeetleAcidImpact.prefab").WaitForCompletion();
 
         public float charge;
 

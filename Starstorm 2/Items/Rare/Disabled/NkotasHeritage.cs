@@ -61,7 +61,7 @@ namespace Starstorm2Unofficial.Cores.Items
             }
         }
 
-        private void ChargingState_OnEnter(On.RoR2.TeleporterInteraction.ChargingState.orig_OnEnter orig, EntityStates.BaseState self)
+        private void ChargingState_OnEnter(On.RoR2.TeleporterInteraction.ChargingState.orig_OnEnter orig, TeleporterInteraction.ChargingState self)
         {
             orig(self);
             if (NetworkServer.active) ProcNkotaServer(TeamIndex.Player);
