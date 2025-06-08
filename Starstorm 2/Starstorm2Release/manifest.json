@@ -1,10 +1,10 @@
 {
     "name": "Videogame_Mod_2_Unofficial",
-    "version_number": "0.21.17",
+    "version_number": "0.21.18",
     "website_url": "https://github.com/Moffein/Starstorm2Unofficial",
     "description": "A restoration of the pre-SotV Videogame Mod 2. Compatible with the official Videogame Mod 2!",
     "dependencies": [
-        "bbepis-BepInExPack-5.4.2117",
+        "bbepis-BepInExPack-5.4.2119",
 	    "RiskofThunder-R2API_Core-5.1.5",
 		"RiskofThunder-R2API_RecalculateStats-1.5.0",
 	    "RiskofThunder-R2API_Prefab-1.0.4",

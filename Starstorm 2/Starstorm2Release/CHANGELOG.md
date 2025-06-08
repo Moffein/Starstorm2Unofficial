@@ -1,3 +1,8 @@
+`0.21.18`
+
+- Fixed for Memop, kinda.
+	- Vanilla skins currently broken. I probably won't fix unless someone sends a PR.
+
 `0.21.17`
 
 - Chirr
