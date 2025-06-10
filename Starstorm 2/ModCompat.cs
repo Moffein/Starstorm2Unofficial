@@ -19,7 +19,7 @@ namespace Starstorm2Unofficial
         public static void Initialize()
         {
             RiskyMod.InitCompat();
-            SS2OCompat.InitCompat();
+            //SS2OCompat.InitCompat();
             SurvariantsCompat.InitCompat();
         }
 
@@ -32,7 +32,7 @@ namespace Starstorm2Unofficial
             public static void InitCompat()
             {
                 pluginLoaded = BepInEx.Bootstrap.Chainloader.PluginInfos.ContainsKey("com.RiskyLives.RiskyMod");
-                RoR2Application.onLoadFinished += OnLoadActions;
+                RoR2Application.onLoad += OnLoadActions;
             }
 
             private static void OnLoadActions()
@@ -69,7 +69,7 @@ namespace Starstorm2Unofficial
                      BepInEx.Bootstrap.Chainloader.PluginInfos.ContainsKey("com.TeamMoonstorm");
                 Debug.Log("Starstorm 2 Official Loaded: " + pluginLoaded);
 
-                RoR2Application.onLoadFinished += OnLoadActions;
+                RoR2Application.onLoad += OnLoadActions;
             }
             private static void OnLoadActions()
             {

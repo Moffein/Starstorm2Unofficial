@@ -1,3 +1,7 @@
+`0.21.19`
+
+- Attempted to fix MemOp config issue.
+
 `0.21.18`
 
 - Fixed for Memop, kinda.
