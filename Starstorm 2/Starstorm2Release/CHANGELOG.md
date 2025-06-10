@@ -1,3 +1,7 @@
+`0.21.20`
+
+- Fixed Cursed config being broken due to MemOp.
+
 `0.21.19`
 
 - Attempted to fix MemOp config issue.

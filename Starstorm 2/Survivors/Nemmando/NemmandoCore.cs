@@ -1065,7 +1065,7 @@ namespace Starstorm2Unofficial.Survivors.Nemmando
             if (Modules.Config.cursed.Value)
             {
                 #region CommandoJokeSkin
-                Material mercSwordMat = LegacyResourcesAPI.Load<GameObject>("Prefabs/CharacterBodies/MercBody").GetComponentInChildren<CharacterModel>().baseRendererInfos[1].defaultMaterial;
+                Material mercSwordMat = Addressables.LoadAssetAsync<Material>("RoR2/Base/Merc/matMercSword.mat").WaitForCompletion();
                 CharacterModel.RendererInfo[] commandoJokeRendererInfos = SkinRendererInfos(defaultRenderers, new Material[]
                 {
                 Modules.Assets.commandoMat,

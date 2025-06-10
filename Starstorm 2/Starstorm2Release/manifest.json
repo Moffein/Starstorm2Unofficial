@@ -1,6 +1,6 @@
 {
     "name": "Videogame_Mod_2_Unofficial",
-    "version_number": "0.21.19",
+    "version_number": "0.21.20",
     "website_url": "https://github.com/Moffein/Starstorm2Unofficial",
     "description": "A restoration of the pre-SotV Videogame Mod 2. Compatible with the official Videogame Mod 2!",
     "dependencies": [
@@ -17,6 +17,7 @@
 		"RiskofThunder-R2API_Dot-1.0.4",
 		"RiskofThunder-R2API_Difficulty-1.1.2",
 		"Smooth_Salad-ShaderSwapper-1.0.1",
-		"Moffein-DefenseMatrixManager-1.0.2"
+		"Moffein-DefenseMatrixManager-1.0.2",
+		"pseudopulse-SoundFixer-1.0.0"
     ]
 }
