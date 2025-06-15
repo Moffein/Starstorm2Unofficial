@@ -1,3 +1,7 @@
+`0.21.21`
+
+- Fixed some Autoconfig stuff not disabling properly due to MemOp?
+
 `0.21.20`
 
 - Fixed Cursed config being broken due to MemOp.

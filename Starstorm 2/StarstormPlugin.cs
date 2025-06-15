@@ -57,7 +57,7 @@ namespace Starstorm2Unofficial
     {
         internal const string guid = "com.ChirrLover.Starstorm2Unofficial";
         internal const string modName = "Starstorm 2 Unofficial";
-        internal const string version = "0.21.20";
+        internal const string version = "0.21.21";
 
         public static StarstormPlugin instance;
 
@@ -226,15 +226,36 @@ namespace Starstorm2Unofficial
             }
             if (Modules.Config.EnableTyphoon.Value)
             {
-                typhoonCore = new TyphoonCore();
+                if (ModCompat.SS2OCompat.ShouldLoadAutoconfigContent())
+                {
+                    typhoonCore = new TyphoonCore();
+                }
+                else
+                {
+                    Debug.LogWarning("SS2U: Disabling Typhoon due to autoconfig.");
+                }
             }
             if (Modules.Config.EnableVoid.Value)
             {
-                nemesisInvasionCore = new NemesisInvasionCore();
+                if (ModCompat.SS2OCompat.ShouldLoadAutoconfigContent())
+                {
+                    nemesisInvasionCore = new NemesisInvasionCore();
+                }
+                else
+                {
+                    Debug.LogWarning("SS2U: Disabling Void due to autoconfig.");
+                }
             }
             if (Modules.Config.EnableEvents.Value)
             {
-                eventsCore = new EventsCore();
+                if (ModCompat.SS2OCompat.ShouldLoadAutoconfigContent())
+                {
+                    eventsCore = new EventsCore();
+                }
+                else
+                {
+                    Debug.LogWarning("SS2U: Disabling Storms due to autoconfig.");
+                }
             }
 
             RoR2.Stage.onStageStartGlobal += BazaarChecker.Stage_onStageStartGlobal;
