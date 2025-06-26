@@ -1,3 +1,7 @@
+`0.21.22`
+
+- Fixed Chirr being able to kill befriended final bosses.
+
 `0.21.21`
 
 - Fixed some Autoconfig stuff not disabling properly due to MemOp?

@@ -883,7 +883,11 @@ namespace Starstorm2Unofficial.Survivors.Chirr.Components
         {
             if (NetworkServer.active)
             {
-                if (HasFriend() && !(targetBody && targetBody.bodyIndex == EnemyCore.brotherHurtIndex))
+                if (HasFriend() && !(targetBody && targetBody.bodyIndex == EnemyCore.brotherHurtIndex
+                    || targetBody.bodyIndex == EnemyCore.brotherIndex
+                    || targetBody.bodyIndex == EnemyCore.falseSonBossIndex
+                    || targetBody.bodyIndex == EnemyCore.falseSonBossPhase2Index
+                    || targetBody.bodyIndex == EnemyCore.falseSonBossPhase3Index))
                 {
                     RpcSetTargetBodyGlass();
                     targetMaster.TrueKill();
