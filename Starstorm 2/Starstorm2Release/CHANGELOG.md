@@ -1,3 +1,7 @@
+`0.21.23`
+
+- Added another final boss to Chirr's befriend blacklist.
+
 `0.21.22`
 
 - Fixed Chirr being able to kill befriended final bosses.

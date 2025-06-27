@@ -61,6 +61,8 @@ namespace Starstorm2Unofficial.Survivors.Chirr
             ChirrFriendController.BlacklistBody(BodyCatalog.FindBodyIndex("MiniVoidRaidCrabBodyPhase4"));
             ChirrFriendController.BlacklistBody(BodyCatalog.FindBodyIndex("FalseSonBossBody"));
             ChirrFriendController.BlacklistBody(BodyCatalog.FindBodyIndex("FalseSonBossBodyLunarShard"));
+            ChirrFriendController.BlacklistBody(BodyCatalog.FindBodyIndex("ArraignP1Body"));
+            ChirrFriendController.BlacklistBody(BodyCatalog.FindBodyIndex("ArraignP2Body"));
 
             ChirrFriendController.bodyDamageValueOverrides.Add(brotherBodyIndex, 10f);
             ChirrFriendController.bodyDamageValueOverrides.Add(BodyCatalog.FindBodyIndex("BrotherHurtBody"), 10f);
