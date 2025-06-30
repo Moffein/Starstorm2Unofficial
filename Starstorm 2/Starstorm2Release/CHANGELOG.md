@@ -1,3 +1,7 @@
+`0.22.0`
+
+- Fixed Chirr/Cyborg skins for MemOp.
+
 `0.21.23`
 
 - Added another final boss to Chirr's befriend blacklist.

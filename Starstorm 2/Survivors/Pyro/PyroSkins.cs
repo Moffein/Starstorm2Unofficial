@@ -33,7 +33,7 @@ namespace Starstorm2Unofficial.Survivors.Pyro
             ModelSkinController skinController = model.AddComponent<ModelSkinController>();
             ChildLocator childLocator = model.GetComponent<ChildLocator>();
 
-            SkinnedMeshRenderer mainRenderer = Reflection.GetFieldValue<SkinnedMeshRenderer>(characterModel, "mainSkinnedMeshRenderer");
+            SkinnedMeshRenderer mainRenderer = characterModel.mainSkinnedMeshRenderer;
 
             List<SkinDef> skinDefs = new List<SkinDef>();
             
@@ -41,9 +41,10 @@ namespace Starstorm2Unofficial.Survivors.Pyro
 
             CharacterModel.RendererInfo[] defaultRenderers = characterModel.baseRendererInfos;
 
-            SkinDef defaultSkin = SkinsCore.CreateSkinDef("DEFAULT_SKIN",
+            SkinDef defaultSkin = Modules.Skins.CreateSkinDef("DEFAULT_SKIN",
                                                           LoadoutAPI.CreateSkinIcon(new Color32(247, 247, 181, 255), new Color32(75, 76, 54, 255), new Color32(56, 44, 39, 255), new Color32(117, 115, 78, 255)),
                                                           defaultRenderers,
+                                                          mainRenderer,
                                                           model,
                                                           null);
 

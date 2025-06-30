@@ -41,7 +41,7 @@ namespace Starstorm2Unofficial.Survivors.Cyborg
             ModelSkinController skinController = model.AddComponent<ModelSkinController>();
             ChildLocator childLocator = model.GetComponent<ChildLocator>();
 
-            SkinnedMeshRenderer mainRenderer = Reflection.GetFieldValue<SkinnedMeshRenderer>(characterModel, "mainSkinnedMeshRenderer");
+            SkinnedMeshRenderer mainRenderer = characterModel.mainSkinnedMeshRenderer;
 
             List<SkinDef> skinDefs = new List<SkinDef>();
 
@@ -49,9 +49,10 @@ namespace Starstorm2Unofficial.Survivors.Cyborg
 
             CharacterModel.RendererInfo[] defaultRenderers = characterModel.baseRendererInfos;
 
-            SkinDef defaultSkin = SkinsCore.CreateSkinDef("SS2UCYBORG_DEFAULT_SKIN_NAME",
+            SkinDef defaultSkin = Skins.CreateSkinDef("SS2UCYBORG_DEFAULT_SKIN_NAME",
                                                           LoadoutAPI.CreateSkinIcon(new Color32(234, 231, 212, 255), new Color32(33, 51, 49, 255), new Color32(32, 40, 53, 255), new Color32(56, 79, 77, 255)),
                                                           defaultRenderers,
+                                                          mainRenderer,
                                                           model, 
                                                           null);
             defaultSkin.nameToken = "DEFAULT_SKIN";
@@ -76,9 +77,10 @@ namespace Starstorm2Unofficial.Survivors.Cyborg
 
             masteryRendererInfos[0].defaultMaterial = Modules.Assets.LoadMaterialFromAssetBundle("matSteamborg");
 
-            SkinDef masterySkin = SkinsCore.CreateSkinDef("SS2UCYBORG_MASTERY_SKIN_NAME",
+            SkinDef masterySkin = Skins.CreateSkinDef("SS2UCYBORG_MASTERY_SKIN_NAME",
                                                           masteryIcon,
                                                           masteryRendererInfos,
+                                                          mainRenderer,
                                                           model,
                                                           Modules.Config.ForceUnlockSkins.Value ? null : masterySkinUnlockableDef);
 
@@ -102,9 +104,10 @@ namespace Starstorm2Unofficial.Survivors.Cyborg
 
             grandMasteryRendererInfos[0].defaultMaterial = Modules.Assets.LoadMaterialFromAssetBundle("matRockborg");
 
-            SkinDef grandMasterySkin = SkinsCore.CreateSkinDef("SS2UCYBORG_GRANDMASTERY_SKIN_NAME",
+            SkinDef grandMasterySkin = Skins.CreateSkinDef("SS2UCYBORG_GRANDMASTERY_SKIN_NAME",
                                                           gmIcon,
                                                           grandMasteryRendererInfos,
+                                                          mainRenderer,
                                                           model,
                                                           Modules.Config.ForceUnlockSkins.Value ? null : grandmasterySkinUnlockableDef);
 

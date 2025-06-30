@@ -38,7 +38,7 @@ namespace Starstorm2Unofficial.Cores.Skins
             ModelSkinController skinController = bodyPrefab.GetComponentInChildren<ModelSkinController>();
             GameObject model = skinController.gameObject;
             CharacterModel characterModel = model.GetComponent<CharacterModel>();
-            SkinnedMeshRenderer mainRenderer = Reflection.GetFieldValue<SkinnedMeshRenderer>(characterModel, "mainSkinnedMeshRenderer");
+            SkinnedMeshRenderer mainRenderer = characterModel.mainSkinnedMeshRenderer;
 
             CharacterModel.RendererInfo[] defaultRenderers = characterModel.baseRendererInfos;
 
@@ -52,9 +52,10 @@ namespace Starstorm2Unofficial.Cores.Skins
             commandoRendererInfos[1].defaultMaterial = commandoClassicMaterial;
             commandoRendererInfos[2].defaultMaterial = commandoClassicMaterial;
 
-            SkinDef classicSkin = SkinsCore.CreateSkinDef("COMMANDO_GRANDMASTERY_SKIN_NAME",
+            SkinDef classicSkin = Modules.Skins.CreateSkinDef("COMMANDO_GRANDMASTERY_SKIN_NAME",
                                                           Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("texCommandoSkinGrandMaster"),
                                                           commandoRendererInfos,
+                                                          mainRenderer,
                                                           model,
                                                           VanillaSurvivorUnlockables.commandoGrandMastery);
 
@@ -81,7 +82,7 @@ namespace Starstorm2Unofficial.Cores.Skins
             ModelSkinController skinController = bodyPrefab.GetComponentInChildren<ModelSkinController>();
             GameObject model = skinController.gameObject;
             CharacterModel characterModel = model.GetComponent<CharacterModel>();
-            SkinnedMeshRenderer mainRenderer = Reflection.GetFieldValue<SkinnedMeshRenderer>(characterModel, "mainSkinnedMeshRenderer");
+            SkinnedMeshRenderer mainRenderer =  characterModel.mainSkinnedMeshRenderer;
 
             CharacterModel.RendererInfo[] defaultRenderers = characterModel.baseRendererInfos;
 
@@ -93,9 +94,10 @@ namespace Starstorm2Unofficial.Cores.Skins
 
             toolbotRendererInfos[1].defaultMaterial = Modules.Assets.matLunarGolem;
             
-            SkinDef lunarSkin = SkinsCore.CreateSkinDef("TOOLBOT_GRANDMASTERY_SKIN_NAME",
+            SkinDef lunarSkin = Modules.Skins.CreateSkinDef("TOOLBOT_GRANDMASTERY_SKIN_NAME",
                                                           Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("texToolbotSkinGrandMaster"),
                                                           toolbotRendererInfos,
+                                                          mainRenderer,
                                                           model,
                                                           VanillaSurvivorUnlockables.toolbotGrandMastery);
 
@@ -150,7 +152,7 @@ namespace Starstorm2Unofficial.Cores.Skins
             ModelSkinController skinController = bodyPrefab.GetComponentInChildren<ModelSkinController>();
             GameObject model = skinController.gameObject;
             CharacterModel characterModel = model.GetComponent<CharacterModel>();
-            SkinnedMeshRenderer mainRenderer = Reflection.GetFieldValue<SkinnedMeshRenderer>(characterModel, "mainSkinnedMeshRenderer");
+            SkinnedMeshRenderer mainRenderer =  characterModel.mainSkinnedMeshRenderer;
 
             CharacterModel.RendererInfo[] defaultRenderers = characterModel.baseRendererInfos;
 
@@ -169,9 +171,10 @@ namespace Starstorm2Unofficial.Cores.Skins
 
             crocoRendererInfos[0].defaultMaterial = crocoClassicMaterial;
 
-            SkinDef armoredSkin = SkinsCore.CreateSkinDef("ACRID_GRANDMASTERY_SKIN_NAME",
+            SkinDef armoredSkin = Modules.Skins.CreateSkinDef("ACRID_GRANDMASTERY_SKIN_NAME",
                                                           Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("texAcridSkinGrandMaster"),
                                                           crocoRendererInfos,
+                                                          mainRenderer,
                                                           model,
                                                           VanillaSurvivorUnlockables.acridGrandMastery);
 

@@ -36,16 +36,16 @@ namespace Starstorm2Unofficial.Survivors.Chirr
             ModelSkinController skinController = model.AddComponent<ModelSkinController>();
             ChildLocator childLocator = model.GetComponent<ChildLocator>();
 
-            SkinnedMeshRenderer mainRenderer = Reflection.GetFieldValue<SkinnedMeshRenderer>(characterModel, "mainSkinnedMeshRenderer");
+            SkinnedMeshRenderer mainRenderer = characterModel.mainSkinnedMeshRenderer;
 
             List<SkinDef> skinDefs = new List<SkinDef>();
             
             #region DefaultSkin
             CharacterModel.RendererInfo[] defaultRenderers = characterModel.baseRendererInfos;
-
-            SkinDef defaultSkin = SkinsCore.CreateSkinDef("SS2UCHIRR_DEFAULT_SKIN_NAME",
+            SkinDef defaultSkin = Skins.CreateSkinDef("SS2UCHIRR_DEFAULT_SKIN_NAME",
                                                           LoadoutAPI.CreateSkinIcon(new Color32(255, 255, 255, 255), new Color32(76, 116, 114, 255), new Color32(83, 118, 99, 255), new Color32(120, 147, 90, 255)),
                                                           defaultRenderers,
+                                                          mainRenderer,
                                                           model,
                                                           null);
             defaultSkin.nameToken = "DEFAULT_SKIN";
@@ -80,9 +80,10 @@ namespace Starstorm2Unofficial.Survivors.Chirr
             masteryRendererInfos[0].defaultMaterial = Modules.Assets.CreateMaterial("matChirr", 0, new Color(1f, 1f, 1f), 1);
             masteryRendererInfos[1].defaultMaterial = Modules.Assets.CreateMaterial("matChirrMaidDress", 0, new Color(1f, 1f, 1f), 0);
 
-            SkinDef masterySkin = SkinsCore.CreateSkinDef("SS2UCHIRR_MASTERY_SKIN_NAME",
+            SkinDef masterySkin = Skins.CreateSkinDef("SS2UCHIRR_MASTERY_SKIN_NAME",
                                                           maidSkinIcon,
                                                           masteryRendererInfos,
+                                                          mainRenderer,
                                                           model,
                                                           Modules.Config.ForceUnlockSkins.Value ? null : masterySkinUnlockableDef);
 

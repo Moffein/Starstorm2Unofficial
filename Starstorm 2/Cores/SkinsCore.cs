@@ -32,26 +32,6 @@ namespace Starstorm2Unofficial.Cores
             }
         }
 
-        public static SkinDef CreateSkinDef(string skinName, Sprite skinIcon, CharacterModel.RendererInfo[] rendererInfos, GameObject root, UnlockableDef unlockDef) {
-            LoadoutAPI.SkinDefInfo skinDefInfo = new LoadoutAPI.SkinDefInfo {
-                BaseSkins = Array.Empty<SkinDef>(),
-                GameObjectActivations = new SkinDef.GameObjectActivation[0],
-                Icon = skinIcon,
-                MeshReplacements = new SkinDef.MeshReplacement[0],
-                MinionSkinReplacements = new SkinDef.MinionSkinReplacement[0],
-                Name = skinName,
-                NameToken = skinName,
-                ProjectileGhostReplacements = new SkinDef.ProjectileGhostReplacement[0],
-                RendererInfos = rendererInfos,
-                RootObject = root,
-                UnlockableDef = unlockDef
-            };
-
-            SkinDef skin = LoadoutAPI.CreateNewSkinDef(skinDefInfo);
-
-            return skin;
-        }
-
         public static SkinDef.MeshReplacement[] CreateMeshReplacements(CharacterModel.RendererInfo[] rendererInfos, params Mesh[] orderedMeshes) {
             List<SkinDef.MeshReplacement> replacements = new List<SkinDef.MeshReplacement>();
 
