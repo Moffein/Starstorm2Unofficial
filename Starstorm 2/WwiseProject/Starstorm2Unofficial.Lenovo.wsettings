@@ -47,6 +47,7 @@
 				<Property Name="Music Transition List\{1A7C8239-2AF1-45B8-A245-CF28C86B1C2F}\x64_Expand States" Type="string" Value=""/>
 				<Property Name="Music Transition List\{4BC128DE-77C0-4BBA-8ED4-00A2A8E01DCA}\x64_Expand States" Type="string" Value=""/>
 				<Property Name="Music Transition List\{4EFB8D4A-97A1-4ADB-8DF7-E89BF2DECAD4}\x64_Expand States" Type="string" Value=""/>
+				<Property Name="Music Transition List\{7785E4D6-0318-4882-8732-856AF0F50CE3}\Scroll Position" Type="int32" Value="0"/>
 				<Property Name="Music Transition List\{7785E4D6-0318-4882-8732-856AF0F50CE3}\x64_Expand States" Type="string" Value=""/>
 				<Property Name="Music Transition List\{A5DA992A-8A2B-4479-81B7-2A1E8A46FD1A}\x64_Expand States" Type="string" Value=""/>
 				<Property Name="Music Transition List\{AC240B75-5912-45E6-9B36-3BBEEC6B6173}\x64_Expand States" Type="string" Value=""/>
@@ -59,7 +60,7 @@
 				<Property Name="ProjectExplorer\AudioSelectionChannel1\ProjectExplorer2LastScrollState" Type="int32" Value="0"/>
 				<Property Name="ProjectExplorer\AudioSelectionChannel1\x64_ProjectExplorer2LastExpandedState" Type="string" Value="iC8JJ1oiVBFnJcijTz1EguraiCN1l8ZGou3FIio5d1b4u6dewGRQSoghoH6L4h1oZtP+STC1qEKZO5JIc6q3Bw=="/>
 				<Property Name="ProjectExplorer\AudioSelectionChannel2\ProjectExplorer2LastScrollState" Type="int32" Value="0"/>
-				<Property Name="ProjectExplorer\AudioSelectionChannel2\x64_ProjectExplorer2LastExpandedState" Type="string" Value="iC8JJ1oiVBFnJcijTz1EguraiCN1l8ZGou3FIio5d1b4u6dewGRQSoghoH6L4h1oZtP+STC1qEKZO5JIc6q3Bw=="/>
+				<Property Name="ProjectExplorer\AudioSelectionChannel2\x64_ProjectExplorer2LastExpandedState" Type="string" Value="iC8JJ1oiVBFnJcijTz1EguraiCN1l8ZGou3FIio5d1b4u6dewGRQSoghoH6L4h1oRD5oPcDaF0e34j1MRVX+alm1MvMJodRDoMRLWdeKeaZm0/5JMLWoQpk7kkhzqrcHE8kz8k47Y02QdJDOUpVkH94owUvAd7pLjtQAoqjgHcrW5IV3GAOCSIcyhWrw9Qzj"/>
 				<Property Name="ProjectExplorer\EventsSelectionChannel1\ProjectExplorer2LastScrollState" Type="int32" Value="0"/>
 				<Property Name="ProjectExplorer\EventsSelectionChannel1\x64_ProjectExplorer2LastExpandedState" Type="string" Value="/PCbpkrYfEir3Vb3HLKhJt71mjAfA+BMm5vApTYnU0M="/>
 				<Property Name="ProjectExplorer\EventsSelectionChannel2\ProjectExplorer2LastScrollState" Type="int32" Value="0"/>
@@ -123,7 +124,7 @@
 				<Property Name="SoundBank Manager\x64_Expand Folders User" Type="string" Value="BwAAAA=="/>
 				<Property Name="SoundBank Manager\x64_Expand States" Type="string" Value="RjjtMgYDaUaphG0zZEHODw=="/>
 				<Property Name="SoundBank Manager\x64_Expand States Auto" Type="string" Value=""/>
-				<Property Name="SoundBank Manager\x64_Expand States User" Type="string" Value=""/>
+				<Property Name="SoundBank Manager\x64_Expand States User" Type="string" Value="RjjtMgYDaUaphG0zZEHODw=="/>
 				<Property Name="SoundBankHeaderFilePath" Type="string" Value="GeneratedSoundBanks\"/>
 				<Property Name="SoundBankPaths" Type="string">
 					<ValueList>

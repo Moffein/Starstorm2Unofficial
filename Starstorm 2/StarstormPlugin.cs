@@ -57,7 +57,7 @@ namespace Starstorm2Unofficial
     {
         internal const string guid = "com.ChirrLover.Starstorm2Unofficial";
         internal const string modName = "Starstorm 2 Unofficial";
-        internal const string version = "0.22.0";
+        internal const string version = "0.22.1";
 
         public static StarstormPlugin instance;
 
@@ -99,8 +99,8 @@ namespace Starstorm2Unofficial
             riskOfOptionsLoaded = BepInEx.Bootstrap.Chainloader.PluginInfos.ContainsKey("com.rune580.riskofoptions");
             blightedElitesLoaded = BepInEx.Bootstrap.Chainloader.PluginInfos.ContainsKey("com.Moffein.BlightedElites");
             if (BepInEx.Bootstrap.Chainloader.PluginInfos.ContainsKey("com.KingEnderBrine.ScrollableLobbyUI")) scrollableLobbyInstalled = true;
-            Modules.SoundBanks.Init();
             ModCompat.Initialize();
+            Modules.SoundBanks.Init();
 
             if (kingArenaLoaded)
             {

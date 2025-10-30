@@ -1,3 +1,7 @@
+`0.22.1`
+
+- Fixed SS2O soundbank compat code running before the plugin has been detected.
+
 `0.22.0`
 
 - Fixed Chirr/Cyborg skins for MemOp.
