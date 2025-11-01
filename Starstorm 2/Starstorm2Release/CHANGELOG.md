@@ -1,3 +1,7 @@
+`0.22.2`
+
+- Fixed Nemmando's primary not triggering On Skill Activated effects when held.
+
 `0.22.1`
 
 - Fixed SS2O soundbank compat code running before the plugin has been detected.

@@ -51,10 +51,17 @@ namespace EntityStates.SS2UStates.Nemmando
         private Vector3 storedVelocity;
 
 		private float lastUpdateTime;
+		public bool forceTriggerOnSkillActivate = false;
 
 		public override void OnEnter()
         {
 			base.OnEnter();
+
+			if (isAuthority && forceTriggerOnSkillActivate && skillLocator && skillLocator.primary && characterBody)
+			{
+				characterBody.OnSkillActivated(skillLocator.primary);
+			}
+
 			lastUpdateTime = Time.time;
 			this.duration = baseDuration / this.attackSpeedStat;
 			this.earlyExitDuration = this.duration * baseEarlyExitTime;
@@ -134,8 +141,11 @@ namespace EntityStates.SS2UStates.Nemmando
 
 				if (base.fixedAge >= this.earlyExitDuration && base.inputBank.skill1.down)
                 {
-					var nextSwing = new BladeOfCessation2();
-					nextSwing.currentSwing = this.currentSwing + 1;
+					var nextSwing = new BladeOfCessation2()
+					{
+						currentSwing = this.currentSwing + 1,
+						forceTriggerOnSkillActivate = true
+					};
 					this.outer.SetNextState(nextSwing);
 					return;
 				}
