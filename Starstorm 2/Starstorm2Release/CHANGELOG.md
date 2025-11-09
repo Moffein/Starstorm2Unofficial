@@ -1,3 +1,7 @@
+`0.22.4`
+
+- R2API_Execute compatibility updated.
+
 `0.22.3`
 
 - Executioner's Execute is now handled via R2API_Execute.

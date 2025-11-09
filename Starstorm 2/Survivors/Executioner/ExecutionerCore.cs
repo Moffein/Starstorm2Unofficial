@@ -599,7 +599,7 @@ namespace Starstorm2Unofficial.Survivors.Executioner
 
         private void SetupFearExecute()
         {
-            R2API.ExecuteAPI.CalculateExecuteThreshold += FearExecuteThreshold;
+            R2API.ExecuteAPI.CalculateAdditiveExecuteThreshold += FearExecuteThreshold;
 
             IL.RoR2.CharacterBody.UpdateAllTemporaryVisualEffects += (il) =>
             {
