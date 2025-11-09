@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WwiseDocument Type="WorkUnit" ID="{83FE9101-AE89-464A-86DD-181D5F68123D}" SchemaVersion="119">
+	<SoundBanks>
+		<WorkUnit Name="Default Work Unit" ID="{83FE9101-AE89-464A-86DD-181D5F68123D}" PersistMode="Standalone">
+			<ChildrenList>
+				<SoundBank Name="Starstorm2Unofficial" ID="{F0D9E022-10DD-4F33-A5A6-E98541F7219B}">
+					<ObjectInclusionList>
+						<ObjectRef Name="SS2UNemmandoSwingDecisive" ID="{A54021CE-7FF0-4028-8BF8-4A6349BCFA86}" WorkUnitID="{70CC961E-242E-4EEA-A08E-0A2CDE29AE95}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="SS2UNemmandoCharacterSelect" ID="{9B567E37-D1C8-4059-AA96-2AADC837B10A}" WorkUnitID="{70CC961E-242E-4EEA-A08E-0A2CDE29AE95}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="SS2UNemmandoSwingSaberDecisive" ID="{812CE41B-0125-4067-A69C-454DF3A61398}" WorkUnitID="{70CC961E-242E-4EEA-A08E-0A2CDE29AE95}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="SS2UChirrSprintLoop" ID="{63585A49-19E2-407C-B487-B41683EDF6EC}" WorkUnitID="{70CC961E-242E-4EEA-A08E-0A2CDE29AE95}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="SS2UExecutionerUtility" ID="{3246CF89-7030-40BD-AE2C-646ACBC28927}" WorkUnitID="{70CC961E-242E-4EEA-A08E-0A2CDE29AE95}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="SS2UNemmandoShootCrit" ID="{59938948-78FF-40EB-B713-C6453852CE64}" WorkUnitID="{70CC961E-242E-4EEA-A08E-0A2CDE29AE95}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="SS2UExecutionerMaxCharge" ID="{DD35E336-9E91-4136-8FFF-D4BD110A192F}" WorkUnitID="{70CC961E-242E-4EEA-A08E-0A2CDE29AE95}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="SS2UExecutionerPrimaryCrit" ID="{B3597126-7BF6-4179-97C9-048BA096BF37}" WorkUnitID="{70CC961E-242E-4EEA-A08E-0A2CDE29AE95}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="SS2UNucleatorSkill4c" ID="{4020DABB-7DFD-4192-B3E2-C76A72C247E0}" WorkUnitID="{70CC961E-242E-4EEA-A08E-0A2CDE29AE95}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="SS2UNemmandoFireBeam2" ID="{615B2E71-D8A9-41A1-A3F4-31B8249A46DE}" WorkUnitID="{70CC961E-242E-4EEA-A08E-0A2CDE29AE95}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="SS2USigilActivation" ID="{26553788-8797-423C-9200-910E96C6296C}" WorkUnitID="{70CC961E-242E-4EEA-A08E-0A2CDE29AE95}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="SS2UNemmandoSaberHit" ID="{17412320-9931-427E-9E8A-9DEE6267B71E}" WorkUnitID="{70CC961E-242E-4EEA-A08E-0A2CDE29AE95}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="SS2UNemmandoDecisiveStrikeReady" ID="{20059F53-8AE4-42A5-B344-04F5FF69C7D3}" WorkUnitID="{70CC961E-242E-4EEA-A08E-0A2CDE29AE95}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="SS2UNemmandoReloadGun" ID="{1C5BEDEA-EDB1-42AF-B079-C32BD4491308}" WorkUnitID="{70CC961E-242E-4EEA-A08E-0A2CDE29AE95}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="SS2UDroidHead" ID="{2BF2823A-62D1-42D0-83FA-452575673C2C}" WorkUnitID="{70CC961E-242E-4EEA-A08E-0A2CDE29AE95}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="SS2UNucleatorChargePrimary" ID="{6C1774ED-6597-431F-BF05-6AFA950FCAA8}" WorkUnitID="{70CC961E-242E-4EEA-A08E-0A2CDE29AE95}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="SS2UNemmandoSwingCrit" ID="{DB66EA5A-4F47-4370-B86F-50850B11479E}" WorkUnitID="{70CC961E-242E-4EEA-A08E-0A2CDE29AE95}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Play_SS2U_RoR1Lightning" ID="{123D65F5-524F-43F0-88A2-AD1B1733DFE1}" WorkUnitID="{70CC961E-242E-4EEA-A08E-0A2CDE29AE95}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="SS2UNucleatorSkill4b" ID="{CDCC3CCE-BE63-43FC-B211-880A3FF81935}" WorkUnitID="{70CC961E-242E-4EEA-A08E-0A2CDE29AE95}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="SS2UNemmandoSubmissionFire" ID="{3F3F6D0F-75DD-4400-AD68-9952065320CA}" WorkUnitID="{70CC961E-242E-4EEA-A08E-0A2CDE29AE95}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="SS2UNucleatorSkill4a" ID="{F12A639A-B517-4421-B50B-1B91FEEB251C}" WorkUnitID="{70CC961E-242E-4EEA-A08E-0A2CDE29AE95}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="SS2UNucleatorSkill1" ID="{F2D15F5D-31F8-442A-A1D1-0D80FFAE038A}" WorkUnitID="{70CC961E-242E-4EEA-A08E-0A2CDE29AE95}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="SS2UNucleatorSkill3a" ID="{C8C7F88F-A8EF-4436-9AAE-DF301AAD3AF4}" WorkUnitID="{70CC961E-242E-4EEA-A08E-0A2CDE29AE95}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="SS2UNucleatorSkill3b" ID="{D3075690-DD44-4440-84ED-4CF4D0CB1580}" WorkUnitID="{70CC961E-242E-4EEA-A08E-0A2CDE29AE95}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="SS2UExecutionerSupercharge" ID="{B552750D-5A50-4463-9601-4B6346DF3E1B}" WorkUnitID="{70CC961E-242E-4EEA-A08E-0A2CDE29AE95}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="SS2UNemmandoCSS" ID="{C6D30034-1621-44CF-9065-6F800664E66A}" WorkUnitID="{70CC961E-242E-4EEA-A08E-0A2CDE29AE95}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="SS2UExecutionerPrimaryClassic" ID="{C132B10C-890C-4502-B0E4-ACA7359A7B15}" WorkUnitID="{70CC961E-242E-4EEA-A08E-0A2CDE29AE95}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="SS2UNemmandoFireBeam" ID="{D248DBA8-E6CA-4568-B984-2E835BFB48F1}" WorkUnitID="{70CC961E-242E-4EEA-A08E-0A2CDE29AE95}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="SS2UNucleatorAlarm" ID="{5D071F86-8F15-456D-A063-FDADECC7A75A}" WorkUnitID="{70CC961E-242E-4EEA-A08E-0A2CDE29AE95}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="SS2UJetBootsExplosion" ID="{62A482E0-2659-458E-AD8C-546A9BA7AA50}" WorkUnitID="{70CC961E-242E-4EEA-A08E-0A2CDE29AE95}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="SS2UChirrHealTrigger" ID="{53BB5117-5CED-4594-A514-7B4413581057}" WorkUnitID="{70CC961E-242E-4EEA-A08E-0A2CDE29AE95}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="SS2UChirrSprintStart" ID="{CC587D4A-FC26-45C7-BDE1-8C9C725629CC}" WorkUnitID="{70CC961E-242E-4EEA-A08E-0A2CDE29AE95}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="SS2UChirrSpecial" ID="{22230ABA-843C-45CC-A048-B49B24FCA701}" WorkUnitID="{70CC961E-242E-4EEA-A08E-0A2CDE29AE95}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="SS2UNemmandoShootGun" ID="{81AAEF49-AC93-45CE-B527-7B6C1BAF5AB5}" WorkUnitID="{70CC961E-242E-4EEA-A08E-0A2CDE29AE95}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="SS2UNemmandoSwingSaber" ID="{CF2ABC46-C916-45D9-AD4F-0FE953CC4EF7}" WorkUnitID="{70CC961E-242E-4EEA-A08E-0A2CDE29AE95}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="SS2UExecutionerGainCharge" ID="{62952DF7-CDD6-45E6-B902-AF0C719EB2C2}" WorkUnitID="{70CC961E-242E-4EEA-A08E-0A2CDE29AE95}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="SS2UNemmandoGunSpin" ID="{6E8376B1-B5C7-4639-9712-2B3C18995BB5}" WorkUnitID="{70CC961E-242E-4EEA-A08E-0A2CDE29AE95}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="SS2UExecutionerPrimary" ID="{B1EC5965-4AA9-472C-BBA0-2D4332B690D9}" WorkUnitID="{70CC961E-242E-4EEA-A08E-0A2CDE29AE95}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="SS2UNemmandoSheathSword" ID="{1541A42A-8ACB-4770-81B1-C5CB7161F123}" WorkUnitID="{70CC961E-242E-4EEA-A08E-0A2CDE29AE95}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="SS2U_RainAmbience" ID="{9C81A08D-8BB1-4845-9382-857193833B95}" WorkUnitID="{70CC961E-242E-4EEA-A08E-0A2CDE29AE95}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="SS2U_WindAmbience" ID="{0340CDC8-594A-4857-A0E3-A93B63014CDE}" WorkUnitID="{70CC961E-242E-4EEA-A08E-0A2CDE29AE95}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="SS2UExecutionerSecondaryClassic" ID="{02816350-6BC9-489C-A7F7-10B81496D264}" WorkUnitID="{70CC961E-242E-4EEA-A08E-0A2CDE29AE95}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="SS2UStirringSoul" ID="{4AE0C020-FB15-48DE-B36B-4681F3AFAA8D}" WorkUnitID="{70CC961E-242E-4EEA-A08E-0A2CDE29AE95}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="SS2UCyborgSpecialPlace" ID="{EC8A814F-02C1-4915-B053-453BA8A4E0D1}" WorkUnitID="{70CC961E-242E-4EEA-A08E-0A2CDE29AE95}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="SS2USwiftSkateboard" ID="{D3F05F2E-7EDA-495E-9B01-8A7C4B61771F}" WorkUnitID="{70CC961E-242E-4EEA-A08E-0A2CDE29AE95}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="SS2UCyborgUtility" ID="{6D0CD6BD-9D36-497A-B4D4-B7BF653DAC5E}" WorkUnitID="{70CC961E-242E-4EEA-A08E-0A2CDE29AE95}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="SS2UChirrSprintStop" ID="{D8C629E8-448B-4997-890F-B29E3AA0325F}" WorkUnitID="{70CC961E-242E-4EEA-A08E-0A2CDE29AE95}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="SS2UCyborgSpecialTeleport" ID="{EC614C09-0E28-499E-ADCC-C9AB255BF5BD}" WorkUnitID="{70CC961E-242E-4EEA-A08E-0A2CDE29AE95}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="SS2UNucleatorSkill2" ID="{E2F573A2-B18F-49E8-93DC-34DA6C17E143}" WorkUnitID="{70CC961E-242E-4EEA-A08E-0A2CDE29AE95}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="SS2UCyborgSecondary" ID="{0A725C6B-3636-49EC-83F1-FB1374C9FBB6}" WorkUnitID="{70CC961E-242E-4EEA-A08E-0A2CDE29AE95}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="SS2UNemmandoShoot" ID="{D39CB016-CAEC-4A20-AA81-A43D70499459}" WorkUnitID="{70CC961E-242E-4EEA-A08E-0A2CDE29AE95}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="SS2UNemmandoJCEClick" ID="{AD0E914A-A03C-4A41-BB34-17D9489E0FD2}" WorkUnitID="{70CC961E-242E-4EEA-A08E-0A2CDE29AE95}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="SS2UCyborgPerfectCharge" ID="{4DD6215C-5390-4ABB-8129-FE69ACACEC2B}" WorkUnitID="{70CC961E-242E-4EEA-A08E-0A2CDE29AE95}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="SS2UNemmandoChargeDecisive" ID="{1E4AF4CC-9B13-4B9B-BCCA-3671E3F8326E}" WorkUnitID="{70CC961E-242E-4EEA-A08E-0A2CDE29AE95}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="SS2UNemmandoSwing" ID="{A3847D24-8C6E-4BA2-A1A9-64F051954757}" WorkUnitID="{70CC961E-242E-4EEA-A08E-0A2CDE29AE95}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="SS2UNucleatorSkill1c" ID="{DAD53DDB-58E2-4BCA-9684-A031E6AB8191}" WorkUnitID="{70CC961E-242E-4EEA-A08E-0A2CDE29AE95}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="SS2UExecutionerSpecialImpact" ID="{D733DCC8-E23D-4C0D-AB57-1DD58362EDC0}" WorkUnitID="{70CC961E-242E-4EEA-A08E-0A2CDE29AE95}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="SS2UExecutionerSpecialCast" ID="{390FE5A8-F9CA-4CB3-B88B-68618E88B038}" WorkUnitID="{70CC961E-242E-4EEA-A08E-0A2CDE29AE95}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="SS2UNucleatorSkill3c" ID="{AFB5976D-5140-4CDF-81CF-9C352DD0D32F}" WorkUnitID="{70CC961E-242E-4EEA-A08E-0A2CDE29AE95}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="SS2UNemmandoChargeBeam" ID="{C081BC83-04FE-4CF4-9702-C4D0B4287592}" WorkUnitID="{70CC961E-242E-4EEA-A08E-0A2CDE29AE95}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="SS2UNemmandoDecisiveStrikeCharge" ID="{B83FBCA6-6B54-4D08-B667-6B2DDCC079E2}" WorkUnitID="{70CC961E-242E-4EEA-A08E-0A2CDE29AE95}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="SS2UExecutionerSecondary" ID="{F45B10E0-4CFB-4D10-8F77-F1FAE9C0E787}" WorkUnitID="{70CC961E-242E-4EEA-A08E-0A2CDE29AE95}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="SS2UNemmandoChargeBeam2" ID="{5468468C-C66D-4D85-84FF-8183BB733F6D}" WorkUnitID="{70CC961E-242E-4EEA-A08E-0A2CDE29AE95}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="SS2UChirrHealStart" ID="{D4C59195-F15D-4DCC-A600-F03AA8B4E73F}" WorkUnitID="{70CC961E-242E-4EEA-A08E-0A2CDE29AE95}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="SS2UGreaterWarbanner" ID="{D74FC53B-3123-4DE2-AD87-08F46DCC443E}" WorkUnitID="{70CC961E-242E-4EEA-A08E-0A2CDE29AE95}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="SS2UCyborgPrimary" ID="{7DAE88F8-5064-4DF3-91CE-C051FA403376}" WorkUnitID="{70CC961E-242E-4EEA-A08E-0A2CDE29AE95}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="SS2UStrangeCan" ID="{2EF55489-1EF4-4E2A-BC44-0D2919FEAA29}" WorkUnitID="{70CC961E-242E-4EEA-A08E-0A2CDE29AE95}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="SS2UNemmandoDecisiveStrikeFire" ID="{7FF8DFBE-7B50-4E4C-8141-EE41343DAD02}" WorkUnitID="{70CC961E-242E-4EEA-A08E-0A2CDE29AE95}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="SS2UChirrPrimary" ID="{4F6FD5E3-1FC9-4E97-9A5E-F5454782AFA1}" WorkUnitID="{70CC961E-242E-4EEA-A08E-0A2CDE29AE95}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="SS2UNemmandoSubmissionReady" ID="{225A1DD9-C00C-4EA0-ADA9-B9F3EA0A4E6A}" WorkUnitID="{70CC961E-242E-4EEA-A08E-0A2CDE29AE95}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="SS2UNemmandoShootClassic" ID="{85DA602D-6F6F-4EAE-80D0-B4B1BB5DBDB9}" WorkUnitID="{70CC961E-242E-4EEA-A08E-0A2CDE29AE95}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="SS2UChirrStep" ID="{981669CC-4F8E-4F03-8DF6-2FFAC0EFEE72}" WorkUnitID="{70CC961E-242E-4EEA-A08E-0A2CDE29AE95}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="SS2UNemmandoSubmissionCharge" ID="{48A12B48-D0C1-4F2A-98E8-E52C96E89C5E}" WorkUnitID="{70CC961E-242E-4EEA-A08E-0A2CDE29AE95}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="SS2UMoltenCoin" ID="{A5B8B45A-9D42-4FA6-B6D9-0EC4DF3B6957}" WorkUnitID="{70CC961E-242E-4EEA-A08E-0A2CDE29AE95}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="SS2UHottestSauce" ID="{9F233467-C2CF-4FC9-B7CF-FD1AB8C18320}" WorkUnitID="{70CC961E-242E-4EEA-A08E-0A2CDE29AE95}" Origin="Manual" Filter="7"/>
+					</ObjectInclusionList>
+					<ObjectExclusionList/>
+					<GameSyncExclusionList/>
+				</SoundBank>
+			</ChildrenList>
+		</WorkUnit>
+	</SoundBanks>
+</WwiseDocument>
