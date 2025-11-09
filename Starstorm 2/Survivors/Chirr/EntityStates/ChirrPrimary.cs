@@ -26,12 +26,9 @@ namespace EntityStates.SS2UStates.Chirr
         private float shotStopwatch;
         private bool crit;
 
-        private float lastUpdateTime;
-
         public override void OnEnter()
         {
             base.OnEnter();
-            lastUpdateTime = Time.time;
             crit = base.RollCrit();
             shotCount = 0;
             shotStopwatch = 0f;
@@ -54,11 +51,9 @@ namespace EntityStates.SS2UStates.Chirr
         public override void FixedUpdate()
         {
             base.FixedUpdate();
-            float deltaTime = Time.time - lastUpdateTime;
-            lastUpdateTime = Time.time;
             if (shotCount < ChirrPrimary.baseShotCount)
             {
-                shotStopwatch += deltaTime;
+                shotStopwatch += Time.fixedDeltaTime;
                 if (shotStopwatch >= shotDuration)
                 {
                     FireBullet();

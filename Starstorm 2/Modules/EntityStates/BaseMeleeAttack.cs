@@ -47,13 +47,9 @@ namespace EntityStates.SS2UStates.Common
         private BaseState.HitStopCachedState hitStopCachedState;
         private Vector3 storedVelocity;
 
-        private float lastUpdateTime;
-
         public override void OnEnter()
         {
             base.OnEnter();
-
-            lastUpdateTime = Time.time;
 
             this.startedSkillStationary = (base.inputBank && base.inputBank.moveVector == Vector3.zero);
 
@@ -165,13 +161,11 @@ namespace EntityStates.SS2UStates.Common
         public override void FixedUpdate()
         {
             base.FixedUpdate();
-            float deltaTime = Time.time - lastUpdateTime;
-            lastUpdateTime = Time.time;
 
-            this.hitPauseTimer -= deltaTime;
+            this.hitPauseTimer -= Time.fixedDeltaTime;
             if (!this.inHitPause)
             {
-                this.stopwatch += deltaTime;
+                this.stopwatch += Time.fixedDeltaTime;
             }
 
             if (base.isAuthority)

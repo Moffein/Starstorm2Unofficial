@@ -19,12 +19,10 @@ namespace EntityStates.SS2UStates.Pyro
         private float trailStopwatch;
         private float trailTime;
         private HeatController heatController;
-        private float lastUpdateTime;
 
         public override void OnEnter()
         {
             base.OnEnter();
-            lastUpdateTime = Time.time;
             trailStopwatch = 0f;
             trailTime = 1f / HeatJetpack.trailFrequency;
             heatController = base.GetComponent<HeatController>();
@@ -34,9 +32,7 @@ namespace EntityStates.SS2UStates.Pyro
         public override void FixedUpdate()
         {
             base.FixedUpdate();
-            float deltaTime = Time.time - lastUpdateTime;
-            lastUpdateTime = Time.time;
-            trailStopwatch += deltaTime;
+            trailStopwatch += Time.fixedDeltaTime;
             if (this.trailStopwatch >= trailTime)
             {
                 EffectManager.SpawnEffect(trailPrefab, new EffectData
@@ -54,7 +50,7 @@ namespace EntityStates.SS2UStates.Pyro
 
                 int stocks = 1;
                 if (base.skillLocator && base.skillLocator.utility) stocks = base.skillLocator.utility.maxStock;
-                heatController.ConsumeHeat(HeatJetpack.heatConsumptionPerSecond * deltaTime, stocks);
+                heatController.ConsumeHeat(HeatJetpack.heatConsumptionPerSecond * Time.fixedDeltaTime, stocks);
                 outOfHeat = heatController.GetHeatPercent() <= 0f;
             }
 
@@ -65,7 +61,7 @@ namespace EntityStates.SS2UStates.Pyro
                 {
                     if (base.characterMotor.isGrounded && base.characterMotor.Motor) base.characterMotor.Motor.ForceUnground();
                     base.characterMotor.velocity = Vector3.zero;
-                    base.characterMotor.rootMotion += deltaTime * desiredSpeed * aimRay.direction;
+                    base.characterMotor.rootMotion += Time.fixedDeltaTime * desiredSpeed * aimRay.direction;
                 }
 
                 bool isKeyPressed = base.inputBank && base.inputBank.skill3.down;

@@ -50,7 +50,6 @@ namespace EntityStates.SS2UStates.Nemmando
         private NemmandoController nemmandoController;
         private Vector3 storedVelocity;
 
-		private float lastUpdateTime;
 		public bool forceTriggerOnSkillActivate = false;
 
 		public override void OnEnter()
@@ -62,7 +61,6 @@ namespace EntityStates.SS2UStates.Nemmando
 				characterBody.OnSkillActivated(skillLocator.primary);
 			}
 
-			lastUpdateTime = Time.time;
 			this.duration = baseDuration / this.attackSpeedStat;
 			this.earlyExitDuration = this.duration * baseEarlyExitTime;
 			this.effectTime = duration * baseEffectTime;
@@ -102,11 +100,9 @@ namespace EntityStates.SS2UStates.Nemmando
 		public override void FixedUpdate()
         {
 			base.FixedUpdate();
-			float deltaTime = Time.time - lastUpdateTime;
-			lastUpdateTime = Time.time;
 			base.StartAimMode();
 
-			this.hitPauseTimer -= deltaTime;
+			this.hitPauseTimer -= Time.fixedDeltaTime;
 
 			if (this.hitPauseTimer <= 0f && this.inHitPause)
             {
@@ -117,8 +113,8 @@ namespace EntityStates.SS2UStates.Nemmando
 
 			if (!this.inHitPause)
             {
-				this.stopwatch += deltaTime;
-			}
+				this.stopwatch += Time.fixedDeltaTime;
+            }
             else
             {
 				if (base.characterMotor) base.characterMotor.velocity = Vector3.zero;

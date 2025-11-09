@@ -24,8 +24,6 @@ namespace EntityStates.SS2UStates.Nemmando
         private ChildLocator childLocator;
         private ParticleSystem dashEffect;
 
-        private float lastUpdateTime;
-
         public CameraTargetParams.CameraParamsOverrideHandle camOverrideHandle;
         private CharacterCameraParamsData decisiveCameraParams = new CharacterCameraParamsData
         {
@@ -40,7 +38,6 @@ namespace EntityStates.SS2UStates.Nemmando
         public override void OnEnter()
         {
             base.OnEnter();
-            lastUpdateTime = Time.time;
             base.characterBody.isSprinting = true;
 
             if (cameraTargetParams)
@@ -118,8 +115,6 @@ namespace EntityStates.SS2UStates.Nemmando
         public override void FixedUpdate()
         {
             base.FixedUpdate();
-            float deltaTime = Time.time - lastUpdateTime;
-            lastUpdateTime = Time.time;
             base.characterBody.isSprinting = true;
 
             if (base.fixedAge >= this.duration && base.isAuthority)
@@ -142,7 +137,7 @@ namespace EntityStates.SS2UStates.Nemmando
                     Vector3 moveVector = this.forwardDirection * this.dashSpeed;
                     float distance = Mathf.Max(Vector3.Dot(moveVector, this.forwardDirection), 0f);
                     moveVector = this.forwardDirection * distance;
-                    base.characterMotor.rootMotion += moveVector * deltaTime;
+                    base.characterMotor.rootMotion += moveVector * Time.fixedDeltaTime;
                 }
 
                 if (base.characterDirection) base.characterDirection.forward = this.forwardDirection;

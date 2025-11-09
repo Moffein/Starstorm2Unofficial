@@ -1,3 +1,8 @@
+`0.22.5`
+
+- Manually rebuilt entire WWISE project to avoid compat issues with SS2O.
+- Removed SotS Launch deltaTime cope fixes. This should fix weird timing issues with multi-shot skills.
+
 `0.22.4`
 
 - R2API_Execute compatibility updated.

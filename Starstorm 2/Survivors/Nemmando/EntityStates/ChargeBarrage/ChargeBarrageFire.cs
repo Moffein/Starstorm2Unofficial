@@ -39,11 +39,9 @@ namespace EntityStates.SS2UStates.Nemmando
         public static GameObject muzzleFlashEffect = LegacyResourcesAPI.Load<GameObject>("Prefabs/Effects/ImpactEffects/FusionCellExplosion");
         public static GameObject impactEffectPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Commando/HitsparkCommando.prefab").WaitForCompletion();
 
-        private float lastUpdateTime;
         public override void OnEnter()
         {
             base.OnEnter();
-            lastUpdateTime = Time.time;
             base.characterBody.SetSpreadBloom(0.2f, false);
             base.characterBody.isSprinting = false;
             this.duration = ChargeBarrageFire.baseDuration;
@@ -120,9 +118,7 @@ namespace EntityStates.SS2UStates.Nemmando
         public override void FixedUpdate()
         {
             base.FixedUpdate();
-            float deltaTime = Time.time - lastUpdateTime;
-            lastUpdateTime = Time.time;
-            this.stopwatchBetweenShots += deltaTime;
+            this.stopwatchBetweenShots += Time.fixedDeltaTime;
 
             if (this.stopwatchBetweenShots >= this.durationBetweenShots && this.totalBulletsFired < this.bulletCount)
             {

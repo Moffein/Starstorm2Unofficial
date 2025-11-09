@@ -35,12 +35,9 @@ namespace EntityStates.SS2UStates.Cyborg.Secondary
         public static float blinkTime = 0.5f;
         public static float blinkFrequency = 20f;
 
-        private float lastUpdateTime;
-
         public override void OnEnter()
         {
             base.OnEnter();
-            lastUpdateTime = Time.time;
             energyComponent = base.GetComponent<CyborgEnergyComponent>();
             if (energyComponent)
             {
@@ -147,15 +144,13 @@ namespace EntityStates.SS2UStates.Cyborg.Secondary
         public override void FixedUpdate()
         {
             base.FixedUpdate();
-            float deltaTime = Time.time - lastUpdateTime;
-            lastUpdateTime = Time.time;
             base.StartAimMode(2f);
 
             if (base.characterBody && base.characterBody.isSprinting) base.characterBody.isSprinting = false;
 
             if (NetworkServer.active)
             {
-                tickStopwatch += deltaTime;
+                tickStopwatch += Time.fixedDeltaTime;
                 if (tickStopwatch >= tickDuration)
                 {
                     tickStopwatch -= tickDuration;
@@ -166,7 +161,7 @@ namespace EntityStates.SS2UStates.Cyborg.Secondary
             bool shieldDepleted = false;
             if (this.energyComponent)
             {
-                float toConsume = deltaTime / DefenseMatrix.shieldDuration;
+                float toConsume = Time.fixedDeltaTime / DefenseMatrix.shieldDuration;
                 if (!CyborgCore.useEnergyRework.Value) toConsume *= 2f;
                 this.energyComponent.ConsumeEnergy(toConsume);
                 shieldDepleted = this.energyComponent.energyDepleted;
@@ -178,7 +173,7 @@ namespace EntityStates.SS2UStates.Cyborg.Secondary
                 {
                     if (this.energyComponent.remainingEnergyFraction <= blinkTime/DefenseMatrix.shieldDuration)
                     {
-                        blinkStopwatch += deltaTime;
+                        blinkStopwatch += Time.fixedDeltaTime;
                         if (blinkStopwatch >= blinkToggleDuration)
                         {
                             blinkStopwatch -= blinkToggleDuration;

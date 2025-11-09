@@ -18,8 +18,6 @@ namespace EntityStates.SS2UStates.Executioner
         private Animator animator;
         private ExecutionerController exeController;
 
-        private float lastUpdateTime;
-
         private CameraTargetParams.CameraParamsOverrideHandle camOverrideHandle;
         public static CharacterCameraParamsData slamCameraParams = new CharacterCameraParamsData
         {
@@ -33,7 +31,6 @@ namespace EntityStates.SS2UStates.Executioner
         public override void OnEnter()
         {
             base.OnEnter();
-            lastUpdateTime = Time.time;
             this.animator = base.GetModelAnimator();
             this.exeController = base.GetComponent<ExecutionerController>();
             this.duration = ExecutionerAxe.baseDuration;// / this.attackSpeedStat;
@@ -95,10 +92,8 @@ namespace EntityStates.SS2UStates.Executioner
         public override void FixedUpdate()
         {
             base.FixedUpdate();
-            float deltaTime = Time.time - lastUpdateTime;
-            lastUpdateTime = Time.time;
             float moveSpeed = 11f;//Mathf.Clamp(0f, 11f, 0.5f * this.moveSpeedStat); //Don't scale with movement speed or else you launch yourself into the skybox.
-            base.characterMotor.rootMotion += velocityMultiplier * Vector3.up * (moveSpeed * Mage.FlyUpState.speedCoefficientCurve.Evaluate(base.fixedAge / this.duration) * deltaTime);
+            base.characterMotor.rootMotion += velocityMultiplier * Vector3.up * (moveSpeed * Mage.FlyUpState.speedCoefficientCurve.Evaluate(base.fixedAge / this.duration) * Time.fixedDeltaTime);
             base.characterMotor.velocity.y = 0f;
 
             base.characterMotor.moveDirection *= 2f;

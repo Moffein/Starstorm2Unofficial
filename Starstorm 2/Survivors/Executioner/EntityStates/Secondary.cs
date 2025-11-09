@@ -33,12 +33,9 @@ namespace EntityStates.SS2UStates.Executioner
         private EffectData ionEffectData;
         private bool isCrit;
 
-        private float lastUpdateTime;
-
         public override void OnEnter()
         {
             base.OnEnter();
-            lastUpdateTime = Time.time;
             //tracerPrefab = Starstorm2.Modules.Assets.exeIonBurstTracer;   //doesn't sync up with the impact effect well enough
             this.animator = base.GetModelAnimator();
 
@@ -71,9 +68,7 @@ namespace EntityStates.SS2UStates.Executioner
         public override void FixedUpdate()
         {
             base.FixedUpdate();
-            float deltaTime = Time.time - lastUpdateTime;
-            lastUpdateTime = Time.time;
-            this.shotTimer += deltaTime;
+            this.shotTimer += Time.fixedDeltaTime;
             if (this.shotTimer >= this.duration)
             {
                 //fire successive shots if more than one stored, deduct charges manually
