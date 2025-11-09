@@ -16,6 +16,7 @@ namespace Starstorm2Unofficial.Cores
 {
     public class BuffCore
     {
+        public static float fearExecuteThresholdAdditive = (1f / 0.85f) - 1f;   //0.15f with ExecuteAPI
 
         public static BuffDef detritiveBuff;
         public static BuffDef greaterBannerBuff;

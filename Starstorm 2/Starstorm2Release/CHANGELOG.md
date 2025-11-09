@@ -1,3 +1,8 @@
+`0.22.3`
+
+- Executioner's Execute is now handled via R2API_Execute.
+	- Wait for R2API_Execute 1.0.1 to release since some bugs are being fixed.
+
 `0.22.2`
 
 - Fixed Nemmando's primary not triggering On Skill Activated effects when held.

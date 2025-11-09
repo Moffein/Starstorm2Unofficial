@@ -441,6 +441,9 @@
     <Reference Include="R2API.Dot">
       <HintPath>libs\R2API\R2API.Dot.dll</HintPath>
     </Reference>
+    <Reference Include="R2API.Execute">
+      <HintPath>libs\R2API\R2API.Execute.dll</HintPath>
+    </Reference>
     <Reference Include="R2API.Items">
       <HintPath>libs\R2API\R2API.Items.dll</HintPath>
     </Reference>

@@ -49,6 +49,7 @@ namespace Starstorm2Unofficial
     [BepInDependency(R2API.RecalculateStatsAPI.PluginGUID)]
     [BepInDependency(R2API.ContentManagement.R2APIContentManager.PluginGUID)]
     [BepInDependency(R2API.ItemAPI.PluginGUID)]
+    [BepInDependency(R2API.ExecuteAPI.PluginGUID)]
 
     [NetworkCompatibility(CompatibilityLevel.EveryoneMustHaveMod, VersionStrictness.EveryoneNeedSameModVersion)]
     [BepInPlugin(guid, modName, version)]
@@ -57,7 +58,7 @@ namespace Starstorm2Unofficial
     {
         internal const string guid = "com.ChirrLover.Starstorm2Unofficial";
         internal const string modName = "Starstorm 2 Unofficial";
-        internal const string version = "0.22.2";
+        internal const string version = "0.22.3";
 
         public static StarstormPlugin instance;
 

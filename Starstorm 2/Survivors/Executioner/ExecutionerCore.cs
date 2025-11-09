@@ -599,52 +599,7 @@ namespace Starstorm2Unofficial.Survivors.Executioner
 
         private void SetupFearExecute()
         {
-            On.RoR2.HealthComponent.GetHealthBarValues += FearExecuteHealthbar;
-
-            //Prone to breaking when the game updates
-            IL.RoR2.HealthComponent.TakeDamageProcess += (il) =>
-            {
-                bool error = true;
-                ILCursor c = new ILCursor(il);
-
-                //This match is located at the last If statement where the execution takes place
-                if (c.TryGotoNext( x => x.MatchLdloc(74), x => x.MatchLdcR4(0)))
-                {
-                    c.Index++;
-                    c.Emit(OpCodes.Ldarg_0);//self
-                    c.EmitDelegate<Func<float, HealthComponent, float>>((executeFraction, self) =>
-                    {
-                        if (self.body.HasBuff(BuffCore.fearDebuff))
-                        {
-                            if (executeFraction < 0f) executeFraction = 0f;
-                            executeFraction += 0.15f;
-                        }
-                        return executeFraction;
-                    });
-
-                    if (c.TryGotoNext(x => x.MatchLdloc(74)))
-                    {
-                        c.Index++;
-                        c.Emit(OpCodes.Ldarg_0);//self
-                        c.EmitDelegate<Func<float, HealthComponent, float>>((executeFraction, self) =>
-                        {
-                            if (self.body.HasBuff(BuffCore.fearDebuff))
-                            {
-                                if (executeFraction < 0f) executeFraction = 0f;
-                                executeFraction += 0.15f;
-                            }
-                            return executeFraction;
-                        });
-                        error = false;
-                    }
-                }
-
-                if (error)
-                {
-                    UnityEngine.Debug.LogError("Starstorm 2 Unofficial: Fear Execute IL Hook failed.");
-                }
-
-            };
+            R2API.ExecuteAPI.CalculateExecuteThreshold += FearExecuteThreshold;
 
             IL.RoR2.CharacterBody.UpdateAllTemporaryVisualEffects += (il) =>
             {
@@ -667,14 +622,12 @@ namespace Starstorm2Unofficial.Survivors.Executioner
             };
         }
 
-        private HealthComponent.HealthBarValues FearExecuteHealthbar(On.RoR2.HealthComponent.orig_GetHealthBarValues orig, HealthComponent self)
+        private void FearExecuteThreshold(CharacterBody victimBody, ref float executeFractionAdd)
         {
-            var hbv = orig(self);
-            if (!self.body.bodyFlags.HasFlag(CharacterBody.BodyFlags.ImmuneToExecutes) && self.body.HasBuff(BuffCore.fearDebuff))
+            if (victimBody.HasBuff(BuffCore.fearDebuff))
             {
-                hbv.cullFraction += 0.15f;//(self.body && self.body.isChampion) ? 0.15f : 0.3f; //might stack too crazy if it's 30% like Freeze
+                executeFractionAdd += BuffCore.fearExecuteThresholdAdditive;
             }
-            return hbv;
         }
 
         internal override void InitializeDoppelganger()
