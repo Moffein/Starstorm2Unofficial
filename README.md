@@ -86,3 +86,5 @@ Clearing the Void Fields will trigger a series of Nemesis Survivor bossfights th
 Brazilian Portuguese: Kauzok
 
 Russian: N3xT
+
+Chinese: takaqiao

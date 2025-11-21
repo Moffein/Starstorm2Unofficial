@@ -1,3 +1,7 @@
+`0.22.7`
+
+- Added CN TL (Thanks takaqiao!)
+
 `0.22.6`
 
 - DLC3 fix.
