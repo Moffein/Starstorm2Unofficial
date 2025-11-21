@@ -1,0 +1,74 @@
+{
+	strings:
+	{
+		"ITEM_SS2U_FORK_NAME" : "叉子",
+		"ITEM_SS2U_FORK_PICKUP" : "造成更多伤害。",
+		"ITEM_SS2U_FORK_DESC" : "使你的基础伤害提高<style=cIsDamage>5%</style> <style=cStack>（每层+5%）</style>。",
+		"ITEM_SS2U_FORK_LORE" : "订单：叉子\r\n追踪编号：00******\r\n预计送达日期：09\/24\/2056\r\n运输方式：标准\r\n收货地址：Antima 大楼 - 天台, Blossom Hills, 地球\r\n运输详情：\r\n\r\n惊喜！是一把叉子！哈哈哈！！！\n你说过任何礼物都是好礼物，那就给你这个！不开玩笑，这叉子可是有魔力的。相信我，Duncan，有一次我用它吃沙拉，然后同一天我就捡到了一分钱！\n还有，呃，找个时间快来跟我们一起玩吧，我们都想念在 SS3 里拆你配装的日子了（拜托告诉我你已经换主玩角色了，lol）。",
+		
+		"ITEM_SS2U_MOLTENCOIN_NAME" : "熔融硬币",
+		"ITEM_SS2U_MOLTENCOIN_PICKUP" : "有几率点燃敌人并在命中时获得 $1。",
+		"ITEM_SS2U_MOLTENCOIN_DESC" : "命中时有<style=cIsDamage>6%</style>几率<style=cIsDamage>点燃</style>敌人，造成<style=cIsDamage>320%</style>基础伤害<style=cStack>（每层+320%）</style>，并获得<style=cIsUtility>$1</style>。效果会随时间提升。",
+		"ITEM_SS2U_MOLTENCOIN_LORE" : "订单：熔融硬币\r\n追踪编号：01******\r\n预计送达日期：05\/22\/2056\r\n运输方式：标准\r\n收货地址：Toera 2, B44, Mother Station\r\n运输详情：\r\n\r\n嘿！呃，对不起，真的很对不起……我知道你真的希望我把这枚硬币留下来，但我实在承担不了这责任了……\n是这样，我不小心把硬币放在等离子炉的边缘，所以……呃……它有一边有点被烧焦了，别生我气啊……",
+		
+		"ITEM_SS2U_DIARY_NAME" : "日记本",
+		"ITEM_SS2U_DIARY_PICKUP" : "小幅提升移动速度和护甲。",
+		"ITEM_SS2U_DIARY_DESC" : "使<style=cIsUtility>移动速度</style>提高<style=cIsUtility>10% <style=cStack>（每层+10%）</style></style>，并使<style=cIsHealing>护甲</style>提高<style=cIsHealing>3 <style=cStack>（每层+3）</style></style>。",
+		"ITEM_SS2U_DIARY_LORE" : "订单：日记本\r\n追踪编号：02******\r\n预计送达日期：06\/12\/2056\r\n运输方式：标准\r\n收货地址：Sterrenstad, Zondam, 地球\r\n运输详情：\r\n\r\n嘿，亲爱的！\n希望你的旅途一切顺利。我发现你把日记本忘在家里了，所以给你寄过去。下次别再把它带进厕所了哈哈 ;)\n保重！爱你。",
+		
+		"ITEM_SS2U_TREMATODE_NAME" : "食腐吸虫",
+		"ITEM_SS2U_TREMATODE_PICKUP" : "低生命值敌人会持续受到伤害。",
+		"ITEM_SS2U_TREMATODE_DESC" : "生命值低于<style=cIsHealth>25%</style>的敌人会被寄生，每秒受到<style=cIsDamage>100%</style><style=cStack>（每层+100%）</style>基础伤害。",
+		"ITEM_SS2U_TREMATODE_LORE" : "订单：食腐吸虫\r\n追踪编号：03******\r\n预计送达日期：03\/11\/2057\r\n运输方式：标准\r\n收货地址：112, Neaus 2, 火星\r\n运输详情：\r\n\r\n呃，这东西是你的。\n拜托以后再也别寄那些奇怪的显微卵孵化器过来了，好吗。",
+		
+		"ITEM_SS2U_COFFEE_NAME" : "咖啡袋",
+		"ITEM_SS2U_COFFEE_PICKUP" : "小幅提升攻速和移动速度。",
+		"ITEM_SS2U_COFFEE_DESC" : "使<style=cIsUtility>移动速度</style>提高<style=cIsUtility>7%</style> <style=cStack>（每层+7%）</style>，并使<style=cIsDamage>攻击速度</style>提高<style=cIsDamage>7.5%</style> <style=cStack>（每层+7.5%）</style>。",
+		"ITEM_SS2U_COFFEE_LORE" : "订单：咖啡袋\r\n追踪编号：05******\r\n预计送达日期：05\/22\/2056\r\n运输方式：标准\r\n收货地址：n1, The Capital, UES PRIME\r\n运输详情：\r\n\r\n瞌——————睡——————虫我真搞不懂你为什么说你不喜欢咖啡它明明超——级——好用来熬夜。我知道我知道还有别的办法能让人兴奋但天啦你肯定会喜欢这个的这是我最爱！！！在对我大吼之前先试试好不好？",
+		
+		"ITEM_SS2U_DUNGUS_NAME" : "休眠真菌",
+		"ITEM_SS2U_DUNGUS_PICKUP" : "在冲刺时恢复生命值。",
+		"ITEM_SS2U_DUNGUS_DESC" : "在<style=cIsUtility>冲刺</style>时，每秒回复你<style=cIsHealing>生命值</style>的<style=cIsHealing>1.2%</style> <style=cStack>（每层+0.6%）</style>。",
+		"ITEM_SS2U_DUNGUS_LORE" : "订单：休眠真菌\r\n追踪编号：04******\r\n预计送达日期：11\/01\/2056\r\n运输方式：标准\r\n收货地址：Gate 1, Module 13, Gea Station\r\n运输详情：\r\n\r\n当你命令我去探索那些真菌洞穴时，我本来只以为会找到……呃，真菌而已，当然了。虽然我一点也不兴奋，不过这个样本倒是引起了我的注意。\n它似乎只会生长在漂浮的水周围，而自从我采集并封存了这个样本之后，它的颜色和气味都迅速褪去了。\n\n希望你能继续研究它。",
+		
+		"ITEM_SS2U_METRONOME_NAME" : "腕表节拍器",
+		"ITEM_SS2U_METRONOME_PICKUP" : "在地面行走会蓄积你下次冲刺的速度。",
+		"ITEM_SS2U_METRONOME_DESC" : "<style=cIsUtility>在地面行走</style>会为你下一次冲刺的<style=cIsUtility>速度</style>充能，最多提高<style=cIsUtility>200%</style>。充能会在<style=cIsUtility>4 秒</style>内衰减<style=cStack>（每层+2 秒）</style>。",
+		"ITEM_SS2U_METRONOME_LORE" : "订单：腕表节拍器\r\n追踪编号：10******\r\n预计送达日期：09\/05\/2054\r\n运输方式：优先\r\n收货地址：Cage 1, G-44 (Underground), 地球\r\n运输详情：\r\n\r\n爷爷把这个当作旧时代的遗物送给了我。他说这东西属于我们的曾曾曾曾曾祖父。我对古董和家传物一点兴趣也没有，所以我觉得还是你拿去比较好。\n反正它也派不上什么用场……",
+		
+		"ITEM_SS2U_POISONONHIT_NAME" : "奇怪易拉罐",
+		"ITEM_SS2U_POISONONHIT_PICKUP" : "有几率使敌人中毒，造成大量持续伤害。",
+		"ITEM_SS2U_POISONONHIT_DESC" : "<style=cIsDamage>8.5%</style> <style=cStack>（每层+5%）</style>几率使敌人<style=cIsDamage>中毒</style>，在<style=cIsDamage>5 秒</style>内每秒失去其<style=cIsHealth>当前生命值</style>的<style=cIsDamage>2.5%</style>。",
+		"ITEM_SS2U_POISONONHIT_LORE" : "订单：奇怪易拉罐\r\n追踪编号：11******\r\n预计送达日期：05\/22\/2056\r\n运输方式：优先\r\n收货地址：1530, 563, A-LC12\r\n运输详情：\r\n\r\n就像我跟你说的那样，这东西超好喝。我只希望它别像上次那罐一样在路上裂开了。\n我好像该找份工作了……",
+		
+		"ITEM_SS2U_DROIDHEAD_NAME" : "机器人头颅",
+		"ITEM_SS2U_DROIDHEAD_PICKUP" : "击杀精英时召唤一台打击无人机。",
+		"ITEM_SS2U_DROIDHEAD_DESC" : "击杀精英怪物时会召唤一台<style=cIsDamage>打击无人机</style>，获得额外<style=cIsDamage>100% 伤害</style> <style=cStack>（每层+50% 伤害）</style>，持续<style=cIsDamage>30 秒</style>。最多存在<style=cIsUtility>4</style>台。",
+		"ITEM_SS2U_DROIDHEAD_LORE" : "订单：机器人头颅\r\n追踪编号：20******\r\n预计送达日期：12\/20\/2056\r\n运输方式：高优先级\r\n收货地址：RoboFix, SOL 1, 火星\r\n运输详情：\r\n\r\n这是你要的 ER-14 型号机器人头。功能完好，只需要接上线路。考虑到最近那场 RaCom 丑闻，现在想弄到这些可不容易。\n记得在操作前先关闭安全协议，我想你可不希望自己的店里突然多出上百台备用无人机！\n如果你还需要别的工具或零件就告诉我。",
+		
+		"ITEM_SS2U_GREENCHOC_NAME" : "绿色巧克力",
+		"ITEM_SS2U_GREENCHOC_PICKUP" : "在受到大量伤害时减少所受伤害并获得巨额伤害加成。",
+		"ITEM_SS2U_GREENCHOC_DESC" : "当你一次受到不低于<style=cIsHealth>20%</style>最大<style=cIsHealth>生命值</style>的伤害时，超出该阈值的部分会被<style=cIsHealing>减少 50%</style>。触发该效果时获得<style=cIsDamage>50% 伤害</style>加成，持续<style=cIsUtility>7 秒</style>，最多可触发<style=cIsDamage>1</style>次<style=cStack>（每层+1 次）</style>。",
+		"ITEM_SS2U_GREENCHOC_LORE" : "订单：绿色巧克力\r\n追踪编号：21******\r\n预计送达日期：03\/11\/2056\r\n运输方式：高优先级\r\n收货地址：Montee, Gamma East, 地球\r\n运输详情：\r\n\r\n这是送给你的火星纪念品！绿色巧克力在别的地方买可贵了，所以我寄给你两块，不过别在同一天把它们都吃掉！（我是认真的，别）\n吃的时候你会有前所未有的感觉！他们说这东西能强化身体，不过老实说我也不太确定。\n还有，记得去看看杰夫叔叔，上次跟他聊天的时候他状态不太好……",
+		
+		"ITEM_SS2U_ERRATICGADGET_NAME" : "古怪装置",
+		"ITEM_SS2U_ERRATICGADGET_PICKUP" : "暴击会额外攻击一次。",
+		"ITEM_SS2U_ERRATICGADGET_DESC" : "获得<style=cIsDamage>10% 暴击几率</style>。<style=cIsDamage>暴击</style>会额外触发一次，造成<style=cIsDamage>50%</style> <style=cStack>（每层+50%）</style>总伤害。",
+		"ITEM_SS2U_ERRATICGADGET_LORE" : "订单：古怪装置\r\n追踪编号：22******\r\n预计送达日期：01\/15\/2056\r\n运输方式：高优先级\r\n收货地址：S159, Noev Londa, 金星\r\n运输详情：\r\n\r\n在战场上，脉冲武器是我的最爱，现在也有可能成为你的最爱！收下这个吧，我可以保证，只要你用得聪明，它会让你在敌人面前占尽优势。永远瞄准头部，让那些[已编辑]毫无生还的机会。让他们看看我们是什么料。\n——Hoogehn 叔叔",
+		
+		"ITEM_SS2U_ITEMONLEVELUP_NAME" : "恩科塔的遗产",
+		"ITEM_SS2U_ITEMONLEVELUP_PICKUP" : "升级或开始传送门事件时获得一件物品。",
+		"ITEM_SS2U_ITEMONLEVELUP_DESC" : "在<style=cIsUtility>升级</style>或开始<style=cIsUtility>传送门事件</style>时<style=cIsUtility>获得一件物品</style>。为更高等级的物品重掷<style=cIsUtility>0</style>次<style=cStack>（每层+1 次）</style>。<style=cIsUtility>不受幸运值影响</style>。",
+		"ITEM_SS2U_ITEMONLEVELUP_LORE" : "订单：恩科塔的遗产\r\n追踪编号：23******\r\n预计送达日期：05\/05\/2056\r\n运输方式：高优先级\r\n收货地址：Naaga 23, H4D3S, 地球\r\n运输详情：\r\n\r\n在 Nkota 的兄弟姐妹试图把这份遗产据为己有之后，有人出于报复似的把这件藏品偷走了。\n直到一个年轻人用合适的价钱把它卖给我，它才落到我手里。我把它寄给你，是因为你也许能帮我分析一下。\n\n如果它真的是正品，我愿意把它卖给博物馆，然后分你一部分。",
+		
+		"ITEM_SS2U_STIRRINGSOUL_NAME" : "<color=#FFCCED>激荡之魂</color>",
+		"ITEM_SS2U_STIRRINGSOUL_PICKUP" : "<color=#FFCCED>我究竟在为何而战？</color>",
+		"ITEM_SS2U_STIRRINGSOUL_DESC" : "被击杀的怪物会留下<style=cIsUtility>灵魂</style>，接触时有<style=cIsUtility>3%</style>几率<style=cIsUtility>生成一件物品</style>。",
+		"ITEM_SS2U_STIRRINGSOUL_LORE" : "订单：激荡之魂\r\n追踪编号：X0******\r\n预计送达日期：<color=#FFCCED>未知</color>\r\n运输方式：未知\r\n收货地址：未知\r\n运输详情：\r\n\r\n我真的能用“为了生存”来为自己的行为开脱吗？我究竟在为何而战？\n\n我失去的一切，再也回不来了。",
+		
+		"ITEM_SS2U_RELICMASS_NAME" : "质量遗物",
+		"ITEM_SS2U_RELICMASS_PICKUP" : "使你的最大生命值翻倍。<style=cDeath>你的移动将具有惯性。</style>",
+		"ITEM_SS2U_RELICMASS_DESC" : "<style=cIsHealing>最大生命值</style>提高<style=cIsHealing>100%</style> <style=cStack>（每层+100%）</style>。<style=cDeath>加速与减速</style>降低<style=cDeath>8</style>倍<style=cStack>（每层+8）</style>。",
+		"ITEM_SS2U_RELICMASS_LORE" : "订单：质量遗物\r\n追踪编号：R0******\r\n预计送达日期：未知\r\n运输方式：现场发现\r\n收货地址：未知\r\n运输详情：\r\n\r\n疲惫将我引向那块古老的石头，而它回赠给我的是支撑下去的意志，以及压过困境的力量。",
+	}
+}

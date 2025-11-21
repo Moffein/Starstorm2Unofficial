@@ -1,0 +1,14 @@
+{
+	strings:
+	{
+		"EQUIPMENT_SS2U_CLOAKINGHEADBAND_NAME" : "隐形头带",
+		"EQUIPMENT_SS2U_CLOAKINGHEADBAND_PICKUP" : "暂时隐身。",
+		"EQUIPMENT_SS2U_CLOAKINGHEADBAND_DESC" : "获得<style=cIsUtility>隐身</style>效果，持续 10 秒。",
+		"EQUIPMENT_SS2U_CLOAKINGHEADBAND_LORE" : "订单：隐形头带\r\n追踪编号：30******\r\n预计送达日期：11\/10\/2056\r\n运输方式：不稳定\r\n收货地址：Olmos Developments, New Satt, 地球\r\n运输详情：\r\n\r\n在所有选择里，为什么偏偏是这么个蠢头带？要是腰带不是更合理吗？并不是说我要发脾气，但这东西就是让人感觉别扭又多余。尤其是考虑到市面上已经有什么东西了。\n我可不能就这么放你过关，请在本季结束前重新考虑。",
+		
+		"EQUIPMENT_SS2U_GREATERWARBANNER_NAME" : "强效战旗",
+		"EQUIPMENT_SS2U_GREATERWARBANNER_PICKUP" : "放置一面强效战旗，提供治疗、暴击几率和冷却缩减。",
+		"EQUIPMENT_SS2U_GREATERWARBANNER_DESC" : "放置一面强效战旗，强化<style=cIsDamage>25m</style>范围内的所有友军。将<style=cIsDamage>暴击几率</style>提高<style=cIsDamage>25%</style>。每秒<style=cIsUtility>减少技能冷却 0.5 秒</style>并<style=cIsHealing>治疗</style>你<style=cIsHealing>生命值</style>的<style=cIsHealing>2.5%</style>。同时只能存在<style=cIsUtility>1</style>面战旗。",
+		"EQUIPMENT_SS2U_GREATERWARBANNER_LORE" : "订单：强效战旗\r\n追踪编号：31******\r\n预计送达日期：03\/01\/2056\r\n运输方式：不稳定\r\n收货地址：L2, Northern Outpost, 地球\r\n运输详情：\r\n\r\n力量啊，我的孩子们，力量！我们离世界末日已经越来越近。我们必须战斗，否则只会灭亡。这是长者们的馈赠，用以助你们在今后的战斗中一臂之力。",
+	}
+}

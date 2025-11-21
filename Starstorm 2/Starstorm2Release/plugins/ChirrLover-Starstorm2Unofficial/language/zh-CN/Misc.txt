@@ -1,0 +1,14 @@
+{
+	strings:
+	{
+		"DIFFICULTY_TYPHOON_NAME" : "台风",
+		"DIFFICULTY_TYPHOON_DESCRIPTION" : "终极挑战。世界如同梦魇，生存不过是幻觉。没有人能做到。<style=cStack>\n\n>玩家生命回复：<style=cIsHealth>-40%</style>\n>难度成长：<style=cIsHealth>+75%</style>",
+		"DIFFICULTY_TYPHOON_INCREASEDSPAWNCAP_DESCRIPTION" : "终极挑战。世界如同梦魇，生存不过是幻觉。没有人能做到。<style=cStack>\n\n>玩家生命回复：<style=cIsHealth>-40%</style>\n>难度成长：<style=cIsHealth>+75%</style>\n>怪物上限：<style=cIsHealth>+50%</style></style>",
+	
+		"SS2U_EVENT_STORM" : "<style=cWorldEvent><sprite name=\"CloudRight\">     风暴正在逼近……</style>",
+		"SS2U_EVENT_STORM_START" : "（风暴已开始。）",
+		
+		"SS2UNEMESIS_MODE_ACTIVE_WARNING" : "<style=cIsHealth>一股不自然的力量自虚空中涌出……</style>",
+		"SS2UNEMESIS_MODE_DEACTIVATED" : "<style=cWorldEvent>虚空的影响正在消退……</style>",
+	}
+}
