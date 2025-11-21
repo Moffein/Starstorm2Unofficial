@@ -15,7 +15,9 @@ namespace Starstorm2Unofficial.Cores.Items
         public override ItemTier Tier => ItemTier.Tier3;
         public override ItemTag[] Tags => new ItemTag[]
         {
-            ItemTag.Damage, ItemTag.Utility, ItemTag.AIBlacklist
+            ItemTag.Damage, ItemTag.Utility, ItemTag.AIBlacklist,
+            ItemTag.FoodRelated,
+            ItemTag.CanBeTemporary
         };
         public override string PickupIconPath => "GreenChocolate_Icon";
         public override string PickupModelPath => "MDLGreenChocolate";

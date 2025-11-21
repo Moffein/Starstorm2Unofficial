@@ -12,7 +12,9 @@ namespace Starstorm2Unofficial.Cores.Items
         public override ItemTag[] Tags => new ItemTag[]
         {
             ItemTag.Damage,
-            ItemTag.Utility
+            ItemTag.Utility,
+            ItemTag.FoodRelated,
+            ItemTag.CanBeTemporary
         };
         public override string PickupIconPath => "CoffeeBag_Icon";
         public override string PickupModelPath => "MDLCoffeeBag";

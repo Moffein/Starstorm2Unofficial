@@ -72,6 +72,7 @@ namespace EntityStates.SS2UStates.Cyborg
                     procCoefficient = 1f
                 };
                 bullet.damageType.damageSource = DamageSource.Primary;
+                bullet.damageType.damageTypeExtended |= DamageTypeExtended.Electrical;
                 bullet.AddModdedDamageType(DamageTypeCore.ModdedDamageTypes.CyborgCanDetonateShockCore);
                 bullet.Fire();
                 base.AddRecoil(-0.5f * recoil, -0.8f * recoil, -0.3f * recoil, 0.3f * recoil);

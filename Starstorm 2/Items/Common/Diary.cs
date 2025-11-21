@@ -16,7 +16,8 @@ namespace Starstorm2Unofficial.Cores.Items
         public override ItemTier Tier => ItemTier.Tier1;
         public override ItemTag[] Tags => new ItemTag[]
         {
-            ItemTag.Utility
+            ItemTag.Utility,
+            ItemTag.CanBeTemporary
         };
 
         public override string PickupIconPath => "Diary_Icon";

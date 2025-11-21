@@ -18,7 +18,9 @@ namespace Starstorm2Unofficial.Cores.Items
         {
             ItemTag.Healing,
             ItemTag.SprintRelated,
-            ItemTag.AIBlacklist
+            ItemTag.AIBlacklist,
+            ItemTag.FoodRelated,
+            ItemTag.CanBeTemporary
         };
         public override string PickupIconPath => "DormantFungus_Icon";
         public override string PickupModelPath => "MDLDormantFungus";

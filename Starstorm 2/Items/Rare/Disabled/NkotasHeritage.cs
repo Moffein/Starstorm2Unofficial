@@ -20,7 +20,8 @@ namespace Starstorm2Unofficial.Cores.Items
         {
             ItemTag.Utility,
             ItemTag.AIBlacklist,
-            ItemTag.CannotCopy
+            ItemTag.CannotCopy,
+            ItemTag.CanBeTemporary
         };
         public override string PickupIconPath => "NkotasHeritage_Icon";
         public override string PickupModelPath => "MDLNkotasHeritage";

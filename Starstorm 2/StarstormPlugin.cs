@@ -36,6 +36,7 @@ namespace Starstorm2Unofficial
     [BepInDependency("com.Kingpinush.KingKombatArena", BepInDependency.DependencyFlags.SoftDependency)]
     [BepInDependency("com.weliveinasociety.CustomEmotesAPI", BepInDependency.DependencyFlags.SoftDependency)]
     [BepInDependency("com.RiskyLives.RiskyMod", BepInDependency.DependencyFlags.SoftDependency)]
+    [BepInDependency("com.Moffein.AdditiveExecutes", BepInDependency.DependencyFlags.SoftDependency)]
 
     [BepInDependency("com.Moffein.DefenseMatrixManager", BepInDependency.DependencyFlags.HardDependency)]
     [BepInDependency(R2API.R2API.PluginGUID)]
@@ -58,7 +59,7 @@ namespace Starstorm2Unofficial
     {
         internal const string guid = "com.ChirrLover.Starstorm2Unofficial";
         internal const string modName = "Starstorm 2 Unofficial";
-        internal const string version = "0.22.5";
+        internal const string version = "0.22.6";
 
         public static StarstormPlugin instance;
 
@@ -71,6 +72,7 @@ namespace Starstorm2Unofficial
         public static bool kingArenaLoaded = false;
         public static bool emoteAPILoaded = false;
         public static bool blightedElitesLoaded = false;
+        public static bool additiveExecutesLoaded = false;
 
         public static bool kingArenaActive = false;
 
@@ -99,6 +101,7 @@ namespace Starstorm2Unofficial
             emoteAPILoaded = BepInEx.Bootstrap.Chainloader.PluginInfos.ContainsKey("com.weliveinasociety.CustomEmotesAPI");
             riskOfOptionsLoaded = BepInEx.Bootstrap.Chainloader.PluginInfos.ContainsKey("com.rune580.riskofoptions");
             blightedElitesLoaded = BepInEx.Bootstrap.Chainloader.PluginInfos.ContainsKey("com.Moffein.BlightedElites");
+            additiveExecutesLoaded = BepInEx.Bootstrap.Chainloader.PluginInfos.ContainsKey("com.Moffein.AdditiveExecutes");
             if (BepInEx.Bootstrap.Chainloader.PluginInfos.ContainsKey("com.KingEnderBrine.ScrollableLobbyUI")) scrollableLobbyInstalled = true;
             ModCompat.Initialize();
             Modules.SoundBanks.Init();

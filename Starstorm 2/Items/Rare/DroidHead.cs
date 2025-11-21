@@ -20,7 +20,8 @@ namespace Starstorm2Unofficial.Cores.Items
         {
             ItemTag.AIBlacklist,
             ItemTag.Damage,
-            ItemTag.OnKillEffect
+            ItemTag.OnKillEffect,
+            ItemTag.CanBeTemporary
         };
         public override string PickupIconPath => "DroidHead_Icon";
         public override string PickupModelPath => "MDLDroidHead";

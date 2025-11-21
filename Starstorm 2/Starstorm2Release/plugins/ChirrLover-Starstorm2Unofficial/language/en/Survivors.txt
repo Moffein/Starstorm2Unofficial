@@ -201,7 +201,7 @@
 		"SS2UNUCLEATOR_SPECIAL_SCEPTER_NAME" : "Radionuclide Efflux",
 		"SS2UNUCLEATOR_SPECIAL_SCEPTER_DESCRIPTION" : "Enter a nuclear state for <style=cIsUtility>12 seconds</style>, becoming <style=cIsUtility>immune to <style=cIsHealth>Overcharge</style> damage</style> and adding <style=cIsDamage>Radiation Poisoning</style> to every attack.",
 		
-		"KEYWORD_SS2U_RADIATION" : "<style=cKeywordName>Radiation Poisoning</style><style=cSub>Deal damage equivalent to <style=cIsDamage>5%</style> of their maximum health over 5s.</style>",
+		"KEYWORD_SS2U_RADIATION" : "<style=cKeywordName>Radiation Poisoning</style><style=cSub>Deal <style=cIsDamage>200%</style> damage per second in an AoE for 5s.</style>",
 		
 		"SS2UNUCLEATOR_UNLOCKUNLOCKABLE_UNLOCKABLE_NAME" : "Overkill",
 		"SS2UNUCLEATOR_UNLOCKUNLOCKABLE_ACHIEVEMENT_NAME" : "Overkill",

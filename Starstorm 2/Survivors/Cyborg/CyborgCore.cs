@@ -284,6 +284,7 @@ namespace Starstorm2Unofficial.Survivors.Cyborg
             ProjectileDamage pd = projectilePrefab.GetComponent<ProjectileDamage>();
             pd.damageType = DamageType.Shock5s;
             pd.damageType.damageSource = DamageSource.Special;
+            pd.damageType.damageTypeExtended |= DamageTypeExtended.Electrical | DamageTypeExtended.Electrocution;
 
             ProjectileImpactExplosion pie = projectilePrefab.GetComponent<ProjectileImpactExplosion>();
             pie.blastRadius = 4f;

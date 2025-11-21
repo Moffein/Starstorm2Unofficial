@@ -54,7 +54,7 @@ namespace Starstorm2Unofficial.Cores
             DetritiveTrematodeInfection = DotAPI.RegisterDotDef(1f, 1f, DamageColorIndex.Item, BuffCore.detritiveBuff);
             StrangeCanPoison = DotAPI.RegisterDotDef(1f, 1f, DamageColorIndex.Poison, BuffCore.strangeCanPoisonBuff);
             NemmandoGouge = DotAPI.RegisterDotDef(0.25f, 0.25f, DamageColorIndex.Bleed, BuffCore.gougeBuff);
-            NucleatorRadiation = DotAPI.RegisterDotDef(1f, 1f, DamageColorIndex.Poison, BuffCore.nucleatorSpecialDebuff);
+            NucleatorRadiation = DotAPI.RegisterDotDef(1f, 2f, DamageColorIndex.Poison, BuffCore.nucleatorSpecialDebuff);
         }
     }
 }

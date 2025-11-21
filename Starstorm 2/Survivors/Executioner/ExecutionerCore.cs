@@ -599,30 +599,45 @@ namespace Starstorm2Unofficial.Survivors.Executioner
 
         private void SetupFearExecute()
         {
-            R2API.ExecuteAPI.CalculateAdditiveExecuteThreshold += FearExecuteThreshold;
-
-            IL.RoR2.CharacterBody.UpdateAllTemporaryVisualEffects += (il) =>
+            if (StarstormPlugin.additiveExecutesLoaded)
             {
-                ILCursor c = new ILCursor(il);
-                if (c.TryGotoNext(
-                      x => x.MatchLdsfld(typeof(RoR2Content.Buffs), "Cripple")
-                     ))
+                R2API.ExecuteAPI.CalculateAdditiveExecuteThreshold += FearExecuteThresholdAdditive;
+            }
+            else
+            {
+                R2API.ExecuteAPI.CalculateAdditiveExecuteThreshold += FearExecuteThreshold;
+            }
+
+                IL.RoR2.CharacterBody.UpdateAllTemporaryVisualEffects += (il) =>
                 {
-                    c.Index += 2;
-                    c.Emit(OpCodes.Ldarg_0);
-                    c.EmitDelegate<Func<bool, CharacterBody, bool>>((hasBuff, self) =>
+                    ILCursor c = new ILCursor(il);
+                    if (c.TryGotoNext(
+                          x => x.MatchLdsfld(typeof(RoR2Content.Buffs), "Cripple")
+                         ))
                     {
-                        return hasBuff || self.HasBuff(BuffCore.fearDebuff);
-                    });
-                }
-                else
-                {
-                    UnityEngine.Debug.LogError("Starstorm 2 Unofficial: Fear VFX IL Hook failed.");
-                }    
-            };
+                        c.Index += 2;
+                        c.Emit(OpCodes.Ldarg_0);
+                        c.EmitDelegate<Func<bool, CharacterBody, bool>>((hasBuff, self) =>
+                        {
+                            return hasBuff || self.HasBuff(BuffCore.fearDebuff);
+                        });
+                    }
+                    else
+                    {
+                        UnityEngine.Debug.LogError("Starstorm 2 Unofficial: Fear VFX IL Hook failed.");
+                    }
+                };
         }
 
-        private void FearExecuteThreshold(CharacterBody victimBody, ref float executeFractionAdd)
+        private void FearExecuteThreshold(CharacterBody victimBody, ref float executeFraction)
+        {
+            if (victimBody.HasBuff(BuffCore.fearDebuff) && executeFraction < BuffCore.fearExecuteFraction)
+            {
+                executeFraction = BuffCore.fearExecuteFraction;
+            }
+        }
+
+        private void FearExecuteThresholdAdditive(CharacterBody victimBody, ref float executeFractionAdd)
         {
             if (victimBody.HasBuff(BuffCore.fearDebuff))
             {

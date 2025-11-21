@@ -23,7 +23,7 @@ namespace Starstorm2Unofficial.Cores.NemesisInvasion.Components.Body
         }
 
         //Remove Blacklisted Items added via EWI
-        public void Start()
+        /*public void Start()
         {
             if (NetworkServer.active && NemesisInvasionManager.forceRemoveBlacklistedItems && characterBody.inventory)
             {
@@ -47,7 +47,7 @@ namespace Starstorm2Unofficial.Cores.NemesisInvasion.Components.Body
                     }
                 }
             }
-        }
+        }*/
 
         public void FixedUpdate()
         {

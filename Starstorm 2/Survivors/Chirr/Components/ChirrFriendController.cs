@@ -24,7 +24,7 @@ namespace Starstorm2Unofficial.Survivors.Chirr.Components
         //Gets set to false on Meridian start, true again on Meridian final phase so that you can befriend him in Universe.
         public static bool canBefriendFalseSon = true;
 
-        public static bool minionPingRetarget = true;
+        public static bool minionPingRetarget = false;
         public static float befriendHealthFraction = 0.5f;
         public static float befriendChampionHealthFraction = 0.3f;
 
@@ -775,9 +775,11 @@ namespace Starstorm2Unofficial.Survivors.Chirr.Components
                     //Save the original inventory
                     if (masterFriendInfo)
                     {
-                        if (masterFriendInfo.masterItemStacks != null && targetMaster.inventory.itemStacks != null)
+                        //jank, this is bad
+                        masterFriendInfo.masterItemStacks = new int[(int)ItemIndex.Count];
+                        for (int i = 0; i < masterFriendInfo.masterItemStacks.Length; i++)
                         {
-                            targetMaster.inventory.itemStacks.CopyTo(masterFriendInfo.masterItemStacks, 0);
+                            masterFriendInfo.masterItemStacks[i] = targetMaster.inventory.GetItemCountPermanent((ItemIndex)i);
                         }
                         masterFriendInfo.masterEquipmentIndex = targetMaster.inventory.GetEquipmentIndex();
                         EquipmentDef ed = EquipmentCatalog.GetEquipmentDef(masterFriendInfo.masterEquipmentIndex);

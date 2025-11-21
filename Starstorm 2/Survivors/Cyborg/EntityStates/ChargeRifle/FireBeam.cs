@@ -113,6 +113,7 @@ namespace EntityStates.SS2UStates.Cyborg.ChargeRifle
                     maxDistance = 1000f
                 };
                 bullet.damageType.damageSource = DamageSource.Primary;
+                bullet.damageType.damageTypeExtended |= DamageTypeExtended.Electrical;
                 bullet.AddModdedDamageType(DamageTypeCore.ModdedDamageTypes.CyborgCanDetonateShockCore);
                 if (perfectCharge || charge >= 1f) bullet.stopperMask = LayerIndex.world.mask;
                 bullet.Fire();

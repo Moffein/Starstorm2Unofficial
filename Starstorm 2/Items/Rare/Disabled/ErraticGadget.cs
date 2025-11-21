@@ -16,7 +16,8 @@ namespace Starstorm2Unofficial.Cores.Items
         public override ItemTier Tier => ItemTier.Tier3;
         public override ItemTag[] Tags => new ItemTag[]
         {
-            ItemTag.Damage
+            ItemTag.Damage,
+            ItemTag.CanBeTemporary
         };
         public override string PickupIconPath => "ErraticGadget_Icon";
         public override string PickupModelPath => "MDLErraticGadget";
@@ -190,7 +191,7 @@ namespace Starstorm2Unofficial.Cores.Items
                 inflictor = damageInfo.inflictor,
                 crit = damageInfo.crit,
                 canRejectForce = damageInfo.canRejectForce,
-                damageType = DamageType.Generic,
+                damageType = DamageTypeExtended.Electrical,
                 damageColorIndex = DamageColorIndex.Item,
                 dotIndex = damageInfo.dotIndex,
                 force = damageInfo.force * 0.5f,

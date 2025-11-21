@@ -1,3 +1,16 @@
+`0.22.6`
+
+- DLC3 fix.
+
+- Chirr
+	- Disabled minion ping retarget, since I'm assuming it's in the DLC by default. Let me know if it isn't.
+	- Check if Chirr is acting buggy, some stuff changed.
+	
+- Nucleator
+	- Reworked Radiation DoT
+		- No longer deals %HP damage.
+		- Each irradiated enemy deals 200% damage per second in an AoE, hitting once per second with a 0.5 proc coefficient.
+
 `0.22.5`
 
 - Manually rebuilt entire WWISE project to avoid compat issues with SS2O.

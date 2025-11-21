@@ -58,7 +58,9 @@ namespace EntityStates.SS2UStates.Pyro
 			Ray aimRay = base.GetAimRay();
 			if (base.isAuthority)
 			{
-				var bullet = new BulletAttack
+				bool shouldBurn = heatController && heatController.IsHighHeat() && flameController && flameController.CheckBurn();
+
+                var bullet = new BulletAttack
 				{
 					owner = base.gameObject,
 					weapon = base.gameObject,
@@ -76,9 +78,11 @@ namespace EntityStates.SS2UStates.Pyro
 					procCoefficient = FireFlamethrower.procCoefficient,
 					maxDistance = FireFlamethrower.maxDistance,
 					smartCollision = true,
-					damageType = (heatController && heatController.IsHighHeat() && flameController && flameController.CheckBurn() ? DamageType.IgniteOnHit : DamageType.Generic)
+					damageType = (shouldBurn ? DamageType.IgniteOnHit : DamageType.Generic)
 				};
 				bullet.damageType.damageSource = DamageSource.Primary;
+				if (!shouldBurn) bullet.damageType.damageTypeExtended |= DamageTypeExtended.FireNoIgnite;
+
 				bullet.Fire();
 				heatController.AddHeatAuthority(FireFlamethrower.heatFractionPerTick);
 

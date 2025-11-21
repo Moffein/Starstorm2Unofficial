@@ -136,9 +136,9 @@ namespace Starstorm2Unofficial.Cores
                 }
 
                 CharacterBody attackerBody = null;
-                if (damageInfo.attacker) attackerBody = damageInfo.attacker.GetComponent<CharacterBody>();
                 if (damageInfo.dotIndex == DoTCore.NemmandoGouge && damageInfo.procCoefficient == 0f)
                 {
+                    if (damageInfo.attacker && !attackerBody) attackerBody = damageInfo.attacker.GetComponent<CharacterBody>();
                     if (attackerBody)
                     {
                         damageInfo.crit = Util.CheckRoll(attackerBody.crit, attackerBody.master);
@@ -149,6 +149,7 @@ namespace Starstorm2Unofficial.Cores
                 }
                 else if (damageInfo.dotIndex == DoTCore.StrangeCanPoison)
                 {
+                    if (damageInfo.attacker && !attackerBody) attackerBody = damageInfo.attacker.GetComponent<CharacterBody>();
                     float minDamage = 1f;
                     float percentDamage = self.combinedHealth * 0.025f;
                     if (attackerBody)
@@ -189,14 +190,41 @@ namespace Starstorm2Unofficial.Cores
                 }
                 else if (damageInfo.dotIndex == DoTCore.NucleatorRadiation)
                 {
-                    damageInfo.damage = Mathf.Max(damageInfo.damage, self.fullCombinedHealth * 0.01f);
-
-                    EffectManager.SpawnEffect(DoTCore.TrematodeHitEffect, new EffectData
+                    if (damageInfo.attacker && !attackerBody) attackerBody = damageInfo.attacker.GetComponent<CharacterBody>();
+                    if (attackerBody && attackerBody.teamComponent)
                     {
-                        origin = damageInfo.position,
-                        rotation = self.transform.rotation,
-                        scale = Mathf.Max(1f, Mathf.Min(4f, cb.radius))
-                    }, true);
+                        //Replace DoT damage with an AoE burst
+                        damageInfo.damageType = DamageType.Silent;
+                        damageInfo.rejected = true;
+
+                        //damageInfo.damage = Mathf.Max(damageInfo.damage, self.fullCombinedHealth * 0.01f);
+                        float blastRadius = 7f;
+                        new BlastAttack
+                        {
+                            baseDamage = attackerBody.damage * 2f,
+                            attacker = damageInfo.attacker,
+                            inflictor = damageInfo.attacker,
+                            baseForce = 0f,
+                            attackerFiltering = AttackerFiltering.NeverHitSelf,
+                            crit = attackerBody.RollCrit(),
+                            position = damageInfo.position,
+                            falloffModel = BlastAttack.FalloffModel.None,
+                            procCoefficient = 0.5f,
+                            procChainMask = default,
+                            radius = blastRadius,
+                            damageColorIndex = DamageColorIndex.Poison,
+                            damageType = DamageTypeExtended.Electrical,
+                            teamIndex = attackerBody.teamComponent.teamIndex
+                        }.Fire();
+
+
+                        EffectManager.SpawnEffect(DoTCore.TrematodeHitEffect, new EffectData
+                        {
+                            origin = damageInfo.position,
+                            rotation = self.transform.rotation,
+                            scale = blastRadius
+                        }, true);
+                    }
                 }
 
                 if (damageInfo.HasModdedDamageType(ModdedDamageTypes.GuaranteedFearOnHit))
