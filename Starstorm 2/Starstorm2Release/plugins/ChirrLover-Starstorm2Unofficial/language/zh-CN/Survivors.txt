@@ -1,0 +1,282 @@
+{
+	strings:
+	{
+		"SS2UEXECUTIONER_NAME" : "刽子手",
+		"SS2UEXECUTIONER_SUBTITLE" : "恐怖的断头台",
+		"SS2UEXECUTIONER_DESCRIPTION" : "刽子手的目标是在最短时间内洒下最多鲜血。上膛完毕，离子操纵器充能完毕。<style=cSub>\r\n\r\n < ! > 离子爆发造成巨量伤害，但充能恢复缓慢。击杀弱小敌人可快速充能，然后将其对准更强的敌人释放。\r\n\r\n < ! > 群体驱散可以打断敌人的攻击，给你创造进攻窗口。\r\n\r\n < ! > 被恐惧影响的敌人在低生命时会被斩杀。\r\n\r\n < ! > 将处决与群体驱散配合使用，可以迅速清理成群敌人。\r\n\r\n",
+		"SS2UEXECUTIONER_OUTRO_FLAVOR" : "..于是他离去了，嗜血之心未能满足。",
+		"SS2UEXECUTIONER_OUTRO_FAILURE" : "..于是他消失了，逃脱了他以为不可避免的命运。",
+		"SS2UEXECUTIONER_LORE" : "死亡是不可避免的。它会降临到我们所有人身上。有人可能试图躲避或逃离，但死亡终会如约而至。死亡，不过是战争的代价。而在光荣的战斗中战死，是人们所能期望的一种崇高结局。\n\n然而，总有人试图逃避死亡。我们称他们为许多名字：逃兵、懦夫、叛徒。每一个人，都是对事业的背叛者。这些叛徒必须为他们的罪行付出代价。而那代价——具有讽刺意味——正是他们曾极力想要避免的东西。\n\n死亡会来找他们。不是披着长袍挥舞镰刀的幽灵，也不是穿着风衣拿着左轮的可怜人，不是疾病，也不是时间的侵蚀。不是。对他们而言，死亡会穿着光亮的战装，持枪在手，离子操纵器充能完毕。",
+		
+		"SS2UEXECUTIONER_PISTOL_NAME" : "制式手枪",
+		"SS2UEXECUTIONER_PISTOL_DESCRIPTION" : "开火造成 <style=cIsDamage>2x180% 伤害</style>。",
+		
+		"SS2UEXECUTIONER_PISTOL_SINGLE_NAME" : "标准制式手枪",
+		"SS2UEXECUTIONER_PISTOL_SINGLE_DESCRIPTION" : "开火造成 <style=cIsDamage>180% 伤害</style>。",
+		
+		"SS2UEXECUTIONER_IONGUN_NAME" : "离子爆发",
+		"SS2UEXECUTIONER_IONGUN_DESCRIPTION" : "<style=cIsDamage>触电</style>。发射一连串贯穿的离子子弹，每发造成 <style=cIsDamage>2x300% 伤害</style>。每击杀一个敌人可 <style=cIsUtility>增加一格弹匣</style>，最多可储存 <style=cIsUtility>5 格</style>。",
+		
+		"KEYWORD_SS2U_FEAR" : "<style=cKeywordName>恐惧</style><style=cSub>移动速度降低 <style=cIsDamage>50%</style>。处于恐惧状态的敌人在生命值低于 <style=cIsHealth>15%</style> 时会被 <style=cIsHealth>直接斩杀</style>。</style>",
+		
+		"SS2UEXECUTIONER_DASH_NAME" : "群体驱散",
+		"SS2UEXECUTIONER_DASH_DESCRIPTION" : "<style=cIsDamage>眩晕</style>。<style=cIsUtility>向前冲刺</style>并对附近敌人施加 <style=cIsDamage>恐惧</style>。",
+		
+		"SS2UEXECUTIONER_AXE_NAME" : "处决",
+		"SS2UEXECUTIONER_AXE_DESCRIPTION" : "<style=cIsDamage>屠戮者</style>。<style=cIsUtility>向上跃起</style>，随后用离子战斧向下猛砸，造成 <style=cIsDamage>1000% 伤害</style>。",
+		
+		"SS2UEXECUTIONER_AXE_SCEPTER_NAME" : "群体处决",
+		"SS2UEXECUTIONER_AXE_SCEPTER_DESCRIPTION" : "<style=cIsDamage>屠戮者</style>。<style=cIsUtility>向上跃起</style>，随后用离子战斧向下猛砸并对附近敌人施加 <style=cIsUtility>恐惧</style>，同时造成 <style=cIsDamage>1500% 伤害</style>。",
+		
+		"SS2UEXECUTIONER_UNLOCKUNLOCKABLE_ACHIEVEMENT_NAME" : "过度杀戮",
+		"SS2UEXECUTIONER_UNLOCKUNLOCKABLE_UNLOCKABLE_NAME" : "过度杀戮",
+		"SS2UEXECUTIONER_UNLOCKUNLOCKABLE_ACHIEVEMENT_DESC" : "通过造成等同于目标最大生命值1000%的伤害来击败该敌人。",
+		
+		"ACHIEVEMENT_SS2UEXECUTIONERCLEARGAMEMONSOON_NAME" : "刽子手：精通",
+		"ACHIEVEMENT_SS2UEXECUTIONERCLEARGAMEMONSOON_DESCRIPTION" : "作为刽子手，在季风难度下通关或在 Monsoon 模式中完成毁灭。",
+		"ACHIEVEMENT_SS2UEXECUTIONERCLEARGAMETYPHOON_NAME" : "刽子手：宗师",
+		"ACHIEVEMENT_SS2UEXECUTIONERCLEARGAMETYPHOON_DESCRIPTION" : "作为刽子手，在台风难度下通关或在 Typhoon 模式中完成毁灭。",
+		"ACHIEVEMENT_SS2UEXECUTIONERWASTELANDER_NAME" : "刽子手：破解宝库",
+		"ACHIEVEMENT_SS2UEXECUTIONERWASTELANDER_DESCRIPTION" : "作为刽子手，在荒弃水渠打开那扇古代之门。",
+		
+		"SS2UEXECUTIONER_MASTERY_SKIN_NAME" : "义警",
+		"SS2UEXECUTIONER_KNIGHT_SKIN_NAME" : "角斗士",
+		"SS2UEXECUTIONER_WASTELANDER_SKIN_NAME" : "荒原行者",
+	
+		"SS2UCYBORG_NAME" : "赛博格",
+		"SS2UCYBORG_SUBTITLE" : "人造怪物",
+		"SS2UCYBORG_OUTRO_FLAVOR" : "..于是它离开了，程序释放出多余的血清素。",
+		"SS2UCYBORG_OUTRO_FAILURE" : "..于是它消失了，信标失去信号。",
+		"SS2UCYBORG_DESCRIPTION" : "当赛博格被创造出来时，科技似乎触及了道德的边界。很难判断他们内里还剩下多少人性。<style=cSub>\r\n\r\n< ! > 赛博格的技能都从同一个能量池中消耗，允许技能使用上的灵活性。\r\n\r\n< ! > Rising Star 每秒造成极高伤害，但消耗能量迅速。\r\n\r\n< ! > 使用 Recall 在交战前放置一个传送点，这样你就有撤退路线。\r\n\r\n< ! > Overheat Redress 是赛博格对付群体敌人的最佳工具。\r\n\r\n",
+		"SS2UCYBORG_LORE" : "<style=cMono>在 “Dr. Rayell 的证词” 下找到音频文件。播放中...</style>\n\n\"录音开始。开始测试，Rayell 博士。\"\n\n\"谢谢。在 EOD 在生物机械改造方面取得巨大成功之后（他们培养出了一些部门中最优秀的战斗工程师），我们继续进行一些可以说更具试验性的设计。\"\n\n\"例如？\"\n\n\"部门开始研究精神层面的增强。这无疑是一次飞跃。改造本身已经相当前沿，但去补充——甚至替换受损的大脑？这是一个艰巨的任务。但上头认为我们能做到，所以我们就做了。\"\n\n\"嗯。你们的项目结果如何？\"\n\n\"当原型制作完成后，我们开始了人体试验。招募来的受试者形形色色，有植物人、有精神不稳定的，也有身心俱损的人。我们被要求尽力修复他们。\"\n\n\"结果如何？\"\n\n\"那简直是一场悲剧。有些人已经无可挽回，根本无法补救。那些算是相对好一些的案例。更糟的是当他们排斥替代体时。有些人在急性免疫反应中死亡。更有意识的那些人求我们结束他们的头痛。有些人就开始尖叫。他们会连续尖叫数小时，甚至数天，然后停止——他们真的在尖叫中死去。\"\n\n\"这，嗯，有点令人不安。就这些吗？\"\n\n\"有一例。他通过了替换手术，而且效果极好。我们把他从植物状态中救了出来，也许不能完全恢复他的生命，但至少给了他某种类似生命的东西。听到他状况良好时我感激不尽。\"\n\n\"听起来确实不错。那么他后来怎么样了？\"\n\n\"你知道吗？我不是很确定。除了预期中的一些行为变化外，他能够比较体面地重返社会。我们每三个月对他做回访以分析长期影响，但......说实话？现在回想起来，他上个月并没有出现。哦，好吧。我相信他应该还好。我得联系他一趟。\"\n\n\"嗯，好吧。谢谢你的时间，Rayell 博士。你的证词......嗯，这确实是一段经历。我希望未来能听到你更多的项目进展。\"\n\n\"好的。希望你能找到你想要的东西。\"\n\n<style=cMono>文件结束。</style>",
+		
+		"SS2UCYBORG_PASSIVE_NAME" : "能量核心",
+		"SS2UCYBORG_PASSIVE_DESCRIPTION" : "赛博格的技能共享一个 <color=#8BEDE3>能量池</color> 用于冷却。按住跳跃键可使赛博格 <style=cIsUtility>在空中悬停</style>。",
+		"SS2UCYBORG_PASSIVE_DESCRIPTION_NOENERGY" : "按住跳跃键可使赛博格 <style=cIsUtility>在空中悬停</style>。",
+		
+		"SS2UCYBORG_PRIMARY_GUN_NAME" : "毁灭者",
+		"SS2UCYBORG_PRIMARY_GUN_DESCRIPTION" : "对目标发射一束光线，造成 <style=cIsDamage>300% 伤害</style>。",
+		
+		"SS2UCYBORG_PRIMARY_CHARGE_NAME" : "穿透射击",
+		"SS2UCYBORG_PRIMARY_CHARGE_DESCRIPTION" : "蓄力发射一束贯穿的光线，造成 <style=cIsDamage>300%-900% 伤害</style>。<style=cIsDamage>完美蓄力</style>时造成 <style=cIsDamage>1200%</style> 伤害。",
+		
+		"SS2UCYBORG_SECONDARY_DEFENSEMATRIX_NAME" : "防御矩阵",
+		"SS2UCYBORG_SECONDARY_DEFENSEMATRIX_DESCRIPTION" : "<color=#8BEDE3>15% 能量/秒</color>。投射一个能量场，<style=cIsUtility>中和远程攻击</style>。",
+		"SS2UCYBORG_SECONDARY_DEFENSEMATRIX_DESCRIPTION_NOENERGY" : "投射一个能量场，<style=cIsUtility>中和远程攻击</style>。",
+		
+		"SS2UCYBORG_SECONDARY_TRISHOT_NAME" : "升星",
+		"SS2UCYBORG_SECONDARY_TRISHOT_DESCRIPTION" : "<color=#8BEDE3>30% 能量/秒</color>。快速发射<style=cIsUtility>减速</style>射击，对目标造成 <style=cIsDamage>3x140% 伤害</style>。",
+		"SS2UCYBORG_SECONDARY_TRISHOT_DESCRIPTION_NOENERGY" : "快速发射<style=cIsUtility>减速</style>射击，对目标造成 <style=cIsDamage>3x140% 伤害</style>。",
+		
+		"SS2UCYBORG_UTILITY_TELEPORT_NAME" : "召回",
+		"SS2UCYBORG_UTILITY_TELEPORT_DESCRIPTION" : "<color=#8BEDE3>50% 能量</color>。创建一个 <style=cIsUtility>传送点</style>。再次激活可 <style=cIsUtility>传送到该位置</style>。按住以移除已有传送点。",
+		"SS2UCYBORG_UTILITY_TELEPORT_DESCRIPTION_NOENERGY" : "<style=cIsDamage>触电</style>。创建一个 <style=cIsUtility>传送点</style>。再次激活可 <style=cIsUtility>传送到该位置</style> 并造成 <style=cIsDamage>800% 伤害</style>。按住以移除已有传送点。",
+		
+		"SS2UCYBORG_UTILITY_FLIGHT_NAME" : "飞行模式",
+		"SS2UCYBORG_UTILITY_FLIGHT_DESCRIPTION" : "<color=#8BEDE3>60% 能量/秒</color>。<style=cIsUtility>笨重</style>。起飞，获得 <style=cIsUtility>200% 移动速度</style>。撞击时对目标造成 <style=cIsDamage>400% 伤害</style>。",
+		"SS2UCYBORG_UTILITY_FLIGHT_DESCRIPTION_NOENERGY" : "<style=cIsUtility>笨重</style>。起飞，获得 <style=cIsUtility>200% 移动速度</style>。撞击时对目标造成 <style=cIsDamage>400% 伤害</style>。",
+		
+		"SS2UCYBORG_OVERHEAT_NAME" : "过热调节",
+		"SS2UCYBORG_OVERHEAT_DESCRIPTION" : "<color=#8BEDE3>消耗60% 能量</color>。<style=cIsUtility>向后猛冲</style>，发射一枚更强的能量弹，每秒最多造成 <style=cIsDamage>1200% 伤害</style>。",
+		"SS2UCYBORG_OVERHEAT_DESCRIPTION_NOENERGY" : "<style=cIsUtility>向后猛冲</style>，发射一枚更强的能量弹，每秒最多造成 <style=cIsDamage>1200% 伤害</style>。",
+		
+		"SS2UCYBORG_OVERHEAT_SCEPTER_NAME" : "伽玛过热调节",
+		"SS2UCYBORG_OVERHEAT_SCEPTER_DESCRIPTION" : "<color=#8BEDE3>消耗60% 能量</color>。<style=cIsUtility>向后猛冲</style>并发射一枚更强的能量弹，每秒最多造成 <style=cIsDamage>1800% 伤害</style>。",
+		"SS2UCYBORG_OVERHEAT_SCEPTER_DESCRIPTION_NOENERGY" : "<style=cIsUtility>向后猛冲</style>并发射一枚更强的能量弹，每秒最多造成 <style=cIsDamage>1800% 伤害</style>。",
+		
+		"SS2UCYBORG_SHOCKCORE_NAME" : "冲击核心",
+		"SS2UCYBORG_SHOCKCORE_DESCRIPTION" : "<color=#8BEDE3>40% 能量</color>。<style=cIsDamage>触电</style>。发射一个能量核心，造成 <style=cIsDamage>400% 伤害</style>。射击核心使其内爆，造成 <style=cIsDamage>1200% 伤害</style>。",
+		"SS2UCYBORG_SHOCKCORE_DESCRIPTION_NOENERGY" : "<style=cIsDamage>触电</style>。发射一个能量核心，造成 <style=cIsDamage>400% 伤害</style>。射击核心使其内爆，造成 <style=cIsDamage>1200% 伤害</style>。",
+		
+		"SS2UCYBORG_SHOCKCORE_SCEPTER_NAME" : "伽玛冲击核心",
+		"SS2UCYBORG_SHOCKCORE_SCEPTER_DESCRIPTION" : "<color=#8BEDE3>40% 能量</color>。<style=cIsDamage>触电</style>。发射一个能量核心，造成 <style=cIsDamage>600% 伤害</style>。射击核心使其内爆，造成 <style=cIsDamage>1800% 伤害</style>。",
+		"SS2UCYBORG_SHOCKCORE_SCEPTER_DESCRIPTION_NOENERGY" : "<style=cIsDamage>触电</style>。发射一个能量核心，造成 <style=cIsDamage>600% 伤害</style>。射击核心使其内爆，造成 <style=cIsDamage>1800% 伤害</style>。",
+		
+		"ACHIEVEMENT_SS2UCYBORGCLEARGAMEMONSOON_NAME" : "赛博格：精通",
+		"ACHIEVEMENT_SS2UCYBORGCLEARGAMEMONSOON_DESCRIPTION" : "作为赛博格，在季风难度下通关或在 Monsoon 模式中完成毁灭。",
+		"SS2UCYBORG_MASTERY_SKIN_NAME" : "蒸汽机体",
+		
+		"ACHIEVEMENT_SS2UCYBORGCLEARGAMETYPHOON_NAME" : "赛博格：宗师",
+		"ACHIEVEMENT_SS2UCYBORGCLEARGAMETYPHOON_DESCRIPTION" : "作为赛博格，在台风难度下通关或在 Typhoon 模式中完成毁灭。",
+		"SS2UCYBORG_GRANDMASTERY_SKIN_NAME" : "变形者",
+		
+		"SS2UPYRO_NAME" : "纵火者",
+		"SS2UPYRO_SUBTITLE" : "灭虫者",
+		"SS2UPYRO_OUTRO_FLAVOR" : "..于是他离去，伴随荣耀之焰。",
+		"SS2UPYRO_OUTRO_FAILURE" : "..于是他消失，只留灰烬。",
+		"SS2UPYRO_DESCRIPTION" : "纵火者会不遗余力地燃烧眼前的一切。\r\n\r\n< ! > 灼烧会产生热量，热量是使用纵火者技能所必需的。\r\n\r\n< ! > \"压制射击\" 可以命中那些距灼烧范围过远的目标。\r\n\r\n< ! > 备用计划允许你快速进出战斗。\r\n\r\n< ! > 烈焰信号在高热量时威力最强。\r\n\r\n",
+		"SS2UPYRO_LORE" : "<style=cMono>//--来自集结点 SIGMA 巡逻段 7 的自动转录--//</style>\n\n两名巡逻警卫出现在镜头前，他们的争论声在他们就位时缓缓传入。\n\n\"不！最后一次，不行！他不会出去处理那些虫子的。\"\n\n\"拜托，Alan！那些虫子已经骚扰我们集结点太久了。我的天，昨晚那些东西差点把我给干掉了！\"\n\n\"首先，Jess，别夸大了。你没事。它们可能更凶了，但并不是我们不能应付的。他出去只会成为累赘。\"\n\n\"累赘？\" Jess 摆了摆手。\"据我所知，他是最适合处理那些虫子的人选。\"\n\n\"哦，天哪，我也不确定。" Alan 放下武器开始数数。\"他威胁过人，午夜独自外出‘猎杀’，他在宿舍里摆弄喷火器时引起过火灾，这些都是在我们没收他武器之前发生的事情。\" 他低声哼道。\"说实话，凭他的行为，我都惊讶他还能被允许上这艘船。\"\n\n\"他只是想杀东西而已。\" Jess 耸肩回答。\"是的，这很糟糕，但如果你把他的东西还给他，让他冲向森林朝会动的东西烧过去，他可能会很乐意这么做。\"\n\n\"呃...\"\n\n\"况且，他要是那样做，很可能会送命。\" Jess 笑着补充，\"那样就不用管他了。\"",
+		
+		"SS2UPYRO_PRIMARY_NAME" : "灼烧",
+		"SS2UPYRO_PRIMARY_DESCRIPTION" : "<color=#D78326>积攒热量</color> 并每秒对敌人造成 <style=cIsDamage>420% 伤害</style>。在 <color=#D78326>高热</color> 时会造成 <style=cIsDamage>点燃</style> 效果。",
+		
+		"SS2UPYRO_SECONDARY_NAME" : "回传",
+		"SS2UPYRO_SECONDARY_DESCRIPTION" : "<color=#D78326>消耗25% 热量</color>，发射一股非致命的气流，<style=cIsUtility>推开</style>敌人并<style=cIsUtility>反弹弹幕</style>。",
+		
+		"SS2UPYRO_SECONDARY_ALT_NAME" : "\"压制射击\"",
+		"SS2UPYRO_SECONDARY_ALT_DESCRIPTION" : "<color=#D78326>快速消耗热量</color> 发射一串火球，造成 <style=cIsDamage>1200% 伤害/秒</style> 并造成 <style=cIsDamage>点燃</style>。",
+		
+		"SS2UPYRO_UTILITY_NAME" : "备用计划",
+		"SS2UPYRO_UTILITY_DESCRIPTION" : "<color=#D78326>消耗40% 热量</color> 并 <style=cIsUtility>向前飞行</style>。按住按钮可以消耗更多 <color=#D78326>热量</color> 继续飞行。",
+		
+		"SS2UPYRO_SPECIAL_NAME" : "炎爆信号",
+		"SS2UPYRO_SPECIAL_DESCRIPTION" : "<color=#D78326>消耗所有热量</color> 并发射一枚信号弹，造成 <style=cIsDamage>400% 伤害</style>。命中后根据消耗的 <color=#D78326>热量</color> 爆炸，最多造成 <style=cIsDamage>8x200% 伤害</style>。",
+		
+		"SS2UPYRO_SPECIAL_SCEPTER_NAME" : "地狱信号",
+		"SS2UPYRO_SPECIAL_SCEPTER_DESCRIPTION" : "<color=#D78326>消耗所有热量</color> 并发射一枚信号弹，造成 <style=cIsDamage>400% 伤害</style>。命中后根据消耗的 <color=#D78326>热量</color> 爆炸，最多造成 <style=cIsDamage>16x200% 伤害</style>。",
+		
+		"SS2UPYRO_MASTERYUNLOCKABLE_UNLOCKABLE_NAME" : "纵火者：精通",
+		"SS2UPYRO_MASTERYUNLOCKABLE_ACHIEVEMENT_NAME" : "纵火者：精通",
+		"SS2UPYRO_MASTERYUNLOCKABLE_ACHIEVEMENT_DESC" : "作为纵火者，在季风难度下通关或在 Monsoon 模式中完成毁灭。",
+		
+		"SS2UPYRO_GRANDMASTERYUNLOCKABLE_UNLOCKABLE_NAME" : "纵火者：宗师",
+		"SS2UPYRO_GRANDMASTERYUNLOCKABLE_ACHIEVEMENT_NAME" : "纵火者：宗师",
+		"SS2UPYRO_GRANDMASTERYUNLOCKABLE_ACHIEVEMENT_DESC" : "作为纵火者，在台风难度下通关或在 Typhoon 模式中完成毁灭。",
+		
+		"SS2UCHIRR_NAME" : "奇尔",
+		"SS2UCHIRR_SUBTITLE" : "林地精灵",
+		"SS2UCHIRR_DESCRIPTION" : "奇尔是一种与大地有纯粹联系的神秘生物。<style=cSub>\r\n\r\n< ! > 生命荆棘造成较低但稳定的伤害。\r\n\r\n< ! > 当被包围时使用撞头以争取喘息空间。\r\n\r\n< ! > 治愈光环若时机把握得当可以拯救队友于死地。\r\n\r\n< ! > 自然契约可用于分散敌人注意力。\r\n\r\n",
+		"SS2UCHIRR_LORE" : "\"Will？Will，你收到吗？\"\n\n\"呃，收到，怎么了？\"\n\n\"我竟然发现了只不仅没立刻想杀我，而且看起来还真的很友好的生物。\"\n\n\"哦？那真了不起。是什么？\"\n\n\"呃，大概是只虫子？也许吧，我不太确定。它看起来像某种巨大的螳螂，但是——\"\n\n\"等等，你说巨型螳螂？你觉得有多大？\"\n\n\"哦，等一下，给我一秒……\"\n\n\"……大约十英尺长？大概六英尺高？\"\n\n\"那……挺大的。你确定那家伙是友好的吗？\"\n\n\"完全可以。我在逃离一群黄蜂时遇见它，它一看到那些黄蜂就变得非常具有攻击性。向它们喷射针刺，撞击地面的那些，直到它们飞走。可能是领地意识？不过看起来黄蜂好像也讨厌它，就像它们讨厌我一样。\"\n\n\"嗯。如果它能保护你，那就继续保持吧。\"\n\n\"好吧，我会继续汇报的——嗯？怎么了，奇尔？\"\n\n\"等——等下。谁叫奇尔？\"\n\n\"那是她的名字。螳螂，或者说类似的生物。\"\n\n\"……等一下。\"",
+		"SS2UCHIRR_OUTRO_FLAVOR" : "..于是她离去，带着新生的精神。",
+		"SS2UCHIRR_OUTRO_MAID_FLAVOR" : "..于是她离去，很高兴能帮上忙。",
+		"SS2UCHIRR_OUTRO_FAILURE" : "..于是她消失了，无人再伴其左右。",
+		
+		"SS2UCHIRR_PASSIVE_NAME" : "振翅高飞",
+		"SS2UCHIRR_PASSIVE_DESCRIPTION" : "奇尔的跳跃高度提高 <style=cIsUtility>50%</style>，按住跳跃键可使其 <style=cIsUtility>在空中悬停</style>。",
+		
+		"SS2UCHIRR_DARTS_NAME" : "生命荆棘",
+		"SS2UCHIRR_DARTS_DESCRIPTION" : "发射一阵<style=cIsUtility>追踪荆棘</style>，造成 <style=cIsDamage>3x90% 伤害</style>。",
+		
+		"SS2UCHIRR_HEADBUTT_NAME" : "撞头",
+		"SS2UCHIRR_HEADBUTT_DESCRIPTION" : "<style=cIsDamage>眩晕</style>。向前猛冲并将敌人击退，造成 <style=cIsDamage>500% 伤害</style>。",
+		
+		"SS2UCHIRR_HEAL_NAME" : "治愈光环",
+		"SS2UCHIRR_HEAL_DESCRIPTION" : "为你和附近友军回复 <style=cIsHealing>30%</style> 的生命并<style=cIsUtility>清除所有减益</style>。友军在短时间内获得<style=cIsHealing>提升的生命回复</style>。",
+		
+		"KEYWORD_SS2U_CHIRR_PING" : "<style=cKeywordName>标记命令</style><style=cSub>你的伙伴会尝试攻击被标记的敌人。</style>",
+		"SS2UCHIRR_BEFRIEND_NAME" : "自然契约",
+		"SS2UCHIRR_BEFRIEND_DESCRIPTION" : "<style=cIsUtility>结交</style>目标敌人（若其生命低于 <style=cIsHealth>50%</style>）。\n再次激活可<style=cIsUtility>将伙伴传送</style>至你身边并<style=cIsUtility>吸引附近敌人注意</style>。伙伴会<style=cIsUtility>继承你的所有物品</style>。",
+		
+		"SS2UCHIRR_LEASH_NAME" : "牢不可破的羁绊",
+		"SS2UCHIRR_LEASH_DESCRIPTION" : "将伙伴传送到你身边并<style=cIsUtility>吸引附近敌人</style>。按住以与伙伴分离。",
+		
+		"SS2UCHIRR_BEFRIEND_SCEPTER_NAME" : "高级自然契约",
+		"SS2UCHIRR_BEFRIEND_SCEPTER_DESCRIPTION" : "<style=cIsUtility>结交</style>目标敌人（若其生命低于 <style=cIsHealth>50%</style>，若为首领则为 <style=cIsHealth>30%</style>）。\n再次激活可<style=cIsUtility>将伙伴传送</style>至你身边并<style=cIsUtility>吸引附近敌人注意</style>。伙伴会<style=cIsUtility>继承你的所有物品</style>。",
+		
+		"ACHIEVEMENT_SS2UCHIRRCLEARGAMEMONSOON_NAME" : "奇尔：精通",
+		"ACHIEVEMENT_SS2UCHIRRCLEARGAMEMONSOON_DESCRIPTION" : "作为奇尔，在季风难度下通关或在 Monsoon 模式中完成毁灭。",
+		"SS2UCHIRR_MASTERY_SKIN_NAME" : "女仆",
+		
+		"ACHIEVEMENT_SS2UCHIRRCLEARGAMETYPHOON_NAME" : "奇尔：宗师",
+		"ACHIEVEMENT_SS2UCHIRRCLEARGAMETYPHOON_DESCRIPTION" : "作为奇尔，在台风难度下通关或在 Typhoon 模式中完成毁灭。",
+		
+		"SS2UCHIRR_OUTRO_BROTHER_EASTEREGG" : "..于是他们一同离去，领悟到真正的《Risk of Rain》是一路结下的友谊。",
+		"SS2UBROTHER_KILL_CHIRR1" : " 去加入你的姐妹吧。",
+		"SS2UBROTHER_KILL_CHIRR2" : " 终于绝种了。",
+		"SS2UBROTHERHURT_CHIRR_BEFRIEND_1" : "你……向我伸出手来，杂种……？",
+		"SS2UFALSESONBOSS_CHIRR_BEFRIEND_1" : "你是……我一直在寻找的风暴吗？",
+		
+		"SS2UNUCLEATOR_NAME" : "核化者",
+		"SS2UNUCLEATOR_SUBTITLE" : "行走的辐射",
+		"SS2UNUCLEATOR_DESCRIPTION" : "核化者是一名拥有抗辐射装甲的放射性巨兽，使其能够长时间操纵核组件。<style=cSub>\r\n\r\n< ! > 核化者可以为技能充能以获得最大输出，但请小心，过度充能可能会对自身造成伤害！\r\n\r\n< ! > 辐照发射的弹体随着飞行距离增加会获得更大的爆炸半径。\r\n\r\n< ! > 隔离无论充能程度如何都将施加相同的击退力。\r\n\r\n< ! > 战略性地使用放射性激增可以让你恢复因过充技能而失去的生命。\r\n\r\n",
+		"SS2UNUCLEATOR_OUTRO_FLAVOR" : "..于是他离开了，生命状况不详。",
+		"SS2UNUCLEATOR_OUTRO_FAILURE" : "..于是他消失了，留下了一片不适合居住的废土。",
+		"SS2UNUCLEATOR_LORE" : "笑并渐肥",
+		
+		"SS2UNUCLEATOR_PASSIVE_NAME" : "全面熔毁",
+		"SS2UNUCLEATOR_PASSIVE_DESCRIPTION" : "核化者的技能不受 <style=cIsDamage>攻击速度</style> 的影响。<style=cIsDamage>攻击速度</style> 会被转换为 <style=cIsDamage>伤害</style>。",
+		
+		"SS2UNUCLEATOR_PRIMARY_NAME" : "辐照",
+		"SS2UNUCLEATOR_PRIMARY_DESCRIPTION" : "蓄力并发射一团核废料，造成 <style=cIsDamage>200%-720% 伤害</style>，在 <style=cIsHealth>过充</style> 时可达 <style=cIsDamage>1080% 伤害</style>。弹体飞行距离越远，其爆炸半径越大。",
+		
+		"SS2UNUCLEATOR_SECONDARY_NAME" : "隔离",
+		"SS2UNUCLEATOR_SECONDARY_DESCRIPTION" : "<style=cIsDamage>眩晕</style>。充能并<style=cIsUtility>推开</style>敌人，造成 <style=cIsDamage>200%-720% 伤害</style>，在 <style=cIsHealth>过充</style> 时可达 <style=cIsDamage>1080% 伤害</style> 并造成 <style=cIsDamage>定身</style>。",
+		
+		"SS2UNUCLEATOR_UTILITY_NAME" : "裂变冲击",
+		"SS2UNUCLEATOR_UTILITY_DESCRIPTION" : "<style=cIsDamage>眩晕</style>。蓄力跳跃并获得 <style=cIsUtility>200 护甲</style>。撞击时造成 <style=cIsDamage>400%-800% 伤害</style>，在 <style=cIsHealth>过充</style> 时可达 <style=cIsDamage>1200% 伤害</style>。",
+		
+		"SS2UNUCLEATOR_SPECIAL_NAME" : "放射性激增",
+		"SS2UNUCLEATOR_SPECIAL_DESCRIPTION" : "进入核态 <style=cIsUtility>6 秒</style>，在 <style=cIsHealth>过充</style> 时获得<style=cIsHealing>治疗</style>并让每次攻击附带 <style=cIsDamage>辐射中毒</style>。",
+		
+		"SS2UNUCLEATOR_SPECIAL_SCEPTER_NAME" : "放射性外流",
+		"SS2UNUCLEATOR_SPECIAL_SCEPTER_DESCRIPTION" : "进入核态 <style=cIsUtility>12 秒</style>，<style=cIsUtility>免疫因 <style=cIsHealth>过充</style> 造成的伤害</style>，并让每次攻击附带 <style=cIsDamage>辐射中毒</style>。",
+		
+		"KEYWORD_SS2U_RADIATION" : "<style=cKeywordName>辐射中毒</style><style=cSub>在 5 秒内对范围内每秒造成 <style=cIsDamage>200%</style> 伤害。</style>",
+		
+		"SS2UNUCLEATOR_UNLOCKUNLOCKABLE_UNLOCKABLE_NAME" : "过度杀戮",
+		"SS2UNUCLEATOR_UNLOCKUNLOCKABLE_ACHIEVEMENT_NAME" : "过度杀戮",
+		"SS2UNUCLEATOR_UNLOCKUNLOCKABLE_ACHIEVEMENT_DESC" : "在一次游玩中收集 5 件传说物品。",
+		
+		"SS2UNUCLEATOR_MASTERYUNLOCKABLE_UNLOCKABLE_NAME" : "核化者：精通",
+		"SS2UNUCLEATOR_MASTERYUNLOCKABLE_ACHIEVEMENT_NAME" : "核化者：精通",
+		"SS2UNUCLEATOR_MASTERYUNLOCKABLE_ACHIEVEMENT_DESC" : "作为核化者，在季风难度下通关或在 Monsoon 模式中完成毁灭。",
+		
+		"SS2UNUCLEATOR_GRANDMASTERYUNLOCKABLE_UNLOCKABLE_NAME" : "核化者：宗师",
+		"SS2UNUCLEATOR_GRANDMASTERYUNLOCKABLE_ACHIEVEMENT_NAME" : "核化者：宗师",
+		"SS2UNUCLEATOR_GRANDMASTERYUNLOCKABLE_ACHIEVEMENT_DESC" : "作为核化者，在台风难度下通关或在 Typhoon 模式中完成毁灭。",
+		
+		"SS2UNEMMANDO_NAME" : "复仇突击者",
+		"SS2UNEMMANDO_SUBTITLE" : "孤独回响",
+		"SS2UNEMMANDO_DESCRIPTION" : "复仇突击者的出身成因不明，但有一点很清楚：他已不再是从前的他。<style=cSub>\r\n\r\n< ! > 终止之刃风险较高，但通过叠加割裂可以积攒大量伤害。\r\n\r\n< ! > 远距裂斩可用于安全地对一群敌人施加割裂层数 —— 利用其穿透效果！\r\n\r\n< ! > 近战与远程的恰当平衡至关重要，战术翻滚能提供高护甲帮助你进出战场。\r\n\r\n< ! > 臣服在完全蓄力时会造成巨量伤害。\r\n\r\n",
+		"SS2UNEMMANDO_OUTRO_FLAVOR" : "..于是他离去，内心重获人性。",
+		"SS2UNEMMANDO_OUTRO_FAILURE" : "..于是他返回，结束了他无尽的挣扎。",
+		"SS2UNEMMANDO_LORE" : "他在火堆旁安放武器于触手可及之处，检查周围，期望他藏身的洞穴足以为他遮蔽。有些人会说，过度谨慎并非明智。他会说，<color=#FFCCED>他们还没见识够多。</color>\n\n他入伍时得到的制式手枪，使用频繁、有泥土痕迹，也被他珍惜。无论执行何种任务，它都伴他左右。有人会说，只有傻瓜才会信任武器。他会说，<color=#FFCCED>你能信任的，也只有你的武器。</color>\n\n战友战死留下的刀刃。他从曾见过的人类残余中捡来这把刀。有人会说，这是为了让他们的精神保持团结。他会说，<color=#FFCCED>那是为了尽可能延迟他们的精神合一。</color>\n\n伴随他一起降落的货物。他从箱子里挑选每一件物品，以不同方式维持着他的生存。数十次的补给仿佛送给了别人，而不是他。有人会说，这些物品不是他该拿的。他会说，<color=#FFCCED>如果他不拿，那就没人会拿了。</color>\n\n洞穴深处散发的紫色光芒。平静、温暖……在召唤。它不断引他深入，承诺安全。有人会说，听起来过于美好之事往往不可信。他会说，<color=#FFCCED>浮士德是个聪明人。</color>",
+		
+		"KEYWORD_SS2U_GOUGE" : "<style=cKeywordName>割裂</style><style=cSub>在 2 秒内造成 <style=cIsDamage>300%</style> 的基础伤害。<i>可触发物品效果。</i>",
+		
+		"SS2UNEMMANDO_PRIMARY_BLADE_NAME" : "终止之刃",
+		"SS2UNEMMANDO_PRIMARY_BLADE_DESCRIPTION" : "<style=cIsHealth>割裂</style>。<style=cIsUtility>灵活</style>。斩击敌人造成 <style=cIsDamage>160% 伤害</style>。",
+		
+		"SS2UNEMMANDO_SECONDARY_CONCUSSION_NAME" : "远距裂斩",
+		"SS2UNEMMANDO_SECONDARY_CONCUSSION_DESCRIPTION" : "<style=cIsHealth>割裂</style>。蓄力发射一束贯穿的剑光，造成 <style=cIsDamage>200%-600% 伤害</style>。",
+		
+		"SS2UNEMMANDO_SECONDARY_SHOOT_NAME" : "单点射击",
+		"SS2UNEMMANDO_SECONDARY_SHOOT_DESCRIPTION" : "开枪造成 <style=cIsDamage>210% 伤害</style>。可储存最多 6 发子弹。",
+		
+		"SS2UNEMMANDO_UTILITY_DODGE_NAME" : "战术翻滚",
+		"SS2UNEMMANDO_UTILITY_DODGE_DESCRIPTION" : "<style=cIsUtility>翻滚</style>一小段距离并获得 <style=cIsUtility>100 护甲</style>。",
+		
+		"SS2UNEMMANDO_SPECIAL_SUBMISSION_NAME" : "臣服",
+		"SS2UNEMMANDO_SPECIAL_SUBMISSION_DESCRIPTION" : "蓄力发射一轮包含 <style=cIsDamage>5 次霰弹的弹幕</style>，每发造成 <style=cIsDamage>4x120% 伤害</style>。发射次数会随攻击速度增加。",
+		
+		"SS2UNEMMANDO_SPECIAL_EPIC_NAME" : "决定一击",
+		"SS2UNEMMANDO_SPECIAL_EPIC_DESCRIPTION" : "<style=cIsHealth>割裂</style>。蓄力发射一波毁灭性的斩击，最多造成 <style=cIsDamage>6x360% 伤害</style>。",
+		
+		"SS2UNEMMANDO_SPECIAL_SCEPSUBMISSION_NAME" : "连结斩",
+		"SS2UNEMMANDO_SPECIAL_SCEPSUBMISSION_DESCRIPTION" : "蓄力发射一轮包含 <style=cIsDamage>5 次霰弹的弹幕</style>，每发造成 <style=cIsDamage>4x120% 伤害</style>。发射次数会随攻击速度增加。每发弹道还会发射一束激光，造成 <style=cIsDamage>820% 伤害</style>。",
+		
+		"SS2UNEMMANDO_SPECIAL_SCEPEPIC_NAME" : "审判斩终结",
+		"SS2UNEMMANDO_SPECIAL_SCEPEPIC_DESCRIPTION" : "<style=cIsHealth>割裂</style>。蓄力发射一波毁灭性的斩击，最多造成 <style=cIsDamage>12x360% 伤害</style>。",
+		
+		"SS2UNEMMANDO_MASTERY_SKIN_NAME" : "米努阿诺",
+		"SS2UNEMMANDO_CLASSIC_SKIN_NAME" : "经典",
+		"SS2UNEMMANDO_COMMANDO_SKIN_NAME" : "突击",
+		"SS2UNEMMANDO_VERGIL_SKIN_NAME" : "激励者",
+		
+		"ACHIEVEMENT_SS2UNEMMANDOCLEARGAMEMONSOON_NAME" : "复仇突击者：精通",
+		"ACHIEVEMENT_SS2UNEMMANDOCLEARGAMEMONSOON_DESCRIPTION" : "作为复仇突击者，在季风难度下通关或在 Monsoon 模式中完成毁灭。",
+		"ACHIEVEMENT_SS2UNEMMANDOCLEARGAMETYPHOON_NAME" : "复仇突击者：宗师",
+		"ACHIEVEMENT_SS2UNEMMANDOCLEARGAMETYPHOON_DESCRIPTION" : "作为复仇突击者，在台风难度下通关或在 Typhoon 模式中完成毁灭。",
+		
+		"ACHIEVEMENT_SS2UNEMMANDOUNLOCK_NAME" : "？？？",
+		"ACHIEVEMENT_SS2UNEMMANDOUNLOCK_DESCRIPTION" : "击败突击队的残影。",
+		"ACHIEVEMENT_SS2UNEMMANDOKILLSELF_NAME" : "复仇突击者：复仇中的复仇",
+		"ACHIEVEMENT_SS2UNEMMANDOKILLSELF_DESCRIPTION" : "作为复仇突击者，击败突击队的残影。",
+		"SS2UNEMMANDO_EPICUNLOCKABLE_UNLOCKABLE_NAME" : "复仇突击者：斩断",
+		"SS2UNEMMANDO_EPICUNLOCKABLE_ACHIEVEMENT_NAME" : "复仇突击者：斩断",
+		"SS2UNEMMANDO_EPICUNLOCKABLE_ACHIEVEMENT_DESC" : "作为复仇突击者，对同一敌人造成 50 层割裂。",
+		
+		"COMMANDO_GRANDMASTERY_SKIN_NAME" : "经典",
+		"TOOLBOT_GRANDMASTERY_SKIN_NAME" : "月光",
+		"ACRID_GRANDMASTERY_SKIN_NAME" : "装甲",
+		
+		"ACHIEVEMENT_SS2UCOMMANDOCLEARGAMETYPHOON_NAME" : "突击：宗师",
+		"ACHIEVEMENT_SS2UCOMMANDOCLEARGAMETYPHOON_DESCRIPTION" : "作为突击，在台风难度下通关或在 Typhoon 模式中完成毁灭。",
+		
+		"ACHIEVEMENT_SS2UTOOLBOTCLEARGAMETYPHOON_NAME" : "MUL-T：宗师",
+		"ACHIEVEMENT_SS2UTOOLBOTCLEARGAMETYPHOON_DESCRIPTION" : "作为 MUL-T，在台风难度下通关或在 Typhoon 模式中完成毁灭。",
+		
+		"ACHIEVEMENT_SS2UCROCOCLEARGAMETYPHOON_NAME" : "Acrid：宗师",
+		"ACHIEVEMENT_SS2UCROCOCLEARGAMETYPHOON_DESCRIPTION" : "作为 Acrid，在台风难度下通关或在 Typhoon 模式中完成毁灭。",
+	}
+}
