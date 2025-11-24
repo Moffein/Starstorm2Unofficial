@@ -73,7 +73,13 @@ namespace Starstorm2Unofficial.Cores.NemesisInvasion.Components.Body
             }
             else
             {
-                pi = Tier3DropTable.GenerateDrop(Run.instance.treasureRng);
+                var pickup = Tier3DropTable.GeneratePickup(Run.instance.treasureRng);
+                if (pickup != null)
+                {
+                    PickupDropletController.CreatePickupDroplet(pickup, base.transform.position, Vector3.up * 20f);
+                    Destroy(this);
+                    return;
+                }
             }
 
             if (pi != PickupIndex.none)

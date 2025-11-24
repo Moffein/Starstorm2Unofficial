@@ -1,3 +1,7 @@
+`0.22.8`
+
+- Fixed Nemesis drops for DLC3.
+
 `0.22.7`
 
 - Added CN TL (Thanks takaqiao!)
