@@ -207,7 +207,7 @@ localScale = new Vector3(0.0013F, 0.0013F, 0.0013F)
         private void ProcDroidHead(GlobalEventManager self, DamageReport damageReport, CharacterBody attackerBody, Inventory attackerInventory, CharacterBody victimBody)
         {
             if (!victimBody.isElite) return;
-            int itemCount = attackerInventory.GetItemCount(itemDef);
+            int itemCount = attackerInventory.GetItemCountEffective(itemDef);
             if (itemCount <= 0) return;
 
             DroidHeadBehavior dhb = attackerBody.GetComponent<DroidHeadBehavior>();
@@ -228,23 +228,14 @@ localScale = new Vector3(0.0013F, 0.0013F, 0.0013F)
                 {
                     float damageBoost = 0.5f + itemCount * 0.5f;
                     int boostDamageCount = Mathf.RoundToInt(damageBoost / 0.1f);
-                    if (boostDamageCount > 0) droneMaster.inventory.GiveItem(RoR2Content.Items.BoostDamage, boostDamageCount);
-
-                    if (ModCompat.RiskyMod.AllyMarkerItem != ItemIndex.None)
-                        droneMaster.inventory.GiveItem(ModCompat.RiskyMod.AllyMarkerItem, 1);
-                    if (ModCompat.RiskyMod.AllyAllowVoidDeathItem != ItemIndex.None)
-                        droneMaster.inventory.GiveItem(ModCompat.RiskyMod.AllyAllowVoidDeathItem, 1);
-                    if (ModCompat.RiskyMod.AllyAllowOverheatDeathItem != ItemIndex.None)
-                        droneMaster.inventory.GiveItem(ModCompat.RiskyMod.AllyAllowOverheatDeathItem, 1);
-                    if (ModCompat.RiskyMod.AllyScalingItem != ItemIndex.None)
-                        droneMaster.inventory.GiveItem(ModCompat.RiskyMod.AllyScalingItem, 1);
+                    if (boostDamageCount > 0) droneMaster.inventory.GiveItemPermanent(RoR2Content.Items.BoostDamage, boostDamageCount);
 
                     if (victimBody.inventory)
                     {
                         EquipmentDef ed = EquipmentCatalog.GetEquipmentDef(victimBody.inventory.currentEquipmentIndex);
                         if (ed && ed.passiveBuffDef && ed.passiveBuffDef.isElite)
                         {
-                            droneMaster.inventory.SetEquipmentIndex(victimBody.inventory.currentEquipmentIndex);
+                            droneMaster.inventory.SetEquipmentIndex(victimBody.inventory.currentEquipmentIndex, false);
                         }
                     }
                 }
@@ -273,7 +264,7 @@ localScale = new Vector3(0.0013F, 0.0013F, 0.0013F)
 
             private void ClearDeadDroids()
             {
-                activeDroids = activeDroids.Where(master => (master != null && !master.IsDeadAndOutOfLivesServer())).ToList();
+                activeDroids = activeDroids.Where(master => (master != null && master.GetBody() != null)).ToList();
             }
         }
     }

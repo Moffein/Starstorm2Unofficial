@@ -27,22 +27,9 @@ namespace Starstorm2Unofficial
         {
             public static bool pluginLoaded = false;
 
-            public static ItemIndex AllyMarkerItem, AllyScalingItem, AllyRegenItem, AllyAllowVoidDeathItem, AllyAllowOverheatDeathItem, AllyResistAoEItem;
-
             public static void InitCompat()
             {
                 pluginLoaded = BepInEx.Bootstrap.Chainloader.PluginInfos.ContainsKey("com.RiskyLives.RiskyMod");
-                RoR2Application.onLoad += OnLoadActions;
-            }
-
-            private static void OnLoadActions()
-            {
-                AllyMarkerItem = ItemCatalog.FindItemIndex("RiskyModAllyMarkerItem");
-                AllyScalingItem = ItemCatalog.FindItemIndex("RiskyModAllyScalingItem");
-                AllyRegenItem = ItemCatalog.FindItemIndex("RiskyModAllyRegenItem");
-                AllyAllowVoidDeathItem = ItemCatalog.FindItemIndex("RiskyModAllyAllowVoidDeathItem");
-                AllyAllowOverheatDeathItem = ItemCatalog.FindItemIndex("RiskyModAllyAllowOverheatDeathItem");
-                AllyResistAoEItem = ItemCatalog.FindItemIndex("RiskyModAllyResistAoEItem");
             }
         }
 

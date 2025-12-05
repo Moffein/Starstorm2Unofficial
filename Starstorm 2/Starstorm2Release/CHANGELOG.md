@@ -1,3 +1,7 @@
+`0.22.9`
+
+- Fixed Droid Head's 4 drone limit not working.
+
 `0.22.8`
 
 - Fixed Nemesis drops for DLC3.
