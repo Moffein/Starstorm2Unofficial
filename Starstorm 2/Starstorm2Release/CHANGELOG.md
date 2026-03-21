@@ -1,3 +1,7 @@
+`0.22.10`
+
+- Fixed some Nemmando states being unregistered.
+
 `0.22.9`
 
 - Fixed Droid Head's 4 drone limit not working.

@@ -721,6 +721,9 @@ namespace Starstorm2Unofficial.Survivors.Nemmando
             Modules.States.AddState(typeof(ScepterSlashAttack));
             Modules.States.AddState(typeof(ScepterBarrageCharge));
             Modules.States.AddState(typeof(ScepterBarrageFire));
+            Modules.States.AddState(typeof(FireSwordBeam));
+            Modules.States.AddState(typeof(ChargeBarrageCharge));
+            Modules.States.AddState(typeof(ChargeBarrageFire));
 
             Modules.States.AddState(typeof(NemmandoRestEmote));
             Modules.States.AddState(typeof(NemmandoTauntEmote));
