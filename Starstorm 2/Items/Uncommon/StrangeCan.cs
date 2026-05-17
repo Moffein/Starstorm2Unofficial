@@ -33,9 +33,9 @@ namespace Starstorm2Unofficial.Cores.Items
 
         private void ProcItem(DamageInfo damageInfo, CharacterBody victimBody, CharacterBody attackerBody, Inventory attackerInventory)
         {
-            int itemCount = attackerInventory.GetItemCount(itemDef);
+            int itemCount = attackerInventory.GetItemCountEffective(itemDef);
             if (itemCount <= 0) return;
-            if (!Util.CheckRoll(3.5f + 5f * itemCount, attackerBody.master)) return;
+            if (!damageInfo.procChainMask.HasProc(ProcType.SureProc) && !Util.CheckRoll(3.5f + 5f * itemCount, attackerBody.master)) return;
 
             //Remove existing DoT
             var dotInfo = new InflictDotInfo()

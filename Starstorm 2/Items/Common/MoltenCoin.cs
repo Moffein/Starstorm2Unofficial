@@ -182,9 +182,9 @@ namespace Starstorm2Unofficial.Cores.Items
 
         private void ProcCoin(DamageInfo damageInfo, CharacterBody victimBody, CharacterBody attackerBody, Inventory attackerInventory)
         {
-            int itemCount = attackerInventory.GetItemCount(itemDef);
+            int itemCount = attackerInventory.GetItemCountEffective(itemDef);
             CharacterMaster attackerMaster = attackerBody.master;
-            if (itemCount <= 0 || !Util.CheckRoll(6f * damageInfo.procCoefficient, attackerMaster)) return;
+            if (itemCount <= 0 || (!damageInfo.procChainMask.HasProc(ProcType.SureProc) && !Util.CheckRoll(6f * damageInfo.procCoefficient, attackerMaster))) return;
 
             EffectManager.SimpleSoundEffect(procSound.index, damageInfo.position, true);
 

@@ -1,3 +1,7 @@
+`0.22.11`
+
+- Deus Ex Machina support.
+
 `0.22.10`
 
 - Fixed some Nemmando states being unregistered.
