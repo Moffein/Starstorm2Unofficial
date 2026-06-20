@@ -18,6 +18,46 @@ namespace Starstorm2Unofficial.Cores
 {
     public class EventsCore
     {
+        public static List<string> snowStages = new List<string>
+        {
+            "frozenwall",
+            "itfrozenwall",
+            "snowyforest",
+            "forgottenwreckage_ws",
+            "hollowsummitnight_wormsworms",
+            "snowtime_icefields",
+            "snowtime_sidewinder"
+        };
+
+        public static List<string> dustStages = new List<string>
+        {
+            "goolake",
+            "itgoolake",
+            "drybasin",
+            "lemuriantemple",
+            "repurposedcrater",
+            "ironalluvium",
+            "ironalluvium2",
+            "snowtime_sandtrap",
+            "snowtime_plrhightower"
+        };
+
+        public static List<string> ashStages = new List<string>
+        {
+            "dampcavesimple",
+            "itdampcavesimple",
+            "helminthroost"
+        };
+
+        public static List<string> purpleRainStages = new List<string>
+        {
+            "skymeadow",
+            "itskymeadow",
+            "slumberingsatellite",
+            "observatory_wormsworms",
+            "itobservatory_wormsworms"
+        };
+
         public static EventsCore instance;
         public static float stormDuration = 90;
         //public static float stormDuration = 10;
@@ -123,32 +163,22 @@ namespace Starstorm2Unofficial.Cores
                 if (Modules.Config.disableStormVisuals.Value)
                     return;
 
-                int particleIndex;
-                switch (newScene.name)
+                int particleIndex = 0;
+                if (snowStages.Contains(newScene.name))
                 {
-                    case "frozenwall":
-                    case "itfrozenwall":
-                        particleIndex = 1;
-                        break;
-                    case "goolake":
-                    case "itgoolake":
-                    case "drybasin":
-                    case "lemuriantemple":
-                        particleIndex = 2;
-                        break;
-                    case "skymeadow":
-                    case "itskymeadow":
-                    case "slumberingsatellite":
-                        particleIndex = 3;
-                        break;
-                    case "dampcavesimple":
-                    case "itdampcavesimple":
-                    case "helminthroost":
-                        particleIndex = 4;
-                        break;
-                    default:
-                        particleIndex = 0;
-                        break;
+                    particleIndex = 1;
+                }
+                else if (dustStages.Contains(newScene.name))
+                {
+                    particleIndex = 2;
+                }
+                else if (purpleRainStages.Contains(newScene.name))
+                {
+                    particleIndex = 3;
+                }
+                else if (ashStages.Contains(newScene.name))
+                {
+                    particleIndex = 4;
                 }
 
                 for (int i = 0; i < stormFXObj.transform.childCount; i++) {

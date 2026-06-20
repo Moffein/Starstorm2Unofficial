@@ -1,3 +1,8 @@
+`0.23.0`
+
+- Updated Storm visual list for newer stages.
+- Storm visuals are now read from a public list that can be modified by other mods in EventsCore.cs
+
 `0.22.11`
 
 - Deus Ex Machina support.
