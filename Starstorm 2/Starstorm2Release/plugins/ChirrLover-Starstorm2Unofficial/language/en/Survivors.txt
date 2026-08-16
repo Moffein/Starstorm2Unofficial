@@ -169,6 +169,7 @@
 		
 		"ACHIEVEMENT_SS2UCHIRRCLEARGAMETYPHOON_NAME" : "Chirr: Grand Mastery",
 		"ACHIEVEMENT_SS2UCHIRRCLEARGAMETYPHOON_DESCRIPTION" : "As Chirr, beat the game or obliterate on Typhoon.",
+		"SS2UCHIRR_GRANDMASTERY_SKIN_NAME": "Bunny",
 		
 		"SS2UCHIRR_OUTRO_BROTHER_EASTEREGG" : "..and together they left, having learned that the real Risk of Rain was the friends they made along the way.",
 		"SS2UBROTHER_KILL_CHIRR1" : " Join your sisters.",
