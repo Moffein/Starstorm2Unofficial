@@ -1,3 +1,8 @@
+`0.24.0`
+
+- Added Chirr Grandmastery.
+	- Thanks to QuietAnon for creating the model, and viliger for implementing it!
+
 `0.23.0`
 
 - Updated Storm visual list for newer stages.
