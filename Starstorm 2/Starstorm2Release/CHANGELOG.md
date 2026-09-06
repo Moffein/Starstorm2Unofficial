@@ -1,3 +1,7 @@
+`0.24.1`
+
+- Added DLC3 final boss stuff to Chirr blacklist.
+
 `0.24.0`
 
 - Added Chirr Grandmastery.

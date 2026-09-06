@@ -64,6 +64,12 @@ namespace Starstorm2Unofficial.Survivors.Chirr
             ChirrFriendController.BlacklistBody(BodyCatalog.FindBodyIndex("ArraignP1Body"));
             ChirrFriendController.BlacklistBody(BodyCatalog.FindBodyIndex("ArraignP2Body"));
 
+            ChirrFriendController.BlacklistBody(BodyCatalog.FindBodyIndex("ExhaustPortWeakpointBody"));
+            ChirrFriendController.BlacklistBody(BodyCatalog.FindBodyIndex("SolusWingBody"));
+            ChirrFriendController.BlacklistBody(BodyCatalog.FindBodyIndex("SolusHeartBody"));
+            ChirrFriendController.BlacklistBody(BodyCatalog.FindBodyIndex("SolusHeartBody_Offering"));
+            ChirrFriendController.BlacklistBody(BodyCatalog.FindBodyIndex("SolusVendorBody"));
+
             ChirrFriendController.bodyDamageValueOverrides.Add(brotherBodyIndex, 10f);
             ChirrFriendController.bodyDamageValueOverrides.Add(BodyCatalog.FindBodyIndex("BrotherHurtBody"), 10f);
 
