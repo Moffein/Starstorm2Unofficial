@@ -170,6 +170,7 @@
 				
 		"ACHIEVEMENT_SS2UCHIRRCLEARGAMETYPHOON_NAME": "Чирр: Великое Мастерство",
 		"ACHIEVEMENT_SS2UCHIRRCLEARGAMETYPHOON_DESCRIPTION": "Как Чирр, пройдите игру или уничтожьте на уровне Тайфун.",
+		"SS2UCHIRR_GRANDMASTERY_SKIN_NAME": "Кролик",
 				
 		"SS2UCHIRR_OUTRO_BROTHER_EASTEREGG": "..и вместе они ушли, узнав, что настоящая Риск дождя - это друзья, которых они завели по пути.",
 		"SS2UBROTHER_KILL_CHIRR1": " Присоединяйтесь к своим сестрам.",

@@ -14,14 +14,17 @@ namespace Starstorm2Unofficial.Survivors.Chirr
         public static Mesh meshChirr;
         public static Mesh meshChirrMaid;
         public static Mesh meshChirrMaidDress;
+        public static Mesh meshChirrBunny;
 
         public static SkinDef maidSkin;
+        public static SkinDef bunnySkin;
 
         public static void LoadMeshes(AssetBundle assetBundle)
         {
             meshChirr = assetBundle.LoadAsset<Mesh>("meshChirr");
             meshChirrMaid = assetBundle.LoadAsset<Mesh>("meshChirrMaid");
             meshChirrMaidDress = assetBundle.LoadAsset<Mesh>("meshChirrMaidDress");
+            meshChirrBunny = assetBundle.LoadAsset<Mesh>("meshChirrBunny");
         }
 
         public static void RegisterSkins()
@@ -101,6 +104,38 @@ namespace Starstorm2Unofficial.Survivors.Chirr
             skinDefs.Add(masterySkin);
 
             ChirrSkins.maidSkin = masterySkin;
+            #endregion
+
+            #region BunnySkin
+            Sprite bunnySkinIcon = LoadoutAPI.CreateSkinIcon(new Color32(156, 184, 55, 255), new Color32(255, 255, 255, 255), new Color(148, 148, 148, 255), new Color(0, 0, 0, 255));
+
+            UnlockableDef grandmasterySkinUnlockableDef = ScriptableObject.CreateInstance<UnlockableDef>();
+            grandmasterySkinUnlockableDef.cachedName = "Skins.SS2UChirr.GrandMastery";
+            grandmasterySkinUnlockableDef.nameToken = "ACHIEVEMENT_SS2UCHIRRCLEARGAMETYPHOON_NAME";
+            grandmasterySkinUnlockableDef.achievementIcon = bunnySkinIcon;
+            Unlockables.unlockableDefs.Add(grandmasterySkinUnlockableDef);
+            AchievementHider.unlockableRewardIdentifiers.Add(grandmasterySkinUnlockableDef.cachedName);
+
+            CharacterModel.RendererInfo[] grandmasteryRendererInfos = new CharacterModel.RendererInfo[defaultRenderers.Length];
+            defaultRenderers.CopyTo(grandmasteryRendererInfos, 0);
+
+            grandmasteryRendererInfos[0].defaultMaterial = Modules.Assets.CreateMaterial("matChirrBunny");
+            grandmasteryRendererInfos[1].defaultMaterial = null;
+
+            SkinDef grandmasterySkin = Skins.CreateSkinDef("SS2UCHIRR_GRANDMASTERY_SKIN_NAME",
+                                                            bunnySkinIcon,
+                                                            grandmasteryRendererInfos,
+                                                            mainRenderer,
+                                                            model,
+                                                            Modules.Config.ForceUnlockSkins.Value ? null : grandmasterySkinUnlockableDef);
+
+            grandmasterySkin.meshReplacements = SkinsCore.CreateMeshReplacements(grandmasteryRendererInfos,
+                                                                                 meshChirrBunny,
+                                                                                 null);
+
+            skinDefs.Add(grandmasterySkin);
+
+            ChirrSkins.bunnySkin = grandmasterySkin;
             #endregion
 
             skinController.skins = skinDefs.ToArray();
