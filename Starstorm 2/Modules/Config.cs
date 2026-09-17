@@ -264,10 +264,10 @@ namespace Starstorm2Unofficial.Modules
                              false,
                              "Egocentrism replaces Chirr's head (looks a bit jank).");
 
-            /*Starstorm2Unofficial.Survivors.Chirr.Components.ChirrFriendController.minionPingRetarget = StarstormPlugin.instance.Config.Bind("Starstorm 2 :: Survivors :: Chirr",
+            Starstorm2Unofficial.Survivors.Chirr.Components.ChirrFriendController.minionPingRetarget = StarstormPlugin.instance.Config.Bind("Starstorm 2 :: Survivors :: Chirr",
                              "Minion Ping Targeting",
                              true,
-                             "Befriended minions attack enemies you ping.").Value;*/
+                             "Befriended minions attack enemies you ping.").Value;
 
             NemmandoDecisiveMoveSpeedScaling = StarstormPlugin.instance.Config.Bind("Starstorm 2 :: Survivors :: Nemesis Commando",
                              "Decisive Strike Move Speed Scaling",

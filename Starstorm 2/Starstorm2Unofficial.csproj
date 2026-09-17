@@ -95,6 +95,7 @@
     <Compile Include="SharedHooks\OnCharacterDeathGlobal.cs" />
     <Compile Include="SharedHooks\OnHitEnemy.cs" />
     <Compile Include="SneedUtils.cs" />
+    <Compile Include="Survivors\Chirr\Achievements\ChirrGrandMasteryAchievement.cs" />
     <Compile Include="Survivors\Chirr\Achievements\ChirrMasteryAchievement.cs" />
     <Compile Include="Survivors\Chirr\BefriendSkillDef.cs" />
     <Compile Include="Survivors\Chirr\ChirrItemDisplays.cs" />

@@ -1,3 +1,10 @@
+`0.24.2`
+
+- Re-enabled Chirr minion ping retarget.
+	- It turns out it wasn't a thing in DLC3 lol
+	
+- Fixed Chirr grandmastery achievement.
+
 `0.24.1`
 
 - Added DLC3 final boss stuff to Chirr blacklist.
