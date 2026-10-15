@@ -1,3 +1,9 @@
+`0.25.0`
+
+- DLC4 fix.
+- Chirr Secret updated, and supports the item from EnemiesReturns.
+	- No new special ending tho, probably won't have the time to do that.
+
 `0.24.2`
 
 - Re-enabled Chirr minion ping retarget.

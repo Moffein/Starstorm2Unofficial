@@ -59,7 +59,7 @@ namespace Starstorm2Unofficial
     {
         internal const string guid = "com.ChirrLover.Starstorm2Unofficial";
         internal const string modName = "Starstorm 2 Unofficial";
-        internal const string version = "0.24.2";
+        internal const string version = "0.25.0";
 
         public static StarstormPlugin instance;
 
@@ -170,7 +170,6 @@ namespace Starstorm2Unofficial
 
             InitializeSurvivors();
             //enemyCore = new EnemyCore();
-            RoR2.RoR2Application.onLoad += EnemyCore.StoreBodyIndexes;
 
             Modules.Effects.Initialize();
 

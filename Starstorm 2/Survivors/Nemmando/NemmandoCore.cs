@@ -206,7 +206,8 @@ namespace Starstorm2Unofficial.Survivors.Nemmando
             GameObject swordBeam = PrefabAPI.InstantiateClone(LegacyResourcesAPI.Load<GameObject>("Prefabs/Projectiles/FMJ"), "SS2UNemmandoSwordBeam", true);
             swordBeam.transform.localScale = new Vector3(4.5f, 2.5f, 2.5f);
 
-            GameObject swordBeamGhost = PrefabAPI.InstantiateClone(LegacyResourcesAPI.Load<GameObject>("Prefabs/Projectiles/EvisProjectile").GetComponent<ProjectileController>().ghostPrefab, "SS2UNemmandoSwordBeamGhost", false);
+            GameObject evisProjectileGhost = Addressables.LoadAssetAsync<GameObject>("2cd70340b4c41de4ba6782e1c4ad34ee").WaitForCompletion();
+            GameObject swordBeamGhost = PrefabAPI.InstantiateClone(evisProjectileGhost, "SS2UNemmandoSwordBeamGhost", false);
             foreach (ParticleSystemRenderer i in swordBeamGhost.GetComponentsInChildren<ParticleSystemRenderer>())
             {
                 if (i)
@@ -224,7 +225,9 @@ namespace Starstorm2Unofficial.Survivors.Nemmando
                 }
             }
 
-            swordBeam.GetComponent<ProjectileController>().ghostPrefab = swordBeamGhost;
+            var pc = swordBeam.GetComponent<ProjectileController>();
+            pc.ghostPrefabAddress = default;
+            pc.ghostPrefab = swordBeamGhost;
             var pd = swordBeam.GetComponent<ProjectileDamage>();
             pd.damageType = DamageTypeCombo.GenericSecondary;
             pd.damageType.AddModdedDamageType(DamageTypeCore.ModdedDamageTypes.GougeOnHit);

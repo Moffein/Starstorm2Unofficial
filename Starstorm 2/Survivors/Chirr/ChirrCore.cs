@@ -45,9 +45,19 @@ namespace Starstorm2Unofficial.Survivors.Chirr
             ChirrFriendController.BlacklistBody(bodyIndex);
 
             BodyIndex brotherBodyIndex = BodyCatalog.FindBodyIndex("BrotherBody");
+            BodyIndex brotherHurtBodyIndex = BodyCatalog.FindBodyIndex("BrotherHurtBody");
+            BodyIndex falseSonBossBodyIndex = BodyCatalog.FindBodyIndex("FalseSonBossBody");
+            BodyIndex falseSonBoss2BodyIndex = BodyCatalog.FindBodyIndex("FalseSonBossBodyLunarShard");
+            BodyIndex falseSonBoss3BodyIndex = BodyCatalog.FindBodyIndex("FalseSonBossBodyBrokenLunarShard");
+
+            BodyIndex provBodyIndex = BodyCatalog.FindBodyIndex("ProvBody");
+            BodyIndex provDesperationBodyIndex = BodyCatalog.FindBodyIndex("ProvDesperationBody");
+            BodyIndex provFinalBodyIndex = BodyCatalog.FindBodyIndex("ProvFinalBody");
 
             ChirrFriendController.BlacklistBody(BodyCatalog.FindBodyIndex("VoidRaidCrabBody"));
             ChirrFriendController.BlacklistBody(brotherBodyIndex);
+            ChirrFriendController.BlacklistBody(BodyCatalog.FindBodyIndex("BrotherThroneBody"));
+            ChirrFriendController.BlacklistBody(brotherHurtBodyIndex);
             ChirrFriendController.BlacklistBody(BodyCatalog.FindBodyIndex("UrchinTurretBody"));
             ChirrFriendController.BlacklistBody(BodyCatalog.FindBodyIndex("WispSoulBody"));
             ChirrFriendController.BlacklistBody(BodyCatalog.FindBodyIndex("ShopkeeperBody"));
@@ -59,8 +69,9 @@ namespace Starstorm2Unofficial.Survivors.Chirr
             ChirrFriendController.BlacklistBody(BodyCatalog.FindBodyIndex("MiniVoidRaidCrabBodyPhase2"));
             ChirrFriendController.BlacklistBody(BodyCatalog.FindBodyIndex("MiniVoidRaidCrabBodyPhase3"));
             ChirrFriendController.BlacklistBody(BodyCatalog.FindBodyIndex("MiniVoidRaidCrabBodyPhase4"));
-            ChirrFriendController.BlacklistBody(BodyCatalog.FindBodyIndex("FalseSonBossBody"));
-            ChirrFriendController.BlacklistBody(BodyCatalog.FindBodyIndex("FalseSonBossBodyLunarShard"));
+            ChirrFriendController.BlacklistBody(falseSonBossBodyIndex);
+            ChirrFriendController.BlacklistBody(falseSonBoss2BodyIndex);
+            ChirrFriendController.BlacklistBody(falseSonBoss3BodyIndex);
             ChirrFriendController.BlacklistBody(BodyCatalog.FindBodyIndex("ArraignP1Body"));
             ChirrFriendController.BlacklistBody(BodyCatalog.FindBodyIndex("ArraignP2Body"));
 
@@ -70,8 +81,39 @@ namespace Starstorm2Unofficial.Survivors.Chirr
             ChirrFriendController.BlacklistBody(BodyCatalog.FindBodyIndex("SolusHeartBody_Offering"));
             ChirrFriendController.BlacklistBody(BodyCatalog.FindBodyIndex("SolusVendorBody"));
 
+            ChirrFriendController.BlacklistBody(BodyCatalog.FindBodyIndex("ReaperBossBody"));
+            ChirrFriendController.BlacklistBody(BodyCatalog.FindBodyIndex("ProvStationaryBody"));
+            ChirrFriendController.BlacklistBody(provBodyIndex);
+            ChirrFriendController.BlacklistBody(provDesperationBodyIndex);
+            ChirrFriendController.BlacklistBody(provFinalBodyIndex);
+
             ChirrFriendController.bodyDamageValueOverrides.Add(brotherBodyIndex, 10f);
             ChirrFriendController.bodyDamageValueOverrides.Add(BodyCatalog.FindBodyIndex("BrotherHurtBody"), 10f);
+            ChirrFriendController.bodyDamageValueOverrides.Add(falseSonBossBodyIndex, 10f);
+            ChirrFriendController.bodyDamageValueOverrides.Add(falseSonBoss2BodyIndex, 10f);
+            ChirrFriendController.bodyDamageValueOverrides.Add(falseSonBoss3BodyIndex, 10f);
+            ChirrFriendController.bodyDamageValueOverrides.Add(provBodyIndex, 10f);
+            ChirrFriendController.bodyDamageValueOverrides.Add(provDesperationBodyIndex, 10f);
+            ChirrFriendController.bodyDamageValueOverrides.Add(provFinalBodyIndex, 10f);
+
+            ChirrFriendController.MarkBodyAsSpecialScaling(provBodyIndex);
+            ChirrFriendController.MarkBodyAsSpecialScaling(provDesperationBodyIndex);
+            ChirrFriendController.MarkBodyAsSpecialScaling(provFinalBodyIndex);
+            ChirrFriendController.MarkBodyAsSpecialScaling(brotherBodyIndex);
+            ChirrFriendController.MarkBodyAsSpecialScaling(brotherHurtBodyIndex);
+            ChirrFriendController.MarkBodyAsSpecialScaling(falseSonBossBodyIndex);
+            ChirrFriendController.MarkBodyAsSpecialScaling(falseSonBoss2BodyIndex);
+            ChirrFriendController.MarkBodyAsSpecialScaling(BodyCatalog.FindBodyIndex("GildedWurmOrbBody"));
+            ChirrFriendController.MarkBodyAsSpecialScaling(BodyCatalog.FindBodyIndex("GildedWurmLaserBody"));
+            ChirrFriendController.MarkBodyAsSpecialScaling(BodyCatalog.FindBodyIndex("TitanGoldBody"));
+            ChirrFriendController.MarkBodyAsSpecialScaling(BodyCatalog.FindBodyIndex("VultureHunterBody"));
+            ChirrFriendController.MarkBodyAsSpecialScaling(BodyCatalog.FindBodyIndex("SuperRoboBallBossBody"));
+
+            var direseekerBodyIndex = BodyCatalog.FindBodyIndex("DireseekerBody");
+            if (direseekerBodyIndex != BodyIndex.None)
+            {
+                ChirrFriendController.MarkBodyAsSpecialScaling(direseekerBodyIndex);
+            }
 
             ModCompat.SurvariantsCompat.SetVariant(survivorDef, "ChirrBody");
         }
@@ -147,7 +189,7 @@ namespace Starstorm2Unofficial.Survivors.Chirr
 
         private void GlobalEventManager_onCharacterDeathGlobal(DamageReport report)
         {
-            if (EnemyCore.IsMoon() && report.victimBody && report.victimBody.bodyIndex == bodyIndex && report.attackerBody && (report.attackerBody.bodyIndex == EnemyCore.brotherHurtIndex || report.attackerBody.bodyIndex == EnemyCore.brotherIndex))
+            if (EnemyCore.IsMoon() && report.victimBody && report.victimBody.bodyIndex == bodyIndex && report.attackerBody && (report.attackerBody.bodyIndex == RoR2Content.BodyPrefabs.BrotherHurtBody.bodyIndex || report.attackerBody.bodyIndex == RoR2Content.BodyPrefabs.BrotherBody.bodyIndex))
             {
                 int index = UnityEngine.Random.Range(0, brotherKillChirrTokens.Count);
                 EnemyCore.FakeMithrixChatMessageServer(brotherKillChirrTokens[index]);

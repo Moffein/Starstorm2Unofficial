@@ -307,9 +307,7 @@
     <Compile Include="Survivors\Pyro\PyroSkins.cs" />
     <Compile Include="Survivors\Pyro\PyroCore.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Cores\Enemies\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Reference Include="0Harmony">
       <HintPath>libs\BepInEx\0Harmony.dll</HintPath>

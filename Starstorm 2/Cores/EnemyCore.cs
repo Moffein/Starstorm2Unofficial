@@ -23,14 +23,6 @@ namespace Starstorm2Unofficial.Cores
         public static GameObject masterPrefab;
         public static GameObject wayfarerBuffWardPrefab;
 
-        public static BodyIndex brotherHurtIndex;
-        public static BodyIndex brotherIndex;
-        public static BodyIndex scavLunar1Index, scavLunar2Index, scavLunar3Index, scavLunar4Index;
-
-        public static BodyIndex falseSonBossIndex;
-        public static BodyIndex falseSonBossPhase2Index;
-        public static BodyIndex falseSonBossPhase3Index;
-
         private static SceneDef sceneMoon = Addressables.LoadAssetAsync<SceneDef>("RoR2/Base/moon/moon.asset").WaitForCompletion();
         private static SceneDef sceneMoon2 = Addressables.LoadAssetAsync<SceneDef>("RoR2/Base/moon2/moon2.asset").WaitForCompletion();
 
@@ -38,21 +30,6 @@ namespace Starstorm2Unofficial.Cores
         {
             SceneDef sd = SceneCatalog.GetSceneDefForCurrentScene();
             return sd && (sd == sceneMoon || sd == sceneMoon2);
-        }
-
-        public static void StoreBodyIndexes()
-        {
-            brotherHurtIndex = BodyCatalog.FindBodyIndex("BrotherHurtBody");
-            brotherIndex = BodyCatalog.FindBodyIndex("BrotherBody");
-
-            scavLunar1Index = BodyCatalog.FindBodyIndex("ScavLunar1Body");
-            scavLunar2Index = BodyCatalog.FindBodyIndex("ScavLunar2Body");
-            scavLunar3Index = BodyCatalog.FindBodyIndex("ScavLunar3Body");
-            scavLunar4Index = BodyCatalog.FindBodyIndex("ScavLunar4Body");
-
-            falseSonBossIndex = BodyCatalog.FindBodyIndex("FalseSonBossBody");
-            falseSonBossPhase2Index = BodyCatalog.FindBodyIndex("FalseSonBossBodyLunarShard");
-            falseSonBossPhase3Index = BodyCatalog.FindBodyIndex("FalseSonBossBodyBrokenLunarShard");
         }
 
         //Super bootleg code.
@@ -75,6 +52,18 @@ namespace Starstorm2Unofficial.Cores
         {
             string fullMessage = "<color=#c6d5ff><size=120%>";
             fullMessage += Language.GetString("FALSESONBOSS_BODY_NAME");
+            fullMessage += ":";
+            fullMessage += Language.GetString(token);
+            fullMessage += "</color></size>";
+            Chat.SendBroadcastChat(new Chat.SimpleChatMessage
+            {
+                baseToken = fullMessage
+            });
+        }
+        public static void FakeProvidenceChatMessageServer(string token)
+        {
+            string fullMessage = "<color=#ffc7c7><size=120%>";
+            fullMessage += Language.GetString("PROVIDENCE_BODY_NAME");
             fullMessage += ":";
             fullMessage += Language.GetString(token);
             fullMessage += "</color></size>";

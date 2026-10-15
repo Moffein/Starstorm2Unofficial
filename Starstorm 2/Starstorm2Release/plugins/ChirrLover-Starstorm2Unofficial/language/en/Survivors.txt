@@ -174,8 +174,9 @@
 		"SS2UCHIRR_OUTRO_BROTHER_EASTEREGG" : "..and together they left, having learned that the real Risk of Rain was the friends they made along the way.",
 		"SS2UBROTHER_KILL_CHIRR1" : " Join your sisters.",
 		"SS2UBROTHER_KILL_CHIRR2" : " Extinct at last.",
-		"SS2UBROTHERHURT_CHIRR_BEFRIEND_1" : " YOU... REACH OUT... TO ME, VERMIN...?",
+		"SS2UBROTHERHURT_CHIRR_BEFRIEND_1" : " YOU... REACH OUT... TO ME, VERMIN...?"
 		"SS2UFALSESONBOSS_CHIRR_BEFRIEND_1" : " Were you... the storm I've been seeking this whole time?",
+		"SS2UPROVIDENCE_CHIRR_BEFRIEND_1" : " Very well... Let us confront him.",
 		
 		"SS2UNUCLEATOR_NAME" : "Nucleator",
 		"SS2UNUCLEATOR_SUBTITLE" : "Walking Fallout",

@@ -28,6 +28,7 @@ namespace Starstorm2Unofficial.Survivors.Nucleator
             pd.damageType = (DamageTypeCombo) DamageTypeExtended.Electrical | DamageSource.Primary;
 
             ProjectileController pc = projectilePrefab.GetComponent<ProjectileController>();
+            pc.ghostPrefabAddress = default;
             pc.ghostPrefab = projectileGhost;
 
             ProjectileSimple ps = projectilePrefab.GetComponent<ProjectileSimple>();
@@ -90,6 +91,7 @@ namespace Starstorm2Unofficial.Survivors.Nucleator
             }
 
             ProjectileController pc = projectilePrefab.GetComponent<ProjectileController>();
+            pc.ghostPrefabAddress = default;
             pc.ghostPrefab = projectileGhost;
             pc.allowPrediction = false;
 

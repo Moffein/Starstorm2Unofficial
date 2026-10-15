@@ -216,6 +216,7 @@ namespace Starstorm2Unofficial.Survivors.Cyborg
             ghost.AddComponent<ProjectileGhostController>();
 
             ProjectileController pylonProjectileController = cyborgPylon.GetComponent<ProjectileController>();
+            pylonProjectileController.ghostPrefabAddress = default;
             pylonProjectileController.ghostPrefab = ghost;
             pylonProjectileController.cannotBeDeleted = true;
             pylonProjectileController.allowPrediction = false;
@@ -271,6 +272,7 @@ namespace Starstorm2Unofficial.Survivors.Cyborg
             //projectilePrefab.transform.localScale = 2f * Vector3.one; //0.1, 0.1, 1.0
 
             ProjectileController pc = projectilePrefab.GetComponent<ProjectileController>();
+            pc.ghostPrefabAddress = default;
             pc.ghostPrefab = ghostPrefab;
             pc.allowPrediction = false;
 
@@ -373,6 +375,7 @@ namespace Starstorm2Unofficial.Survivors.Cyborg
 
             ProjectileController bfgProjectileController = projectilePrefab.GetComponent<ProjectileController>();
             bfgProjectileController.procCoefficient = 1f;
+            bfgProjectileController.ghostPrefabAddress = default;
             bfgProjectileController.ghostPrefab = ghostPrefab;
 
             ProjectileDamage bfgDamage = projectilePrefab.GetComponent<ProjectileDamage>();

@@ -80,6 +80,7 @@ namespace Starstorm2Unofficial.Survivors.Pyro
             ghostPrefab.transform.localScale *= 0.5f;
 
             ProjectileController pc = projectilePrefab.GetComponent<ProjectileController>();
+            pc.ghostPrefabAddress = default;
             pc.ghostPrefab = ghostPrefab;
 
             ProjectileSimple ps = projectilePrefab.GetComponent<ProjectileSimple>();

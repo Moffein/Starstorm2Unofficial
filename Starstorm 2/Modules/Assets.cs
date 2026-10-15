@@ -110,8 +110,11 @@ namespace Starstorm2Unofficial.Modules
             //matMoonbatteryCrippleRadius = UnityEngine.Object.Instantiate(LegacyResourcesAPI.Load<GameObject>("Prefabs/NetworkedObjects/MoonBatteryCrippleWard").transform.Find("Indicator").Find("RadiusScaler").Find("ClearAreaIndicator").GetComponent<MeshRenderer>().material);
             matClaySwing = UnityEngine.Object.Instantiate(LegacyResourcesAPI.Load<GameObject>("prefabs/effects/ImpSwipeEffect").GetComponentInChildren<ParticleSystemRenderer>().material);
             matDistortion = UnityEngine.Object.Instantiate(LegacyResourcesAPI.Load<GameObject>("Prefabs/Effects/ImpactEffects/LoaderGroundSlam").transform.Find("Sphere, Distortion").GetComponent<ParticleSystemRenderer>().material);
-            matMercSwipe = UnityEngine.Object.Instantiate(LegacyResourcesAPI.Load<GameObject>("Prefabs/Projectiles/EvisProjectile").GetComponent<ProjectileController>().ghostPrefab.transform.Find("Base").GetComponent<ParticleSystemRenderer>().material);
-            matMercSwipeRed = UnityEngine.Object.Instantiate(LegacyResourcesAPI.Load<GameObject>("Prefabs/Projectiles/EvisProjectile").GetComponent<ProjectileController>().ghostPrefab.transform.Find("Base").GetComponent<ParticleSystemRenderer>().material);
+
+            GameObject evisProjectileGhost = Addressables.LoadAssetAsync<GameObject>("2cd70340b4c41de4ba6782e1c4ad34ee").WaitForCompletion();
+            
+            matMercSwipe = evisProjectileGhost.transform.Find("Base").GetComponent<ParticleSystemRenderer>().material;
+            matMercSwipeRed = evisProjectileGhost.transform.Find("Base").GetComponent<ParticleSystemRenderer>().material;
             matMercSwipeRed.SetColor("_TintColor", Color.red);
 
             //matLunarGolem = UnityEngine.Object.Instantiate(LegacyResourcesAPI.Load<GameObject>("Prefabs/CharacterBodies/LunarGolemBody").GetComponentInChildren<CharacterModel>().baseRendererInfos[0].defaultMaterial);

@@ -1,4 +1,5 @@
-﻿using EntityStates.MeridianEvent;
+﻿using EntityStates.Chef;
+using EntityStates.MeridianEvent;
 using R2API;
 using RoR2;
 using RoR2.CharacterAI;
@@ -67,7 +68,7 @@ namespace Starstorm2Unofficial.Survivors.Chirr.Components
                 ItemIndex blacklistItem = ItemCatalog.FindItemIndex(str);
                 if (blacklistItem != ItemIndex.None)
                 {
-                    inventory.RemoveItem(blacklistItem, inventory.GetItemCount(blacklistItem));
+                    inventory.RemoveItemPermanent(blacklistItem, inventory.GetItemCountPermanent(blacklistItem));
                 }
             }
         }
@@ -84,8 +85,10 @@ namespace Starstorm2Unofficial.Survivors.Chirr.Components
 
         private bool hadBeads = false;
         private bool hadGoldSeed = false;
+        private bool hadPromise = false;
 
         public static HashSet<BodyIndex> blacklistedBodies = new HashSet<BodyIndex>();
+        public static HashSet<BodyIndex> specialScalingBodies = new HashSet<BodyIndex>();
 
         private Indicator indicatorCannotBefriend;
         private Indicator indicatorReadyToBefriend;
@@ -129,16 +132,29 @@ namespace Starstorm2Unofficial.Survivors.Chirr.Components
             if (bodyIndex != BodyIndex.None) blacklistedBodies.Add(bodyIndex);
         }
 
+        public static void MarkBodyAsSpecialScaling(BodyIndex bodyIndex)
+        {
+            if (bodyIndex != BodyIndex.None) specialScalingBodies.Add(bodyIndex);
+        }
+
         private bool HasLunarTrinket()
         {
-            if (!hadBeads) hadBeads = ownerMaster && ownerMaster.inventory && ownerMaster.inventory.GetItemCount(RoR2Content.Items.LunarTrinket) > 0;
+            if (!hadBeads) hadBeads = ownerMaster && ownerMaster.inventory && ownerMaster.inventory.GetItemCountEffective(RoR2Content.Items.LunarTrinket) > 0;
             return hadBeads;    //hadBeads is intentional
         }
 
         private bool HasGoldSeed()
         {
-            if (!hadGoldSeed) hadGoldSeed = ownerMaster && ownerMaster.inventory && ownerMaster.inventory.GetItemCount(RoR2Content.Items.TitanGoldDuringTP) > 0;
+            if (!hadGoldSeed) hadGoldSeed = ownerMaster && ownerMaster.inventory && ownerMaster.inventory.GetItemCountEffective(RoR2Content.Items.TitanGoldDuringTP) > 0;
             return hadGoldSeed;
+        }
+        private bool HasPromise()
+        {
+            ItemIndex promise = ItemCatalog.FindItemIndex("ER_LunarFlower");
+            if (promise == ItemIndex.None) return false;
+
+            if (!hadPromise) hadPromise = ownerMaster && ownerMaster.inventory && ownerMaster.inventory.GetItemCountEffective(promise) > 0;
+            return hadPromise;
         }
 
         public bool HasScepter()
@@ -146,8 +162,8 @@ namespace Starstorm2Unofficial.Survivors.Chirr.Components
             int scepterCount = 0;
             if (ownerMaster && ownerMaster.inventory)
             {
-                scepterCount += ownerMaster.inventory.GetItemCount(ItemCatalog.FindItemIndex("CIScepter"));
-                scepterCount += ownerMaster.inventory.GetItemCount(ItemCatalog.FindItemIndex("ITEM_ANCIENT_SCEPTER"));
+                scepterCount += ownerMaster.inventory.GetItemCountEffective(ItemCatalog.FindItemIndex("CIScepter"));
+                scepterCount += ownerMaster.inventory.GetItemCountEffective(ItemCatalog.FindItemIndex("ITEM_ANCIENT_SCEPTER"));
             }
 
             bool hasScepter = scepterCount > 0;
@@ -197,6 +213,14 @@ namespace Starstorm2Unofficial.Survivors.Chirr.Components
             if (ownerBody)
             {
                 ownerMaster = ownerBody.master;
+
+                if (ownerMaster && ownerMaster.inventory)
+                {
+                    HasScepter();
+                    HasGoldSeed();
+                    HasLunarTrinket();
+                    HasPromise();
+                }
             }
             if (NetworkServer.active) TrySpawnSavedMaster();
         }
@@ -221,6 +245,11 @@ namespace Starstorm2Unofficial.Survivors.Chirr.Components
                     || masterFriendInfo.masterIndex == MasterCatalog.FindMasterIndex("FalseSonBossLunarShardBrokenMaster"))
                 {
                     var newIndex = MasterCatalog.FindMasterIndex("FalseSonBossMaster");
+                    if (newIndex != MasterCatalog.MasterIndex.none) masterFriendInfo.masterIndex = newIndex;
+                }
+                else if (masterFriendInfo.masterIndex == MasterCatalog.FindMasterIndex("ProvidenceFinalMaster"))
+                {
+                    var newIndex = MasterCatalog.FindMasterIndex("ProvidenceDesperationMaster");
                     if (newIndex != MasterCatalog.MasterIndex.none) masterFriendInfo.masterIndex = newIndex;
                 }
 
@@ -330,7 +359,9 @@ namespace Starstorm2Unofficial.Survivors.Chirr.Components
                         trackingTarget = targetBody.mainHurtBox;
                         targetBody.AddBuff(BuffCore.chirrFriendBuff);
 
-                        if (targetBody.bodyIndex == EnemyCore.brotherHurtIndex || targetBody.bodyIndex == EnemyCore.brotherIndex)
+                        if (targetBody.bodyIndex == RoR2Content.BodyPrefabs.BrotherHurtBody.bodyIndex || targetBody.bodyIndex == RoR2Content.BodyPrefabs.BrotherBody.bodyIndex
+                            || targetBody.bodyIndex == DLC4Content.BodyPrefabs.ProvBody.bodyIndex || targetBody.bodyIndex == DLC4Content.BodyPrefabs.ProvDesperationBody.bodyIndex || targetBody.bodyIndex == DLC4Content.BodyPrefabs.ProvFinalBody.bodyIndex
+                            || targetBody.bodyIndex == DLC2Content.BodyPrefabs.FalseSonBossBody.bodyIndex || targetBody.bodyIndex == DLC2Content.BodyPrefabs.FalseSonBossBodyBrokenLunarShard.bodyIndex || targetBody.bodyIndex == DLC2Content.BodyPrefabs.FalseSonBossBodyLunarShard.bodyIndex)
                         {
                             targetBody.AddBuff(RoR2Content.Buffs.HiddenInvincibility);
                         }
@@ -379,7 +410,7 @@ namespace Starstorm2Unofficial.Survivors.Chirr.Components
                     master.inventory.AddItemsFrom(masterFriendInfo.masterItemStacks, x => x != ItemIndex.None);
                 }
                 RemoveBlacklistedItems(master.inventory);
-                master.inventory.RemoveItem(RoR2Content.Items.MinionLeash, master.inventory.GetItemCount(RoR2Content.Items.MinionLeash));
+                master.inventory.RemoveItemPermanent(RoR2Content.Items.MinionLeash, master.inventory.GetItemCountPermanent(RoR2Content.Items.MinionLeash));
             }
         }
 
@@ -586,7 +617,7 @@ namespace Starstorm2Unofficial.Survivors.Chirr.Components
         {
             if (trackingTarget && trackingTarget.healthComponent)
             {
-                bool befriendStatus = trackingTarget.healthComponent.combinedHealthFraction <= ((trackingTarget.healthComponent.body && trackingTarget.healthComponent.body.isChampion && trackingTarget.healthComponent.body.bodyIndex == EnemyCore.brotherHurtIndex) ? ChirrFriendController.befriendChampionHealthFraction : ChirrFriendController.befriendHealthFraction);
+                bool befriendStatus = trackingTarget.healthComponent.combinedHealthFraction <= ((trackingTarget.healthComponent.body && trackingTarget.healthComponent.body.isChampion && trackingTarget.healthComponent.body.bodyIndex == RoR2Content.BodyPrefabs.BrotherHurtBody.bodyIndex) ? ChirrFriendController.befriendChampionHealthFraction : ChirrFriendController.befriendHealthFraction);
                 if (befriendStatus != _canBefriendTarget) _canBefriendTarget = befriendStatus;
             }
         }
@@ -614,7 +645,7 @@ namespace Starstorm2Unofficial.Survivors.Chirr.Components
                         bool isPlayerControlled = hbBody.isPlayerControlled;
                         bool isChampion = hbBody.isChampion;
                         bool isBlacklisted = blacklistedBodies.Contains(hbBody.bodyIndex);
-                        bool isDecay = hbBody.inventory && hbBody.inventory.GetItemCount(RoR2Content.Items.HealthDecay) > 0;
+                        bool isDecay = hbBody.inventory && hbBody.inventory.GetItemCountPermanent(RoR2Content.Items.HealthDecay) > 0;
                         bool isDestroy = (hbBody.GetComponent<DestroyOnTimer>() != null) || (hbBody.master && hbBody.master.GetComponent<DestroyOnTimer> () != null);
                         bool isAlreadyFriended = hbBody.HasBuff(BuffCore.chirrFriendBuff) || hbBody.HasBuff(BuffCore.chirrSelfBuff);
                         bool isMasterless = hbBody.bodyFlags.HasFlag(CharacterBody.BodyFlags.Masterless);
@@ -622,19 +653,28 @@ namespace Starstorm2Unofficial.Survivors.Chirr.Components
                         bool isNemesis = false;
                         if (hbBody.inventory)
                         {
-                            isNemesis = hbBody.inventory.GetItemCount(Starstorm2Unofficial.Cores.NemesisInvasion.NemesisInvasionCore.NemesisMarkerItem) > 0;
+                            isNemesis = hbBody.inventory.GetItemCountPermanent(Starstorm2Unofficial.Cores.NemesisInvasion.NemesisInvasionCore.NemesisMarkerItem) > 0;
                         }
 
-                        bool isBrotherHurt = hbBody.bodyIndex == EnemyCore.brotherHurtIndex;
-                        bool mithrixSecret = isBrotherHurt && (canBefriendChampion || hadScepter || HasLunarTrinket());
+                        bool isBrotherHurt = hbBody.bodyIndex == RoR2Content.BodyPrefabs.BrotherHurtBody.bodyIndex;
+                        bool mithrixSecret = isBrotherHurt && (canBefriendChampion || hadScepter || HasLunarTrinket() || HasPromise());
 
-                        bool isFalseSon = hbBody.bodyIndex == EnemyCore.falseSonBossPhase3Index;
+                        bool isFalseSon = hbBody.bodyIndex == DLC2Content.BodyPrefabs.FalseSonBossBodyBrokenLunarShard.bodyIndex;
                         bool falseSonSecret = isFalseSon && (canBefriendChampion || hadScepter || HasGoldSeed()) && canBefriendFalseSon;
 
-                        bool isSecret = isFalseSon || isBrotherHurt;
+                        bool isProvi = hbBody.bodyIndex == DLC4Content.BodyPrefabs.ProvFinalBody.bodyIndex;
+                        bool proviSecret = isProvi && (canBefriendChampion || hadScepter || HasPromise());
+
+                        bool isSecret = isFalseSon || isBrotherHurt || isProvi;
+
+                        bool meetsSecretConditions = mithrixSecret || falseSonSecret || proviSecret;
+                        if (meetsSecretConditions)
+                        {
+                            isBlacklisted = false;
+                        }
 
                         if (!isPlayerControlled && !isMasterless && !isDecay && !isDestroy && !isAlreadyFriended
-                            && (((!isChampion || canBefriendChampion) && !isSecret) || mithrixSecret || falseSonSecret)
+                            && (((!isChampion || canBefriendChampion) && !isSecret) || meetsSecretConditions)
                             && !isBlacklisted && !(isNemesis && !allowBefriendNemesis))
                         {
                             validTargets.Add(hb);
@@ -729,10 +769,6 @@ namespace Starstorm2Unofficial.Survivors.Chirr.Components
                     targetBody.healthComponent.shield = targetBody.healthComponent.fullShield;
                 }
 
-                //Ally persists between stages
-                //Doesn't work on Dedicated Servers.
-                //RpcDontDestroyOnLoad(_trackingTargetMasterNetID);
-
                 //Save ally info
                 if (masterFriendInfo)
                 {
@@ -747,25 +783,29 @@ namespace Starstorm2Unofficial.Survivors.Chirr.Components
 
                 if (targetMaster.inventory)
                 {
-                    targetMaster.inventory.RemoveItem(RoR2Content.Items.UseAmbientLevel, targetMaster.inventory.GetItemCount(RoR2Content.Items.UseAmbientLevel));
+                    targetMaster.inventory.RemoveItemPermanent(RoR2Content.Items.UseAmbientLevel, targetMaster.inventory.GetItemCountPermanent(RoR2Content.Items.UseAmbientLevel));
 
                     //Remove Elite passive stats. New stat boost is tied to Friend Buff.
                     EquipmentIndex ei = targetMaster.inventory.GetEquipmentIndex();
                     if (ei != EquipmentIndex.None)
                     {
-                        EquipmentDef eq = EquipmentCatalog.GetEquipmentDef(ei);
-                        if (eq && eq.passiveBuffDef && eq.passiveBuffDef.eliteDef)
+                        //Check if this is something that has giga stat boosts by default
+                        if (!specialScalingBodies.Contains(targetBody.bodyIndex))
                         {
-                            int boostHP = Mathf.FloorToInt((eq.passiveBuffDef.eliteDef.healthBoostCoefficient - 1f) * 10f);
-                            if (boostHP > 0)
+                            EquipmentDef eq = EquipmentCatalog.GetEquipmentDef(ei);
+                            if (eq && eq.passiveBuffDef && eq.passiveBuffDef.eliteDef)
                             {
-                                targetMaster.inventory.RemoveItem(RoR2Content.Items.BoostHp, boostHP);
-                            }
+                                int boostHP = Mathf.FloorToInt((eq.passiveBuffDef.eliteDef.healthBoostCoefficient - 1f) * 10f);
+                                if (boostHP > 0)
+                                {
+                                    targetMaster.inventory.RemoveItemPermanent(RoR2Content.Items.BoostHp, boostHP);
+                                }
 
-                            int boostDmg = Mathf.FloorToInt((eq.passiveBuffDef.eliteDef.damageBoostCoefficient - 1f) * 10f);
-                            if (boostDmg > 0)
-                            {
-                                targetMaster.inventory.RemoveItem(RoR2Content.Items.BoostDamage, boostDmg);
+                                int boostDmg = Mathf.FloorToInt((eq.passiveBuffDef.eliteDef.damageBoostCoefficient - 1f) * 10f);
+                                if (boostDmg > 0)
+                                {
+                                    targetMaster.inventory.RemoveItemPermanent(RoR2Content.Items.BoostDamage, boostDmg);
+                                }
                             }
                         }
                     }
@@ -776,7 +816,7 @@ namespace Starstorm2Unofficial.Survivors.Chirr.Components
                     if (masterFriendInfo)
                     {
                         //jank, this is bad
-                        masterFriendInfo.masterItemStacks = new int[(int)ItemIndex.Count];
+                        masterFriendInfo.masterItemStacks = new int[ItemCatalog.itemCount];
                         for (int i = 0; i < masterFriendInfo.masterItemStacks.Length; i++)
                         {
                             masterFriendInfo.masterItemStacks[i] = targetMaster.inventory.GetItemCountPermanent((ItemIndex)i);
@@ -814,12 +854,12 @@ namespace Starstorm2Unofficial.Survivors.Chirr.Components
                 }
 
                 //Soul
-                if (targetBody.bodyIndex == EnemyCore.brotherHurtIndex || targetBody.bodyIndex == EnemyCore.brotherIndex)
+                if (targetBody.bodyIndex == RoR2Content.BodyPrefabs.BrotherHurtBody.bodyIndex || targetBody.bodyIndex == RoR2Content.BodyPrefabs.BrotherBody.bodyIndex)
                 {
                     targetBody.AddBuff(RoR2Content.Buffs.HiddenInvincibility);
                     if (EnemyCore.IsMoon())
                     {
-                        //He still uses Phase 4 AI if you do this.
+                        //He still uses Phase 4 AI if you try to respawn him as a different body.
                         //targetMaster.bodyPrefab = BodyCatalog.FindBodyPrefab("BrotherBody");
                         //targetMaster.Respawn(targetBody.transform.position, targetBody.transform.rotation);
                         RpcSetMithrixConverted();
@@ -827,7 +867,7 @@ namespace Starstorm2Unofficial.Survivors.Chirr.Components
                         EnemyCore.FakeMithrixChatMessageServer("SS2UBROTHERHURT_CHIRR_BEFRIEND_1");
                     }
                 }
-                else if (targetBody.bodyIndex == EnemyCore.falseSonBossPhase3Index)
+                else if (targetBody.bodyIndex == DLC2Content.BodyPrefabs.FalseSonBossBodyBrokenLunarShard.bodyIndex)
                 {
                     targetBody.AddBuff(RoR2Content.Buffs.HiddenInvincibility);
                     StartCoroutine(DelayFalseSonChatMessage());
@@ -842,7 +882,13 @@ namespace Starstorm2Unofficial.Survivors.Chirr.Components
                         }
                     }
                 }
-                else if (targetBody.bodyIndex == EnemyCore.scavLunar1Index || targetBody.bodyIndex == EnemyCore.scavLunar2Index || targetBody.bodyIndex == EnemyCore.scavLunar3Index || targetBody.bodyIndex == EnemyCore.scavLunar4Index)
+                else if (targetBody.bodyIndex == DLC4Content.BodyPrefabs.ProvFinalBody.bodyIndex)
+                {
+                    targetBody.AddBuff(RoR2Content.Buffs.HiddenInvincibility);
+                    StartCoroutine(DelayProvidenceChatMessage());
+                    RpcSetProvidenceConverted();
+                }
+                else if (targetBody.bodyIndex == RoR2Content.BodyPrefabs.ScavLunar1Body.bodyIndex || targetBody.bodyIndex == RoR2Content.BodyPrefabs.ScavLunar2Body.bodyIndex || targetBody.bodyIndex == RoR2Content.BodyPrefabs.ScavLunar3Body.bodyIndex || targetBody.bodyIndex == RoR2Content.BodyPrefabs.ScavLunar4Body.bodyIndex)
                 {
                     NetworkUser networkUser = Util.LookUpBodyNetworkUser(ownerBody);
                     if (networkUser)
@@ -861,6 +907,13 @@ namespace Starstorm2Unofficial.Survivors.Chirr.Components
         {
             yield return new WaitForSeconds(0.3f);
             EnemyCore.FakeFalseSonChatMessageServer("SS2UFALSESONBOSS_CHIRR_BEFRIEND_1");
+            yield return null;
+        }
+
+        private IEnumerator DelayProvidenceChatMessage()
+        {
+            yield return new WaitForSeconds(0.3f);
+            EnemyCore.FakeProvidenceChatMessageServer("SS2UPROVIDENCE_CHIRR_BEFRIEND_1");
             yield return null;
         }
 
@@ -885,11 +938,14 @@ namespace Starstorm2Unofficial.Survivors.Chirr.Components
         {
             if (NetworkServer.active)
             {
-                if (HasFriend() && !(targetBody && targetBody.bodyIndex == EnemyCore.brotherHurtIndex
-                    || targetBody.bodyIndex == EnemyCore.brotherIndex
-                    || targetBody.bodyIndex == EnemyCore.falseSonBossIndex
-                    || targetBody.bodyIndex == EnemyCore.falseSonBossPhase2Index
-                    || targetBody.bodyIndex == EnemyCore.falseSonBossPhase3Index))
+                if (HasFriend() && !(targetBody && targetBody.bodyIndex == RoR2Content.BodyPrefabs.BrotherHurtBody.bodyIndex
+                    || targetBody.bodyIndex == RoR2Content.BodyPrefabs.BrotherBody.bodyIndex
+                    || targetBody.bodyIndex == DLC2Content.BodyPrefabs.FalseSonBossBody.bodyIndex
+                    || targetBody.bodyIndex == DLC2Content.BodyPrefabs.FalseSonBossBodyLunarShard.bodyIndex
+                    || targetBody.bodyIndex == DLC2Content.BodyPrefabs.FalseSonBossBodyBrokenLunarShard.bodyIndex)
+                    || targetBody.bodyIndex == DLC4Content.BodyPrefabs.ProvBody.bodyIndex
+                    || targetBody.bodyIndex == DLC4Content.BodyPrefabs.ProvDesperationBody.bodyIndex
+                    || targetBody.bodyIndex == DLC4Content.BodyPrefabs.ProvFinalBody.bodyIndex)
                 {
                     RpcSetTargetBodyGlass();
                     targetMaster.TrueKill();
@@ -916,6 +972,12 @@ namespace Starstorm2Unofficial.Survivors.Chirr.Components
 
         [ClientRpc]
         private void RpcSetMithrixConverted()   //Only used to change her outro token.
+        {
+            ChirrCore.survivorDef.outroFlavorToken = "SS2UCHIRR_OUTRO_BROTHER_EASTEREGG";
+        }
+
+        [ClientRpc]
+        private void RpcSetProvidenceConverted()   //Only used to change her outro token.
         {
             ChirrCore.survivorDef.outroFlavorToken = "SS2UCHIRR_OUTRO_BROTHER_EASTEREGG";
         }
