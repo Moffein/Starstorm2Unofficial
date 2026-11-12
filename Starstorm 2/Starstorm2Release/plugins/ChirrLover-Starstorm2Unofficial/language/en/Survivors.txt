@@ -205,9 +205,8 @@
 		
 		"KEYWORD_SS2U_RADIATION" : "<style=cKeywordName>Radiation Poisoning</style><style=cSub>Deal <style=cIsDamage>200%</style> damage per second in an AoE for 5s.</style>",
 		
-		"SS2UNUCLEATOR_UNLOCKUNLOCKABLE_UNLOCKABLE_NAME" : "Overkill",
-		"SS2UNUCLEATOR_UNLOCKUNLOCKABLE_ACHIEVEMENT_NAME" : "Overkill",
-		"SS2UNUCLEATOR_UNLOCKUNLOCKABLE_ACHIEVEMENT_DESC" : "Collect 5 Legendary items in one run.",
+		"ACHIEVEMENT_SS2UNUCLEATORUNLOCK_NAME" : "Overkill",
+		"ACHIEVEMENT_SS2UNUCLEATORUNLOCK_DESCRIPTION" : "Collect 5 Legendary items in one run.",
 		
 		"SS2UNUCLEATOR_MASTERYUNLOCKABLE_UNLOCKABLE_NAME" : "Nucleator: Mastery",
 		"SS2UNUCLEATOR_MASTERYUNLOCKABLE_ACHIEVEMENT_NAME" : "Nucleator: Mastery",

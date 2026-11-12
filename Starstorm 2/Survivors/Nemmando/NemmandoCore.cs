@@ -90,7 +90,7 @@ namespace Starstorm2Unofficial.Survivors.Nemmando
         internal override List<ItemDisplayRuleSet.KeyAssetRuleGroup> itemDisplayRules { get; set; }
 
         internal override UnlockableDef characterUnlockableDef { get; set; } = CreateUnlockableDef();
-        public static UnlockableDef survivorUnlock;
+        public static UnlockableDef nemmandoUnlock;
         public static UnlockableDef killSelfUnlockableDef;
 
         private static void CreateKillSelfUnlockable()
@@ -112,20 +112,20 @@ namespace Starstorm2Unofficial.Survivors.Nemmando
 
         private static UnlockableDef CreateUnlockableDef()
         {
-            if (!survivorUnlock)
+            if (!nemmandoUnlock)
             {
-                survivorUnlock = ScriptableObject.CreateInstance<UnlockableDef>();
-                survivorUnlock.cachedName = "Characters.SS2UNemmando";
-                survivorUnlock.nameToken = "ACHIEVEMENT_SS2UNEMMANDOUNLOCK_NAME";
-                survivorUnlock.achievementIcon = Starstorm2Unofficial.Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("texNemmandoIconUnlock");
-                if (ModCompat.SS2OCompat.ShouldLoadAutoconfigContent()) AchievementHider.unlockableRewardIdentifiers.Remove(survivorUnlock.cachedName);
+                nemmandoUnlock = ScriptableObject.CreateInstance<UnlockableDef>();
+                nemmandoUnlock.cachedName = "Characters.SS2UNemmando";
+                nemmandoUnlock.nameToken = "ACHIEVEMENT_SS2UNEMMANDOUNLOCK_NAME";
+                nemmandoUnlock.achievementIcon = Starstorm2Unofficial.Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("texNemmandoIconUnlock");
+                if (ModCompat.SS2OCompat.ShouldLoadAutoconfigContent()) AchievementHider.unlockableRewardIdentifiers.Remove(nemmandoUnlock.cachedName);
 
-                Modules.Unlockables.unlockableDefs.Add(survivorUnlock);
+                Modules.Unlockables.unlockableDefs.Add(nemmandoUnlock);
             }
 
             if (Modules.Config.EnableUnlockAll.Value || !Modules.Config.EnableVoid.Value || !ModCompat.SS2OCompat.ShouldLoadAutoconfigContent()) return null;
 
-            return survivorUnlock;
+            return nemmandoUnlock;
         }
 
         private static UnlockableDef masterySkinUnlockableDef;
