@@ -185,7 +185,7 @@
     <Compile Include="Items\Common\MoltenCoin.cs" />
     <Compile Include="Items\Rare\Disabled\NkotasHeritage.cs" />
     <Compile Include="Items\Trashbin\PrototypeJetBoots.cs" />
-    <Compile Include="Items\Relic\Disabled\RelicOfMass.cs" />
+    <Compile Include="Items\Relic\RelicOfMass.cs" />
     <Compile Include="Items\Nemesis\StirringSoul.cs" />
     <Compile Include="Items\Uncommon\StrangeCan.cs" />
     <Compile Include="Items\Uncommon\WatchMetronome.cs" />

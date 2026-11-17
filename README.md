@@ -79,7 +79,7 @@ Clearing the Void Fields will trigger a series of Nemesis Survivor bossfights th
 * Art/Modelling/Animation - Anreol, Bolty, bruh, Cexeub, Draymarc, JestAnotherAnimator, Gem, LucidInceptor, KevinFromHPCustomerService, Plexus, PapaZach, QuietAnon, redacted, rob, SOM, Spenny, swuff★, xpcybic, Reithierion, UnknownGlaze, Spanish Space Inquisition, Thingw
 * Writing - Blimblam, Lyrical Endymion, swuff★, QandQuestion, T_Dimensional
 * Sound - KevinFromHPCustomerService, Neik, SOM, UnknownGlaze
-* Additional support/special thanks - Altzeus, DestroyedClone, don, Draymarc, Gnome, JesusPxP, KomradeSpectre, MinimalEffort, Moshinate, MysticSword, Neik, Riskka, Ruxbieno, Shooty, Twiner
+* Additional support/special thanks - Altzeus, DestroyedClone, don, Draymarc, Gnome, JesusPxP, KomradeSpectre, MinimalEffort, Moshinate, MysticSword, Neik, Riskka, Ruxbieno, seraphita, Shooty, Twiner
 
 ## Translations
 

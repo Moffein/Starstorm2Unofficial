@@ -15,6 +15,7 @@ using RoR2.Projectile;
 using RoR2.Skills;
 using RoR2.UI;
 using Starstorm2Unofficial.Modules;
+using Starstorm2Unofficial.Modules.Achievements;
 using Starstorm2Unofficial.Modules.Survivors;
 using Starstorm2Unofficial.Survivors.Nemmando;
 using Starstorm2Unofficial.Survivors.Nucleator;

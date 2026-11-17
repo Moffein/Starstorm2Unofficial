@@ -66,7 +66,7 @@ namespace EntityStates.SS2UStates.Pyro
         }
 
         public static float baseSelfForce = 450f;
-        public static GameObject muzzleflashEffectPrefab = Resources.Load<GameObject>("prefabs/effects/impacteffects/missileexplosionvfx");
+        public static GameObject muzzleflashEffectPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Lemurian/MuzzleflashFire.prefab").WaitForCompletion();
         public static GameObject projectilePrefab;
         public static float damageCoefficient = 1.2f;
         public static float baseDuration = 0.1f;

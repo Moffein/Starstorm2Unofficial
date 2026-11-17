@@ -1,6 +1,8 @@
-﻿using RoR2;
+﻿using Facepunch.Steamworks;
+using RoR2;
 using Starstorm2Unofficial.Survivors.Pyro.Components;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
 
 namespace EntityStates.SS2UStates.Pyro
 {
@@ -12,9 +14,10 @@ namespace EntityStates.SS2UStates.Pyro
         public static float heatFractionPerTick = 0.025f;
 		public static float procCoefficient = 0.7f;
 		public static float damageCoefficient = 0.672f;
-		public static GameObject impactEffectPrefab = Resources.Load<GameObject>("prefabs/effects/impacteffects/missileexplosionvfx");
+		public static GameObject impactEffectPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Common/MissileExplosionVFX.prefab").WaitForCompletion();
 
-		private float duration;
+
+        private float duration;
 		private HeatController heatController;
 		private FlamethrowerController flameController;
 

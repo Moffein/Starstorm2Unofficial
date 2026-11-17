@@ -227,7 +227,7 @@
 		"KEYWORD_SS2U_GOUGE" : "<style=cKeywordName>Gouge</style><style=cSub>Deal <style=cIsDamage>300%</style> base damage over 2s. <i>Capable of triggering item effects.</i>",
 		
 		"SS2UNEMMANDO_PRIMARY_BLADE_NAME" : "Blade of Cessation",
-		"SS2UNEMMANDO_PRIMARY_BLADE_DESCRIPTION" : "<style=cIsHealth>Gouging</style>. <style=cIsUtility>Agile.</style> Slice enemies for <style=cIsDamage>160% damage</style>.",
+		"SS2UNEMMANDO_PRIMARY_BLADE_DESCRIPTION" : "<style=cIsHealth>Gouging</style>. <style=cIsUtility>Agile</style>. Slice enemies for <style=cIsDamage>160% damage</style>.",
 		
 		"SS2UNEMMANDO_SECONDARY_CONCUSSION_NAME" : "Distant Gash",
 		"SS2UNEMMANDO_SECONDARY_CONCUSSION_DESCRIPTION" : "<style=cIsHealth>Gouging</style>. Charge a piercing sword beam for <style=cIsDamage>200%-600% damage</style>.",

@@ -665,7 +665,7 @@ namespace Starstorm2Unofficial.Survivors.Nemmando
                 cancelSprintingOnActivation = false,
                 rechargeStock = 1,
                 requiredStock = 1,
-                stockToConsume = 1
+                stockToConsume = 1,
             });
             specialSubmission = submissionSkillDef;
 
