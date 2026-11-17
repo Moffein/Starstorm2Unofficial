@@ -90,7 +90,7 @@ namespace Starstorm2Unofficial.Survivors.Nemmando
         internal override List<ItemDisplayRuleSet.KeyAssetRuleGroup> itemDisplayRules { get; set; }
 
         internal override UnlockableDef characterUnlockableDef { get; set; } = CreateUnlockableDef();
-        public static UnlockableDef nemmandoUnlock;
+        public static UnlockableDef survivorUnlock;
         public static UnlockableDef killSelfUnlockableDef;
 
         private static void CreateKillSelfUnlockable()
@@ -112,20 +112,20 @@ namespace Starstorm2Unofficial.Survivors.Nemmando
 
         private static UnlockableDef CreateUnlockableDef()
         {
-            if (!nemmandoUnlock)
+            if (!survivorUnlock)
             {
-                nemmandoUnlock = ScriptableObject.CreateInstance<UnlockableDef>();
-                nemmandoUnlock.cachedName = "Characters.SS2UNemmando";
-                nemmandoUnlock.nameToken = "ACHIEVEMENT_SS2UNEMMANDOUNLOCK_NAME";
-                nemmandoUnlock.achievementIcon = Starstorm2Unofficial.Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("texNemmandoIconUnlock");
-                if (ModCompat.SS2OCompat.ShouldLoadAutoconfigContent()) AchievementHider.unlockableRewardIdentifiers.Remove(nemmandoUnlock.cachedName);
+                survivorUnlock = ScriptableObject.CreateInstance<UnlockableDef>();
+                survivorUnlock.cachedName = "Characters.SS2UNemmando";
+                survivorUnlock.nameToken = "ACHIEVEMENT_SS2UNEMMANDOUNLOCK_NAME";
+                survivorUnlock.achievementIcon = Starstorm2Unofficial.Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("texNemmandoIconUnlock");
+                if (ModCompat.SS2OCompat.ShouldLoadAutoconfigContent()) AchievementHider.unlockableRewardIdentifiers.Remove(survivorUnlock.cachedName);
 
-                Modules.Unlockables.unlockableDefs.Add(nemmandoUnlock);
+                Modules.Unlockables.unlockableDefs.Add(survivorUnlock);
             }
 
             if (Modules.Config.EnableUnlockAll.Value || !Modules.Config.EnableVoid.Value || !ModCompat.SS2OCompat.ShouldLoadAutoconfigContent()) return null;
 
-            return nemmandoUnlock;
+            return survivorUnlock;
         }
 
         private static UnlockableDef masterySkinUnlockableDef;
@@ -582,7 +582,7 @@ namespace Starstorm2Unofficial.Survivors.Nemmando
                 rechargeStock = 1,
                 requiredStock = 1,
                 stockToConsume = 1,
-                keywordTokens = new string[] { "KEYWORD_SS2U_GOUGE", "KEYWORD_AGILE" }
+                keywordTokens = new string[] { "KEYWORD_SS2U_GOUGE" }
             });
             secondaryDistantGash = gashSkillDef;
 
@@ -666,7 +666,6 @@ namespace Starstorm2Unofficial.Survivors.Nemmando
                 rechargeStock = 1,
                 requiredStock = 1,
                 stockToConsume = 1,
-                keywordTokens = new string[] { "KEYWORD_AGILE" }
             });
             specialSubmission = submissionSkillDef;
 

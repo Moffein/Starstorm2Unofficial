@@ -205,8 +205,9 @@
 		
 		"KEYWORD_SS2U_RADIATION" : "<style=cKeywordName>Radiation Poisoning</style><style=cSub>Deal <style=cIsDamage>200%</style> damage per second in an AoE for 5s.</style>",
 		
-		"ACHIEVEMENT_SS2UNUCLEATORUNLOCK_NAME" : "Overkill",
-		"ACHIEVEMENT_SS2UNUCLEATORUNLOCK_DESCRIPTION" : "Collect 5 Legendary items in one run.",
+		"SS2UNUCLEATOR_UNLOCKUNLOCKABLE_UNLOCKABLE_NAME" : "Overkill",
+		"SS2UNUCLEATOR_UNLOCKUNLOCKABLE_ACHIEVEMENT_NAME" : "Overkill",
+		"SS2UNUCLEATOR_UNLOCKUNLOCKABLE_ACHIEVEMENT_DESC" : "Collect 5 Legendary items in one run.",
 		
 		"SS2UNUCLEATOR_MASTERYUNLOCKABLE_UNLOCKABLE_NAME" : "Nucleator: Mastery",
 		"SS2UNUCLEATOR_MASTERYUNLOCKABLE_ACHIEVEMENT_NAME" : "Nucleator: Mastery",
@@ -229,22 +230,22 @@
 		"SS2UNEMMANDO_PRIMARY_BLADE_DESCRIPTION" : "<style=cIsHealth>Gouging</style>. <style=cIsUtility>Agile</style>. Slice enemies for <style=cIsDamage>160% damage</style>.",
 		
 		"SS2UNEMMANDO_SECONDARY_CONCUSSION_NAME" : "Distant Gash",
-		"SS2UNEMMANDO_SECONDARY_CONCUSSION_DESCRIPTION" : "<style=cIsHealth>Gouging</style>. <style=cIsUtility>Agile</style>. Charge a piercing sword beam for <style=cIsDamage>200%-600% damage</style>.",
+		"SS2UNEMMANDO_SECONDARY_CONCUSSION_DESCRIPTION" : "<style=cIsHealth>Gouging</style>. Charge a piercing sword beam for <style=cIsDamage>200%-600% damage</style>.",
 		
 		"SS2UNEMMANDO_SECONDARY_SHOOT_NAME" : "Single Tap",
-		"SS2UNEMMANDO_SECONDARY_SHOOT_DESCRIPTION" : "<style=cIsUtility>Agile</style>. Fire your gun for <style=cIsDamage>210% damage</style>. Can hold up to 6 bullets.",
+		"SS2UNEMMANDO_SECONDARY_SHOOT_DESCRIPTION" : "Fire your gun for <style=cIsDamage>210% damage</style>. Can hold up to 6 bullets.",
 		
 		"SS2UNEMMANDO_UTILITY_DODGE_NAME" : "Tactical Roll",
 		"SS2UNEMMANDO_UTILITY_DODGE_DESCRIPTION" : "<style=cIsUtility>Roll</style> a short distance and gain <style=cIsUtility>100 armor</style>.",
 		
 		"SS2UNEMMANDO_SPECIAL_SUBMISSION_NAME" : "Submission",
-		"SS2UNEMMANDO_SPECIAL_SUBMISSION_DESCRIPTION" : "<style=cIsUtility>Agile</style>. Charge up a barrage of <style=cIsDamage>5 shotgun blasts</style> that deal <style=cIsDamage>4x120% damage</style> each. The number of shots increases with attack speed.",
+		"SS2UNEMMANDO_SPECIAL_SUBMISSION_DESCRIPTION" : "Charge up a barrage of <style=cIsDamage>5 shotgun blasts</style> that deal <style=cIsDamage>4x120% damage</style> each. The number of shots increases with attack speed.",
 		
 		"SS2UNEMMANDO_SPECIAL_EPIC_NAME" : "Decisive Strike",
 		"SS2UNEMMANDO_SPECIAL_EPIC_DESCRIPTION" : "<style=cIsHealth>Gouging</style>. Charge up a devastating barrage of <style=cIsDamage>slashes</style> that deals up to <style=cIsDamage>6x360% damage</style>.",
 		
 		"SS2UNEMMANDO_SPECIAL_SCEPSUBMISSION_NAME" : "Subjunction",
-		"SS2UNEMMANDO_SPECIAL_SCEPSUBMISSION_DESCRIPTION" : "<style=cIsUtility>Agile.</style> Charge up a barrage of <style=cIsDamage>5 shotgun blasts</style> that deal <style=cIsDamage>4x120% damage</style> each. The number of shots increases with attack speed. Each blast also fires a laser for <style=cIsDamage>820% damage</style>.",
+		"SS2UNEMMANDO_SPECIAL_SCEPSUBMISSION_DESCRIPTION" : "Charge up a barrage of <style=cIsDamage>5 shotgun blasts</style> that deal <style=cIsDamage>4x120% damage</style> each. The number of shots increases with attack speed. Each blast also fires a laser for <style=cIsDamage>820% damage</style>.",
 		
 		"SS2UNEMMANDO_SPECIAL_SCEPEPIC_NAME" : "Judgement Cut End",
 		"SS2UNEMMANDO_SPECIAL_SCEPEPIC_DESCRIPTION" : "<style=cIsHealth>Gouging</style>. Charge up a devastating barrage of <style=cIsDamage>slashes</style> that deals up to <style=cIsDamage>12x360% damage</style>.",
