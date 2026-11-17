@@ -82,28 +82,9 @@ namespace Starstorm2Unofficial.Survivors.Nucleator
         internal override ItemDisplayRuleSet itemDisplayRuleSet { get; set; }
         internal override List<ItemDisplayRuleSet.KeyAssetRuleGroup> itemDisplayRules { get; set; }
 
-        internal override UnlockableDef characterUnlockableDef { get; set; } = CreateUnlockableDef();
-        public static UnlockableDef nucleatorUnlock;
+        internal override UnlockableDef characterUnlockableDef { get; set; }
         private static UnlockableDef masterySkinUnlockableDef;
         private static UnlockableDef grandMasterySkinUnlockableDef;
-
-        private static UnlockableDef CreateUnlockableDef()
-        {
-            if (!nucleatorUnlock)
-            {
-                nucleatorUnlock = ScriptableObject.CreateInstance<UnlockableDef>();
-                nucleatorUnlock.cachedName = "Characters.SS2UNucleator";
-                nucleatorUnlock.nameToken = "SS2UNUCLEATOR_UNLOCKUNLOCKABLE_ACHIEVEMENT_NAME";
-                nucleatorUnlock.achievementIcon = Starstorm2Unofficial.Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("texNucleatorIconUnlock");
-                if (ModCompat.SS2OCompat.ShouldLoadAutoconfigContent()) AchievementHider.unlockableRewardIdentifiers.Remove(nucleatorUnlock.cachedName);
-
-                Modules.Unlockables.unlockableDefs.Add(nucleatorUnlock);
-            }
-
-            if (Modules.Config.EnableUnlockAll.Value || !Modules.Config.EnableVoid.Value || !ModCompat.SS2OCompat.ShouldLoadAutoconfigContent()) return null;
-
-            return nucleatorUnlock;
-        }
 
         internal static GameObject chargeCrosshair { get; set; }
         internal static GameObject primaryProjectile { get; set; }

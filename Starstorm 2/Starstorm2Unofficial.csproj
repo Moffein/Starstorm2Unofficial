@@ -266,7 +266,6 @@
     <Compile Include="Survivors\Nemmando\EntityStates\Taunt\NemmandoTauntEmote.cs" />
     <Compile Include="Survivors\Nemmando\NemmandoCore.cs" />
     <Compile Include="Survivors\Nemmando\NemmandoItemDisplays.cs" />
-    <Compile Include="Survivors\Nucleator\Achievements\NucleatorUnlockAchievement.cs" />
     <Compile Include="Survivors\Nucleator\Components\Crosshair\NucleatorCrosshairController.cs" />
     <Compile Include="Survivors\Nucleator\Components\NucleatorChargeComponent.cs" />
     <Compile Include="Survivors\Nucleator\Components\Projectile\PrimaryProjectileComponentSimple.cs" />

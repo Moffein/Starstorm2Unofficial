@@ -1,6 +1,7 @@
 ﻿using RoR2;
 using Starstorm2Unofficial.Survivors.Pyro.Components;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
 
 
 namespace EntityStates.SS2UStates.Pyro
@@ -14,7 +15,7 @@ namespace EntityStates.SS2UStates.Pyro
         public static float maxSpeedCoefficient = 4f;
         public static float minSpeedCoefficient = 4f;
 
-        public static GameObject trailPrefab = Resources.Load<GameObject>("prefabs/effects/impacteffects/missileexplosionvfx");
+        public static GameObject trailPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Common/MissileExplosionVFX.prefab").WaitForCompletion();
         public static float trailFrequency = 8f;
         private float trailStopwatch;
         private float trailTime;
