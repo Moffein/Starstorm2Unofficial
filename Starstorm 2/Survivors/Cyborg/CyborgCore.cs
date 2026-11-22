@@ -320,6 +320,7 @@ namespace Starstorm2Unofficial.Survivors.Cyborg
             cb.levelMoveSpeed = 0f;
             cb.levelRegen = 0f;
             cb.hullClassification = HullClassification.Human;
+            cb.doNotReassignToTeamBasedCollisionLayer = true;
 
             HealthComponent hc = projectilePrefab.AddComponent<HealthComponent>();
             hc.globalDeathEventChanceCoefficient = 0f;

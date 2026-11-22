@@ -1,3 +1,7 @@
+`0.26.1`
+
+- Attempted to fix Cyborg Shock Core collisions.
+
 `0.26.0`
 
 - Added CanBeRental tag to most items.
