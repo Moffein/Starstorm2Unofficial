@@ -17,7 +17,8 @@ namespace Starstorm2Unofficial.Cores.Items
             ItemTag.Damage,
             ItemTag.Utility,
             ItemTag.AIBlacklist, //Base Damage = instakill players
-            ItemTag.CanBeTemporary
+            ItemTag.CanBeTemporary,
+            ItemTag.CanBeRental
         };
         public override string PickupIconPath => "MoltenCoin_Icon";
         public override string PickupModelPath => "MDLMoltenCoin";

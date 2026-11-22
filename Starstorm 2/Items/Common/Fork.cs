@@ -12,7 +12,8 @@ namespace Starstorm2Unofficial.Cores.Items
         public override ItemTag[] Tags => new ItemTag[]
         {
             ItemTag.Damage,
-            ItemTag.CanBeTemporary
+            ItemTag.CanBeTemporary,
+            ItemTag.CanBeRental
         };
         public override string PickupIconPath => "Fork_Icon";
         public override string PickupModelPath => "MDLFork";

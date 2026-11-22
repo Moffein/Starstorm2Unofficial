@@ -14,7 +14,8 @@ namespace Starstorm2Unofficial.Cores.Items
             ItemTag.Damage,
             ItemTag.Utility,
             ItemTag.FoodRelated,
-            ItemTag.CanBeTemporary
+            ItemTag.CanBeTemporary,
+            ItemTag.CanBeRental
         };
         public override string PickupIconPath => "CoffeeBag_Icon";
         public override string PickupModelPath => "MDLCoffeeBag";

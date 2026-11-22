@@ -17,7 +17,8 @@ namespace Starstorm2Unofficial.Cores.Items
         {
             ItemTag.Damage, ItemTag.Utility, ItemTag.AIBlacklist,
             ItemTag.FoodRelated,
-            ItemTag.CanBeTemporary
+            ItemTag.CanBeTemporary,
+            ItemTag.CanBeRental
         };
         public override string PickupIconPath => "GreenChocolate_Icon";
         public override string PickupModelPath => "MDLGreenChocolate";

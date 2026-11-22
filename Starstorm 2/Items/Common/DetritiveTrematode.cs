@@ -11,7 +11,8 @@ namespace Starstorm2Unofficial.Cores.Items
         public override ItemTag[] Tags => new ItemTag[]
         {
             ItemTag.Damage, ItemTag.AIBlacklist,
-            ItemTag.CanBeTemporary
+            ItemTag.CanBeTemporary,
+            ItemTag.CanBeRental
         };
         public override string PickupIconPath => "DetritiveTrematode_Icon";
         public override string PickupModelPath => "MDLDetritiveTrematode";

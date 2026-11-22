@@ -20,7 +20,8 @@ namespace Starstorm2Unofficial.Cores.Items
             ItemTag.SprintRelated,
             ItemTag.AIBlacklist,
             ItemTag.FoodRelated,
-            ItemTag.CanBeTemporary
+            ItemTag.CanBeTemporary,
+            ItemTag.CanBeRental
         };
         public override string PickupIconPath => "DormantFungus_Icon";
         public override string PickupModelPath => "MDLDormantFungus";

@@ -17,7 +17,8 @@ namespace Starstorm2Unofficial.Cores.Items
         public override ItemTag[] Tags => new ItemTag[]
         {
             ItemTag.Damage,
-            ItemTag.CanBeTemporary
+            ItemTag.CanBeTemporary,
+            ItemTag.CanBeRental
         };
         public override string PickupIconPath => "ErraticGadget_Icon";
         public override string PickupModelPath => "MDLErraticGadget";

@@ -16,7 +16,9 @@ namespace Starstorm2Unofficial.Cores.Items
         public override ItemTier Tier => ItemTier.Tier2;
         public override ItemTag[] Tags => new ItemTag[]
         {
-            ItemTag.Damage
+            ItemTag.Damage,
+            ItemTag.CanBeTemporary,
+            ItemTag.CanBeRental
         };
         public override string PickupIconPath => "StrangeCan_Icon";
         public override string PickupModelPath => "MDLStrangeCan";

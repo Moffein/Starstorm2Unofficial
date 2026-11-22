@@ -17,7 +17,9 @@ namespace Starstorm2Unofficial.Cores.Items
         public override ItemTag[] Tags => new ItemTag[]
         {
             ItemTag.Utility,
-            ItemTag.SprintRelated
+            ItemTag.SprintRelated,
+            ItemTag.CanBeTemporary,
+            ItemTag.CanBeRental
         };
         public override string PickupIconPath => "WatchMetronome_Icon";
         public override string PickupModelPath => "MDLWatchMetronome";

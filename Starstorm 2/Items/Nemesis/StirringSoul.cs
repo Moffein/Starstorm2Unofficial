@@ -23,7 +23,8 @@ namespace Starstorm2Unofficial.Cores.Items
             ItemTag.WorldUnique,
             ItemTag.CannotDuplicate,
             ItemTag.OnKillEffect,
-            ItemTag.CanBeTemporary
+            ItemTag.CanBeTemporary,
+            ItemTag.CanBeRental
         };
         public override string PickupIconPath => "StirringSoul_Icon";
         public override string PickupModelPath => "StirlingSoul.prefab";
