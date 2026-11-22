@@ -1,3 +1,8 @@
+`0.26.0`
+
+- Added CanBeRental tag to most items.
+- Fixed missing VFX on Pyro and implemented PapaZach's skill icons. (Thanks seraphita!)
+
 `0.25.0`
 
 - DLC4 fix.
